@@ -1,0 +1,42 @@
+###### Configure insert design ######
+start_codon: "ATGAAG"
+special_start_codons: "None"
+
+###### Past barcodes to avoid ######
+past_barcodes_to_avoid:
+  kikawa2023: 'data/2023_H3N2_Kikawa.csv'
+  loes2023: 'data/pdmH1N1_lib2023_loes.csv'
+  kikawa2025: 'data/flu-seqneut-2025-barcode-to-strain_designed.csv'
+  loes2025: 'data/DRIVE_AL_2025_viral_strain_to_barcode.csv'
+  kikawa2025to2026: 'data/flu-seqneut-2025to2026-barcode-to-strain-designed.csv'
+
+###### New barcode generation ######
+nucleotides: ['a', 'c', 'g', 't']
+n_barcodes: 2 # number of barcodes to generate per strain
+
+###### Order-specific configs ######
+orders:
+  H3-testset:
+    library: 'flu-seqneut-2026'
+    subtype: "H3N2"
+    virus_id: 1 # Starting index for virus alias
+    input_file: "../testset_design/results/aggregated_library_strains/library_strains.tsv"
+    output_file: "results/H3_testset.csv"
+    append_additional_upstream_sequence: ''
+    ectodomain_start: 48 # 16x3, start after first 16 amino acids
+    ectodomain_length: 1551 # 517x3, continue for 517 amino acids
+    endodomain_sequence: 'atcaagggagttgagctgaagtcaggatacaaagattggatcctatggatttcctttgccATGtcTtgCttCCtActGtgCgtAgcACtACtAggCttTatTatgtgggcGtgTcaGaaAggCtcCCtAcaAtgTCgGatTtgTatTTAATAG' # H3 endodomain and WSN CT
+    
+  H1-testset:
+    library: 'flu-seqneut-2026'
+    subtype: "H1N1"
+    virus_id: 1 # Starting index for virus alias
+    input_file: "../testset_design/results/aggregated_library_strains/library_strains.tsv"
+    output_file: "results/H1_testset.csv"
+    append_additional_upstream_sequence: 'ata' # 20th amino acid of upstream WSN signal peptide
+    ectodomain_start: 60 # 20x3, start after first 20 amino acids
+    ectodomain_length: 1560 # 520x3, continue for 520 amino acids
+    endodomain_sequence: 'aaattggaatcaatgggagtgtatcagattctggcgatatattctacagtggcaagctccttagtactgctagtttctttaggagcgattagcttttggatgtgctccaacggCtcCCtAcaAtgTCgGatTtgTatTTAATAG' # WSN endodomain and CT
+
+###### Final barcode-to-strain testset output file ######
+barcode_to_strain: 'flu-seqneut-2026-barcode-to-strain-testset.csv'

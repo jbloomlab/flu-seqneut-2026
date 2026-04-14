@@ -1,0 +1,8 @@
+results/*
+
+!results/aggregated_library_strains
+results/aggregated_library_strains/*
+!results/aggregated_library_strains/library_strains.tsv
+
+!results/selected_haplotype_validation
+

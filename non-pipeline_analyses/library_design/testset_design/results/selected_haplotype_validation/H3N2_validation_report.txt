@@ -1,0 +1,14 @@
+HA Sequence Validation Report
+============================================================
+
+Input file: data/2026-testset-strain-selection-H3N2.tsv
+
+Sequence Length Check:
+  All sequences have length: 566
+  ✓ All sequences are the same length (properly aligned)
+
+Amino Acid Validity Check:
+  Total haplotypes: 3
+  Haplotypes with valid amino acids only: 3 (100.0%)
+  Haplotypes with invalid characters: 0 (0.0%)
+  ✓ All sequences contain only valid amino acids

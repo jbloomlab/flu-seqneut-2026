@@ -2,10 +2,10 @@
 This repository designs HA insert sequences that can be submitted to either 
 [Twist Biosciences](https://www.twistbioscience.com/) or [GenScript](https://www.genscript.com) for 
 gene fragment synthesis and cloning. These inserts are designed to fit between the BsmBI-v2 cut 
-sites in the [Bloom lab vector 5764](./5764_pHW_SeqNeutCloningVector_WSNHAflankGFP.gb). They should 
-begin after the 19th codon for H3N2 strains or 20th codon for H1N1 strains of WSN upstream signal 
-peptide, and continue all the way through the end of the HA coding region, followed by a double stop 
-codon and a 16-nucleotide barcode. 
+sites in the [Bloom lab vector 5764](./data/5764_pHW_SeqNeutCloningVector_WSNHAflankGFP.gb). They 
+should begin after the 19th codon for H3N2 strains or 20th codon for H1N1 strains of WSN upstream 
+signal peptide, and continue all the way through the end of the HA coding region, followed by a 
+double stop codon and a 16-nucleotide barcode. 
 
 The key output file is 
 [./flu-seqneut-2026-barcode-to-strain-testset.csv](./flu-seqneut-2026-barcode-to-strain-testset.csv) 

@@ -1,0 +1,11 @@
+# Configuration file for analysis
+
+# subtypes to analyze
+subtypes: [H3N2, H1N1]
+
+# TSVs giving selected haplotypes of HA proteins. Must have following columns:
+#  - representative_strain: name of strain representative of haplotype
+#  - representative_strain_ha_sequence: HA protein sequence of haplotype (must be full-length)
+selected_haplotypes:
+  H3N2: data/2026-testset-strain-selection-H3N2.tsv
+  H1N1: data/2026-testset-strain-selection-H1N1.tsv

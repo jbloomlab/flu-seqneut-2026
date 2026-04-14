@@ -1,0 +1,82 @@
+"""
+Snakemake pipeline for selecting influenza HA strains for neutralization assays.
+
+This pipeline processes H3N2 and H1N1 haplotype data to prepare them for construct
+ordering.
+"""
+
+snakemake.utils.min_version("9.0")
+
+configfile: "config.yaml"
+
+# Define subtypes as wildcards
+SUBTYPES = config["subtypes"]
+
+# Rule all: define final outputs
+rule all:
+    input:
+        expand("results/selected_haplotype_validation/{subtype}_validation_report.txt", subtype=SUBTYPES),
+        expand("results/selected_haplotype_validation/{subtype}_valid_haplotypes.tsv", subtype=SUBTYPES),
+        expand("results/selected_haplotype_validation/{subtype}_invalid_haplotypes.tsv", subtype=SUBTYPES),
+        expand("results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv", subtype=SUBTYPES),
+        "results/aggregated_library_strains/library_strains.tsv"
+
+
+# Rule to validate recent haplotypes
+rule validate_selected_haplotypes:
+    input:
+        tsv=lambda wildcards: config["selected_haplotypes"][wildcards.subtype]
+    output:
+        report="results/selected_haplotype_validation/{subtype}_validation_report.txt",
+        valid_haplotypes="results/selected_haplotype_validation/{subtype}_valid_haplotypes.tsv",
+        invalid_haplotypes="results/selected_haplotype_validation/{subtype}_invalid_haplotypes.tsv",
+        library_fasta_path="results/selected_haplotype_validation/{subtype}_library_haplotypes.fa"
+    log:
+        "results/selected_haplotype_validation/{subtype}_log.txt"
+    conda:
+        "environment.yml"
+    script:
+        "scripts/validate_selected_haplotypes.py"
+
+# Rule to match library proteins to closest Genbank nucleotide sequences
+rule match_genbank:
+    input:
+        query_prots="results/selected_haplotype_validation/{subtype}_library_haplotypes.fa",
+        script="match_prot_to_genbank_nt/match_prot_to_genbank_nt.py"
+    output:
+        csv="results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv"
+    params:
+        taxon="Influenza A virus",
+        outdir="results/genbank_match/{subtype}"
+    log:
+        "results/genbank_match/{subtype}_log.txt"
+    threads: 8
+    resources:
+        cpus_per_task=8
+    conda:
+        "match_prot_to_genbank_nt/environment.yaml"
+    shell:
+        """
+        python {input.script} \
+            --query-prots {input.query_prots} \
+            --taxon "{params.taxon}" \
+            --outdir {params.outdir} \
+            --existing-outdir delete \
+            --threads {threads} &> {log}
+        """
+
+
+# Rule to aggregate library strains from all subtypes
+rule aggregate_library_strains:
+    input:
+        csvs=expand("results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv", subtype=SUBTYPES)
+    output:
+        tsv="results/aggregated_library_strains/library_strains.tsv"
+    params:
+        subtypes=SUBTYPES
+    log:
+        "results/aggregated_library_strains/log.txt"
+    conda:
+        "environment.yml"
+    script:
+        "scripts/aggregate_library_strains.py"

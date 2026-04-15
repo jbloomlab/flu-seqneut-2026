@@ -124,12 +124,12 @@ def _(
                     insert_seq = (append_additional_upstream_sequence or '') + insert_seq + (append_additional_downstream_sequence or '')
 
                     # Add to inserts list
-                    inserts.append([name, genbank_id, name_barcoded, str(insert_seq)])     
+                    inserts.append([name, genbank_id, name_barcoded, str(insert_seq), record])     
 
                 # Add to virus counter
                 virus_id+=1
 
-            inserts_df = pd.DataFrame(inserts, columns = ['strain', 'genbank', 'name', 'sequence'])
+            inserts_df = pd.DataFrame(inserts, columns = ['strain', 'genbank', 'name', 'construct_sequence', 'full_ha_sequence'])
             inserts_df = inserts_df.to_csv(notebook_directory / construct_filepath, index=False) 
 
             return inserts
@@ -170,11 +170,6 @@ def _(notebook_directory: "Path", pd, snakemake, sys, yaml):
 
 
 @app.cell
-def _():
-    return
-
-
-@app.cell
 def _(config, design_inserts, notebook_directory: "Path", pd):
     # Design all constructs configured in 'orders' key
     order_outputs = []
@@ -204,12 +199,13 @@ def _(config, design_inserts, notebook_directory: "Path", pd):
     # Add barcode-to-strain output file in top-level directory that aggregatess across all ordersheets in output
     output_dir = notebook_directory / f'./{config['barcode_to_strain']}'
     order_outputs_df = pd.concat([pd.read_csv(f'{notebook_directory}/{f}', sep=',') for f in order_outputs], ignore_index=True)
-    order_outputs_df['barcode'] = order_outputs_df['sequence'].str[-16:].str.upper()
+    order_outputs_df['barcode'] = order_outputs_df['construct_sequence'].str[-16:].str.upper()
     order_outputs_df['strain_type'] = 'circulating_2025to2026'
     order_outputs_df['subtype'] = order_outputs_df['strain'].str.split('_').str[1]
     order_outputs_df = order_outputs_df.rename(columns={
         'genbank': 'accession',
-        'sequence': 'nt_sequence_HA_ectodomain'
+        'construct_sequence': 'nt_sequence_HA_ectodomain',
+        'full_ha_sequence': 'nt_sequence_full_HA'
     })
 
     library_designed = order_outputs_df

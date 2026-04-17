@@ -124,16 +124,15 @@ def _(
                     insert_seq = (append_additional_upstream_sequence or '') + insert_seq + (append_additional_downstream_sequence or '')
 
                     # Add to inserts list
-                    inserts.append([name, genbank_id, name_barcoded, str(insert_seq), record])     
+                    inserts.append([name, genbank_id, name_barcoded, str(insert_seq), str(ectodomain_insert_seq)])     
 
                 # Add to virus counter
                 virus_id+=1
 
-            inserts_df = pd.DataFrame(inserts, columns = ['strain', 'genbank', 'name', 'construct_sequence', 'full_ha_sequence'])
+            inserts_df = pd.DataFrame(inserts, columns = ['strain', 'genbank', 'shortname', 'insert_sequence_to_order', 'nt_sequence_HA_ectodomain'])
             inserts_df = inserts_df.to_csv(notebook_directory / construct_filepath, index=False) 
 
             return inserts
-
     return (design_inserts,)
 
 
@@ -199,13 +198,13 @@ def _(config, design_inserts, notebook_directory: "Path", pd):
     # Add barcode-to-strain output file in top-level directory that aggregatess across all ordersheets in output
     output_dir = notebook_directory / f'./{config['barcode_to_strain']}'
     order_outputs_df = pd.concat([pd.read_csv(f'{notebook_directory}/{f}', sep=',') for f in order_outputs], ignore_index=True)
-    order_outputs_df['barcode'] = order_outputs_df['construct_sequence'].str[-16:].str.upper()
-    order_outputs_df['strain_type'] = 'circulating_2025to2026'
-    order_outputs_df['subtype'] = order_outputs_df['strain'].str.split('_').str[1]
+    order_outputs_df['barcode'] = order_outputs_df['insert_sequence_to_order'].str[-16:].str.upper()
+    order_outputs_df['strain_annotation'] = 'circulating_2025to2026'
+    order_outputs_df['subtype'] = order_outputs_df['strain'].str.split('_').str[-1]
     order_outputs_df = order_outputs_df.rename(columns={
-        'genbank': 'accession',
-        'construct_sequence': 'nt_sequence_HA_ectodomain',
-        'full_ha_sequence': 'nt_sequence_full_HA'
+        'genbank': 'genbank_accession',
+        'insert_sequence_to_order': 'insert_sequence_to_order',
+        'nt_sequence_HA_ectodomain': 'nt_sequence_HA_ectodomain'
     })
 
     library_designed = order_outputs_df

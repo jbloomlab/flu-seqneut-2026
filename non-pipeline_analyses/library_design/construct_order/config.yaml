@@ -1,0 +1,37 @@
+
+############################### Configure insert design ############################################
+start_codon: "ATGAAG"
+special_start_codons: null
+n_barcodes: 2 # number of barcodes to generate per strain
+random_seed: 202604131030
+contributor: Andrew Butler
+vector: pHW2000
+past_barcodes_to_avoid: 
+  - "data/2023_H3N2_Kikawa.csv"
+  - "data/pdmH1N1_lib2023_loes.csv"
+  - "data/flu-seqneut-2025-barcode-to-strain_designed.csv"
+  - "data/DRIVE_AL_2025_viral_strain_to_barcode.csv"
+  - "data/flu-seqneut-2025to2026-barcode-to-strain-designed.csv"
+vaccine_annotation_file: "data/vaccine_annotations.csv"
+
+subtype_params:
+  H3N2:
+    append_additional_upstream_sequence: ''
+    ectodomain_start: 48 # 16x3, start after first 16 amino acids
+    ectodomain_length: 1551 # 517x3, continue for 517 amino acids
+    endodomain_sequence: 'atcaagggagttgagctgaagtcaggatacaaagattggatcctatggatttcctttgccATGtcTtgCttCCtActGtgCgtAgcACtACtAggCttTatTatgtgggcGtgTcaGaaAggCtcCCtAcaAtgTCgGatTtgTatTTAATAG' # H3 endodomain and WSN CT
+  H1N1:
+    append_additional_upstream_sequence: 'ata' # 20th amino acid of upstream WSN signal peptide
+    ectodomain_start: 60 # 20x3, start after first 20 amino acids
+    ectodomain_length: 1560 # 520x3, continue for 520 amino acids
+    endodomain_sequence: 'aaattggaatcaatgggagtgtatcagattctggcgatatattctacagtggcaagctccttagtactgctagtttctttaggagcgattagcttttggatgtgctccaacggCtcCCtAcaAtgTCgGatTtgTatTTAATAG' # WSN endodomain and CT
+
+###################################### Orders ######################################################
+orders:
+  testset:
+    date: 2026-05-12
+    library: 'flu-seqneut-2026'
+    shortname_h1n1_idx: 1
+    shortname_h3n2_idx: 1
+    input_file: "../testset_design/results/aggregated_library_strains/library_strains.tsv"
+    plasmid_start_idx: 5869

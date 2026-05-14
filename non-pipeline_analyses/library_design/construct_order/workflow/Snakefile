@@ -34,7 +34,6 @@ rule all:
 rule write_genbank:
     input:
         log_csv="results/plasmid_log/{date}_{order}.csv",
-        config="config.yaml",
     output:
         outdir=directory("results/genbank/{date}_{order}"),
     log:
@@ -45,8 +44,6 @@ rule write_genbank:
             --log-csv  {input.log_csv} \
             --outdir   {output.outdir} \
             --date     {wildcards.date} \
-            --order    {wildcards.order} \
-            --config   config.yaml \
         > {log} 2>&1
         """
 
@@ -56,7 +53,7 @@ rule generate_constructs:
         input_csv=lambda wildcards: ORDERS[wildcards.order]["input_file"],
         past_barcodes=config["past_barcodes_to_avoid"],
         config="config.yaml",
-        annotation_file=config["vaccine_annotation_file"] if config.get("vaccine_annotation_file") else [],
+        annotation_file=config["annotation_file"] if config.get("annotation_file") else [],
         # depend on all previously defined orders to force sequential execution
         prior_orders=lambda wildcards: [
             f"results/plasmid_log/{ORDERS[order]['date']}_{order}.csv"

@@ -12,7 +12,7 @@ past_barcodes_to_avoid:
   - "data/flu-seqneut-2025-barcode-to-strain_designed.csv"
   - "data/DRIVE_AL_2025_viral_strain_to_barcode.csv"
   - "data/flu-seqneut-2025to2026-barcode-to-strain-designed.csv"
-vaccine_annotation_file: "data/vaccine_annotations.csv"
+annotation_file: "data/vaccine_annotations.csv"
 
 subtype_params:
   H3N2:

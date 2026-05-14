@@ -139,6 +139,20 @@ def generate_barcodes(n_barcodes: int, past_barcodes: set[str]) -> list[str]:
 
 
 # ---------------------------------------------------------------------------
+# Filename generation
+# ---------------------------------------------------------------------------
+
+def build_plasmid_filename(idx: int, vector: str, strain: str, bc_idx: str) -> str:
+    """
+    Build the GenBank filename for a single construct.
+    Format: {idx}_{vector}_{strain}_{bc_idx}.gb
+    where strain has '/' replaced with '_'.
+    """
+    sanitized_strain = strain.replace("/", "_")
+    return f"{idx}_{vector}_{sanitized_strain}_{bc_idx}.gb"
+
+
+# ---------------------------------------------------------------------------
 # Input reading
 # ---------------------------------------------------------------------------
 
@@ -202,6 +216,7 @@ def build_construct_rows(
     """
     order_config = config["orders"][order]
     library = order_config["library"]
+    plasmid_idx = order_config["plasmid_start_idx"]
 
     start_codon = config["start_codon"]
     special_start_codons = config.get("special_start_codons")
@@ -250,6 +265,12 @@ def build_construct_rows(
         for bc_i, barcode in enumerate(strain_barcodes, start=1):
             shortname = f"{library}_{subtype}_{idx}_bc{bc_i}"
             insert_sequence = upstream_seq + nt_sequence_HA_ectodomain + endodomain_seq + barcode
+            plasmid_filename = build_plasmid_filename(
+                idx=plasmid_idx,
+                vector=config["vector"],
+                strain=strain,
+                bc_idx=f"bc{bc_i}",
+            )
             rows.append({
                 "contributor": config["contributor"],
                 "vector": config["vector"],
@@ -263,7 +284,7 @@ def build_construct_rows(
                 "genbank_accession": row["accession_w_aa_muts_added"],
                 "vaccine_annotation": annotations.get(protein_sequence_HA_ectodomain, {}).get("vaccine_annotation", ""),
                 "passage_history_annotation": annotations.get(protein_sequence_HA_ectodomain, {}).get("passage_history_annotation", ""),
-                "bloom_lab_plasmid_log_id": "",
+                "bloom_lab_plasmid_log_id": plasmid_filename,
                 "original_publication": "",
                 "subclade": "",
                 "derived_haplotype": "",
@@ -271,6 +292,7 @@ def build_construct_rows(
                 "equivalent_strains": "",
                 "collection_date": "",
             })
+            plasmid_idx += 1
     return rows
 
 
@@ -360,7 +382,7 @@ def main():
         past_barcodes=past_barcodes,
     )
 
-    annotations = load_annotations(config["vaccine_annotation_file"]) if config.get("vaccine_annotation_file") else {}
+    annotations = load_annotations(config["annotation_file"]) if config.get("annotation_file") else {}
 
     rows = build_construct_rows(
         order=args.order,

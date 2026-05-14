@@ -18,8 +18,6 @@ import logging
 import warnings
 from pathlib import Path
 
-import yaml
-
 from Bio import BiopythonWarning, SeqIO
 from Bio.Seq import Seq
 from Bio.SeqFeature import FeatureLocation, SeqFeature
@@ -160,20 +158,6 @@ def build_genbank_record(row: dict, date: str) -> SeqRecord:
 
 
 # ---------------------------------------------------------------------------
-# Filename generation
-# ---------------------------------------------------------------------------
-
-def build_filename(idx: int, vector: str, strain: str, bc_idx: str) -> str:
-    """
-    Build the GenBank filename for a single construct.
-    Format: {idx}_{vector}_{strain}_{bc_idx}.gb
-    where strain has '/' replaced with '_'.
-    """
-    sanitized_strain = strain.replace("/", "_")
-    return f"{idx}_{vector}_{sanitized_strain}_{bc_idx}.gb"
-
-
-# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -182,14 +166,7 @@ def main():
     parser.add_argument("--log-csv", required=True, help="Path to input log CSV.")
     parser.add_argument("--outdir",  required=True, help="Output directory for .gb files.")
     parser.add_argument("--date",    required=True, help="Order date, passed from Snakemake wildcard.")
-    parser.add_argument("--order",   required=True, help="Order name, passed from Snakemake wildcard.")
-    parser.add_argument("--config",  required=True, help="Path to YAML config file.")
     args = parser.parse_args()
-
-    with open(args.config) as f:
-        config = yaml.safe_load(f)
-
-    plasmid_idx = config["orders"][args.order]["plasmid_start_idx"]
 
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
@@ -197,17 +174,10 @@ def main():
     rows = read_log_csv(args.log_csv)
 
     for row in rows:
-        bc_idx = row["shortname"].rsplit("_", 1)[-1]  # extract bc{n} from end of shortname
-        filename = build_filename(
-            idx=plasmid_idx,
-            vector=row["vector"],
-            strain=row["strain"],
-            bc_idx=bc_idx,
-        )
+        filename = row["bloom_lab_plasmid_log_id"]
         record = build_genbank_record(row, date=args.date)
         with open(outdir / filename, "w") as f:
             SeqIO.write(record, f, "genbank")
-        plasmid_idx += 1
 
     log.info(f"Done. Wrote {len(rows)} GenBank files to {outdir}.")
 

@@ -1,7 +1,9 @@
 """
 generate_constructs.py
 
-Processes a single order and writes two output CSVs.
+Processes new orders specified in a config.yaml file and generates the respective order CSV (for 
+upload to the GenScript ordering portal) and the plasmid log CSV for recording these new plasmids in
+the flu-seqneut-plasmid-log.
 
 Usage:
     python generate_constructs.py \

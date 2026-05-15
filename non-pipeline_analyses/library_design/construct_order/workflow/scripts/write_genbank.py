@@ -1,15 +1,15 @@
 """
 write_genbank.py
 
-Reads a log CSV and writes one GenBank plasmid map (.gb) per row.
-Specific to cloning into the phw2000 backbone (Bloom lab plasmid #5764).
+Generate plasmid maps for all the plasmids specified in the log CSV file. Intended to be run after
+the generate_constructs.py script as part of a Snakemake pipeline. This is specific to cloning into 
+the pHW2000 backbone (Bloom lab plasmid #5764). 
 
 Usage:
     python write_genbank.py \
         --log-csv  results/plasmid_log/2026-05-12_H3-testset.csv \
         --outdir   results/genbank/2026-05-12_H3-testset
 
-Intended for use in a Snakemake pipeline (one invocation per order).
 """
 
 import argparse
@@ -28,7 +28,6 @@ warnings.simplefilter("ignore", BiopythonWarning)
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger(__name__)
 
-
 # ---------------------------------------------------------------------------
 # Backbone and flanking sequences
 # ---------------------------------------------------------------------------
@@ -41,7 +40,6 @@ CONSENSUS_H3_ENDODOMAIN = "atcaagggagttgagctgaagtcaggatacaaagattggatcctatggatttc
 WSN_ENDODOMAIN = "aaattggaatcaatgggagtgtatcagattctggcgatatattctacagtggcaagctccttagtactgctagtttctttaggagcgattagcttttggatgtgctccaacggctccctacaatgtcggatttgtatttaatag"
 WSN_RECODED_CT = "ggctccctacaatgtcggatttgtatttaatag"
 
-
 # ---------------------------------------------------------------------------
 # Input reading
 # ---------------------------------------------------------------------------
@@ -53,7 +51,6 @@ def read_log_csv(log_csv: str) -> list[dict]:
         rows = list(reader)
     log.info(f"Read {len(rows)} rows from {log_csv}.")
     return rows
-
 
 # ---------------------------------------------------------------------------
 # GenBank record construction
@@ -71,6 +68,7 @@ def build_genbank_record(row: dict, date: str) -> SeqRecord:
     barcode = row["barcode"]
     ectodomain = row["nt_sequence_HA_ectodomain"]
     library = row["library"]
+    contributor = row["contributor"]
 
     if subtype not in {"H3N2", "H1N1"}:
         raise ValueError(f"Unsupported subtype '{subtype}' for strain '{strain}'. Expected 'H3N2' or 'H1N1'.")
@@ -85,8 +83,10 @@ def build_genbank_record(row: dict, date: str) -> SeqRecord:
         f"This pHW plasmid contains the HA ectodomain sequence for a {subtype} variant {strain}. "
         f"Signal peptide and 3'NCR from WSN, ectodomain from {strain} HA with GenBank accession {accession}, "
         f"and last 46 aa recoded WSN transmembrane and c-terminal domain. "
-        f"With duplicated 5' packaging signals from WSN and the 16-nucleotide barcode {barcode}. "
-        f"Library: {library}."
+        f"With duplicated 5' packaging signals from WSN with a single stop codon in the duplicated "
+        f"packaging signal, and the 16-nucleotide barcode {barcode}. The plasmid was generated for "
+        f"the {library} library. It was designed and logged by {contributor} and cloned and "
+        f"sequence confirmed by GenScript."
     )
 
     # Build features
@@ -155,7 +155,6 @@ def build_genbank_record(row: dict, date: str) -> SeqRecord:
             "date": date,
         },
     )
-
 
 # ---------------------------------------------------------------------------
 # Main

@@ -30,6 +30,7 @@ log = logging.getLogger(__name__)
 
 NUCLEOTIDES = list("ACGT")
 MAX_BARCODE_ATTEMPTS = 100
+MIN_HAMMING_DISTANCE = 3
 
 
 # ---------------------------------------------------------------------------
@@ -110,13 +111,39 @@ def load_annotations(annotation_file: str) -> dict[str, dict]:
 # Barcode generation
 # ---------------------------------------------------------------------------
 
+def _hamming_distance(a: str, b: str) -> int:
+    """Return the Hamming distance between two equal-length strings."""
+    if len(a) != len(b):
+        raise ValueError("Strings must have equal length")
+    return sum(x != y for x, y in zip(a, b))
+
+
+def _too_close_to_existing(barcode: str, past_barcodes: set[str]) -> bool:
+    """
+    Return True if barcode is within MIN_HAMMING_DISTANCE - 1 (i.e. <= 2) of
+    any barcode already in past_barcodes.
+
+    The exact-match check (Hamming == 0) is assumed to have been done already
+    via `barcode in past_barcodes`, so this function only needs to catch
+    near-matches (Hamming distance 1 or 2).
+    """
+    for existing in past_barcodes:
+        if _hamming_distance(barcode, existing) < MIN_HAMMING_DISTANCE:
+            return True
+    return False
+
+
 def generate_barcodes(n_barcodes: int, past_barcodes: set[str]) -> list[str]:
     """
     Generate n_barcodes unique 16-nt barcodes, excluding any in past_barcodes.
 
     Barcodes are rejected if they:
       - start with 'GG'
-      - already exist in past_barcodes
+      - already exist in past_barcodes (Hamming distance == 0)
+      - are within Hamming distance <= 2 of any barcode in past_barcodes
+
+    The exact-match check is done first (O(1) set lookup) so the more expensive
+    Hamming scan is only reached by candidates that would otherwise pass.
 
     Raises RuntimeError if a barcode cannot be generated after MAX_BARCODE_ATTEMPTS tries.
     """
@@ -127,6 +154,8 @@ def generate_barcodes(n_barcodes: int, past_barcodes: set[str]) -> list[str]:
             if barcode[:2] == "GG":
                 continue
             if barcode in past_barcodes:
+                continue
+            if _too_close_to_existing(barcode, past_barcodes):
                 continue
             past_barcodes.add(barcode)  # claim immediately to avoid duplicates within this run
             barcodes.append(barcode)

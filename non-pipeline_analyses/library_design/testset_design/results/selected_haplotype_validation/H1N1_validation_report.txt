@@ -8,7 +8,7 @@ Sequence Length Check:
   ✓ All sequences are the same length (properly aligned)
 
 Amino Acid Validity Check:
-  Total haplotypes: 2
-  Haplotypes with valid amino acids only: 2 (100.0%)
+  Total haplotypes: 3
+  Haplotypes with valid amino acids only: 3 (100.0%)
   Haplotypes with invalid characters: 0 (0.0%)
   ✓ All sequences contain only valid amino acids

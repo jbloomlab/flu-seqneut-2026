@@ -1,0 +1,76 @@
+# Snakefile
+#
+# Usage:
+#   snakemake --configfile config.yaml
+#   snakemake  # uses configfile directive below
+
+configfile: "config.yaml"
+
+ORDERS = config["orders"]
+
+
+rule all:
+    input:
+        expand(
+            "results/orders/{date}_{order}_order.csv",
+            zip,
+            order=ORDERS,
+            date=[ORDERS[o]["date"] for o in ORDERS],
+        ),
+        expand(
+            "results/plasmid_log/{date}_{order}.csv",
+            zip,
+            order=ORDERS,
+            date=[ORDERS[o]["date"] for o in ORDERS],
+        ),
+        expand(
+            "results/genbank/{date}_{order}",
+            zip,
+            order=ORDERS,
+            date=[ORDERS[o]["date"] for o in ORDERS],
+        ),
+
+
+rule write_genbank:
+    input:
+        log_csv="results/plasmid_log/{date}_{order}.csv",
+    output:
+        outdir=directory("results/genbank/{date}_{order}"),
+    log:
+        "logs/{date}_{order}_genbank.log",
+    shell:
+        """
+        python workflow/scripts/write_genbank.py \
+            --log-csv  {input.log_csv} \
+            --outdir   {output.outdir} \
+            --date     {wildcards.date} \
+        > {log} 2>&1
+        """
+
+
+rule generate_constructs:
+    input:
+        input_csv=lambda wildcards: ORDERS[wildcards.order]["input_file"],
+        past_barcodes=config["past_barcodes_to_avoid"],
+        config="config.yaml",
+        annotation_file=config["annotation_file"] if config.get("annotation_file") else [],
+        # depend on all previously defined orders to force sequential execution
+        prior_orders=lambda wildcards: [
+            f"results/plasmid_log/{ORDERS[order]['date']}_{order}.csv"
+            for order in ORDERS
+            if list(ORDERS).index(order) < list(ORDERS).index(wildcards.order)
+        ],
+    output:
+        order_csv="results/orders/{date}_{order}_order.csv",
+        log_csv="results/plasmid_log/{date}_{order}.csv",
+    log:
+        "logs/{date}_{order}.log",
+    shell:
+        """
+        python workflow/scripts/generate_constructs.py \
+            --order            {wildcards.order} \
+            --config           {input.config} \
+            --output-order-csv {output.order_csv} \
+            --output-log-csv   {output.log_csv} \
+        > {log} 2>&1
+        """

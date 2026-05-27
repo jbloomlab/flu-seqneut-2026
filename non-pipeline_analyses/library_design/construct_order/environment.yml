@@ -1,12 +1,9 @@
 name: constructs
-
 channels:
   - conda-forge
   - bioconda
-
 dependencies:
-  - altair=5.5
-  - biopython=1.85
-  - marimo
-  - pandas=2.2
+  - biopython=1.87
   - python=3.12
+  - snakemake=9.19
+  - snakemake-executor-plugin-slurm=2.6.0

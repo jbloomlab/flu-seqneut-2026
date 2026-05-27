@@ -5,7 +5,9 @@ designed to fit between the BsmBI-v2 cut sites in the
 [Bloom lab vector 5764](./data/5764_pHW_SeqNeutCloningVector_WSNHAflankGFP.gb). They should begin 
 after the 19th codon for H3N2 strains or 20th codon for H1N1 strains of WSN upstream signal peptide, 
 and continue all the way through the end of the HA coding region, followed by a double stop codon 
-and a 16-nucleotide barcode. 
+and a 16-nucleotide barcode. **Note:** these scripts are specifically hardcoded to work with the 
+[Bloom lab vector 5764](./data/5764_pHW_SeqNeutCloningVector_WSNHAflankGFP.gb) and thus make many
+assumptions that likely will not generalize to other backbones. 
 
 The key output files are located in `results`. This directory will contain the following: 
 

@@ -51,13 +51,15 @@ def aggregate_library_strains(input_csvs, input_csvs_valid_haplotypes, output_ts
             how='left'
         )
         
-        # Check for unmatched rows in this subtype
+        # Every strain must have a matching selection_file
         unmatched = df[df['selection_file'].isnull()]
         if len(unmatched) > 0:
-            print(f"\nWARNING: Found {len(unmatched)} unmatched rows in {subtype}:")
-            for idx, row in unmatched.iterrows():
-                print(f"  - strain: {row['strain']}")
-                print(f"    prot_sequence: {row['prot_sequence']}")
+            msg_lines = [f"ERROR: {len(unmatched)} strain(s) in {subtype} could not be matched to any haplotype row:"]
+            for _, row in unmatched.head(20).iterrows():
+                msg_lines.append(f"  - {row['strain']} / seq_len={len(row['prot_sequence'])}")
+            if len(unmatched) > 20:
+                msg_lines.append(f"  ... and {len(unmatched) - 20} more")
+            raise ValueError("\n".join(msg_lines))
         
         # Select required columns
         df = df[['subtype', 'strain', 'accession_w_aa_muts_added', 'prot_sequence', 'nt_sequence', 'selection_file']]
@@ -103,7 +105,7 @@ def aggregate_library_strains(input_csvs, input_csvs_valid_haplotypes, output_ts
 
 if __name__ == "__main__":
     # Redirect stdout and stderr to log file
-    sys.stderr = sys.stdout = open(snakemake.log[0], "w")
+    sys.stdout = sys.stderr = open(snakemake.log[0], "w")
     
     # Snakemake workflow will provide these variables
     aggregate_library_strains(

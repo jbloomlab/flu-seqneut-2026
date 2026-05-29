@@ -24,9 +24,9 @@ If any of the selected haplotypes have ambiguous or missing amino acids, you wil
 Finally, a final TSV with all of the selected strains, the HA protein sequence, and the closest 
 GenBank accession and nucleotide sequence are saved in 
 [results/aggregated_library_strains/library_strains.tsv](results/aggregated_library_strains/library_strains.tsv).
-This file includes columns for the representative strain name, derived haplotype name, 
-HA protein sequence, closest GenBank nucleotide accession, and the matched nucleotide sequence. Use 
-this as the final file for next steps.
+This file includes columns for the subtype, representative strain name, GenBank accession
+(with any amino acid mutations noted), HA protein sequence, matched nucleotide sequence, and the
+source selection file. Use this as the final file for next steps.
 
 ## Workflow structure
 

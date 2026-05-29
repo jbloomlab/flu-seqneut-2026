@@ -8,6 +8,7 @@ This script:
 """
 
 import sys
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
@@ -36,6 +37,9 @@ def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_
     """
     # Read data
     df = pd.read_csv(tsv_path, sep='\t')
+
+    # Get the input TSV filename (basename only)
+    selection_file = os.path.basename(tsv_path)
 
     # Check for duplicate values in key columns
     duplicate_errors = []
@@ -84,6 +88,13 @@ def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_
             "This column will be created by this script and must not already exist."
         )
 
+    # Check if selection_file column already exists
+    if 'selection_file' in df.columns:
+        raise ValueError(
+            "Input data already contains a 'selection_file' column. "
+            "This column will be created by this script and must not already exist."
+        )
+
     # Extract sequences
     sequences = df['representative_strain_ha_sequence']
 
@@ -109,6 +120,9 @@ def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_
     # Create selected_haplotype column
     # All specified haplotypes are selected here
     df['selected_haplotype'] = True
+
+    # Add selection_file column with the input TSV filename
+    df['selection_file'] = selection_file
 
     # Validate that all selected haplotypes have valid sequences
     selected_invalid = df[df['selected_haplotype'] & ~df['valid_sequence']]
@@ -154,7 +168,8 @@ def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_
     with open(report_path, 'w') as f:
         f.write("HA Sequence Validation Report\n")
         f.write("=" * 60 + "\n\n")
-        f.write(f"Input file: {tsv_path}\n\n")
+        f.write(f"Input file: {tsv_path}\n")
+        f.write(f"Selection file (basename): {selection_file}\n\n")
 
         f.write("Sequence Length Check:\n")
         f.write(f"  All sequences have length: {seq_length}\n")

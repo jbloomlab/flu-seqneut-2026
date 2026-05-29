@@ -7,30 +7,39 @@ subtypes: [H3N2, H1N1]
 #  - count: recent sequence count for haplotype
 #  - derived_haplotype: a name given to the derived haplotype usually in terms of subclade + mutations
 #  - representative_strain: name of strain representative of haplotype
-#  - representative_strain_ha_sequence: HA protein sequence of haplotype (must be full-length)
-#  - all columns in `select_recent_haplotype_cols`
+#  - representative_strain_ha1_sequence: HA1 protein sequence of haplotype
+#  - representative_ha2_sequence: HA2 protein sequence of haplotype (note asymmetric naming vs HA1)
 #  - additional columns are allowed but not used by pipeline here
 recent_haplotypes:
   H3N2: data/2026-Sept-VCM-seqneut-library-strain-selection-H3N2.tsv
   H1N1: data/2026-Sept-VCM-seqneut-library-strain-selection-H1N1.tsv
 
 # select any recent haplotypes specified in the provided files
-select_recent_haplotype_cols:
+select_recent_haplotype_files:
   H1N1:
-    - data/huddlej_h3n2.txt
-  H3N2:
     - data/huddlej_h1n1pdm.txt
+    - data/turners_h1n1pdm.txt
+    - data/jamess_h1n1pdm.txt
+  H3N2:
+    - data/huddlej_h3n2.txt
+    - data/turners_h3n2.txt
+    - data/jamess_h3n2.txt
 
 # Override selected haplotypes with manual exclusions. These should be the names
 # given in the derived_haplotype column.
 override_select_recent_haplotypes: 
   H3N2:
   H1N1:
+    - D.3.1.1:V19I,R205K,V321I # ambiguous single HA1 residue (X) for representative strain at position 310, manually fixed by assigning residue S to match other haplotypes at this site in in manually_fixed_recent_H1N1_haplotypes.tsv
 
-# manually fixed haplotypes with missing / ambiguous residues that we want to retain
+# Any additional haplotypes that we want to include. 
+# Should include manually fixed haplotypes with missing / ambiguous residues that we want to retain
 additional_haplotypes:
   H3N2:
+    - data/older_h3n2_haplotypes.tsv
   H1N1:
+    - data/older_h1n1_haplotypes.tsv
+    - data/manually_fixed_recent_H1N1_haplotypes.tsv
 
 # GFF files interconverting sequential and HA1 / HA2 numbering
 gffs:
@@ -53,7 +62,7 @@ nextstrain_tree:
     outgroup: data/H3N2_outgroup.fa
     color_by_metadata:
       selected_haplotype: {}
-      hamming_distance_nearest_library_strain: {scale_type: viridis_linear}
+      hamming_distance_nearest_library_strain_ha1_ha2: {scale_type: viridis_linear}
       Koel_epitope_distance: {scale_type: viridis_linear}
       Wolf_epitope_distance: {scale_type: viridis_linear}
       count: {scale_type: viridis_log}
@@ -65,7 +74,7 @@ nextstrain_tree:
     outgroup: data/H1N1_outgroup.fa
     color_by_metadata:
       selected_haplotype: {}
-      hamming_distance_nearest_library_strain: {scale_type: viridis_linear}
+      hamming_distance_nearest_library_strain_ha1_ha2: {scale_type: viridis_linear}
       Caton_epitope_distance: {scale_type: viridis_linear}
       count: {scale_type: viridis_log}
       days_since_latest_sequence: {scale_type: viridis_linear}

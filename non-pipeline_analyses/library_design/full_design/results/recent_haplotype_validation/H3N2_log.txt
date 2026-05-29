@@ -1,0 +1,34 @@
+
+Reading selection files...
+  data/huddlej_h3n2.txt: 38 haplotype name(s)
+  Warning: 3 haplotype(s) in 'data/huddlej_h3n2.txt' were not found in the input TSV and will be ignored:
+    - J.2.1
+    - J.2.2
+    - J.2.3:N216H
+  data/turners_h3n2.txt: 19 haplotype name(s)
+  data/jamess_h3n2.txt: 10 haplotype name(s)
+  Total unique haplotype names across all selection files: 63
+  Warning: 3 total haplotype name(s) from selection files were not found in the input TSV and will be ignored.
+  Haplotype names matched in TSV: 60
+
+Warning: 7 haplotype(s) have no HA2 sequence and will be marked invalid.
+Validation complete:
+  HA1 sequence length: 329
+  HA2 sequence length: 221 (7 missing)
+  HA1 valid: 2969/3097 (95.9%)
+  HA2 valid: 2995/3097 (96.7%)
+  Both valid: 2919/3097 (94.3%)
+  Any invalid: 178/3097 (5.7%)
+  Selected haplotypes: 60/3097 (1.9%)
+  Total sequences (valid): 24,221
+  Total sequences (selected): 14,254
+  selection_file value counts (non-null):
+    huddlej_h3n2.txt: 33
+    turners_h3n2.txt: 17
+    jamess_h3n2.txt: 6
+    huddlej_h3n2.txt,jamess_h3n2.txt: 2
+    turners_h3n2.txt,jamess_h3n2.txt: 2
+  Report: results/recent_haplotype_validation/H3N2_validation_report.txt
+  Scatter plot: results/recent_haplotype_validation/H3N2_count_scatter.pdf
+  Valid haplotypes TSV: results/recent_haplotype_validation/H3N2_valid_haplotypes.tsv
+  Invalid haplotypes TSV: results/recent_haplotype_validation/H3N2_invalid_haplotypes.tsv

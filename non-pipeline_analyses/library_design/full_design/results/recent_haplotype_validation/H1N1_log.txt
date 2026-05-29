@@ -1,0 +1,39 @@
+
+Reading selection files...
+  data/huddlej_h1n1pdm.txt: 39 haplotype name(s)
+  Warning: 8 haplotype(s) in 'data/huddlej_h1n1pdm.txt' were not found in the input TSV and will be ignored:
+    - C.1.9.1
+    - C.1.9.2
+    - C.1.9.3
+    - C.1.9.3:V152I
+    - C.1.9.4
+    - D.2
+    - D.3
+    - D.5
+  data/turners_h1n1pdm.txt: 9 haplotype name(s)
+  data/jamess_h1n1pdm.txt: 8 haplotype name(s)
+  Total unique haplotype names across all selection files: 54
+  Warning: 8 total haplotype name(s) from selection files were not found in the input TSV and will be ignored.
+  Haplotype names matched in TSV: 46
+
+Excluding 1 haplotype(s) via override_select_recent_haplotypes:
+  - D.3.1.1:V19I,R205K,V321I (strain: A/Ukraine/5214/2026, count: 1, valid_sequence: False, selection_file: huddlej_h1n1pdm.txt)
+Validation complete:
+  HA1 sequence length: 327
+  HA2 sequence length: 222 (0 missing)
+  HA1 valid: 839/859 (97.7%)
+  HA2 valid: 827/859 (96.3%)
+  Both valid: 817/859 (95.1%)
+  Any invalid: 42/859 (4.9%)
+  Selected haplotypes: 45/859 (5.2%)
+  Total sequences (valid): 6,348
+  Total sequences (selected): 4,621
+  selection_file value counts (non-null):
+    huddlej_h1n1pdm.txt: 29
+    turners_h1n1pdm.txt: 9
+    jamess_h1n1pdm.txt: 6
+    huddlej_h1n1pdm.txt,jamess_h1n1pdm.txt: 2
+  Report: results/recent_haplotype_validation/H1N1_validation_report.txt
+  Scatter plot: results/recent_haplotype_validation/H1N1_count_scatter.pdf
+  Valid haplotypes TSV: results/recent_haplotype_validation/H1N1_valid_haplotypes.tsv
+  Invalid haplotypes TSV: results/recent_haplotype_validation/H1N1_invalid_haplotypes.tsv

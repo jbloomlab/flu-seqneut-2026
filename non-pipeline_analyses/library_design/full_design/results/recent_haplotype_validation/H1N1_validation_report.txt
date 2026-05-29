@@ -1,0 +1,74 @@
+HA Sequence Validation Report
+============================================================
+
+Input file: data/2026-Sept-VCM-seqneut-library-strain-selection-H1N1.tsv
+
+Sequence Length Check:
+  HA1 sequences: all have length 327 ✓
+  HA2 sequences: all present sequences have length 222 ✓
+
+Amino Acid Validity Check:
+  Total haplotypes: 859
+
+  HA1 (representative_strain_ha1_sequence):
+    Valid:   839 (97.7%)
+    Invalid: 20 (2.3%)
+    Invalid characters: ['-', 'X']
+    Examples:
+      D.3.1.1:V19I,R205K,V321I: contains ['X']
+      D.3.1.1:A195S,E258K: contains ['X']
+      D.3.1.1:V30A,P251Q: contains ['X']
+      D.3.1.1:K113R,V132L,A216I,V321I: contains ['-', 'X']
+      D.3.1.1:V220M,A315V: contains ['-', 'X']
+
+  HA2 (representative_ha2_sequence):
+    Valid:   827 (96.3%)
+    Invalid: 32 (3.7%)
+    Invalid characters: ['-', 'X']
+    Examples:
+      D.3.1.1:I161V,R205K: contains ['X']
+      D.3.1.1:R205K,V220M,V272I: contains ['X']
+      D.3.1.1:D129E,R205K: contains ['X']
+      D.3.1.1:I116M,R205K: contains ['X']
+      D.3.1.1:H28R,R205K: contains ['-', 'X']
+
+  Combined validity (both segments must pass):
+    Both valid:       817 (95.1%)
+    HA1 invalid only: 10 (1.2%)
+    HA2 invalid only: 22 (2.6%)
+    Both invalid:     10 (1.2%)
+
+  Total sequences (valid haplotypes):   6,348
+  Total sequences (invalid haplotypes): 56
+  Total sequences (all):                6,404
+
+Haplotype Selection:
+  Selection files: data/huddlej_h1n1pdm.txt data/turners_h1n1pdm.txt data/jamess_h1n1pdm.txt
+  Total unique haplotype names in selection files: 54
+  Warning: 8 name(s) in selection files not found in TSV:
+    - C.1.9.1
+    - C.1.9.2
+    - C.1.9.3
+    - C.1.9.3:V152I
+    - C.1.9.4
+    - D.2
+    - D.3
+    - D.5
+  Override exclusions: 1 haplotype(s) specified
+  Excluded via override: 1 haplotype(s)
+    - D.3.1.1:V19I,R205K,V321I (strain: A/Ukraine/5214/2026, count: 1, selection_file: huddlej_h1n1pdm.txt)
+  Selected haplotypes: 45 (5.2%)
+  Total sequences (selected haplotypes): 4,621
+  ✓ All selected haplotypes have valid HA1 and HA2 sequences
+
+  selection_file value counts (non-null):
+    huddlej_h1n1pdm.txt: 29
+    turners_h1n1pdm.txt: 9
+    jamess_h1n1pdm.txt: 6
+    huddlej_h1n1pdm.txt,jamess_h1n1pdm.txt: 2
+
+Sequence Count Distribution:
+  Total sequences represented: 6404
+  Mean sequences per haplotype: 7.5
+  Median sequences per haplotype: 1
+  Max sequences for a haplotype: 3149

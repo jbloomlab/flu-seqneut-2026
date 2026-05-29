@@ -10,7 +10,7 @@ from pathlib import Path
 import sys
 
 
-def validate_sequences(df, seq_col="representative_strain_ha1_sequence"):
+def validate_sequences(df, seq_col="representative_strain_ha1_ha2_sequence"):
     """Validate that all sequences are aligned and contain valid amino acids."""
     sequences = df[seq_col].tolist()
 
@@ -26,7 +26,9 @@ def validate_sequences(df, seq_col="representative_strain_ha1_sequence"):
         )
 
     # Check all sequences contain only valid amino acids
-    valid_amino_acids = set("ACDEFGHIKLMNPQRSTVWY*X-")  # Include stop (*), unknown (X), and gap (-)
+    # Intentionally broader than the 20-aa VALID_AA used upstream: outgroup sequences
+    # and tree alignments may contain stop codons (*), unknown residues (X), or gaps (-).
+    valid_amino_acids = set("ACDEFGHIKLMNPQRSTVWY*X-")
     for i, seq in enumerate(sequences):
         invalid_chars = set(seq.upper()) - valid_amino_acids
         if invalid_chars:
@@ -52,8 +54,16 @@ def create_date_column(df):
 
     return df
 
-def get_ha1_coords(gff_path):
-    """Return (start, end) of the HA1 gene from a GFF3 file (1-based, inclusive)."""
+
+def get_ha1_ha2_coords(gff_path):
+    """
+    Return (ha1_start, ha1_end, ha2_start, ha2_end) from a GFF3 file (1-based, inclusive).
+
+    Both HA1 and HA2 features must be present with gene_name attributes.
+    """
+    ha1_coords = None
+    ha2_coords = None
+
     with open(gff_path) as f:
         for line in f:
             if line.startswith("#"):
@@ -63,9 +73,19 @@ def get_ha1_coords(gff_path):
                 continue
             attrs = dict(kv.split("=") for kv in fields[8].split(";") if "=" in kv)
             attrs = {k: v.strip('"') for k, v in attrs.items()}
-            if attrs.get("gene_name") == "HA1":
-                return int(fields[3]), int(fields[4])
-    raise ValueError('gene_name="HA1" not found in GFF file')
+            gene_name = attrs.get("gene_name")
+            if gene_name == "HA1":
+                ha1_coords = (int(fields[3]), int(fields[4]))
+            elif gene_name == "HA2":
+                ha2_coords = (int(fields[3]), int(fields[4]))
+
+    if ha1_coords is None:
+        raise ValueError('gene_name="HA1" not found in GFF file')
+    if ha2_coords is None:
+        raise ValueError('gene_name="HA2" not found in GFF file')
+
+    return ha1_coords[0], ha1_coords[1], ha2_coords[0], ha2_coords[1]
+
 
 def read_fasta(fasta_path):
     """Return (header, sequence) from a single-record FASTA file."""
@@ -74,48 +94,83 @@ def read_fasta(fasta_path):
         sequence = "".join(line.strip() for line in f)
     return header, sequence
 
-def extract_ha1_region(fasta_path, ha1_coords, subtype):
-    """Return (header, sequence) truncated to ha1_coords (1-based, inclusive, nucleotide).
-    Adjusts start by subtype: H1N1 = 6aa before HA1 start, H3N2 = 5aa before."""
-    start, end = ha1_coords
-    header, sequence = read_fasta(fasta_path)
-    aa_start = (start - 1) // 3
-    aa_end = end // 3
- 
+
+def extract_ha1_ha2_region(fasta_path, ha1_start, ha1_end, ha2_start, ha2_end, subtype):
+    """
+    Extract and concatenate HA1 and HA2 regions from a full-length FASTA.
+
+    Applies a subtype-specific amino acid offset to the HA1 start. HA2 begins
+    immediately where the shifted HA1 ends, so the same offset is applied
+    implicitly by concatenating from that point.
+
+    Parameters
+    ----------
+    fasta_path : str
+        Path to full-length FASTA file
+    ha1_start : int
+        1-based nucleotide start of HA1 in GFF
+    ha1_end : int
+        1-based nucleotide end of HA1 in GFF
+    ha2_start : int
+        1-based nucleotide start of HA2 in GFF
+    ha2_end : int
+        1-based nucleotide end of HA2 in GFF
+    subtype : str
+        Subtype name used to look up the amino acid offset
+
+    Returns
+    -------
+    tuple of (str, str, str)
+        FASTA header, HA1 sequence, HA2 sequence
+    """
     offsets = {"H1N1": 6, "H3N2": 5}
     if subtype not in offsets:
         raise ValueError(f"Unknown subtype '{subtype}', expected one of {list(offsets)}")
-    aa_start -= offsets[subtype]
-    aa_end -= offsets[subtype]
- 
-    return header, sequence[aa_start : aa_end]
- 
- 
+    offset = offsets[subtype]
+
+    header, full_sequence = read_fasta(fasta_path)
+
+    # Convert GFF nucleotide coords to 0-indexed amino acid positions
+    ha1_aa_start = (ha1_start - 1) // 3 - offset
+    ha1_aa_end   = ha1_end // 3 - offset
+
+    ha2_aa_start = (ha2_start - 1) // 3 - offset
+    ha2_aa_end   = ha2_end // 3 - offset
+
+    ha1_sequence = full_sequence[ha1_aa_start:ha1_aa_end]
+    ha2_sequence = full_sequence[ha2_aa_start:ha2_aa_end]
+
+    return header, ha1_sequence, ha2_sequence
+
+
 def write_fasta(output_path, header, sequence):
     """Write a sequence to a FASTA file on a single line."""
     with open(output_path, "w") as f:
         f.write(header + "\n")
         f.write(sequence + "\n")
 
+
 def main(snakemake):
     """Main function called by Snakemake."""
 
-    sys.stderr = sys.stdout = open(snakemake.log[0], "w")
+    sys.stdout = sys.stderr = open(snakemake.log[0], "w")
 
     # Read input files
     print(f"Reading selected haplotypes from {snakemake.input.selected}")
     selected_df = pd.read_csv(snakemake.input.selected, sep="\t")
-    assert selected_df["selected_haplotype"].all()
+    if not selected_df["selected_haplotype"].all():
+        raise ValueError(f"Selected haplotypes file '{snakemake.input.selected}' contains rows with selected_haplotype=False")
 
     print(f"Reading nonselected haplotypes from {snakemake.input.nonselected}")
     nonselected_df = pd.read_csv(snakemake.input.nonselected, sep="\t")
-    assert not nonselected_df["selected_haplotype"].all()
+    if nonselected_df["selected_haplotype"].any():
+        raise ValueError(f"Nonselected haplotypes file '{snakemake.input.nonselected}' contains rows with selected_haplotype=True")
 
     # Combine dataframes
     combined_df = pd.concat([selected_df, nonselected_df], ignore_index=True)
     print(f"Combined {len(selected_df)} selected + {len(nonselected_df)} nonselected = {len(combined_df)} total haplotypes")
 
-    # Validate sequences
+    # Validate combined HA1+HA2 sequences
     validate_sequences(combined_df)
 
     # Create date column
@@ -135,14 +190,14 @@ def main(snakemake):
 
     print(f"Verified all {len(color_by_metadata)} color_by_metadata columns exist")
 
-    # Write alignment FASTA
+    # Write alignment FASTA using combined HA1+HA2 sequences
     alignment_path = Path(snakemake.output.alignment)
     alignment_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(alignment_path, "w") as f:
         for _, row in combined_df.iterrows():
             f.write(f">{row['representative_strain']}\n")
-            f.write(f"{row['representative_strain_ha1_sequence']}\n")
+            f.write(f"{row['representative_strain_ha1_ha2_sequence']}\n")
 
     print(f"Wrote alignment to {alignment_path}")
 
@@ -155,11 +210,25 @@ def main(snakemake):
     metadata_df.to_csv(metadata_path, sep="\t", index=False)
     print(f"Wrote metadata with {len(metadata_df)} strains and {len(metadata_cols)} columns to {metadata_path}")
 
-    # Truncate outgroup sequences to just HA1
-    ha1_coords = get_ha1_coords(snakemake.input.gff)
-    header, ha1_sequence = extract_ha1_region(snakemake.input.outgroup_fasta, ha1_coords, snakemake.params.subtype)
-    write_fasta(snakemake.output.outgroup_ha1, f"{header}_HA1_{ha1_coords[0]}_{ha1_coords[1]}", ha1_sequence)
-    print(f"Extracted {len(ha1_sequence)} (positions {ha1_coords[0]}-{ha1_coords[1]}) -> {snakemake.output.outgroup_ha1}")
+    # Extract and concatenate HA1+HA2 from outgroup FASTA
+    ha1_start, ha1_end, ha2_start, ha2_end = get_ha1_ha2_coords(snakemake.input.gff)
+
+    header, ha1_sequence, ha2_sequence = extract_ha1_ha2_region(
+        snakemake.input.outgroup_fasta,
+        ha1_start, ha1_end,
+        ha2_start, ha2_end,
+        snakemake.params.subtype,
+    )
+
+    combined_outgroup_sequence = ha1_sequence + ha2_sequence
+    outgroup_header = f"{header}_HA1_HA2_{ha1_start}_{ha1_end}_{ha2_start}_{ha2_end}"
+    write_fasta(snakemake.output.outgroup_ha1ha2, outgroup_header, combined_outgroup_sequence)
+
+    print(
+        f"Extracted HA1 ({len(ha1_sequence)} aa, nt {ha1_start}-{ha1_end}) + "
+        f"HA2 ({len(ha2_sequence)} aa, nt {ha2_start}-{ha2_end}) = "
+        f"{len(combined_outgroup_sequence)} aa combined -> {snakemake.output.outgroup_ha1ha2}"
+    )
 
     print("Done!")
 

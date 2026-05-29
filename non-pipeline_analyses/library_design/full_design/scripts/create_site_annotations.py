@@ -5,6 +5,10 @@ This script:
 1. Parses GFF file to map sequential positions to protein/protein_site
 2. Parses epitope JSON files to identify epitope sites
 3. Creates a TSV with sequential_site, protein, protein_site, and epitope columns
+
+Sequential numbering covers all proteins in the GFF (HA1 then HA2) so that
+positions map correctly into combined HA1+HA2 sequences used downstream.
+Epitope columns are 0 for any site not present in the epitope JSON.
 """
 
 import sys
@@ -18,7 +22,8 @@ def parse_gff(gff_path):
     Parse GFF file to extract coordinate mappings.
 
     Converts nucleotide positions to amino acid positions and assigns
-    sequential numbering starting from 1.
+    sequential numbering starting from 1 across all proteins in start-position
+    order.
 
     Parameters
     ----------
@@ -63,7 +68,7 @@ def parse_gff(gff_path):
             protein = attr_dict.get('gene_name', attr_dict.get('gene', attr_dict.get('product', feature_type)))
 
             if protein in feature_proteins:
-                raise ValueError(f"Duplicate {protein=} in {gff_path=}")
+                raise ValueError(f"Duplicate protein '{protein}' in GFF file '{gff_path}'")
             feature_proteins.add(protein)
 
             features.append({
@@ -198,13 +203,28 @@ def create_site_annotations(gff_path, epitope_json_paths, output_path, subtype):
     if len(df) == 0:
         raise ValueError(f"No annotations found in GFF file: {gff_path}")
 
-    print(f"  Found {len(df)} sequential positions")
-    print(f"  Proteins: {df['protein'].unique().tolist()}")
+    print(f"  Found {len(df)} sequential positions across all proteins")
+    print(f"  Proteins in GFF: {df['protein'].unique().tolist()}")
 
-    df = df[df['protein'] == 'HA1'].reset_index(drop=True)
-    df['sequential_site'] = range(1, len(df) + 1)  # re-number from 1
+    # Filter to HA1 and HA2 only, excluding other features such as SigPep,
+    # then re-number sequential sites from 1 within this subset so positions
+    # map correctly into the combined HA1+HA2 sequence used downstream
+    df = df[df['protein'].isin(['HA1', 'HA2'])].reset_index(drop=True)
+    df['sequential_site'] = range(1, len(df) + 1)
 
-    # Parse each epitope JSON and add as column
+    if len(df) == 0:
+        raise ValueError(
+            f"No HA1 or HA2 features found in GFF file: {gff_path}\n"
+            f"Check that gene_name attributes are set to 'HA1' and 'HA2'."
+        )
+
+    print(f"  Retained {len(df)} positions after filtering to HA1 + HA2")
+    for protein, group in df.groupby('protein'):
+        print(f"    {protein}: {len(group)} sites (sequential {group['sequential_site'].min()}-{group['sequential_site'].max()})")
+
+    # Parse each epitope JSON and add as column.
+    # Epitope sites are matched against all proteins present in the GFF —
+    # any site (HA1 or HA2) in the JSON will be marked 1; all others 0.
     for epitope_json_path in epitope_json_paths:
         # Extract epitope map name from filename
         # Filename format: {subtype}_{epitope_map}.json (e.g., H3N2_Wolf.json)
@@ -239,7 +259,10 @@ def create_site_annotations(gff_path, epitope_json_paths, output_path, subtype):
             axis=1
         )
 
-        print(f"  Matched {df[column_name].sum()} sites")
+        n_matched = df[column_name].sum()
+        n_ha1 = df[df['protein'] == 'HA1'][column_name].sum()
+        n_ha2 = df[df['protein'] == 'HA2'][column_name].sum()
+        print(f"  Matched {n_matched} sites (HA1: {n_ha1}, HA2: {n_ha2})")
 
     # Write output
     df.to_csv(output_path, sep='\t', index=False)

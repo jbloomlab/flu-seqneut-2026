@@ -1,0 +1,75 @@
+HA Sequence Validation Report
+============================================================
+
+Input file: data/2026-Sept-VCM-seqneut-library-strain-selection-H3N2.tsv
+
+Sequence Length Check:
+  HA1 sequences: all have length 329 ✓
+  HA2 sequences: all present sequences have length 221 ✓
+  HA2 sequences: 7 missing (treated as invalid)
+
+Amino Acid Validity Check:
+  Total haplotypes: 3097
+
+  HA1 (representative_strain_ha1_sequence):
+    Valid:   2969 (95.9%)
+    Invalid: 128 (4.1%)
+    Invalid characters: ['-', 'X']
+    Examples:
+      K:V88I,V182I,I214T,Q311L: contains ['X']
+      K:I67M,S145N: contains ['X']
+      K:N45D,L244V,R261Q: contains ['X']
+      K:S47P,E83G,R220K,P227S: contains ['X']
+      K:S91N,D104N,S145N: contains ['X']
+
+  HA2 (representative_ha2_sequence):
+    Valid:   2995 (96.7%)
+    Invalid: 102 (3.3%) (includes 7 missing)
+    Invalid characters: ['-', 'X']
+    Examples:
+      K:I3V,S145N,M168I,E172G: contains ['X']
+      K:R33Q,S124N,N159Y,N298S: contains ['X']
+      K:N159Y,M268I,R307I: contains ['X']
+      K:R150K,K207Q,V223I,S312N: contains ['X']
+      K:K171N: contains ['-']
+    Haplotypes with missing HA2 sequence:
+      K:N45D,K121R,S265G (strain: A/Austria/1870404/2025)
+      K:G78S,F79I,K207Q (strain: A/Ireland/2816/2026)
+      K:S265G,S312G (strain: A/Austria/1870041/2025)
+      K:Q1H (strain: A/England/1881797/2025)
+      K:I25L,R33Q,R261Q (strain: A/Austria/1870438/2025)
+      ... and 2 more
+
+  Combined validity (both segments must pass):
+    Both valid:       2919 (94.3%)
+    HA1 invalid only: 76 (2.5%)
+    HA2 invalid only: 50 (1.6%)
+    Both invalid:     52 (1.7%)
+
+  Total sequences (valid haplotypes):   24,221
+  Total sequences (invalid haplotypes): 240
+  Total sequences (all):                24,461
+
+Haplotype Selection:
+  Selection files: data/huddlej_h3n2.txt data/turners_h3n2.txt data/jamess_h3n2.txt
+  Total unique haplotype names in selection files: 63
+  Warning: 3 name(s) in selection files not found in TSV:
+    - J.2.1
+    - J.2.2
+    - J.2.3:N216H
+  Selected haplotypes: 60 (1.9%)
+  Total sequences (selected haplotypes): 14,254
+  ✓ All selected haplotypes have valid HA1 and HA2 sequences
+
+  selection_file value counts (non-null):
+    huddlej_h3n2.txt: 33
+    turners_h3n2.txt: 17
+    jamess_h3n2.txt: 6
+    huddlej_h3n2.txt,jamess_h3n2.txt: 2
+    turners_h3n2.txt,jamess_h3n2.txt: 2
+
+Sequence Count Distribution:
+  Total sequences represented: 24461
+  Mean sequences per haplotype: 7.9
+  Median sequences per haplotype: 1
+  Max sequences for a haplotype: 10475

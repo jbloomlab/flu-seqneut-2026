@@ -8,9 +8,9 @@ configfile: "config.yaml"
 
 ORDERS = config["orders"]
 
-
 rule all:
     input:
+        "results/final_library/final_library.csv",
         expand(
             "results/orders/{date}_{order}_order.csv",
             zip,
@@ -50,7 +50,7 @@ rule write_genbank:
 
 rule generate_constructs:
     input:
-        input_csv=lambda wildcards: ORDERS[wildcards.order]["input_file"],
+        input_tsv=lambda wildcards: ORDERS[wildcards.order]["input_file"],
         past_barcodes=config["past_barcodes_to_avoid"],
         config="config.yaml",
         annotation_file=config["annotation_file"] if config.get("annotation_file") else [],
@@ -63,6 +63,7 @@ rule generate_constructs:
     output:
         order_csv="results/orders/{date}_{order}_order.csv",
         log_csv="results/plasmid_log/{date}_{order}.csv",
+        excluded_csv="results/excluded_from_order/{date}_{order}_excluded.csv"
     log:
         "logs/{date}_{order}.log",
     shell:
@@ -72,5 +73,37 @@ rule generate_constructs:
             --config           {input.config} \
             --output-order-csv {output.order_csv} \
             --output-log-csv   {output.log_csv} \
+            --output-excluded-csv {output.excluded_csv} \
         > {log} 2>&1
+        """
+
+
+rule aggregate_final_library:
+    input:
+        config="config.yaml",
+        log_csvs=expand(
+            "results/plasmid_log/{date}_{order}.csv",
+            zip,
+            order=ORDERS,
+            date=[ORDERS[o]["date"] for o in ORDERS],
+        ),
+        excluded_csvs=expand(
+            "results/excluded_from_order/{date}_{order}_excluded.csv",
+            zip,
+            order=ORDERS,
+            date=[ORDERS[o]["date"] for o in ORDERS],
+        ),
+        input_tsvs=lambda wildcards: [ORDERS[o]["input_file"] for o in ORDERS],
+    output:
+        "results/final_library/final_library.csv"
+    log:
+        "logs/aggregate_final_library.log"
+    shell:
+        """
+        python workflow/scripts/aggregate_final_library.py \
+            --config {input.config} \
+            --plasmid-log-csv {input.log_csvs} \
+            --excluded-csv {input.excluded_csvs} \
+            --input-tsv {input.input_tsvs} \
+            --output {output} > {log} 2>&1
         """

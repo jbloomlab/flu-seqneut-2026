@@ -20,17 +20,20 @@ select_recent_haplotype_files:
     - data/huddlej_h1n1pdm.txt
     - data/turners_h1n1pdm.txt
     - data/jamess_h1n1pdm.txt
+    - data/ruchnewitzd_h1n1pdm.txt
   H3N2:
     - data/huddlej_h3n2.txt
     - data/turners_h3n2.txt
     - data/jamess_h3n2.txt
+    - data/ruchnewitzd_h3n2.txt
 
 # Override selected haplotypes with manual exclusions. These should be the names
 # given in the derived_haplotype column.
 override_select_recent_haplotypes: 
   H3N2:
   H1N1:
-    - D.3.1.1:V19I,R205K,V321I # ambiguous single HA1 residue (X) for representative strain at position 310, manually fixed by assigning residue S to match other haplotypes at this site in in manually_fixed_recent_H1N1_haplotypes.tsv
+    - D.3.1.1:V19I,R205K,V321I # ambiguous single HA1 residue (X) for representative strain at position 310, manually fixed by assigning residue S to match other haplotypes at this site in manually_fixed_recent_H1N1_haplotypes.tsv
+    - D.3.1:L176M # ambiguous single HA2 residue (X) for representative strain at position 206 (HA2 numbering), manually fixed by assigning residue I to match the D.3.1 reference strain in manually_fixed_recent_H1N1_haplotypes.tsv
 
 # Any additional haplotypes that we want to include. 
 # Should include manually fixed haplotypes with missing / ambiguous residues that we want to retain

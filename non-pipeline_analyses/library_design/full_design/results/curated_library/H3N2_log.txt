@@ -1,12 +1,16 @@
 Read 2919 validated haplotypes from results/recent_haplotype_validation/H3N2_valid_haplotypes.tsv
-  Selected: 60
-  Non-selected: 2859
+  Selected: 68
+  Non-selected: 2851
   selection_file value counts (non-null):
-    huddlej_h3n2.txt: 33
-    turners_h3n2.txt: 17
+    huddlej_h3n2.txt: 30
+    turners_h3n2.txt: 15
+    ruchnewitzd_h3n2.txt: 8
     jamess_h3n2.txt: 6
-    huddlej_h3n2.txt,jamess_h3n2.txt: 2
+    huddlej_h3n2.txt,ruchnewitzd_h3n2.txt: 3
+    turners_h3n2.txt,ruchnewitzd_h3n2.txt: 2
     turners_h3n2.txt,jamess_h3n2.txt: 2
+    huddlej_h3n2.txt,jamess_h3n2.txt: 1
+    huddlej_h3n2.txt,jamess_h3n2.txt,ruchnewitzd_h3n2.txt: 1
 
 Read 2 additional haplotypes from data/older_h3n2_haplotypes.tsv
   Input format: combined
@@ -16,8 +20,8 @@ Read 2 additional haplotypes from data/older_h3n2_haplotypes.tsv
   selection_file: older_h3n2_haplotypes.tsv
 
 Combined dataframe contains 2921 total haplotypes
-  Selected: 62
-  Non-selected: 2859
+  Selected: 70
+  Non-selected: 2851
 
 Created combined HA1+HA2 sequence column 'representative_strain_ha1_ha2_sequence'
   ✓ All representative_strain values are unique
@@ -53,17 +57,21 @@ Computing HA1 epitope-specific distances to nearest HA1 library strain...
 
 Outputs:
   Selected haplotypes: results/curated_library/H3N2_selected_haplotypes.tsv
-    62 haplotypes
+    70 haplotypes
     selection_file value counts:
-      huddlej_h3n2.txt: 33
-      turners_h3n2.txt: 17
+      huddlej_h3n2.txt: 30
+      turners_h3n2.txt: 15
+      ruchnewitzd_h3n2.txt: 8
       jamess_h3n2.txt: 6
-      huddlej_h3n2.txt,jamess_h3n2.txt: 2
-      turners_h3n2.txt,jamess_h3n2.txt: 2
+      huddlej_h3n2.txt,ruchnewitzd_h3n2.txt: 3
+      turners_h3n2.txt,ruchnewitzd_h3n2.txt: 2
       older_h3n2_haplotypes.tsv: 2
+      turners_h3n2.txt,jamess_h3n2.txt: 2
+      huddlej_h3n2.txt,jamess_h3n2.txt: 1
+      huddlej_h3n2.txt,jamess_h3n2.txt,ruchnewitzd_h3n2.txt: 1
   Non-selected haplotypes: results/curated_library/H3N2_nonselected_haplotypes.tsv
-    2859 haplotypes
+    2851 haplotypes
   Library FASTA: results/curated_library/H3N2_library_haplotypes.fa
-    62 sequences (combined HA1+HA2)
+    70 sequences (combined HA1+HA2)
 
 Curation complete ✓

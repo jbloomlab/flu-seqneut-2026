@@ -51,22 +51,26 @@ Amino Acid Validity Check:
   Total sequences (all):                24,461
 
 Haplotype Selection:
-  Selection files: data/huddlej_h3n2.txt data/turners_h3n2.txt data/jamess_h3n2.txt
-  Total unique haplotype names in selection files: 63
+  Selection files: data/huddlej_h3n2.txt data/turners_h3n2.txt data/jamess_h3n2.txt data/ruchnewitzd_h3n2.txt
+  Total unique haplotype names in selection files: 71
   Warning: 3 name(s) in selection files not found in TSV:
     - J.2.1
     - J.2.2
     - J.2.3:N216H
-  Selected haplotypes: 60 (1.9%)
-  Total sequences (selected haplotypes): 14,254
+  Selected haplotypes: 68 (2.2%)
+  Total sequences (selected haplotypes): 14,707
   ✓ All selected haplotypes have valid HA1 and HA2 sequences
 
   selection_file value counts (non-null):
-    huddlej_h3n2.txt: 33
-    turners_h3n2.txt: 17
+    huddlej_h3n2.txt: 30
+    turners_h3n2.txt: 15
+    ruchnewitzd_h3n2.txt: 8
     jamess_h3n2.txt: 6
-    huddlej_h3n2.txt,jamess_h3n2.txt: 2
+    huddlej_h3n2.txt,ruchnewitzd_h3n2.txt: 3
+    turners_h3n2.txt,ruchnewitzd_h3n2.txt: 2
     turners_h3n2.txt,jamess_h3n2.txt: 2
+    huddlej_h3n2.txt,jamess_h3n2.txt: 1
+    huddlej_h3n2.txt,jamess_h3n2.txt,ruchnewitzd_h3n2.txt: 1
 
 Sequence Count Distribution:
   Total sequences represented: 24461

@@ -40,6 +40,31 @@ CONSENSUS_H3_ENDODOMAIN = "atcaagggagttgagctgaagtcaggatacaaagattggatcctatggatttc
 WSN_ENDODOMAIN = "aaattggaatcaatgggagtgtatcagattctggcgatatattctacagtggcaagctccttagtactgctagtttctttaggagcgattagcttttggatgtgctccaacggctccctacaatgtcggatttgtatttaatag"
 WSN_RECODED_CT = "ggctccctacaatgtcggatttgtatttaatag"
 
+# Fixed sequences within BACKBONE_DOWNSTREAM (sliced by position, verified against the string above).
+# These are used to build GenBank feature annotations for the downstream backbone region.
+# Layout (0-indexed within BACKBONE_DOWNSTREAM):
+#   [  0: 33] Illumina Read1
+#   [ 33: 42] gap (gcggccgct)
+#   [ 42:147] WSN packaging signal
+#   [147:192] 5' NCR  (minus strand; U13 overlaps last 12 nt: [180:192])
+#   [192:404] Human PolI promoter  (minus strand)
+#   [404:429] gap
+#   [429:661] aBGH polyadenylation signal
+#   [661:883] gap
+#   [883:1444] ori (colE1)
+#   [1444:1693] gap
+#   [1693:2554] bla (ampR)
+#   [2554:2680] gap (trailing backbone)
+_BD = BACKBONE_DOWNSTREAM
+ILLUMINA_READ1       = _BD[0:33]
+WSN_PACKAGING_SIGNAL = _BD[42:147]
+NCR_5PRIME           = _BD[147:192]
+U13                  = _BD[180:192]
+HUMAN_POL1_PROMOTER  = _BD[192:404]
+ABGH                 = _BD[429:661]
+ORI                  = _BD[883:1444]
+BLA                  = _BD[1693:2554]
+
 # ---------------------------------------------------------------------------
 # Input reading
 # ---------------------------------------------------------------------------
@@ -86,7 +111,7 @@ def build_genbank_record(row: dict, date: str) -> SeqRecord:
         f"With duplicated 5' packaging signals from WSN with a single stop codon in the duplicated "
         f"packaging signal, and the 16-nucleotide barcode {barcode}. The plasmid was generated for "
         f"the {library} library. It was designed and logged by {contributor} and cloned and "
-        f"sequence confirmed by GenScript."
+        f"sequence confirmed by GenScript"
     )
 
     # Build features
@@ -113,39 +138,76 @@ def build_genbank_record(row: dict, date: str) -> SeqRecord:
         f7_end = f6_end + len(WSN_ENDODOMAIN)
         f7 = SeqFeature(FeatureLocation(f6_end, f7_end, +1), type="misc_feature", qualifiers={"label": "WSN endodomain"})
 
-    f8_end  = f7_end  + len(WSN_RECODED_CT)
-    f9_end  = f8_end  + 16
-    f10_end = f9_end  + 33
-    f11_start = f10_end + 9
-    f11_end = f11_start + 105
-    f12_end = f11_end + 45
-    f13_start = f11_end + 33
-    f13_end = f12_end
-    f14_end = f13_end + 212
-    f15_start = f14_end + 25
-    f15_end = f15_start + 232
-    f16_start = f15_end + 222
-    f16_end = f16_start + 561
-    f17_start = f16_end + 249
-    f17_end = f17_start + 861
+    # Build post-endodomain features using a running position cursor.
+    # Backbone feature positions are verified against the named sequence constants
+    # (ILLUMINA_READ1, WSN_PACKAGING_SIGNAL, etc.) sliced from BACKBONE_DOWNSTREAM.
+    pos = f7_end
+    downstream_features = []
 
-    f8  = SeqFeature(FeatureLocation(f7_end,    f8_end,  +1), type="misc_feature", qualifiers={"label": "WSN recoded CT"})
-    f9  = SeqFeature(FeatureLocation(f8_end,    f9_end,  +1), type="misc_feature", qualifiers={"label": "barcode"})
-    f10 = SeqFeature(FeatureLocation(f9_end,    f10_end, +1), type="misc_feature", qualifiers={"label": "Illumina Read1"})
-    f11 = SeqFeature(FeatureLocation(f11_start, f11_end, +1), type="misc_feature", qualifiers={"label": "WSN packaging signal"})
-    f12 = SeqFeature(FeatureLocation(f11_end,   f12_end, -1), type="misc_feature", qualifiers={"label": "5' NCR"})
-    f13 = SeqFeature(FeatureLocation(f13_start, f13_end, -1), type="misc_feature", qualifiers={"label": "U13"})
-    f14 = SeqFeature(FeatureLocation(f13_end,   f14_end, -1), type="misc_feature", qualifiers={"label": "Human PolI promoter"})
-    f15 = SeqFeature(FeatureLocation(f15_start, f15_end, +1), type="misc_feature", qualifiers={"label": "aBGH", "note": "polyadenylation site"})
-    f16 = SeqFeature(FeatureLocation(f16_start, f16_end, +1), type="misc_feature", qualifiers={"label": "ori", "note": "colEI-origin of replication"})
-    f17 = SeqFeature(FeatureLocation(f17_start, f17_end, +1), type="misc_feature", qualifiers={"label": "bla", "note": "beta-lactamase (ampR)"})
+    def _add(label, length, strand, **kw):
+        nonlocal pos
+        feat = SeqFeature(
+            FeatureLocation(pos, pos + length, strand),
+            type="misc_feature",
+            qualifiers={"label": label, **kw},
+        )
+        downstream_features.append(feat)
+        pos += length
+
+    # For H3N2, WSN_RECODED_CT follows the endodomain as a separate sequence.
+    # For H1N1, it is embedded at the end of WSN_ENDODOMAIN, so annotate it as an
+    # overlapping sub-feature spanning the last 33 nt of f7.
+    if subtype == "H3N2":
+        _add("WSN recoded CT", len(WSN_RECODED_CT), +1)
+    else:
+        ct_start = f7_end - len(WSN_RECODED_CT)
+        downstream_features.append(SeqFeature(
+            FeatureLocation(ct_start, f7_end, +1),
+            type="misc_feature",
+            qualifiers={"label": "WSN recoded CT"},
+        ))
+
+    _add("barcode", len(barcode), +1)
+
+    # pos is now at the start of BACKBONE_DOWNSTREAM; verify against the sequence
+    bd_start = pos
+    assert plasmid_sequence[bd_start:bd_start + len(BACKBONE_DOWNSTREAM)] == BACKBONE_DOWNSTREAM, (
+        f"Backbone downstream not found at expected position {bd_start}"
+    )
+
+    # Downstream backbone features — positions relative to start of BACKBONE_DOWNSTREAM:
+    #   [  0: 33] Illumina Read1         (+1)
+    #   [ 42:147] WSN packaging signal   (+1)
+    #   [147:192] 5' NCR                 (-1)  (U13 overlaps last 12 nt: [180:192])
+    #   [180:192] U13                    (-1)
+    #   [192:404] Human PolI promoter    (-1)
+    #   [429:661] aBGH                   (+1)
+    #   [883:1444] ori (colEI)           (+1)
+    #   [1693:2554] bla (ampR)           (+1)
+    def _bd(label, seq, strand, **kw):
+        offset = BACKBONE_DOWNSTREAM.index(seq)
+        feat = SeqFeature(
+            FeatureLocation(bd_start + offset, bd_start + offset + len(seq), strand),
+            type="misc_feature",
+            qualifiers={"label": label, **kw},
+        )
+        downstream_features.append(feat)
+
+    _bd("Illumina Read1",      ILLUMINA_READ1,       +1)
+    _bd("WSN packaging signal", WSN_PACKAGING_SIGNAL, +1)
+    _bd("5' NCR",              NCR_5PRIME,            -1)
+    _bd("U13",                 U13,                   -1)
+    _bd("Human PolI promoter", HUMAN_POL1_PROMOTER,   -1)
+    _bd("aBGH",                ABGH,                  +1, note="polyadenylation site")
+    _bd("ori",                 ORI,                   +1, note="colEI-origin of replication")
+    _bd("bla",                 BLA,                   +1, note="beta-lactamase (ampR)")
 
     return SeqRecord(
         Seq(plasmid_sequence),
         id=".",
         name=shortname,
         description=definition,
-        features=[f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17],
+        features=[f1, f2, f3, f4, f5, f6, f7] + downstream_features,
         annotations={
             "source": "synthetic DNA construct",
             "organism": "synthetic DNA construct",

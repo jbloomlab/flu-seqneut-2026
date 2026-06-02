@@ -69,7 +69,8 @@ rule match_genbank:
 # Rule to aggregate library strains from all subtypes
 rule aggregate_library_strains:
     input:
-        csvs=expand("results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv", subtype=SUBTYPES)
+        csvs=expand("results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv", subtype=SUBTYPES),
+        csvs_valid_haplotypes=expand("results/selected_haplotype_validation/{subtype}_valid_haplotypes.tsv", subtype=SUBTYPES)
     output:
         tsv="results/aggregated_library_strains/library_strains.tsv"
     params:

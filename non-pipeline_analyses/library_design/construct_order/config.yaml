@@ -7,11 +7,9 @@ random_seed: 202604131030
 contributor: Andrew Butler
 vector: pHW2000
 past_barcodes_to_avoid: 
-  - "data/2023_H3N2_Kikawa.csv"
-  - "data/pdmH1N1_lib2023_loes.csv"
-  - "data/flu-seqneut-2025-barcode-to-strain_designed.csv"
-  - "data/DRIVE_AL_2025_viral_strain_to_barcode.csv"
-  - "data/flu-seqneut-2025to2026-barcode-to-strain-designed.csv"
+  - "data/2026-05-07_seqneut_construct_log.csv"
+past_protein_sequences_to_avoid:
+  - "data/2026-05-07_seqneut_construct_log.csv"
 annotation_file: "data/vaccine_annotations.csv"
 
 subtype_params:
@@ -34,4 +32,14 @@ orders:
     shortname_h1n1_idx: 1
     shortname_h3n2_idx: 1
     input_file: "../testset_design/results/aggregated_library_strains/library_strains.tsv"
+    full_sequence: True
     plasmid_start_idx: 5869
+  full-design:
+    date: 2026-05-26
+    library: 'flu-seqneut-2026'
+    shortname_h1n1_idx: 4
+    shortname_h3n2_idx: 3
+    input_file: "../full_design/results/aggregated_library_strains/library_strains.tsv"
+    full_sequence: False
+    h1n1_offset: 9
+    plasmid_start_idx: plate16

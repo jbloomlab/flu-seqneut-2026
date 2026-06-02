@@ -2,6 +2,7 @@ HA Sequence Validation Report
 ============================================================
 
 Input file: data/2026-testset-strain-selection-H1N1.tsv
+Selection file (basename): 2026-testset-strain-selection-H1N1.tsv
 
 Sequence Length Check:
   All sequences have length: 566

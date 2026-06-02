@@ -1,0 +1,12 @@
+results/*
+*.fa
+
+!results/aggregated_library_strains
+results/aggregated_library_strains/*
+!results/aggregated_library_strains/library_strains.tsv
+
+!results/selected_haplotype_validation
+!results/curated_library
+!results/recent_haplotype_validation
+!results/site_annotations
+!results/tree/*.json

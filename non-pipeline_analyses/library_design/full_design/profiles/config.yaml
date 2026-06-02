@@ -1,0 +1,10 @@
+executor: slurm
+default-resources:
+  runtime: 720
+  mem_mb: 10000
+set-resources:
+  match_genbank:
+    cpus_per_task: 8
+jobs: 50
+latency-wait: 60
+use-conda: true

@@ -1,0 +1,77 @@
+Read 2919 validated haplotypes from results/recent_haplotype_validation/H3N2_valid_haplotypes.tsv
+  Selected: 68
+  Non-selected: 2851
+  selection_file value counts (non-null):
+    huddlej_h3n2.txt: 30
+    turners_h3n2.txt: 15
+    ruchnewitzd_h3n2.txt: 8
+    jamess_h3n2.txt: 6
+    huddlej_h3n2.txt,ruchnewitzd_h3n2.txt: 3
+    turners_h3n2.txt,ruchnewitzd_h3n2.txt: 2
+    turners_h3n2.txt,jamess_h3n2.txt: 2
+    huddlej_h3n2.txt,jamess_h3n2.txt: 1
+    huddlej_h3n2.txt,jamess_h3n2.txt,ruchnewitzd_h3n2.txt: 1
+
+Read 2 additional haplotypes from data/older_h3n2_haplotypes.tsv
+  Input format: combined
+  Extracting HA1/HA2 from combined sequence using GFF: results/gffs/H3N2_genemap.gff
+  Successfully extracted HA1 and HA2 regions
+  All additional haplotypes are marked as selected
+  selection_file: older_h3n2_haplotypes.tsv
+
+Combined dataframe contains 2921 total haplotypes
+  Selected: 70
+  Non-selected: 2851
+
+Created combined HA1+HA2 sequence column 'representative_strain_ha1_ha2_sequence'
+  ✓ All representative_strain values are unique
+  ✓ All 'representative_strain_ha1_sequence' sequences have length 329
+  ✓ All 'representative_strain_ha1_sequence' sequences contain only valid amino acids
+  ✓ All 'representative_ha2_sequence' sequences have length 221
+  ✓ All 'representative_ha2_sequence' sequences contain only valid amino acids
+  ✓ All 'representative_strain_ha1_ha2_sequence' sequences have length 550
+  ✓ All 'representative_strain_ha1_ha2_sequence' sequences contain only valid amino acids
+
+Computing HA1 Hamming distances to nearest library strain...
+  Computed HA1 Hamming distances for 2921 haplotypes
+
+Computing HA1+HA2 Hamming distances to nearest library strain...
+  Computed HA1+HA2 Hamming distances for 2921 haplotypes
+  Selected hamming_distance_nearest_library_strain_ha1: range 1-5
+  Non-selected hamming_distance_nearest_library_strain_ha1: range 1-23
+  Selected hamming_distance_nearest_library_strain_ha1_ha2: range 1-6
+  Non-selected hamming_distance_nearest_library_strain_ha1_ha2: range 1-28
+
+Reading site annotations from results/site_annotations/H3N2_site_annotations.tsv
+  Found 2 HA1 epitope sets: ['Wolf_epitope', 'Koel_epitope']
+    Wolf_epitope: 129 HA1 sites
+    Koel_epitope: 7 HA1 sites
+
+Computing HA1 epitope-specific distances to nearest HA1 library strain...
+  Wolf_epitope_distance: computed for 2921 haplotypes
+  Koel_epitope_distance: computed for 2921 haplotypes
+  Selected Wolf_epitope_distance: range 0-5
+  Non-selected Wolf_epitope_distance: range 0-19
+  Selected Koel_epitope_distance: range 0-1
+  Non-selected Koel_epitope_distance: range 0-3
+
+Outputs:
+  Selected haplotypes: results/curated_library/H3N2_selected_haplotypes.tsv
+    70 haplotypes
+    selection_file value counts:
+      huddlej_h3n2.txt: 30
+      turners_h3n2.txt: 15
+      ruchnewitzd_h3n2.txt: 8
+      jamess_h3n2.txt: 6
+      huddlej_h3n2.txt,ruchnewitzd_h3n2.txt: 3
+      turners_h3n2.txt,ruchnewitzd_h3n2.txt: 2
+      older_h3n2_haplotypes.tsv: 2
+      turners_h3n2.txt,jamess_h3n2.txt: 2
+      huddlej_h3n2.txt,jamess_h3n2.txt: 1
+      huddlej_h3n2.txt,jamess_h3n2.txt,ruchnewitzd_h3n2.txt: 1
+  Non-selected haplotypes: results/curated_library/H3N2_nonselected_haplotypes.tsv
+    2851 haplotypes
+  Library FASTA: results/curated_library/H3N2_library_haplotypes.fa
+    70 sequences (combined HA1+HA2)
+
+Curation complete ✓

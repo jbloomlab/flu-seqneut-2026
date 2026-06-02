@@ -4,17 +4,19 @@ Validate HA protein sequences in haplotype data.
 This script:
 1. Ensures all HA sequences are of equal length
 2. Checks which sequences contain only valid amino acids
-3. Generates a histogram of haplotype counts colored by sequence validity
 """
 
 import sys
+import os
 import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.use('Agg')  # Non-interactive backend
 
 # Valid amino acid characters (20 standard amino acids)
 VALID_AA = set('ACDEFGHIKLMNPQRSTVWY')
+
+
+def has_valid_amino_acids(seq):
+    """Check if sequence contains only valid amino acids."""
+    return all(aa in VALID_AA for aa in seq)
 
 
 def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_fasta_path):
@@ -37,52 +39,32 @@ def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_
     # Read data
     df = pd.read_csv(tsv_path, sep='\t')
 
-    # Check for duplicate values in key columns
-    duplicate_errors = []
+    # Get the input TSV filename (basename only)
+    selection_file = os.path.basename(tsv_path)
 
-    for col_name in ['representative_strain']:
-        if col_name not in df.columns:
-            raise ValueError(f"Required column '{col_name}' not found in input data")
+    if 'representative_strain' not in df.columns:
+        raise ValueError("Required column 'representative_strain' not found in input data")
 
-        duplicates = df[col_name].duplicated(keep=False)
-        if duplicates.any():
-            dup_values = df[duplicates][col_name].value_counts()
-            examples = []
-            for val, count in dup_values.head(5).items():
-                # Show which rows contain this duplicate
-                dup_rows = df[df[col_name] == val].index.tolist()
-                if col_name == 'representative_strain_ha_sequence':
-                    # For sequences, truncate to show first/last part
-                    display_val = f"{val[:30]}...{val[-30:]}" if len(val) > 65 else val
-                else:
-                    display_val = val
-                examples.append(f"    '{display_val}' appears {count} times (rows: {dup_rows[:5]})")
+    # Check for duplicate values in representative_strain
+    duplicates = df['representative_strain'].duplicated(keep=False)
+    if duplicates.any():
+        dup_values = df[duplicates]['representative_strain'].value_counts()
+        examples = []
+        for val, count in dup_values.head(5).items():
+            dup_rows = df[df['representative_strain'] == val].index.tolist()
+            examples.append(f"    '{val}' appears {count} times (rows: {dup_rows[:5]})")
+        raise ValueError(
+            "Input data contains duplicate values in 'representative_strain':\n" +
+            "\n".join(examples) +
+            (f"\n    ... and {len(dup_values) - 5} more" if len(dup_values) > 5 else "")
+        )
 
-            duplicate_errors.append(
-                f"  Column '{col_name}' contains {len(dup_values)} duplicate value(s):\n" +
-                "\n".join(examples) +
-                (f"\n    ... and {len(dup_values) - 5} more" if len(dup_values) > 5 else "")
+    for col in ('valid_sequence', 'selected_haplotype', 'selection_file'):
+        if col in df.columns:
+            raise ValueError(
+                f"Input data already contains a '{col}' column. "
+                "This column will be created by this script and must not already exist."
             )
-
-    if duplicate_errors:
-        raise ValueError(
-            "Input data contains duplicate values in columns that must be unique:\n" +
-            "\n\n".join(duplicate_errors)
-        )
-
-    # Check if valid_sequence column already exists
-    if 'valid_sequence' in df.columns:
-        raise ValueError(
-            "Input data already contains a 'valid_sequence' column. "
-            "This column will be created by this script and must not already exist."
-        )
-
-    # Check if selected_haplotype column already exists
-    if 'selected_haplotype' in df.columns:
-        raise ValueError(
-            "Input data already contains a 'selected_haplotype' column. "
-            "This column will be created by this script and must not already exist."
-        )
 
     # Extract sequences
     sequences = df['representative_strain_ha_sequence']
@@ -100,15 +82,14 @@ def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_
     seq_length = unique_lengths[0]
 
     # Check amino acid validity
-    def has_valid_amino_acids(seq):
-        """Check if sequence contains only valid amino acids."""
-        return all(aa in VALID_AA for aa in seq)
-
     df['valid_sequence'] = sequences.apply(has_valid_amino_acids)
 
     # Create selected_haplotype column
     # All specified haplotypes are selected here
     df['selected_haplotype'] = True
+
+    # Add selection_file column with the input TSV filename
+    df['selection_file'] = selection_file
 
     # Validate that all selected haplotypes have valid sequences
     selected_invalid = df[df['selected_haplotype'] & ~df['valid_sequence']]
@@ -116,7 +97,7 @@ def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_
         examples = []
         for _, row in selected_invalid.head().iterrows():
             examples.append(
-                f"  - {row['derived_haplotype']} (strain: {row['representative_strain']})\n"
+                f"  - {row['representative_strain']}\n"
                 f"    Sequence: {row['representative_strain_ha_sequence']}"
             )
         raise ValueError(
@@ -154,7 +135,8 @@ def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_
     with open(report_path, 'w') as f:
         f.write("HA Sequence Validation Report\n")
         f.write("=" * 60 + "\n\n")
-        f.write(f"Input file: {tsv_path}\n\n")
+        f.write(f"Input file: {tsv_path}\n")
+        f.write(f"Selection file (basename): {selection_file}\n\n")
 
         f.write("Sequence Length Check:\n")
         f.write(f"  All sequences have length: {seq_length}\n")
@@ -171,7 +153,7 @@ def validate_sequences(tsv_path, report_path, valid_path, invalid_path, library_
             invalid_examples = df[~df['valid_sequence']].head(5)
             for idx, row in invalid_examples.iterrows():
                 invalid_in_seq = set(row['representative_strain_ha_sequence']) - VALID_AA
-                f.write(f"    {row['derived_haplotype']}: contains {sorted(invalid_in_seq)}\n")
+                f.write(f"    {row['representative_strain']}: contains {sorted(invalid_in_seq)}\n")
         else:
             f.write(f"  ✓ All sequences contain only valid amino acids\n")
 

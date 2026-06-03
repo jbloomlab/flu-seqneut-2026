@@ -1,0 +1,8 @@
+Successfully aggregated library strains:
+  - Total strains: 25
+  - H3N2: 17 strains
+  - H1N1: 8 strains
+  - selection_file value counts:
+      kondorr_h3n2.txt: 17
+      kondorr_h1n1pdm.txt: 8
+  - Output written to: results/aggregated_library_strains/library_strains.tsv

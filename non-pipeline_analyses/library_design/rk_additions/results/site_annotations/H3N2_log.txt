@@ -1,0 +1,16 @@
+Parsing GFF file: results/gffs/H3N2_genemap.gff
+  Found 566 sequential positions across all proteins
+  Proteins in GFF: ['SigPep', 'HA1', 'HA2']
+  Retained 550 positions after filtering to HA1 + HA2
+    HA1: 329 sites (sequential 1-329)
+    HA2: 221 sites (sequential 330-550)
+Parsing epitope file: results/epitopes/H3N2_Wolf.json
+  Found 129 epitope sites (protein, protein_site pairs)
+  Matched 129 sites (HA1: 129, HA2: 0)
+Parsing epitope file: results/epitopes/H3N2_Koel.json
+  Found 7 epitope sites (protein, protein_site pairs)
+  Matched 7 sites (HA1: 7, HA2: 0)
+
+Wrote site annotations to: results/site_annotations/H3N2_site_annotations.tsv
+Columns: ['sequential_site', 'protein', 'protein_site', 'Wolf_epitope', 'Koel_epitope']
+Shape: (550, 5)

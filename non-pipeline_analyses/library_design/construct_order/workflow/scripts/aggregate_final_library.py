@@ -135,8 +135,8 @@ def build_selection_file_lookup(
             selection_file = (row.get("selection_file") or "").strip()
             if has_protein:
                 protein_seq = (row.get("protein_sequence_HA_ectodomain") or "").strip()
-                lookup[(strain, protein_seq)] = selection_file
-            strain_only_lookup[strain] = selection_file
+                lookup.setdefault((strain, protein_seq), selection_file)
+            strain_only_lookup.setdefault(strain, selection_file)
     log.info(
         f"Built selection_file lookup from {len(input_tsv_paths)} TSV(s): "
         f"{len(lookup)} (strain, protein) keys, {len(strain_only_lookup)} strain-only keys."

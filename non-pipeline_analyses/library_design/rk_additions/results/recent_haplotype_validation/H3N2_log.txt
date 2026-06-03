@@ -1,0 +1,27 @@
+
+Reading selection files...
+  data/kondorr_h3n2.txt: 19 haplotype name(s)
+  Warning: 2 haplotype(s) in 'data/kondorr_h3n2.txt' were not found in the input TSV and will be ignored:
+    - K:A272S,E290G
+    - K:R33Q, S124N
+  Total unique haplotype names across all selection files: 19
+  Warning: 2 total haplotype name(s) from selection files were not found in the input TSV and will be ignored.
+  Haplotype names matched in TSV: 17
+
+Warning: 7 haplotype(s) have no HA2 sequence and will be marked invalid.
+Validation complete:
+  HA1 sequence length: 329
+  HA2 sequence length: 221 (7 missing)
+  HA1 valid: 2969/3097 (95.9%)
+  HA2 valid: 2995/3097 (96.7%)
+  Both valid: 2919/3097 (94.3%)
+  Any invalid: 178/3097 (5.7%)
+  Selected haplotypes: 17/3097 (0.5%)
+  Total sequences (valid): 24,221
+  Total sequences (selected): 2,289
+  selection_file value counts (non-null):
+    kondorr_h3n2.txt: 17
+  Report: results/recent_haplotype_validation/H3N2_validation_report.txt
+  Scatter plot: results/recent_haplotype_validation/H3N2_count_scatter.pdf
+  Valid haplotypes TSV: results/recent_haplotype_validation/H3N2_valid_haplotypes.tsv
+  Invalid haplotypes TSV: results/recent_haplotype_validation/H3N2_invalid_haplotypes.tsv

@@ -43,3 +43,12 @@ orders:
     full_sequence: False
     h1n1_offset: 9
     plasmid_start_idx: plate16
+  rk-additions:
+    date: 2026-06-02
+    library: 'flu-seqneut-2026'
+    shortname_h1n1_idx: 53
+    shortname_h3n2_idx: 60
+    input_file: "../rk_additions/results/aggregated_library_strains/library_strains.tsv"
+    full_sequence: False
+    h1n1_offset: 9
+    plasmid_start_idx: plate19

@@ -30,7 +30,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger(__name__)
 
 NUCLEOTIDES = list("ACGT")
-MAX_BARCODE_ATTEMPTS = 100
+MAX_BARCODE_ATTEMPTS = 1000
 MIN_HAMMING_DISTANCE = 3
 
 

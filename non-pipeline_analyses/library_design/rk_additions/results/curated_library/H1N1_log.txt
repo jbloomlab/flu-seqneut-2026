@@ -1,0 +1,49 @@
+Read 817 validated haplotypes from results/recent_haplotype_validation/H1N1_valid_haplotypes.tsv
+  Selected: 8
+  Non-selected: 809
+  selection_file value counts (non-null):
+    kondorr_h1n1pdm.txt: 8
+
+Combined dataframe contains 817 total haplotypes
+  Selected: 8
+  Non-selected: 809
+
+Created combined HA1+HA2 sequence column 'representative_strain_ha1_ha2_sequence'
+  ✓ All representative_strain values are unique
+  ✓ All 'representative_strain_ha1_sequence' sequences have length 327
+  ✓ All 'representative_strain_ha1_sequence' sequences contain only valid amino acids
+  ✓ All 'representative_ha2_sequence' sequences have length 222
+  ✓ All 'representative_ha2_sequence' sequences contain only valid amino acids
+  ✓ All 'representative_strain_ha1_ha2_sequence' sequences have length 549
+  ✓ All 'representative_strain_ha1_ha2_sequence' sequences contain only valid amino acids
+
+Computing HA1 Hamming distances to nearest library strain...
+  Computed HA1 Hamming distances for 817 haplotypes
+
+Computing HA1+HA2 Hamming distances to nearest library strain...
+  Computed HA1+HA2 Hamming distances for 817 haplotypes
+  Selected hamming_distance_nearest_library_strain_ha1: range 1-2
+  Non-selected hamming_distance_nearest_library_strain_ha1: range 1-12
+  Selected hamming_distance_nearest_library_strain_ha1_ha2: range 1-2
+  Non-selected hamming_distance_nearest_library_strain_ha1_ha2: range 1-18
+
+Reading site annotations from results/site_annotations/H1N1_site_annotations.tsv
+  Found 1 HA1 epitope sets: ['Caton_epitope']
+    Caton_epitope: 50 HA1 sites
+
+Computing HA1 epitope-specific distances to nearest HA1 library strain...
+  Caton_epitope_distance: computed for 817 haplotypes
+  Selected Caton_epitope_distance: range 0-2
+  Non-selected Caton_epitope_distance: range 0-6
+
+Outputs:
+  Selected haplotypes: results/curated_library/H1N1_selected_haplotypes.tsv
+    8 haplotypes
+    selection_file value counts:
+      kondorr_h1n1pdm.txt: 8
+  Non-selected haplotypes: results/curated_library/H1N1_nonselected_haplotypes.tsv
+    809 haplotypes
+  Library FASTA: results/curated_library/H1N1_library_haplotypes.fa
+    8 sequences (combined HA1+HA2)
+
+Curation complete ✓

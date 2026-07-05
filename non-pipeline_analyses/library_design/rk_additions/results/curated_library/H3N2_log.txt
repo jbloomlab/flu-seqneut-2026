@@ -1,0 +1,53 @@
+Read 2919 validated haplotypes from results/recent_haplotype_validation/H3N2_valid_haplotypes.tsv
+  Selected: 17
+  Non-selected: 2902
+  selection_file value counts (non-null):
+    kondorr_h3n2.txt: 17
+
+Combined dataframe contains 2919 total haplotypes
+  Selected: 17
+  Non-selected: 2902
+
+Created combined HA1+HA2 sequence column 'representative_strain_ha1_ha2_sequence'
+  ✓ All representative_strain values are unique
+  ✓ All 'representative_strain_ha1_sequence' sequences have length 329
+  ✓ All 'representative_strain_ha1_sequence' sequences contain only valid amino acids
+  ✓ All 'representative_ha2_sequence' sequences have length 221
+  ✓ All 'representative_ha2_sequence' sequences contain only valid amino acids
+  ✓ All 'representative_strain_ha1_ha2_sequence' sequences have length 550
+  ✓ All 'representative_strain_ha1_ha2_sequence' sequences contain only valid amino acids
+
+Computing HA1 Hamming distances to nearest library strain...
+  Computed HA1 Hamming distances for 2919 haplotypes
+
+Computing HA1+HA2 Hamming distances to nearest library strain...
+  Computed HA1+HA2 Hamming distances for 2919 haplotypes
+  Selected hamming_distance_nearest_library_strain_ha1: range 1-3
+  Non-selected hamming_distance_nearest_library_strain_ha1: range 1-28
+  Selected hamming_distance_nearest_library_strain_ha1_ha2: range 1-3
+  Non-selected hamming_distance_nearest_library_strain_ha1_ha2: range 1-33
+
+Reading site annotations from results/site_annotations/H3N2_site_annotations.tsv
+  Found 2 HA1 epitope sets: ['Wolf_epitope', 'Koel_epitope']
+    Wolf_epitope: 129 HA1 sites
+    Koel_epitope: 7 HA1 sites
+
+Computing HA1 epitope-specific distances to nearest HA1 library strain...
+  Wolf_epitope_distance: computed for 2919 haplotypes
+  Koel_epitope_distance: computed for 2919 haplotypes
+  Selected Wolf_epitope_distance: range 0-3
+  Non-selected Wolf_epitope_distance: range 0-24
+  Selected Koel_epitope_distance: range 0-1
+  Non-selected Koel_epitope_distance: range 0-6
+
+Outputs:
+  Selected haplotypes: results/curated_library/H3N2_selected_haplotypes.tsv
+    17 haplotypes
+    selection_file value counts:
+      kondorr_h3n2.txt: 17
+  Non-selected haplotypes: results/curated_library/H3N2_nonselected_haplotypes.tsv
+    2902 haplotypes
+  Library FASTA: results/curated_library/H3N2_library_haplotypes.fa
+    17 sequences (combined HA1+HA2)
+
+Curation complete ✓

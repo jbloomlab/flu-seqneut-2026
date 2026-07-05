@@ -1,0 +1,21 @@
+
+Reading selection files...
+  data/kondorr_h1n1pdm.txt: 8 haplotype name(s)
+  Total unique haplotype names across all selection files: 8
+  Haplotype names matched in TSV: 8
+Validation complete:
+  HA1 sequence length: 327
+  HA2 sequence length: 222 (0 missing)
+  HA1 valid: 839/859 (97.7%)
+  HA2 valid: 827/859 (96.3%)
+  Both valid: 817/859 (95.1%)
+  Any invalid: 42/859 (4.9%)
+  Selected haplotypes: 8/859 (0.9%)
+  Total sequences (valid): 6,348
+  Total sequences (selected): 814
+  selection_file value counts (non-null):
+    kondorr_h1n1pdm.txt: 8
+  Report: results/recent_haplotype_validation/H1N1_validation_report.txt
+  Scatter plot: results/recent_haplotype_validation/H1N1_count_scatter.pdf
+  Valid haplotypes TSV: results/recent_haplotype_validation/H1N1_valid_haplotypes.tsv
+  Invalid haplotypes TSV: results/recent_haplotype_validation/H1N1_invalid_haplotypes.tsv

@@ -1,22 +1,60 @@
 INFO: Loaded 1131 past-sequence rows for excluded lookup.
-INFO: Built selection_file lookup from 2 TSV(s): 0 (strain, protein) keys, 137 strain-only keys.
+INFO: Built selection_file lookup from 3 TSV(s): 0 (strain, protein) keys, 147 strain-only keys.
 INFO: Read 10 rows from results/plasmid_log/2026-05-12_testset.csv
 INFO: Read 212 rows from results/plasmid_log/2026-05-26_full-design.csv
-INFO: Total plasmid-log rows: 222
+INFO: Read 20 rows from results/plasmid_log/2026-06-02_rk-additions.csv
+INFO: Total plasmid-log rows: 242
 INFO: Read 0 rows from results/excluded_from_order/2026-05-12_testset_excluded.csv
 INFO: Read 26 rows from results/excluded_from_order/2026-05-26_full-design_excluded.csv
-INFO: Total excluded rows: 26
+INFO: Read 15 rows from results/excluded_from_order/2026-06-02_rk-additions_excluded.csv
+INFO: Total excluded rows: 41
 WARNING: excluded strain 'A/Ontario/PHL202550957/2025' (matched_against='5875_pHW2000_A_Nebraska_34_2026_bc1.gb;5876_pHW2000_A_Nebraska_34_2026_bc2.gb'): matched ID '5875_pHW2000_A_Nebraska_34_2026_bc1.gb' doesn't follow SN-XXX format.
 WARNING: excluded strain 'A/Ontario/PHL202550957/2025' (matched_against='5875_pHW2000_A_Nebraska_34_2026_bc1.gb;5876_pHW2000_A_Nebraska_34_2026_bc2.gb'): ID '5875_pHW2000_A_Nebraska_34_2026_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
 WARNING: excluded strain 'A/Ontario/PHL202550957/2025' (matched_against='5875_pHW2000_A_Nebraska_34_2026_bc1.gb;5876_pHW2000_A_Nebraska_34_2026_bc2.gb'): ID '5876_pHW2000_A_Nebraska_34_2026_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
-INFO: Excluded → final-library: emitted 48 rows (skipped 0 intra-order duplicates, 2 cross-order duplicates; 2 IDs missing in past-sequences lookup).
-INFO: Final library CSV written (270 rows): results/final_library/final_library.csv
-INFO: Haplotypes file written (60 unique haplotypes): results/final_library/H1N1_final_haplotypes.txt
-INFO: Haplotypes file written (70 unique haplotypes): results/final_library/H3N2_final_haplotypes.txt
-INFO: Final library summary: 135 unique strains (by strain + protein_sequence_HA_ectodomain) across 2 subtype(s).
+WARNING: excluded strain 'A/France/HDF-RELAB-IPP00300/2026' (matched_against='plate16-C1_pHW2000_A_France_HDF-RELAB-IPP00300_2026_bc1.gb;plate16-C2_pHW2000_A_France_HDF-RELAB-IPP00300_2026_bc2.gb'): matched ID 'plate16-C1_pHW2000_A_France_HDF-RELAB-IPP00300_2026_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/France/HDF-RELAB-IPP00300/2026' (matched_against='plate16-C1_pHW2000_A_France_HDF-RELAB-IPP00300_2026_bc1.gb;plate16-C2_pHW2000_A_France_HDF-RELAB-IPP00300_2026_bc2.gb'): ID 'plate16-C1_pHW2000_A_France_HDF-RELAB-IPP00300_2026_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/France/HDF-RELAB-IPP00300/2026' (matched_against='plate16-C1_pHW2000_A_France_HDF-RELAB-IPP00300_2026_bc1.gb;plate16-C2_pHW2000_A_France_HDF-RELAB-IPP00300_2026_bc2.gb'): ID 'plate16-C2_pHW2000_A_France_HDF-RELAB-IPP00300_2026_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/California/NIRC-IS-1067/2026' (matched_against='plate16-B11_pHW2000_A_California_NIRC-IS-1067_2026_bc1.gb;plate16-B12_pHW2000_A_California_NIRC-IS-1067_2026_bc2.gb'): matched ID 'plate16-B11_pHW2000_A_California_NIRC-IS-1067_2026_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/California/NIRC-IS-1067/2026' (matched_against='plate16-B11_pHW2000_A_California_NIRC-IS-1067_2026_bc1.gb;plate16-B12_pHW2000_A_California_NIRC-IS-1067_2026_bc2.gb'): ID 'plate16-B11_pHW2000_A_California_NIRC-IS-1067_2026_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/California/NIRC-IS-1067/2026' (matched_against='plate16-B11_pHW2000_A_California_NIRC-IS-1067_2026_bc1.gb;plate16-B12_pHW2000_A_California_NIRC-IS-1067_2026_bc2.gb'): ID 'plate16-B12_pHW2000_A_California_NIRC-IS-1067_2026_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Ireland/91576/2025' (matched_against='plate16-A5_pHW2000_A_Ireland_91576_2025_bc1.gb;plate16-A6_pHW2000_A_Ireland_91576_2025_bc2.gb'): matched ID 'plate16-A5_pHW2000_A_Ireland_91576_2025_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/Ireland/91576/2025' (matched_against='plate16-A5_pHW2000_A_Ireland_91576_2025_bc1.gb;plate16-A6_pHW2000_A_Ireland_91576_2025_bc2.gb'): ID 'plate16-A5_pHW2000_A_Ireland_91576_2025_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Ireland/91576/2025' (matched_against='plate16-A5_pHW2000_A_Ireland_91576_2025_bc1.gb;plate16-A6_pHW2000_A_Ireland_91576_2025_bc2.gb'): ID 'plate16-A6_pHW2000_A_Ireland_91576_2025_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Saskatchewan/SKFLU477299/2025' (matched_against='plate17-A1_pHW2000_A_Saskatchewan_SKFLU477299_2025_bc1.gb;plate17-A2_pHW2000_A_Saskatchewan_SKFLU477299_2025_bc2.gb'): matched ID 'plate17-A1_pHW2000_A_Saskatchewan_SKFLU477299_2025_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/Saskatchewan/SKFLU477299/2025' (matched_against='plate17-A1_pHW2000_A_Saskatchewan_SKFLU477299_2025_bc1.gb;plate17-A2_pHW2000_A_Saskatchewan_SKFLU477299_2025_bc2.gb'): ID 'plate17-A1_pHW2000_A_Saskatchewan_SKFLU477299_2025_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Saskatchewan/SKFLU477299/2025' (matched_against='plate17-A1_pHW2000_A_Saskatchewan_SKFLU477299_2025_bc1.gb;plate17-A2_pHW2000_A_Saskatchewan_SKFLU477299_2025_bc2.gb'): ID 'plate17-A2_pHW2000_A_Saskatchewan_SKFLU477299_2025_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Trieste/380/2026' (matched_against='plate16-C11_pHW2000_A_Trieste_380_2026_bc1.gb;plate16-C12_pHW2000_A_Trieste_380_2026_bc2.gb'): matched ID 'plate16-C11_pHW2000_A_Trieste_380_2026_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/Trieste/380/2026' (matched_against='plate16-C11_pHW2000_A_Trieste_380_2026_bc1.gb;plate16-C12_pHW2000_A_Trieste_380_2026_bc2.gb'): ID 'plate16-C11_pHW2000_A_Trieste_380_2026_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Trieste/380/2026' (matched_against='plate16-C11_pHW2000_A_Trieste_380_2026_bc1.gb;plate16-C12_pHW2000_A_Trieste_380_2026_bc2.gb'): ID 'plate16-C12_pHW2000_A_Trieste_380_2026_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Bolivia/OR5702/2025' (matched_against='plate17-A9_pHW2000_A_Bolivia_OR5702_2025_bc1.gb;plate17-A10_pHW2000_A_Bolivia_OR5702_2025_bc2.gb'): matched ID 'plate17-A9_pHW2000_A_Bolivia_OR5702_2025_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/Bolivia/OR5702/2025' (matched_against='plate17-A9_pHW2000_A_Bolivia_OR5702_2025_bc1.gb;plate17-A10_pHW2000_A_Bolivia_OR5702_2025_bc2.gb'): ID 'plate17-A9_pHW2000_A_Bolivia_OR5702_2025_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Bolivia/OR5702/2025' (matched_against='plate17-A9_pHW2000_A_Bolivia_OR5702_2025_bc1.gb;plate17-A10_pHW2000_A_Bolivia_OR5702_2025_bc2.gb'): ID 'plate17-A10_pHW2000_A_Bolivia_OR5702_2025_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/SouthAfrica/NICD-R01647/2026' (matched_against='plate18-B3_pHW2000_A_SouthAfrica_NICD-R01647_2026_bc1.gb;plate18-B4_pHW2000_A_SouthAfrica_NICD-R01647_2026_bc2.gb'): matched ID 'plate18-B3_pHW2000_A_SouthAfrica_NICD-R01647_2026_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/SouthAfrica/NICD-R01647/2026' (matched_against='plate18-B3_pHW2000_A_SouthAfrica_NICD-R01647_2026_bc1.gb;plate18-B4_pHW2000_A_SouthAfrica_NICD-R01647_2026_bc2.gb'): ID 'plate18-B3_pHW2000_A_SouthAfrica_NICD-R01647_2026_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/SouthAfrica/NICD-R01647/2026' (matched_against='plate18-B3_pHW2000_A_SouthAfrica_NICD-R01647_2026_bc1.gb;plate18-B4_pHW2000_A_SouthAfrica_NICD-R01647_2026_bc2.gb'): ID 'plate18-B4_pHW2000_A_SouthAfrica_NICD-R01647_2026_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/SouthAfrica/PATH-CERI-C075119/2026' (matched_against='plate17-D5_pHW2000_A_SouthAfrica_PATH-CERI-C075119_2026_bc1.gb;plate17-D6_pHW2000_A_SouthAfrica_PATH-CERI-C075119_2026_bc2.gb'): matched ID 'plate17-D5_pHW2000_A_SouthAfrica_PATH-CERI-C075119_2026_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/SouthAfrica/PATH-CERI-C075119/2026' (matched_against='plate17-D5_pHW2000_A_SouthAfrica_PATH-CERI-C075119_2026_bc1.gb;plate17-D6_pHW2000_A_SouthAfrica_PATH-CERI-C075119_2026_bc2.gb'): ID 'plate17-D5_pHW2000_A_SouthAfrica_PATH-CERI-C075119_2026_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/SouthAfrica/PATH-CERI-C075119/2026' (matched_against='plate17-D5_pHW2000_A_SouthAfrica_PATH-CERI-C075119_2026_bc1.gb;plate17-D6_pHW2000_A_SouthAfrica_PATH-CERI-C075119_2026_bc2.gb'): ID 'plate17-D6_pHW2000_A_SouthAfrica_PATH-CERI-C075119_2026_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/SouthAfrica/NHLS-SU-CERI-C075557/2026' (matched_against='plate17-E1_pHW2000_A_SouthAfrica_NHLS-SU-CERI-C075557_2026_bc1.gb;plate17-E2_pHW2000_A_SouthAfrica_NHLS-SU-CERI-C075557_2026_bc2.gb'): matched ID 'plate17-E1_pHW2000_A_SouthAfrica_NHLS-SU-CERI-C075557_2026_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/SouthAfrica/NHLS-SU-CERI-C075557/2026' (matched_against='plate17-E1_pHW2000_A_SouthAfrica_NHLS-SU-CERI-C075557_2026_bc1.gb;plate17-E2_pHW2000_A_SouthAfrica_NHLS-SU-CERI-C075557_2026_bc2.gb'): ID 'plate17-E1_pHW2000_A_SouthAfrica_NHLS-SU-CERI-C075557_2026_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/SouthAfrica/NHLS-SU-CERI-C075557/2026' (matched_against='plate17-E1_pHW2000_A_SouthAfrica_NHLS-SU-CERI-C075557_2026_bc1.gb;plate17-E2_pHW2000_A_SouthAfrica_NHLS-SU-CERI-C075557_2026_bc2.gb'): ID 'plate17-E2_pHW2000_A_SouthAfrica_NHLS-SU-CERI-C075557_2026_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/SouthAfrica/PATH-CERI-C073358/2025' (matched_against='plate17-D7_pHW2000_A_SouthAfrica_PATH-CERI-C073358_2025_bc1.gb;plate17-D8_pHW2000_A_SouthAfrica_PATH-CERI-C073358_2025_bc2.gb'): matched ID 'plate17-D7_pHW2000_A_SouthAfrica_PATH-CERI-C073358_2025_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/SouthAfrica/PATH-CERI-C073358/2025' (matched_against='plate17-D7_pHW2000_A_SouthAfrica_PATH-CERI-C073358_2025_bc1.gb;plate17-D8_pHW2000_A_SouthAfrica_PATH-CERI-C073358_2025_bc2.gb'): ID 'plate17-D7_pHW2000_A_SouthAfrica_PATH-CERI-C073358_2025_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/SouthAfrica/PATH-CERI-C073358/2025' (matched_against='plate17-D7_pHW2000_A_SouthAfrica_PATH-CERI-C073358_2025_bc1.gb;plate17-D8_pHW2000_A_SouthAfrica_PATH-CERI-C073358_2025_bc2.gb'): ID 'plate17-D8_pHW2000_A_SouthAfrica_PATH-CERI-C073358_2025_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Ontario/PHL202550957/2025' (matched_against='5875_pHW2000_A_Nebraska_34_2026_bc1.gb;5876_pHW2000_A_Nebraska_34_2026_bc2.gb'): matched ID '5875_pHW2000_A_Nebraska_34_2026_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/Ontario/PHL202550957/2025' (matched_against='5875_pHW2000_A_Nebraska_34_2026_bc1.gb;5876_pHW2000_A_Nebraska_34_2026_bc2.gb'): ID '5875_pHW2000_A_Nebraska_34_2026_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/Ontario/PHL202550957/2025' (matched_against='5875_pHW2000_A_Nebraska_34_2026_bc1.gb;5876_pHW2000_A_Nebraska_34_2026_bc2.gb'): ID '5876_pHW2000_A_Nebraska_34_2026_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='plate17-B9_pHW2000_A_BritishColumbia_RV00022-26_2025_bc1.gb;plate17-B10_pHW2000_A_BritishColumbia_RV00022-26_2025_bc2.gb'): matched ID 'plate17-B9_pHW2000_A_BritishColumbia_RV00022-26_2025_bc1.gb' doesn't follow SN-XXX format.
+WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='plate17-B9_pHW2000_A_BritishColumbia_RV00022-26_2025_bc1.gb;plate17-B10_pHW2000_A_BritishColumbia_RV00022-26_2025_bc2.gb'): ID 'plate17-B9_pHW2000_A_BritishColumbia_RV00022-26_2025_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='plate17-B9_pHW2000_A_BritishColumbia_RV00022-26_2025_bc1.gb;plate17-B10_pHW2000_A_BritishColumbia_RV00022-26_2025_bc2.gb'): ID 'plate17-B10_pHW2000_A_BritishColumbia_RV00022-26_2025_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
+INFO: Excluded → final-library: emitted 48 rows (skipped 0 intra-order duplicates, 8 cross-order duplicates; 26 IDs missing in past-sequences lookup).
+INFO: Final library CSV written (290 rows): results/final_library/final_library.csv
+INFO: Haplotypes file written (62 unique haplotypes): results/final_library/H1N1_final_haplotypes.txt
+INFO: Haplotypes file written (78 unique haplotypes): results/final_library/H3N2_final_haplotypes.txt
+INFO: Final library summary: 145 unique strains (by strain + protein_sequence_HA_ectodomain) across 2 subtype(s).
 INFO: Per-subtype totals (need_to_order True / False):
-INFO:   H1N1: 63 total (52 to order, 11 already exist)
-INFO:   H3N2: 72 total (59 to order, 13 already exist)
+INFO:   H1N1: 65 total (54 to order, 11 already exist)
+INFO:   H3N2: 80 total (67 to order, 13 already exist)
 INFO: Per-subtype breakdown by selection_file:
 INFO:   H1N1:
 INFO:     2026-testset-strain-selection-H1N1.tsv: 3 total (3 to order, 0 already exist)
@@ -26,6 +64,7 @@ INFO:     huddlej_h1n1pdm.txt,jamess_h1n1pdm.txt,ruchnewitzd_h1n1pdm.txt: 1 tota
 INFO:     huddlej_h1n1pdm.txt,ruchnewitzd_h1n1pdm.txt: 4 total (4 to order, 0 already exist)
 INFO:     jamess_h1n1pdm.txt: 5 total (5 to order, 0 already exist)
 INFO:     jamess_h1n1pdm.txt,ruchnewitzd_h1n1pdm.txt: 1 total (1 to order, 0 already exist)
+INFO:     kondorr_h1n1pdm.txt: 2 total (2 to order, 0 already exist)
 INFO:     manually_fixed_recent_H1N1_haplotypes.tsv: 2 total (2 to order, 0 already exist)
 INFO:     older_h1n1_haplotypes.tsv: 7 total (1 to order, 6 already exist)
 INFO:     ruchnewitzd_h1n1pdm.txt: 7 total (7 to order, 0 already exist)
@@ -37,6 +76,7 @@ INFO:     huddlej_h3n2.txt,jamess_h3n2.txt: 1 total (0 to order, 1 already exist
 INFO:     huddlej_h3n2.txt,jamess_h3n2.txt,ruchnewitzd_h3n2.txt: 1 total (0 to order, 1 already exist)
 INFO:     huddlej_h3n2.txt,ruchnewitzd_h3n2.txt: 3 total (2 to order, 1 already exist)
 INFO:     jamess_h3n2.txt: 6 total (6 to order, 0 already exist)
+INFO:     kondorr_h3n2.txt: 8 total (8 to order, 0 already exist)
 INFO:     older_h3n2_haplotypes.tsv: 2 total (0 to order, 2 already exist)
 INFO:     ruchnewitzd_h3n2.txt: 8 total (6 to order, 2 already exist)
 INFO:     turners_h3n2.txt: 15 total (14 to order, 1 already exist)

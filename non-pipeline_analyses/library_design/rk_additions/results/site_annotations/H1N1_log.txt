@@ -1,0 +1,13 @@
+Parsing GFF file: results/gffs/H1N1_genemap.gff
+  Found 566 sequential positions across all proteins
+  Proteins in GFF: ['SigPep', 'HA1', 'HA2']
+  Retained 549 positions after filtering to HA1 + HA2
+    HA1: 327 sites (sequential 1-327)
+    HA2: 222 sites (sequential 328-549)
+Parsing epitope file: results/epitopes/H1N1_Caton.json
+  Found 50 epitope sites (protein, protein_site pairs)
+  Matched 50 sites (HA1: 50, HA2: 0)
+
+Wrote site annotations to: results/site_annotations/H1N1_site_annotations.tsv
+Columns: ['sequential_site', 'protein', 'protein_site', 'Caton_epitope']
+Shape: (549, 4)

@@ -1,11 +1,10 @@
-# Full library design
-
-The subdirectory contains a Snakemake pipeline for selecting influenza HA strains for neutralization
-assays, timed for the Sept-2026 vaccine strain selection.
+# Library additions 
+This subdirectory contains a simplified Snakemake pipeline for generating the input nucleotide 
+sequences needed for construct generation for a small specified set of influenza HA strains. 
+This set is was recommended by Rebecca Kondor.
 
 The main input data are TSVs of current haplotypes, and manual annotations of which haplotypes to
-include. The pipeline then lets you visualize the strains of the selected haplotypes and potentially
-update your selections of which haplotypes to include.
+include.
 
 ## How to use and look at results
 
@@ -42,23 +41,6 @@ update your selections of which haplotypes to include.
  selected library strains. So look carefully to assess this and potentially adjust your selections 
  of library strains.
 
- To make the above steps easier, the pipeline also creates JSON files for interactive Nextstrain trees
- in [./results/trees](./results/trees) that allow you to look at protein trees (branch lengths of 
- amino-acid mutations) that can be colored by relevant properties including if the strain is 
- selected, its distance to other library strains, identity at specific amino-acid sites, etc. This 
- can also be used to identify overly redundant included strains or distinct strains that are not
- included but should be. The JSON files for these trees can be visualized simply by uploading to 
- [https://auspice.us/](https://auspice.us/).
-
- Based on the above, you want to adjust the strains in the library until you are happy with the 
- composition. Again, you can adjust by changing which haplotypes are included in the selection text
- files specified under `select_recent_haplotype_files`, or adding haplotypes to 
- `override_select_recent_haplotypes`, or specifying additional haplotypes to include in 
- `additional_haplotypes` (all of these refer to keys in [config.yaml](./config.yaml)).
-
- After adjusting selections, re-run the pipeline as described below to visualize the updated 
- selections.
-
  Finally, a final TSV with all of the selected strains is saved in 
  [./results/aggregated_library_strains/library_strains.tsv](./results/aggregated_library_strains/library_strains.tsv).
  This file includes columns for the representative strain name, derived haplotype name, HA1+HA2
@@ -80,22 +62,15 @@ update your selections of which haplotypes to include.
  May-19-2026):
     * [2026-Sept-VCM-seqneut-library-strain-selection-H1N1.tsv](./data/2026-Sept-VCM-seqneut-library-strain-selection-H1N1.tsv)
     * [2026-Sept-VCM-seqneut-library-strain-selection-H3N2.tsv](./data/2026-Sept-VCM-seqneut-library-strain-selection-H3N2.tsv)
-* Manually corrected haplotypes with ambiguous or missing residues fixed to the actual amino acid
-identities.
-    * [manually_fixed_recent_H1N1_haplotypes.tsv](./data/manually_fixed_recent_H1N1_haplotypes.tsv)
-* Outgroup sequences for phylogenetic tree visualization:
-    * [H1N1_outgroup.fa](./data/H1N1_outgroup.fa)
-    * [H3N2_outgroup.fa](./data/H3N2_outgroup.fa)
-* Manually specified haplotype selection files
+* Manually specified haplotype selection file
 
 ### Submodules
 
-Two submodules are included; note these are included via `git submodule` at the top level:
+One submodule is included; note this is included via `git submodule` at the top level:
 
 * [match_prot_to_genbank_nt](https://github.com/jbloom/match_prot_to_genbank_nt/): 
 Matches protein sequences to closest GenBank nucleotide sequences
-* [nextstrain-prot-titers-tree](https://github.com/jbloomlab/nextstrain-prot-titers-tree): 
-Builds Nextstrain phylogenetic trees from protein alignments
+
 
 ### Workflow
 

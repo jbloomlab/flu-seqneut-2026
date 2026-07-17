@@ -1,0 +1,193 @@
+# === Analysis configuration file ======================================================
+
+__use_yte__: true  # use YAML Template Engine formatting
+
+# --- Configuration for custom analyses in Snakefile outside of seqneut-pipeline --------
+
+# subtypes of strains
+subtypes: [H1N1, H3N2]
+
+# `strain_type` assigned to the recent circulating strains in the viral barcodes CSV
+circulating_strain_type: circulating_2026
+
+# For the most part our analyses separate recent and historical vaccine strains, but
+# consider these vaccine strains to be "recent" and include them alongside the recent strains.
+recent_vaccine_strains:
+  A/Sydney/1359/2024_H3N2: 2026 cell-based vaccine  # originally called A/Alaska/63/2025_H3N2 in library design
+  A/Missouri/11/2025_H1N1: 2026 cell-based vaccine  # originally called A/Alagoas/3579/2025_H1N1 in library design
+  A/DistrictOfColumbia/27/2023_H3N2: 2025-2026 cell-based vaccine
+  A/Wisconsin/67/2022_H1N1: 2025-2026 cell-based vaccine
+
+# When building the alignment for nextstrain-prot-titers-tree, prepend this sequence onto
+# each sequence in the alignment:
+nextstrain-prot-titers-tree_prefix_alignment:
+  H3N2: ""  # no prefix needed as HAs in viral_barcodes start at HA1 site 1
+  H1N1: DTL  # add these three amino acids as HAs in viral barcode miss first 3 ectodomain aas
+
+# Viral library to use for building nextstrain-prot-titers-tree alignment and metadata.
+# References a key from viral_libraries (e.g., "designed" or "actual").
+nextstrain-prot-titers-tree_viral_library: designed
+
+# Species for which to build tree titers (used to construct input file paths from final_titer_data).
+# Set to null to disable titer overlay on trees.
+nextstrain-prot-titers-tree_titers_from: null
+
+# Cohorts to show on tree (from cohort column in summarized titers)
+serum_cohorts_for_tree: []
+
+# Titer cutoffs for reporting fraction of sera below threshold (used in tree coloring
+# and in process_final_titer_data).
+titer_cutoffs: &titer_cutoffs [140]
+
+# Configuration for `nextstrain-prot-titers-tree`. For each subtype, provide the indicated arguments
+# that have the same meaning described at https://github.com/jbloomlab/nextstrain-prot-titers-tree
+nextstrain-prot-titers-tree_config:
+  H3N2:
+    alignment: results/nextstrain-prot-titers-tree/H3N2/alignment.fa  # built by pipeline
+    outgroup: data/nextstrain-prot-titers-tree_data/H3N2_outgroup.fa
+    site_numbering_map: data/nextstrain-prot-titers-tree_data/H3N2_site_numbering_map.tsv
+    metadata: results/nextstrain-prot-titers-tree/H3N2/metadata.tsv  # built by pipeline
+    color_by_metadata:
+      strain_type: {}
+      subclade: {}
+    metadata_columns: [derived_haplotype]
+    titers: null
+    display_defaults:
+      color_by: subclade
+      distance_measure: div
+      branch_label: aa
+      tip_label: derived_haplotype
+    results_subdir: results/nextstrain-prot-titers-tree/H3N2/pipeline_results
+    auspice_json: auspice/flu-seqneut-2026_H3N2.json
+    addtl_export_args:
+      title: Near real-time data on human neutralizing antibody landscape to H3N2 influenza virus as of the summer of 2026
+      build-url: https://github.com/jbloomlab/flu-seqneut-2026
+      maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom
+  H1N1:
+    alignment: results/nextstrain-prot-titers-tree/H1N1/alignment.fa  # built by pipeline
+    outgroup: data/nextstrain-prot-titers-tree_data/H1N1_outgroup.fa
+    site_numbering_map: data/nextstrain-prot-titers-tree_data/H1N1_site_numbering_map.tsv
+    metadata: results/nextstrain-prot-titers-tree/H1N1/metadata.tsv  # built by pipeline
+    color_by_metadata:
+      strain_type: {}
+      subclade: {}
+    metadata_columns: [derived_haplotype]
+    titers: null
+    display_defaults:
+      color_by: subclade
+      distance_measure: div
+      branch_label: aa
+      tip_label: derived_haplotype
+    results_subdir: results/nextstrain-prot-titers-tree/H1N1/pipeline_results
+    auspice_json: auspice/flu-seqneut-2026_H1N1.json
+    addtl_export_args:
+      title: Near real-time data on human neutralizing antibody landscape to H1N1 influenza virus as of the summer of 2026
+      build-url: https://github.com/jbloomlab/flu-seqneut-2026
+      maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom
+
+# Sera metadata files to aggregate
+sera_metadata: []
+
+# Aggregate and QC final processed titer data for each serum group, which must match
+# the species designation in the serum metadata.
+process_final_titer_data:
+  viral_library: designed  # must specify viral library in viral_libraries used to run plate
+  min_frac_viruses: 0.9  # only include sera w titers against this fraction of viral strains (among viruses with at least one titer)
+  min_frac_sera: 0.8  # only include viral strains w titers against this fraction of sera
+  min_frac_action: drop  # "drop" sera / strains below min_frac, or "raise" an error
+  sera_to_drop: []  # list names of sera to drop
+  viruses_to_drop: []  # list names of viral strains to drop
+  titer_cutoffs: *titer_cutoffs  # report fraction below cutoff
+
+# Parameters for titer summary plots
+plot_titer_summaries_params:
+  titer_cutoff: 140  # initial slider value for fraction below cutoff
+  titer_lower_limit: 40  # lower limit of titers for log scale
+  facet_size: 150  # width of each cohort facet column
+  prop_colors:  # pre-assigned colors for vaccine type labels
+    cell vaccine: black
+    egg vaccine: gray
+  other_prop_colors:  # colors for subclade labels (assigned per subtype)
+    - "#ffed6f"
+    - "#ccebc5"
+    - "#bc80bd"
+    - "#fccde5"
+    - "#b3de69"
+    - "#fdb462"
+    - "#80b1d3"
+    - "#fb8072"
+    - "#bebada"
+    - "#8dd3c7"
+
+# Plot fold changes in titers (used for pre/post vax sera). Other plot parameters come
+# from `plot_titer_summaries_params`
+plot_fold_changes: {}
+
+# --- Configuration for `seqneut-pipeline` ----------------------------------------------
+
+seqneut-pipeline: seqneut-pipeline
+
+description: |
+  # Near real-time data on the human neutralizing antibody landscape to influenza virus as of the summmer of 2026 to inform vaccine-strain selection
+
+  Study led by Caroline Kikawa, Andrew Butler, John Huddleston, and Jesse Bloom.
+
+  The numerical data and computer code are at [https://github.com/jbloomlab/flu-seqneut-2026](https://github.com/jbloomlab/flu-seqneut-2026)
+
+viral_libraries:
+  designed: data/viral_libraries/flu-seqneut-2026-barcode-to-strain-designed.csv
+  
+curve_display_method: svg  # set to png8 if HTMLs of notebooks to big
+
+neut_standard_sets:
+  loes2023: data/neut_standard_sets/loes2023_neut_standards.csv
+
+illumina_barcode_parser_params:
+  upstream: CCTACAATGTCGGATTTGTATTTAATAG
+  downstream: ''
+  minq: 20
+  upstream_mismatch: 4
+  bc_orientation: R2
+
+default_process_plate_qc_thresholds: &default_process_plate_qc_thresholds
+  avg_barcode_counts_per_well: 500
+  min_neut_standard_frac_per_well: 0.005
+  no_serum_per_viral_barcode_filters:
+    min_frac: 0.0001
+    max_fold_change: 4
+    max_wells: 2
+  per_neut_standard_barcode_filters:
+    min_frac: 0.005
+    max_fold_change: 4
+    max_wells: 2
+  min_neut_standard_count_per_well: 1000
+  min_no_serum_count_per_viral_barcode_well: 100
+  max_frac_infectivity_per_viral_barcode_well: 3
+  min_dilutions_per_barcode_serum_replicate: 6
+
+default_process_plate_curvefit_params: &default_process_plate_curvefit_params
+  frac_infectivity_ceiling: 1
+  fixtop: [0.6, 1]
+  fixbottom: 0
+  fixslope: [0.8, 10]
+
+default_process_plate_curvefit_qc:  &default_process_plate_curvefit_qc
+  max_frac_infectivity_at_least: 0.0  # Allow 'completely neutralized' straight lines to be fit
+  goodness_of_fit:  # EITHER R2 must be >= min_R2 or RMSD must be <= max_RMSD
+    min_R2: 0.5
+    max_RMSD: 0.15  # you may be able to increase this to more like 0.1
+  serum_replicates_ignore_curvefit_qc: []
+  barcode_serum_replicates_ignore_curvefit_qc: []
+
+default_serum_titer_as: midpoint
+
+default_serum_qc_thresholds: &default_serum_qc_thresholds
+  min_replicates: 1
+  max_fold_change_from_median: 6
+  viruses_ignore_qc: []
+
+sera_override_defaults: {}
+
+plates: {}
+
+miscellaneous_plates: {}

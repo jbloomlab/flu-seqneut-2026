@@ -109,6 +109,16 @@ def read_excluded_csvs(paths: list[str]) -> list[dict]:
 # Input TSV → selection_file lookup
 # ---------------------------------------------------------------------------
 
+def _merge_selection_files(existing: str, new: str) -> str:
+    """Comma-join two selection_file strings, deduplicating individual entries."""
+    parts = [s.strip() for s in existing.split(",") if s.strip()]
+    for s in new.split(","):
+        s = s.strip()
+        if s and s not in parts:
+            parts.append(s)
+    return ",".join(parts)
+
+
 def build_selection_file_lookup(
     input_tsv_paths: list[str],
 ) -> tuple[dict[tuple[str, str], str], dict[str, str]]:
@@ -119,6 +129,10 @@ def build_selection_file_lookup(
     doesn't carry that column). Input TSVs are read raw — no ectodomain
     translation is done here — so the protein-sequence join key is whatever
     is in the TSV's `protein_sequence_HA_ectodomain` column if present.
+
+    When the same strain appears in multiple input TSVs (i.e. across orders),
+    selection_file values are comma-joined (deduplicating individual entries) so
+    all orders that claimed a haplotype are represented.
 
     NOTE: The plasmid-log CSV stores the *translated* ectodomain. If the input
     TSV doesn't itself carry a protein_sequence_HA_ectodomain column, we fall
@@ -135,8 +149,17 @@ def build_selection_file_lookup(
             selection_file = (row.get("selection_file") or "").strip()
             if has_protein:
                 protein_seq = (row.get("protein_sequence_HA_ectodomain") or "").strip()
-                lookup.setdefault((strain, protein_seq), selection_file)
-            strain_only_lookup.setdefault(strain, selection_file)
+                key = (strain, protein_seq)
+                if key in lookup:
+                    lookup[key] = _merge_selection_files(lookup[key], selection_file)
+                else:
+                    lookup[key] = selection_file
+            if strain in strain_only_lookup:
+                strain_only_lookup[strain] = _merge_selection_files(
+                    strain_only_lookup[strain], selection_file
+                )
+            else:
+                strain_only_lookup[strain] = selection_file
     log.info(
         f"Built selection_file lookup from {len(input_tsv_paths)} TSV(s): "
         f"{len(lookup)} (strain, protein) keys, {len(strain_only_lookup)} strain-only keys."

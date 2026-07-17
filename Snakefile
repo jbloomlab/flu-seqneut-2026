@@ -26,18 +26,18 @@ if "nextstrain-prot-titers-tree_config" in config:
 rule all:
     input:
         # output from seqneut-pipeline
-#        seqneut_pipeline_outputs,
+        seqneut_pipeline_outputs,
         # validation of viral libraries
         expand(
             "results/validate_viral_library/{viral_library}_validation.txt",
             viral_library=config["viral_libraries"],
         ),
         # auspice JSONs from nextstrain-prot-titers-tree
-#        auspice_jsons,
+        auspice_jsons,
+# COMMENTED OUT FOR NOW AS NO TITER DATA ADDED YET
         # aggregated sera metadata
 #        "results/sera_metadata/all_sera_metadata.csv",
         # final processed titer data
-# COMMENTED OUT FOR NOW AS NO TITER DATA ADDED YET
 #        expand(
 #            "results/final_titer_data/{group}_{output_type}.csv",
 #            group=groups,

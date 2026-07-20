@@ -26,8 +26,9 @@ def aggregate_library_strains(input_csvs, input_csvs_valid_haplotypes, output_ts
     haplotype_dfs = []
     for hap_path in input_csvs_valid_haplotypes:
         hap_df = pd.read_csv(hap_path, sep='\t')
-        # Keep only the columns needed for matching
-        hap_df = hap_df[['representative_strain', 'representative_strain_ha_sequence', 'selection_file']]
+        # Keep only the columns needed for matching plus the metadata we carry
+        # through (selection_file and derived_haplotype).
+        hap_df = hap_df[['representative_strain', 'representative_strain_ha_sequence', 'selection_file', 'derived_haplotype']]
         haplotype_dfs.append(hap_df)
     
     # Combine all haplotype data
@@ -61,8 +62,9 @@ def aggregate_library_strains(input_csvs, input_csvs_valid_haplotypes, output_ts
                 msg_lines.append(f"  ... and {len(unmatched) - 20} more")
             raise ValueError("\n".join(msg_lines))
         
-        # Select required columns
-        df = df[['subtype', 'strain', 'accession_w_aa_muts_added', 'prot_sequence', 'nt_sequence', 'selection_file']]
+        # Select required columns, with derived_haplotype after strain to match
+        # the full_design aggregated schema.
+        df = df[['subtype', 'strain', 'derived_haplotype', 'accession_w_aa_muts_added', 'prot_sequence', 'nt_sequence', 'selection_file']]
         dfs.append(df)
     
     # Combine all dataframes

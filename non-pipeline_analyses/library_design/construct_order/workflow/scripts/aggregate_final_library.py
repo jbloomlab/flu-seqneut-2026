@@ -78,6 +78,46 @@ def load_config(config_path: str) -> dict:
         return yaml.safe_load(f)
 
 
+def load_vaccine_annotations(annotation_file: str) -> dict[str, dict]:
+    """
+    Load the vaccine annotation file keyed by protein_sequence_HA_ectodomain.
+
+    This is the authoritative source of `vaccine_annotation` /
+    `passage_history_annotation`: when a final-library row's HA ectodomain is
+    present here, these values override whatever the row inherited from its
+    source (plasmid log or the past-sequences construct log). Matching is by HA
+    ectodomain sequence, not strain name, mirroring generate_constructs.py.
+    """
+    annotations: dict[str, dict] = {}
+    with open(annotation_file, newline="") as f:
+        for row in csv.DictReader(f):
+            protein_seq = row["protein_sequence_HA_ectodomain"]
+            if protein_seq:
+                annotations[protein_seq] = {
+                    "vaccine_annotation": row["vaccine_annotation"],
+                    "passage_history_annotation": row["passage_history_annotation"],
+                }
+    log.info(f"Loaded {len(annotations)} vaccine annotations from {annotation_file}.")
+    return annotations
+
+
+def apply_vaccine_annotation_overrides(rows: list[dict], annotations: dict[str, dict]) -> None:
+    """
+    Override vaccine_annotation / passage_history_annotation on final-library
+    rows from the vaccine annotation file (authoritative), matched by HA
+    ectodomain sequence. Mutates rows in place; rows whose HA is not in the
+    annotation file are left unchanged.
+    """
+    n = 0
+    for row in rows:
+        ann = annotations.get(row.get("protein_sequence_HA_ectodomain", ""))
+        if ann is not None:
+            row["vaccine_annotation"] = ann["vaccine_annotation"]
+            row["passage_history_annotation"] = ann["passage_history_annotation"]
+            n += 1
+    log.info(f"Applied vaccine annotation overrides to {n} final-library rows.")
+
+
 def _read_csv_rows(path: Path, delimiter: str = ",") -> list[dict]:
     with open(path, newline="") as f:
         return list(csv.DictReader(f, delimiter=delimiter))
@@ -498,6 +538,15 @@ def main():
     excluded = build_excluded_rows(excluded_rows_in, past_lookup)
 
     final_rows = kept + excluded
+
+    # vaccine_annotations.csv is authoritative for vaccine_annotation /
+    # passage_history_annotation: apply it to all final rows (matched by HA
+    # ectodomain) so it overrides values inherited from the past-sequences
+    # construct log for excluded/pre-existing constructs.
+    annotation_file = config.get("annotation_file")
+    if annotation_file:
+        apply_vaccine_annotation_overrides(final_rows, load_vaccine_annotations(annotation_file))
+
     output_path = Path(args.output)
     write_final_library_csv(final_rows, output_path)
     write_haplotypes_by_subtype(final_rows, output_path.parent)

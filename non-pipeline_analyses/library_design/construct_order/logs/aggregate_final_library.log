@@ -48,6 +48,8 @@ WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='p
 WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='plate17-B9_pHW2000_A_BritishColumbia_RV00022-26_2025_bc1.gb;plate17-B10_pHW2000_A_BritishColumbia_RV00022-26_2025_bc2.gb'): ID 'plate17-B9_pHW2000_A_BritishColumbia_RV00022-26_2025_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
 WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='plate17-B9_pHW2000_A_BritishColumbia_RV00022-26_2025_bc1.gb;plate17-B10_pHW2000_A_BritishColumbia_RV00022-26_2025_bc2.gb'): ID 'plate17-B10_pHW2000_A_BritishColumbia_RV00022-26_2025_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
 INFO: Excluded → final-library: emitted 48 rows (skipped 0 intra-order duplicates, 8 cross-order duplicates; 26 IDs missing in past-sequences lookup).
+INFO: Loaded 18 vaccine annotations from data/vaccine_annotations.csv.
+INFO: Applied vaccine annotation overrides to 10 final-library rows.
 INFO: Final library CSV written (290 rows): results/final_library/final_library.csv
 INFO: Haplotypes file written (65 unique haplotypes): results/final_library/H1N1_final_haplotypes.txt
 INFO: Haplotypes file written (80 unique haplotypes): results/final_library/H3N2_final_haplotypes.txt

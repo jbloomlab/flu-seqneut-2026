@@ -714,9 +714,16 @@ def curate_library_sequences(valid_haplotypes_path, additional_haplotypes_paths,
     df_selected = df_selected[selected_ordered_cols]
     df_nonselected = df_nonselected[nonselected_ordered_cols]
 
-    # Sort: selected ascending by HA1+HA2 distance, non-selected descending
+    # Sort: selected ascending by HA1+HA2 distance, non-selected descending.
+    # The non-selected sort adds representative_strain as a deterministic
+    # tiebreaker so rows sharing a hamming distance always come out in the same
+    # order; without it the output row order is non-deterministic across runs
+    # (the distance column is heavily tied), producing spurious diffs.
     df_selected = df_selected.sort_values('hamming_distance_nearest_library_strain_ha1_ha2', ascending=True)
-    df_nonselected = df_nonselected.sort_values('hamming_distance_nearest_library_strain_ha1_ha2', ascending=False)
+    df_nonselected = df_nonselected.sort_values(
+        ['hamming_distance_nearest_library_strain_ha1_ha2', 'representative_strain'],
+        ascending=[False, True],
+    )
 
     # Save outputs
     df_selected.to_csv(selected_output_path, sep='\t', index=False)

@@ -32,6 +32,7 @@ Usage:
 
 import argparse
 import csv
+import datetime
 import logging
 import re
 from pathlib import Path
@@ -116,6 +117,82 @@ def apply_vaccine_annotation_overrides(rows: list[dict], annotations: dict[str, 
             row["passage_history_annotation"] = ann["passage_history_annotation"]
             n += 1
     log.info(f"Applied vaccine annotation overrides to {n} final-library rows.")
+
+
+def _normalize_collection_date(value: str) -> str:
+    """Normalize a collection date to YYYY-MM-DD.
+
+    Accepts an already-ISO date (returned unchanged) or a decimal year such as
+    "2025.76", which is converted to a calendar date via
+    year + round(fraction * days_in_year), with day 1 = Jan 1. Empty stays empty.
+    """
+    value = (value or "").strip()
+    if not value:
+        return ""
+    if "-" in value:  # already an ISO date
+        return value
+    dec = float(value)
+    year = int(dec)
+    start = datetime.date(year, 1, 1)
+    days_in_year = (datetime.date(year + 1, 1, 1) - start).days
+    return (start + datetime.timedelta(days=round((dec - year) * days_in_year))).isoformat()
+
+
+# Column names a reference file may use for the collection date, in priority
+# order. Different library rounds have named it differently (e.g. `collection_date`
+# in 2025to2026, `num_date` in 2025).
+_REFERENCE_DATE_COLUMNS = ("collection_date", "num_date")
+
+
+def load_collection_date_references(reference_files: list[str]) -> dict[str, str]:
+    """
+    Build a {protein_sequence_HA_ectodomain -> collection_date (ISO)} lookup from
+    reference CSVs used to back-fill missing collection dates. Files are consulted
+    in order; the first file with a matching sequence wins (later files do not
+    override an earlier hit). Rows without a sequence or date are skipped.
+
+    Each file must have a `protein_sequence_HA_ectodomain` column and a date
+    column named by one of `_REFERENCE_DATE_COLUMNS`; the date may be ISO or a
+    decimal year and is normalized to YYYY-MM-DD.
+    """
+    lookup: dict[str, str] = {}
+    for path in reference_files:
+        n = 0
+        with open(path, newline="") as f:
+            reader = csv.DictReader(f)
+            fieldnames = reader.fieldnames or []
+            date_col = next((c for c in _REFERENCE_DATE_COLUMNS if c in fieldnames), None)
+            if "protein_sequence_HA_ectodomain" not in fieldnames or date_col is None:
+                raise ValueError(
+                    f"Collection-date reference {path!r} must have a "
+                    f"'protein_sequence_HA_ectodomain' column and one of "
+                    f"{_REFERENCE_DATE_COLUMNS}. Found columns: {fieldnames}"
+                )
+            for row in reader:
+                seq = (row.get("protein_sequence_HA_ectodomain") or "").strip()
+                date_val = (row.get(date_col) or "").strip()
+                if seq and date_val and seq not in lookup:
+                    lookup[seq] = _normalize_collection_date(date_val)
+                    n += 1
+        log.info(f"Loaded {n} collection-date references from {path} (date column {date_col!r}).")
+    return lookup
+
+
+def fill_missing_collection_dates(rows: list[dict], references: dict[str, str]) -> None:
+    """
+    Back-fill an empty `collection_date` on final-library rows from the reference
+    lookup, matched by HA ectodomain sequence. Mutates rows in place; only fills
+    rows whose collection_date is empty (never overwrites an existing value).
+    """
+    n = 0
+    for row in rows:
+        if (row.get("collection_date") or "").strip():
+            continue
+        date_val = references.get(row.get("protein_sequence_HA_ectodomain", ""))
+        if date_val:
+            row["collection_date"] = date_val
+            n += 1
+    log.info(f"Back-filled collection_date for {n} final-library rows.")
 
 
 def _read_csv_rows(path: Path, delimiter: str = ",") -> list[dict]:
@@ -546,6 +623,17 @@ def main():
     annotation_file = config.get("annotation_file")
     if annotation_file:
         apply_vaccine_annotation_overrides(final_rows, load_vaccine_annotations(annotation_file))
+
+    # Back-fill missing collection dates from reference CSVs (matched by HA
+    # ectodomain sequence), e.g. carrying dates over from a prior library round.
+    # Only fills rows whose collection_date is empty.
+    reference_files = config.get("collection_date_reference_files", []) or []
+    if isinstance(reference_files, str):
+        reference_files = [reference_files]
+    if reference_files:
+        fill_missing_collection_dates(
+            final_rows, load_collection_date_references(reference_files)
+        )
 
     output_path = Path(args.output)
     write_final_library_csv(final_rows, output_path)

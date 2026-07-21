@@ -12,6 +12,19 @@ past_protein_sequences_to_avoid:
   - "data/2026-05-07_seqneut_construct_log.csv"
 annotation_file: "data/vaccine_annotations.csv"
 
+# Reference CSVs used to back-fill a missing `collection_date` in the final
+# library. Each file must have `protein_sequence_HA_ectodomain` and
+# `collection_date` columns; the date is matched by HA ectodomain sequence and
+# only fills rows whose collection_date is empty (never overwrites). Dates may be
+# in decimal-year form (e.g. 2025.76) and are converted to YYYY-MM-DD. Files are
+# consulted in order; the first one with a matching sequence wins.
+collection_date_reference_files:
+  - "data/flu-seqneut-2025to2026-barcode-to-strain-designed.csv"
+  - "data/flu-seqneut-2025-barcode-to-strain_designed.csv"
+  # Manually curated one-off dates for strains with no prior-round designed CSV.
+  # See the source_note column in the file for how each date was obtained.
+  - "data/manual_collection_dates.csv"
+
 subtype_params:
   H3N2:
     append_additional_upstream_sequence: ''

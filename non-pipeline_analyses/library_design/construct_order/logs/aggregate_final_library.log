@@ -50,6 +50,10 @@ WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='p
 INFO: Excluded → final-library: emitted 48 rows (skipped 0 intra-order duplicates, 8 cross-order duplicates; 26 IDs missing in past-sequences lookup).
 INFO: Loaded 18 vaccine annotations from data/vaccine_annotations.csv.
 INFO: Applied vaccine annotation overrides to 10 final-library rows.
+INFO: Loaded 114 collection-date references from data/flu-seqneut-2025to2026-barcode-to-strain-designed.csv (date column 'collection_date').
+INFO: Loaded 109 collection-date references from data/flu-seqneut-2025-barcode-to-strain_designed.csv (date column 'num_date').
+INFO: Loaded 2 collection-date references from data/manual_collection_dates.csv (date column 'collection_date').
+INFO: Back-filled collection_date for 48 final-library rows.
 INFO: Final library CSV written (290 rows): results/final_library/final_library.csv
 INFO: Haplotypes file written (65 unique haplotypes): results/final_library/H1N1_final_haplotypes.txt
 INFO: Haplotypes file written (80 unique haplotypes): results/final_library/H3N2_final_haplotypes.txt

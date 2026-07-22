@@ -82,6 +82,7 @@ rule aggregate_final_library:
     input:
         config="config.yaml",
         collection_date_references=config.get("collection_date_reference_files", []) or [],
+        additional_vaccine_constructs=config.get("additional_vaccine_constructs", []) or [],
         log_csvs=expand(
             "results/plasmid_log/{date}_{order}.csv",
             zip,

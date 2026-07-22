@@ -97,6 +97,8 @@ def load_vaccine_annotations(annotation_file: str) -> dict[str, dict]:
                 annotations[protein_seq] = {
                     "vaccine_annotation": row["vaccine_annotation"],
                     "passage_history_annotation": row["passage_history_annotation"],
+                    "strain": (row.get("strain") or "").strip(),
+                    "alternate_strain_name": (row.get("alternate_strain_name") or "").strip(),
                 }
     log.info(f"Loaded {len(annotations)} vaccine annotations from {annotation_file}.")
     return annotations
@@ -117,6 +119,62 @@ def apply_vaccine_annotation_overrides(rows: list[dict], annotations: dict[str, 
             row["passage_history_annotation"] = ann["passage_history_annotation"]
             n += 1
     log.info(f"Applied vaccine annotation overrides to {n} final-library rows.")
+
+
+def apply_vaccine_strain_name_overrides(rows: list[dict], annotations: dict[str, dict]) -> None:
+    """
+    Make the vaccine strain name primary when a vaccine strain shares its HA with
+    a differently-named library construct.
+
+    For each vaccine annotation whose `strain` (vaccine name) differs from the
+    matched construct name, rename final-library rows with that HA ectodomain to
+    the vaccine name. Matching is by HA sequence, so this is authoritative
+    regardless of how the construct entered the library (kept, excluded, or
+    additional-vaccine).
+
+    When the resulting vaccine name would be shared by rows with *different* HA
+    sequences (e.g. the egg and cell forms of the same vaccine), disambiguate all
+    of them by appending `_{passage_history_annotation}` (e.g. A/Missouri/11/2025
+    -> A/Missouri/11/2025_egg and A/Missouri/11/2025_cell). Mutates rows in place.
+    """
+    # Desired vaccine name per HA sequence (only where the annotation names the strain).
+    vaccine_name_by_seq = {
+        seq: ann["strain"]
+        for seq, ann in annotations.items()
+        if ann.get("strain")
+    }
+
+    # Compute each row's intended name (vaccine name if annotated, else current).
+    for row in rows:
+        seq = row.get("protein_sequence_HA_ectodomain", "")
+        row["_intended_name"] = vaccine_name_by_seq.get(seq, row.get("strain", ""))
+
+    # A name "collides" when rows sharing that intended name have >1 distinct HA
+    # sequence (i.e. different vaccine forms) -- those get a passage suffix.
+    seqs_by_name: dict[str, set] = {}
+    for row in rows:
+        seqs_by_name.setdefault(row["_intended_name"], set()).add(
+            row.get("protein_sequence_HA_ectodomain", "")
+        )
+    colliding_names = {name for name, seqs in seqs_by_name.items() if len(seqs) > 1}
+
+    n_renamed = 0
+    for row in rows:
+        name = row["_intended_name"]
+        if name in colliding_names:
+            passage = (row.get("passage_history_annotation") or "").strip()
+            if not passage:
+                raise ValueError(
+                    f"Cannot disambiguate colliding vaccine strain name {name!r}: "
+                    f"row for shortname {row.get('shortname', '')!r} has no "
+                    f"passage_history_annotation to append."
+                )
+            name = f"{name}_{passage}"
+        if name != row.get("strain", ""):
+            row["strain"] = name
+            n_renamed += 1
+        del row["_intended_name"]
+    log.info(f"Applied vaccine strain-name overrides to {n_renamed} final-library rows.")
 
 
 def _normalize_collection_date(value: str) -> str:
@@ -444,6 +502,157 @@ def build_excluded_rows(
     return out
 
 
+def load_additional_vaccine_sequences(reference_files: list[str]) -> dict[str, dict]:
+    """
+    Load a {HA ectodomain protein sequence -> {derived_haplotype, subclade}}
+    lookup identifying vaccine-reference constructs to explicitly include, from
+    CSVs with a `protein_sequence_HA_ectodomain` column. Matching is by sequence,
+    not strain name, mirroring the annotation and collection-date references.
+
+    These older constructs predate the haplotype scheme, so the construct log has
+    no `derived_haplotype` for them; the reference file supplies it (and
+    optionally `subclade`) to satisfy the designed-library build's requirement
+    that every strain has a derived_haplotype.
+    """
+    lookup: dict[str, dict] = {}
+    for path in reference_files:
+        with open(path, newline="") as f:
+            reader = csv.DictReader(f)
+            if "protein_sequence_HA_ectodomain" not in (reader.fieldnames or []):
+                raise ValueError(
+                    f"additional_vaccine_constructs file {path!r} must have a "
+                    f"'protein_sequence_HA_ectodomain' column. Found: {reader.fieldnames}"
+                )
+            n = 0
+            for row in reader:
+                seq = (row.get("protein_sequence_HA_ectodomain") or "").strip()
+                if seq and seq not in lookup:
+                    lookup[seq] = {
+                        "strain": (row.get("strain") or "").strip(),
+                        "derived_haplotype": (row.get("derived_haplotype") or "").strip(),
+                        "subclade": (row.get("subclade") or "").strip(),
+                    }
+                    n += 1
+        log.info(f"Loaded {n} additional-vaccine sequences from {path}.")
+    return lookup
+
+
+def build_additional_vaccine_rows(
+    include: dict[str, dict],
+    past_files: list[str],
+    already_present_sequences: set[str],
+) -> list[dict]:
+    """
+    Pull existing constructs whose HA ectodomain matches one of `include`'s
+    sequences directly from the past-sequences construct log(s), for vaccine
+    reference strains that were made in a prior round but did not otherwise match
+    a designed strain.
+
+    Each matching construct-log row becomes a final-library row
+    (need_to_order=False), with `derived_haplotype`/`subclade` taken from the
+    reference file (`include`) since the construct log lacks them for these older
+    strains. Sequences already present in the library
+    (`already_present_sequences`) are skipped, and duplicate constructs (same
+    strain + protein + plasmid id) are emitted once. Fails fast if a requested
+    sequence is not found in any construct log, so a missing construct is not
+    silently dropped. Remaining metadata (vaccine_annotation, collection_date,
+    ...) is filled by the later HA-sequence override/fallback passes, as for
+    excluded rows.
+    """
+    if not include:
+        return []
+
+    include_sequences = list(include)
+
+    def _norm_name(name: str) -> str:
+        return (name or "").replace(" ", "").replace("_", "").replace("-", "").lower()
+
+    # First pass: collect matching construct-log rows grouped by reference
+    # sequence. A reference matches a construct if it is an exact prefix of the
+    # construct's ectodomain (older rounds stored a slightly longer ectodomain,
+    # e.g. flu-seqneut-H3-2023to2024 with 504 aa vs the current 501, so the
+    # current sequence is a prefix; the same HA otherwise matches exactly).
+    matches: dict[str, list[dict]] = {s: [] for s in include_sequences}
+    for path in past_files:
+        for row in _read_csv_rows(Path(path)):
+            log_seq = (row.get("protein_sequence_HA_ectodomain") or "").strip()
+            if not log_seq:
+                continue
+            ref_seq = next(
+                (s for s in include_sequences if log_seq.startswith(s)), None
+            )
+            if ref_seq is not None:
+                matches[ref_seq].append(row)
+
+    out: list[dict] = []
+    seen_construct: set[tuple[str, str, str]] = set()
+    found = {s for s, rows in matches.items() if rows}
+    for ref_seq in include_sequences:
+        rows = matches[ref_seq]
+        if not rows or ref_seq in already_present_sequences:
+            continue
+        meta = include[ref_seq]
+        # A reference sequence can be shared by more than one strain in the log
+        # (identical HA under different isolate names). When the reference names a
+        # strain, keep only the constructs whose log name matches it; otherwise
+        # (e.g. the vaccine name differs from every matched construct, as for a
+        # renamed construct) keep all matched constructs by sequence.
+        ref_name = meta.get("strain", "")
+        if ref_name:
+            name_matched = [
+                r for r in rows if _norm_name(r.get("strain", "")) == _norm_name(ref_name)
+            ]
+            if name_matched:
+                rows = name_matched
+        for row in rows:
+            log_seq = (row.get("protein_sequence_HA_ectodomain") or "").strip()
+            new_row = {col: row.get(col, "") for col in FINAL_LIBRARY_FIELDNAMES}
+            new_row["need_to_order"] = False
+            # Store the ectodomain at the reference (current) length, trimming the
+            # construct's extra C-terminal residues (and matching nt) so the
+            # library stays uniform. nt is codon-aligned (protein * 3).
+            if len(log_seq) > len(ref_seq):
+                new_row["protein_sequence_HA_ectodomain"] = ref_seq
+                nt = new_row.get("nt_sequence_HA_ectodomain", "")
+                new_row["nt_sequence_HA_ectodomain"] = nt[: len(ref_seq) * 3]
+            # These older constructs have no derived_haplotype/subclade in the
+            # log; take them from the reference file when it supplies a value.
+            # When the vaccine strain and the matched construct have different
+            # isolate names (same HA), the reference file's `strain` is the
+            # vaccine name and is used as the primary library name.
+            if meta.get("strain"):
+                new_row["strain"] = meta["strain"]
+            if meta.get("derived_haplotype"):
+                new_row["derived_haplotype"] = meta["derived_haplotype"]
+            if meta.get("subclade"):
+                new_row["subclade"] = meta["subclade"]
+            key = (
+                new_row.get("strain", ""),
+                new_row.get("protein_sequence_HA_ectodomain", ""),
+                new_row.get("bloom_lab_plasmid_log_id", ""),
+            )
+            if key in seen_construct:
+                continue
+            seen_construct.add(key)
+            out.append(new_row)
+
+    not_found = set(include_sequences) - found
+    if not_found:
+        raise ValueError(
+            f"{len(not_found)} additional_vaccine_constructs sequence(s) not found "
+            f"in any past construct log (by HA ectodomain prefix). First unmatched "
+            f"(len {len(next(iter(not_found)))}): {next(iter(not_found))[:40]}..."
+        )
+    n_skipped = len(set(include_sequences) & already_present_sequences)
+    if n_skipped:
+        log.info(
+            f"additional_vaccine_constructs already in library, not re-added: "
+            f"{n_skipped} sequence(s)."
+        )
+    log.info(f"Additional vaccine constructs → final-library: emitted {len(out)} rows.")
+    return out
+
+
 # ---------------------------------------------------------------------------
 # Summary logging
 # ---------------------------------------------------------------------------
@@ -614,7 +823,26 @@ def main():
     kept = build_kept_rows(plasmid_log_rows, selection_lookup, strain_only_lookup)
     excluded = build_excluded_rows(excluded_rows_in, past_lookup)
 
-    final_rows = kept + excluded
+    # Explicitly include existing constructs for vaccine reference strains (made
+    # in a prior round, present in the construct log but not otherwise in the
+    # library). Identified by HA ectodomain sequence via reference file(s); the
+    # matching construct is pulled from the construct log. Skip sequences already
+    # present from the kept/excluded rows.
+    additional_vaccine_files = config.get("additional_vaccine_constructs", []) or []
+    if isinstance(additional_vaccine_files, str):
+        additional_vaccine_files = [additional_vaccine_files]
+    extra_vaccine_rows = []
+    if additional_vaccine_files:
+        already_present_seqs = {
+            r.get("protein_sequence_HA_ectodomain", "") for r in kept + excluded
+        }
+        extra_vaccine_rows = build_additional_vaccine_rows(
+            load_additional_vaccine_sequences(additional_vaccine_files),
+            past_files,
+            already_present_seqs,
+        )
+
+    final_rows = kept + excluded + extra_vaccine_rows
 
     # vaccine_annotations.csv is authoritative for vaccine_annotation /
     # passage_history_annotation: apply it to all final rows (matched by HA
@@ -622,7 +850,12 @@ def main():
     # construct log for excluded/pre-existing constructs.
     annotation_file = config.get("annotation_file")
     if annotation_file:
-        apply_vaccine_annotation_overrides(final_rows, load_vaccine_annotations(annotation_file))
+        annotations = load_vaccine_annotations(annotation_file)
+        apply_vaccine_annotation_overrides(final_rows, annotations)
+        # Make the vaccine strain name primary where a vaccine strain shares its
+        # HA with a differently-named construct; runs after the annotation
+        # override so passage is set for collision disambiguation.
+        apply_vaccine_strain_name_overrides(final_rows, annotations)
 
     # Back-fill missing collection dates from reference CSVs (matched by HA
     # ectodomain sequence), e.g. carrying dates over from a prior library round.

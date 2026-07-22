@@ -1,5 +1,7 @@
 """Script to build the designed library CSV."""
 
+import datetime
+
 import pandas as pd
 
 input_csv = r"../../non-pipeline_analyses/library_design/construct_order/results/final_library/final_library.csv"
@@ -130,14 +132,30 @@ def add_vaccine_type(df):
     return df
 
 
-def add_collection_date(df):
-    """Carry `collection_date` through from the input library unchanged.
+def _iso_to_decimal_year(value):
+    """Convert a YYYY-MM-DD date string to a decimal year rounded to 2 places.
 
-    The library sources this from each strain's `latest_sequence` date; it is
-    empty for strains without one (e.g. the older_* haplotype additions), which
-    is preserved here rather than back-filled.
+    Empty/NaN values are passed through unchanged. E.g. '2022-10-25' -> 2022.81.
     """
-    return df.copy()
+    if pd.isna(value) or str(value).strip() == "":
+        return value
+    d = datetime.date.fromisoformat(str(value).strip())
+    start = datetime.date(d.year, 1, 1)
+    days_in_year = (datetime.date(d.year + 1, 1, 1) - start).days
+    return round(d.year + (d - start).days / days_in_year, 2)
+
+
+def add_collection_date(df):
+    """Convert `collection_date` from the input library to a decimal year.
+
+    The library stores collection_date as an ISO date (YYYY-MM-DD) sourced from
+    each strain's `latest_sequence`; downstream consumers of this designed CSV
+    expect the previous library's numeric decimal-year format (e.g. 2022.81), so
+    convert here. Empty dates (strains without a `latest_sequence`) stay empty.
+    """
+    df = df.copy()
+    df["collection_date"] = df["collection_date"].apply(_iso_to_decimal_year)
+    return df
 
 
 def add_subtype_suffix(df):

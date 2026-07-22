@@ -190,4 +190,12 @@ sera_override_defaults: {}
 
 plates: {}
 
-miscellaneous_plates: {}
+miscellaneous_plates:
+  20260715_equal_vol_pool:
+      date: 2026-07-15
+      viral_library: designed
+      neut_standard_set: loes2023
+      samples_csv: data/miscellaneous_plates/2026-07-15_equal_vol_pool.csv
+      illumina_barcode_parser_params:
+        upstream2: GCTACA # Fwd1
+        upstream2_mismatch: 1

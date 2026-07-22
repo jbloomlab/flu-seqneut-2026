@@ -2,7 +2,7 @@
   "version": "v2",
   "meta": {
     "title": "Near real-time data on human neutralizing antibody landscape to H1N1 influenza virus as of the summer of 2026",
-    "updated": "2026-07-21",
+    "updated": "2026-07-22",
     "build_url": "https://github.com/jbloomlab/flu-seqneut-2026",
     "maintainers": [
       {
@@ -71,64 +71,37 @@
     "node_attrs": {
       "div": 0,
       "num_date": {
-        "value": 2023.369
+        "value": 2022.144
       }
     },
     "branch_attrs": {},
     "children": [
       {
-        "name": "NODE_0000002",
+        "name": "NODE_0000056",
         "node_attrs": {
-          "div": 1,
+          "div": 2,
           "num_date": {
-            "value": 2023.954
+            "value": 2023.695
           }
         },
         "branch_attrs": {
           "mutations": {
             "HA1": [
+              "T120A",
               "K169Q"
             ]
           },
           "labels": {
-            "aa": "HA1: K169Q"
+            "aa": "HA1: T120A, K169Q"
           }
         },
         "children": [
           {
-            "name": "A/Zacapa/FLU-012/2025",
+            "name": "NODE_0000058",
             "node_attrs": {
-              "div": 2,
+              "div": 3,
               "num_date": {
-                "value": 2025.07
-              },
-              "derived_haplotype": {
-                "value": "C.1.9.3"
-              },
-              "subclade": {
-                "value": "C.1.9.3"
-              },
-              "strain_type": {
-                "value": "circulating_2026"
-              }
-            },
-            "branch_attrs": {
-              "mutations": {
-                "HA1": [
-                  "S83P"
-                ]
-              },
-              "labels": {
-                "aa": "HA1: S83P"
-              }
-            }
-          },
-          {
-            "name": "NODE_0000057",
-            "node_attrs": {
-              "div": 2,
-              "num_date": {
-                "value": 2024.135
+                "value": 2024.033
               }
             },
             "branch_attrs": {
@@ -145,7 +118,7 @@
               {
                 "name": "A/Singapore/MOH0547/2024",
                 "node_attrs": {
-                  "div": 5,
+                  "div": 6,
                   "num_date": {
                     "value": 2024.94
                   },
@@ -177,7 +150,7 @@
               {
                 "name": "A/Ohio/259/2024",
                 "node_attrs": {
-                  "div": 7,
+                  "div": 8,
                   "num_date": {
                     "value": 2024.75
                   },
@@ -207,51 +180,21 @@
                 }
               }
             ]
-          }
-        ]
-      },
-      {
-        "name": "NODE_0000053",
-        "node_attrs": {
-          "div": 1,
-          "num_date": {
-            "value": 2023.449
-          }
-        },
-        "branch_attrs": {
-          "mutations": {
-            "HA1": [
-              "P137S"
-            ]
           },
-          "labels": {
-            "aa": "HA1: P137S"
-          }
-        },
-        "children": [
           {
-            "name": "NODE_0000005",
+            "name": "NODE_0000004",
             "node_attrs": {
               "div": 2,
               "num_date": {
-                "value": 2025.167
+                "value": 2024.681
               }
             },
-            "branch_attrs": {
-              "mutations": {
-                "HA1": [
-                  "K169Q"
-                ]
-              },
-              "labels": {
-                "aa": "HA1: K169Q"
-              }
-            },
+            "branch_attrs": {},
             "children": [
               {
                 "name": "A/Tokyo/EIS11-277/2024",
                 "node_attrs": {
-                  "div": 2,
+                  "div": 3,
                   "num_date": {
                     "value": 2025.64
                   },
@@ -265,37 +208,45 @@
                     "value": "circulating_2026"
                   }
                 },
-                "branch_attrs": {}
+                "branch_attrs": {
+                  "mutations": {
+                    "HA1": [
+                      "P137S"
+                    ]
+                  },
+                  "labels": {
+                    "aa": "HA1: P137S"
+                  }
+                }
               },
               {
-                "name": "NODE_0000058",
+                "name": "NODE_0000059",
                 "node_attrs": {
-                  "div": 4,
+                  "div": 3,
                   "num_date": {
-                    "value": 2025.48
+                    "value": 2024.903
                   }
                 },
                 "branch_attrs": {
                   "mutations": {
                     "HA1": [
-                      "S83P",
-                      "I166V"
+                      "S83P"
                     ]
                   },
                   "labels": {
-                    "aa": "HA1: S83P, I166V"
+                    "aa": "HA1: S83P"
                   }
                 },
                 "children": [
                   {
-                    "name": "A/Mauritius/26000203/2026",
+                    "name": "A/Zacapa/FLU-012/2025",
                     "node_attrs": {
-                      "div": 6,
+                      "div": 3,
                       "num_date": {
-                        "value": 2026.06
+                        "value": 2025.07
                       },
                       "derived_haplotype": {
-                        "value": "C.1.9.3:T82K,P137S,A141V,I166V"
+                        "value": "C.1.9.3"
                       },
                       "subclade": {
                         "value": "C.1.9.3"
@@ -304,46 +255,37 @@
                         "value": "circulating_2026"
                       }
                     },
-                    "branch_attrs": {
-                      "mutations": {
-                        "HA1": [
-                          "T82K",
-                          "A141V"
-                        ]
-                      },
-                      "labels": {
-                        "aa": "HA1: T82K, A141V"
-                      }
-                    }
+                    "branch_attrs": {}
                   },
                   {
-                    "name": "NODE_0000059",
+                    "name": "NODE_0000060",
                     "node_attrs": {
                       "div": 5,
                       "num_date": {
-                        "value": 2025.587
+                        "value": 2025.221
                       }
                     },
                     "branch_attrs": {
                       "mutations": {
                         "HA1": [
-                          "G155E"
+                          "P137S",
+                          "I166V"
                         ]
                       },
                       "labels": {
-                        "aa": "HA1: G155E"
+                        "aa": "HA1: P137S, I166V"
                       }
                     },
                     "children": [
                       {
-                        "name": "A/Switzerland/UN-SNRCI-HUG-053/2025",
+                        "name": "A/Mauritius/26000203/2026",
                         "node_attrs": {
                           "div": 7,
                           "num_date": {
-                            "value": 2025.95
+                            "value": 2026.06
                           },
                           "derived_haplotype": {
-                            "value": "C.1.9.3:D86E,P137S,S143G,G155E,I166V"
+                            "value": "C.1.9.3:T82K,P137S,A141V,I166V"
                           },
                           "subclade": {
                             "value": "C.1.9.3"
@@ -355,94 +297,43 @@
                         "branch_attrs": {
                           "mutations": {
                             "HA1": [
-                              "D86E",
-                              "S143G"
+                              "T82K",
+                              "A141V"
                             ]
                           },
                           "labels": {
-                            "aa": "HA1: D86E, S143G"
+                            "aa": "HA1: T82K, A141V"
                           }
                         }
                       },
                       {
-                        "name": "NODE_0000060",
+                        "name": "NODE_0000061",
                         "node_attrs": {
-                          "div": 7,
+                          "div": 6,
                           "num_date": {
-                            "value": 2025.781
+                            "value": 2025.404
                           }
                         },
                         "branch_attrs": {
                           "mutations": {
                             "HA1": [
-                              "S69P",
-                              "E172K"
+                              "G155E"
                             ]
                           },
                           "labels": {
-                            "aa": "HA1: S69P, E172K"
+                            "aa": "HA1: G155E"
                           }
                         },
                         "children": [
                           {
-                            "name": "A/Vietnam/PF126009/2026",
-                            "node_attrs": {
-                              "div": 9,
-                              "num_date": {
-                                "value": 2026.02
-                              },
-                              "derived_haplotype": {
-                                "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K,D274N"
-                              },
-                              "subclade": {
-                                "value": "C.1.9.3"
-                              },
-                              "strain_type": {
-                                "value": "circulating_2026"
-                              }
-                            },
-                            "branch_attrs": {
-                              "mutations": {
-                                "HA1": [
-                                  "D274N"
-                                ],
-                                "HA2": [
-                                  "I45V"
-                                ]
-                              },
-                              "labels": {
-                                "aa": "HA1: D274N; HA2: I45V"
-                              }
-                            }
-                          },
-                          {
-                            "name": "A/Singapore/KK2768/2025",
-                            "node_attrs": {
-                              "div": 7,
-                              "num_date": {
-                                "value": 2025.96
-                              },
-                              "derived_haplotype": {
-                                "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K"
-                              },
-                              "subclade": {
-                                "value": "C.1.9.3"
-                              },
-                              "strain_type": {
-                                "value": "circulating_2026"
-                              }
-                            },
-                            "branch_attrs": {}
-                          },
-                          {
-                            "name": "A/Vietnam/PF125413/2025",
+                            "name": "A/Switzerland/UN-SNRCI-HUG-053/2025",
                             "node_attrs": {
                               "div": 8,
                               "num_date": {
-                                "value": 2025.85
+                                "value": 2025.95
                               },
                               "derived_haplotype": {
-                                "value": "C.1.9.3:V152I"
+                                "value": "C.1.9.3:D86E,P137S,S143G,G155E,I166V"
                               },
                               "subclade": {
                                 "value": "C.1.9.3"
@@ -454,13 +345,114 @@
                             "branch_attrs": {
                               "mutations": {
                                 "HA1": [
-                                  "V152I"
+                                  "D86E",
+                                  "S143G"
                                 ]
                               },
                               "labels": {
-                                "aa": "HA1: V152I"
+                                "aa": "HA1: D86E, S143G"
                               }
                             }
+                          },
+                          {
+                            "name": "NODE_0000062",
+                            "node_attrs": {
+                              "div": 8,
+                              "num_date": {
+                                "value": 2025.729
+                              }
+                            },
+                            "branch_attrs": {
+                              "mutations": {
+                                "HA1": [
+                                  "S69P",
+                                  "E172K"
+                                ]
+                              },
+                              "labels": {
+                                "aa": "HA1: S69P, E172K"
+                              }
+                            },
+                            "children": [
+                              {
+                                "name": "A/Vietnam/PF126009/2026",
+                                "node_attrs": {
+                                  "div": 10,
+                                  "num_date": {
+                                    "value": 2026.02
+                                  },
+                                  "derived_haplotype": {
+                                    "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K,D274N"
+                                  },
+                                  "subclade": {
+                                    "value": "C.1.9.3"
+                                  },
+                                  "strain_type": {
+                                    "value": "circulating_2026"
+                                  }
+                                },
+                                "branch_attrs": {
+                                  "mutations": {
+                                    "HA1": [
+                                      "D274N"
+                                    ],
+                                    "HA2": [
+                                      "I45V"
+                                    ]
+                                  },
+                                  "labels": {
+                                    "aa": "HA1: D274N; HA2: I45V"
+                                  }
+                                }
+                              },
+                              {
+                                "name": "A/Singapore/KK2768/2025",
+                                "node_attrs": {
+                                  "div": 8,
+                                  "num_date": {
+                                    "value": 2025.96
+                                  },
+                                  "derived_haplotype": {
+                                    "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K"
+                                  },
+                                  "subclade": {
+                                    "value": "C.1.9.3"
+                                  },
+                                  "strain_type": {
+                                    "value": "circulating_2026"
+                                  }
+                                },
+                                "branch_attrs": {}
+                              },
+                              {
+                                "name": "A/Vietnam/PF125413/2025",
+                                "node_attrs": {
+                                  "div": 9,
+                                  "num_date": {
+                                    "value": 2025.85
+                                  },
+                                  "derived_haplotype": {
+                                    "value": "C.1.9.3:V152I"
+                                  },
+                                  "subclade": {
+                                    "value": "C.1.9.3"
+                                  },
+                                  "strain_type": {
+                                    "value": "circulating_2026"
+                                  }
+                                },
+                                "branch_attrs": {
+                                  "mutations": {
+                                    "HA1": [
+                                      "V152I"
+                                    ]
+                                  },
+                                  "labels": {
+                                    "aa": "HA1: V152I"
+                                  }
+                                }
+                              }
+                            ]
                           }
                         ]
                       }
@@ -469,38 +461,78 @@
                 ]
               }
             ]
+          }
+        ]
+      },
+      {
+        "name": "NODE_0000054",
+        "node_attrs": {
+          "div": 6,
+          "num_date": {
+            "value": 2022.81
+          }
+        },
+        "branch_attrs": {
+          "mutations": {
+            "HA1": [
+              "P137S",
+              "K142R",
+              "D260E",
+              "T277A"
+            ],
+            "HA2": [
+              "E29D",
+              "N124H"
+            ]
+          },
+          "labels": {
+            "aa": "HA1: P137S, K142R, D260E, T277A; HA2: E29D, N124H"
+          }
+        },
+        "children": [
+          {
+            "name": "A/Wisconsin/67/2022",
+            "node_attrs": {
+              "div": 6,
+              "num_date": {
+                "value": 2022.81
+              },
+              "derived_haplotype": {
+                "value": "C.1"
+              },
+              "subclade": {
+                "value": "C.1"
+              },
+              "strain_type": {
+                "value": "2023-2024, 2024, 2024-2025, 2025, 2025-2026 cell-based vaccine"
+              }
+            },
+            "branch_attrs": {}
           },
           {
-            "name": "NODE_0000052",
+            "name": "NODE_0000053",
             "node_attrs": {
               "div": 8,
               "num_date": {
-                "value": 2023.857
+                "value": 2023.9
               }
             },
             "branch_attrs": {
               "mutations": {
                 "HA1": [
                   "R45K",
-                  "K142R",
-                  "T216A",
-                  "D260E",
-                  "T277A"
-                ],
-                "HA2": [
-                  "E29D",
-                  "N124H"
+                  "T216A"
                 ]
               },
               "labels": {
-                "aa": "HA1: R45K, K142R, T216A, D260E, T277A; HA2: E29D, N124H"
+                "aa": "HA1: R45K, T216A"
               }
             },
             "children": [
               {
                 "name": "A/Netherlands/1739/2023",
                 "node_attrs": {
-                  "div": 9,
+                  "div": 8,
                   "num_date": {
                     "value": 2023.9
                   },
@@ -514,41 +546,35 @@
                     "value": "circulating_2026"
                   }
                 },
-                "branch_attrs": {
-                  "mutations": {
-                    "HA1": [
-                      "A120T"
-                    ]
-                  },
-                  "labels": {
-                    "aa": "HA1: A120T"
-                  }
-                }
+                "branch_attrs": {}
               },
               {
-                "name": "NODE_0000051",
+                "name": "NODE_0000052",
                 "node_attrs": {
-                  "div": 10,
+                  "div": 11,
                   "num_date": {
-                    "value": 2024.613
+                    "value": 2024.617
                   }
                 },
                 "branch_attrs": {
                   "mutations": {
+                    "HA1": [
+                      "T120A"
+                    ],
                     "HA2": [
                       "I45V",
                       "I133T"
                     ]
                   },
                   "labels": {
-                    "aa": "HA2: I45V, I133T"
+                    "aa": "HA1: T120A; HA2: I45V, I133T"
                   }
                 },
                 "children": [
                   {
                     "name": "A/Hawaii/ISC-1140/2025",
                     "node_attrs": {
-                      "div": 10,
+                      "div": 11,
                       "num_date": {
                         "value": 2025.23
                       },
@@ -567,9 +593,9 @@
                   {
                     "name": "NODE_0000043",
                     "node_attrs": {
-                      "div": 11,
+                      "div": 12,
                       "num_date": {
-                        "value": 2024.731
+                        "value": 2024.728
                       }
                     },
                     "branch_attrs": {
@@ -584,57 +610,29 @@
                     },
                     "children": [
                       {
-                        "name": "NODE_0000012",
+                        "name": "NODE_0000014",
                         "node_attrs": {
-                          "div": 11,
+                          "div": 12,
                           "num_date": {
-                            "value": 2025.733
+                            "value": 2025.641
                           }
                         },
                         "branch_attrs": {},
                         "children": [
                           {
-                            "name": "NODE_0000014",
+                            "name": "NODE_0000016",
                             "node_attrs": {
-                              "div": 11,
+                              "div": 12,
                               "num_date": {
-                                "value": 2025.733
+                                "value": 2025.758
                               }
                             },
                             "branch_attrs": {},
                             "children": [
                               {
-                                "name": "A/Saskatchewan/SKFLU490586/2026",
-                                "node_attrs": {
-                                  "div": 12,
-                                  "num_date": {
-                                    "value": 2026.08
-                                  },
-                                  "derived_haplotype": {
-                                    "value": "D.3.1:L176M"
-                                  },
-                                  "subclade": {
-                                    "value": "D.3.1"
-                                  },
-                                  "strain_type": {
-                                    "value": "circulating_2026"
-                                  }
-                                },
-                                "branch_attrs": {
-                                  "mutations": {
-                                    "HA1": [
-                                      "L176M"
-                                    ]
-                                  },
-                                  "labels": {
-                                    "aa": "HA1: L176M"
-                                  }
-                                }
-                              },
-                              {
                                 "name": "A/Kentucky/80/2025",
                                 "node_attrs": {
-                                  "div": 12,
+                                  "div": 13,
                                   "num_date": {
                                     "value": 2025.98
                                   },
@@ -658,15 +656,74 @@
                                     "aa": "HA1: N130K"
                                   }
                                 }
+                              },
+                              {
+                                "name": "NODE_0000017",
+                                "node_attrs": {
+                                  "div": 12,
+                                  "num_date": {
+                                    "value": 2025.76
+                                  }
+                                },
+                                "branch_attrs": {},
+                                "children": [
+                                  {
+                                    "name": "A/Saskatchewan/SKFLU490586/2026",
+                                    "node_attrs": {
+                                      "div": 13,
+                                      "num_date": {
+                                        "value": 2026.08
+                                      },
+                                      "derived_haplotype": {
+                                        "value": "D.3.1:L176M"
+                                      },
+                                      "subclade": {
+                                        "value": "D.3.1"
+                                      },
+                                      "strain_type": {
+                                        "value": "circulating_2026"
+                                      }
+                                    },
+                                    "branch_attrs": {
+                                      "mutations": {
+                                        "HA1": [
+                                          "L176M"
+                                        ]
+                                      },
+                                      "labels": {
+                                        "aa": "HA1: L176M"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "name": "A/Missouri/11/2025_cell",
+                                    "node_attrs": {
+                                      "div": 12,
+                                      "num_date": {
+                                        "value": 2025.76
+                                      },
+                                      "derived_haplotype": {
+                                        "value": "D.3.1"
+                                      },
+                                      "subclade": {
+                                        "value": "D.3.1"
+                                      },
+                                      "strain_type": {
+                                        "value": "2026 and 2026-2027 cell-based vaccine"
+                                      }
+                                    },
+                                    "branch_attrs": {}
+                                  }
+                                ]
                               }
                             ]
                           },
                           {
                             "name": "NODE_0000044",
                             "node_attrs": {
-                              "div": 12,
+                              "div": 13,
                               "num_date": {
-                                "value": 2025.895
+                                "value": 2025.863
                               }
                             },
                             "branch_attrs": {
@@ -683,7 +740,7 @@
                               {
                                 "name": "NODE_0000047",
                                 "node_attrs": {
-                                  "div": 13,
+                                  "div": 14,
                                   "num_date": {
                                     "value": 2025.98
                                   }
@@ -702,7 +759,7 @@
                                   {
                                     "name": "A/SouthAfrica/PATH-CERI-C073366/2025",
                                     "node_attrs": {
-                                      "div": 13,
+                                      "div": 14,
                                       "num_date": {
                                         "value": 2025.98
                                       },
@@ -721,9 +778,9 @@
                                   {
                                     "name": "NODE_0000048",
                                     "node_attrs": {
-                                      "div": 14,
+                                      "div": 15,
                                       "num_date": {
-                                        "value": 2026.18
+                                        "value": 2026.167
                                       }
                                     },
                                     "branch_attrs": {
@@ -740,7 +797,7 @@
                                       {
                                         "name": "A/SouthAfrica/NICD-R01647/2026",
                                         "node_attrs": {
-                                          "div": 15,
+                                          "div": 16,
                                           "num_date": {
                                             "value": 2026.27
                                           },
@@ -768,7 +825,7 @@
                                       {
                                         "name": "A/SouthAfrica/NICD-R01668/2026",
                                         "node_attrs": {
-                                          "div": 14,
+                                          "div": 15,
                                           "num_date": {
                                             "value": 2026.18
                                           },
@@ -791,9 +848,9 @@
                               {
                                 "name": "NODE_0000021",
                                 "node_attrs": {
-                                  "div": 12,
+                                  "div": 13,
                                   "num_date": {
-                                    "value": 2026.059
+                                    "value": 2025.991
                                   }
                                 },
                                 "branch_attrs": {},
@@ -801,7 +858,7 @@
                                   {
                                     "name": "A/SouthAfrica/NHLS-SU-CERI-C075557/2026",
                                     "node_attrs": {
-                                      "div": 13,
+                                      "div": 14,
                                       "num_date": {
                                         "value": 2026.22
                                       },
@@ -829,9 +886,9 @@
                                   {
                                     "name": "NODE_0000022",
                                     "node_attrs": {
-                                      "div": 12,
+                                      "div": 13,
                                       "num_date": {
-                                        "value": 2026.069
+                                        "value": 2026.005
                                       }
                                     },
                                     "branch_attrs": {},
@@ -839,7 +896,7 @@
                                       {
                                         "name": "A/SouthAfrica/PATH-CERI-C073358/2025",
                                         "node_attrs": {
-                                          "div": 12,
+                                          "div": 13,
                                           "num_date": {
                                             "value": 2026.21
                                           },
@@ -858,7 +915,7 @@
                                       {
                                         "name": "A/SouthAfrica/PATH-CERI-C075119/2026",
                                         "node_attrs": {
-                                          "div": 13,
+                                          "div": 14,
                                           "num_date": {
                                             "value": 2026.22
                                           },
@@ -894,7 +951,7 @@
                       {
                         "name": "NODE_0000042",
                         "node_attrs": {
-                          "div": 12,
+                          "div": 13,
                           "num_date": {
                             "value": 2024.8
                           }
@@ -913,7 +970,7 @@
                           {
                             "name": "A/Colorado/218/2024",
                             "node_attrs": {
-                              "div": 12,
+                              "div": 13,
                               "num_date": {
                                 "value": 2024.8
                               },
@@ -932,9 +989,9 @@
                           {
                             "name": "NODE_0000036",
                             "node_attrs": {
-                              "div": 15,
+                              "div": 16,
                               "num_date": {
-                                "value": 2025.569
+                                "value": 2025.491
                               }
                             },
                             "branch_attrs": {
@@ -953,9 +1010,9 @@
                               {
                                 "name": "NODE_0000037",
                                 "node_attrs": {
-                                  "div": 16,
+                                  "div": 17,
                                   "num_date": {
-                                    "value": 2025.83
+                                    "value": 2025.791
                                   }
                                 },
                                 "branch_attrs": {
@@ -970,37 +1027,9 @@
                                 },
                                 "children": [
                                   {
-                                    "name": "A/Rhode_Island/11/2026",
-                                    "node_attrs": {
-                                      "div": 17,
-                                      "num_date": {
-                                        "value": 2026.04
-                                      },
-                                      "derived_haplotype": {
-                                        "value": "D.3.1.1:D127N,D139N"
-                                      },
-                                      "subclade": {
-                                        "value": "D.3.1.1"
-                                      },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      }
-                                    },
-                                    "branch_attrs": {
-                                      "mutations": {
-                                        "HA1": [
-                                          "D127N"
-                                        ]
-                                      },
-                                      "labels": {
-                                        "aa": "HA1: D127N"
-                                      }
-                                    }
-                                  },
-                                  {
                                     "name": "A/BritishColumbia/RV05508-25/2025",
                                     "node_attrs": {
-                                      "div": 17,
+                                      "div": 18,
                                       "num_date": {
                                         "value": 2025.93
                                       },
@@ -1026,141 +1055,157 @@
                                     }
                                   },
                                   {
-                                    "name": "NODE_0000023",
+                                    "name": "A/Rhode_Island/11/2026",
                                     "node_attrs": {
-                                      "div": 16,
+                                      "div": 18,
                                       "num_date": {
-                                        "value": 2025.914
+                                        "value": 2026.04
+                                      },
+                                      "derived_haplotype": {
+                                        "value": "D.3.1.1:D127N,D139N"
+                                      },
+                                      "subclade": {
+                                        "value": "D.3.1.1"
+                                      },
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       }
                                     },
-                                    "branch_attrs": {},
-                                    "children": [
-                                      {
-                                        "name": "NODE_0000027",
-                                        "node_attrs": {
-                                          "div": 16,
-                                          "num_date": {
-                                            "value": 2026.033
-                                          }
-                                        },
-                                        "branch_attrs": {},
-                                        "children": [
-                                          {
-                                            "name": "A/Netherlands/864/2026",
-                                            "node_attrs": {
-                                              "div": 17,
-                                              "num_date": {
-                                                "value": 2026.19
-                                              },
-                                              "derived_haplotype": {
-                                                "value": "D.3.1.1:D139N,T232A"
-                                              },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
-                                              },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
-                                              }
-                                            },
-                                            "branch_attrs": {
-                                              "mutations": {
-                                                "HA1": [
-                                                  "T232A"
-                                                ]
-                                              },
-                                              "labels": {
-                                                "aa": "HA1: T232A"
-                                              }
-                                            }
-                                          },
-                                          {
-                                            "name": "A/BritishColumbia/RV00022-26/2025",
-                                            "node_attrs": {
-                                              "div": 16,
-                                              "num_date": {
-                                                "value": 2026.3
-                                              },
-                                              "derived_haplotype": {
-                                                "value": "D.3.1.1:D139N"
-                                              },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
-                                              },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
-                                              }
-                                            },
-                                            "branch_attrs": {}
-                                          }
+                                    "branch_attrs": {
+                                      "mutations": {
+                                        "HA1": [
+                                          "D127N"
                                         ]
                                       },
+                                      "labels": {
+                                        "aa": "HA1: D127N"
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "name": "NODE_0000038",
+                                    "node_attrs": {
+                                      "div": 18,
+                                      "num_date": {
+                                        "value": 2026.032
+                                      }
+                                    },
+                                    "branch_attrs": {
+                                      "mutations": {
+                                        "HA1": [
+                                          "D168E"
+                                        ]
+                                      },
+                                      "labels": {
+                                        "aa": "HA1: D168E"
+                                      }
+                                    },
+                                    "children": [
                                       {
-                                        "name": "NODE_0000041",
+                                        "name": "A/Mississippi/20/2026",
                                         "node_attrs": {
-                                          "div": 17,
+                                          "div": 19,
                                           "num_date": {
-                                            "value": 2026.07
+                                            "value": 2026.15
+                                          },
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:D168E"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           }
                                         },
                                         "branch_attrs": {
                                           "mutations": {
                                             "HA1": [
-                                              "D168E"
+                                              "N139D"
                                             ]
                                           },
                                           "labels": {
-                                            "aa": "HA1: D168E"
+                                            "aa": "HA1: N139D"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "name": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026",
+                                        "node_attrs": {
+                                          "div": 18,
+                                          "num_date": {
+                                            "value": 2026.11
+                                          },
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:D139N,D168E"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           }
                                         },
-                                        "children": [
-                                          {
-                                            "name": "A/Mississippi/20/2026",
-                                            "node_attrs": {
-                                              "div": 18,
-                                              "num_date": {
-                                                "value": 2026.15
-                                              },
-                                              "derived_haplotype": {
-                                                "value": "D.3.1.1:D168E"
-                                              },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
-                                              },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
-                                              }
-                                            },
-                                            "branch_attrs": {
-                                              "mutations": {
-                                                "HA1": [
-                                                  "N139D"
-                                                ]
-                                              },
-                                              "labels": {
-                                                "aa": "HA1: N139D"
-                                              }
-                                            }
+                                        "branch_attrs": {}
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "NODE_0000027",
+                                    "node_attrs": {
+                                      "div": 17,
+                                      "num_date": {
+                                        "value": 2025.968
+                                      }
+                                    },
+                                    "branch_attrs": {},
+                                    "children": [
+                                      {
+                                        "name": "A/Netherlands/864/2026",
+                                        "node_attrs": {
+                                          "div": 18,
+                                          "num_date": {
+                                            "value": 2026.19
                                           },
-                                          {
-                                            "name": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026",
-                                            "node_attrs": {
-                                              "div": 17,
-                                              "num_date": {
-                                                "value": 2026.11
-                                              },
-                                              "derived_haplotype": {
-                                                "value": "D.3.1.1:D139N,D168E"
-                                              },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
-                                              },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
-                                              }
-                                            },
-                                            "branch_attrs": {}
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:D139N,T232A"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           }
-                                        ]
+                                        },
+                                        "branch_attrs": {
+                                          "mutations": {
+                                            "HA1": [
+                                              "T232A"
+                                            ]
+                                          },
+                                          "labels": {
+                                            "aa": "HA1: T232A"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "name": "A/BritishColumbia/RV00022-26/2025",
+                                        "node_attrs": {
+                                          "div": 17,
+                                          "num_date": {
+                                            "value": 2026.3
+                                          },
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:D139N"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          }
+                                        },
+                                        "branch_attrs": {}
                                       }
                                     ]
                                   }
@@ -1169,9 +1214,9 @@
                               {
                                 "name": "NODE_0000010",
                                 "node_attrs": {
-                                  "div": 15,
+                                  "div": 16,
                                   "num_date": {
-                                    "value": 2025.642
+                                    "value": 2025.572
                                   }
                                 },
                                 "branch_attrs": {},
@@ -1179,7 +1224,7 @@
                                   {
                                     "name": "A/California/NIRC-IS-1356/2025",
                                     "node_attrs": {
-                                      "div": 17,
+                                      "div": 18,
                                       "num_date": {
                                         "value": 2025.97
                                       },
@@ -1208,7 +1253,7 @@
                                   {
                                     "name": "A/NordrheinWestfalen/96/2026",
                                     "node_attrs": {
-                                      "div": 18,
+                                      "div": 19,
                                       "num_date": {
                                         "value": 2026.16
                                       },
@@ -1238,7 +1283,7 @@
                                   {
                                     "name": "NODE_0000015",
                                     "node_attrs": {
-                                      "div": 16,
+                                      "div": 17,
                                       "num_date": {
                                         "value": 2025.71
                                       }
@@ -1257,7 +1302,7 @@
                                       {
                                         "name": "A/Denmark/4774/2025",
                                         "node_attrs": {
-                                          "div": 18,
+                                          "div": 19,
                                           "num_date": {
                                             "value": 2026.0
                                           },
@@ -1286,7 +1331,7 @@
                                       {
                                         "name": "A/Norway/9556/2025",
                                         "node_attrs": {
-                                          "div": 16,
+                                          "div": 17,
                                           "num_date": {
                                             "value": 2025.71
                                           },
@@ -1307,9 +1352,9 @@
                                   {
                                     "name": "NODE_0000018",
                                     "node_attrs": {
-                                      "div": 16,
+                                      "div": 17,
                                       "num_date": {
-                                        "value": 2025.85
+                                        "value": 2025.82
                                       }
                                     },
                                     "branch_attrs": {
@@ -1326,7 +1371,7 @@
                                       {
                                         "name": "A/Valencia/VAHNSI_09_02564/2025",
                                         "node_attrs": {
-                                          "div": 17,
+                                          "div": 18,
                                           "num_date": {
                                             "value": 2025.94
                                           },
@@ -1354,7 +1399,7 @@
                                       {
                                         "name": "A/Asturias/232590913/2025",
                                         "node_attrs": {
-                                          "div": 16,
+                                          "div": 17,
                                           "num_date": {
                                             "value": 2026.17
                                           },
@@ -1375,9 +1420,9 @@
                                   {
                                     "name": "NODE_0000029",
                                     "node_attrs": {
-                                      "div": 15,
+                                      "div": 16,
                                       "num_date": {
-                                        "value": 2025.702
+                                        "value": 2025.665
                                       }
                                     },
                                     "branch_attrs": {},
@@ -1385,7 +1430,7 @@
                                       {
                                         "name": "A/France/ARA-HCL025195259501/2025",
                                         "node_attrs": {
-                                          "div": 17,
+                                          "div": 18,
                                           "num_date": {
                                             "value": 2026.14
                                           },
@@ -1414,7 +1459,7 @@
                                       {
                                         "name": "A/Galicia/GA-CHUAC-449/2025",
                                         "node_attrs": {
-                                          "div": 16,
+                                          "div": 17,
                                           "num_date": {
                                             "value": 2025.75
                                           },
@@ -1442,11 +1487,123 @@
                                     ]
                                   },
                                   {
+                                    "name": "NODE_0000019",
+                                    "node_attrs": {
+                                      "div": 16,
+                                      "num_date": {
+                                        "value": 2025.783
+                                      }
+                                    },
+                                    "branch_attrs": {},
+                                    "children": [
+                                      {
+                                        "name": "A/Maine/25/2026",
+                                        "node_attrs": {
+                                          "div": 17,
+                                          "num_date": {
+                                            "value": 2026.13
+                                          },
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:A141T"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          }
+                                        },
+                                        "branch_attrs": {
+                                          "mutations": {
+                                            "HA1": [
+                                              "A141T"
+                                            ]
+                                          },
+                                          "labels": {
+                                            "aa": "HA1: A141T"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "name": "NODE_0000020",
+                                        "node_attrs": {
+                                          "div": 17,
+                                          "num_date": {
+                                            "value": 2025.892
+                                          }
+                                        },
+                                        "branch_attrs": {
+                                          "mutations": {
+                                            "HA1": [
+                                              "A141V"
+                                            ]
+                                          },
+                                          "labels": {
+                                            "aa": "HA1: A141V"
+                                          }
+                                        },
+                                        "children": [
+                                          {
+                                            "name": "A/Andalucia/PMC-01495/2025",
+                                            "node_attrs": {
+                                              "div": 17,
+                                              "num_date": {
+                                                "value": 2025.94
+                                              },
+                                              "derived_haplotype": {
+                                                "value": "D.3.1.1:A141V"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "strain_type": {
+                                                "value": "circulating_2026"
+                                              }
+                                            },
+                                            "branch_attrs": {}
+                                          },
+                                          {
+                                            "name": "A/Arizona/40/2026",
+                                            "node_attrs": {
+                                              "div": 20,
+                                              "num_date": {
+                                                "value": 2026.18
+                                              },
+                                              "derived_haplotype": {
+                                                "value": "D.3.1.1:I57V,A141V,R205K"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "strain_type": {
+                                                "value": "circulating_2026"
+                                              }
+                                            },
+                                            "branch_attrs": {
+                                              "mutations": {
+                                                "HA1": [
+                                                  "I57V",
+                                                  "R205K"
+                                                ],
+                                                "HA2": [
+                                                  "S151N"
+                                                ]
+                                              },
+                                              "labels": {
+                                                "aa": "HA1: I57V, R205K; HA2: S151N"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
                                     "name": "NODE_0000030",
                                     "node_attrs": {
-                                      "div": 15,
+                                      "div": 16,
                                       "num_date": {
-                                        "value": 2025.761
+                                        "value": 2025.696
                                       }
                                     },
                                     "branch_attrs": {},
@@ -1454,7 +1611,7 @@
                                       {
                                         "name": "A/Netherlands/2398/2025",
                                         "node_attrs": {
-                                          "div": 16,
+                                          "div": 17,
                                           "num_date": {
                                             "value": 2025.92
                                           },
@@ -1482,9 +1639,9 @@
                                       {
                                         "name": "NODE_0000031",
                                         "node_attrs": {
-                                          "div": 17,
+                                          "div": 18,
                                           "num_date": {
-                                            "value": 2026.01
+                                            "value": 2025.991
                                           }
                                         },
                                         "branch_attrs": {
@@ -1502,7 +1659,7 @@
                                           {
                                             "name": "A/Zambia/6-NIC-014/2026",
                                             "node_attrs": {
-                                              "div": 18,
+                                              "div": 19,
                                               "num_date": {
                                                 "value": 2026.08
                                               },
@@ -1530,7 +1687,7 @@
                                           {
                                             "name": "A/Zambia/7-NIC-313/2026",
                                             "node_attrs": {
-                                              "div": 17,
+                                              "div": 18,
                                               "num_date": {
                                                 "value": 2026.27
                                               },
@@ -1551,11 +1708,456 @@
                                     ]
                                   },
                                   {
-                                    "name": "NODE_0000000",
+                                    "name": "NODE_0000011",
+                                    "node_attrs": {
+                                      "div": 17,
+                                      "num_date": {
+                                        "value": 2025.797
+                                      }
+                                    },
+                                    "branch_attrs": {
+                                      "mutations": {
+                                        "HA1": [
+                                          "V321I"
+                                        ]
+                                      },
+                                      "labels": {
+                                        "aa": "HA1: V321I"
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "name": "A/Denmark/4547/2025",
+                                        "node_attrs": {
+                                          "div": 17,
+                                          "num_date": {
+                                            "value": 2026.21
+                                          },
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:V321I"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          }
+                                        },
+                                        "branch_attrs": {}
+                                      },
+                                      {
+                                        "name": "A/Netherlands/446/2026",
+                                        "node_attrs": {
+                                          "div": 19,
+                                          "num_date": {
+                                            "value": 2026.09
+                                          },
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:L70P,A141V,V321I"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          }
+                                        },
+                                        "branch_attrs": {
+                                          "mutations": {
+                                            "HA1": [
+                                              "L70P",
+                                              "A141V"
+                                            ]
+                                          },
+                                          "labels": {
+                                            "aa": "HA1: L70P, A141V"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "name": "NODE_0000013",
+                                        "node_attrs": {
+                                          "div": 18,
+                                          "num_date": {
+                                            "value": 2025.946
+                                          }
+                                        },
+                                        "branch_attrs": {
+                                          "mutations": {
+                                            "HA1": [
+                                              "R205K"
+                                            ]
+                                          },
+                                          "labels": {
+                                            "aa": "HA1: R205K"
+                                          }
+                                        },
+                                        "children": [
+                                          {
+                                            "name": "A/Texas/29/2026",
+                                            "node_attrs": {
+                                              "div": 19,
+                                              "num_date": {
+                                                "value": 2026.11
+                                              },
+                                              "derived_haplotype": {
+                                                "value": "D.3.1.1:P118S,R205K,V321I"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "strain_type": {
+                                                "value": "circulating_2026"
+                                              }
+                                            },
+                                            "branch_attrs": {
+                                              "mutations": {
+                                                "HA1": [
+                                                  "P118S"
+                                                ]
+                                              },
+                                              "labels": {
+                                                "aa": "HA1: P118S"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "name": "A/Ukraine/5214/2026",
+                                            "node_attrs": {
+                                              "div": 19,
+                                              "num_date": {
+                                                "value": 2026.14
+                                              },
+                                              "derived_haplotype": {
+                                                "value": "D.3.1.1:V19I,R205K,V321I"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "strain_type": {
+                                                "value": "circulating_2026"
+                                              }
+                                            },
+                                            "branch_attrs": {
+                                              "mutations": {
+                                                "HA1": [
+                                                  "V19I"
+                                                ]
+                                              },
+                                              "labels": {
+                                                "aa": "HA1: V19I"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "NODE_0000039",
                                     "node_attrs": {
                                       "div": 16,
                                       "num_date": {
-                                        "value": 2025.776
+                                        "value": 2025.748
+                                      }
+                                    },
+                                    "branch_attrs": {},
+                                    "children": [
+                                      {
+                                        "name": "A/France/HDF-RELAB-IPP07969/2025",
+                                        "node_attrs": {
+                                          "div": 17,
+                                          "num_date": {
+                                            "value": 2025.97
+                                          },
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:K156R"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          }
+                                        },
+                                        "branch_attrs": {
+                                          "mutations": {
+                                            "HA1": [
+                                              "K156R"
+                                            ]
+                                          },
+                                          "labels": {
+                                            "aa": "HA1: K156R"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "name": "NODE_0000040",
+                                        "node_attrs": {
+                                          "div": 16,
+                                          "num_date": {
+                                            "value": 2025.756
+                                          }
+                                        },
+                                        "branch_attrs": {},
+                                        "children": [
+                                          {
+                                            "name": "A/Netherlands/10008/2026",
+                                            "node_attrs": {
+                                              "div": 17,
+                                              "num_date": {
+                                                "value": 2026.01
+                                              },
+                                              "derived_haplotype": {
+                                                "value": "D.3.1.1:T164I"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "strain_type": {
+                                                "value": "circulating_2026"
+                                              }
+                                            },
+                                            "branch_attrs": {
+                                              "mutations": {
+                                                "HA1": [
+                                                  "T164I"
+                                                ]
+                                              },
+                                              "labels": {
+                                                "aa": "HA1: T164I"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "name": "NODE_0000041",
+                                            "node_attrs": {
+                                              "div": 16,
+                                              "num_date": {
+                                                "value": 2025.756
+                                              }
+                                            },
+                                            "branch_attrs": {},
+                                            "children": [
+                                              {
+                                                "name": "A/Andalucia/PMC-01217/2025",
+                                                "node_attrs": {
+                                                  "div": 17,
+                                                  "num_date": {
+                                                    "value": 2026.17
+                                                  },
+                                                  "derived_haplotype": {
+                                                    "value": "D.3.1.1:K22R"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "D.3.1.1"
+                                                  },
+                                                  "strain_type": {
+                                                    "value": "circulating_2026"
+                                                  }
+                                                },
+                                                "branch_attrs": {
+                                                  "mutations": {
+                                                    "HA1": [
+                                                      "K22R"
+                                                    ]
+                                                  },
+                                                  "labels": {
+                                                    "aa": "HA1: K22R"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "name": "NODE_0000045",
+                                                "node_attrs": {
+                                                  "div": 16,
+                                                  "num_date": {
+                                                    "value": 2025.757
+                                                  }
+                                                },
+                                                "branch_attrs": {},
+                                                "children": [
+                                                  {
+                                                    "name": "A/Virginia/82/2025",
+                                                    "node_attrs": {
+                                                      "div": 17,
+                                                      "num_date": {
+                                                        "value": 2026.18
+                                                      },
+                                                      "derived_haplotype": {
+                                                        "value": "D.3.1.1:T186N"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "D.3.1.1"
+                                                      },
+                                                      "strain_type": {
+                                                        "value": "circulating_2026"
+                                                      }
+                                                    },
+                                                    "branch_attrs": {
+                                                      "mutations": {
+                                                        "HA1": [
+                                                          "T186N"
+                                                        ]
+                                                      },
+                                                      "labels": {
+                                                        "aa": "HA1: T186N"
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "name": "NODE_0000046",
+                                                    "node_attrs": {
+                                                      "div": 16,
+                                                      "num_date": {
+                                                        "value": 2025.758
+                                                      }
+                                                    },
+                                                    "branch_attrs": {},
+                                                    "children": [
+                                                      {
+                                                        "name": "A/California/NIRC-IS-1019/2026",
+                                                        "node_attrs": {
+                                                          "div": 17,
+                                                          "num_date": {
+                                                            "value": 2026.19
+                                                          },
+                                                          "derived_haplotype": {
+                                                            "value": "D.3.1.1:R142K"
+                                                          },
+                                                          "subclade": {
+                                                            "value": "D.3.1.1"
+                                                          },
+                                                          "strain_type": {
+                                                            "value": "circulating_2026"
+                                                          }
+                                                        },
+                                                        "branch_attrs": {
+                                                          "mutations": {
+                                                            "HA1": [
+                                                              "R142K"
+                                                            ]
+                                                          },
+                                                          "labels": {
+                                                            "aa": "HA1: R142K"
+                                                          }
+                                                        }
+                                                      },
+                                                      {
+                                                        "name": "NODE_0000049",
+                                                        "node_attrs": {
+                                                          "div": 16,
+                                                          "num_date": {
+                                                            "value": 2025.759
+                                                          }
+                                                        },
+                                                        "branch_attrs": {},
+                                                        "children": [
+                                                          {
+                                                            "name": "A/England/1893256/2026",
+                                                            "node_attrs": {
+                                                              "div": 17,
+                                                              "num_date": {
+                                                                "value": 2026.21
+                                                              },
+                                                              "derived_haplotype": {
+                                                                "value": "D.3.1.1:S190I"
+                                                              },
+                                                              "subclade": {
+                                                                "value": "D.3.1.1"
+                                                              },
+                                                              "strain_type": {
+                                                                "value": "circulating_2026"
+                                                              }
+                                                            },
+                                                            "branch_attrs": {
+                                                              "mutations": {
+                                                                "HA1": [
+                                                                  "S190I"
+                                                                ]
+                                                              },
+                                                              "labels": {
+                                                                "aa": "HA1: S190I"
+                                                              }
+                                                            }
+                                                          },
+                                                          {
+                                                            "name": "NODE_0000050",
+                                                            "node_attrs": {
+                                                              "div": 16,
+                                                              "num_date": {
+                                                                "value": 2025.76
+                                                              }
+                                                            },
+                                                            "branch_attrs": {},
+                                                            "children": [
+                                                              {
+                                                                "name": "A/Andalucia/PMC-00977/2025",
+                                                                "node_attrs": {
+                                                                  "div": 16,
+                                                                  "num_date": {
+                                                                    "value": 2025.76
+                                                                  },
+                                                                  "derived_haplotype": {
+                                                                    "value": "D.3.1.1"
+                                                                  },
+                                                                  "subclade": {
+                                                                    "value": "D.3.1.1"
+                                                                  },
+                                                                  "strain_type": {
+                                                                    "value": "circulating_2026"
+                                                                  }
+                                                                },
+                                                                "branch_attrs": {}
+                                                              },
+                                                              {
+                                                                "name": "A/France/NAQ-HCL026046169102/2025",
+                                                                "node_attrs": {
+                                                                  "div": 17,
+                                                                  "num_date": {
+                                                                    "value": 2026.3
+                                                                  },
+                                                                  "derived_haplotype": {
+                                                                    "value": "D.3.1.1:D274N"
+                                                                  },
+                                                                  "subclade": {
+                                                                    "value": "D.3.1.1"
+                                                                  },
+                                                                  "strain_type": {
+                                                                    "value": "circulating_2026"
+                                                                  }
+                                                                },
+                                                                "branch_attrs": {
+                                                                  "mutations": {
+                                                                    "HA1": [
+                                                                      "D274N"
+                                                                    ]
+                                                                  },
+                                                                  "labels": {
+                                                                    "aa": "HA1: D274N"
+                                                                  }
+                                                                }
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "NODE_0000000",
+                                    "node_attrs": {
+                                      "div": 17,
+                                      "num_date": {
+                                        "value": 2025.702
                                       }
                                     },
                                     "branch_attrs": {
@@ -1570,38 +2172,9 @@
                                     },
                                     "children": [
                                       {
-                                        "name": "A/PaisVasco/70369726/2026",
-                                        "node_attrs": {
-                                          "div": 18,
-                                          "num_date": {
-                                            "value": 2026.05
-                                          },
-                                          "derived_haplotype": {
-                                            "value": "D.3.1.1:R205K,I267S,T270A"
-                                          },
-                                          "subclade": {
-                                            "value": "D.3.1.1"
-                                          },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          }
-                                        },
-                                        "branch_attrs": {
-                                          "mutations": {
-                                            "HA1": [
-                                              "I267S",
-                                              "T270A"
-                                            ]
-                                          },
-                                          "labels": {
-                                            "aa": "HA1: I267S, T270A"
-                                          }
-                                        }
-                                      },
-                                      {
                                         "name": "A/France/GES-IPP00659/2026",
                                         "node_attrs": {
-                                          "div": 18,
+                                          "div": 19,
                                           "num_date": {
                                             "value": 2026.13
                                           },
@@ -1630,11 +2203,40 @@
                                         }
                                       },
                                       {
-                                        "name": "NODE_0000003",
+                                        "name": "A/PaisVasco/70369726/2026",
                                         "node_attrs": {
-                                          "div": 16,
+                                          "div": 19,
                                           "num_date": {
-                                            "value": 2025.885
+                                            "value": 2026.05
+                                          },
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:R205K,I267S,T270A"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          }
+                                        },
+                                        "branch_attrs": {
+                                          "mutations": {
+                                            "HA1": [
+                                              "I267S",
+                                              "T270A"
+                                            ]
+                                          },
+                                          "labels": {
+                                            "aa": "HA1: I267S, T270A"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "name": "NODE_0000005",
+                                        "node_attrs": {
+                                          "div": 17,
+                                          "num_date": {
+                                            "value": 2025.826
                                           }
                                         },
                                         "branch_attrs": {},
@@ -1642,7 +2244,7 @@
                                           {
                                             "name": "A/Sydney/50/2026",
                                             "node_attrs": {
-                                              "div": 17,
+                                              "div": 18,
                                               "num_date": {
                                                 "value": 2026.11
                                               },
@@ -1670,7 +2272,7 @@
                                           {
                                             "name": "A/Hessen/18/2026",
                                             "node_attrs": {
-                                              "div": 18,
+                                              "div": 19,
                                               "num_date": {
                                                 "value": 2026.09
                                               },
@@ -1699,11 +2301,11 @@
                                         ]
                                       },
                                       {
-                                        "name": "NODE_0000004",
+                                        "name": "NODE_0000006",
                                         "node_attrs": {
-                                          "div": 17,
+                                          "div": 18,
                                           "num_date": {
-                                            "value": 2025.891
+                                            "value": 2025.838
                                           }
                                         },
                                         "branch_attrs": {
@@ -1720,7 +2322,7 @@
                                           {
                                             "name": "A/MinasGerais/410/2026",
                                             "node_attrs": {
-                                              "div": 18,
+                                              "div": 19,
                                               "num_date": {
                                                 "value": 2026.09
                                               },
@@ -1748,7 +2350,7 @@
                                           {
                                             "name": "A/MinasGerais/671/2026",
                                             "node_attrs": {
-                                              "div": 19,
+                                              "div": 20,
                                               "num_date": {
                                                 "value": 2026.09
                                               },
@@ -1777,11 +2379,11 @@
                                         ]
                                       },
                                       {
-                                        "name": "NODE_0000039",
+                                        "name": "NODE_0000057",
                                         "node_attrs": {
-                                          "div": 16,
+                                          "div": 17,
                                           "num_date": {
-                                            "value": 2026.023
+                                            "value": 2025.958
                                           }
                                         },
                                         "branch_attrs": {},
@@ -1789,7 +2391,7 @@
                                           {
                                             "name": "A/BritishColumbia/RV01350-26/2026",
                                             "node_attrs": {
-                                              "div": 17,
+                                              "div": 18,
                                               "num_date": {
                                                 "value": 2026.18
                                               },
@@ -1817,7 +2419,7 @@
                                           {
                                             "name": "A/Nebraska/34/2026",
                                             "node_attrs": {
-                                              "div": 16,
+                                              "div": 17,
                                               "num_date": {
                                                 "value": 2026.16
                                               },
@@ -1838,9 +2440,9 @@
                                       {
                                         "name": "NODE_0000008",
                                         "node_attrs": {
-                                          "div": 16,
+                                          "div": 17,
                                           "num_date": {
-                                            "value": 2025.829
+                                            "value": 2025.779
                                           }
                                         },
                                         "branch_attrs": {},
@@ -1848,7 +2450,7 @@
                                           {
                                             "name": "A/Uppsala/SE26-01293/2026",
                                             "node_attrs": {
-                                              "div": 17,
+                                              "div": 18,
                                               "num_date": {
                                                 "value": 2026.2
                                               },
@@ -1876,9 +2478,9 @@
                                           {
                                             "name": "NODE_0000009",
                                             "node_attrs": {
-                                              "div": 17,
+                                              "div": 18,
                                               "num_date": {
-                                                "value": 2025.87
+                                                "value": 2025.838
                                               }
                                             },
                                             "branch_attrs": {
@@ -1895,7 +2497,7 @@
                                               {
                                                 "name": "A/Netherlands/543/2026",
                                                 "node_attrs": {
-                                                  "div": 18,
+                                                  "div": 19,
                                                   "num_date": {
                                                     "value": 2026.12
                                                   },
@@ -1923,7 +2525,7 @@
                                               {
                                                 "name": "A/Galicia/GA-CHUAC-612/2025",
                                                 "node_attrs": {
-                                                  "div": 18,
+                                                  "div": 19,
                                                   "num_date": {
                                                     "value": 2025.92
                                                   },
@@ -1953,587 +2555,6 @@
                                         ]
                                       }
                                     ]
-                                  },
-                                  {
-                                    "name": "NODE_0000038",
-                                    "node_attrs": {
-                                      "div": 15,
-                                      "num_date": {
-                                        "value": 2025.733
-                                      }
-                                    },
-                                    "branch_attrs": {},
-                                    "children": [
-                                      {
-                                        "name": "NODE_0000011",
-                                        "node_attrs": {
-                                          "div": 16,
-                                          "num_date": {
-                                            "value": 2025.889
-                                          }
-                                        },
-                                        "branch_attrs": {
-                                          "mutations": {
-                                            "HA1": [
-                                              "V321I"
-                                            ]
-                                          },
-                                          "labels": {
-                                            "aa": "HA1: V321I"
-                                          }
-                                        },
-                                        "children": [
-                                          {
-                                            "name": "A/Denmark/4547/2025",
-                                            "node_attrs": {
-                                              "div": 16,
-                                              "num_date": {
-                                                "value": 2026.21
-                                              },
-                                              "derived_haplotype": {
-                                                "value": "D.3.1.1:V321I"
-                                              },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
-                                              },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
-                                              }
-                                            },
-                                            "branch_attrs": {}
-                                          },
-                                          {
-                                            "name": "A/Netherlands/446/2026",
-                                            "node_attrs": {
-                                              "div": 18,
-                                              "num_date": {
-                                                "value": 2026.09
-                                              },
-                                              "derived_haplotype": {
-                                                "value": "D.3.1.1:L70P,A141V,V321I"
-                                              },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
-                                              },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
-                                              }
-                                            },
-                                            "branch_attrs": {
-                                              "mutations": {
-                                                "HA1": [
-                                                  "L70P",
-                                                  "A141V"
-                                                ]
-                                              },
-                                              "labels": {
-                                                "aa": "HA1: L70P, A141V"
-                                              }
-                                            }
-                                          },
-                                          {
-                                            "name": "NODE_0000013",
-                                            "node_attrs": {
-                                              "div": 17,
-                                              "num_date": {
-                                                "value": 2025.996
-                                              }
-                                            },
-                                            "branch_attrs": {
-                                              "mutations": {
-                                                "HA1": [
-                                                  "R205K"
-                                                ]
-                                              },
-                                              "labels": {
-                                                "aa": "HA1: R205K"
-                                              }
-                                            },
-                                            "children": [
-                                              {
-                                                "name": "A/Texas/29/2026",
-                                                "node_attrs": {
-                                                  "div": 18,
-                                                  "num_date": {
-                                                    "value": 2026.11
-                                                  },
-                                                  "derived_haplotype": {
-                                                    "value": "D.3.1.1:P118S,R205K,V321I"
-                                                  },
-                                                  "subclade": {
-                                                    "value": "D.3.1.1"
-                                                  },
-                                                  "strain_type": {
-                                                    "value": "circulating_2026"
-                                                  }
-                                                },
-                                                "branch_attrs": {
-                                                  "mutations": {
-                                                    "HA1": [
-                                                      "P118S"
-                                                    ]
-                                                  },
-                                                  "labels": {
-                                                    "aa": "HA1: P118S"
-                                                  }
-                                                }
-                                              },
-                                              {
-                                                "name": "A/Ukraine/5214/2026",
-                                                "node_attrs": {
-                                                  "div": 18,
-                                                  "num_date": {
-                                                    "value": 2026.14
-                                                  },
-                                                  "derived_haplotype": {
-                                                    "value": "D.3.1.1:V19I,R205K,V321I"
-                                                  },
-                                                  "subclade": {
-                                                    "value": "D.3.1.1"
-                                                  },
-                                                  "strain_type": {
-                                                    "value": "circulating_2026"
-                                                  }
-                                                },
-                                                "branch_attrs": {
-                                                  "mutations": {
-                                                    "HA1": [
-                                                      "V19I"
-                                                    ]
-                                                  },
-                                                  "labels": {
-                                                    "aa": "HA1: V19I"
-                                                  }
-                                                }
-                                              }
-                                            ]
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "name": "NODE_0000045",
-                                        "node_attrs": {
-                                          "div": 15,
-                                          "num_date": {
-                                            "value": 2025.758
-                                          }
-                                        },
-                                        "branch_attrs": {},
-                                        "children": [
-                                          {
-                                            "name": "NODE_0000019",
-                                            "node_attrs": {
-                                              "div": 15,
-                                              "num_date": {
-                                                "value": 2025.877
-                                              }
-                                            },
-                                            "branch_attrs": {},
-                                            "children": [
-                                              {
-                                                "name": "A/Maine/25/2026",
-                                                "node_attrs": {
-                                                  "div": 16,
-                                                  "num_date": {
-                                                    "value": 2026.13
-                                                  },
-                                                  "derived_haplotype": {
-                                                    "value": "D.3.1.1:A141T"
-                                                  },
-                                                  "subclade": {
-                                                    "value": "D.3.1.1"
-                                                  },
-                                                  "strain_type": {
-                                                    "value": "circulating_2026"
-                                                  }
-                                                },
-                                                "branch_attrs": {
-                                                  "mutations": {
-                                                    "HA1": [
-                                                      "A141T"
-                                                    ]
-                                                  },
-                                                  "labels": {
-                                                    "aa": "HA1: A141T"
-                                                  }
-                                                }
-                                              },
-                                              {
-                                                "name": "NODE_0000020",
-                                                "node_attrs": {
-                                                  "div": 16,
-                                                  "num_date": {
-                                                    "value": 2025.94
-                                                  }
-                                                },
-                                                "branch_attrs": {
-                                                  "mutations": {
-                                                    "HA1": [
-                                                      "A141V"
-                                                    ]
-                                                  },
-                                                  "labels": {
-                                                    "aa": "HA1: A141V"
-                                                  }
-                                                },
-                                                "children": [
-                                                  {
-                                                    "name": "A/Andalucia/PMC-01495/2025",
-                                                    "node_attrs": {
-                                                      "div": 16,
-                                                      "num_date": {
-                                                        "value": 2025.94
-                                                      },
-                                                      "derived_haplotype": {
-                                                        "value": "D.3.1.1:A141V"
-                                                      },
-                                                      "subclade": {
-                                                        "value": "D.3.1.1"
-                                                      },
-                                                      "strain_type": {
-                                                        "value": "circulating_2026"
-                                                      }
-                                                    },
-                                                    "branch_attrs": {}
-                                                  },
-                                                  {
-                                                    "name": "A/Arizona/40/2026",
-                                                    "node_attrs": {
-                                                      "div": 19,
-                                                      "num_date": {
-                                                        "value": 2026.18
-                                                      },
-                                                      "derived_haplotype": {
-                                                        "value": "D.3.1.1:I57V,A141V,R205K"
-                                                      },
-                                                      "subclade": {
-                                                        "value": "D.3.1.1"
-                                                      },
-                                                      "strain_type": {
-                                                        "value": "circulating_2026"
-                                                      }
-                                                    },
-                                                    "branch_attrs": {
-                                                      "mutations": {
-                                                        "HA1": [
-                                                          "I57V",
-                                                          "R205K"
-                                                        ],
-                                                        "HA2": [
-                                                          "S151N"
-                                                        ]
-                                                      },
-                                                      "labels": {
-                                                        "aa": "HA1: I57V, R205K; HA2: S151N"
-                                                      }
-                                                    }
-                                                  }
-                                                ]
-                                              }
-                                            ]
-                                          },
-                                          {
-                                            "name": "NODE_0000049",
-                                            "node_attrs": {
-                                              "div": 15,
-                                              "num_date": {
-                                                "value": 2025.759
-                                              }
-                                            },
-                                            "branch_attrs": {},
-                                            "children": [
-                                              {
-                                                "name": "A/France/HDF-RELAB-IPP07969/2025",
-                                                "node_attrs": {
-                                                  "div": 16,
-                                                  "num_date": {
-                                                    "value": 2025.97
-                                                  },
-                                                  "derived_haplotype": {
-                                                    "value": "D.3.1.1:K156R"
-                                                  },
-                                                  "subclade": {
-                                                    "value": "D.3.1.1"
-                                                  },
-                                                  "strain_type": {
-                                                    "value": "circulating_2026"
-                                                  }
-                                                },
-                                                "branch_attrs": {
-                                                  "mutations": {
-                                                    "HA1": [
-                                                      "K156R"
-                                                    ]
-                                                  },
-                                                  "labels": {
-                                                    "aa": "HA1: K156R"
-                                                  }
-                                                }
-                                              },
-                                              {
-                                                "name": "NODE_0000050",
-                                                "node_attrs": {
-                                                  "div": 15,
-                                                  "num_date": {
-                                                    "value": 2025.759
-                                                  }
-                                                },
-                                                "branch_attrs": {},
-                                                "children": [
-                                                  {
-                                                    "name": "A/Netherlands/10008/2026",
-                                                    "node_attrs": {
-                                                      "div": 16,
-                                                      "num_date": {
-                                                        "value": 2026.01
-                                                      },
-                                                      "derived_haplotype": {
-                                                        "value": "D.3.1.1:T164I"
-                                                      },
-                                                      "subclade": {
-                                                        "value": "D.3.1.1"
-                                                      },
-                                                      "strain_type": {
-                                                        "value": "circulating_2026"
-                                                      }
-                                                    },
-                                                    "branch_attrs": {
-                                                      "mutations": {
-                                                        "HA1": [
-                                                          "T164I"
-                                                        ]
-                                                      },
-                                                      "labels": {
-                                                        "aa": "HA1: T164I"
-                                                      }
-                                                    }
-                                                  },
-                                                  {
-                                                    "name": "NODE_0000054",
-                                                    "node_attrs": {
-                                                      "div": 15,
-                                                      "num_date": {
-                                                        "value": 2025.76
-                                                      }
-                                                    },
-                                                    "branch_attrs": {},
-                                                    "children": [
-                                                      {
-                                                        "name": "A/Andalucia/PMC-00977/2025",
-                                                        "node_attrs": {
-                                                          "div": 15,
-                                                          "num_date": {
-                                                            "value": 2025.76
-                                                          },
-                                                          "derived_haplotype": {
-                                                            "value": "D.3.1.1"
-                                                          },
-                                                          "subclade": {
-                                                            "value": "D.3.1.1"
-                                                          },
-                                                          "strain_type": {
-                                                            "value": "circulating_2026"
-                                                          }
-                                                        },
-                                                        "branch_attrs": {}
-                                                      },
-                                                      {
-                                                        "name": "NODE_0000056",
-                                                        "node_attrs": {
-                                                          "div": 15,
-                                                          "num_date": {
-                                                            "value": 2026.004
-                                                          }
-                                                        },
-                                                        "branch_attrs": {},
-                                                        "children": [
-                                                          {
-                                                            "name": "A/Andalucia/PMC-01217/2025",
-                                                            "node_attrs": {
-                                                              "div": 16,
-                                                              "num_date": {
-                                                                "value": 2026.17
-                                                              },
-                                                              "derived_haplotype": {
-                                                                "value": "D.3.1.1:K22R"
-                                                              },
-                                                              "subclade": {
-                                                                "value": "D.3.1.1"
-                                                              },
-                                                              "strain_type": {
-                                                                "value": "circulating_2026"
-                                                              }
-                                                            },
-                                                            "branch_attrs": {
-                                                              "mutations": {
-                                                                "HA1": [
-                                                                  "K22R"
-                                                                ]
-                                                              },
-                                                              "labels": {
-                                                                "aa": "HA1: K22R"
-                                                              }
-                                                            }
-                                                          },
-                                                          {
-                                                            "name": "NODE_0000061",
-                                                            "node_attrs": {
-                                                              "div": 15,
-                                                              "num_date": {
-                                                                "value": 2026.004
-                                                              }
-                                                            },
-                                                            "branch_attrs": {},
-                                                            "children": [
-                                                              {
-                                                                "name": "A/Virginia/82/2025",
-                                                                "node_attrs": {
-                                                                  "div": 16,
-                                                                  "num_date": {
-                                                                    "value": 2026.18
-                                                                  },
-                                                                  "derived_haplotype": {
-                                                                    "value": "D.3.1.1:T186N"
-                                                                  },
-                                                                  "subclade": {
-                                                                    "value": "D.3.1.1"
-                                                                  },
-                                                                  "strain_type": {
-                                                                    "value": "circulating_2026"
-                                                                  }
-                                                                },
-                                                                "branch_attrs": {
-                                                                  "mutations": {
-                                                                    "HA1": [
-                                                                      "T186N"
-                                                                    ]
-                                                                  },
-                                                                  "labels": {
-                                                                    "aa": "HA1: T186N"
-                                                                  }
-                                                                }
-                                                              },
-                                                              {
-                                                                "name": "NODE_0000062",
-                                                                "node_attrs": {
-                                                                  "div": 15,
-                                                                  "num_date": {
-                                                                    "value": 2026.004
-                                                                  }
-                                                                },
-                                                                "branch_attrs": {},
-                                                                "children": [
-                                                                  {
-                                                                    "name": "A/California/NIRC-IS-1019/2026",
-                                                                    "node_attrs": {
-                                                                      "div": 16,
-                                                                      "num_date": {
-                                                                        "value": 2026.19
-                                                                      },
-                                                                      "derived_haplotype": {
-                                                                        "value": "D.3.1.1:R142K"
-                                                                      },
-                                                                      "subclade": {
-                                                                        "value": "D.3.1.1"
-                                                                      },
-                                                                      "strain_type": {
-                                                                        "value": "circulating_2026"
-                                                                      }
-                                                                    },
-                                                                    "branch_attrs": {
-                                                                      "mutations": {
-                                                                        "HA1": [
-                                                                          "R142K"
-                                                                        ]
-                                                                      },
-                                                                      "labels": {
-                                                                        "aa": "HA1: R142K"
-                                                                      }
-                                                                    }
-                                                                  },
-                                                                  {
-                                                                    "name": "NODE_0000063",
-                                                                    "node_attrs": {
-                                                                      "div": 15,
-                                                                      "num_date": {
-                                                                        "value": 2026.004
-                                                                      }
-                                                                    },
-                                                                    "branch_attrs": {},
-                                                                    "children": [
-                                                                      {
-                                                                        "name": "A/France/NAQ-HCL026046169102/2025",
-                                                                        "node_attrs": {
-                                                                          "div": 16,
-                                                                          "num_date": {
-                                                                            "value": 2026.3
-                                                                          },
-                                                                          "derived_haplotype": {
-                                                                            "value": "D.3.1.1:D274N"
-                                                                          },
-                                                                          "subclade": {
-                                                                            "value": "D.3.1.1"
-                                                                          },
-                                                                          "strain_type": {
-                                                                            "value": "circulating_2026"
-                                                                          }
-                                                                        },
-                                                                        "branch_attrs": {
-                                                                          "mutations": {
-                                                                            "HA1": [
-                                                                              "D274N"
-                                                                            ]
-                                                                          },
-                                                                          "labels": {
-                                                                            "aa": "HA1: D274N"
-                                                                          }
-                                                                        }
-                                                                      },
-                                                                      {
-                                                                        "name": "A/England/1893256/2026",
-                                                                        "node_attrs": {
-                                                                          "div": 16,
-                                                                          "num_date": {
-                                                                            "value": 2026.21
-                                                                          },
-                                                                          "derived_haplotype": {
-                                                                            "value": "D.3.1.1:S190I"
-                                                                          },
-                                                                          "subclade": {
-                                                                            "value": "D.3.1.1"
-                                                                          },
-                                                                          "strain_type": {
-                                                                            "value": "circulating_2026"
-                                                                          }
-                                                                        },
-                                                                        "branch_attrs": {
-                                                                          "mutations": {
-                                                                            "HA1": [
-                                                                              "S190I"
-                                                                            ]
-                                                                          },
-                                                                          "labels": {
-                                                                            "aa": "HA1: S190I"
-                                                                          }
-                                                                        }
-                                                                      }
-                                                                    ]
-                                                                  }
-                                                                ]
-                                                              }
-                                                            ]
-                                                          }
-                                                        ]
-                                                      }
-                                                    ]
-                                                  }
-                                                ]
-                                              }
-                                            ]
-                                          }
-                                        ]
-                                      }
-                                    ]
                                   }
                                 ]
                               }
@@ -2553,7 +2574,7 @@
   },
   "root_sequence": {
     "nuc": "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
-    "HA1": "DTLCIGYHANNSTDTVDTVLEKNVTVTHSVNLLEDKHNGKLCKLRGVAPLHLGQCNIAGWILGNPECESLSTARSWSYIVETSNSDNGTCYPGDFINYEELREQLSSVSSFERFEIFPKASSWPNHDSDNGVTAACPHAGAKSFYKNLIWLVKKGKSYPKINQTYINDKGKEVLVLWGIHHPPTITDQESLYQNADAYVFVGTSRYSKKFKPEIATRPKVRDQAGRMNYYWTLVEPGDKITFEATGNLVAPRYAFTMEKDAGSGIIISDTPVHDCNTTCQTPEGAINTSLPFQNVHPITIGKCPKYVRSTKLRLATGLRNVPSIQSR",
+    "HA1": "DTLCIGYHANNSTDTVDTVLEKNVTVTHSVNLLEDKHNGKLCKLRGVAPLHLGQCNIAGWILGNPECESLSTARSWSYIVETSNSDNGTCYPGDFINYEELREQLSSVSSFERFEIFPKTSSWPNHDSDNGVTAACPHAGAKSFYKNLIWLVKKGKSYPKINQTYINDKGKEVLVLWGIHHPPTITDQESLYQNADAYVFVGTSRYSKKFKPEIATRPKVRDQAGRMNYYWTLVEPGDKITFEATGNLVAPRYAFTMEKDAGSGIIISDTPVHDCNTTCQTPEGAINTSLPFQNVHPITIGKCPKYVRSTKLRLATGLRNVPSIQSR",
     "HA2": "GLFGAIAGFIEGGWTGMVDGWYGYHHQNEQGSGYAADLKSTQNAIDKITNKVNSVIEKMNTQFTAVGKEFNHLEKRIENLNKKVDDGFLDVWTYNAELLVLLENERTLDYHDSNVKNLYEKVRNQLKNNAKEIGNGCFEFYHKCDNTCMESVKNGTYDYPKYSEEAKLNREKIDGV"
   }
 }

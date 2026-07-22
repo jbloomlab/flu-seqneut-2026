@@ -8,6 +8,9 @@ INFO: Read 0 rows from results/excluded_from_order/2026-05-12_testset_excluded.c
 INFO: Read 26 rows from results/excluded_from_order/2026-05-26_full-design_excluded.csv
 INFO: Read 15 rows from results/excluded_from_order/2026-06-02_rk-additions_excluded.csv
 INFO: Total excluded rows: 41
+INFO: Loaded 19 vaccine annotations from data/vaccine_annotations.csv.
+INFO: excluded strain 'A/Colombia/ANT-LDSP217/2026' (matched_against='SN-00300;SN-00301;SN-00619;SN-00620'): HA is vaccine strain 'A/Missouri/11/2025'; selecting its construct group instead of first-listed 'A/Utah/39/2025'.
+INFO: excluded strain 'A/Utah/39/2025' (matched_against='SN-00300;SN-00301;SN-00619;SN-00620'): HA is vaccine strain 'A/Missouri/11/2025'; selecting its construct group instead of first-listed 'A/Utah/39/2025'.
 WARNING: excluded strain 'A/Ontario/PHL202550957/2025' (matched_against='5875_pHW2000_A_Nebraska_34_2026_bc1.gb;5876_pHW2000_A_Nebraska_34_2026_bc2.gb'): matched ID '5875_pHW2000_A_Nebraska_34_2026_bc1.gb' doesn't follow SN-XXX format.
 WARNING: excluded strain 'A/Ontario/PHL202550957/2025' (matched_against='5875_pHW2000_A_Nebraska_34_2026_bc1.gb;5876_pHW2000_A_Nebraska_34_2026_bc2.gb'): ID '5875_pHW2000_A_Nebraska_34_2026_bc1.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
 WARNING: excluded strain 'A/Ontario/PHL202550957/2025' (matched_against='5875_pHW2000_A_Nebraska_34_2026_bc1.gb;5876_pHW2000_A_Nebraska_34_2026_bc2.gb'): ID '5876_pHW2000_A_Nebraska_34_2026_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
@@ -51,7 +54,6 @@ WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='p
 INFO: Excluded → final-library: emitted 50 rows (skipped 0 intra-order duplicates, 10 cross-order duplicates; 26 IDs missing in past-sequences lookup).
 INFO: Loaded 9 additional-vaccine sequences from data/additional_vaccine_constructs.csv.
 INFO: Additional vaccine constructs → final-library: emitted 24 rows.
-INFO: Loaded 19 vaccine annotations from data/vaccine_annotations.csv.
 INFO: Applied vaccine annotation overrides to 34 final-library rows.
 INFO: Applied vaccine strain-name overrides to 6 final-library rows.
 INFO: Loaded 5 collection-date references from data/manual_collection_dates.csv (date column 'collection_date').

@@ -1,25 +1,27 @@
 """Script to build the designed library CSV."""
 
+import datetime
+
 import pandas as pd
 
 input_csv = r"../../non-pipeline_analyses/library_design/construct_order/results/final_library/final_library.csv"
 output_csv = "flu-seqneut-2026-barcode-to-strain-designed.csv"
 
 # source columns read from the input library and carried through the build.
-# `collection_date` and `vaccine_annotation` are intentionally NOT read here:
-# `collection_date` is (re)built from the strain name below, and
-# `vaccine_annotation` is dropped in favor of the `strain_type`/`vaccine_type`
-# placeholders below.
+# `vaccine_annotation` drives `strain_type`/`vaccine_type` below, and
+# `collection_date` is carried through from the library as-is.
 columns = [
     "subtype",
     "derived_haplotype",
     "strain",
     "subclade",
     "genbank_accession",
+    "vaccine_annotation",
     "passage_history_annotation",
     "shortname",
     "bloom_lab_plasmid_log_id",
     "barcode",
+    "collection_date",
     "nt_sequence_HA_ectodomain",
     "protein_sequence_HA_ectodomain",
 ]
@@ -44,48 +46,22 @@ output_columns = [
     "protein_sequence_HA_ectodomain",
 ]
 
-# Placeholder `strain_type` applied to every row.
-# NOT YET VALID: this does not distinguish vaccine strains from circulating
-# strains -- every row is marked circulating. It needs a proper vaccine-strain
-# assignment before the output can be used.
-strain_type_placeholder = "circulating_2026"
-
-# manually fill missing derived haplotypes for these strains
-manual_derived_haplotypes = {
-    "A/Darwin/1454/2025": "K:F195Y",
-    "A/Singapore/GP20238/2024": "J.2.4:F195Y",
-    "A/Missouri/11/2025": "D.3.1:Q223R",
-    "A/Nebraska/34/2026": "D.3.1.1:R205K",
-    "A/Rhode_Island/11/2026": "D.3.1.1:D127N,D139N",
-}
-
+# `strain_type` value for non-vaccine (circulating) strains. Vaccine strains
+# (vaccine_annotation == True in the library) are labeled "vaccine" instead.
+circulating_strain_type = "circulating_2026"
 
 def fill_derived_haplotype(df):
-    """Fill missing `derived_haplotype` values from `manual_derived_haplotypes`.
+    """Validate that every row has a `derived_haplotype`.
 
-    Fails fast if a manual key matches no strain, if a manually specified strain
-    already has a non-null `derived_haplotype` (would be an unexpected conflict),
-    or if any `derived_haplotype` remains null after filling.
+    `derived_haplotype` is now supplied for all strains by the input library
+    (including the testset strains, which previously required a manual fill), so
+    this only fails fast if any value is still null.
     """
     df = df.copy()
-    for strain, haplotype in manual_derived_haplotypes.items():
-        mask = df["strain"] == strain
-        if not mask.any():
-            raise ValueError(
-                f"manual_derived_haplotypes strain {strain!r} matches no library row"
-            )
-        existing = df.loc[mask, "derived_haplotype"]
-        if existing.notnull().any():
-            raise ValueError(
-                f"manual_derived_haplotypes strain {strain!r} already has a "
-                f"derived_haplotype: {existing.dropna().unique().tolist()}"
-            )
-        df.loc[mask, "derived_haplotype"] = haplotype
-
     still_null = df.loc[df["derived_haplotype"].isnull(), "strain"].unique().tolist()
     if still_null:
         raise ValueError(
-            f"derived_haplotype still null after manual fill for strains: {still_null}"
+            f"derived_haplotype is null for strains: {still_null}"
         )
     return df
 
@@ -119,45 +95,66 @@ def fill_subclade(df):
     return df
 
 
-def add_strain_type(df):
-    """Add the placeholder `strain_type` column.
+def _is_vaccine(df):
+    """Boolean mask of rows the library flags as vaccine strains."""
+    return df["vaccine_annotation"].astype("string").str.strip() == "True"
 
-    NOT YET VALID -- see the `strain_type_placeholder` note above: every row is
-    marked circulating and vaccine strains are not yet distinguished.
+
+def add_strain_type(df):
+    """Set `strain_type` from the library's `vaccine_annotation`.
+
+    Vaccine strains (vaccine_annotation == True) get "vaccine"; all others get
+    the circulating label.
     """
     df = df.copy()
-    df["strain_type"] = strain_type_placeholder
+    df["strain_type"] = circulating_strain_type
+    df.loc[_is_vaccine(df), "strain_type"] = "vaccine"
     return df
 
 
 def add_vaccine_type(df):
-    """Add the placeholder `vaccine_type` column, null for every row.
+    """Set `vaccine_type` to the passage (egg/cell) for vaccine strains, else null.
 
-    NOT YET VALID: cell/egg vaccine typing is not yet assigned.
+    Fails fast if a vaccine strain has no passage_history_annotation, since the
+    egg/cell type is required to characterize a vaccine strain.
     """
     df = df.copy()
     df["vaccine_type"] = pd.NA
+    vax = _is_vaccine(df)
+    passage = df["passage_history_annotation"].astype("string").str.strip()
+    missing = vax & (passage.isnull() | (passage == ""))
+    if missing.any():
+        raise ValueError(
+            "Vaccine strain(s) missing passage_history_annotation "
+            f"(needed for vaccine_type): {df.loc[missing, 'strain'].tolist()}"
+        )
+    df.loc[vax, "vaccine_type"] = passage[vax]
     return df
 
 
-def add_collection_date(df):
-    """Add a rough `collection_date` = the 4-digit year parsed from the strain name.
+def _iso_to_decimal_year(value):
+    """Convert a YYYY-MM-DD date string to a decimal year rounded to 2 places.
 
-    NOT YET REFINED: this is only the year embedded in the strain name (the
-    previous round used a decimal year such as 2025.76); it needs to be replaced
-    with an actual collection date. Fails fast if any strain has no parseable
-    trailing year (expects names ending in ``/YYYY``). Must run BEFORE the subtype
-    suffix is appended to `strain`.
+    Empty/NaN values are passed through unchanged. E.g. '2022-10-25' -> 2022.81.
+    """
+    if pd.isna(value) or str(value).strip() == "":
+        return value
+    d = datetime.date.fromisoformat(str(value).strip())
+    start = datetime.date(d.year, 1, 1)
+    days_in_year = (datetime.date(d.year + 1, 1, 1) - start).days
+    return round(d.year + (d - start).days / days_in_year, 2)
+
+
+def add_collection_date(df):
+    """Convert `collection_date` from the input library to a decimal year.
+
+    The library stores collection_date as an ISO date (YYYY-MM-DD) sourced from
+    each strain's `latest_sequence`; downstream consumers of this designed CSV
+    expect the previous library's numeric decimal-year format (e.g. 2022.81), so
+    convert here. Empty dates (strains without a `latest_sequence`) stay empty.
     """
     df = df.copy()
-    year = df["strain"].str.extract(r"/(\d{4})$", expand=False)
-    missing = year.isnull()
-    if missing.any():
-        raise ValueError(
-            "Could not parse a trailing /YYYY year from strain names: "
-            f"{df.loc[missing, 'strain'].tolist()}"
-        )
-    df["collection_date"] = year.astype(int)
+    df["collection_date"] = df["collection_date"].apply(_iso_to_decimal_year)
     return df
 
 

@@ -689,7 +689,10 @@ def build_construct_rows(
                 "derived_haplotype": derived_haplotype,
                 "library": library,
                 "equivalent_strains": "",
-                "collection_date": "",
+                # collection_date is the latest_sequence date propagated from the
+                # curated selection TSV via the aggregated library_strains input.
+                # Absent for some haplotypes (e.g. older_* additions); "" in that case.
+                "collection_date": prepared.get("latest_sequence", "") or "",
                 "plate": plate_num,
                 "well": well_id,
             })

@@ -117,3 +117,20 @@ sbatch run_Hutch_cluster.bash
 
 Note that the step that matches protein haplotypes with GenBank nucleotide accessions can take a 
 little while to run.
+
+### Freezing the GenBank match
+
+The `match_genbank` rule queries NCBI for the closest GenBank nucleotide sequence encoding each
+library protein. Because GenBank is updated over time, re-running this rule can change the matched
+accessions and nucleotide sequences between runs. To keep results reproducible, the match is frozen
+by default: committed per-subtype CSVs under the directory named by `frozen_genbank_match_dir` (in
+[config.yaml](./config.yaml)) are used as the aggregation input, and `match_genbank` does not run.
+
+The freeze is controlled by `freeze_genbank_match` in [config.yaml](./config.yaml). To deliberately
+refresh the match against current GenBank:
+
+1. Set `freeze_genbank_match` to false (or override for one run with
+   `snakemake --config freeze_genbank_match=False ...`) and run the pipeline; this runs
+   `match_genbank` and regenerates `results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv`.
+2. Copy each regenerated CSV into the `frozen_genbank_match_dir` directory as `{subtype}.csv`.
+3. Commit the updated frozen CSVs, then set `freeze_genbank_match` back to true.

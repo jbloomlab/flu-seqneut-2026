@@ -1,5 +1,5 @@
 Reading viral library from: data/viral_libraries/flu-seqneut-2026-barcode-to-strain-designed.csv
-Loaded 290 rows
+Loaded 312 rows
 [PASS] Required columns exist: All present
 [PASS] Strain names end with _H3N2 or _H1N1: All valid
 [PASS] Strain values consistent across barcodes: All consistent
@@ -29,13 +29,13 @@ VALIDATION SUMMARY
 ======================================================================
 
 Library file: data/viral_libraries/flu-seqneut-2026-barcode-to-strain-designed.csv
-Total rows (barcodes): 290
-Unique strains: 145
-  - Vaccine strains: 0 (0 barcodes)
-  - Circulating strains: 145 (290 barcodes)
+Total rows (barcodes): 312
+Unique strains: 153
+  - Vaccine strains: 13 (32 barcodes)
+  - Circulating strains: 140 (280 barcodes)
 
 By subtype:
-  - H1N1: 130 barcodes
-  - H3N2: 160 barcodes
+  - H1N1: 142 barcodes
+  - H3N2: 170 barcodes
 
 All 22 validations PASSED

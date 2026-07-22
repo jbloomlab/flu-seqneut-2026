@@ -12,13 +12,27 @@ configfile: "config.yaml"
 # Define subtypes as wildcards
 SUBTYPES = config["subtypes"]
 
+
+def genbank_match_csv(subtype):
+    """Path to the GenBank match CSV feeding aggregation for a subtype.
+
+    When `freeze_genbank_match` is true (see config.yaml), this returns the
+    committed frozen copy under `frozen_genbank_match_dir`, so the match_genbank
+    rule is not run and GenBank accessions cannot drift between runs. When false,
+    it returns the live match_genbank output, causing that rule to run.
+    """
+    if config["freeze_genbank_match"]:
+        return f"{config['frozen_genbank_match_dir']}/{subtype}.csv"
+    return f"results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv"
+
 # Rule all: define final outputs
 rule all:
     input:
         expand("results/selected_haplotype_validation/{subtype}_validation_report.txt", subtype=SUBTYPES),
         expand("results/selected_haplotype_validation/{subtype}_valid_haplotypes.tsv", subtype=SUBTYPES),
         expand("results/selected_haplotype_validation/{subtype}_invalid_haplotypes.tsv", subtype=SUBTYPES),
-        expand("results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv", subtype=SUBTYPES),
+        # Frozen committed CSVs or live match_genbank output, per freeze_genbank_match.
+        [genbank_match_csv(subtype) for subtype in SUBTYPES],
         "results/aggregated_library_strains/library_strains.tsv"
 
 
@@ -69,7 +83,8 @@ rule match_genbank:
 # Rule to aggregate library strains from all subtypes
 rule aggregate_library_strains:
     input:
-        csvs=expand("results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv", subtype=SUBTYPES),
+        # Frozen committed CSVs or live match_genbank output, per freeze_genbank_match.
+        csvs=[genbank_match_csv(subtype) for subtype in SUBTYPES],
         csvs_valid_haplotypes=expand("results/selected_haplotype_validation/{subtype}_valid_haplotypes.tsv", subtype=SUBTYPES)
     output:
         tsv="results/aggregated_library_strains/library_strains.tsv"

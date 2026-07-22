@@ -3,6 +3,18 @@
 # subtypes to analyze
 subtypes: [H3N2, H1N1]
 
+# GenBank match freezing.
+# The match_genbank rule queries NCBI for the closest GenBank nucleotide match to
+# each library protein; that result can drift between runs as GenBank is updated.
+# When `freeze_genbank_match` is true, the pipeline instead reads committed frozen
+# copies from `frozen_genbank_match_dir` (one CSV per subtype, named `{subtype}.csv`)
+# and does NOT run match_genbank, so accessions cannot change on a rerun.
+# To refresh: set this false, run the pipeline, copy the regenerated
+# results/genbank_match/{subtype}/match_prot_to_genbank_nt.csv files into
+# `frozen_genbank_match_dir` as `{subtype}.csv`, commit them, then set this true again.
+freeze_genbank_match: true
+frozen_genbank_match_dir: data/frozen_genbank_match
+
 # TSVs giving recent haplotypes of HA proteins. Must have following columns:
 #  - count: recent sequence count for haplotype
 #  - derived_haplotype: a name given to the derived haplotype usually in terms of subclade + mutations

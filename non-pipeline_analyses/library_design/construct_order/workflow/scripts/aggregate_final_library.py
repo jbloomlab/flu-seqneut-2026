@@ -435,6 +435,7 @@ def build_excluded_rows(
     """
     out: list[dict] = []
     seen_construct: set[tuple[str, str, str]] = set()
+    seen_barcode: set[tuple[str, str]] = set()
     n_skipped_intra = 0
     n_skipped_cross = 0
     n_missing_in_past = 0
@@ -452,11 +453,24 @@ def build_excluded_rows(
 
         matched_against = excl.get("matched_against", "") or ""
         ids = [i.strip() for i in matched_against.split(";") if i.strip()]
-        ids_to_emit = ids[:2]
         context = (
             f"excluded strain {excl.get('strain', '')!r} "
             f"(matched_against={matched_against!r})"
         )
+        # `matched_against` can list constructs from more than one prior strain
+        # that share this HA (e.g. two 2-barcode strains -> 4 IDs). Emit all
+        # barcodes of the FIRST matched strain group only (in order of
+        # appearance), rather than a fixed count, so a strain with 3 real
+        # barcodes keeps all 3 while multi-strain matches don't over-include.
+        first_strain = None
+        ids_to_emit = []
+        for ident in ids:
+            past_row = past_lookup.get(ident)
+            strain_name = past_row.get("strain", "") if past_row else None
+            if first_strain is None:
+                first_strain = strain_name
+            if strain_name == first_strain:
+                ids_to_emit.append(ident)
         _check_sequential_sn_ids(ids_to_emit, context)
 
         # The selection_file the strain *would have* been ordered for; carried
@@ -480,7 +494,7 @@ def build_excluded_rows(
             if not new_row.get("derived_haplotype"):
                 new_row["derived_haplotype"] = excl_derived_haplotype
             new_row["need_to_order"] = False
-            
+
             # Skip cross-order duplicates: same (strain, protein, construct_id) already emitted.
             key = (
                 new_row.get("strain", ""),
@@ -490,7 +504,15 @@ def build_excluded_rows(
             if key in seen_construct:
                 n_skipped_cross += 1
                 continue
+            # Also skip a barcode already emitted for this strain: a construct can
+            # exist as more than one plasmid (e.g. pHH and pHW backbones) with the
+            # same barcode; each barcode should appear once per strain.
+            bc_key = (new_row.get("strain", ""), new_row.get("barcode", ""))
+            if bc_key in seen_barcode:
+                n_skipped_cross += 1
+                continue
             seen_construct.add(key)
+            seen_barcode.add(bc_key)
             out.append(new_row)
 
     log.info(

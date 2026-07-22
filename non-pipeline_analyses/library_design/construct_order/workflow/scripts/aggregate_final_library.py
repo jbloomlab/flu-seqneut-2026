@@ -74,6 +74,7 @@ SN_ID_PATTERN = re.compile(r"^SN-(\d+)$")
 # Config and CSV loading
 # ---------------------------------------------------------------------------
 
+
 def load_config(config_path: str) -> dict:
     with open(config_path) as f:
         return yaml.safe_load(f)
@@ -98,13 +99,17 @@ def load_vaccine_annotations(annotation_file: str) -> dict[str, dict]:
                     "vaccine_annotation": row["vaccine_annotation"],
                     "passage_history_annotation": row["passage_history_annotation"],
                     "strain": (row.get("strain") or "").strip(),
-                    "alternate_strain_name": (row.get("alternate_strain_name") or "").strip(),
+                    "alternate_strain_name": (
+                        row.get("alternate_strain_name") or ""
+                    ).strip(),
                 }
     log.info(f"Loaded {len(annotations)} vaccine annotations from {annotation_file}.")
     return annotations
 
 
-def apply_vaccine_annotation_overrides(rows: list[dict], annotations: dict[str, dict]) -> None:
+def apply_vaccine_annotation_overrides(
+    rows: list[dict], annotations: dict[str, dict]
+) -> None:
     """
     Override vaccine_annotation / passage_history_annotation on final-library
     rows from the vaccine annotation file (authoritative), matched by HA
@@ -121,7 +126,9 @@ def apply_vaccine_annotation_overrides(rows: list[dict], annotations: dict[str, 
     log.info(f"Applied vaccine annotation overrides to {n} final-library rows.")
 
 
-def apply_vaccine_strain_name_overrides(rows: list[dict], annotations: dict[str, dict]) -> None:
+def apply_vaccine_strain_name_overrides(
+    rows: list[dict], annotations: dict[str, dict]
+) -> None:
     """
     Make the vaccine strain name primary when a vaccine strain shares its HA with
     a differently-named library construct.
@@ -139,9 +146,7 @@ def apply_vaccine_strain_name_overrides(rows: list[dict], annotations: dict[str,
     """
     # Desired vaccine name per HA sequence (only where the annotation names the strain).
     vaccine_name_by_seq = {
-        seq: ann["strain"]
-        for seq, ann in annotations.items()
-        if ann.get("strain")
+        seq: ann["strain"] for seq, ann in annotations.items() if ann.get("strain")
     }
 
     # Compute each row's intended name (vaccine name if annotated, else current).
@@ -174,7 +179,9 @@ def apply_vaccine_strain_name_overrides(rows: list[dict], annotations: dict[str,
             row["strain"] = name
             n_renamed += 1
         del row["_intended_name"]
-    log.info(f"Applied vaccine strain-name overrides to {n_renamed} final-library rows.")
+    log.info(
+        f"Applied vaccine strain-name overrides to {n_renamed} final-library rows."
+    )
 
 
 def _normalize_collection_date(value: str) -> str:
@@ -193,7 +200,9 @@ def _normalize_collection_date(value: str) -> str:
     year = int(dec)
     start = datetime.date(year, 1, 1)
     days_in_year = (datetime.date(year + 1, 1, 1) - start).days
-    return (start + datetime.timedelta(days=round((dec - year) * days_in_year))).isoformat()
+    return (
+        start + datetime.timedelta(days=round((dec - year) * days_in_year))
+    ).isoformat()
 
 
 # Column names a reference file may use for the collection date, in priority
@@ -219,7 +228,9 @@ def load_collection_date_references(reference_files: list[str]) -> dict[str, str
         with open(path, newline="") as f:
             reader = csv.DictReader(f)
             fieldnames = reader.fieldnames or []
-            date_col = next((c for c in _REFERENCE_DATE_COLUMNS if c in fieldnames), None)
+            date_col = next(
+                (c for c in _REFERENCE_DATE_COLUMNS if c in fieldnames), None
+            )
             if "protein_sequence_HA_ectodomain" not in fieldnames or date_col is None:
                 raise ValueError(
                     f"Collection-date reference {path!r} must have a "
@@ -232,7 +243,9 @@ def load_collection_date_references(reference_files: list[str]) -> dict[str, str
                 if seq and date_val and seq not in lookup:
                     lookup[seq] = _normalize_collection_date(date_val)
                     n += 1
-        log.info(f"Loaded {n} collection-date references from {path} (date column {date_col!r}).")
+        log.info(
+            f"Loaded {n} collection-date references from {path} (date column {date_col!r})."
+        )
     return lookup
 
 
@@ -283,6 +296,7 @@ def read_excluded_csvs(paths: list[str]) -> list[dict]:
 # ---------------------------------------------------------------------------
 # Input TSV → selection_file lookup
 # ---------------------------------------------------------------------------
+
 
 def build_selection_file_lookup(
     input_tsv_paths: list[str],
@@ -336,6 +350,7 @@ def lookup_selection_file(
 # ---------------------------------------------------------------------------
 # past_protein_sequences_to_avoid lookup (by SN-XXX id)
 # ---------------------------------------------------------------------------
+
 
 def build_past_sequences_lookup(
     past_files: list[str],
@@ -395,6 +410,7 @@ def _check_sequential_sn_ids(ids: list[str], context: str) -> None:
 # Row construction
 # ---------------------------------------------------------------------------
 
+
 def build_kept_rows(
     plasmid_log_rows: list[dict],
     selection_lookup: dict[tuple[str, str], str],
@@ -423,16 +439,40 @@ def build_kept_rows(
     return out
 
 
+def _preferred_strain_for_ha(
+    ha_sequence: str, annotations: dict[str, dict]
+) -> str | None:
+    """
+    Return the strain name a vaccine annotation assigns to this HA ectodomain, or
+    None if the HA has no annotation. Prefers the primary `strain`; falls back to
+    `alternate_strain_name`. Used to disambiguate which construct group represents
+    a shared HA when `matched_against` spans multiple isolate names.
+    """
+    ann = annotations.get(ha_sequence)
+    if ann is None:
+        return None
+    return ann.get("strain") or ann.get("alternate_strain_name") or None
+
+
 def build_excluded_rows(
     excluded_rows: list[dict],
     past_lookup: dict[str, dict],
+    annotations: dict[str, dict] | None = None,
 ) -> list[dict]:
     """
     Map excluded CSV rows (reason='existing_sequence' only) to final-library
     rows by looking up the first up-to-2 IDs in `matched_against` against the
     past_protein_sequences_to_avoid lookup. Intra-order and cross-order
     duplicates (same strain + protein + construct_id) are skipped.
+
+    When `matched_against` spans multiple construct groups that share one HA and
+    that HA is named by a vaccine annotation, the group whose construct-log strain
+    matches the vaccine name is chosen (so a vaccine strain is represented by its
+    own constructs, not an identically-sequenced isolate under a different name).
+    Absent an annotation, the first group in order of appearance is kept (the
+    prior behavior).
     """
+    annotations = annotations or {}
     out: list[dict] = []
     seen_construct: set[tuple[str, str, str]] = set()
     seen_barcode: set[tuple[str, str]] = set()
@@ -459,18 +499,47 @@ def build_excluded_rows(
         )
         # `matched_against` can list constructs from more than one prior strain
         # that share this HA (e.g. two 2-barcode strains -> 4 IDs). Emit all
-        # barcodes of the FIRST matched strain group only (in order of
-        # appearance), rather than a fixed count, so a strain with 3 real
-        # barcodes keeps all 3 while multi-strain matches don't over-include.
-        first_strain = None
-        ids_to_emit = []
+        # barcodes of a SINGLE matched strain group, rather than a fixed count, so
+        # a strain with 3 real barcodes keeps all 3 while multi-strain matches
+        # don't over-include.
+        #
+        # Group selection: by default the first group in order of appearance. But
+        # if this HA is a vaccine strain (named in the annotations) and one of the
+        # matched groups is named after that vaccine strain, prefer that group so
+        # the vaccine strain is represented by its own constructs rather than an
+        # identically-sequenced isolate logged under a different name.
+        group_strains = []  # distinct log-strain names, in order of appearance
         for ident in ids:
             past_row = past_lookup.get(ident)
             strain_name = past_row.get("strain", "") if past_row else None
-            if first_strain is None:
-                first_strain = strain_name
-            if strain_name == first_strain:
-                ids_to_emit.append(ident)
+            if strain_name not in group_strains:
+                group_strains.append(strain_name)
+
+        chosen_strain = group_strains[0] if group_strains else None
+        first_ha = None
+        if ids:
+            first_past = past_lookup.get(ids[0])
+            first_ha = (
+                (first_past.get("protein_sequence_HA_ectodomain") or "").strip()
+                if first_past
+                else None
+            )
+        preferred = (
+            _preferred_strain_for_ha(first_ha, annotations) if first_ha else None
+        )
+        if preferred is not None and preferred in group_strains:
+            if preferred != chosen_strain:
+                log.info(
+                    f"{context}: HA is vaccine strain {preferred!r}; selecting its "
+                    f"construct group instead of first-listed {chosen_strain!r}."
+                )
+            chosen_strain = preferred
+
+        ids_to_emit = [
+            ident
+            for ident in ids
+            if (past_lookup.get(ident) or {}).get("strain") == chosen_strain
+        ]
         _check_sequential_sn_ids(ids_to_emit, context)
 
         # The selection_file the strain *would have* been ordered for; carried
@@ -551,7 +620,9 @@ def load_additional_vaccine_sequences(reference_files: list[str]) -> dict[str, d
                 if seq and seq not in lookup:
                     lookup[seq] = {
                         "strain": (row.get("strain") or "").strip(),
-                        "derived_haplotype": (row.get("derived_haplotype") or "").strip(),
+                        "derived_haplotype": (
+                            row.get("derived_haplotype") or ""
+                        ).strip(),
                         "subclade": (row.get("subclade") or "").strip(),
                     }
                     n += 1
@@ -622,7 +693,9 @@ def build_additional_vaccine_rows(
         ref_name = meta.get("strain", "")
         if ref_name:
             name_matched = [
-                r for r in rows if _norm_name(r.get("strain", "")) == _norm_name(ref_name)
+                r
+                for r in rows
+                if _norm_name(r.get("strain", "")) == _norm_name(ref_name)
             ]
             if name_matched:
                 rows = name_matched
@@ -678,6 +751,7 @@ def build_additional_vaccine_rows(
 # ---------------------------------------------------------------------------
 # Summary logging
 # ---------------------------------------------------------------------------
+
 
 def log_library_summary(rows: list[dict]) -> None:
     """
@@ -757,6 +831,7 @@ def log_library_summary(rows: list[dict]) -> None:
 # Output
 # ---------------------------------------------------------------------------
 
+
 def write_final_library_csv(rows: list[dict], output_path: Path) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", newline="") as f:
@@ -774,7 +849,7 @@ def write_haplotypes_by_subtype(rows: list[dict], output_dir: Path) -> None:
     Files are named {subtype}_final_haplotypes.txt and written to output_dir.
     """
     output_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Group unique derived_haplotypes by subtype.
     by_subtype: dict[str, set[str]] = {}
     for row in rows:
@@ -782,7 +857,7 @@ def write_haplotypes_by_subtype(rows: list[dict], output_dir: Path) -> None:
         derived_haplotype = (row.get("derived_haplotype") or "").strip()
         if derived_haplotype:  # Only include non-empty haplotypes.
             by_subtype.setdefault(subtype, set()).add(derived_haplotype)
-    
+
     for subtype in sorted(by_subtype):
         filename = f"{subtype}_final_haplotypes.txt"
         filepath = output_dir / filename
@@ -799,10 +874,11 @@ def write_haplotypes_by_subtype(rows: list[dict], output_dir: Path) -> None:
 # Main
 # ---------------------------------------------------------------------------
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="Aggregate per-order plasmid-log and excluded CSVs into a "
-                    "single final-library CSV."
+        "single final-library CSV."
     )
     parser.add_argument("--config", required=True, help="Path to YAML config file.")
     parser.add_argument(
@@ -842,8 +918,14 @@ def main():
     plasmid_log_rows = read_plasmid_log_csvs(args.plasmid_log_csv)
     excluded_rows_in = read_excluded_csvs(args.excluded_csv)
 
+    # Load vaccine annotations up front: besides overriding annotation columns
+    # later, they disambiguate which construct group represents a shared HA in
+    # build_excluded_rows (prefer the group named by the vaccine annotation).
+    annotation_file = config.get("annotation_file")
+    annotations = load_vaccine_annotations(annotation_file) if annotation_file else {}
+
     kept = build_kept_rows(plasmid_log_rows, selection_lookup, strain_only_lookup)
-    excluded = build_excluded_rows(excluded_rows_in, past_lookup)
+    excluded = build_excluded_rows(excluded_rows_in, past_lookup, annotations)
 
     # Explicitly include existing constructs for vaccine reference strains (made
     # in a prior round, present in the construct log but not otherwise in the
@@ -869,10 +951,9 @@ def main():
     # vaccine_annotations.csv is authoritative for vaccine_annotation /
     # passage_history_annotation: apply it to all final rows (matched by HA
     # ectodomain) so it overrides values inherited from the past-sequences
-    # construct log for excluded/pre-existing constructs.
-    annotation_file = config.get("annotation_file")
+    # construct log for excluded/pre-existing constructs. `annotations` was
+    # loaded above (also used to disambiguate excluded construct groups).
     if annotation_file:
-        annotations = load_vaccine_annotations(annotation_file)
         apply_vaccine_annotation_overrides(final_rows, annotations)
         # Make the vaccine strain name primary where a vaccine strain shares its
         # HA with a differently-named construct; runs after the annotation

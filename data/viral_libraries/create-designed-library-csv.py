@@ -50,6 +50,7 @@ output_columns = [
 # (vaccine_annotation == True in the library) are labeled "vaccine" instead.
 circulating_strain_type = "circulating_2026"
 
+
 def fill_derived_haplotype(df):
     """Validate that every row has a `derived_haplotype`.
 
@@ -60,9 +61,7 @@ def fill_derived_haplotype(df):
     df = df.copy()
     still_null = df.loc[df["derived_haplotype"].isnull(), "strain"].unique().tolist()
     if still_null:
-        raise ValueError(
-            f"derived_haplotype is null for strains: {still_null}"
-        )
+        raise ValueError(f"derived_haplotype is null for strains: {still_null}")
     return df
 
 
@@ -136,10 +135,16 @@ def _iso_to_decimal_year(value):
     """Convert a YYYY-MM-DD date string to a decimal year rounded to 2 places.
 
     Empty/NaN values are passed through unchanged. E.g. '2022-10-25' -> 2022.81.
+    A value already in decimal-year form (e.g. '2023.936', which the construct log
+    may carry for some strains) is returned as a rounded float unchanged in form,
+    since the output of this function is itself a decimal year.
     """
     if pd.isna(value) or str(value).strip() == "":
         return value
-    d = datetime.date.fromisoformat(str(value).strip())
+    text = str(value).strip()
+    if "-" not in text:  # already a decimal year, not an ISO date
+        return round(float(text), 2)
+    d = datetime.date.fromisoformat(text)
     start = datetime.date(d.year, 1, 1)
     days_in_year = (datetime.date(d.year + 1, 1, 1) - start).days
     return round(d.year + (d - start).days / days_in_year, 2)

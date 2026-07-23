@@ -1,4 +1,4 @@
-INFO: Loaded 1131 past-sequence rows for excluded lookup.
+INFO: Loaded 1135 past-sequence rows for excluded lookup.
 INFO: Built selection_file lookup from 3 TSV(s): 0 (strain, protein) keys, 147 strain-only keys.
 INFO: Read 10 rows from results/plasmid_log/2026-05-12_testset.csv
 INFO: Read 212 rows from results/plasmid_log/2026-05-26_full-design.csv
@@ -53,16 +53,16 @@ WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='p
 WARNING: excluded strain 'A/BritishColumbia/RV00022-26/2025' (matched_against='plate17-B9_pHW2000_A_BritishColumbia_RV00022-26_2025_bc1.gb;plate17-B10_pHW2000_A_BritishColumbia_RV00022-26_2025_bc2.gb'): ID 'plate17-B10_pHW2000_A_BritishColumbia_RV00022-26_2025_bc2.gb' not found in past_protein_sequences_to_avoid; skipping this ID.
 INFO: Excluded → final-library: emitted 50 rows (skipped 0 intra-order duplicates, 10 cross-order duplicates; 26 IDs missing in past-sequences lookup).
 INFO: Loaded 9 additional-vaccine sequences from data/additional_vaccine_constructs.csv.
-INFO: Additional vaccine constructs → final-library: emitted 24 rows.
-INFO: Applied vaccine annotation overrides to 34 final-library rows.
+INFO: Additional vaccine constructs → final-library: emitted 26 rows.
+INFO: Applied vaccine annotation overrides to 36 final-library rows.
 INFO: Applied vaccine strain-name overrides to 6 final-library rows.
 INFO: Loaded 5 collection-date references from data/manual_collection_dates.csv (date column 'collection_date').
 INFO: Loaded 111 collection-date references from data/flu-seqneut-2025to2026-barcode-to-strain-designed.csv (date column 'collection_date').
 INFO: Loaded 109 collection-date references from data/flu-seqneut-2025-barcode-to-strain_designed.csv (date column 'num_date').
-INFO: Back-filled collection_date for 73 final-library rows.
-INFO: Final library CSV written (316 rows): results/final_library/final_library.csv
+INFO: Back-filled collection_date for 72 final-library rows.
+INFO: Final library CSV written (318 rows): results/final_library/final_library.csv
 INFO: Haplotypes file written (69 unique haplotypes): results/final_library/H1N1_final_haplotypes.txt
-INFO: Haplotypes file written (82 unique haplotypes): results/final_library/H3N2_final_haplotypes.txt
+INFO: Haplotypes file written (83 unique haplotypes): results/final_library/H3N2_final_haplotypes.txt
 INFO: Final library summary: 154 unique strains (by strain + protein_sequence_HA_ectodomain) across 2 subtype(s).
 INFO: Per-subtype totals (need_to_order True / False):
 INFO:   H1N1: 69 total (54 to order, 15 already exist)

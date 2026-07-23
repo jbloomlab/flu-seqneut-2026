@@ -1,0 +1,8 @@
+executor: slurm
+default-resources:
+  runtime: 720
+  mem_mb: 10000
+jobs: 50
+cores: all
+latency-wait: 60
+use-conda: true

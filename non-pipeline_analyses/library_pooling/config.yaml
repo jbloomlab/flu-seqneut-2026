@@ -1,0 +1,27 @@
+# Configuration for the library_pooling analyses.
+#
+# Single source of truth for parameters and per-notebook inputs/outputs. The
+# Snakefile builds one rule per entry under `notebooks`, running each marimo
+# notebook via the context-pickle driver (see workflow/scripts and README).
+
+# The conda environment the notebook rules run in is `environment.yml` in this
+# directory (wired into the Snakefile's `conda:` directive).
+
+# One entry per marimo notebook to run. The key is the notebook stem
+# (notebooks/<key>.py); each entry lists the `input` files it reads, the
+# non-HTML `output` files it writes, and any `params`. The driver always adds an
+# HTML render at results/<key>.html and a context pickle alongside it.
+#
+# The Snakefile wires `input`/`output`/`params` into the rule's native
+# input/output/params, so the notebook reads them by key as context["input"],
+# context["output"], context["params"] (matching the seqneut-pipeline
+# notebooks). Reference files by these keys rather than hard-coding paths.
+notebooks:
+  example_analysis:
+    input:
+      designed_library: ../../data/viral_libraries/flu-seqneut-2026-barcode-to-strain-designed.csv
+    output:
+      summary_csv: results/example_analysis/strain_counts_by_subtype.csv
+    params:
+      # Example parameter demonstrating the config -> notebook path.
+      min_barcodes_per_strain: 2

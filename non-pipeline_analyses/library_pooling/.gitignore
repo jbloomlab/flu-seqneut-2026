@@ -1,0 +1,9 @@
+__marimo__/
+__pycache__/
+logs/
+.snakemake/
+# Generated marimo renders and their context pickles (rebuilt on every run).
+# Data outputs a notebook writes under results/<notebook>/ are committed, as in
+# the sibling construct_order analysis.
+results/*.html
+results/*_context.pickle

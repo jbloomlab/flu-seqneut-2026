@@ -2,7 +2,7 @@
   "version": "v2",
   "meta": {
     "title": "Near real-time data on human neutralizing antibody landscape to H1N1 influenza virus as of the summer of 2026",
-    "updated": "2026-07-22",
+    "updated": "2026-07-23",
     "build_url": "https://github.com/jbloomlab/flu-seqneut-2026",
     "maintainers": [
       {
@@ -553,7 +553,7 @@
                 "node_attrs": {
                   "div": 11,
                   "num_date": {
-                    "value": 2024.617
+                    "value": 2024.618
                   }
                 },
                 "branch_attrs": {
@@ -846,7 +846,7 @@
                                 ]
                               },
                               {
-                                "name": "NODE_0000021",
+                                "name": "NODE_0000023",
                                 "node_attrs": {
                                   "div": 13,
                                   "num_date": {
@@ -884,7 +884,7 @@
                                     }
                                   },
                                   {
-                                    "name": "NODE_0000022",
+                                    "name": "NODE_0000024",
                                     "node_attrs": {
                                       "div": 13,
                                       "num_date": {
@@ -1151,7 +1151,7 @@
                                     ]
                                   },
                                   {
-                                    "name": "NODE_0000027",
+                                    "name": "NODE_0000032",
                                     "node_attrs": {
                                       "div": 17,
                                       "num_date": {
@@ -1350,7 +1350,7 @@
                                     ]
                                   },
                                   {
-                                    "name": "NODE_0000018",
+                                    "name": "NODE_0000020",
                                     "node_attrs": {
                                       "div": 17,
                                       "num_date": {
@@ -1487,7 +1487,7 @@
                                     ]
                                   },
                                   {
-                                    "name": "NODE_0000019",
+                                    "name": "NODE_0000021",
                                     "node_attrs": {
                                       "div": 16,
                                       "num_date": {
@@ -1525,7 +1525,7 @@
                                         }
                                       },
                                       {
-                                        "name": "NODE_0000020",
+                                        "name": "NODE_0000022",
                                         "node_attrs": {
                                           "div": 17,
                                           "num_date": {
@@ -1854,7 +1854,7 @@
                                     ]
                                   },
                                   {
-                                    "name": "NODE_0000039",
+                                    "name": "NODE_0000045",
                                     "node_attrs": {
                                       "div": 16,
                                       "num_date": {
@@ -1892,7 +1892,7 @@
                                         }
                                       },
                                       {
-                                        "name": "NODE_0000040",
+                                        "name": "NODE_0000046",
                                         "node_attrs": {
                                           "div": 16,
                                           "num_date": {
@@ -1930,7 +1930,7 @@
                                             }
                                           },
                                           {
-                                            "name": "NODE_0000041",
+                                            "name": "NODE_0000049",
                                             "node_attrs": {
                                               "div": 16,
                                               "num_date": {
@@ -1968,7 +1968,7 @@
                                                 }
                                               },
                                               {
-                                                "name": "NODE_0000045",
+                                                "name": "NODE_0000050",
                                                 "node_attrs": {
                                                   "div": 16,
                                                   "num_date": {
@@ -2006,7 +2006,7 @@
                                                     }
                                                   },
                                                   {
-                                                    "name": "NODE_0000046",
+                                                    "name": "NODE_0000051",
                                                     "node_attrs": {
                                                       "div": 16,
                                                       "num_date": {
@@ -2044,7 +2044,7 @@
                                                         }
                                                       },
                                                       {
-                                                        "name": "NODE_0000049",
+                                                        "name": "NODE_0000057",
                                                         "node_attrs": {
                                                           "div": 16,
                                                           "num_date": {
@@ -2082,7 +2082,7 @@
                                                             }
                                                           },
                                                           {
-                                                            "name": "NODE_0000050",
+                                                            "name": "NODE_0000063",
                                                             "node_attrs": {
                                                               "div": 16,
                                                               "num_date": {
@@ -2379,7 +2379,7 @@
                                         ]
                                       },
                                       {
-                                        "name": "NODE_0000057",
+                                        "name": "NODE_0000067",
                                         "node_attrs": {
                                           "div": 17,
                                           "num_date": {

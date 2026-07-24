@@ -34,6 +34,8 @@ rule all:
         ),
         # auspice JSONs from nextstrain-prot-titers-tree
         auspice_jsons,
+
+
 # COMMENTED OUT FOR NOW AS NO TITER DATA ADDED YET
         # aggregated sera metadata
 #        "results/sera_metadata/all_sera_metadata.csv",
@@ -79,10 +81,10 @@ rule validate_viral_library:
         validation="results/validate_viral_library/{viral_library}_validation.txt",
     log:
         "results/logs/validate_viral_library_{viral_library}.txt",
-    params:
-        circulating_strain_type=config["circulating_strain_type"],
     conda:
         "seqneut-pipeline/environment.yml"
+    params:
+        circulating_strain_type=config["circulating_strain_type"],
     script:
         "scripts/validate_viral_library.py"
 
@@ -122,12 +124,12 @@ rule process_final_titer_data:
         viruses="results/final_titer_data/{group}_viruses.csv",
         titers_summarized="results/final_titer_data/{group}_titers_summarized_by_virus.csv",
         summary="results/final_titer_data/{group}_summary.txt",
-    params:
-        config=config["process_final_titer_data"],
     log:
         "results/logs/process_final_titer_data_{group}.txt",
     conda:
         "seqneut-pipeline/environment.yml"
+    params:
+        config=config["process_final_titer_data"],
     script:
         "scripts/process_final_titer_data.py"
 
@@ -152,18 +154,18 @@ rule plot_titer_summaries:
             strain_type=["recent", "vaccine"],
             chart_type=["individual_sera", "interquartile_range", "frac_below_cutoff"],
         ),
+    log:
+        "results/logs/plot_titer_summaries_{group}_{orientation}.txt",
     wildcard_constraints:
         orientation="vertical|horizontal",
+    conda:
+        "seqneut-pipeline/environment.yml"
     params:
         recent_vaccine_strains=config["recent_vaccine_strains"],
         circulating_strain_type=config["circulating_strain_type"],
         plot_titer_summaries_params=config["plot_titer_summaries_params"],
         subtypes=config["subtypes"],
         facet_orientation=lambda wc: wc.orientation,
-    conda:
-        "seqneut-pipeline/environment.yml"
-    log:
-        "results/logs/plot_titer_summaries_{group}_{orientation}.txt",
     script:
         "seqneut-pipeline/scripts/run_marimo_w_context_pickle.py"
 
@@ -219,9 +221,13 @@ rule plot_fold_changes:
             strain_type=["recent", "vaccine"],
             chart_type=["individual_sera", "interquartile_range"],
         ),
+    log:
+        "results/logs/plot_fold_changes_{fold_change_name}_{orientation}.txt",
     wildcard_constraints:
         fold_change_name="|".join(config.get("plot_fold_changes", {})),
         orientation="vertical|horizontal",
+    conda:
+        "seqneut-pipeline/environment.yml"
     params:
         recent_vaccine_strains=config["recent_vaccine_strains"],
         circulating_strain_type=config["circulating_strain_type"],
@@ -229,10 +235,6 @@ rule plot_fold_changes:
         subtypes=config["subtypes"],
         fold_change_config=lambda wc: config["plot_fold_changes"][wc.fold_change_name],
         facet_orientation=lambda wc: wc.orientation,
-    conda:
-        "seqneut-pipeline/environment.yml"
-    log:
-        "results/logs/plot_fold_changes_{fold_change_name}_{orientation}.txt",
     script:
         "seqneut-pipeline/scripts/run_marimo_w_context_pickle.py"
 
@@ -300,11 +302,35 @@ rule nextstrain_prot_titers_tree_alignment_and_metadata:
             for subtype in config["subtypes"]
             if config["nextstrain-prot-titers-tree_config"][subtype].get("titers")
         },
+    log:
+        "results/logs/nextstrain_prot_titers_tree_alignment_and_metadata.txt",
+    conda:
+        "seqneut-pipeline/environment.yml"
     params:
         subtypes=config["subtypes"],
         circulating_strain_type=config["circulating_strain_type"],
         recent_vaccine_strains=config["recent_vaccine_strains"],
         prefix_alignment=config["nextstrain-prot-titers-tree_prefix_alignment"],
+        # Metadata columns requested for the tree, unioned across configured subtypes.
+        # `color_by_metadata` is a mapping (its keys are column names).
+        color_by_cols=sorted(
+            {
+                col
+                for subtype in config["subtypes"]
+                for col in config["nextstrain-prot-titers-tree_config"][subtype][
+                    "color_by_metadata"
+                ]
+            }
+        ),
+        metadata_cols=sorted(
+            {
+                col
+                for subtype in config["subtypes"]
+                for col in config["nextstrain-prot-titers-tree_config"][subtype][
+                    "metadata_columns"
+                ]
+            }
+        ),
         frac_below_cols=[
             f"frac_w_titer_below_{cutoff}" for cutoff in config["titer_cutoffs"]
         ],
@@ -312,10 +338,6 @@ rule nextstrain_prot_titers_tree_alignment_and_metadata:
             config["serum_cohorts_for_tree"] if _any_tree_has_titers else []
         ),
         has_titers=_any_tree_has_titers,
-    conda:
-        "seqneut-pipeline/environment.yml"
-    log:
-        "results/logs/nextstrain_prot_titers_tree_alignment_and_metadata.txt",
     script:
         "scripts/nextstrain_prot_titers_tree_alignment_and_metadata.py"
 

@@ -52,7 +52,8 @@ nextstrain-prot-titers-tree_config:
     color_by_metadata:
       strain_type: {}
       subclade: {}
-    metadata_columns: [derived_haplotype]
+      drop_status: {}
+    metadata_columns: [derived_haplotype, drop_notes]
     titers: null
     display_defaults:
       color_by: subclade
@@ -73,7 +74,8 @@ nextstrain-prot-titers-tree_config:
     color_by_metadata:
       strain_type: {}
       subclade: {}
-    metadata_columns: [derived_haplotype]
+      drop_status: {}
+    metadata_columns: [derived_haplotype, drop_notes]
     titers: null
     display_defaults:
       color_by: subclade

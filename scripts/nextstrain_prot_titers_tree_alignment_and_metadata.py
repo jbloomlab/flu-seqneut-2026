@@ -16,7 +16,6 @@ import sys
 import numpy as np
 import pandas as pd
 
-
 sys.stdout = sys.stderr = open(snakemake.log[0], "w")
 
 subtypes = snakemake.params.subtypes
@@ -26,18 +25,49 @@ prefix_alignment = snakemake.params.prefix_alignment
 frac_below_cols = snakemake.params.frac_below_cols
 serum_cohorts_for_tree = snakemake.params.serum_cohorts_for_tree
 has_titers = snakemake.params.has_titers
+color_by_cols = snakemake.params.color_by_cols
+metadata_cols = snakemake.params.metadata_cols
 
-viruses = pd.read_csv(snakemake.input.viral_libraries_csv)[
-    [
-        "strain",
-        "subtype",
-        "derived_haplotype",
-        "strain_type",
-        "protein_sequence_HA_ectodomain",
-        "subclade",
-        "collection_date",
-    ]
-].drop_duplicates()
+# Columns this script's own logic always requires from the viral library CSV.
+required_csv_cols = [
+    "strain",
+    "subtype",
+    "strain_type",
+    "protein_sequence_HA_ectodomain",
+    "collection_date",
+]
+
+# Additional metadata columns requested via config (`color_by_metadata` + `metadata_columns`)
+# to carry through to the tree metadata. Titer-derived columns (e.g. median_titer_*, frac_*)
+# are computed below rather than read from the CSV, so they are validated after titer
+# processing instead of here.
+requested_metadata_cols = list(dict.fromkeys([*color_by_cols, *metadata_cols]))
+
+viral_library = pd.read_csv(snakemake.input.viral_libraries_csv)
+
+# Fail fast with a clear message if a configured metadata column is expected from the CSV
+# but absent. When titers are configured, missing columns may instead be titer-derived and
+# are checked after titer processing.
+missing_from_csv = [
+    c for c in requested_metadata_cols if c not in viral_library.columns
+]
+if missing_from_csv and not has_titers:
+    raise ValueError(
+        f"config `color_by_metadata` / `metadata_columns` reference columns "
+        f"{missing_from_csv} that are not in the viral library CSV "
+        f"{snakemake.input.viral_libraries_csv}. "
+        f"Available columns: {viral_library.columns.tolist()}"
+    )
+
+cols_to_read = list(
+    dict.fromkeys(
+        [
+            *required_csv_cols,
+            *(c for c in requested_metadata_cols if c in viral_library.columns),
+        ]
+    )
+)
+viruses = viral_library[cols_to_read].drop_duplicates()
 
 assert len(viruses) == viruses["strain"].nunique(), "Duplicate strain entries found"
 
@@ -153,6 +183,16 @@ if has_titers:
     assert len(titers) == len(
         titers[["serum_for_tree", "strain"]].drop_duplicates()
     ), "Duplicate serum_for_tree-strain pairs after cohort expansion"
+
+# Fail fast if any requested metadata column is still absent after titer processing (i.e.
+# it was neither in the viral library CSV nor produced as a titer-derived column).
+still_missing = [c for c in requested_metadata_cols if c not in df.columns]
+if still_missing:
+    raise ValueError(
+        f"config `color_by_metadata` / `metadata_columns` reference columns "
+        f"{still_missing} that are neither in the viral library CSV nor among the "
+        f"computed titer columns. Present columns: {df.columns.tolist()}"
+    )
 
 # Process each subtype
 for subtype in subtypes:

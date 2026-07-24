@@ -2,7 +2,7 @@
   "version": "v2",
   "meta": {
     "title": "Near real-time data on human neutralizing antibody landscape to H1N1 influenza virus as of the summer of 2026",
-    "updated": "2026-07-23",
+    "updated": "2026-07-24",
     "build_url": "https://github.com/jbloomlab/flu-seqneut-2026",
     "maintainers": [
       {
@@ -55,11 +55,17 @@
         "key": "subclade",
         "title": "subclade",
         "type": "categorical"
+      },
+      {
+        "key": "drop_status",
+        "title": "drop_status",
+        "type": "categorical"
       }
     ],
     "filters": [
+      "strain_type",
       "subclade",
-      "strain_type"
+      "drop_status"
     ],
     "panels": [
       "tree",
@@ -125,11 +131,17 @@
                   "derived_haplotype": {
                     "value": "C.1.9.2"
                   },
-                  "subclade": {
-                    "value": "C.1.9.2"
+                  "drop_notes": {
+                    "value": "Added from design list(s): huddlej. huddlej drop rationale: C.1.9.2 not observed since April 2025, never >20% frequency."
                   },
                   "strain_type": {
                     "value": "circulating_2026"
+                  },
+                  "subclade": {
+                    "value": "C.1.9.2"
+                  },
+                  "drop_status": {
+                    "value": "uncertain"
                   }
                 },
                 "branch_attrs": {
@@ -157,11 +169,17 @@
                   "derived_haplotype": {
                     "value": "C.1.9.4"
                   },
-                  "subclade": {
-                    "value": "C.1.9.4"
+                  "drop_notes": {
+                    "value": "Added from design list(s): huddlej. huddlej drop rationale: C.1.9.4 not circulated since end of 2024, never >20% frequency."
                   },
                   "strain_type": {
                     "value": "circulating_2026"
+                  },
+                  "subclade": {
+                    "value": "C.1.9.4"
+                  },
+                  "drop_status": {
+                    "value": "uncertain"
                   }
                 },
                 "branch_attrs": {
@@ -182,7 +200,7 @@
             ]
           },
           {
-            "name": "NODE_0000004",
+            "name": "NODE_0000005",
             "node_attrs": {
               "div": 2,
               "num_date": {
@@ -201,11 +219,17 @@
                   "derived_haplotype": {
                     "value": "C.1.9.1"
                   },
-                  "subclade": {
-                    "value": "C.1.9.1"
+                  "drop_notes": {
+                    "value": "Added from design list(s): huddlej. huddlej drop rationale: C.1.9.1 not observed since July 2025."
                   },
                   "strain_type": {
                     "value": "circulating_2026"
+                  },
+                  "subclade": {
+                    "value": "C.1.9.1"
+                  },
+                  "drop_status": {
+                    "value": "uncertain"
                   }
                 },
                 "branch_attrs": {
@@ -248,11 +272,14 @@
                       "derived_haplotype": {
                         "value": "C.1.9.3"
                       },
+                      "strain_type": {
+                        "value": "circulating_2026"
+                      },
                       "subclade": {
                         "value": "C.1.9.3"
                       },
-                      "strain_type": {
-                        "value": "circulating_2026"
+                      "drop_status": {
+                        "value": "retain"
                       }
                     },
                     "branch_attrs": {}
@@ -287,11 +314,17 @@
                           "derived_haplotype": {
                             "value": "C.1.9.3:T82K,P137S,A141V,I166V"
                           },
-                          "subclade": {
-                            "value": "C.1.9.3"
+                          "drop_notes": {
+                            "value": "Added from design list(s): ruchnewitzd. huddlej drop rationale: C.1.9.3 subvariant; C.1.9.3 last observed ~140 days ago."
                           },
                           "strain_type": {
                             "value": "circulating_2026"
+                          },
+                          "subclade": {
+                            "value": "C.1.9.3"
+                          },
+                          "drop_status": {
+                            "value": "uncertain"
                           }
                         },
                         "branch_attrs": {
@@ -335,11 +368,17 @@
                               "derived_haplotype": {
                                 "value": "C.1.9.3:D86E,P137S,S143G,G155E,I166V"
                               },
-                              "subclade": {
-                                "value": "C.1.9.3"
+                              "drop_notes": {
+                                "value": "Added from design list(s): turners. huddlej drop rationale: C.1.9.3 subvariant; C.1.9.3 last observed ~140 days ago."
                               },
                               "strain_type": {
                                 "value": "circulating_2026"
+                              },
+                              "subclade": {
+                                "value": "C.1.9.3"
+                              },
+                              "drop_status": {
+                                "value": "uncertain"
                               }
                             },
                             "branch_attrs": {
@@ -384,11 +423,17 @@
                                   "derived_haplotype": {
                                     "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K,D274N"
                                   },
-                                  "subclade": {
-                                    "value": "C.1.9.3"
+                                  "drop_notes": {
+                                    "value": "Added from design list(s): huddlej. huddlej drop rationale: C.1.9.3 subvariant; C.1.9.3 last observed ~140 days ago."
                                   },
                                   "strain_type": {
                                     "value": "circulating_2026"
+                                  },
+                                  "subclade": {
+                                    "value": "C.1.9.3"
+                                  },
+                                  "drop_status": {
+                                    "value": "uncertain"
                                   }
                                 },
                                 "branch_attrs": {
@@ -415,11 +460,17 @@
                                   "derived_haplotype": {
                                     "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K"
                                   },
-                                  "subclade": {
-                                    "value": "C.1.9.3"
+                                  "drop_notes": {
+                                    "value": "Added from design list(s): huddlej, ruchnewitzd. huddlej drop rationale: C.1.9.3 subvariant; C.1.9.3 last observed ~140 days ago."
                                   },
                                   "strain_type": {
                                     "value": "circulating_2026"
+                                  },
+                                  "subclade": {
+                                    "value": "C.1.9.3"
+                                  },
+                                  "drop_status": {
+                                    "value": "uncertain"
                                   }
                                 },
                                 "branch_attrs": {}
@@ -434,11 +485,17 @@
                                   "derived_haplotype": {
                                     "value": "C.1.9.3:V152I"
                                   },
-                                  "subclade": {
-                                    "value": "C.1.9.3"
+                                  "drop_notes": {
+                                    "value": "Added from design list(s): huddlej. huddlej drop rationale: C.1.9.3 subvariant; C.1.9.3 last observed ~140 days ago."
                                   },
                                   "strain_type": {
                                     "value": "circulating_2026"
+                                  },
+                                  "subclade": {
+                                    "value": "C.1.9.3"
+                                  },
+                                  "drop_status": {
+                                    "value": "uncertain"
                                   }
                                 },
                                 "branch_attrs": {
@@ -500,11 +557,14 @@
               "derived_haplotype": {
                 "value": "C.1"
               },
+              "strain_type": {
+                "value": "2023-2024, 2024, 2024-2025, 2025, 2025-2026 cell-based vaccine"
+              },
               "subclade": {
                 "value": "C.1"
               },
-              "strain_type": {
-                "value": "2023-2024, 2024, 2024-2025, 2025, 2025-2026 cell-based vaccine"
+              "drop_status": {
+                "value": "retain"
               }
             },
             "branch_attrs": {}
@@ -539,11 +599,17 @@
                   "derived_haplotype": {
                     "value": "D.5"
                   },
-                  "subclade": {
-                    "value": "D.5"
+                  "drop_notes": {
+                    "value": "Added from design list(s): huddlej. huddlej drop rationale: D.5 not circulated since 2024."
                   },
                   "strain_type": {
                     "value": "circulating_2026"
+                  },
+                  "subclade": {
+                    "value": "D.5"
+                  },
+                  "drop_status": {
+                    "value": "uncertain"
                   }
                 },
                 "branch_attrs": {}
@@ -581,11 +647,14 @@
                       "derived_haplotype": {
                         "value": "D.3.1:R45K"
                       },
+                      "strain_type": {
+                        "value": "circulating_2026"
+                      },
                       "subclade": {
                         "value": "D.3.1"
                       },
-                      "strain_type": {
-                        "value": "circulating_2026"
+                      "drop_status": {
+                        "value": "retain"
                       }
                     },
                     "branch_attrs": {}
@@ -639,11 +708,14 @@
                                   "derived_haplotype": {
                                     "value": "D.3.1:N130K"
                                   },
+                                  "strain_type": {
+                                    "value": "circulating_2026"
+                                  },
                                   "subclade": {
                                     "value": "D.3.1"
                                   },
-                                  "strain_type": {
-                                    "value": "circulating_2026"
+                                  "drop_status": {
+                                    "value": "retain"
                                   }
                                 },
                                 "branch_attrs": {
@@ -677,11 +749,14 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1:L176M"
                                       },
+                                      "strain_type": {
+                                        "value": "circulating_2026"
+                                      },
                                       "subclade": {
                                         "value": "D.3.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
+                                      "drop_status": {
+                                        "value": "retain"
                                       }
                                     },
                                     "branch_attrs": {
@@ -705,11 +780,14 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1"
                                       },
+                                      "strain_type": {
+                                        "value": "2026 and 2026-2027 cell-based vaccine"
+                                      },
                                       "subclade": {
                                         "value": "D.3.1"
                                       },
-                                      "strain_type": {
-                                        "value": "2026 and 2026-2027 cell-based vaccine"
+                                      "drop_status": {
+                                        "value": "retain"
                                       }
                                     },
                                     "branch_attrs": {}
@@ -766,11 +844,17 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1:R74S,I166F"
                                       },
-                                      "subclade": {
-                                        "value": "D.3.1"
+                                      "drop_notes": {
+                                        "value": "Added from design list(s): kondorr. huddlej drop rationale: D.3.1:R74S subvariant; still circulating in South Africa (May 2026) but no onward transmission, unlikely to outcompete D.3.1.1."
                                       },
                                       "strain_type": {
                                         "value": "circulating_2026"
+                                      },
+                                      "subclade": {
+                                        "value": "D.3.1"
+                                      },
+                                      "drop_status": {
+                                        "value": "uncertain"
                                       }
                                     },
                                     "branch_attrs": {}
@@ -804,11 +888,17 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1:A48S,R74S,I166F,T270A"
                                           },
-                                          "subclade": {
-                                            "value": "D.3.1"
+                                          "drop_notes": {
+                                            "value": "Added from design list(s): huddlej, kondorr. huddlej drop rationale: D.3.1:R74S subvariant; still circulating in South Africa (May 2026) but no onward transmission, unlikely to outcompete D.3.1.1."
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1"
+                                          },
+                                          "drop_status": {
+                                            "value": "uncertain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -832,11 +922,17 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1:A48S,R74S,I166F"
                                           },
-                                          "subclade": {
-                                            "value": "D.3.1"
+                                          "drop_notes": {
+                                            "value": "Added from design list(s): kondorr. huddlej drop rationale: D.3.1:R74S subvariant; still circulating in South Africa (May 2026) but no onward transmission, unlikely to outcompete D.3.1.1."
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1"
+                                          },
+                                          "drop_status": {
+                                            "value": "uncertain"
                                           }
                                         },
                                         "branch_attrs": {}
@@ -846,7 +942,7 @@
                                 ]
                               },
                               {
-                                "name": "NODE_0000023",
+                                "name": "NODE_0000021",
                                 "node_attrs": {
                                   "div": 13,
                                   "num_date": {
@@ -865,11 +961,17 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1:R74S,V152I"
                                       },
-                                      "subclade": {
-                                        "value": "D.3.1"
+                                      "drop_notes": {
+                                        "value": "Added from design list(s): huddlej, kondorr. huddlej drop rationale: D.3.1:R74S subvariant; still circulating in South Africa (May 2026) but no onward transmission, unlikely to outcompete D.3.1.1."
                                       },
                                       "strain_type": {
                                         "value": "circulating_2026"
+                                      },
+                                      "subclade": {
+                                        "value": "D.3.1"
+                                      },
+                                      "drop_status": {
+                                        "value": "uncertain"
                                       }
                                     },
                                     "branch_attrs": {
@@ -884,7 +986,7 @@
                                     }
                                   },
                                   {
-                                    "name": "NODE_0000024",
+                                    "name": "NODE_0000022",
                                     "node_attrs": {
                                       "div": 13,
                                       "num_date": {
@@ -903,11 +1005,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1:R74S"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {}
@@ -922,11 +1027,17 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1:R74S,R205K"
                                           },
-                                          "subclade": {
-                                            "value": "D.3.1"
+                                          "drop_notes": {
+                                            "value": "Added from design list(s): huddlej, kondorr. huddlej drop rationale: D.3.1:R74S subvariant; still circulating in South Africa (May 2026) but no onward transmission, unlikely to outcompete D.3.1.1."
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1"
+                                          },
+                                          "drop_status": {
+                                            "value": "uncertain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -977,11 +1088,17 @@
                               "derived_haplotype": {
                                 "value": "D.2"
                               },
-                              "subclade": {
-                                "value": "D.2"
+                              "drop_notes": {
+                                "value": "Added from design list(s): huddlej. huddlej drop rationale: D.2 not circulated since 2024."
                               },
                               "strain_type": {
                                 "value": "circulating_2026"
+                              },
+                              "subclade": {
+                                "value": "D.2"
+                              },
+                              "drop_status": {
+                                "value": "uncertain"
                               }
                             },
                             "branch_attrs": {}
@@ -1036,11 +1153,14 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:D139N,G155E"
                                       },
+                                      "strain_type": {
+                                        "value": "circulating_2026"
+                                      },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
+                                      "drop_status": {
+                                        "value": "retain"
                                       }
                                     },
                                     "branch_attrs": {
@@ -1064,11 +1184,14 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:D127N,D139N"
                                       },
+                                      "strain_type": {
+                                        "value": "circulating_2026"
+                                      },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
+                                      "drop_status": {
+                                        "value": "retain"
                                       }
                                     },
                                     "branch_attrs": {
@@ -1111,11 +1234,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:D168E"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1139,11 +1265,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:D139N,D168E"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {}
@@ -1151,7 +1280,7 @@
                                     ]
                                   },
                                   {
-                                    "name": "NODE_0000032",
+                                    "name": "NODE_0000027",
                                     "node_attrs": {
                                       "div": 17,
                                       "num_date": {
@@ -1170,11 +1299,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:D139N,T232A"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1198,11 +1330,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:D139N"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {}
@@ -1231,11 +1366,14 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:S157L,T278S"
                                       },
+                                      "strain_type": {
+                                        "value": "circulating_2026"
+                                      },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
+                                      "drop_status": {
+                                        "value": "retain"
                                       }
                                     },
                                     "branch_attrs": {
@@ -1260,11 +1398,14 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:L70I,K169R,I286V"
                                       },
+                                      "strain_type": {
+                                        "value": "circulating_2026"
+                                      },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
+                                      "drop_status": {
+                                        "value": "retain"
                                       }
                                     },
                                     "branch_attrs": {
@@ -1309,11 +1450,17 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:G155E,R205K,E235K"
                                           },
-                                          "subclade": {
-                                            "value": "D.3.1.1"
+                                          "drop_notes": {
+                                            "value": "Added from design list(s): huddlej, ruchnewitzd. huddlej drop rationale: D.3.1.1 155E variant; likely redundant with other 155E coverage."
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "drop_status": {
+                                            "value": "uncertain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1338,11 +1485,17 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:G155E"
                                           },
-                                          "subclade": {
-                                            "value": "D.3.1.1"
+                                          "drop_notes": {
+                                            "value": "Added from design list(s): huddlej, jamess, ruchnewitzd. huddlej drop rationale: D.3.1.1 155E variant; likely redundant with other 155E coverage."
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "drop_status": {
+                                            "value": "uncertain"
                                           }
                                         },
                                         "branch_attrs": {}
@@ -1350,7 +1503,7 @@
                                     ]
                                   },
                                   {
-                                    "name": "NODE_0000020",
+                                    "name": "NODE_0000018",
                                     "node_attrs": {
                                       "div": 17,
                                       "num_date": {
@@ -1378,11 +1531,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:S71F,V272A"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1406,11 +1562,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:V272A"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {}
@@ -1437,11 +1596,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:K259R,E260K"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1466,11 +1628,17 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:E260D"
                                           },
-                                          "subclade": {
-                                            "value": "D.3.1.1"
+                                          "drop_notes": {
+                                            "value": "past strain did not rescue"
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "drop_status": {
+                                            "value": "drop"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1487,7 +1655,7 @@
                                     ]
                                   },
                                   {
-                                    "name": "NODE_0000021",
+                                    "name": "NODE_0000019",
                                     "node_attrs": {
                                       "div": 16,
                                       "num_date": {
@@ -1506,11 +1674,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:A141T"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1525,7 +1696,7 @@
                                         }
                                       },
                                       {
-                                        "name": "NODE_0000022",
+                                        "name": "NODE_0000020",
                                         "node_attrs": {
                                           "div": 17,
                                           "num_date": {
@@ -1553,11 +1724,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:A141V"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): ruchnewitzd. huddlej drop rationale: D.3.1.1:A141V low frequency."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {}
@@ -1572,11 +1749,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:I57V,A141V,R205K"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -1618,11 +1801,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:N130K"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1666,11 +1852,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:N130S,V234L,P271S"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): turners. huddlej drop rationale: 271S low frequency and other subs well-covered."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -1694,11 +1886,14 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:N130S,V234L"
                                               },
+                                              "strain_type": {
+                                                "value": "circulating_2026"
+                                              },
                                               "subclade": {
                                                 "value": "D.3.1.1"
                                               },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
+                                              "drop_status": {
+                                                "value": "retain"
                                               }
                                             },
                                             "branch_attrs": {}
@@ -1736,11 +1931,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:V321I"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {}
@@ -1755,11 +1953,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:L70P,A141V,V321I"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1803,11 +2004,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:P118S,R205K,V321I"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -1831,11 +2038,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:V19I,R205K,V321I"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -1854,7 +2067,7 @@
                                     ]
                                   },
                                   {
-                                    "name": "NODE_0000045",
+                                    "name": "NODE_0000039",
                                     "node_attrs": {
                                       "div": 16,
                                       "num_date": {
@@ -1873,11 +2086,14 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:K156R"
                                           },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
+                                          "drop_status": {
+                                            "value": "retain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -1892,7 +2108,7 @@
                                         }
                                       },
                                       {
-                                        "name": "NODE_0000046",
+                                        "name": "NODE_0000040",
                                         "node_attrs": {
                                           "div": 16,
                                           "num_date": {
@@ -1911,11 +2127,14 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:T164I"
                                               },
+                                              "strain_type": {
+                                                "value": "circulating_2026"
+                                              },
                                               "subclade": {
                                                 "value": "D.3.1.1"
                                               },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
+                                              "drop_status": {
+                                                "value": "retain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -1930,7 +2149,7 @@
                                             }
                                           },
                                           {
-                                            "name": "NODE_0000049",
+                                            "name": "NODE_0000041",
                                             "node_attrs": {
                                               "div": 16,
                                               "num_date": {
@@ -1949,11 +2168,14 @@
                                                   "derived_haplotype": {
                                                     "value": "D.3.1.1:K22R"
                                                   },
+                                                  "strain_type": {
+                                                    "value": "circulating_2026"
+                                                  },
                                                   "subclade": {
                                                     "value": "D.3.1.1"
                                                   },
-                                                  "strain_type": {
-                                                    "value": "circulating_2026"
+                                                  "drop_status": {
+                                                    "value": "retain"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1968,7 +2190,7 @@
                                                 }
                                               },
                                               {
-                                                "name": "NODE_0000050",
+                                                "name": "NODE_0000045",
                                                 "node_attrs": {
                                                   "div": 16,
                                                   "num_date": {
@@ -1987,11 +2209,14 @@
                                                       "derived_haplotype": {
                                                         "value": "D.3.1.1:T186N"
                                                       },
+                                                      "strain_type": {
+                                                        "value": "circulating_2026"
+                                                      },
                                                       "subclade": {
                                                         "value": "D.3.1.1"
                                                       },
-                                                      "strain_type": {
-                                                        "value": "circulating_2026"
+                                                      "drop_status": {
+                                                        "value": "retain"
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -2006,7 +2231,7 @@
                                                     }
                                                   },
                                                   {
-                                                    "name": "NODE_0000051",
+                                                    "name": "NODE_0000046",
                                                     "node_attrs": {
                                                       "div": 16,
                                                       "num_date": {
@@ -2025,11 +2250,14 @@
                                                           "derived_haplotype": {
                                                             "value": "D.3.1.1:R142K"
                                                           },
+                                                          "strain_type": {
+                                                            "value": "circulating_2026"
+                                                          },
                                                           "subclade": {
                                                             "value": "D.3.1.1"
                                                           },
-                                                          "strain_type": {
-                                                            "value": "circulating_2026"
+                                                          "drop_status": {
+                                                            "value": "retain"
                                                           }
                                                         },
                                                         "branch_attrs": {
@@ -2044,7 +2272,7 @@
                                                         }
                                                       },
                                                       {
-                                                        "name": "NODE_0000057",
+                                                        "name": "NODE_0000049",
                                                         "node_attrs": {
                                                           "div": 16,
                                                           "num_date": {
@@ -2063,11 +2291,14 @@
                                                               "derived_haplotype": {
                                                                 "value": "D.3.1.1:S190I"
                                                               },
+                                                              "strain_type": {
+                                                                "value": "circulating_2026"
+                                                              },
                                                               "subclade": {
                                                                 "value": "D.3.1.1"
                                                               },
-                                                              "strain_type": {
-                                                                "value": "circulating_2026"
+                                                              "drop_status": {
+                                                                "value": "retain"
                                                               }
                                                             },
                                                             "branch_attrs": {
@@ -2082,7 +2313,7 @@
                                                             }
                                                           },
                                                           {
-                                                            "name": "NODE_0000063",
+                                                            "name": "NODE_0000050",
                                                             "node_attrs": {
                                                               "div": 16,
                                                               "num_date": {
@@ -2101,11 +2332,14 @@
                                                                   "derived_haplotype": {
                                                                     "value": "D.3.1.1"
                                                                   },
+                                                                  "strain_type": {
+                                                                    "value": "circulating_2026"
+                                                                  },
                                                                   "subclade": {
                                                                     "value": "D.3.1.1"
                                                                   },
-                                                                  "strain_type": {
-                                                                    "value": "circulating_2026"
+                                                                  "drop_status": {
+                                                                    "value": "retain"
                                                                   }
                                                                 },
                                                                 "branch_attrs": {}
@@ -2120,11 +2354,14 @@
                                                                   "derived_haplotype": {
                                                                     "value": "D.3.1.1:D274N"
                                                                   },
+                                                                  "strain_type": {
+                                                                    "value": "circulating_2026"
+                                                                  },
                                                                   "subclade": {
                                                                     "value": "D.3.1.1"
                                                                   },
-                                                                  "strain_type": {
-                                                                    "value": "circulating_2026"
+                                                                  "drop_status": {
+                                                                    "value": "retain"
                                                                   }
                                                                 },
                                                                 "branch_attrs": {
@@ -2172,6 +2409,41 @@
                                     },
                                     "children": [
                                       {
+                                        "name": "A/PaisVasco/70369726/2026",
+                                        "node_attrs": {
+                                          "div": 19,
+                                          "num_date": {
+                                            "value": 2026.05
+                                          },
+                                          "derived_haplotype": {
+                                            "value": "D.3.1.1:R205K,I267S,T270A"
+                                          },
+                                          "drop_notes": {
+                                            "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
+                                          },
+                                          "strain_type": {
+                                            "value": "circulating_2026"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "drop_status": {
+                                            "value": "uncertain"
+                                          }
+                                        },
+                                        "branch_attrs": {
+                                          "mutations": {
+                                            "HA1": [
+                                              "I267S",
+                                              "T270A"
+                                            ]
+                                          },
+                                          "labels": {
+                                            "aa": "HA1: I267S, T270A"
+                                          }
+                                        }
+                                      },
+                                      {
                                         "name": "A/France/GES-IPP00659/2026",
                                         "node_attrs": {
                                           "div": 19,
@@ -2181,11 +2453,17 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:S157T,R205K"
                                           },
-                                          "subclade": {
-                                            "value": "D.3.1.1"
+                                          "drop_notes": {
+                                            "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"
+                                          },
+                                          "subclade": {
+                                            "value": "D.3.1.1"
+                                          },
+                                          "drop_status": {
+                                            "value": "uncertain"
                                           }
                                         },
                                         "branch_attrs": {
@@ -2203,36 +2481,7 @@
                                         }
                                       },
                                       {
-                                        "name": "A/PaisVasco/70369726/2026",
-                                        "node_attrs": {
-                                          "div": 19,
-                                          "num_date": {
-                                            "value": 2026.05
-                                          },
-                                          "derived_haplotype": {
-                                            "value": "D.3.1.1:R205K,I267S,T270A"
-                                          },
-                                          "subclade": {
-                                            "value": "D.3.1.1"
-                                          },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          }
-                                        },
-                                        "branch_attrs": {
-                                          "mutations": {
-                                            "HA1": [
-                                              "I267S",
-                                              "T270A"
-                                            ]
-                                          },
-                                          "labels": {
-                                            "aa": "HA1: I267S, T270A"
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "name": "NODE_0000005",
+                                        "name": "NODE_0000003",
                                         "node_attrs": {
                                           "div": 17,
                                           "num_date": {
@@ -2251,11 +2500,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:S190R,R205K"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -2279,11 +2534,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:S190I,R205K,A315V"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -2301,7 +2562,7 @@
                                         ]
                                       },
                                       {
-                                        "name": "NODE_0000006",
+                                        "name": "NODE_0000004",
                                         "node_attrs": {
                                           "div": 18,
                                           "num_date": {
@@ -2329,11 +2590,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:S190I,R205K"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -2357,11 +2624,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:I166T,R205K,V220M"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -2379,7 +2652,7 @@
                                         ]
                                       },
                                       {
-                                        "name": "NODE_0000067",
+                                        "name": "NODE_0000057",
                                         "node_attrs": {
                                           "div": 17,
                                           "num_date": {
@@ -2398,11 +2671,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:V152I,R205K"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): turners. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -2426,11 +2705,14 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:R205K"
                                               },
+                                              "strain_type": {
+                                                "value": "circulating_2026"
+                                              },
                                               "subclade": {
                                                 "value": "D.3.1.1"
                                               },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
+                                              "drop_status": {
+                                                "value": "retain"
                                               }
                                             },
                                             "branch_attrs": {}
@@ -2457,11 +2739,17 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:D168E,R205K"
                                               },
-                                              "subclade": {
-                                                "value": "D.3.1.1"
+                                              "drop_notes": {
+                                                "value": "Added from design list(s): ruchnewitzd. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                               },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "D.3.1.1"
+                                              },
+                                              "drop_status": {
+                                                "value": "uncertain"
                                               }
                                             },
                                             "branch_attrs": {
@@ -2504,11 +2792,17 @@
                                                   "derived_haplotype": {
                                                     "value": "D.3.1.1:D168N,L176M,R205K"
                                                   },
-                                                  "subclade": {
-                                                    "value": "D.3.1.1"
+                                                  "drop_notes": {
+                                                    "value": "Added from design list(s): huddlej, ruchnewitzd. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                                   },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "D.3.1.1"
+                                                  },
+                                                  "drop_status": {
+                                                    "value": "uncertain"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -2532,11 +2826,17 @@
                                                   "derived_haplotype": {
                                                     "value": "D.3.1.1:N31S,D168N,R205K"
                                                   },
-                                                  "subclade": {
-                                                    "value": "D.3.1.1"
+                                                  "drop_notes": {
+                                                    "value": "Added from design list(s): huddlej. huddlej drop rationale: D.3.1.1:205K variant; declining subclade, keeping only the base variant."
                                                   },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "D.3.1.1"
+                                                  },
+                                                  "drop_status": {
+                                                    "value": "uncertain"
                                                   }
                                                 },
                                                 "branch_attrs": {

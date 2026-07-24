@@ -5,7 +5,5 @@
 #
 # Submit the library_pooling notebooks to SLURM via the Snakemake slurm profile.
 # Run from this directory with: sbatch run_snakemake.bash
-# (the `constructs`-style profile in profiles/ dispatches each notebook as its
-# own SLURM job; this wrapper is just the lightweight controller.)
 
 snakemake --profile profiles/ -s workflow/Snakefile

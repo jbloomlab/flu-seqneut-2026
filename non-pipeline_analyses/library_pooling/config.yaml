@@ -17,11 +17,14 @@
 # context["output"], context["params"] (matching the seqneut-pipeline
 # notebooks). Reference files by these keys rather than hard-coding paths.
 notebooks:
-  example_analysis:
+  20260715_equal_volume_pool:
     input:
-      designed_library: ../../data/viral_libraries/flu-seqneut-2026-barcode-to-strain-designed.csv
+      viral_library_csv: ../../data/viral_libraries/flu-seqneut-2026-barcode-to-strain-designed.csv
+      neut_standard_set: ../../data/neut_standard_sets/loes2023_neut_standards.csv
+      samplesfile: ../../data/miscellaneous_plates/2026-07-15_equal_vol_pool.csv
+      platedir: ../../results/miscellaneous_plates/20260715_equal_vol_pool/
     output:
-      summary_csv: results/example_analysis/strain_counts_by_subtype.csv
-    params:
-      # Example parameter demonstrating the config -> notebook path.
-      min_barcodes_per_strain: 2
+      repooling_math: results/pooling_math/2026-07-15_repooling_math.csv
+      dropped_strains: results/pooling_math/dropped_strains.csv
+
+

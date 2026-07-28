@@ -635,10 +635,12 @@ def _(lib_id_df, mean_single_well, pd, repool_factor, well2):
 
     # drop strains
     strains_to_drop = [
-        'A/Bangkok/P2323/2025_H3N2', # low titer
-        'A/California/LACPHL-INF02113/2025_H3N2', # low titer
-        'A/England/1845724/2025_H3N2', # low titer
-        'A/Galicia/GA-CHUAC-449/2025_H1N1', # low titer
+        'A/Bangkok/P2323/2025_H3N2', # no rescue
+        'A/California/LACPHL-INF02113/2025_H3N2', # failed rescue
+        'A/England/1845724/2025_H3N2', # no rescue
+        'A/Galicia/GA-CHUAC-449/2025_H1N1', # no rescue
+        'A/Netherlands/446/2026_H1N1', # low titer
+        'A/Netherlands/1739/2023_H1N1' # low titer
     ]
     trimmed_repool_df = repool_df[~repool_df['strain'].isin(strains_to_drop)]
     trimmed_repool_df

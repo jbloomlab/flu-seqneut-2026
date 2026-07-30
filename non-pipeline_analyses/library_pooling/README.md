@@ -1,14 +1,13 @@
 # library_pooling
 
-Marimo notebooks for library-pooling analyses. Each notebook runs two ways from
-the same file:
+This directory contains marimo analysis notebooks related to pooling and balancing the haplotypes
+present in the library. Each notebook runs two ways from the same file:
 
 - **Interactively** with `marimo edit`
 - **Non-interactively** via Snakemake (locally or submitted to SLURM), which
   exports each notebook to a self-contained HTML
 
-This directory is a standalone analysis (see `non-pipeline_analyses/`), not part
-of the main seqneut-pipeline.
+This directory is a standalone analysis, not part of the main `seqneut-pipeline`.
 
 ## Environment
 
@@ -28,10 +27,10 @@ this file to provision the per-rule environment when run with `--use-conda`.
 
 ```
 library_pooling/
-├── config.yaml                 # notebooks + their inputs/outputs/params (single source of truth)
+├── config.yaml                 # notebooks + their inputs/outputs/params 
 ├── environment.yml             # conda environment (name: library_pooling)
 ├── run_snakemake.bash          # SLURM controller (sbatch this)
-├── data/                       # analysis-specific input data (committed)
+├── data/                       # analysis-specific input data 
 ├── notebooks/                  # marimo notebooks, one .py per analysis
 │   └── example_analysis.py     # template — copy to start a new analysis
 ├── profiles/config.yaml        # Snakemake SLURM profile

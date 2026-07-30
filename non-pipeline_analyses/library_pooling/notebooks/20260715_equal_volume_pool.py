@@ -657,18 +657,19 @@ def _(
     trimmed_repool_df,
 ):
     # Save pooling math
-    pooling_df = trimmed_repool_df.sort_values(by='x_volume_to_add', ascending=False).reset_index(drop=True)[['strain_id','x_volume_to_add','strain']]
+    pooling_df = trimmed_repool_df.sort_values(by='x_volume_to_add', ascending=False).reset_index(drop=True)[['shortname','x_volume_to_add','strain','strain_id']]
     pooling_df['number'] = pooling_df['strain_id'].str.split('_').str[1].fillna(1e6).astype(int)
     pooling_df['subtype'] = pooling_df['strain_id'].str.split('_').str[0]
     pooling_df = (pooling_df
         .sort_values(by=['subtype','number'], ascending=True)
         .drop(columns=['number', 'subtype'])
                  )
+    pooling_df = pooling_df.drop_duplicates(subset=['strain'])
+    pooling_df = pooling_df.drop(columns="strain_id")
 
     repooling_dir = os.path.dirname(repooling_math)
     os.makedirs(repooling_dir, exist_ok=True)
     pooling_df.to_csv(repooling_math, index=False)
-
     # Save info on dropped strains
     dropped_repool_df = repool_df[repool_df['strain'].isin(strains_to_drop)]
     dropped_repool_df.to_csv(dropped_strains,index=False)
@@ -676,8 +677,37 @@ def _(
     # Summarize top 10 lowest titer strains
     print('Displaying the top 10 lowest titer strains that made the cut...')
     trimmed_repool_df.sort_values(by='x_volume_to_add', ascending=False).head(10).reset_index(drop=True)
+    return (pooling_df,)
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Here we will make four subpools that will then be combined for the final rebalanced pool so that
+    if things have to be remade, we may be able to save some work.
+    """)
     return
 
+@app.cell
+def _(np, pooling_df):
+    conditions = [
+        pooling_df['shortname'].str.startswith('flu-seqneut-2026_H1N1'),
+        pooling_df['shortname'].str.startswith('flu-seqneut-2026_H3N2'),
+        (~pooling_df['shortname'].str.startswith('flu-seqneut-2026')) & pooling_df['shortname'].str.contains('H1N1'),
+        (~pooling_df['shortname'].str.startswith('flu-seqneut-2026')) & pooling_df['shortname'].str.contains('H3N2'),
+    ]
+
+    choices = [
+        'flu-seqneut-2026_h1',
+        'flu-seqneut-2026_h3',
+        'old_h1_vax',
+        'old_h3_vax',
+    ]
+    pooling_df['subpool'] = np.select(conditions, choices, default="")
+    pooling_df
+    summary = pooling_df.groupby('subpool')['x_volume_to_add'].sum().reset_index()
+    summary['proportion'] = summary['x_volume_to_add'] / summary['x_volume_to_add'].sum()
+    summary
+    return
 
 @app.cell
 def _(repool_factor, trimmed_repool_df):

@@ -1,0 +1,61 @@
+# Snakefile for library_pooling marimo notebooks.
+#
+# Each entry under `notebooks` in config.yaml becomes one `run_notebook` job that
+# executes notebooks/<name>.py non-interactively via the context-pickle driver,
+# producing an HTML render plus whatever files the notebook's `output` declares.
+#
+# The notebook's config `input` / `output` mappings are wired into the rule's
+# native `input:` / `output:` as named entries (via unpack), so the notebook
+# reads them as context["input"][key] / context["output"][key] -- matching the
+# seqneut-pipeline notebooks. Config `params` are passed through `params:`.
+#
+# Usage (from this directory):
+#   snakemake -s workflow/Snakefile --use-conda --cores 1          # local
+#   snakemake -s workflow/Snakefile --profile profiles/            # SLURM (see run_snakemake.bash)
+#   marimo edit notebooks/<name>.py                                # interactive
+#
+# See README.md for details.
+
+configfile: "config.yaml"
+
+
+NOTEBOOKS = config["notebooks"]
+
+
+rule all:
+    input:
+        expand("results/{notebook}.html", notebook=NOTEBOOKS),
+
+
+rule run_notebook:
+    input:
+        unpack(
+            lambda wc: {
+                "marimo_nb": f"notebooks/{wc.notebook}.py",
+                # Named inputs the notebook reads as context["input"][key]; also
+                # makes upstream data edits re-trigger the run.
+                **NOTEBOOKS[wc.notebook].get("input", {}),
+            }
+        ),
+    output:
+        # Snakemake output paths must be static strings (functions/unpack are not
+        # allowed for output), so only the always-present HTML + context pickle are
+        # declared. The notebook's own output files (config `output`) are passed
+        # via `params.notebook_output` below and merged into context["output"] by
+        # the driver; they are produced as a side effect gated by the HTML.
+        marimo_html="results/{notebook}.html",
+        context_pickle="results/{notebook}_context.pickle",
+    params:
+        # Config `output` map, merged into context["output"] by the driver so the
+        # notebook reads outputs by key as context["output"][key].
+        notebook_output=lambda wc: dict(NOTEBOOKS[wc.notebook].get("output", {})),
+        # Config `params` surfaced to the notebook as context["params"].
+        notebook_params=lambda wc: dict(NOTEBOOKS[wc.notebook].get("params", {})),
+    log:
+        "logs/{notebook}.log",
+    conda:
+        # Resolved relative to this Snakefile (workflow/), so point up one level
+        # at the analysis-directory environment.yml.
+        "../environment.yml"
+    script:
+        "scripts/run_marimo_w_context_pickle.py"

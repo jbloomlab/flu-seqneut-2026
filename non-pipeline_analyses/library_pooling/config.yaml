@@ -26,5 +26,12 @@ notebooks:
     output:
       repooling_math: results/pooling_math/2026-07-15_repooling_math.csv
       dropped_strains: results/pooling_math/dropped_strains.csv
-
+  
+  20260731_repool:
+    input:
+      viral_library_csv: ../../data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv
+      neut_standard_set: ../../data/neut_standard_sets/loes2023_neut_standards.csv
+      samplesfile: ../../data/miscellaneous_plates/2026-07-31_repool.csv
+      platedir: ../../results/miscellaneous_plates/20260731_repool/
+      
 

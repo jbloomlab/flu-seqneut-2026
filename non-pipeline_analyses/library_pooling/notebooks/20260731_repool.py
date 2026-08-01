@@ -469,6 +469,21 @@ def _(alt, neut_standard_fracs):
     return
 
 
+@app.cell
+def _(alt, neut_standard_fracs):
+    # Scatterplot with the logit instead, plotted by dilution factor
+    alt.Chart(neut_standard_fracs).mark_circle(size=60).encode(
+        alt.X('dilution_factor:Q', 
+              scale=alt.Scale(type='log'),
+              title='library pool reciprocal dilution factor'),
+        alt.Y('neut_standard_logit:Q', 
+              title='logit of fraction of reads = neutralization standard'),
+        color='fails_qc',
+        tooltip=['well', 'dilution_factor', 'neut_standard_frac', 'total_count']
+    ).interactive()
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""

@@ -1,5 +1,8 @@
 # CLAUDE.md 
 
+Also read [seqneut-pipeline/CLAUDE.md](seqneut-pipeline/CLAUDE.md), which covers the
+pipeline included here as a submodule, and follow its principles as well.
+
 ## Critical Scientific Coding Principles
 
 **This is scientific research code.** Data integrity and reproducibility are paramount. Follow these principles:
@@ -72,6 +75,38 @@ The minimum replicates threshold is set to 1, and outliers are flagged at 3-fold
 ### Non-Pipeline Analyses (GENERALLY IGNORE)
 
 The `non-pipeline_analyses/` directory contains one-off analyses for library design and pooling optimization. These are **NOT part of the main neutralization assay pipeline** and are documented separately in that directory. Ignore unless the user specifically asks about them.
+
+## Organization of Snakemake Rules
+
+The core analysis is the `seqneut-pipeline` submodule; do not add rules specific to this
+project to it. Analyses in `snakemake` that are outside that core pipeline are organized
+like this:
+
+- Each coherent chunk of analysis gets its own `.smk` file in `rules/`, which `Snakefile`
+  includes after the pipeline include. `Snakefile` itself holds only the `configfile`,
+  the `include` statements, and `rule all`.
+- Each file in `rules/` ends by defining the list of final outputs it contributes (e.g.
+  `trees_outputs`), which `rule all` collects. This mirrors `seqneut_pipeline_outputs`,
+  and keeps `rule all` from having to know path patterns defined elsewhere.
+- `snakemake` resolves the paths in `script:`, `conda:`, and `module: snakefile:`
+  relative to the file that defines the rule, so from `rules/` these need a `../`
+  prefix. Input, output, and log paths are relative to the working directory instead,
+  and so do not.
+- Included files all share one global namespace, so prefix helper variables with `_`.
+
+**IMPORTANT: rules outside the core pipeline must be kept concise and non-redundant.**
+They are glue, and everything below follows from that:
+
+- A rule should be a thin wrapper that names its inputs and outputs, passes config values
+  through `params`, and delegates the analysis itself to a script in `scripts/` or a
+  notebook in `notebooks/`. Do not put analysis logic in a `.smk` file.
+- Never write the same path pattern twice. Refer to another rule's output as
+  `rules.<rule>.output.<name>` rather than repeating the string, and build target lists
+  with `expand` over `rules.<rule>.output.<name>`.
+- Consume an existing rule's output rather than recomputing the same quantity, and add a
+  wildcard to an existing rule rather than copying it into a near-duplicate rule.
+- Do not add a config key or a rule whose only purpose is to switch an analysis off; let
+  the script or notebook report that there is nothing to show.
 
 ## Code Style and Quality Requirements
 

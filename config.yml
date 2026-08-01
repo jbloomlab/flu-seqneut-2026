@@ -201,3 +201,21 @@ miscellaneous_plates:
       illumina_barcode_parser_params:
         upstream2: GCTACA # Fwd1
         upstream2_mismatch: 1
+
+  20260730_single_well_H3_strains:
+      date: 2026-07-30
+      viral_library: designed
+      neut_standard_set: loes2023
+      samples_csv: data/miscellaneous_plates/20260730_single_well_H3_strains.csv
+      illumina_barcode_parser_params:
+        upstream2: ATCGAT # Fwd2
+        upstream2_mismatch: 1
+
+  20260730_single_well_H1_vax_old_strains:
+      date: 2026-07-30
+      viral_library: designed
+      neut_standard_set: loes2023
+      samples_csv: data/miscellaneous_plates/20260730_single_well_H1_vax_old_strains.csv
+      illumina_barcode_parser_params:
+        upstream2: TGACGC # Fwd3
+        upstream2_mismatch: 1

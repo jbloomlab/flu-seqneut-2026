@@ -125,6 +125,40 @@ plot_titer_summaries_params:
 # from `plot_titer_summaries_params`
 plot_fold_changes: {}
 
+# Analyses of the composition of a library pool, one entry per pool. Each is analyzed
+# from the barcode counts of the plate named by `miscellaneous_plate`, from which the
+# date, viral library, neutralization standard set, and samples are also taken.
+analyze_pools:
+  20260715_equal_vol_pool:
+    miscellaneous_plate: 20260715_equal_vol_pool
+    description: |
+      An initial pool was made by adding equal volumes of all strains, and this pool was
+      then used to infect MDCK-SIAT1 cells over a serial dilution of the pool. The
+      barcodes were sequenced to determine the representation of each strain in the pool,
+      how much of each strain to add to make a balanced pool, and the pool dilution
+      (that is, the MOI) to use in the neutralization assays.
+    # Wells in linear range that the composition of the pool is read from.
+    # Either "calculate" (recommended), which locates the first 3 linear points of the
+    # neutralization-standard curve and takes the middle dilution of it, or a list of wells
+    # such as [A8, B8] to override that. Here we are using [A8, B8] solely for backward
+    # compatibility with how experiments were done, in future use "calculate"
+    linear_range_wells: [A8, B8]
+    min_avg_barcode_count_per_well: 500
+    min_neut_standard_frac_per_well: 0.001
+    total_pool_volume: 10307.409  # ul of re-pooled library to make
+    subpools:  # strain assigned to the first subpool whose regex its shortname matches
+      flu-seqneut-2026_h1: ^flu-seqneut-2026_H1N1
+      flu-seqneut-2026_h3: ^flu-seqneut-2026_H3N2
+      old_h1_vax: H1N1
+      old_h3_vax: H3N2
+    strains_to_drop:  # strains excluded from the re-pooling, and why
+      A/Bangkok/P2323/2025_H3N2: no rescue
+      A/California/LACPHL-INF02113/2025_H3N2: failed rescue
+      A/England/1845724/2025_H3N2: no rescue
+      A/Galicia/GA-CHUAC-449/2025_H1N1: no rescue
+      A/Netherlands/446/2026_H1N1: low titer
+      A/Netherlands/1739/2023_H1N1: low titer
+
 # --- Configuration for `seqneut-pipeline` ----------------------------------------------
 
 seqneut-pipeline: seqneut-pipeline

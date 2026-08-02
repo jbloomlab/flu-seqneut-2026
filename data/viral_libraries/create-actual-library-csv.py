@@ -63,7 +63,6 @@ def check_drops_present(designed, drops):
     """
     designed_pairs = set(map(tuple, designed[match_columns].values))
     drop_pairs = list(map(tuple, drops[match_columns].values))
-    print(designed)
     not_found = [pair for pair in drop_pairs if pair not in designed_pairs]
     if not_found:
         raise ValueError(

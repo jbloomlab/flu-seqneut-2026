@@ -1,0 +1,7 @@
+shortname,strain,subpool,mean_fraction_strain,reason
+flu-seqneut-2026_H1N1_43,A/Netherlands/446/2026_H1N1,flu-seqneut-2026_h1,2.862e-05,low titer
+flu-seqneut-2026_H3N2_44,A/California/LACPHL-INF02113/2025_H3N2,flu-seqneut-2026_h3,0,failed rescue
+flu-seqneut-25to26_H1N1_2,A/Galicia/GA-CHUAC-449/2025_H1N1,old_h1_vax,0,no rescue
+flu_seqneut_pdmH1N1_2023-2024_H1_22,A/Netherlands/1739/2023_H1N1,old_h1_vax,5.318e-05,low titer
+flu-seqneut-25to26_H3N2_28,A/Bangkok/P2323/2025_H3N2,old_h3_vax,0,no rescue
+flu-seqneut-25to26_H3N2_58,A/England/1845724/2025_H3N2,old_h3_vax,0,no rescue

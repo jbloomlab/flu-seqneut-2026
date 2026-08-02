@@ -41,6 +41,8 @@ results/**
 
 !results/validate_viral_library/*_validation.txt
 
+!results/library_qc/*.csv
+
 !results/sera_metadata/all_sera_metadata.csv
 
 !results/final_titer_data/*.csv

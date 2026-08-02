@@ -93,6 +93,34 @@ like this:
   prefix. Input, output, and log paths are relative to the working directory instead,
   and so do not.
 - Included files all share one global namespace, so prefix helper variables with `_`.
+- Defining a helper function alongside rules in the same `.smk` fails `snakemake --lint`
+  ("Mixed rules and functions in same snakefile"). Derive a variable from the config
+  instead, as `rules/library_qc.smk` does with `pool_plates`; a rule can then index it
+  from a `lambda wc:` without repeating the lookup.
+
+### Testing a rule's script without running the pipeline
+
+A `script:` rule reads a global `snakemake` object, so its script can be run directly
+against a stub of one. This exercises the real script rather than a copy of it, and reaches
+failure cases the committed data does not contain, such as a well with no counts or a
+malformed configuration value:
+
+```python
+snakemake = types.SimpleNamespace(
+    wildcards=types.SimpleNamespace(pool="test_pool"),
+    params=types.SimpleNamespace(...),  # as the rule's `params` would be
+    input=types.SimpleNamespace(...),   # point at copies of the real inputs, edited to
+    output=types.SimpleNamespace(...),  # fabricate the failure being tested
+    log=[str(out / "log.txt")],
+)
+builtins.snakemake = snakemake
+globals_ = runpy.run_path("scripts/<script>.py", run_name="__main__")
+```
+
+Two things to get right. These scripts redirect `sys.stdout` and `sys.stderr` to their log
+file, so save and restore both around the call or the harness loses its own output. And
+that log file is left open and buffered, so flush it through the globals `runpy` returns
+(`globals_["log"].flush()`) before reading it, or it will look empty.
 
 **IMPORTANT: rules outside the core pipeline must be kept concise and non-redundant.**
 They are glue, and everything below follows from that:
@@ -107,6 +135,26 @@ They are glue, and everything below follows from that:
   wildcard to an existing rule rather than copying it into a near-duplicate rule.
 - Do not add a config key or a rule whose only purpose is to switch an analysis off; let
   the script or notebook report that there is nothing to show.
+
+## Keeping README.md Current and Proportionate
+
+`README.md` must be updated along with any change that adds, removes, or redirects an
+analysis, an input data format, or a result file. It describes the key points only, and
+its structure carries meaning:
+
+- The early sections describe the underlying study: the assay, the viral library, the
+  sera, and the titers. They are about what the data *are*, not about the analyses run on
+  them; do not add an analysis description there.
+- Each analysis outside the core pipeline gets one short subsection under "Additional
+  analyses" near the end. Keep these evenly weighted and of the same shape: what the
+  analysis does, which `.smk` file runs it, where its outputs go, and where it is
+  configured. A new analysis that needs more room than its neighbors is a sign it is
+  being described in too much detail, not that it deserves a longer section.
+- Say where something is configured, never what the current configuration is (see the
+  Documentation Principle above). Config values, thresholds, and file lists live in
+  `config.yml` and would go stale here.
+- Describe a thing in exactly one place and cross-reference it from anywhere else that
+  needs it, rather than restating it.
 
 ## Code Style and Quality Requirements
 

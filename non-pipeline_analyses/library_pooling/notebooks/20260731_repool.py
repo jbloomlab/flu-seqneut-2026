@@ -140,9 +140,7 @@ def _():
     import altair as alt
 
     import numpy as np
-    import string
     import pandas as pd
-    from os.path import join
 
     _ = alt.data_transformers.disable_max_rows()
 
@@ -153,7 +151,7 @@ def _():
         '#ca1551', #red
         '#eac435', #yellow
                    ]
-    return alt, color_palette, np, pd, string
+    return alt, color_palette, np, pd
 
 
 @app.cell(hide_code=True)
@@ -378,9 +376,10 @@ def _(alt, counts, pd, sample_wells):
 
 @app.cell
 def _(avg_barcode_counts):
-    # drop wells failing QC
+    # wells failing QC (checked against the wells chosen for balancing, below)
     avg_barcode_counts_per_well_drops = list(avg_barcode_counts.query("fails_qc")["well"])
-    return
+    print(f"wells failing {avg_barcode_counts_per_well_drops=}")
+    return (avg_barcode_counts_per_well_drops,)
 
 
 @app.cell(hide_code=True)
@@ -454,23 +453,24 @@ def _(alt, counts, np, pd, sample_wells):
 
 @app.cell
 def _(neut_standard_fracs):
-    # drop wells failing QC
+    # wells failing QC (checked against the wells chosen for balancing, below)
     min_neut_standard_frac_per_well_drops = list(
         neut_standard_fracs.query("fails_qc")["well"]
     )
+    print(f"wells failing {min_neut_standard_frac_per_well_drops=}")
     neut_standard_fracs
-    return
+    return (min_neut_standard_frac_per_well_drops,)
 
 
 @app.cell
 def _(alt, neut_standard_fracs):
     # Scatterplot of the same data as above, plotted by dilution factor
     alt.Chart(neut_standard_fracs).mark_circle(size=60).encode(
-        alt.X('dilution_factor:Q', 
+        alt.X('dilution_factor:Q',
               scale=alt.Scale(type='log'),
               title='library pool reciprocal dilution factor'),
-        alt.Y('neut_standard_frac:Q', 
-              title='logit of fraction of reads = neutralization standard'),
+        alt.Y('neut_standard_frac:Q',
+              title='fraction of reads = neutralization standard'),
         color='fails_qc',
         tooltip=['well', 'dilution_factor', 'neut_standard_frac', 'total_count']
     ).interactive()
@@ -501,17 +501,32 @@ def _(mo):
 
 
 @app.cell
-def _(counts):
+def _(counts, np):
+    # Strain balancing concerns the viral strains only, so drop the neutralization
+    # standard explicitly rather than relying on its NaN `strain` being discarded
+    # by the groupby's default dropna=True (the other groupbys in this notebook
+    # pass dropna=False, so that default is easy to flip by accident).
+    viral_counts = counts[~counts['neut_standard']]
+    assert viral_counts['strain'].notna().all(), "viral barcodes with missing strain"
+    assert counts.loc[counts['neut_standard'], 'strain'].isna().all(), (
+        "neut-standard barcodes unexpectedly carry a strain"
+    )
+
     # Get summed barcode counts for all strains across all wells
     straincounts_allbarcodes = (
-        counts.groupby(['sample', 'sample_well', 'strain', 'dilution_factor', 'serum', 'well'])['count']
+        viral_counts.groupby(
+            ['sample', 'sample_well', 'strain', 'dilution_factor', 'serum', 'well'],
+            dropna=False,
+        )['count']
         .sum()
         .reset_index()
     )
 
     # Get sum of all virus/barcode counts per well
     sumperwell = (
-        straincounts_allbarcodes.groupby(['sample', 'dilution_factor', 'serum', 'well'])['count']
+        straincounts_allbarcodes.groupby(
+            ['sample', 'dilution_factor', 'serum', 'well'], dropna=False
+        )['count']
         .sum()
         .reset_index()
         .rename(columns={'count': 'counts_perwell'})
@@ -521,7 +536,7 @@ def _(counts):
     merged_df = straincounts_allbarcodes.merge(sumperwell, on=['sample','dilution_factor','serum','well'])
     # Count how many barcodes were used for each strain (this can vary, e.g. 1-4)
     barcodes_per_strain = (
-        counts[['strain', 'barcode']]
+        viral_counts[['strain', 'barcode']]
         .drop_duplicates()
         .groupby('strain')
         .size()
@@ -530,12 +545,17 @@ def _(counts):
     )
     print(barcodes_per_strain['n_barcodes'].value_counts())
     merged_df = merged_df.merge(barcodes_per_strain, on='strain', validate='many_to_one')
-    merged_df['fraction_strain'] = (
-        merged_df['count'] / merged_df['counts_perwell'] / merged_df['n_barcodes']
-    )
-    #### OLD CODE ASSUMED 2 BARCODES PER WELL
-    # merged_df['fraction_strain'] = merged_df['count'] /merged_df['counts_perwell'] / 2
-    ####
+    # Fraction of the well's viral counts belonging to this strain. `count` is
+    # already summed over the strain's barcodes, so this must NOT be divided by
+    # n_barcodes -- doing so rescales strains unequally (n_barcodes varies 1-3)
+    # and makes the total sum to <1, which breaks the comparison against the
+    # absolute 1/num_strains expectation used to call over-representation.
+    merged_df['fraction_strain'] = merged_df['count'] / merged_df['counts_perwell']
+
+    # Fractions are over viral strains only, so they must sum to 1 per well.
+    _frac_sums = merged_df.groupby('well')['fraction_strain'].sum()
+    assert np.allclose(_frac_sums, 1), f"fraction_strain does not sum to 1:\n{_frac_sums}"
+
     merged_df
     return (merged_df,)
 
@@ -549,37 +569,57 @@ def _(mo):
 
 
 @app.cell
-def _(merged_df):
-    # Choose wells
-    well1 = 'A5'
-    well2 = 'B5'
-
+def _(
+    avg_barcode_counts_per_well_drops,
+    merged_df,
+    min_neut_standard_frac_per_well_drops,
+):
     # Choose a pair of replicate wells near the beginning of the linear range
-    single_well = merged_df.loc[merged_df['sample'].str.contains(f'{well1}-|{well2}-')]
-    return single_well, well1, well2
+    chosen_wells = ['A5', 'B5']
+
+    # Match the well column exactly rather than substring-matching the composite
+    # `sample` string, where e.g. 'A1' would also match 'A10'/'A11'/'A12'.
+    missing_wells = set(chosen_wells) - set(merged_df['well'])
+    assert not missing_wells, f"chosen wells not in data: {sorted(missing_wells)}"
+
+    # The wells above are picked by eye off the QC plots, so enforce that they
+    # actually passed the QC thresholds applied earlier in the notebook.
+    failed_wells = set(chosen_wells) & (
+        set(avg_barcode_counts_per_well_drops) | set(min_neut_standard_frac_per_well_drops)
+    )
+    assert not failed_wells, f"chosen wells failed QC: {sorted(failed_wells)}"
+
+    single_well = merged_df.loc[merged_df['well'].isin(chosen_wells)]
+    return (chosen_wells, single_well)
 
 
 @app.cell
-def _(single_well):
+def _(np, single_well):
     # Calculate mean fraction strain across both wells
-    mean_df = single_well.groupby(['strain'])['fraction_strain'].mean().to_frame().rename(columns = {'fraction_strain': 'mean_fraction_strains'}).reset_index()
-    mean_single_well = single_well.merge(mean_df, on = 'strain', how = 'left')
+    mean_df = (
+        single_well.groupby('strain')['fraction_strain']
+        .mean()
+        .rename('mean_fraction_strains')
+        .reset_index()
+    )
+    mean_single_well = single_well.merge(mean_df, on='strain', how='left')
 
     # calcualte ratios to add for equal pool
-    num_strains = len(mean_single_well.strain.unique())
+    num_strains = mean_single_well['strain'].nunique()
     mean_single_well['ratio_to_add'] = (1/num_strains)/mean_single_well['fraction_strain']
     mean_single_well['mean_ratio_to_add'] = (1/num_strains)/mean_single_well['mean_fraction_strains']
 
+    # Unlike the initial equal-volume pool, every strain in this repool is present
+    # at non-zero frequency, so there are no infinite ratios. Assert that rather
+    # than carrying the equal-volume notebook's zero-titer filtering, which would
+    # silently do nothing here.
+    assert np.isfinite(mean_single_well['mean_ratio_to_add']).all(), (
+        "strains absent from the pool:\n"
+        f"{mean_single_well.loc[~np.isfinite(mean_single_well['mean_ratio_to_add']), 'strain'].unique()}"
+    )
+
     print(f'this library has {num_strains} total strains')
-    print('stats where there isnt 0 of a virus...')
-    print(mean_single_well.query('mean_ratio_to_add != inf')[['mean_ratio_to_add']].describe())
-
-    print('\nviruses with 0 titer...')
-    print(mean_single_well.query('mean_ratio_to_add == inf').strain.unique())
-
-    RATIO_CUTOFF = 250
-    print(f'\nviruses with >0 titer but ratio >={RATIO_CUTOFF} to increase...')
-    print(mean_single_well.query('mean_ratio_to_add != inf').query(f'mean_ratio_to_add >= {RATIO_CUTOFF}').strain.unique())
+    print(mean_single_well[['mean_ratio_to_add']].describe())
     return mean_single_well, num_strains
 
 
@@ -599,65 +639,98 @@ def _(mo):
 
 @app.cell
 def _(alt, mean_single_well, num_strains, pd):
-    # Plot the current fraction of each strain in the pool
+    # One row per strain for the bars. `mean_single_well` carries a row per
+    # (strain, well), and a bar mark with two rows in the same y-category stacks
+    # them -- which would draw every strain at twice its true fraction, against a
+    # reference line drawn at the single-well expectation.
+    strain_means = mean_single_well[['strain', 'mean_fraction_strains']].drop_duplicates()
+    assert len(strain_means) == num_strains
+
+    # Mean fraction across the chosen replicate wells.
     strains_chart = (
-        alt.Chart(mean_single_well)
+        alt.Chart(strain_means)
+        .mark_bar(height={"band": 0.85})
         .encode(
             alt.X(
-                "fraction_strain",
+                "mean_fraction_strains",
+                title="fraction of pool",
                 scale=alt.Scale(nice=False, padding=3),
             ),
             alt.Y("strain"),
-
-            tooltip = ['strain', 'fraction_strain'],
+            tooltip=['strain', 'mean_fraction_strains'],
         )
-    ).mark_bar(height={"band": 0.85}).properties(
-            height=alt.Step(10),
-            width=250,
-            title="",
-        ).properties(
-            height = alt.Step(10),
-            width = 200,
-            title = "Strain representation, initial pool")
+    )
 
-    # add veritcal line where we would expect equal representation of all barcodes in pool
+    # Individual wells overlaid, so replicate disagreement stays visible rather
+    # than being averaged away.
+    replicate_points = (
+        alt.Chart(mean_single_well)
+        .mark_point(size=15, filled=True, opacity=0.9, color="black")
+        .encode(
+            alt.X("fraction_strain"),
+            alt.Y("strain"),
+            tooltip=['strain', 'well', 'fraction_strain'],
+        )
+    )
+
+    # add vertical line where we would expect equal representation of all strains in pool
     expected_line = alt.Chart(
         pd.DataFrame({'x': [1/num_strains]})
-    ).mark_rule(strokeDash = [2,2], strokeWidth = 2).encode(x = 'x')
+    ).mark_rule(strokeDash=[2, 2], strokeWidth=2).encode(x='x')
 
-    # plot both barcode counts and expected line
-    strains_chart + expected_line
+    (
+        (strains_chart + replicate_points + expected_line)
+        .properties(
+            height=alt.Step(10),
+            width=200,
+            title="Strain representation, repool (bars = mean, points = individual wells)",
+        )
+        .configure_axis(grid=False)
+    )
     return
 
 
 @app.cell
-def _(alt, color_palette, counts, string, well1, well2):
-    # Each barcode fraction across strains
+def _(alt, chosen_wells, color_palette, counts):
+    # Each barcode fraction across strains. The dropna() drops the neutralization
+    # standard, whose `strain` is NA, leaving viral barcodes only.
     all_barcode_counts = counts[['strain', 'barcode', 'count', 'well']].dropna()
-    single_well_all_barcode_counts = all_barcode_counts[all_barcode_counts['well'].isin([f'{well1}',f'{well2}'])]
+    single_well_all_barcode_counts = all_barcode_counts[all_barcode_counts['well'].isin(chosen_wells)]
 
     # Get tidy single well means
     tidy_single_well = single_well_all_barcode_counts[['strain','barcode','count']].groupby(['strain', 'barcode']).mean().reset_index()
-    # Get sums for each strain
-    strain_sums_df = tidy_single_well.groupby('strain').sum().rename(columns = {'count': 'strain_count_sum'}).reset_index()
+    # Get sums for each strain. Select `count` explicitly: an unrestricted .sum()
+    # also "sums" the barcode column, concatenating the sequence strings.
+    strain_sums_df = (
+        tidy_single_well.groupby('strain')['count']
+        .sum()
+        .rename('strain_count_sum')
+        .reset_index()
+    )
     # Merge and calculate per strain the fraction represented by each barcode
-    tidy_single_well = tidy_single_well.merge(strain_sums_df[['strain', 'strain_count_sum']], 
-                           on = ['strain'],
-                           validate="many_to_one",
-                          )
+    tidy_single_well = tidy_single_well.merge(
+        strain_sums_df,
+        on='strain',
+        validate="many_to_one",
+    )
     tidy_single_well['per_strain_fraction_barcode'] = tidy_single_well['count'] / tidy_single_well['strain_count_sum']
-    tidy_single_well['barcode_letter'] = tidy_single_well.groupby('strain').cumcount().apply(lambda x: string.ascii_uppercase[x])
+    # Purely positional index used to colour the segments of each strain's bar.
+    # The rows are ordered by barcode sequence (groupby sorts its keys), so this
+    # does NOT correspond to the library's own _bc1/_bc2 designation -- it just
+    # separates one strain's barcodes from each other visually. The true barcode
+    # is in the tooltip.
+    tidy_single_well['barcode_index'] = tidy_single_well.groupby('strain').cumcount()
 
     # Plot as colored bar chart
     bar_chart = alt.Chart(tidy_single_well).mark_bar(height={"band": 0.85}).encode(
         x = 'per_strain_fraction_barcode',
         y = 'strain',
-        color=alt.Color('barcode_letter', legend=None).scale(range=color_palette),
+        color=alt.Color('barcode_index:N', legend=None).scale(range=color_palette),
         tooltip = ['strain', 'per_strain_fraction_barcode', 'barcode'],
     ).configure_axis(grid=False).properties(
             height = alt.Step(10),
             width = 200,
-            title = "Barcode fraction for each strain, initial pool")
+            title = "Barcode fraction for each strain, repool")
 
     bar_chart
     return
@@ -668,7 +741,9 @@ def _(mo):
     mo.md(r"""
     # Repooling for over-represented strains
 
-    Some strains are over-represented here. It seems like these are systematically the strains that had the highest titer in the initial equal volume pool. We now want to attempt a second repool to better balance these strains. The following are strains where the observed fraction was 1.25x the expected fraction.
+    Some strains are over-represented here. It seems like these are systematically the strains that had the highest titer in the initial equal volume pool. We now want to attempt a second repool to better balance these strains. The following are strains where the observed fraction exceeded the expected fraction (`1/num_strains`) by the factor set in `OVER_REP_FACTOR` below.
+
+    Note that a handful of strains are over-represented by a wide margin rather than marginally: the most abundant strain sits at roughly 12x its expected fraction, and the top few strains together account for a substantial share of the whole pool. These dominate any rebalancing regardless of which subpool they fall in.
     """)
     return
 
@@ -676,21 +751,57 @@ def _(mo):
 @app.cell
 def _(mean_single_well, num_strains):
     mean_single_well_sorted = mean_single_well.sort_values('mean_fraction_strains', ascending=False)
-    expected_fraction = 1/num_strains * 1.25
-    over_rep_strains = mean_single_well_sorted[mean_single_well_sorted['mean_fraction_strains'] > expected_fraction]
+    # Call a strain over-represented when its fraction exceeds the equal-pool
+    # expectation (1/num_strains) by this factor.
+    OVER_REP_FACTOR = 1.25
+    over_rep_threshold = OVER_REP_FACTOR / num_strains
+    over_rep_strains = mean_single_well_sorted[mean_single_well_sorted['mean_fraction_strains'] > over_rep_threshold]
     over_rep_strains.drop_duplicates(subset='strain')[["strain", "mean_fraction_strains"]].reset_index(drop=True)
     return mean_single_well_sorted, over_rep_strains
 
 
 @app.cell
 def _(mean_single_well_sorted, pd, viral_library_csv):
-    # Get library IDs
-    lib_id_df=pd.read_csv(viral_library_csv)
-    repool_df = (mean_single_well_sorted
-                 .merge(lib_id_df, how='outer')
-                 .drop_duplicates()
-                 .reset_index(drop=True)
+    # Collapse to one row per strain on both sides before merging. `mean_single_well_sorted`
+    # has a row per (strain, well) and the library has a row per (strain, barcode), so
+    # merging them directly cross-products to ~4 rows per strain and forces every
+    # downstream step to re-deduplicate.
+    strain_fracs = (
+        mean_single_well_sorted[['strain', 'mean_fraction_strains', 'mean_ratio_to_add', 'n_barcodes']]
+        .drop_duplicates(subset='strain')
     )
+
+    # Per-strain library metadata. `shortname` and `bloom_lab_plasmid_log_id` are
+    # barcode-level (they carry a trailing _bc1/_bc2), so strip the suffix from
+    # shortname to get the strain-level name the subpool rules below key off, and
+    # drop the plasmid id, which has no strain-level equivalent.
+    lib_id_df = pd.read_csv(viral_library_csv).drop(
+        columns=[
+            'barcode',
+            'bloom_lab_plasmid_log_id',
+            'nt_sequence_HA_ectodomain',
+            'protein_sequence_HA_ectodomain',
+        ]
+    )
+    lib_id_df['shortname'] = lib_id_df['shortname'].str.replace(r'_bc\d+$', '', regex=True)
+
+    lib_per_strain = lib_id_df.drop_duplicates()
+    # One row per strain must now be lossless; if any field still varies within a
+    # strain this fails rather than silently keeping an arbitrary barcode's value.
+    _varying = lib_per_strain.loc[lib_per_strain['strain'].duplicated(keep=False)]
+    assert _varying.empty, (
+        f"library metadata varies within a strain:\n{_varying.sort_values('strain')}"
+    )
+
+    assert set(strain_fracs['strain']) == set(lib_per_strain['strain']), (
+        "strain mismatch between counts data and viral library"
+    )
+    repool_df = (
+        strain_fracs
+        .merge(lib_per_strain, on='strain', how='left', validate='one_to_one')
+        .reset_index(drop=True)
+    )
+    assert len(repool_df) == strain_fracs['strain'].nunique()
     return (repool_df,)
 
 
@@ -710,11 +821,15 @@ def _(np, over_rep_strains, repool_df):
         'old_h1_vax',
         'old_h3_vax',
     ]
+    # Fail loudly on an unclassifiable shortname rather than silently assigning it
+    # to a nameless subpool, where it would drop out of the per-subpool summary.
     repool_df['subpool'] = np.select(conditions, choices, default="")
+    _unclassified = repool_df.loc[repool_df['subpool'] == "", 'shortname']
+    assert _unclassified.empty, f"shortnames match no subpool rule: {list(_unclassified)}"
+
     repool_df_filtered = (
         repool_df[repool_df['strain'].isin(over_rep_strains['strain'])]
         [['strain', 'subtype', 'shortname', 'subpool', 'mean_fraction_strains']]
-        .drop_duplicates(subset='strain')
         .sort_values('mean_fraction_strains', ascending=False)
         .reset_index(drop=True)
     )
@@ -723,15 +838,39 @@ def _(np, over_rep_strains, repool_df):
 
 
 @app.cell
-def _(repool_df_filtered):
-    repool_df_filtered['subpool'].value_counts()
+def _(pd, repool_df, repool_df_filtered):
+    # Rate, not raw count: the subpools differ several-fold in size, so the number
+    # of over-represented strains alone makes large subpools look worse than they
+    # are. Normalize by subpool size to compare like with like.
+    _n_over = repool_df_filtered['subpool'].value_counts().rename('n_over')
+    _n_total = repool_df['subpool'].value_counts().rename('n_total')
+    subpool_summary = (
+        pd.concat([_n_over, _n_total], axis=1)
+        .fillna(0)
+        .astype(int)
+        .assign(pct_over=lambda x: (x['n_over'] / x['n_total'] * 100).round(1))
+        .sort_values('pct_over', ascending=False)
+    )
+    subpool_summary
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Here it appears that most of the over-represented strains were those with the highest titer in the equal volume pool (relatively `low x_volume_to_add` values from the repooling math performed previously). They are also all mostly in the old_h3_vax subpool so we will just remake that subpool.
+    Here it appears that most of the over-represented strains were those with the highest titer in the equal volume pool (relatively `low x_volume_to_add` values from the repooling math performed previously).
+
+    Over-representation is concentrated in the two *old vaccine* subpools: a large minority of the strains in each of `old_h3_vax` and `old_h1_vax` are over-represented, versus only a small percentage of the strains in each of the much larger `flu-seqneut-2026_h1` and `flu-seqneut-2026_h3` subpools (see the `pct_over` column above). This is consistent with the old vaccine strains having grown to the highest titers in the initial equal-volume pool.
+
+    Both old-vaccine subpools therefore warrant remaking, not `old_h3_vax` alone. The remaining over-represented strains are scattered thinly through the two 2026 subpools, where they are a small fraction of each; whether to also adjust those individually is a separate call.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Cross-reference the over-represented strains against the volumes used in the previous repool, to confirm they line up with the low `x_volume_to_add` (i.e. highest-titer) end.
     """)
     return
 

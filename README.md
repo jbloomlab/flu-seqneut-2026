@@ -95,13 +95,14 @@ flu-seqneut-2026/
 │
 ├── rules/                       # Snakemake rules for analyses outside seqneut-pipeline
 │   ├── validate_viral_library.smk  # Viral library validation
-│   ├── library_qc.smk              # QC of the viral library and its pools
+│   ├── library_qc.smk              # QC of the viral library, its pools and re-pools
 │   ├── analyze_titers.smk          # Sera metadata, final titer data, and titer plots
 │   └── trees.smk                   # Nextstrain protein tree building
 │
 ├── scripts/                     # Custom analysis scripts
 │   ├── validate_viral_library.py                              # Viral library validation
 │   ├── analyze_pool.py                                        # Library pool composition
+│   ├── analyze_repool.py                                      # Library re-pool balance
 │   ├── aggregate_sera_metadata.py                             # Sera metadata aggregation
 │   ├── process_final_titer_data.py                            # Final titer data processing
 │   └── nextstrain_prot_titers_tree_alignment_and_metadata.py  # Tree input preparation
@@ -124,7 +125,7 @@ flu-seqneut-2026/
 │   ├── plates/                  # Per-plate analyses
 │   ├── sera/                    # Per-serum titer aggregations
 │   ├── aggregated_titers/       # Final titer matrices
-│   ├── library_qc/              # Library pool composition reports and re-pooling math
+│   ├── library_qc/              # Pool composition and re-pool balance, with re-pooling math
 │   ├── final_titer_data/        # QC'd titer data with metadata (tracked in git)
 │   ├── titer_plots/             # Interactive titer summary plots (not tracked in git)
 │   ├── qc_drops/                # QC filtering documentation
@@ -207,6 +208,9 @@ The pipeline fails if any check does.
 [rules/library_qc.smk](rules/library_qc.smk) analyzes the composition of the library pools.
 The strains are rescued individually and then combined into a pool, which is sequenced to measure how much of the pool each strain makes up.
 For each pool configured under `analyze_pools`, [results/library_qc/](results/library_qc/) gets an HTML report plus CSVs giving the volume of each strain to add to re-pool the library so that all strains are equally represented, and the strains excluded from that re-pooling and why.
+
+The same file also checks how well a re-pool made from those volumes came out.
+For each re-pool configured under `analyze_repools`, which names the pool it was made from, [results/library_qc/](results/library_qc/) gets a report of the strains still over-represented and CSVs of the volumes for a corrective re-pool.
 
 ### Titer processing and plots
 [rules/analyze_titers.smk](rules/analyze_titers.smk) aggregates the per-cohort sera metadata (see [Sera](#sera) above), QCs and subsets the titers aggregated by the pipeline into [results/final_titer_data/](results/final_titer_data/), and builds the interactive titer summary and fold-change plots.

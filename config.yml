@@ -128,6 +128,7 @@ plot_fold_changes: {}
 # Analyses of the composition of a library pool, one entry per pool. Each is analyzed
 # from the barcode counts of the plate named by `miscellaneous_plate`, from which the
 # date, viral library, neutralization standard set, and samples are also taken.
+# Assumes pools are equal-volume of all strains.
 analyze_pools:
   20260715_equal_vol_pool:
     miscellaneous_plate: 20260715_equal_vol_pool

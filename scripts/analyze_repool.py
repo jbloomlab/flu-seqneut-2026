@@ -29,6 +29,16 @@ pool. Two differences between the two are deliberate and easy to "fix" into bugs
     Nothing in the data reveals which was done, so the premise is stated here and in the
     report rather than inferred.
 
+  - **A subpool's share of the pool's virus and its share of the pool's volume are
+    different numbers.** Equal representation fixes the first: a subpool holding `n` of
+    the `N` strains supplies `n / N` of the virus. What gets pipetted is the second, and
+    the two are related by the subpool's titer, the virus it holds per uL, so the volume
+    share is the virus share divided by that titer. They coincide only for subpools of
+    equal titer, which is not something to assume: the titers here span several fold. A
+    subpool that is not being remade takes its titer from the liquid already in the tube,
+    the reads it accounts for over the volume it was mixed at; one that is being remade
+    takes its titer from its own build.
+
 For the same reason, `analyze_pool.py`'s relative-titer and re-pool-dilution calculation is
 deliberately *not* carried over: it assumes the pool it measured was mixed at equal volumes,
 which is false here, and it would report a confidently wrong dilution. The corrective pool
@@ -84,6 +94,10 @@ BARCODE_PALETTE = ["#345995", "#03cea4", "#ca1551", "#eac435"]
 # abundant. Ordered so the legend reads from under to over rather than alphabetically.
 REPRESENTATION_ORDER = ["under", "ok", "over"]
 REPRESENTATION_COLORS = ["#345995", "#bbbbbb", "#ca1551"]
+
+# A subpool being remade is built to this multiple of the volume of it that the final pool
+# takes, so there is some to spare for what is lost in pipetting it.
+BUILD_MARGIN = 1.1
 
 # reason recorded for strains that cannot be re-pooled as they had no counts
 NO_COUNTS_REASON = "no counts in the analyzed wells"
@@ -1151,9 +1165,9 @@ add_markdown(f"""
        pool. Fixing that is just a matter of how much of each subpool is added when they
        are combined, so it is done for every subpool whether or not it is being remade.
 
-    The target is an equal share for every strain: each subpool contributes in proportion
-    to the number of strains it holds, so that all {n_strains} strains aim for the same
-    {equal_share:.2%} of the final pool.
+    The target is an equal share for every strain: each subpool has to supply virus in
+    proportion to the number of strains it holds, so that all {n_strains} strains aim for
+    the same {equal_share:.2%} of the final pool.
 
     The arithmetic rests on the same premise as before, stated rather than inferred
     because nothing in the data reveals it: a strain's share of the reads is proportional
@@ -1161,6 +1175,12 @@ add_markdown(f"""
     proportional to `fraction_strain / previous_volume`. Within a remade subpool the volume
     that equalizes its strains is therefore proportional to
     `previous_volume / fraction_strain`.
+
+    How much virus a subpool has to supply and how much of it to pipette are different
+    numbers, related by its titer, the virus it holds per uL. A concentrated subpool
+    supplies its share of the virus from less of its volume than a dilute one does. Each
+    subpool's titer is therefore worked out below and the volumes divided by it, which is
+    what makes the two remedies above independent of each other.
 
     Note this predicts the *composition* only. It says nothing about the titer of the
     corrective pool, so unlike the initial pool no dilution is recommended here: the
@@ -1217,16 +1237,43 @@ strain_means["subpool_composition"] = _share / _share.groupby(
     strain_means["subpool"]
 ).transform("sum")
 
-# Stage 2: how much of each subpool goes into the final pool. Every strain is aiming for
-# the same share, so a subpool contributes in proportion to how many strains it holds.
+# Stage 2: how much of each subpool goes into the final pool.
+#
+# Two different quantities are in play here, and keeping them apart is the whole of this
+# stage:
+#
+#   - The share of the pool's *virus* a subpool has to supply. Equal representation fixes
+#     this: a subpool holding `n` of the `N` strains supplies `n / N` of the virus.
+#   - The share of the pool's *volume* it is added at. This is what gets pipetted.
+#
+# The two are the same number only for subpools of equal titer. A subpool's titer is the
+# virus it holds per uL, so the volume share is the virus share divided by the titer, and
+# the subpools are then renormalized to sum to one.
 subpool_strains = strain_means[kept].groupby("subpool")["strain"].nunique()
-subpool_fraction_of_pool = subpool_strains / subpool_strains.sum()
+subpool_virus_share = subpool_strains / subpool_strains.sum()
 
-# A strain's share of the *final* pool is then its share of its subpool times that
-# subpool's share of the pool.
+# A strain's share of the *final* pool is its share of its own subpool times the share of
+# the pool's virus that subpool supplies.
 strain_means["predicted_fraction_strain"] = strain_means[
     "subpool_composition"
-] * strain_means["subpool"].map(subpool_fraction_of_pool)
+] * strain_means["subpool"].map(subpool_virus_share)
+
+# The titer of each strain's stock, in arbitrary units that cancel out of everything below:
+# a strain's share of the reads is the volume of it that went in times its stock titer, so
+# the titer is that share per uL.
+strain_means["stock_titer"] = (
+    strain_means["mean_fraction_strain"] / strain_means["previous_volume_uL"]
+)
+
+# The titer of a subpool that is not being remade is a property of the liquid already in
+# the tube: the virus it holds over the volume it was mixed at. Summed over every strain
+# physically in it, including any dropped from the corrective re-pooling below, as those
+# are in the tube whether or not they are wanted. Remade subpools get their titer from
+# their own build instead, and overwrite the value here.
+_tube = strain_means.groupby("subpool")
+subpool_titer = (
+    _tube["mean_fraction_strain"].sum() / _tube["previous_volume_uL"].sum()
+).reindex(subpool_virus_share.index)
 
 # Volumes to pipette, for the subpools being remade. `ratio_to_add` is the volume of a
 # strain relative to a typical strain *of its own subpool*, normalized to geometric mean
@@ -1239,6 +1286,19 @@ strain_means["neat_volume_uL"] = float("nan")
 strain_means["dilution_factor"] = float("nan")
 strain_means["volume_to_add_uL"] = float("nan")
 
+# A remade subpool is built from the strain stocks at volumes proportional to
+# `previous_volume / fraction_strain`, which is one over the stock titer, so that every
+# strain in it delivers the same amount of virus.
+subpool_ratio_to_add = {}
+for _subpool in subpools_to_remake:
+    _in = kept & (strain_means["subpool"] == _subpool)
+    _vol = (
+        strain_means.loc[_in, "previous_volume_uL"]
+        / strain_means.loc[_in, "mean_fraction_strain"]
+    )
+    subpool_ratio_to_add[_subpool] = _vol / math.exp(_vol.map(math.log).mean())
+    strain_means.loc[_in, "ratio_to_add"] = subpool_ratio_to_add[_subpool]
+
 
 def dilution_for(neat_volume):
     """Smallest configured dilution bringing ``neat_volume`` up to the minimum, or 1."""
@@ -1250,33 +1310,58 @@ def dilution_for(neat_volume):
     return dilution_steps[-1]  # nothing is enough; warned about below
 
 
-# how much more liquid each remade subpool ends up holding because of those dilutions
-subpool_dilution_bulking = {}
+def build_remade_subpool(subpool, build_volume):
+    """Write the volumes to pipette to build ``subpool`` into ``build_volume`` uL.
+
+    A strain needing too little of its stock to pipette is diluted instead, and that much
+    more of the dilution added. The virus delivered is identical, so which strains are
+    diluted does not change what the subpool is made of, only how much liquid it comes out
+    as. Returns the titer it comes out at: the virus its strains deliver over that volume.
+
+    """
+    in_subpool = kept & (strain_means["subpool"] == subpool)
+    ratio = subpool_ratio_to_add[subpool]
+    neat = ratio * (build_volume / ratio.sum())
+    factor = neat.map(dilution_for)
+    strain_means.loc[in_subpool, "neat_volume_uL"] = neat
+    strain_means.loc[in_subpool, "dilution_factor"] = factor
+    strain_means.loc[in_subpool, "volume_to_add_uL"] = neat * factor
+    return (neat * strain_means.loc[in_subpool, "stock_titer"]).sum() / (
+        neat * factor
+    ).sum()
+
+
+def combining_fractions(titers):
+    """Share of the pool's volume each subpool is added at, summing to one."""
+    fractions = subpool_virus_share / titers
+    return fractions / fractions.sum()
+
+
+# Building a remade subpool and deciding how much of it to add depend on each other: its
+# titer sets the volume of it the pool needs, and that volume sets how much to build. The
+# dependence is weak, as the titer barely moves with the scale a subpool is built at, and
+# only through which of its strains fall below `min_pipettable_volume_uL` and get diluted.
+# So build once at roughly the right scale to learn the titer, then build again at the
+# volume that titer calls for. The second build is the one written out, and the combining
+# fractions come from its titer, so only the margin is left approximate.
+for _subpool in subpools_to_remake:
+    subpool_titer[_subpool] = build_remade_subpool(
+        _subpool,
+        repool_config["total_pool_volume"] * subpool_virus_share[_subpool],
+    )
+_build_volume = (
+    BUILD_MARGIN
+    * combining_fractions(subpool_titer)
+    * repool_config["total_pool_volume"]
+)
+for _subpool in subpools_to_remake:
+    subpool_titer[_subpool] = build_remade_subpool(_subpool, _build_volume[_subpool])
+
+subpool_combining_fraction = combining_fractions(subpool_titer)
 
 for _subpool in subpools_to_remake:
     _in = kept & (strain_means["subpool"] == _subpool)
-    _vol = (
-        strain_means.loc[_in, "previous_volume_uL"]
-        / strain_means.loc[_in, "mean_fraction_strain"]
-    )
-    _ratio = _vol / math.exp(_vol.map(math.log).mean())
-    strain_means.loc[_in, "ratio_to_add"] = _ratio
-    # scaled so this subpool makes the volume its share of the final pool calls for
-    _subpool_volume = (
-        repool_config["total_pool_volume"] * subpool_fraction_of_pool[_subpool]
-    )
-    _neat = _ratio * (_subpool_volume / _ratio.sum())
-    strain_means.loc[_in, "neat_volume_uL"] = _neat
-
-    # A strain needing too little of its stock to pipette is diluted instead, and that
-    # much more of the dilution added. The virus delivered is identical, so the subpool's
-    # composition does not change; only its volume grows, by the extra carrier liquid.
-    _factor = _neat.map(dilution_for)
-    strain_means.loc[_in, "dilution_factor"] = _factor
-    strain_means.loc[_in, "volume_to_add_uL"] = _neat * _factor
-    subpool_dilution_bulking[_subpool] = (_neat * _factor).sum() / _neat.sum()
-
-    _still_short = _neat * _factor < min_pipettable_volume
+    _still_short = strain_means.loc[_in, "volume_to_add_uL"] < min_pipettable_volume
     if _still_short.any():
         add_warning(
             f"{int(_still_short.sum())} strains of subpool `{_subpool}` still need less "
@@ -1285,15 +1370,6 @@ for _subpool in subpools_to_remake:
             f"{', '.join(f'`{s}`' for s in strain_means.loc[_in][_still_short]['strain'])}. "
             "Add a larger step to `dilution_steps` in `config.yml`."
         )
-
-# Combining the subpools: a remade subpool is more dilute than planned by exactly the
-# extra liquid its dilutions added, so proportionally more of it has to go in for it to
-# deliver the amount of virus its share calls for. Subpools that are not remade are
-# unaffected, and the shares are renormalized so they still sum to one.
-subpool_combining_fraction = subpool_fraction_of_pool * pd.Series(
-    {s: subpool_dilution_bulking.get(s, 1.0) for s in subpool_fraction_of_pool.index}
-)
-subpool_combining_fraction /= subpool_combining_fraction.sum()
 
 dropped = (
     strain_means[~kept]
@@ -1370,6 +1446,37 @@ for _subpool in subpools_to_remake:
         f"spans {_spread:.3f}x, expected 1.000x"
     )
 
+# A remade subpool has to hold at least the volume of it the final pool takes, and by
+# `BUILD_MARGIN` more than that.
+for _subpool in subpools_to_remake:
+    _built = strain_means.loc[
+        kept & (strain_means["subpool"] == _subpool), "volume_to_add_uL"
+    ].sum()
+    _taken = subpool_combining_fraction[_subpool] * repool_config["total_pool_volume"]
+    print(
+        f"Remade subpool {_subpool}: build {_built:.0f} uL, pool takes {_taken:.0f} uL"
+    )
+    assert _built > _taken, (
+        f"subpool {_subpool} is built to {_built:.1f} uL but the pool takes "
+        f"{_taken:.1f} uL of it"
+    )
+
+# The combining fractions are shares of the pool's volume, so check they deliver the
+# intended shares of its virus: the volume of each subpool times its titer, spread over
+# what that subpool is made of, has to reproduce `predicted_fraction_strain`. This is the
+# check that a virus share has not been used where a volume share belongs; setting the
+# combining fractions to the virus shares fails it for any subpools of unequal titer.
+_delivered = (
+    strain_means["subpool_composition"]
+    * strain_means["subpool"].map(subpool_combining_fraction * subpool_titer)
+).fillna(0.0)
+_delivered /= _delivered.sum()
+assert (
+    _delivered - strain_means["predicted_fraction_strain"].fillna(0.0)
+).abs().max() < 1e-9, (
+    "the volumes the subpools are combined at do not deliver the predicted composition"
+)
+
 _predicted_spread = _pred.max() / _pred.min()
 _current_spread = (
     strain_means.loc[kept, "mean_fraction_strain"].max()
@@ -1424,10 +1531,19 @@ add_markdown(f"""
     )}. `volume_uL` is the same thing for the full
     {repool_config["total_pool_volume"]:.0f} uL.
 
-    The fraction already accounts for the dilutions below. A subpool holding diluted
-    strains carries proportionally more liquid for the same amount of virus, so it goes in
-    at proportionally greater volume; `equal_share_fraction` is what the fraction would be
-    without that adjustment, and is shown only so the difference is visible.
+    `fraction_of_pool` is a share of the pool's **volume**, and it is not the same as
+    `target_virus_share`, the share of the pool's **virus** that subpool has to supply.
+    The two differ by `relative_titer`, how much virus the subpool holds per uL against
+    the average of them, so that a subpool twice as concentrated as the average supplies
+    its share of the virus from half as much liquid:
+
+        fraction_of_pool = (target_virus_share / relative_titer), renormalized to sum to one
+
+    For a subpool that is not being remade the titer is a property of the liquid already
+    in the tube, worked out from the share of the reads it accounts for over the volume it
+    was mixed at. For one that is being remade it comes from its own build below, and so
+    already accounts for the extra carrier liquid of any strain diluted to make it
+    pipettable.
     """)
 subpool_plan = (
     repooling_math.groupby("subpool", as_index=False)
@@ -1437,7 +1553,8 @@ subpool_plan = (
         current_fraction_of_pool=pd.NamedAgg("mean_fraction_strain", "sum"),
     )
     .assign(
-        equal_share_fraction=lambda x: x["subpool"].map(subpool_fraction_of_pool),
+        target_virus_share=lambda x: x["subpool"].map(subpool_virus_share),
+        relative_titer=lambda x: x["subpool"].map(subpool_titer / subpool_titer.mean()),
         fraction_of_pool=lambda x: x["subpool"].map(subpool_combining_fraction),
         volume_uL=lambda x: (
             x["fraction_of_pool"] * repool_config["total_pool_volume"]
@@ -1452,19 +1569,24 @@ if subpools_to_remake:
     for _subpool in subpools_to_remake:
         _r = repooling_math[repooling_math["subpool"] == _subpool]
         _diluted = _r[_r["dilution_factor"] > 1]
+        _built = _r["volume_to_add_uL"].sum()
+        _taken = (
+            subpool_combining_fraction[_subpool] * repool_config["total_pool_volume"]
+        )
         add_markdown(f"""
             #### Remaking `{_subpool}`
 
-            Made from {len(_r)} strains, giving
-            {_r["volume_to_add_uL"].sum():.0f} uL of subpool.
+            Made from {len(_r)} strains, giving {_built:.0f} uL of subpool. The final pool
+            takes {_taken:.0f} uL of that, so it is built {_built / _taken:.2f}x over what
+            is needed to leave some to spare for what is lost in pipetting it.
             """)
         if len(_diluted):
             add_markdown(f"""
-                {len(_diluted)} of them need less than {min_pipettable_volume} uL of stock,
-                so they are diluted first and that much more of the dilution added. The
-                virus delivered is the same either way; the subpool just ends up
-                {subpool_dilution_bulking[_subpool]:.3f}x its undiluted volume, which is
-                why proportionally more of it goes into the final pool above.
+                {len(_diluted)} of the {len(_r)} strains need less than
+                {min_pipettable_volume} uL of stock, so they are diluted first and that
+                much more of the dilution added. The virus delivered is the same either
+                way; the subpool just ends up holding more liquid, which its titer above
+                already accounts for.
                 """)
             add_table(
                 _diluted.assign(

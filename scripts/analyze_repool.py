@@ -1208,9 +1208,6 @@ strain_means["remake_subpool"] = strain_means["subpool"].isin(subpools_to_remake
 # composition it already has, which is the strains' measured shares renormalized within it.
 # Either way `subpool_composition` is a strain's share *of its own subpool*, summing to one
 # within each.
-# A remade subpool comes out flat, so every one of its strains gets an equal share of it.
-# A subpool left alone keeps the shares its strains already have. Both are then normalized
-# within the subpool, so `subpool_composition` sums to one across each subpool.
 _share = (
     strain_means["mean_fraction_strain"]
     .where(~strain_means["remake_subpool"], 1.0)

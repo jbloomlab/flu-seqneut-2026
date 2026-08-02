@@ -17,18 +17,6 @@ repool_plates = {
     for (repool, repool_d) in config["analyze_repools"].items()
 }
 
-# The subpools each re-pool is remaking from the individual strain stocks, which get a
-# pipetting CSV each. Derived from the config here rather than in the rule so that the
-# files are real declared outputs: flipping `remake` for a subpool then changes the DAG.
-repool_remade_subpools = {
-    repool: [
-        subpool
-        for (subpool, subpool_d) in repool_d["subpools"].items()
-        if subpool_d["remake"]
-    ]
-    for (repool, repool_d) in config["analyze_repools"].items()
-}
-
 # `analyze_pool` and `analyze_repool` both write `results/library_qc/{name}_*.csv`, so a
 # name used in both sections gives two rules the same output file. Snakemake reports that
 # as an ambiguous-rule error naming only the file, so catch it here where the cause is
@@ -131,8 +119,6 @@ rule analyze_repool:
     params:
         date=lambda wc: config["miscellaneous_plates"][repool_plates[wc.repool]]["date"],
         repool_config=lambda wc: config["analyze_repools"][wc.repool],
-        # the script writes one CSV per remade subpool, in this order
-        remade_subpools=lambda wc: repool_remade_subpools[wc.repool],
     script:
         "../scripts/analyze_repool.py"
 

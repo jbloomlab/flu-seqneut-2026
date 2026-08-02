@@ -5,7 +5,7 @@
 
 import marimo
 
-__generated_with = "0.23.15"
+__generated_with = "0.21.1"
 app = marimo.App(width="full")
 
 
@@ -101,12 +101,14 @@ def _(context, mo):
         neut_standard_set_csv = context["input"]["neut_standard_set"]
         samplesfile = context["input"]["samplesfile"]
         platedir = context["input"]["platedir"]
+        repooling_math = context["input"]["repooling_math"]
     else:
         # Interactive stub: fill in parameters.
         viral_library_csv = '../../data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv'
         neut_standard_set_csv = '../../data/neut_standard_sets/loes2023_neut_standards.csv'
         samplesfile = '../../data/miscellaneous_plates/2026-07-31_repool.csv'
         platedir = '../../results/miscellaneous_plates/20260731_repool/'
+        repooling_math = './../results/pooling_math/2026-07-15_repooling_math.csv'
 
     # Show informative message about context mode
     if stub_context:
@@ -124,7 +126,13 @@ def _(context, mo):
                 kind="warn",
             )
         )
-    return neut_standard_set_csv, platedir, samplesfile, viral_library_csv
+    return (
+        neut_standard_set_csv,
+        platedir,
+        repooling_math,
+        samplesfile,
+        viral_library_csv,
+    )
 
 
 @app.cell
@@ -562,8 +570,6 @@ def _(single_well):
     mean_single_well['ratio_to_add'] = (1/num_strains)/mean_single_well['fraction_strain']
     mean_single_well['mean_ratio_to_add'] = (1/num_strains)/mean_single_well['mean_fraction_strains']
 
-    mean_single_well['est_tcid50'] = (mean_single_well['mean_fraction_strains']*25000)*76
-
     print(f'this library has {num_strains} total strains')
     print('stats where there isnt 0 of a virus...')
     print(mean_single_well.query('mean_ratio_to_add != inf')[['mean_ratio_to_add']].describe())
@@ -575,6 +581,12 @@ def _(single_well):
     print(f'\nviruses with >0 titer but ratio >={RATIO_CUTOFF} to increase...')
     print(mean_single_well.query('mean_ratio_to_add != inf').query(f'mean_ratio_to_add >= {RATIO_CUTOFF}').strain.unique())
     return mean_single_well, num_strains
+
+
+@app.cell
+def _(mean_single_well):
+    mean_single_well.sort_values("mean_fraction_strains", ascending = False)
+    return
 
 
 @app.cell(hide_code=True)
@@ -597,7 +609,7 @@ def _(alt, mean_single_well, num_strains, pd):
             ),
             alt.Y("strain"),
 
-            tooltip = ['strain', 'fraction_strain', 'est_tcid50'],
+            tooltip = ['strain', 'fraction_strain'],
         )
     ).mark_bar(height={"band": 0.85}).properties(
             height=alt.Step(10),
@@ -648,6 +660,87 @@ def _(alt, color_palette, counts, string, well1, well2):
             title = "Barcode fraction for each strain, initial pool")
 
     bar_chart
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    # Repooling for over-represented strains
+
+    Some strains are over-represented here. It seems like these are systematically the strains that had the highest titer in the initial equal volume pool. We now want to attempt a second repool to better balance these strains. The following are strains where the observed fraction was 1.25x the expected fraction.
+    """)
+    return
+
+
+@app.cell
+def _(mean_single_well, num_strains):
+    mean_single_well_sorted = mean_single_well.sort_values('mean_fraction_strains', ascending=False)
+    expected_fraction = 1/num_strains * 1.25
+    over_rep_strains = mean_single_well_sorted[mean_single_well_sorted['mean_fraction_strains'] > expected_fraction]
+    over_rep_strains.drop_duplicates(subset='strain')[["strain", "mean_fraction_strains"]].reset_index(drop=True)
+    return mean_single_well_sorted, over_rep_strains
+
+
+@app.cell
+def _(mean_single_well_sorted, pd, viral_library_csv):
+    # Get library IDs
+    lib_id_df=pd.read_csv(viral_library_csv)
+    repool_df = (mean_single_well_sorted
+                 .merge(lib_id_df, how='outer')
+                 .drop_duplicates()
+                 .reset_index(drop=True)
+    )
+    return (repool_df,)
+
+
+@app.cell
+def _(np, over_rep_strains, repool_df):
+    # Add in subpool information
+    conditions = [
+        repool_df['shortname'].str.startswith('flu-seqneut-2026_H1N1'),
+        repool_df['shortname'].str.startswith('flu-seqneut-2026_H3N2'),
+        (~repool_df['shortname'].str.startswith('flu-seqneut-2026')) & repool_df['shortname'].str.contains('H1N1'),
+        (~repool_df['shortname'].str.startswith('flu-seqneut-2026')) & repool_df['shortname'].str.contains('H3N2'),
+    ]
+
+    choices = [
+        'flu-seqneut-2026_h1',
+        'flu-seqneut-2026_h3',
+        'old_h1_vax',
+        'old_h3_vax',
+    ]
+    repool_df['subpool'] = np.select(conditions, choices, default="")
+    repool_df_filtered = (
+        repool_df[repool_df['strain'].isin(over_rep_strains['strain'])]
+        [['strain', 'subtype', 'shortname', 'subpool', 'mean_fraction_strains']]
+        .drop_duplicates(subset='strain')
+        .sort_values('mean_fraction_strains', ascending=False)
+        .reset_index(drop=True)
+    )
+    repool_df_filtered
+    return (repool_df_filtered,)
+
+
+@app.cell
+def _(repool_df_filtered):
+    repool_df_filtered['subpool'].value_counts()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Here it appears that most of the over-represented strains were those with the highest titer in the equal volume pool (relatively `low x_volume_to_add` values from the repooling math performed previously). They are also all mostly in the old_h3_vax subpool so we will just remake that subpool.
+    """)
+    return
+
+
+@app.cell
+def _(pd, repool_df_filtered, repooling_math):
+    initial_repool_df=pd.read_csv(repooling_math)
+    initial_repool_df
+    repool_df_filtered.merge(initial_repool_df[['strain', 'x_volume_to_add']], on='strain', how='left')
     return
 
 

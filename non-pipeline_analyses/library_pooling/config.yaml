@@ -33,5 +33,7 @@ notebooks:
       neut_standard_set: ../../data/neut_standard_sets/loes2023_neut_standards.csv
       samplesfile: ../../data/miscellaneous_plates/2026-07-31_repool.csv
       platedir: ../../results/miscellaneous_plates/20260731_repool/
+      repooling_math: results/pooling_math/2026-07-15_repooling_math.csv
+
       
 

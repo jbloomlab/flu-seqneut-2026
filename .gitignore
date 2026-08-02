@@ -43,6 +43,8 @@ results/**
 
 !results/library_qc/*.csv
 
+!results/library_qc/*_subpool_repooling_math/*.csv
+
 !results/sera_metadata/all_sera_metadata.csv
 
 !results/final_titer_data/*.csv

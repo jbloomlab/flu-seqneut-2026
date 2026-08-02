@@ -159,6 +159,67 @@ analyze_pools:
       A/Netherlands/446/2026_H1N1: low titer
       A/Netherlands/1739/2023_H1N1: low titer
 
+# Analyses of how well a balanced re-pool achieved equal representation, one entry per
+# re-pool. Like `analyze_pools`, each is analyzed from the barcode counts of the plate
+# named by `miscellaneous_plate`. Unlike `analyze_pools`, each also reads the volumes that
+# produced the pool being measured, named by `previous_pool`.
+analyze_repools:
+  20260731_repool:
+    miscellaneous_plate: 20260731_repool
+    # `analyze_pools` key whose re-pooling volumes made this pool. Referenced by key
+    # rather than by path so the path pattern stays in `rules/library_qc.smk`.
+    previous_pool: 20260715_equal_vol_pool
+    description: |
+      The balanced re-pool made by adding each strain at the volume calculated from the
+      initial equal-volume pool, then used to infect MDCK-SIAT1 cells over a serial
+      dilution. The barcodes were sequenced to check whether the re-pool actually came out
+      balanced, to find which strains are still over-represented, and to calculate the
+      volumes for a second corrective re-pool.
+    # Wells in linear range that the composition is read from; see `analyze_pools` above
+    # for the meaning of "calculate" versus an explicit list.
+    linear_range_wells: calculate
+    min_avg_barcode_count_per_well: 500
+    min_neut_standard_frac_per_well: 0.001
+    # A strain counts as over-represented when its share of the pool exceeds the
+    # equal-representation share (1 / number of strains) by this factor, and as
+    # under-represented when its share falls below that share divided by this factor. The
+    # two are reciprocal so that being this many fold too abundant and this many fold too
+    # scarce are treated as equally far from equal representation.
+    over_representation_factor: 1.5
+    under_representation_factor: 1.5
+    # ul of corrective re-pooled library to make. Provenance: chosen at the bench; update
+    # this when the volume to make changes.
+    total_pool_volume: 10307.409
+    # A strain needing less than `min_pipettable_volume_uL` of its stock is instead
+    # diluted, and that much more of the dilution added, which delivers the same virus in
+    # a volume that can actually be pipetted. The smallest of `dilution_steps` that brings
+    # the strain up to the minimum is used, so these are the dilutions to be prepared.
+    min_pipettable_volume_uL: 10
+    dilution_steps: [2, 5, 10, 20, 50, 100]
+    # A strain is assigned to the first subpool whose `regex` its shortname matches, so
+    # the order of these entries matters: the `^flu-seqneut-2026` patterns have to come
+    # before the bare subtype ones or every strain lands in the old-vaccine subpools.
+    #
+    # `remake` says whether that subpool is being made again from the individual strain
+    # stocks. Set it where the strains within a subpool are badly enough out of balance
+    # with each other to be worth repipetting; leave it false to keep the subpool as it
+    # is and correct only how much of it goes into the final pool. Either way the
+    # subpools are then combined in whatever proportion best balances the final pool.
+    subpools:
+      flu-seqneut-2026_h1:
+        regex: ^flu-seqneut-2026_H1N1
+        remake: false
+      flu-seqneut-2026_h3:
+        regex: ^flu-seqneut-2026_H3N2
+        remake: false
+      old_h1_vax:
+        regex: H1N1
+        remake: false
+      old_h3_vax:
+        regex: H3N2
+        remake: true
+    strains_to_drop: {}  # strains excluded from the corrective re-pooling, and why
+
 # --- Configuration for `seqneut-pipeline` ----------------------------------------------
 
 seqneut-pipeline: seqneut-pipeline
@@ -172,7 +233,9 @@ description: |
 
 viral_libraries:
   designed: data/viral_libraries/flu-seqneut-2026-barcode-to-strain-designed.csv
-  
+  actual: data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv
+
+
 curve_display_method: svg  # set to png8 if HTMLs of notebooks to big
 
 neut_standard_sets:
@@ -227,6 +290,15 @@ sera_override_defaults: {}
 plates: {}
 
 miscellaneous_plates:
+  20260731_repool:
+      date: 2026-07-31
+      viral_library: actual
+      neut_standard_set: loes2023
+      samples_csv: data/miscellaneous_plates/2026-07-31_repool.csv
+      illumina_barcode_parser_params:
+        upstream2: GTCTAA # Fwd5
+        upstream2_mismatch: 1
+
   20260715_equal_vol_pool:
       date: 2026-07-15
       viral_library: designed

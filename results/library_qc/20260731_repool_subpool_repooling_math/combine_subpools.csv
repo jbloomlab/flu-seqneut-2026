@@ -1,5 +1,5 @@
 subpool,n_strains,remake,current_fraction_of_pool,target_virus_share,relative_titer,fraction_of_pool,volume_uL
-flu-seqneut-2026_h1,53,False,0.3028,0.3581,0.4655,0.5845,6025
-flu-seqneut-2026_h3,66,False,0.3878,0.4459,1.931,0.1755,1808
-old_h1_vax,14,False,0.09886,0.09459,0.4094,0.1756,1810
-old_h3_vax,15,True,0.2106,0.1014,1.194,0.06451,664.9
+flu-seqneut-2026_h1,53,False,0.3028,0.3581,0.4641,0.5852,6032
+flu-seqneut-2026_h3,66,False,0.3878,0.4459,1.925,0.1757,1811
+old_h1_vax,13,False,0.09263,0.08784,0.3871,0.1721,1774
+old_h3_vax,16,True,0.2168,0.1081,1.224,0.06699,690.5

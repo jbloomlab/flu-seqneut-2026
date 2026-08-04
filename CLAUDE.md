@@ -97,6 +97,14 @@ like this:
   ("Mixed rules and functions in same snakefile"). Derive a variable from the config
   instead, as `rules/library_qc.smk` does with `pool_plates`; a rule can then index it
   from a `lambda wc:` without repeating the lookup.
+- The top-level config keys that select which library QC analyses to run (`analyze_pools`,
+  `analyze_repools`, `analyze_single_well_infections`) are read with a default of empty, so
+  a configuration that omits one, or leaves it blank, runs no jobs for it rather than
+  failing. This is a deliberate exception to the fail-fast principle above, since not every
+  project does every kind of QC. It applies **only** to those keys: everything *inside* one
+  of those sections is still required, and a missing or unexpected key there must raise.
+  `rules/library_qc.smk` applies the default in one place, at the top, and reads the
+  resulting variables everywhere else.
 
 ### Testing a rule's script without running the pipeline
 

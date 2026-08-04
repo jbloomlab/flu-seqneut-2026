@@ -204,13 +204,9 @@ All of them are configured in [config.yml](config.yml).
 [rules/validate_viral_library.smk](rules/validate_viral_library.smk) checks each library in `viral_libraries` against the requirements described in [Viral Library](#viral-library) above, and writes a summary of the checks to `results/validate_viral_library/`.
 The pipeline fails if any check does.
 
-### Library pool QC
-[rules/library_qc.smk](rules/library_qc.smk) analyzes the composition of the library pools.
-The strains are rescued individually and then combined into a pool, which is sequenced to measure how much of the pool each strain makes up.
-For each pool configured under `analyze_pools`, [results/library_qc/](results/library_qc/) gets an HTML report plus CSVs giving the volume of each strain to add to re-pool the library so that all strains are equally represented, and the strains excluded from that re-pooling and why.
-
-The same file also checks how well a re-pool made from those volumes came out.
-For each re-pool configured under `analyze_repools`, which names the pool it was made from, [results/library_qc/](results/library_qc/) gets a report of the strains still over-represented and CSVs of the volumes for a corrective re-pool.
+### Library QC
+[rules/library_qc.smk](rules/library_qc.smk) has analyses that examine the library QC, such as library pools to estimate relative strain concentrations and find the virus dilution in the linear range, or single-well infections to check for contamination.
+The numerical results are placed in [results/library_qc/](results/library_qc/) and HTML reports are generated that go into the documentation that can be rendered on GitHub Pages.
 
 ### Titer processing and plots
 [rules/analyze_titers.smk](rules/analyze_titers.smk) aggregates the per-cohort sera metadata (see [Sera](#sera) above), QCs and subsets the titers aggregated by the pipeline into [results/final_titer_data/](results/final_titer_data/), and builds the interactive titer summary and fold-change plots.

@@ -125,12 +125,17 @@ plot_titer_summaries_params:
 # from `plot_titer_summaries_params`
 plot_fold_changes: {}
 
-# Analyses of the composition of a library pool, one entry per pool. Each is analyzed
-# from the barcode counts of the plate named by `miscellaneous_plate`, from which the
-# date, viral library, neutralization standard set, and samples are also taken.
+# Thresholds a well of a miscellaneous plate must meet for the library QC analyses below
+# to trust what it measures. Merged into every `library_qc` analysis with `<<:`
+default_library_qc_well_qc_thresholds: &default_library_qc_well_qc_thresholds
+  min_avg_barcode_count_per_well: 500
+  min_neut_standard_frac_per_well: 0.001
+
+# Analyses of the composition of a library pool, one entry per pool.
 # Assumes pools are equal-volume of all strains.
 analyze_pools:
   20260715_equal_vol_pool:
+    <<: *default_library_qc_well_qc_thresholds
     miscellaneous_plate: 20260715_equal_vol_pool
     description: |
       An initial pool was made by adding equal volumes of all strains, and this pool was
@@ -144,8 +149,6 @@ analyze_pools:
     # such as [A8, B8] to override that. Here we are using [A8, B8] solely for backward
     # compatibility with how experiments were done, in future use "calculate"
     linear_range_wells: [A8, B8]
-    min_avg_barcode_count_per_well: 500
-    min_neut_standard_frac_per_well: 0.001
     total_pool_volume: 10307.409  # ul of re-pooled library to make
     subpools:  # strain assigned to the first subpool whose regex its shortname matches
       flu-seqneut-2026_h1: ^flu-seqneut-2026_H1N1
@@ -161,11 +164,10 @@ analyze_pools:
       A/Netherlands/1739/2023_H1N1: low titer
 
 # Analyses of how well a balanced re-pool achieved equal representation, one entry per
-# re-pool. Like `analyze_pools`, each is analyzed from the barcode counts of the plate
-# named by `miscellaneous_plate`. Unlike `analyze_pools`, each also reads the volumes that
-# produced the pool being measured, named by `previous_pool`.
+# re-pool. Unlike `analyze_pools`, each also reads the volumes that went into each pool.
 analyze_repools:
   20260731_repool:
+    <<: *default_library_qc_well_qc_thresholds
     miscellaneous_plate: 20260731_repool
     # `analyze_pools` key whose re-pooling volumes made this pool. Referenced by key
     # rather than by path so the path pattern stays in `rules/library_qc.smk`.
@@ -179,17 +181,12 @@ analyze_repools:
     # Wells in linear range that the composition is read from; see `analyze_pools` above
     # for the meaning of "calculate" versus an explicit list.
     linear_range_wells: calculate
-    min_avg_barcode_count_per_well: 500
-    min_neut_standard_frac_per_well: 0.001
     # A strain counts as over-represented when its share of the pool exceeds the
     # equal-representation share (1 / number of strains) by this factor, and as
-    # under-represented when its share falls below that share divided by this factor. The
-    # two are reciprocal so that being this many fold too abundant and this many fold too
-    # scarce are treated as equally far from equal representation.
+    # under-represented when its share falls below that share divided by this factor.
     over_representation_factor: 1.5
     under_representation_factor: 1.5
-    # ul of corrective re-pooled library to make. Provenance: chosen at the bench; update
-    # this when the volume to make changes.
+    # ul of corrective re-pooled library to make. 
     total_pool_volume: 10307.409
     # A strain needing less than `min_pipettable_volume_uL` of its stock is instead
     # diluted, and that much more of the dilution added, which delivers the same virus in
@@ -220,6 +217,31 @@ analyze_repools:
         regex: H3N2
         remake: true
     strains_to_drop: {}  # strains excluded from the corrective re-pooling, and why
+
+# Analyses of the plates that infect each well with a single virus, which check for
+# contamination between wells and measure how well each strain grows on its own. 
+analyze_single_well_infections:
+  20260730_single_well:
+    miscellaneous_plates:
+      - 20260730_single_well_H3_strains
+      - 20260730_single_well_H1_vax_old_strains
+    description: |
+      Each well of these plates was infected with a single virus of the library rather
+      than the pool, with the neutralization standard spiked in. Together they measure how
+      well each strain grows on its own, and whether virus from one well ends up in
+      another: a well should hold only its own strain and the neutralization standard, so
+      anything else in it is contamination, and where that material comes from says
+      whether it spilled between neighboring wells or arrived some other way.
+    # `viral_libraries` key holding the strains carried forward into the titer
+    # measurements. Strains assayed here that were dropped from it are marked in the report.
+    # The whitelist the barcodes are counted against is the plates' own `viral_library`.
+    final_viral_library: actual
+    # A well is reported when more than this fraction of its parsed reads are barcodes of
+    # another library strain, and separately when more than this fraction matched no
+    # barcode of either whitelist. Both are reporting thresholds: they decide which wells
+    # are broken out strain by strain and barcode by barcode, never what is computed.
+    max_other_strain_frac: 0.005
+    max_unmatched_frac: 0.02
 
 # --- Configuration for `seqneut-pipeline` ----------------------------------------------
 

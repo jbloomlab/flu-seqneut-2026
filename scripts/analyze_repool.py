@@ -650,8 +650,52 @@ def linear_range_onset(windows):
 
 fittable_wells = well_qc.query("fittable")
 if not len(fittable_wells):
+    # Name what actually failed. Every well missing the same threshold points at a
+    # different cause than a plate that is merely marginal -- no counts at all means the
+    # barcode parsing or the fastqs, and no neutralization standard anywhere usually means
+    # the wrong `neut_standard_set` -- so the counts behind each are reported rather than
+    # left to be dug out of the per-well CSVs.
+    _reasons = []
+    if well_qc["fails_count_qc"].all():
+        _reasons.append(
+            f"every well averages fewer than "
+            f"{repool_config['min_avg_barcode_count_per_well']} counts per barcode "
+            f"(the best is {well_qc['avg_count'].max():.4g})"
+        )
+    if well_qc["fails_neut_standard_qc"].all():
+        _reasons.append(
+            "every well is below "
+            f"{repool_config['min_neut_standard_frac_per_well']} of its counts from the "
+            "neutralization standard (the best is "
+            f"{well_qc['neut_standard_frac'].max():.4g}); if no well has any at all, "
+            "check that the plate's `neut_standard_set` is the right one"
+        )
+    if (well_qc["total_count"] <= 0).all():
+        _reasons.append(
+            "no well has any barcode counts at all, which points at the barcode parsing "
+            "or the sequencing rather than at the pool"
+        )
+    if not _reasons:
+        _reasons.append(
+            "no single threshold accounts for all of them; see the table below for which "
+            "each well missed"
+        )
+    _table = well_qc[
+        [
+            "well",
+            "total_count",
+            "avg_count",
+            "neut_standard_count",
+            "neut_standard_frac",
+            "viral_count",
+            "fails_count_qc",
+            "fails_neut_standard_qc",
+        ]
+    ].to_string(index=False, float_format=lambda v: f"{v:.4g}")
     raise ValueError(
-        f"no well of re-pool {repool} passes QC, so there is nothing to analyze"
+        f"no well of re-pool {repool} passes QC, so there is nothing to analyze. "
+        + " Also, ".join(_reasons)
+        + f". The QC thresholds are set for `{repool}` in `config.yml`.\n\n{_table}"
     )
 windows = fit_dilution_windows(fittable_wells)
 onset = linear_range_onset(windows) if windows else None

@@ -906,13 +906,19 @@ strain_order = (
 # to the rule otherwise. Guarded by the same flag everywhere below, so that the whole
 # comparison against those volumes drops out together.
 if previous_pool is not None:
-    previous_repooling = pd.read_csv(snakemake.input.previous_repooling_math)
+    # The rule declares this input as a list, so that it can be empty where no previous
+    # pool is configured. Unwrapped to the single path it holds: `pd.read_csv` cannot take
+    # the sequence Snakemake hands over, and interpolating one into the errors below would
+    # print a bracketed list where a filename belongs.
+    (previous_repooling_math,) = snakemake.input.previous_repooling_math
+
+    previous_repooling = pd.read_csv(previous_repooling_math)
     missing_cols = [
         c for c in PREVIOUS_POOL_COLS if c not in previous_repooling.columns
     ]
     if missing_cols:
         raise ValueError(
-            f"{snakemake.input.previous_repooling_math}, the re-pooling math of pool "
+            f"{previous_repooling_math}, the re-pooling math of pool "
             f"{previous_pool} produced by the `analyze_pool` rule, lacks the columns "
             f"{missing_cols}; a change to that rule's output needs this script updated"
         )
@@ -928,7 +934,7 @@ if previous_pool is not None:
     ]
     if len(_blank_volumes):
         raise ValueError(
-            f"{snakemake.input.previous_repooling_math} gives no 'volume_to_add_uL' for "
+            f"{previous_repooling_math} gives no 'volume_to_add_uL' for "
             f"{len(_blank_volumes)} of its {len(previous_repooling)} strains, so it does "
             f"not record what made pool {repool}. This is what a re-pool that remade only "
             "some of its subpools produces; set 'previous_pool' to null to measure this "
@@ -939,7 +945,7 @@ if previous_pool is not None:
     ]
     if len(_bad_volumes):
         raise ValueError(
-            f"{snakemake.input.previous_repooling_math} gives a 'volume_to_add_uL' that is "
+            f"{previous_repooling_math} gives a 'volume_to_add_uL' that is "
             f"not positive for {sorted(_bad_volumes)}; every strain in the pool was added "
             "at some positive volume"
         )

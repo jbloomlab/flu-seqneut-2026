@@ -2,7 +2,7 @@
   "version": "v2",
   "meta": {
     "title": "Near real-time data on human neutralizing antibody landscape to H3N2 influenza virus as of the summer of 2026",
-    "updated": "2026-08-02",
+    "updated": "2026-08-06",
     "build_url": "https://github.com/jbloomlab/flu-seqneut-2026",
     "maintainers": [
       {
@@ -86,11 +86,11 @@
           "derived_haplotype": {
             "value": "J"
           },
-          "subclade": {
-            "value": "J"
-          },
           "strain_type": {
             "value": "2024, 2024-2025 cell-based vaccine"
+          },
+          "subclade": {
+            "value": "J"
           }
         },
         "branch_attrs": {}
@@ -125,11 +125,11 @@
               "derived_haplotype": {
                 "value": "J.2.2"
               },
-              "subclade": {
-                "value": "J.2.2"
-              },
               "strain_type": {
                 "value": "circulating_2026"
+              },
+              "subclade": {
+                "value": "J.2.2"
               }
             },
             "branch_attrs": {
@@ -153,11 +153,11 @@
               "derived_haplotype": {
                 "value": "J.2"
               },
-              "subclade": {
-                "value": "J.2"
-              },
               "strain_type": {
                 "value": "2025, 2025-2026 cell-based vaccine"
+              },
+              "subclade": {
+                "value": "J.2"
               }
             },
             "branch_attrs": {
@@ -191,11 +191,11 @@
                   "derived_haplotype": {
                     "value": "J.2.1"
                   },
-                  "subclade": {
-                    "value": "J.2.1"
-                  },
                   "strain_type": {
                     "value": "circulating_2026"
+                  },
+                  "subclade": {
+                    "value": "J.2.1"
                   }
                 },
                 "branch_attrs": {
@@ -253,11 +253,11 @@
                           "derived_haplotype": {
                             "value": "J.2:N6S,N8D,G78S,V223I,R255K"
                           },
-                          "subclade": {
-                            "value": "J.2"
-                          },
                           "strain_type": {
                             "value": "circulating_2026"
+                          },
+                          "subclade": {
+                            "value": "J.2"
                           }
                         },
                         "branch_attrs": {
@@ -286,11 +286,11 @@
                           "derived_haplotype": {
                             "value": "J.2:N8D,V223I"
                           },
-                          "subclade": {
-                            "value": "J.2"
-                          },
                           "strain_type": {
                             "value": "circulating_2026"
+                          },
+                          "subclade": {
+                            "value": "J.2"
                           }
                         },
                         "branch_attrs": {}
@@ -348,11 +348,11 @@
                               "derived_haplotype": {
                                 "value": "J.2.3:N63D,I160V,V309I"
                               },
-                              "subclade": {
-                                "value": "J.2.3"
-                              },
                               "strain_type": {
                                 "value": "circulating_2026"
+                              },
+                              "subclade": {
+                                "value": "J.2.3"
                               }
                             },
                             "branch_attrs": {
@@ -378,11 +378,11 @@
                               "derived_haplotype": {
                                 "value": "J.2.3"
                               },
-                              "subclade": {
-                                "value": "J.2.3"
-                              },
                               "strain_type": {
                                 "value": "circulating_2026"
+                              },
+                              "subclade": {
+                                "value": "J.2.3"
                               }
                             },
                             "branch_attrs": {}
@@ -416,11 +416,11 @@
                                   "derived_haplotype": {
                                     "value": "J.2.3:S145N"
                                   },
-                                  "subclade": {
-                                    "value": "J.2.3"
-                                  },
                                   "strain_type": {
                                     "value": "circulating_2026"
+                                  },
+                                  "subclade": {
+                                    "value": "J.2.3"
                                   }
                                 },
                                 "branch_attrs": {}
@@ -454,11 +454,11 @@
                                       "derived_haplotype": {
                                         "value": "J.2.3:S54N,G78S,S145N,N216H"
                                       },
-                                      "subclade": {
-                                        "value": "J.2.3"
-                                      },
                                       "strain_type": {
                                         "value": "circulating_2026"
+                                      },
+                                      "subclade": {
+                                        "value": "J.2.3"
                                       }
                                     },
                                     "branch_attrs": {
@@ -483,11 +483,11 @@
                                       "derived_haplotype": {
                                         "value": "J.2.3:S54N,N133D,S145N"
                                       },
-                                      "subclade": {
-                                        "value": "J.2.3"
-                                      },
                                       "strain_type": {
                                         "value": "circulating_2026"
+                                      },
+                                      "subclade": {
+                                        "value": "J.2.3"
                                       }
                                     },
                                     "branch_attrs": {
@@ -536,11 +536,11 @@
                               "derived_haplotype": {
                                 "value": "J.2.4:K135N"
                               },
-                              "subclade": {
-                                "value": "J.2.4"
-                              },
                               "strain_type": {
                                 "value": "circulating_2026"
+                              },
+                              "subclade": {
+                                "value": "J.2.4"
                               }
                             },
                             "branch_attrs": {
@@ -577,11 +577,11 @@
                                   "derived_haplotype": {
                                     "value": "J.2.4"
                                   },
-                                  "subclade": {
-                                    "value": "J.2.4"
-                                  },
                                   "strain_type": {
                                     "value": "2026 cell-based vaccine"
+                                  },
+                                  "subclade": {
+                                    "value": "J.2.4"
                                   }
                                 },
                                 "branch_attrs": {}
@@ -617,11 +617,11 @@
                                       "derived_haplotype": {
                                         "value": "J.2.4:G62R,N158D,I160K,T328A"
                                       },
-                                      "subclade": {
-                                        "value": "J.2.4"
-                                      },
                                       "strain_type": {
                                         "value": "circulating_2026"
+                                      },
+                                      "subclade": {
+                                        "value": "J.2.4"
                                       }
                                     },
                                     "branch_attrs": {
@@ -683,11 +683,11 @@
                                               "derived_haplotype": {
                                                 "value": "J.2.4:F79V,K131R,S144N,N158D,I160K,T328A"
                                               },
-                                              "subclade": {
-                                                "value": "J.2.4"
-                                              },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "J.2.4"
                                               }
                                             },
                                             "branch_attrs": {
@@ -711,11 +711,11 @@
                                               "derived_haplotype": {
                                                 "value": "J.2.4:F79V,S144N,N158D,I160K,I260M,T328A"
                                               },
-                                              "subclade": {
-                                                "value": "J.2.4"
-                                              },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "J.2.4"
                                               }
                                             },
                                             "branch_attrs": {
@@ -739,11 +739,11 @@
                                               "derived_haplotype": {
                                                 "value": "J.2.4:F79V,S144N,N158D,I160K,S198T,T328A"
                                               },
-                                              "subclade": {
-                                                "value": "J.2.4"
-                                              },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "J.2.4"
                                               }
                                             },
                                             "branch_attrs": {
@@ -792,11 +792,11 @@
                                               "derived_haplotype": {
                                                 "value": "K:F192V"
                                               },
-                                              "subclade": {
-                                                "value": "K"
-                                              },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "K"
                                               }
                                             },
                                             "branch_attrs": {
@@ -823,11 +823,11 @@
                                               "derived_haplotype": {
                                                 "value": "K:Q80K"
                                               },
-                                              "subclade": {
-                                                "value": "K"
-                                              },
                                               "strain_type": {
                                                 "value": "circulating_2026"
+                                              },
+                                              "subclade": {
+                                                "value": "K"
                                               }
                                             },
                                             "branch_attrs": {
@@ -864,11 +864,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:S96R"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -892,11 +892,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:S96N,S265G,P289L"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -934,11 +934,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:K135T,K140I"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -963,11 +963,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:K135E"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1012,11 +1012,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:S124N,S145N"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1040,11 +1040,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:S54N,S145N,I242M"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1090,11 +1090,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:V223I,A272T"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1118,11 +1118,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:A272T"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {}
@@ -1158,11 +1158,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:G78S"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1196,11 +1196,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:G78D"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {}
@@ -1215,11 +1215,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:S47P,G78D,N133D,N144K,N159Y,Q197R"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -1273,11 +1273,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:S91N"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {}
@@ -1311,11 +1311,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:N63S,S91N,S145N,I179V"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -1340,11 +1340,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:S91N,S145N,N216S"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -1368,11 +1368,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:S91N,N133H,S145N"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -1419,11 +1419,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:S145N,V223I"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1447,11 +1447,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:V223I"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {}
@@ -1466,11 +1466,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:V223I,K238N"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1494,11 +1494,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:K207Q,V223I,S312N"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1544,11 +1544,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:K207Q"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {}
@@ -1563,11 +1563,11 @@
                                                   "derived_haplotype": {
                                                     "value": "K:N159S,K207Q"
                                                   },
-                                                  "subclade": {
-                                                    "value": "K"
-                                                  },
                                                   "strain_type": {
                                                     "value": "circulating_2026"
+                                                  },
+                                                  "subclade": {
+                                                    "value": "K"
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -1604,35 +1604,6 @@
                                                 },
                                                 "children": [
                                                   {
-                                                    "name": "A/France/HDF-IPP01550/2026",
-                                                    "node_attrs": {
-                                                      "div": 15,
-                                                      "num_date": {
-                                                        "value": 2026.14
-                                                      },
-                                                      "derived_haplotype": {
-                                                        "value": "K:G49D,F79I,S145N,K207Q"
-                                                      },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
-                                                      "strain_type": {
-                                                        "value": "circulating_2026"
-                                                      }
-                                                    },
-                                                    "branch_attrs": {
-                                                      "mutations": {
-                                                        "HA1": [
-                                                          "G49D",
-                                                          "S145N"
-                                                        ]
-                                                      },
-                                                      "labels": {
-                                                        "aa": "HA1: G49D, S145N"
-                                                      }
-                                                    }
-                                                  },
-                                                  {
                                                     "name": "A/Ireland/91576/2025",
                                                     "node_attrs": {
                                                       "div": 13,
@@ -1642,11 +1613,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:F79I,K207Q"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {}
@@ -1661,11 +1632,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:F79I,K207Q,I260M"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -1676,6 +1647,35 @@
                                                       },
                                                       "labels": {
                                                         "aa": "HA1: I260M"
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "name": "A/France/HDF-IPP01550/2026",
+                                                    "node_attrs": {
+                                                      "div": 15,
+                                                      "num_date": {
+                                                        "value": 2026.14
+                                                      },
+                                                      "derived_haplotype": {
+                                                        "value": "K:G49D,F79I,S145N,K207Q"
+                                                      },
+                                                      "strain_type": {
+                                                        "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
+                                                      }
+                                                    },
+                                                    "branch_attrs": {
+                                                      "mutations": {
+                                                        "HA1": [
+                                                          "G49D",
+                                                          "S145N"
+                                                        ]
+                                                      },
+                                                      "labels": {
+                                                        "aa": "HA1: G49D, S145N"
                                                       }
                                                     }
                                                   }
@@ -1713,11 +1713,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:P239A"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -1741,11 +1741,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:P239S,A272V"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -1782,11 +1782,11 @@
                                                       "derived_haplotype": {
                                                         "value": "K:N144D,K278E"
                                                       },
-                                                      "subclade": {
-                                                        "value": "K"
-                                                      },
                                                       "strain_type": {
                                                         "value": "circulating_2026"
+                                                      },
+                                                      "subclade": {
+                                                        "value": "K"
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -1821,11 +1821,11 @@
                                                           "derived_haplotype": {
                                                             "value": "K:S198A"
                                                           },
-                                                          "subclade": {
-                                                            "value": "K"
-                                                          },
                                                           "strain_type": {
                                                             "value": "circulating_2026"
+                                                          },
+                                                          "subclade": {
+                                                            "value": "K"
                                                           }
                                                         },
                                                         "branch_attrs": {
@@ -1878,11 +1878,11 @@
                                                                   "derived_haplotype": {
                                                                     "value": "K:G142E,S145N"
                                                                   },
-                                                                  "subclade": {
-                                                                    "value": "K"
-                                                                  },
                                                                   "strain_type": {
                                                                     "value": "circulating_2026"
+                                                                  },
+                                                                  "subclade": {
+                                                                    "value": "K"
                                                                   }
                                                                 },
                                                                 "branch_attrs": {
@@ -1906,11 +1906,11 @@
                                                                   "derived_haplotype": {
                                                                     "value": "K:G142E"
                                                                   },
-                                                                  "subclade": {
-                                                                    "value": "K"
-                                                                  },
                                                                   "strain_type": {
                                                                     "value": "circulating_2026"
+                                                                  },
+                                                                  "subclade": {
+                                                                    "value": "K"
                                                                   }
                                                                 },
                                                                 "branch_attrs": {}
@@ -1925,11 +1925,11 @@
                                                                   "derived_haplotype": {
                                                                     "value": "K:G142E,S193F"
                                                                   },
-                                                                  "subclade": {
-                                                                    "value": "K"
-                                                                  },
                                                                   "strain_type": {
                                                                     "value": "circulating_2026"
+                                                                  },
+                                                                  "subclade": {
+                                                                    "value": "K"
                                                                   }
                                                                 },
                                                                 "branch_attrs": {
@@ -1965,11 +1965,11 @@
                                                                   "derived_haplotype": {
                                                                     "value": "K:T155A"
                                                                   },
-                                                                  "subclade": {
-                                                                    "value": "K"
-                                                                  },
                                                                   "strain_type": {
                                                                     "value": "circulating_2026"
+                                                                  },
+                                                                  "subclade": {
+                                                                    "value": "K"
                                                                   }
                                                                 },
                                                                 "branch_attrs": {
@@ -2003,11 +2003,11 @@
                                                                       "derived_haplotype": {
                                                                         "value": "K:S156N"
                                                                       },
-                                                                      "subclade": {
-                                                                        "value": "K"
-                                                                      },
                                                                       "strain_type": {
                                                                         "value": "circulating_2026"
+                                                                      },
+                                                                      "subclade": {
+                                                                        "value": "K"
                                                                       }
                                                                     },
                                                                     "branch_attrs": {
@@ -2051,11 +2051,11 @@
                                                                               "derived_haplotype": {
                                                                                 "value": "K:N63S"
                                                                               },
-                                                                              "subclade": {
-                                                                                "value": "K"
-                                                                              },
                                                                               "strain_type": {
                                                                                 "value": "circulating_2026"
+                                                                              },
+                                                                              "subclade": {
+                                                                                "value": "K"
                                                                               }
                                                                             },
                                                                             "branch_attrs": {
@@ -2089,11 +2089,11 @@
                                                                                   "derived_haplotype": {
                                                                                     "value": "K:N63D"
                                                                                   },
-                                                                                  "subclade": {
-                                                                                    "value": "K"
-                                                                                  },
                                                                                   "strain_type": {
                                                                                     "value": "circulating_2026"
+                                                                                  },
+                                                                                  "subclade": {
+                                                                                    "value": "K"
                                                                                   }
                                                                                 },
                                                                                 "branch_attrs": {
@@ -2117,11 +2117,11 @@
                                                                                   "derived_haplotype": {
                                                                                     "value": "K:N63K"
                                                                                   },
-                                                                                  "subclade": {
-                                                                                    "value": "K"
-                                                                                  },
                                                                                   "strain_type": {
                                                                                     "value": "circulating_2026"
+                                                                                  },
+                                                                                  "subclade": {
+                                                                                    "value": "K"
                                                                                   }
                                                                                 },
                                                                                 "branch_attrs": {
@@ -2159,11 +2159,11 @@
                                                                               "derived_haplotype": {
                                                                                 "value": "K:L157S"
                                                                               },
-                                                                              "subclade": {
-                                                                                "value": "K"
-                                                                              },
                                                                               "strain_type": {
                                                                                 "value": "circulating_2026"
+                                                                              },
+                                                                              "subclade": {
+                                                                                "value": "K"
                                                                               }
                                                                             },
                                                                             "branch_attrs": {
@@ -2197,11 +2197,11 @@
                                                                                   "derived_haplotype": {
                                                                                     "value": "K:E172D"
                                                                                   },
-                                                                                  "subclade": {
-                                                                                    "value": "K"
-                                                                                  },
                                                                                   "strain_type": {
                                                                                     "value": "circulating_2026"
+                                                                                  },
+                                                                                  "subclade": {
+                                                                                    "value": "K"
                                                                                   }
                                                                                 },
                                                                                 "branch_attrs": {
@@ -2235,11 +2235,11 @@
                                                                                       "derived_haplotype": {
                                                                                         "value": "K:P169A"
                                                                                       },
-                                                                                      "subclade": {
-                                                                                        "value": "K"
-                                                                                      },
                                                                                       "strain_type": {
                                                                                         "value": "circulating_2026"
+                                                                                      },
+                                                                                      "subclade": {
+                                                                                        "value": "K"
                                                                                       }
                                                                                     },
                                                                                     "branch_attrs": {
@@ -2292,11 +2292,11 @@
                                                                                               "derived_haplotype": {
                                                                                                 "value": "K:R33Q,S124N"
                                                                                               },
-                                                                                              "subclade": {
-                                                                                                "value": "K"
-                                                                                              },
                                                                                               "strain_type": {
                                                                                                 "value": "circulating_2026"
+                                                                                              },
+                                                                                              "subclade": {
+                                                                                                "value": "K"
                                                                                               }
                                                                                             },
                                                                                             "branch_attrs": {
@@ -2320,11 +2320,11 @@
                                                                                               "derived_haplotype": {
                                                                                                 "value": "K:R33Q"
                                                                                               },
-                                                                                              "subclade": {
-                                                                                                "value": "K"
-                                                                                              },
                                                                                               "strain_type": {
                                                                                                 "value": "circulating_2026"
+                                                                                              },
+                                                                                              "subclade": {
+                                                                                                "value": "K"
                                                                                               }
                                                                                             },
                                                                                             "branch_attrs": {}
@@ -2351,11 +2351,11 @@
                                                                                               "derived_haplotype": {
                                                                                                 "value": "K:N159Y"
                                                                                               },
-                                                                                              "subclade": {
-                                                                                                "value": "K"
-                                                                                              },
                                                                                               "strain_type": {
                                                                                                 "value": "circulating_2026"
+                                                                                              },
+                                                                                              "subclade": {
+                                                                                                "value": "K"
                                                                                               }
                                                                                             },
                                                                                             "branch_attrs": {
@@ -2389,11 +2389,11 @@
                                                                                                   "derived_haplotype": {
                                                                                                     "value": "K:I230V"
                                                                                                   },
-                                                                                                  "subclade": {
-                                                                                                    "value": "K"
-                                                                                                  },
                                                                                                   "strain_type": {
                                                                                                     "value": "circulating_2026"
+                                                                                                  },
+                                                                                                  "subclade": {
+                                                                                                    "value": "K"
                                                                                                   }
                                                                                                 },
                                                                                                 "branch_attrs": {
@@ -2446,11 +2446,11 @@
                                                                                                           "derived_haplotype": {
                                                                                                             "value": "K:A328T"
                                                                                                           },
-                                                                                                          "subclade": {
-                                                                                                            "value": "K"
-                                                                                                          },
                                                                                                           "strain_type": {
                                                                                                             "value": "circulating_2026"
+                                                                                                          },
+                                                                                                          "subclade": {
+                                                                                                            "value": "K"
                                                                                                           }
                                                                                                         },
                                                                                                         "branch_attrs": {
@@ -2474,11 +2474,11 @@
                                                                                                           "derived_haplotype": {
                                                                                                             "value": "K:A328S"
                                                                                                           },
-                                                                                                          "subclade": {
-                                                                                                            "value": "K"
-                                                                                                          },
                                                                                                           "strain_type": {
                                                                                                             "value": "circulating_2026"
+                                                                                                          },
+                                                                                                          "subclade": {
+                                                                                                            "value": "K"
                                                                                                           }
                                                                                                         },
                                                                                                         "branch_attrs": {}
@@ -2496,30 +2496,30 @@
                                                                                                     "branch_attrs": {},
                                                                                                     "children": [
                                                                                                       {
-                                                                                                        "name": "A/France/HDF-RELAB-IPP00303/2026",
+                                                                                                        "name": "A/Singapore/SAR8915/2025",
                                                                                                         "node_attrs": {
                                                                                                           "div": 12,
                                                                                                           "num_date": {
                                                                                                             "value": 2026.16
                                                                                                           },
                                                                                                           "derived_haplotype": {
-                                                                                                            "value": "K:T128I"
-                                                                                                          },
-                                                                                                          "subclade": {
-                                                                                                            "value": "K"
+                                                                                                            "value": "K:Q57H"
                                                                                                           },
                                                                                                           "strain_type": {
                                                                                                             "value": "circulating_2026"
+                                                                                                          },
+                                                                                                          "subclade": {
+                                                                                                            "value": "K"
                                                                                                           }
                                                                                                         },
                                                                                                         "branch_attrs": {
                                                                                                           "mutations": {
                                                                                                             "HA1": [
-                                                                                                              "T128I"
+                                                                                                              "Q57H"
                                                                                                             ]
                                                                                                           },
                                                                                                           "labels": {
-                                                                                                            "aa": "HA1: T128I"
+                                                                                                            "aa": "HA1: Q57H"
                                                                                                           }
                                                                                                         }
                                                                                                       },
@@ -2534,30 +2534,30 @@
                                                                                                         "branch_attrs": {},
                                                                                                         "children": [
                                                                                                           {
-                                                                                                            "name": "A/SantaCatarina/508/2026",
+                                                                                                            "name": "A/France/HDF-RELAB-IPP00303/2026",
                                                                                                             "node_attrs": {
                                                                                                               "div": 12,
                                                                                                               "num_date": {
                                                                                                                 "value": 2026.16
                                                                                                               },
                                                                                                               "derived_haplotype": {
-                                                                                                                "value": "K:D188N"
-                                                                                                              },
-                                                                                                              "subclade": {
-                                                                                                                "value": "K"
+                                                                                                                "value": "K:T128I"
                                                                                                               },
                                                                                                               "strain_type": {
                                                                                                                 "value": "circulating_2026"
+                                                                                                              },
+                                                                                                              "subclade": {
+                                                                                                                "value": "K"
                                                                                                               }
                                                                                                             },
                                                                                                             "branch_attrs": {
                                                                                                               "mutations": {
                                                                                                                 "HA1": [
-                                                                                                                  "D188N"
+                                                                                                                  "T128I"
                                                                                                                 ]
                                                                                                               },
                                                                                                               "labels": {
-                                                                                                                "aa": "HA1: D188N"
+                                                                                                                "aa": "HA1: T128I"
                                                                                                               }
                                                                                                             }
                                                                                                           },
@@ -2572,30 +2572,30 @@
                                                                                                             "branch_attrs": {},
                                                                                                             "children": [
                                                                                                               {
-                                                                                                                "name": "A/Singapore/SAR8915/2025",
+                                                                                                                "name": "A/SantaCatarina/508/2026",
                                                                                                                 "node_attrs": {
                                                                                                                   "div": 12,
                                                                                                                   "num_date": {
                                                                                                                     "value": 2026.16
                                                                                                                   },
                                                                                                                   "derived_haplotype": {
-                                                                                                                    "value": "K:Q57H"
-                                                                                                                  },
-                                                                                                                  "subclade": {
-                                                                                                                    "value": "K"
+                                                                                                                    "value": "K:D188N"
                                                                                                                   },
                                                                                                                   "strain_type": {
                                                                                                                     "value": "circulating_2026"
+                                                                                                                  },
+                                                                                                                  "subclade": {
+                                                                                                                    "value": "K"
                                                                                                                   }
                                                                                                                 },
                                                                                                                 "branch_attrs": {
                                                                                                                   "mutations": {
                                                                                                                     "HA1": [
-                                                                                                                      "Q57H"
+                                                                                                                      "D188N"
                                                                                                                     ]
                                                                                                                   },
                                                                                                                   "labels": {
-                                                                                                                    "aa": "HA1: Q57H"
+                                                                                                                    "aa": "HA1: D188N"
                                                                                                                   }
                                                                                                                 }
                                                                                                               },
@@ -2619,11 +2619,11 @@
                                                                                                                       "derived_haplotype": {
                                                                                                                         "value": "K:G129R"
                                                                                                                       },
-                                                                                                                      "subclade": {
-                                                                                                                        "value": "K"
-                                                                                                                      },
                                                                                                                       "strain_type": {
                                                                                                                         "value": "circulating_2026"
+                                                                                                                      },
+                                                                                                                      "subclade": {
+                                                                                                                        "value": "K"
                                                                                                                       }
                                                                                                                     },
                                                                                                                     "branch_attrs": {
@@ -2657,11 +2657,11 @@
                                                                                                                           "derived_haplotype": {
                                                                                                                             "value": "K:V182I"
                                                                                                                           },
-                                                                                                                          "subclade": {
-                                                                                                                            "value": "K"
-                                                                                                                          },
                                                                                                                           "strain_type": {
                                                                                                                             "value": "circulating_2026"
+                                                                                                                          },
+                                                                                                                          "subclade": {
+                                                                                                                            "value": "K"
                                                                                                                           }
                                                                                                                         },
                                                                                                                         "branch_attrs": {
@@ -2695,11 +2695,11 @@
                                                                                                                               "derived_haplotype": {
                                                                                                                                 "value": "K:S199L"
                                                                                                                               },
-                                                                                                                              "subclade": {
-                                                                                                                                "value": "K"
-                                                                                                                              },
                                                                                                                               "strain_type": {
                                                                                                                                 "value": "circulating_2026"
+                                                                                                                              },
+                                                                                                                              "subclade": {
+                                                                                                                                "value": "K"
                                                                                                                               }
                                                                                                                             },
                                                                                                                             "branch_attrs": {
@@ -2733,11 +2733,11 @@
                                                                                                                                   "derived_haplotype": {
                                                                                                                                     "value": "K:R261K"
                                                                                                                                   },
-                                                                                                                                  "subclade": {
-                                                                                                                                    "value": "K"
-                                                                                                                                  },
                                                                                                                                   "strain_type": {
                                                                                                                                     "value": "circulating_2026"
+                                                                                                                                  },
+                                                                                                                                  "subclade": {
+                                                                                                                                    "value": "K"
                                                                                                                                   }
                                                                                                                                 },
                                                                                                                                 "branch_attrs": {
@@ -2771,11 +2771,11 @@
                                                                                                                                       "derived_haplotype": {
                                                                                                                                         "value": "K:D158N"
                                                                                                                                       },
-                                                                                                                                      "subclade": {
-                                                                                                                                        "value": "K"
-                                                                                                                                      },
                                                                                                                                       "strain_type": {
                                                                                                                                         "value": "circulating_2026"
+                                                                                                                                      },
+                                                                                                                                      "subclade": {
+                                                                                                                                        "value": "K"
                                                                                                                                       }
                                                                                                                                     },
                                                                                                                                     "branch_attrs": {
@@ -2809,11 +2809,11 @@
                                                                                                                                           "derived_haplotype": {
                                                                                                                                             "value": "K:I288V"
                                                                                                                                           },
-                                                                                                                                          "subclade": {
-                                                                                                                                            "value": "K"
-                                                                                                                                          },
                                                                                                                                           "strain_type": {
                                                                                                                                             "value": "circulating_2026"
+                                                                                                                                          },
+                                                                                                                                          "subclade": {
+                                                                                                                                            "value": "K"
                                                                                                                                           }
                                                                                                                                         },
                                                                                                                                         "branch_attrs": {
@@ -2847,11 +2847,11 @@
                                                                                                                                               "derived_haplotype": {
                                                                                                                                                 "value": "K:P21S"
                                                                                                                                               },
-                                                                                                                                              "subclade": {
-                                                                                                                                                "value": "K"
-                                                                                                                                              },
                                                                                                                                               "strain_type": {
                                                                                                                                                 "value": "circulating_2026"
+                                                                                                                                              },
+                                                                                                                                              "subclade": {
+                                                                                                                                                "value": "K"
                                                                                                                                               }
                                                                                                                                             },
                                                                                                                                             "branch_attrs": {
@@ -2885,11 +2885,11 @@
                                                                                                                                                   "derived_haplotype": {
                                                                                                                                                     "value": "K:T65K"
                                                                                                                                                   },
-                                                                                                                                                  "subclade": {
-                                                                                                                                                    "value": "K"
-                                                                                                                                                  },
                                                                                                                                                   "strain_type": {
                                                                                                                                                     "value": "circulating_2026"
+                                                                                                                                                  },
+                                                                                                                                                  "subclade": {
+                                                                                                                                                    "value": "K"
                                                                                                                                                   }
                                                                                                                                                 },
                                                                                                                                                 "branch_attrs": {
@@ -2923,11 +2923,11 @@
                                                                                                                                                       "derived_haplotype": {
                                                                                                                                                         "value": "K:R222K"
                                                                                                                                                       },
-                                                                                                                                                      "subclade": {
-                                                                                                                                                        "value": "K"
-                                                                                                                                                      },
                                                                                                                                                       "strain_type": {
                                                                                                                                                         "value": "circulating_2026"
+                                                                                                                                                      },
+                                                                                                                                                      "subclade": {
+                                                                                                                                                        "value": "K"
                                                                                                                                                       }
                                                                                                                                                     },
                                                                                                                                                     "branch_attrs": {
@@ -2961,11 +2961,11 @@
                                                                                                                                                           "derived_haplotype": {
                                                                                                                                                             "value": "K:G62R"
                                                                                                                                                           },
-                                                                                                                                                          "subclade": {
-                                                                                                                                                            "value": "K"
-                                                                                                                                                          },
                                                                                                                                                           "strain_type": {
                                                                                                                                                             "value": "circulating_2026"
+                                                                                                                                                          },
+                                                                                                                                                          "subclade": {
+                                                                                                                                                            "value": "K"
                                                                                                                                                           }
                                                                                                                                                         },
                                                                                                                                                         "branch_attrs": {
@@ -2989,11 +2989,11 @@
                                                                                                                                                           "derived_haplotype": {
                                                                                                                                                             "value": "K"
                                                                                                                                                           },
-                                                                                                                                                          "subclade": {
-                                                                                                                                                            "value": "K"
-                                                                                                                                                          },
                                                                                                                                                           "strain_type": {
                                                                                                                                                             "value": "2026-2027 cell-based vaccine"
+                                                                                                                                                          },
+                                                                                                                                                          "subclade": {
+                                                                                                                                                            "value": "K"
                                                                                                                                                           }
                                                                                                                                                         },
                                                                                                                                                         "branch_attrs": {}

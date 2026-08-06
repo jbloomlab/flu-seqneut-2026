@@ -127,7 +127,6 @@ flu-seqneut-2025_H1N1_24,A/Zacapa/FLU-012/2025_H1N1,old_h1_vax,0.001702,1.323,57
 flu-seqneut-2025_H1N1_25,A/Colorado/218/2024_H1N1,old_h1_vax,0.0008739,2.576,111.5
 flu-seqneut-2025_H1N1_27,A/Ohio/259/2024_H1N1,old_h1_vax,0.0006044,3.725,161.2
 flu-seqneut-2025_H1N1_37,A/Hawaii/ISC-1140/2025_H1N1,old_h1_vax,0.0006035,3.731,161.4
-flu-seqneut-2025_H1N1_Vax1,A/District_Of_Columbia/27/2023_H3N2,old_h1_vax,0.003846,0.5854,25.33
 flu_seqneut_pdmH1N1_2023-2024_IVR238,A/Victoria/4897/2022_IVR-238_H1N1,old_h1_vax,0.0003859,5.835,252.4
 flu_seqneut_pdmH1N1_2023-2024_VS4,A/Wisconsin/588/2019_H1N1,old_h1_vax,0.0005817,3.87,167.4
 flu_seqneut_pdmH1N1_2023-2024_VS5,A/Hawaii/70/2019_H1N1,old_h1_vax,0.000633,3.557,153.9
@@ -144,6 +143,7 @@ flu-seqneut-25to26_H3N2_46,A/South_Australia/2523812314/2025_H3N2,old_h3_vax,0.0
 flu-seqneut-2025_H3N2_9,A/Colombia/1851/2024_H3N2,old_h3_vax,0.001949,1.155,49.99
 flu-seqneut-2025_H3N2_59,A/Lisboa/216/2023_H3N2,old_h3_vax,0.004835,0.4656,20.15
 flu-seqneut-2025_H3N2_77,A/Croatia/10136RV/2023_H3N2,old_h3_vax,0.0006646,3.387,146.6
+flu-seqneut-2025_H3N2_Vax1,A/District_Of_Columbia/27/2023_H3N2,old_h3_vax,0.003846,0.5854,25.33
 flu-seqneut-DRIVE-2018to2026_H3N2_29,A/Vietnam/F7324/2024_H3N2,old_h3_vax,0.003035,0.7417,32.09
 flu-seqneut-H3-2023to2024_H3N2_32,A/Massachusetts/18/2022_H3N2,old_h3_vax,0.001277,1.764,76.3
 flu-seqneut-H3-2023to2024_H3N2_79,A/Thailand/8/2022_H3N2,old_h3_vax,0.000405,5.559,240.5

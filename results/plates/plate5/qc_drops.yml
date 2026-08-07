@@ -1,255 +1,70 @@
-wells:
-  B1: avg_barcode_counts_per_well
-barcodes:
-  AAGGAGAGCACGGAGG: min_neut_standard_frac_per_well
-  AATCCGAAATTTATTC: min_neut_standard_frac_per_well
-  ACGCCGCCGCCTACAT: min_neut_standard_frac_per_well
-  AGAACGTGCCTTTGCG: min_neut_standard_frac_per_well
-  CAGTAGTTGTCATGGG: min_neut_standard_frac_per_well
-  CCGACACAACTACTGG: min_neut_standard_frac_per_well
-  CCGCAGGTTTACAGCA: min_neut_standard_frac_per_well
-  CGGGTCCTAGGCGAGG: min_neut_standard_frac_per_well
-  CTCCGTAGCATCACAG: min_neut_standard_frac_per_well
-  GACCGAAGCCTTATGG: min_neut_standard_frac_per_well
-  GTCACCCCTGCACGAT: min_neut_standard_frac_per_well
-  TCCGCACTGCGATCAC: min_neut_standard_frac_per_well
-  TCGGAGAGCGATCCGC: min_neut_standard_frac_per_well
-  TTATCCGCAACTCAGC: min_neut_standard_frac_per_well
+wells: {}
+barcodes: {}
 barcode_wells:
-  ATGCAGGTCTAAGCAT H2: max_frac_infectivity_per_viral_barcode_well
-  ACTCGCATGTCTGTAG H2: max_frac_infectivity_per_viral_barcode_well
-  AGACCTTGTTGGTACA H2: max_frac_infectivity_per_viral_barcode_well
-  CACGGGCTAATGTCTC F3: max_frac_infectivity_per_viral_barcode_well
-  CAGGAGACTTCGCTCC G3: max_frac_infectivity_per_viral_barcode_well
-  AGTGTAGGAGCAGCCC H3: max_frac_infectivity_per_viral_barcode_well
-  ACTCGCATGTCTGTAG H3: max_frac_infectivity_per_viral_barcode_well
-  AGTGTAGGAGCAGCCC D4: max_frac_infectivity_per_viral_barcode_well
-  TAGCCTATAATCAAGT E4: max_frac_infectivity_per_viral_barcode_well
-  GAATTCAATCTTTAAA F4: max_frac_infectivity_per_viral_barcode_well
-  GTCACAGTCATCGTGT G4: max_frac_infectivity_per_viral_barcode_well
-  GCAATTCATGGACTTG G4: max_frac_infectivity_per_viral_barcode_well
-  CCTACAATGCGCTTTG G4: max_frac_infectivity_per_viral_barcode_well
-  GCTGATAAACAATCTA G4: max_frac_infectivity_per_viral_barcode_well
-  CTTACAGAATACTAGA G4: max_frac_infectivity_per_viral_barcode_well
-  AGTAAACATGCATTGG G4: max_frac_infectivity_per_viral_barcode_well
-  GTCGCCGCTAATCCGA G4: max_frac_infectivity_per_viral_barcode_well
-  CTTAGGTATTATATGC G4: max_frac_infectivity_per_viral_barcode_well
-  TATCCGGGTCTGATGC G4: max_frac_infectivity_per_viral_barcode_well
-  TTCAACCACACAGTTT G4: max_frac_infectivity_per_viral_barcode_well
-  CAGGCGTTCTACCCAC G4: max_frac_infectivity_per_viral_barcode_well
-  CGGGTTCGGTTTTGAC G4: max_frac_infectivity_per_viral_barcode_well
-  ATGTACACCCGCTCTA G4: max_frac_infectivity_per_viral_barcode_well
-  GTCATCCAAGATAGGT G4: max_frac_infectivity_per_viral_barcode_well
-  AAAAGGGCTTTGCGCG G4: max_frac_infectivity_per_viral_barcode_well
-  AGAGATGGTCCGTGCC G4: max_frac_infectivity_per_viral_barcode_well
-  CGGCGGATAAGCCCTT G4: max_frac_infectivity_per_viral_barcode_well
-  CAGGAGACTTCGCTCC G4: max_frac_infectivity_per_viral_barcode_well
-  AGTGTAGGAGCAGCCC G5: max_frac_infectivity_per_viral_barcode_well
-  GTCGCCGCTAATCCGA G5: max_frac_infectivity_per_viral_barcode_well
-  CATGATTAGCCGTTAT G5: max_frac_infectivity_per_viral_barcode_well
-  GTGCCAGATACCACAC H5: max_frac_infectivity_per_viral_barcode_well
-  AGTCCTATCCTCAAAT H5: max_frac_infectivity_per_viral_barcode_well
-  CGTACGTATGTCCCAG H5: max_frac_infectivity_per_viral_barcode_well
-  ACGTTTGCAAGATGCG H5: max_frac_infectivity_per_viral_barcode_well
-  GCCGGCGTTAGTGTCA D6: max_frac_infectivity_per_viral_barcode_well
-  GTCGCCGCTAATCCGA D6: max_frac_infectivity_per_viral_barcode_well
-  CGGGATTGGTGAAGTG D6: max_frac_infectivity_per_viral_barcode_well
-  ACGTTTGCAAGATGCG D6: max_frac_infectivity_per_viral_barcode_well
-  ATGAACCCGGACCACC E6: max_frac_infectivity_per_viral_barcode_well
-  GCTGATAAACAATCTA E6: max_frac_infectivity_per_viral_barcode_well
-  TGGAATCGTCACCGAT E6: max_frac_infectivity_per_viral_barcode_well
-  ACGGCATCCCAATTGA E6: max_frac_infectivity_per_viral_barcode_well
-  ATATTAACGATGTGAA E6: max_frac_infectivity_per_viral_barcode_well
-  ATGATATGCTTACGCA E6: max_frac_infectivity_per_viral_barcode_well
-  TACGGCATGGCCTCCT E6: max_frac_infectivity_per_viral_barcode_well
-  GATAACTCTGAGCACG E6: max_frac_infectivity_per_viral_barcode_well
-  ATGTACACCCGCTCTA E6: max_frac_infectivity_per_viral_barcode_well
-  AGTGTAGGAGCAGCCC E6: max_frac_infectivity_per_viral_barcode_well
-  AGACCTTGTTGGTACA E6: max_frac_infectivity_per_viral_barcode_well
-  CGGCGGATAAGCCCTT E6: max_frac_infectivity_per_viral_barcode_well
-  GTCACAGTCATCGTGT F6: max_frac_infectivity_per_viral_barcode_well
-  GTCGCCGCTAATCCGA F6: max_frac_infectivity_per_viral_barcode_well
-  AGACCTTGTTGGTACA F6: max_frac_infectivity_per_viral_barcode_well
-  GTCACAGTCATCGTGT D7: max_frac_infectivity_per_viral_barcode_well
-  GTCGACTTATGCGCCG D7: max_frac_infectivity_per_viral_barcode_well
-  AGTGTAGGAGCAGCCC D7: max_frac_infectivity_per_viral_barcode_well
-  AGACCTTGTTGGTACA D7: max_frac_infectivity_per_viral_barcode_well
-  ACTCGCATGTCTGTAG F7: max_frac_infectivity_per_viral_barcode_well
-  AGTCCTATCCTCAAAT F7: max_frac_infectivity_per_viral_barcode_well
-  TCGGGTCCACAACCTA G7: max_frac_infectivity_per_viral_barcode_well
-  AGTGTAGGAGCAGCCC D9: max_frac_infectivity_per_viral_barcode_well
-  AGTGTAGGAGCAGCCC E9: max_frac_infectivity_per_viral_barcode_well
-  AGACCTTGTTGGTACA E9: max_frac_infectivity_per_viral_barcode_well
-  AGTGTAGGAGCAGCCC G9: max_frac_infectivity_per_viral_barcode_well
-  CCCAAACTGAGGTCCA C10: max_frac_infectivity_per_viral_barcode_well
-  GTCGCCGCTAATCCGA E10: max_frac_infectivity_per_viral_barcode_well
-  TGACGTCCAGAACAGA H10: max_frac_infectivity_per_viral_barcode_well
-  CTTAGGTATTATATGC F11: max_frac_infectivity_per_viral_barcode_well
+  A/Bangkok/P2391/2025_H3N2 H3: max_frac_infectivity_per_viral_barcode_well
+  A/Bangkok/P2391/2025_H3N2 G4: max_frac_infectivity_per_viral_barcode_well
+  A/Croatia/10136RV/2023_H3N2 G4: max_frac_infectivity_per_viral_barcode_well
+  A/Lisboa/216/2023_H3N2 G4: max_frac_infectivity_per_viral_barcode_well
+  A/Singapore/MOH0547/2024_H1N1 G4: max_frac_infectivity_per_viral_barcode_well
+  A/Bangkok/P2391/2025_H3N2 H5: max_frac_infectivity_per_viral_barcode_well
+  A/France/GES-IPP01077/2026_H3N2 E6: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/South_Australia/2527213276/2025_H3N2 E6: 
+    max_frac_infectivity_per_viral_barcode_well
 barcode_serum_replicates:
-  AGTGTAGGAGCAGCCC flu-seqneut-2026-UWMC-013: 
-    min_dilutions_per_barcode_serum_replicate
-  TGATTACCAGTCTTCT flu-seqneut-2026-UWMC-005: goodness_of_fit
-  ACAAGCTTTGTGTTAT flu-seqneut-2026-UWMC-006: goodness_of_fit
-  AGAGATGGTCCGTGCC flu-seqneut-2026-UWMC-006: goodness_of_fit
-  CCTAATAATCCCAACA flu-seqneut-2026-UWMC-006: goodness_of_fit
-  CGGCGTTGCCAAAGAA flu-seqneut-2026-UWMC-006: goodness_of_fit
-  CTCTAGTTCGGGGCCA flu-seqneut-2026-UWMC-006: goodness_of_fit
-  TCACTCTCCACCGCCC flu-seqneut-2026-UWMC-006: goodness_of_fit
-  TGAACCCGCCGACTGA flu-seqneut-2026-UWMC-006: goodness_of_fit
-  CAGCGACGTAGGACAC flu-seqneut-2026-UWMC-007: goodness_of_fit
-  TCGGGTCCACAACCTA flu-seqneut-2026-UWMC-007: goodness_of_fit
-  TTTTCTGACGATGCAG flu-seqneut-2026-UWMC-007: goodness_of_fit
-  AAAAGGGCTTTGCGCG flu-seqneut-2026-UWMC-008: goodness_of_fit
-  AGAAGATCGGATGTTT flu-seqneut-2026-UWMC-008: goodness_of_fit
-  AGACCTTGTTGGTACA flu-seqneut-2026-UWMC-008: goodness_of_fit
-  AGTGTAGGAGCAGCCC flu-seqneut-2026-UWMC-008: goodness_of_fit
-  AGTTTTTATAACTTGC flu-seqneut-2026-UWMC-008: goodness_of_fit
-  ATTCGTGAACACGAGA flu-seqneut-2026-UWMC-008: goodness_of_fit
-  CAGCGACGTAGGACAC flu-seqneut-2026-UWMC-008: goodness_of_fit
-  CGGCGTTGCCAAAGAA flu-seqneut-2026-UWMC-008: goodness_of_fit
-  GCTTTCGTGACATTGT flu-seqneut-2026-UWMC-008: goodness_of_fit
-  GTGGGCTCGTCGATAC flu-seqneut-2026-UWMC-008: goodness_of_fit
-  TGACGTCCAGAACAGA flu-seqneut-2026-UWMC-008: goodness_of_fit
-  AAAGGCGCGCCTTCAA flu-seqneut-2026-UWMC-009: goodness_of_fit
-  AACTCCAATTTGTTTT flu-seqneut-2026-UWMC-009: goodness_of_fit
-  ACAAGCTTTGTGTTAT flu-seqneut-2026-UWMC-009: goodness_of_fit
-  ATGCAGGTCTAAGCAT flu-seqneut-2026-UWMC-009: goodness_of_fit
-  CACCGGACTAGAAAAT flu-seqneut-2026-UWMC-009: goodness_of_fit
-  CAGGAGACTTCGCTCC flu-seqneut-2026-UWMC-009: goodness_of_fit
-  CATGATTAGCCGTTAT flu-seqneut-2026-UWMC-009: goodness_of_fit
-  CCTCGGATAACGGGAC flu-seqneut-2026-UWMC-009: goodness_of_fit
-  CTTAGGTATTATATGC flu-seqneut-2026-UWMC-009: goodness_of_fit
-  GATCGGAATAACCGTA flu-seqneut-2026-UWMC-009: goodness_of_fit
-  GCGCCACGTCCAACAC flu-seqneut-2026-UWMC-009: goodness_of_fit
-  GTCATCCAAGATAGGT flu-seqneut-2026-UWMC-009: goodness_of_fit
-  GTCGCCGCTAATCCGA flu-seqneut-2026-UWMC-009: goodness_of_fit
-  TACGGCATGGCCTCCT flu-seqneut-2026-UWMC-009: goodness_of_fit
-  TAGCCTATAATCAAGT flu-seqneut-2026-UWMC-009: goodness_of_fit
-  TGAACCCGCCGACTGA flu-seqneut-2026-UWMC-009: goodness_of_fit
-  TGACGATGCTCCCATT flu-seqneut-2026-UWMC-009: goodness_of_fit
-  TGCGGTGACTTACAAG flu-seqneut-2026-UWMC-009: goodness_of_fit
-  AAAGGCGCGCCTTCAA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  AAGCCCAGCGGGTGAT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  AATCATACATGCTTCT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  ACAAGCTTTGTGTTAT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  ACCTCAGTGAGAGCTA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  ACTCGCATGTCTGTAG flu-seqneut-2026-UWMC-010: goodness_of_fit
-  AGAAGATCGGATGTTT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  AGCATGTTTCTTATGC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  AGCCAGTCAAAGTCTC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  AGCCGATTCATGACAT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  AGTTACCTGCAAATAC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  AGTTTCGAATCAAACT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  ATAGGCACTCGGTGCG flu-seqneut-2026-UWMC-010: goodness_of_fit
-  ATCGCAAGTACCAGTT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  ATGTACACCCGCTCTA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CAAGTGGGCTCTACAT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CACCGGACTAGAAAAT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CAGGAGACTTCGCTCC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CAGGCGTTCTACCCAC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CAGGTGAAGGAACACC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CCACTTCACTGAAATC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CCATCTGTGGCCTCGA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CCGGATATGGCTGGTC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CCTAATAATCCCAACA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CCTACGCTCGTATCCC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CGATCTTTACGAAAAA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CGGGATTGGTGAAGTG flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CGTACTTGTTCTCTCA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CTAAAATCTTGACCAA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  CTTGGATTTGTTTGGC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GAGGTCGCGCTTGATA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GATCGGAATAACCGTA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GCCAATAAGCTCACAC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GCCTTCCTTGCAACTA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GCGCGGATAGATGAAC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GCGGGGAGCTGCACAA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GCTGATAAACAATCTA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GCTGCTAATGCGCACG flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GTCATGTGGAGGCATC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GTGCCAGATACCACAC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GTGTCGTGTTAAAGGC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  GTTTAATTGATCCGCG flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TAGAGCTGTTGACAAA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TAGGGAAACGAAAAGC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TCACTCTCCACCGCCC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TCATCTGATCGGTCCG flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TCCCAAGACAAGCGAC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TCGCACGCGTTCATCA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TGAACCCGCCGACTGA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TGAGCCAATTAAGTAG flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TGATTACCAGTCTTCT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TGGTACAAAAATAGAG flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TTAGGTAGGGTAAGAT flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TTGGAGAATCCGTCTA flu-seqneut-2026-UWMC-010: goodness_of_fit
-  TTTACTCGATCCTCGC flu-seqneut-2026-UWMC-010: goodness_of_fit
-  AAAGGCGCGCCTTCAA flu-seqneut-2026-UWMC-011: goodness_of_fit
-  CGATCTTTACGAAAAA flu-seqneut-2026-UWMC-011: goodness_of_fit
-  CGGCGTTGCCAAAGAA flu-seqneut-2026-UWMC-011: goodness_of_fit
-  GATAACTCTGAGCACG flu-seqneut-2026-UWMC-011: goodness_of_fit
-  GTGCCAGATACCACAC flu-seqneut-2026-UWMC-011: goodness_of_fit
-  AAAGGCGCGCCTTCAA flu-seqneut-2026-UWMC-012: goodness_of_fit
-  TCGGGTCCACAACCTA flu-seqneut-2026-UWMC-012: goodness_of_fit
-  AAATAAGCTGTCGCGA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  AAGACTCTGTGAGTAA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  AAGCCCAGCGGGTGAT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  AATGTAATATCCCAGT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  ACGTGAGCACAGAGGC flu-seqneut-2026-UWMC-013: goodness_of_fit
-  ACGTTTGCAAGATGCG flu-seqneut-2026-UWMC-013: goodness_of_fit
-  AGACCATCGCACCCAA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  AGCCAGTCAAAGTCTC flu-seqneut-2026-UWMC-013: goodness_of_fit
-  AGTCCTATCCTCAAAT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  AGTTTTTATAACTTGC flu-seqneut-2026-UWMC-013: goodness_of_fit
-  ATCGCAAGTACCAGTT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CAAGTGGGCTCTACAT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CAGCGACGTAGGACAC flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CATAAAAGACTGTATA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CATGTGGAGGGTCGAG flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CCATCTGTGGCCTCGA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CCCGCTCTTTGTCCAC flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CCCTGGTATACTCGGC flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CCTGTAGGCATCACGG flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CCTTGGGTATACTCAT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CGAGCATTAAGAGGTA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CGATCTTTACGAAAAA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CGTACTTGTTCTCTCA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CTAAAATCTTGACCAA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CTGTTTTAACACACCA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  GAATTCAATCTTTAAA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  GCAGTGCGCACCCCGA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  GCCGGCGTTAGTGTCA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  GCGACCGCATACTATT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  GTCGCCGCTAATCCGA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  GTGTTGTTAATAATCG flu-seqneut-2026-UWMC-013: goodness_of_fit
-  GTTCAAGACTGACTCA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  GTTCTGTACACAGCAT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TAAGGTACATCCATTC flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TAGCATATCGGTTGAT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TAGTCAGGCATGGTCA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TATCCGGGTCTGATGC flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TCACTCTCCACCGCCC flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TCATCTGATCGGTCCG flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TCCACACCCCTAGCTA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TCCTATTTTGCAAGTG flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TCGACCGAGTCGGGCA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TGACGTCCAGAACAGA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TGATTTTGCCGAGAGA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TGCTGCAGCCATCAGT flu-seqneut-2026-UWMC-013: goodness_of_fit
-  TGGCATATGATATTCA flu-seqneut-2026-UWMC-013: goodness_of_fit
-  CAGGAGACTTCGCTCC flu-seqneut-2026-UWMC-014: goodness_of_fit
-  CCTAATAATCCCAACA flu-seqneut-2026-UWMC-014: goodness_of_fit
-  CCTCGGATAACGGGAC flu-seqneut-2026-UWMC-014: goodness_of_fit
-  GAGGTCGCGCTTGATA flu-seqneut-2026-UWMC-014: goodness_of_fit
-  GTCATCCAAGATAGGT flu-seqneut-2026-UWMC-014: goodness_of_fit
-  GTCCTACGAGCTACTT flu-seqneut-2026-UWMC-014: goodness_of_fit
-  GTCGCCGCTAATCCGA flu-seqneut-2026-UWMC-014: goodness_of_fit
-  GTTCTGTACACAGCAT flu-seqneut-2026-UWMC-014: goodness_of_fit
-  TAGCCTATAATCAAGT flu-seqneut-2026-UWMC-014: goodness_of_fit
-  TGATTACCAGTCTTCT flu-seqneut-2026-UWMC-014: goodness_of_fit
-  AAAGGCGCGCCTTCAA flu-seqneut-2026-UWMC-015: goodness_of_fit
-  ACGTGAGCACAGAGGC flu-seqneut-2026-UWMC-015: goodness_of_fit
-  AGACCATCGCACCCAA flu-seqneut-2026-UWMC-015: goodness_of_fit
-  ATGCAGGTCTAAGCAT flu-seqneut-2026-UWMC-015: goodness_of_fit
-  CCCAAACTGAGGTCCA flu-seqneut-2026-UWMC-015: goodness_of_fit
-  CGTACGTATGTCCCAG flu-seqneut-2026-UWMC-015: goodness_of_fit
+  A/Lisboa/216/2023_H3N2 flu-seqneut-2026-UWMC-005: goodness_of_fit
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-UWMC-007: goodness_of_fit
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-UWMC-009: goodness_of_fit
+  A/Lisboa/216/2023_H3N2 flu-seqneut-2026-UWMC-009: goodness_of_fit
+  A/Peru/ANC-INS-062/2026_H3N2 flu-seqneut-2026-UWMC-009: goodness_of_fit
+  A/Badajoz/18738342/2026_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Bolivia/OR5702/2025_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-UWMC-010: 
+    goodness_of_fit
+  A/Distrito_Federal/250106000728/2025_H3N2 flu-seqneut-2026-UWMC-010: 
+    goodness_of_fit
+  A/France/NAQ-HCL026010957001/2026_H3N2 flu-seqneut-2026-UWMC-010: 
+    goodness_of_fit
+  A/France/PAC-RELAB-HCL026021993801/2026_H3N2 flu-seqneut-2026-UWMC-010: 
+    goodness_of_fit
+  A/Germany/LRMC_0104/2025_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Luxembourg/LNS9132577/2026_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Malaysia/IMR/SARI/2406/2025_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Michigan/8/2026_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Michigan/UM-10068747355/2026_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/NakhonPhanom/P495/2026_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Netherlands/888/2026_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/NordrheinWestfalen/54/2026_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Ontario/PHL202550193/2025_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Oregon/81/2025_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/SantaCatarina/508/2026_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-UWMC-010: 
+    goodness_of_fit
+  A/StPetersburg/RII-25-2321S/2025_H3N2 flu-seqneut-2026-UWMC-010: 
+    goodness_of_fit
+  A/Trieste/257/2025_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Trieste/380/2026_H3N2 flu-seqneut-2026-UWMC-010: goodness_of_fit
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-UWMC-011: goodness_of_fit
+  A/Denmark/4774/2025_H1N1 flu-seqneut-2026-UWMC-011: goodness_of_fit
+  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-UWMC-011: 
+    goodness_of_fit
+  A/Colombia/1851/2024_H3N2 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Distrito_Federal/250106000728/2025_H3N2 flu-seqneut-2026-UWMC-013: 
+    goodness_of_fit
+  A/France/OCC-HCL026013263701/2026_H3N2 flu-seqneut-2026-UWMC-013: 
+    goodness_of_fit
+  A/Galicia/GA-CHUAC-451/2025_H3N2 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Germany/LRMC_0104/2025_H3N2 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Massachusetts/18/2022_H3N2 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Nebraska/34/2026_H1N1 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Netherlands/10008/2026_H1N1 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Parana/416133590/2026_H3N2 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Rhode_Island/11/2026_H1N1 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/RiodeJaneiro/331/2026_H3N2 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Sydney/50/2026_H1N1 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Virginia/82/2025_H1N1 flu-seqneut-2026-UWMC-013: goodness_of_fit
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-UWMC-014: goodness_of_fit
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-UWMC-015: goodness_of_fit
 serum_replicates: {}

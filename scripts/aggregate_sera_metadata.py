@@ -108,10 +108,20 @@ def standardize_date(date_str):
     Handles formats:
     - "Mon-YYYY" (e.g., "Aug-2025"): returns "2025-08"
     - "Mon-YY" (e.g., "Nov-25"): returns "2025-11" (assumes 20XX century)
+    - "YYYY-MM" (e.g., "2026-06"): returned as-is (already standardized)
 
     Raises ValueError for unrecognized formats.
     """
     date_str = str(date_str).strip()
+
+    # <-- NEW: Pattern for already-standardized YYYY-MM (e.g., "2026-06")
+    match_iso = re.match(r"^(\d{4})-(\d{2})$", date_str)
+    if match_iso:
+        year, month = match_iso.group(1), match_iso.group(2)
+        if not (1 <= int(month) <= 12):
+            raise ValueError(f"Invalid month in date: {date_str}")
+        return f"{year}-{month}"
+    # <-- END NEW
 
     # Pattern for Mon-YYYY (e.g., "Aug-2025")
     match_full = re.match(r"^([A-Za-z]{3})-(\d{4})$", date_str)

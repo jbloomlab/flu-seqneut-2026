@@ -53,6 +53,8 @@ required_columns = [
     "genbank_accession",
     "subclade",
     "derived_haplotype",
+    "shortname_strain",
+    "shortname_barcoded_construct",
     "collection_date",
     "nt_sequence_HA_ectodomain",
     "protein_sequence_HA_ectodomain",
@@ -83,11 +85,12 @@ log_validation(
 
 # =============================================================================
 # Validation 3: strain consistency - each strain has same values for all
-# required columns except barcode
+# required columns except those that identify the individual barcoded construct
 # =============================================================================
-# Only check consistency for required columns (excluding barcode)
-# Other columns like Twist_name may intentionally vary per barcode
-consistency_check_cols = [col for col in required_columns if col != "barcode"]
+per_barcode_columns = ["barcode", "shortname_barcoded_construct"]
+consistency_check_cols = [
+    col for col in required_columns if col not in per_barcode_columns
+]
 strain_consistency_issues = []
 for strain, group in df.groupby("strain"):
     for col in consistency_check_cols:

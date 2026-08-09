@@ -9,7 +9,6 @@ import sys
 
 import pandas as pd
 
-
 sys.stderr = sys.stdout = log = open(snakemake.log[0], "w")
 
 # Get inputs and outputs from snakemake
@@ -26,21 +25,8 @@ REQUIRED_COLUMNS = [
     "collection_date",
 ]
 
-# Month name to number mapping for date parsing
-MONTH_MAP = {
-    "jan": "01",
-    "feb": "02",
-    "mar": "03",
-    "apr": "04",
-    "may": "05",
-    "jun": "06",
-    "jul": "07",
-    "aug": "08",
-    "sep": "09",
-    "oct": "10",
-    "nov": "11",
-    "dec": "12",
-}
+# Collection dates are recorded to month precision only
+COLLECTION_DATE_REGEX = r"\d{4}-(0[1-9]|1[0-2])"
 
 
 def parse_age_to_numeric(age_str):
@@ -102,50 +88,6 @@ def normalize_sex(sex_str):
         raise ValueError(f"Cannot normalize sex: {sex_str}")
 
 
-def standardize_date(date_str):
-    """Standardize date string to YYYY-MM format.
-
-    Handles formats:
-    - "Mon-YYYY" (e.g., "Aug-2025"): returns "2025-08"
-    - "Mon-YY" (e.g., "Nov-25"): returns "2025-11" (assumes 20XX century)
-    - "YYYY-MM" (e.g., "2026-06"): returned as-is (already standardized)
-
-    Raises ValueError for unrecognized formats.
-    """
-    date_str = str(date_str).strip()
-
-    # <-- NEW: Pattern for already-standardized YYYY-MM (e.g., "2026-06")
-    match_iso = re.match(r"^(\d{4})-(\d{2})$", date_str)
-    if match_iso:
-        year, month = match_iso.group(1), match_iso.group(2)
-        if not (1 <= int(month) <= 12):
-            raise ValueError(f"Invalid month in date: {date_str}")
-        return f"{year}-{month}"
-    # <-- END NEW
-
-    # Pattern for Mon-YYYY (e.g., "Aug-2025")
-    match_full = re.match(r"^([A-Za-z]{3})-(\d{4})$", date_str)
-    if match_full:
-        month_str = match_full.group(1).lower()
-        year = match_full.group(2)
-        if month_str not in MONTH_MAP:
-            raise ValueError(f"Unknown month in date: {date_str}")
-        return f"{year}-{MONTH_MAP[month_str]}"
-
-    # Pattern for Mon-YY (e.g., "Nov-25")
-    match_short = re.match(r"^([A-Za-z]{3})-(\d{2})$", date_str)
-    if match_short:
-        month_str = match_short.group(1).lower()
-        year_short = match_short.group(2)
-        if month_str not in MONTH_MAP:
-            raise ValueError(f"Unknown month in date: {date_str}")
-        # Assume 20XX century
-        year = f"20{year_short}"
-        return f"{year}-{MONTH_MAP[month_str]}"
-
-    raise ValueError(f"Cannot parse date: {date_str}")
-
-
 # =============================================================================
 # Load and validate each input file
 # =============================================================================
@@ -201,6 +143,17 @@ for csv_path in input_csvs:
         null_count = df["species"].isna().sum()
         raise ValueError(f"File {csv_path} has {null_count} null species values")
 
+    # Validate collection_date is YYYY-MM (null dates fail this too)
+    bad_dates = df.loc[
+        ~df["collection_date"].str.fullmatch(COLLECTION_DATE_REGEX, na=False),
+        "collection_date",
+    ]
+    if len(bad_dates):
+        raise ValueError(
+            f"File {csv_path} has collection_date values not in YYYY-MM format: "
+            f"{bad_dates.unique().tolist()}"
+        )
+
     all_dfs.append(df)
     print("  Validated successfully")
 
@@ -242,15 +195,6 @@ try:
     combined_df["age_numeric"] = combined_df["age"].apply(parse_age_to_numeric)
 except ValueError as e:
     raise ValueError(f"Age parsing failed: {e}")
-
-# Standardize collection date
-print("  Standardizing collection dates...")
-try:
-    combined_df["collection_date"] = combined_df["collection_date"].apply(
-        standardize_date
-    )
-except ValueError as e:
-    raise ValueError(f"Date standardization failed: {e}")
 
 print()
 

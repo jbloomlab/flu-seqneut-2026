@@ -91,7 +91,7 @@ nextstrain-prot-titers-tree_config:
 sera_metadata: 
   - data/sera_metadata/sera_for_flu-seqneut-2026_SCH.csv
   - data/sera_metadata/sera_for_flu-seqneut-2026_UWMC.csv
-  - data/sera_metadata/sera_for_flu-seqneut-2026_UCSF_CTS.csv
+  - data/sera_metadata/sera_for_flu-seqneut-2026_CTS.csv
 
 # Aggregate and QC final processed titer data for each serum group, which must match
 # the species designation in the serum metadata.

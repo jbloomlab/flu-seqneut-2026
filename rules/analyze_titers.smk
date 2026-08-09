@@ -156,33 +156,32 @@ if _fold_change_docs:
     add_htmls_to_docs["Fold-change charts"] = _fold_change_docs
 
 
-# ENTRIES COMMENTED OUT FOR NOW AS NO TITER DATA ADDED YET
 analyze_titers_outputs = [
     # aggregated sera metadata
-    # rules.aggregate_sera_metadata.output.csv,
+    rules.aggregate_sera_metadata.output.csv,
     # final processed titer data
-    # *expand(
-    #     "results/final_titer_data/{group}_{output_type}.csv",
-    #     group=groups,
-    #     output_type=[
-    #         "titers",
-    #         "sera",
-    #         "sera_multicohort",
-    #         "viruses",
-    #         "titers_summarized_by_virus",
-    #     ],
-    # ),
-    # *expand(rules.process_final_titer_data.output.summary, group=groups),
+    *expand(
+        "results/final_titer_data/{group}_{output_type}.csv",
+        group=groups,
+        output_type=[
+            "titers",
+            "sera",
+            "sera_multicohort",
+            "viruses",
+            "titers_summarized_by_virus",
+        ],
+    ),
+    *expand(rules.process_final_titer_data.output.summary, group=groups),
     # titer summary plots
-    # *expand(
-    #     rules.plot_titer_summaries.output.marimo_html,
-    #     group=groups,
-    #     orientation=["vertical", "horizontal"],
-    # ),
+    *expand(
+        rules.plot_titer_summaries.output.marimo_html,
+        group=groups,
+        orientation=["vertical", "horizontal"],
+    ),
     # fold-change titer plots
-    # *expand(
-    #     rules.plot_fold_changes.output.marimo_html,
-    #     fold_change_name=config.get("plot_fold_changes", {}),
-    #     orientation=["vertical", "horizontal"],
-    # ),
+    *expand(
+        rules.plot_fold_changes.output.marimo_html,
+        fold_change_name=config.get("plot_fold_changes", {}),
+        orientation=["vertical", "horizontal"],
+    ),
 ]

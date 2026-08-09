@@ -60,6 +60,7 @@ rule plot_titer_summaries:
     log:
         "results/logs/plot_titer_summaries_{group}_{orientation}.txt",
     wildcard_constraints:
+        group="|".join(groups),
         orientation="vertical|horizontal",
     conda:
         "../seqneut-pipeline/environment.yml"
@@ -124,7 +125,8 @@ rule plot_fold_changes:
     log:
         "results/logs/plot_fold_changes_{fold_change_name}_{orientation}.txt",
     wildcard_constraints:
-        fold_change_name="|".join(config.get("plot_fold_changes", {})),
+        # `(?!)` matches nothing when no fold changes are configured
+        fold_change_name="|".join(config.get("plot_fold_changes", {})) or "(?!)",
         orientation="vertical|horizontal",
     conda:
         "../seqneut-pipeline/environment.yml"

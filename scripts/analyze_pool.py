@@ -827,11 +827,11 @@ strain_fracs = (
     )
 )
 
-# strain-level short names, dropping the per-barcode suffix
+# strain-level short names
 strain_names = (
-    viral_library.assign(
-        shortname=lambda x: x["shortname"].str.replace(r"_bc\d+$", "", regex=True)
-    )[["strain", "shortname"]]
+    viral_library.rename(columns={"shortname_strain": "shortname"})[
+        ["strain", "shortname"]
+    ]
     .drop_duplicates()
     .reset_index(drop=True)
 )

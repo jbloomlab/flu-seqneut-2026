@@ -1,0 +1,5 @@
+group,serum,virus,titer,titer_bound,titer_sem,n_replicates,titer_as,titer_units
+human,flu-seqneut-2026-SCH-015,A/California/GKISBBBH79910/2026_H3N2,483.9,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-SCH-015,A/France/OCC-HCL026013263701/2026_H3N2,383.4,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-SCH-015,A/NovaScotia/25-365-06099/2025_H3N2,433.5,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-SCH-015,A/RiodeJaneiro/331/2026_H3N2,362.8,interpolated,,1,midpoint,reciprocal_dilution

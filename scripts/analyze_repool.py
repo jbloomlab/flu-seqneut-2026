@@ -888,14 +888,16 @@ assert (
     _frac_sums.sub(1).abs().lt(1e-9).all()
 ), f"'fraction_strain' does not sum to 1 per well:\n{_frac_sums}"
 
-# Strain-level metadata: the short name with its per-barcode suffix dropped, and the
-# derived haplotype, which labels the clade and the HA1 mutations on top of it. The
-# haplotype is carried only to be shown on mouseover, so that a strain out of balance can
-# be read against its genotype without leaving the report.
+# Strain-level metadata: the short name, and the derived haplotype, which labels the clade
+# and the HA1 mutations on top of it. The haplotype is carried only to be shown on
+# mouseover, so that a strain out of balance can be read against its genotype without
+# leaving the report. `shortname_strain` is already constant across a strain's barcodes,
+# the per-barcode name being `shortname_barcoded_construct`, so nothing has to be stripped
+# off it here.
 strain_names = (
-    viral_library.assign(
-        shortname=lambda x: x["shortname"].str.replace(r"_bc\d+$", "", regex=True)
-    )[["strain", "shortname", "derived_haplotype"]]
+    viral_library.rename(columns={"shortname_strain": "shortname"})[
+        ["strain", "shortname", "derived_haplotype"]
+    ]
     .drop_duplicates()
     .reset_index(drop=True)
 )

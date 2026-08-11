@@ -1,0 +1,70 @@
+======================================================================
+Processing final titer data for group: human
+======================================================================
+
+Loading input data...
+  Loaded 9102 titer measurements from results/aggregated_titers/titers_human.csv
+  Loaded 234 sera from results/sera_metadata/all_sera_metadata.csv
+  Loaded 301 barcodes from data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv
+
+Validating input data...
+  All rows have correct group
+  All serum-virus pairs are unique
+  All sera found in metadata
+  All viruses found in viral library
+
+Processing titer data...
+  Initial: 9102 rows, 66 sera, 148 viruses
+
+Step 1: Dropping explicitly specified sera and viruses...
+  No viruses specified in viruses_to_drop
+  No sera specified in sera_to_drop
+
+Step 2: Applying min_frac_viruses=0.9, min_frac_sera=0.8 (action=drop)...
+  Iteration 1: dropped 12 sera, 1 viruses
+  min_frac filters converged after 2 iterations
+
+  Sera dropped for min_frac_viruses < 0.9 (12 total):
+    flu-seqneut-2026-SCH-015: frac_viruses=0.0270
+    flu-seqneut-2026-SCH-006: frac_viruses=0.4324
+    flu-seqneut-2026-SCH-030: frac_viruses=0.5135
+    flu-seqneut-2026-SCH-001: frac_viruses=0.5878
+    flu-seqneut-2026-UWMC-026: frac_viruses=0.7230
+    flu-seqneut-2026-SCH-037: frac_viruses=0.7838
+    flu-seqneut-2026-SCH-025: frac_viruses=0.7905
+    flu-seqneut-2026-SCH-032: frac_viruses=0.7973
+    flu-seqneut-2026-UWMC-010: frac_viruses=0.8446
+    flu-seqneut-2026-SCH-036: frac_viruses=0.8649
+    flu-seqneut-2026-SCH-016: frac_viruses=0.8716
+    flu-seqneut-2026-UWMC-004: frac_viruses=0.8716
+
+  Viruses dropped for min_frac_sera < 0.8 (1 total):
+    A/Bangkok/P2391/2025_H3N2: frac_sera=0.4630
+
+Processing complete:
+  Final: 7877 rows, 54 sera, 147 viruses
+  Dropped: 1225 rows, 12 sera, 1 viruses
+
+Generating output files...
+  Written: results/final_titer_data/human_titers.csv (7877 rows)
+  Written: results/final_titer_data/human_sera.csv (54 rows)
+  Written: results/final_titer_data/human_sera_multicohort.csv (108 rows)
+  Written: results/final_titer_data/human_viruses.csv (147 rows)
+  Written: results/final_titer_data/human_titers_summarized_by_virus.csv (441 rows)
+
+======================================================================
+FINAL SUMMARY
+======================================================================
+Group: human
+Sera: 54
+Viruses: 147
+Total titers: 7877
+
+Cohorts in titers_summarized_by_virus.csv:
+  All: 54 sera, 7877 titers
+  SCH: 31 sera, 4527 titers
+  UWMC: 23 sera, 3350 titers
+
+Viruses per subtype:
+  H1N1: 66
+  H3N2: 81

@@ -1,0 +1,93 @@
+wells: {}
+barcodes:
+  A/Bangkok/P2391/2025_H3N2: min_neut_standard_frac_per_well
+barcode_wells:
+  A/France/GES-IPP01077/2026_H3N2 D8: 
+    max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Andalucia/PMC-00977/2025_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/California/NIRC-IS-1019/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Denmark/4547/2025_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Hawaii/70/2019_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Hessen/18/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Mauritius/26000203/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/MinasGerais/410/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/MinasGerais/671/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Netherlands/10008/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Netherlands/2398/2025_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Netherlands/543/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Netherlands/864/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Norway/9556/2025_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Ohio/259/2024_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/SouthAfrica/PATH-CERI-C073366/2025_H1N1 flu-seqneut-2026-SCH-036: 
+    goodness_of_fit
+  A/SouthAfrica/PATH-CERI-C075119/2026_H1N1 flu-seqneut-2026-SCH-036: 
+    goodness_of_fit
+  A/Sydney/50/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Uppsala/SE26-01293/2026_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Vietnam/PF125413/2025_H1N1 flu-seqneut-2026-SCH-036: goodness_of_fit
+  A/Andalucia/PMC-01495/2025_H1N1 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Blaenavon/6687/2026_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Bolivia/OR5702/2025_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Denmark/4774/2025_H1N1 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/France/HDF-IPP01550/2026_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-SCH-037: 
+    goodness_of_fit
+  A/France/HDF-RELAB-IPP07969/2025_H1N1 flu-seqneut-2026-SCH-037: 
+    goodness_of_fit
+  A/France/PAC-RELAB-HCL026021993801/2026_H3N2 flu-seqneut-2026-SCH-037: 
+    goodness_of_fit
+  A/Hawaii/70/2019_H1N1 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Lisboa/216/2023_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Massachusetts/ISC-1856/2025_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Missouri/11/2025_cell_H1N1 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Missouri/NIRC-AV-1003/2025_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Navarra/260009/2025_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Netherlands/10008/2026_H1N1 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Netherlands/2398/2025_H1N1 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/NewYork/NIRC-IS-1086/2026_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/NordrheinWestfalen/54/2026_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Norway/9556/2025_H1N1 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Parana/416133590/2026_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/RiodeJaneiro/331/2026_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/SantaCatarina/508/2026_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Saskatchewan/SKFLU477299/2025_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-SCH-037: 
+    goodness_of_fit
+  A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-SCH-037: 
+    goodness_of_fit
+  A/Sydney/50/2026_H1N1 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Thailand/8/2022_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Thuringen/16/2026_H3N2 flu-seqneut-2026-SCH-037: goodness_of_fit
+  A/Colombia/1851/2024_H3N2 flu-seqneut-2026-SCH-038: goodness_of_fit
+  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-SCH-038: 
+    goodness_of_fit
+  A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-UWMC-001: goodness_of_fit
+  A/Andalucia/PMC-00977/2025_H1N1 flu-seqneut-2026-UWMC-003: goodness_of_fit
+  A/Badajoz/18813527/2026_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/Bolivia/OR5702/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-UWMC-004: 
+    goodness_of_fit
+  A/France/NAQ-HCL026010957001/2026_H3N2 flu-seqneut-2026-UWMC-004: 
+    goodness_of_fit
+  A/Germany/LRMC_0104/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/Massachusetts/ISC-1856/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/Michigan/UM-10068449788/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/Montana/51/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/Navarra/260009/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/Saskatchewan/SKFLU477299/2025_H3N2 flu-seqneut-2026-UWMC-004: 
+    goodness_of_fit
+  A/Singapore/SAR8915/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/StPetersburg/RII-25-2042S/2025_H3N2 flu-seqneut-2026-UWMC-004: 
+    goodness_of_fit
+  A/StPetersburg/RII-25-2321S/2025_H3N2 flu-seqneut-2026-UWMC-004: 
+    goodness_of_fit
+  A/Trieste/257/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/Trieste/380/2026_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+  A/Victoria/2948/2025_H3N2 flu-seqneut-2026-UWMC-004: goodness_of_fit
+serum_replicates: {}

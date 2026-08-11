@@ -37,7 +37,8 @@ output_columns = [
     "subclade",
     "derived_haplotype",
     "genbank_accession",
-    "shortname",
+    "shortname_strain",
+    "shortname_barcoded_construct",
     "bloom_lab_plasmid_log_id",
     "passage_history_annotation",
     "barcode",
@@ -163,6 +164,19 @@ def add_collection_date(df):
     return df
 
 
+def split_shortname(df):
+    """Split the library's `shortname` into strain and barcoded-construct names.
+
+    The library's shortname names one barcoded construct; the strain-level shortname is
+    that with any trailing `_bc<n>` stripped. Strains carried over from earlier libraries
+    have no such suffix, and there the two are the same.
+    """
+    df = df.copy()
+    df["shortname_barcoded_construct"] = df["shortname"]
+    df["shortname_strain"] = df["shortname"].str.replace(r"_bc\d+$", "", regex=True)
+    return df
+
+
 def add_subtype_suffix(df):
     """Append ``_{subtype}`` to `strain` to match the previous library's naming.
 
@@ -212,6 +226,7 @@ if __name__ == "__main__":
     df = add_vaccine_type(df)
     df = add_collection_date(df)
     df = add_subtype_suffix(df)
+    df = split_shortname(df)
     df = df[output_columns]
     tally_fields(df)
     df.to_csv(output_csv, index=False)

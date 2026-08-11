@@ -88,7 +88,10 @@ nextstrain-prot-titers-tree_config:
       maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom
 
 # Sera metadata files to aggregate
-sera_metadata: []
+sera_metadata: 
+  - data/sera_metadata/sera_for_flu-seqneut-2026_SCH.csv
+  - data/sera_metadata/sera_for_flu-seqneut-2026_UWMC.csv
+  - data/sera_metadata/sera_for_flu-seqneut-2026_CTS.csv
 
 # Aggregate and QC final processed titer data for each serum group, which must match
 # the species designation in the serum metadata.
@@ -435,6 +438,8 @@ default_process_plate_curvefit_qc:  &default_process_plate_curvefit_qc
 
 default_serum_titer_as: midpoint
 
+collapse_strain_barcodes: True
+
 default_serum_qc_thresholds: &default_serum_qc_thresholds
   min_replicates: 1
   max_fold_change_from_median: 6
@@ -442,7 +447,109 @@ default_serum_qc_thresholds: &default_serum_qc_thresholds
 
 sera_override_defaults: {}
 
-plates: {}
+plates:
+
+  plate1:
+    group: human
+    date: 2026-08-05
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260805_plate1.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: GCTACA # Fwd1
+      upstream2_mismatch: 1
+
+  plate2:
+    group: human
+    date: 2026-08-05
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260805_plate2.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: ATCGAT # Fwd2
+      upstream2_mismatch: 1
+
+  plate3:
+    group: human
+    date: 2026-08-05
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260805_plate3.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: TGACGC # Fwd3
+      upstream2_mismatch: 1
+
+  plate4:
+    group: human
+    date: 2026-08-05
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260805_plate4.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: CAGTTG # Fwd4
+      upstream2_mismatch: 1
+  
+  plate5:
+    group: human
+    date: 2026-08-05
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260805_plate5.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: GTCTAA # Fwd5
+      upstream2_mismatch: 1
+
+  plate6:
+    group: human
+    date: 2026-08-05
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260805_plate6.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: ACGCTG # Fwd6
+      upstream2_mismatch: 1
 
 miscellaneous_plates:
   20260731_repool:

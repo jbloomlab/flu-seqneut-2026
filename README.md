@@ -41,7 +41,7 @@ If you don't care to understand the overall repo structure and are just looking 
 - Each viral construct contains the circulating HA ectodomain with signal peptide, endodomain, and cytoplasmic tail constant across strains for a given subtype
 - Library defined in in CSVs in [data/viral_libraries/](data/viral_libraries) (see [config.yml](config.yml) for active library file for each experiment)
 - Each viral library CSV must have the following required columns (additional columns are allowed):
-  - *strain*: strain name; there can be multiple rows for each strain (as we may have several barcodes for a strain), but each strain name must be uniquely paired with a single value for all other required columns except *barcode* (where a strain can be paired with multiple *barcode* values). Note that non-required columns (like *Twist_name*) may vary per barcode. Strain name must also end in "_H3N2" or "_H1N1"
+  - *strain*: strain name; there can be multiple rows for each strain (as we may have several barcodes for a strain), but each strain name must be uniquely paired with a single value for all other required columns except *barcode* and *shortname_barcoded_construct* (which identify the individual barcoded construct, and so vary within a strain). Note that non-required columns may also vary per barcode. Strain name must also end in "_H3N2" or "_H1N1"
   - *subtype*: H3N2 or H1N1
   - *strain_type*: should be "vaccine" or the *circulating_strain_type* defined in `config.yml`
   - *vaccine_type*: if *strain_type* is "vaccine", this should be "egg" or "cell"; otherwise it should be null
@@ -49,6 +49,8 @@ If you don't care to understand the overall repo structure and are just looking 
   - *accession*: Genbank accession if available
   - *subclade*: can only be null for *strain_type* of "vaccine"
   - *derived_haplotype*: description of derived haplotype from clade (eg, clade plus additional HA1 mutations), can only be null for *strain_type* of "vaccine". Note that HA2 mutations are not included in the derived_haplotype naming, so multiple strains may share the same derived_haplotype if they differ only in HA2.
+  - *shortname_strain*: short name for the strain, used to assign strains to subpools in the library QC analyses
+  - *shortname_barcoded_construct*: short name for the individual barcoded construct, which is *shortname_strain* plus a "_bc<n>" suffix for strains ordered with several barcodes
   - *collection_date*: collection date as float (eg, 2025.5); in many cases this may refer to the date that HA1 haplotype was last identified rather than the actual collection date of the particular named strain.
   - *nt_sequence_HA_ectodomain*: nucleotide sequence of HA ectodomain, must be all A, T, C, or G (either case) and length multiple of three. Note that this is not the same as the full Twist synthesized insert, rather it is the part of the HA that is taken from that strain, and does not include flanking constant regions not derived from the strain (recall signal peptide and transmembrane / cytoplasmic tail are constant in our barcoded constructs), so it is not the full-length HA.
   - *protein_sequence_HA_ectodomain*: protein sequence, must meet these criteria:
@@ -64,18 +66,18 @@ There are two CSVs in [data/viral_libraries](data/viral_libraries), one giving t
 - Per-cohort metadata CSVs stored in [data/sera_metadata/](data/sera_metadata); note that sera may be listed here for which no titers were measured
 - Each sera metadata CSV must have the following required columns (additional columns are allowed):
   - *bloom_lab_id*: unique identifier for each serum sample; must be non-null and unique across all files
-  - *cohort*: cohort identifier (e.g., "HKU", "NIID", "PENN"); must be non-null
+  - *cohort*: cohort identifier; must be non-null
   - *species*: species of serum donor (e.g., "human"); must be non-null
   - *age*: age of donor; can be numeric (e.g., "45"), a range with or without 'y' suffix (e.g., "10-19y", "18-29"), or open-ended (e.g., "75+")
   - *sex*: sex of donor; accepts various formats ("M"/"F", "male"/"female", "Male"/"Female") which are normalized during aggregation
-  - *collection_date*: date of serum collection; accepts "Mon-YYYY" (e.g., "Aug-2025") or "Mon-YY" (e.g., "Nov-25") formats
+  - *collection_date*: date of serum collection in "YYYY-MM" format (month precision)
 
 The per-cohort metadata files are aggregated and validated by `scripts/aggregate_sera_metadata.py` (Snakemake rule `aggregate_sera_metadata`) into [results/sera_metadata/all_sera_metadata.csv](results/sera_metadata/all_sera_metadata.csv).
-The aggregation performs these standardizations:
+The aggregation performs these standardizations and validations:
   - Renames *bloom_lab_id* to *serum*
   - Normalizes *sex* to "Male", "Female", or "Unknown"
   - Parses *age* to create *age_numeric* column (midpoint in years for ranges, lower bound for open-ended)
-  - Standardizes *collection_date* to "YYYY-MM" format
+  - Validates *collection_date* is in "YYYY-MM" format
   - Validates uniqueness of serum IDs across all cohorts
 
 ### Aggregated titers

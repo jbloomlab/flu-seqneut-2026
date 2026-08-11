@@ -227,6 +227,129 @@ analyze_repools:
         remake: true
     strains_to_drop: {}  # strains excluded from the corrective re-pooling, and why
 
+  20260810_repool_wash_spikein_cdna:
+      <<: *default_library_qc_well_qc_thresholds
+      miscellaneous_plate: 20260810_repool_wash_spikein_cdna
+      previous_pool: null
+      corrective_repool: false
+      description: |
+        The rebalanced pool made from the corrective volumes calculated for
+        `20260731_repool`, used to infect MDCK-SIAT1 cells over a serial dilution. The
+        barcodes were sequenced to check the strain representation that resulted. Additionally, in
+        this experiment, the cells were **washed 1x with PBS** prior to lysis and the **spikein was 
+        added to the cDNA mastermix**. 
+      linear_range_wells: calculate
+      over_representation_factor: 1.5
+      under_representation_factor: 1.5
+      # Subpools the strains are grouped by for reporting. `remake` must be false
+      # throughout, as nothing is being made again when `corrective_repool` is false.
+      subpools:
+        flu-seqneut-2026_h1:
+          regex: ^flu-seqneut-2026_H1N1
+          remake: false
+        flu-seqneut-2026_h3:
+          regex: ^flu-seqneut-2026_H3N2
+          remake: false
+        old_h1_vax:
+          regex: H1N1
+          remake: false
+        old_h3_vax:
+          regex: H3N2
+          remake: false
+
+  20260810_repool_nowash_spikein_cdna:
+      <<: *default_library_qc_well_qc_thresholds
+      miscellaneous_plate: 20260810_repool_nowash_spikein_cdna
+      previous_pool: null
+      corrective_repool: false
+      description: |
+        The rebalanced pool made from the corrective volumes calculated for
+        `20260731_repool`, used to infect MDCK-SIAT1 cells over a serial dilution. The
+        barcodes were sequenced to check the strain representation that resulted. Additionally, in
+        this experiment, the cells were **not washed ** with PBS prior to lysis and the **spikein 
+        was added to the cDNA mastermix**. 
+      linear_range_wells: calculate
+      over_representation_factor: 1.5
+      under_representation_factor: 1.5
+      # Subpools the strains are grouped by for reporting. `remake` must be false
+      # throughout, as nothing is being made again when `corrective_repool` is false.
+      subpools:
+        flu-seqneut-2026_h1:
+          regex: ^flu-seqneut-2026_H1N1
+          remake: false
+        flu-seqneut-2026_h3:
+          regex: ^flu-seqneut-2026_H3N2
+          remake: false
+        old_h1_vax:
+          regex: H1N1
+          remake: false
+        old_h3_vax:
+          regex: H3N2
+          remake: false
+
+  20260810_repool_wash_spikein_cdna_h3_44:
+    <<: *default_library_qc_well_qc_thresholds
+    miscellaneous_plate: 20260810_repool_wash_spikein_cdna_h3_44
+    previous_pool: null
+    corrective_repool: false
+    description: |
+      The rebalanced pool made from the corrective volumes calculated for
+      `20260731_repool` **with the addition of 1uL of flu-seqneut-2026_H3N2_44**. The derived 
+      haplotype for this strain is `K:G62E,S145R`. This strain failed to grow initially and this
+      experiment was intended to see if we can recover any counts from it on a re-rescue/re-passsage
+      attempt. This pool was used to infect MDCK-SIAT1 cells over a serial dilution. The
+      barcodes were sequenced to check the strain representation that resulted. Additionally, in
+      this experiment, the cells were **washed 1x with PBS** prior to lysis and the **spikein was 
+      added to the cDNA mastermix**. 
+    linear_range_wells: calculate
+    over_representation_factor: 1.5
+    under_representation_factor: 1.5
+    # Subpools the strains are grouped by for reporting. `remake` must be false
+    # throughout, as nothing is being made again when `corrective_repool` is false.
+    subpools:
+      flu-seqneut-2026_h1:
+        regex: ^flu-seqneut-2026_H1N1
+        remake: false
+      flu-seqneut-2026_h3:
+        regex: ^flu-seqneut-2026_H3N2
+        remake: false
+      old_h1_vax:
+        regex: H1N1
+        remake: false
+      old_h3_vax:
+        regex: H3N2
+        remake: false
+
+  20260810_repool_wash_spikein_lysis:
+    <<: *default_library_qc_well_qc_thresholds
+    miscellaneous_plate: 20260810_repool_wash_spikein_lysis
+    previous_pool: null
+    corrective_repool: false
+    description: |
+        The rebalanced pool made from the corrective volumes calculated for
+        `20260731_repool` and adjusted further based on the initial plates 5 and 6 data. It was used 
+        to infect MDCK-SIAT1 cells over a serial dilution. The barcodes were sequenced to check the 
+        strain representation that resulted. Additionally, in this experiment, the cells were were 
+        **washed 1x with PBS**  prior to lysis and the **spikein was added to the lysis buffer**. 
+    linear_range_wells: calculate
+    over_representation_factor: 1.5
+    under_representation_factor: 1.5
+    # Subpools the strains are grouped by for reporting. `remake` must be false
+    # throughout, as nothing is being made again when `corrective_repool` is false.
+    subpools:
+      flu-seqneut-2026_h1:
+        regex: ^flu-seqneut-2026_H1N1
+        remake: false
+      flu-seqneut-2026_h3:
+        regex: ^flu-seqneut-2026_H3N2
+        remake: false
+      old_h1_vax:
+        regex: H1N1
+        remake: false
+      old_h3_vax:
+        regex: H3N2
+        remake: false
+
 # Analyses of the plates that infect each well with a single virus, which check for
 # contamination between wells and measure how well each strain grows on its own. 
 analyze_single_well_infections:
@@ -340,7 +463,7 @@ miscellaneous_plates:
         upstream2: GCTACA # Fwd1
         upstream2_mismatch: 1
 
-  20260730_single_well_H3_strains:
+  20260730_single_well_H3_strains: 
       date: 2026-07-30
       viral_library: designed
       neut_standard_set: loes2023
@@ -357,3 +480,39 @@ miscellaneous_plates:
       illumina_barcode_parser_params:
         upstream2: TGACGC # Fwd3
         upstream2_mismatch: 1
+
+  20260810_repool_wash_spikein_cdna:
+    date: 2026-08-10
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/miscellaneous_plates/2026-08-10_repool_wash_spikein_cdna.csv
+    illumina_barcode_parser_params:
+      upstream2: GCTACA # Fwd1
+      upstream2_mismatch: 1
+
+  20260810_repool_nowash_spikein_cdna:
+    date: 2026-08-10
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/miscellaneous_plates/2026-08-10_repool_nowash_spikein_cdna.csv
+    illumina_barcode_parser_params:
+      upstream2: GCTACA # Fwd1
+      upstream2_mismatch: 1
+  
+  20260810_repool_wash_spikein_cdna_h3_44:
+    date: 2026-08-10
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/miscellaneous_plates/2026-08-10_repool_wash_spikein_cdna_h3_44.csv
+    illumina_barcode_parser_params:
+      upstream2: GCTACA # Fwd1
+      upstream2_mismatch: 1
+  
+  20260810_repool_wash_spikein_lysis:
+    date: 2026-08-10
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/miscellaneous_plates/2026-08-10_repool_wash_spikein_lysis.csv
+    illumina_barcode_parser_params:
+      upstream2: ATCGAT # Fwd2
+      upstream2_mismatch: 1

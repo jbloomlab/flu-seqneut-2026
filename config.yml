@@ -88,7 +88,7 @@ nextstrain-prot-titers-tree_config:
       maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom
 
 # Sera metadata files to aggregate
-sera_metadata: 
+sera_metadata:
   - data/sera_metadata/sera_for_flu-seqneut-2026_SCH.csv
   - data/sera_metadata/sera_for_flu-seqneut-2026_UWMC.csv
   - data/sera_metadata/sera_for_flu-seqneut-2026_CTS.csv
@@ -482,7 +482,7 @@ plates:
     illumina_barcode_parser_params:
       upstream2: CAGTTG # Fwd4
       upstream2_mismatch: 1
-  
+
   plate5:
     group: human
     date: 2026-08-05
@@ -536,7 +536,7 @@ miscellaneous_plates:
         upstream2: GCTACA # Fwd1
         upstream2_mismatch: 1
 
-  20260730_single_well_H3_strains: 
+  20260730_single_well_H3_strains:
       date: 2026-07-30
       viral_library: designed
       neut_standard_set: loes2023
@@ -571,7 +571,7 @@ miscellaneous_plates:
     illumina_barcode_parser_params:
       upstream2: GCTACA # Fwd1
       upstream2_mismatch: 1
-  
+
   20260810_repool_wash_spikein_cdna_h3_44:
     date: 2026-08-10
     viral_library: actual
@@ -580,7 +580,7 @@ miscellaneous_plates:
     illumina_barcode_parser_params:
       upstream2: GCTACA # Fwd1
       upstream2_mismatch: 1
-  
+
   20260810_repool_wash_spikein_lysis:
     date: 2026-08-10
     viral_library: actual

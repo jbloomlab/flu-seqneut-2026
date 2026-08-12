@@ -222,7 +222,8 @@ rule analyze_repool:
     log:
         "results/logs/analyze_repool_{repool}.txt",
     wildcard_constraints:
-        repool="|".join(corrective_repools),
+        # `(?!)` matches nothing when no re-pool is corrective
+        repool="|".join(corrective_repools) or "(?!)",
     conda:
         "../seqneut-pipeline/environment.yml"
     params:
@@ -244,17 +245,17 @@ rule measure_repool:
         **_repool_input,
         **_repool_previous_math,
     output:
-        # A distinct name from `analyze_repool`'s report rather than the same one. The two
-        # rules would otherwise both claim that path, and an empty `wildcard_constraints`
-        # alternation -- what either rule gets when no re-pool is in its mode -- does not
-        # constrain the wildcard at all, so Snakemake resolves it as an ambiguous rule
-        # rather than as a rule that is simply unused.
+        # A distinct name from `analyze_repool`'s report rather than the same one, so the two
+        # rules never claim the same path. The empty `wildcard_constraints` alternation that
+        # would otherwise let them -- what either rule gets when no re-pool is in its mode --
+        # does not constrain the wildcard at all, and is guarded with `(?!)` on both.
         html="results/library_qc/{repool}_measure_repool.html",
         representation="results/library_qc/{repool}_strain_representation.csv",
     log:
         "results/logs/measure_repool_{repool}.txt",
     wildcard_constraints:
-        repool="|".join(measurement_repools),
+        # `(?!)` matches nothing when every re-pool is corrective
+        repool="|".join(measurement_repools) or "(?!)",
     conda:
         "../seqneut-pipeline/environment.yml"
     params:

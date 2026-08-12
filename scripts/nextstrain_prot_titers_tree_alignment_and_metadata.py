@@ -16,7 +16,6 @@ import sys
 import numpy as np
 import pandas as pd
 
-
 sys.stdout = sys.stderr = open(snakemake.log[0], "w")
 
 subtypes = snakemake.params.subtypes

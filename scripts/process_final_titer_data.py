@@ -9,7 +9,6 @@ import sys
 import numpy as np
 import pandas as pd
 
-
 # =============================================================================
 # Setup logging - redirect stdout/stderr to log file
 # =============================================================================

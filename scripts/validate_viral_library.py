@@ -8,10 +8,8 @@ ValueError if any validations fail.
 import re
 import sys
 
-from Bio.Seq import Seq
-
 import pandas as pd
-
+from Bio.Seq import Seq
 
 sys.stderr = sys.stdout = log = open(snakemake.log[0], "w")
 

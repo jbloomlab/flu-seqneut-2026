@@ -1,0 +1,46 @@
+[tool.black]
+target-version = ["py313", "py314"]
+# submodules are formatted in their own repositories, as for `ruff` below
+extend-exclude = '''
+/(
+    seqneut-pipeline
+  | nextstrain-prot-titers-tree
+  | non-pipeline_analyses/library_design/testset_design/match_prot_to_genbank_nt
+  | non-pipeline_analyses/library_design/full_design/match_prot_to_genbank_nt
+  | non-pipeline_analyses/library_design/full_design/nextstrain-prot-titers-tree
+  | non-pipeline_analyses/library_design/rk_additions/match_prot_to_genbank_nt
+)/
+'''
+
+[tool.ruff]
+builtins = [
+    "snakemake",  # may appear undefined as passed to scripts via `Snakefile`
+]
+exclude = [
+    # submodules are linted in their own repositories, including the ones nested under
+    # `non-pipeline_analyses` that are only populated by `--recursive`
+    "seqneut-pipeline",
+    "nextstrain-prot-titers-tree",
+    "non-pipeline_analyses/library_design/testset_design/match_prot_to_genbank_nt",
+    "non-pipeline_analyses/library_design/full_design/match_prot_to_genbank_nt",
+    "non-pipeline_analyses/library_design/full_design/nextstrain-prot-titers-tree",
+    "non-pipeline_analyses/library_design/rk_additions/match_prot_to_genbank_nt",
+]
+
+[tool.ruff.lint]
+# these rules are in `ruff`'s defaults but conflict with conventions used by the scripts
+ignore = [
+    # each script redirects its output to the snakemake log for its entire duration with
+    # `sys.stderr = sys.stdout = open(snakemake.log[0], "w")`, which is the idiom used by
+    # snakemake scripts and cannot be written as a context manager
+    "SIM115",
+    # invalid configuration raises `ValueError` like the other validation in the scripts,
+    # rather than `TypeError` when what is invalid happens to be a type
+    "TRY004",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"notebooks/*.py" = [
+    "B018",  # a cell's trailing bare expression is what that cell renders
+    "PLR1711",  # `marimo` ends each cell with a `return` of the variables it exports
+]

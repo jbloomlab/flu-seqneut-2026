@@ -6,14 +6,12 @@ app = marimo.App(width="full")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     # Fold-change titer plots
 
     Interactive Altair plots comparing titers between paired sera cohorts
     (e.g., pre- vs post-vaccination), with fold-change panels.
-    """
-    )
+    """)
     return
 
 
@@ -87,11 +85,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Read data and pair sera across cohorts
-    """
-    )
+    """)
     return
 
 
@@ -350,13 +346,11 @@ def _(
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Build charts
 
     ### Assign label colors by subclade / vaccine type
-    """
-    )
+    """)
     return
 
 
@@ -429,11 +423,9 @@ def _(
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Make charts with titer + fold-change panels
-    """
-    )
+    """)
     return
 
 

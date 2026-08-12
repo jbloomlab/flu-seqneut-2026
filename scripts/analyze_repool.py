@@ -1,10 +1,28 @@
 """Analyze how well a balanced re-pool achieved equal strain representation.
 
-Writes a self-contained HTML report, a CSV of every strain's measured representation and
-the volume to add for a corrective re-pool, and a CSV of the strains dropped from that
-re-pooling. Everything specific to a re-pool comes from the `analyze_repools` section of
-`config.yml` and is passed in via `snakemake.params`, so this script is not specific to
-any one re-pool.
+Writes a self-contained HTML report. Everything specific to a re-pool comes from the
+`analyze_repools` section of `config.yml` and is passed in via `snakemake.params`, so this
+script is not specific to any one re-pool.
+
+`corrective_repool` in that configuration selects between the two things this does:
+
+  - **False: measure only.** How the pool came out -- the fates of the reads, the well QC,
+    the linear range, and each strain's share of the pool against an equal share -- and
+    nothing further. Writes one CSV of that representation. This is what a pool that is
+    not going to be re-pooled again wants.
+  - **True: measure, then prescribe.** Everything above, plus the volumes for a further
+    corrective re-pool: a CSV of the re-pooling math, a CSV of the strains dropped from it,
+    and a directory of per-subpool pipetting CSVs. Needs the pipetting keys
+    (`total_pool_volume`, `min_pipettable_volume_uL`, `dilution_steps`, `strains_to_drop`),
+    which must be absent otherwise so a stale value cannot look like one in effect.
+
+`previous_pool`, the pool this one was mixed from, is optional and may be null. Where it is
+given, each strain's stock titer is recovered from the volumes that made this pool and the
+imbalance is plotted against them. The corrective volumes are built on those titers, so
+`corrective_repool` requires it; measuring does not. Note that `analyze_repool` records a
+volume only for the strains of the subpools it remade, so its output can serve as another
+pool's `previous_pool` only if every subpool was remade -- this is checked, and a partial
+one is rejected with the suggestion to set `previous_pool` to null.
 
 This is the companion to `analyze_pool.py`, which measures the *initial, equal-volume*
 pool. Two differences between the two are deliberate and easy to "fix" into bugs:
@@ -133,7 +151,8 @@ repool = snakemake.wildcards.repool
 date = snakemake.params.date
 repool_config = snakemake.params.repool_config
 
-required_config_keys = {
+# Keys every re-pool needs, whether or not corrective volumes are being calculated.
+MEASUREMENT_CONFIG_KEYS = {
     "miscellaneous_plate",
     "previous_pool",
     "description",
@@ -142,16 +161,46 @@ required_config_keys = {
     "min_neut_standard_frac_per_well",
     "over_representation_factor",
     "under_representation_factor",
+    "corrective_repool",
+    "subpools",
+}
+
+# Keys needed only to calculate the corrective volumes. Required when `corrective_repool`
+# is true and forbidden when it is false, rather than merely ignored: a stale
+# `total_pool_volume` left behind in a measurement-only entry reads as a value in effect.
+CORRECTIVE_CONFIG_KEYS = {
     "total_pool_volume",
     "min_pipettable_volume_uL",
     "dilution_steps",
-    "subpools",
     "strains_to_drop",
 }
-if set(repool_config) != required_config_keys:
+
+# Whether to calculate the volumes for a further corrective re-pool, or only measure how
+# the pool came out. Validated before the rest of the configuration, as it decides which
+# of the remaining keys are required.
+corrective_repool = repool_config.get("corrective_repool")
+if not isinstance(corrective_repool, bool):
     raise ValueError(
-        f"configuration for re-pool {repool} must have exactly the keys "
-        f"{sorted(required_config_keys)}, but has {sorted(repool_config)}"
+        f"'corrective_repool' for re-pool {repool} must be true or false, but is "
+        f"{corrective_repool!r}"
+    )
+
+required_config_keys = MEASUREMENT_CONFIG_KEYS | (
+    CORRECTIVE_CONFIG_KEYS if corrective_repool else set()
+)
+if set(repool_config) != required_config_keys:
+    _unexpected = sorted(set(repool_config) - required_config_keys)
+    _corrective_only = sorted(set(_unexpected) & CORRECTIVE_CONFIG_KEYS)
+    raise ValueError(
+        f"configuration for re-pool {repool} with 'corrective_repool' "
+        f"{corrective_repool} must have exactly the keys {sorted(required_config_keys)}, "
+        f"but has {sorted(repool_config)}"
+        + (
+            f". The keys {_corrective_only} only calculate corrective re-pooling volumes, "
+            "so remove them or set 'corrective_repool' to true"
+            if _corrective_only
+            else ""
+        )
     )
 
 # wells fixed in the configuration, or None to detect them from the dilution series below
@@ -183,18 +232,21 @@ for _name, _factor in [
             f"'{_name}' for re-pool {repool} must be at least 1, but is {_factor}"
         )
 
-min_pipettable_volume = repool_config["min_pipettable_volume_uL"]
-if not min_pipettable_volume > 0:
-    raise ValueError(
-        f"'min_pipettable_volume_uL' for re-pool {repool} must be positive, but is "
-        f"{min_pipettable_volume}"
-    )
-dilution_steps = sorted(repool_config["dilution_steps"])
-if any(step <= 1 for step in dilution_steps):
-    raise ValueError(
-        f"'dilution_steps' for re-pool {repool} must all be greater than one, but are "
-        f"{repool_config['dilution_steps']}"
-    )
+# The pipetting parameters exist only where volumes are being calculated; the keys are
+# absent otherwise, having been rejected by the check above.
+if corrective_repool:
+    min_pipettable_volume = repool_config["min_pipettable_volume_uL"]
+    if not min_pipettable_volume > 0:
+        raise ValueError(
+            f"'min_pipettable_volume_uL' for re-pool {repool} must be positive, but is "
+            f"{min_pipettable_volume}"
+        )
+    dilution_steps = sorted(repool_config["dilution_steps"])
+    if any(step <= 1 for step in dilution_steps):
+        raise ValueError(
+            f"'dilution_steps' for re-pool {repool} must all be greater than one, but are "
+            f"{repool_config['dilution_steps']}"
+        )
 
 # Each subpool gives the regex that assigns strains to it and whether it is being made
 # again from the individual strain stocks. Order matters and is preserved from the
@@ -214,11 +266,41 @@ for _subpool, _spec in repool_config["subpools"].items():
         )
     subpool_regexes[_subpool] = _spec["regex"]
     if _spec["remake"]:
+        if not corrective_repool:
+            raise ValueError(
+                f"'remake' is set for subpool '{_subpool}' of re-pool {repool}, but "
+                "'corrective_repool' is false so no subpool is being made again. Set "
+                "'corrective_repool' to true or clear 'remake'"
+            )
         subpools_to_remake.append(_subpool)
+
+# The pool this one was made from. Optional: a pool whose predecessor's per-strain volumes
+# were not all recorded -- as happens when only some of its subpools were remade -- has
+# nothing to compare against, and the measurement does not need one. Where it is given,
+# each strain's stock titer can be recovered and the imbalance plotted against the volumes
+# that produced it.
+previous_pool = repool_config["previous_pool"]
+if previous_pool is not None and not isinstance(previous_pool, str):
+    raise ValueError(
+        f"'previous_pool' for re-pool {repool} must be an `analyze_pools` key or null, "
+        f"but is {previous_pool!r}"
+    )
+if corrective_repool and previous_pool is None:
+    raise ValueError(
+        f"re-pool {repool} sets 'corrective_repool' but no 'previous_pool'. The corrective "
+        "volumes are calculated from each strain's stock titer, which is recovered from "
+        "the volumes that made this pool, so they cannot be calculated without it"
+    )
 
 print(
     f"Analyzing re-pool {repool} from {date}, "
     f"linear_range_wells={repool_config['linear_range_wells']}"
+)
+print(f"Previous pool: {previous_pool or 'none, so volumes are not compared against'}")
+print(
+    "Calculating corrective re-pooling volumes"
+    if corrective_repool
+    else "Measuring representation only; no corrective re-pooling volumes"
 )
 print(f"Subpools to remake from strain stocks: {subpools_to_remake or 'none'}")
 
@@ -568,8 +650,52 @@ def linear_range_onset(windows):
 
 fittable_wells = well_qc.query("fittable")
 if not len(fittable_wells):
+    # Name what actually failed. Every well missing the same threshold points at a
+    # different cause than a plate that is merely marginal -- no counts at all means the
+    # barcode parsing or the fastqs, and no neutralization standard anywhere usually means
+    # the wrong `neut_standard_set` -- so the counts behind each are reported rather than
+    # left to be dug out of the per-well CSVs.
+    _reasons = []
+    if well_qc["fails_count_qc"].all():
+        _reasons.append(
+            f"every well averages fewer than "
+            f"{repool_config['min_avg_barcode_count_per_well']} counts per barcode "
+            f"(the best is {well_qc['avg_count'].max():.4g})"
+        )
+    if well_qc["fails_neut_standard_qc"].all():
+        _reasons.append(
+            "every well is below "
+            f"{repool_config['min_neut_standard_frac_per_well']} of its counts from the "
+            "neutralization standard (the best is "
+            f"{well_qc['neut_standard_frac'].max():.4g}); if no well has any at all, "
+            "check that the plate's `neut_standard_set` is the right one"
+        )
+    if (well_qc["total_count"] <= 0).all():
+        _reasons.append(
+            "no well has any barcode counts at all, which points at the barcode parsing "
+            "or the sequencing rather than at the pool"
+        )
+    if not _reasons:
+        _reasons.append(
+            "no single threshold accounts for all of them; see the table below for which "
+            "each well missed"
+        )
+    _table = well_qc[
+        [
+            "well",
+            "total_count",
+            "avg_count",
+            "neut_standard_count",
+            "neut_standard_frac",
+            "viral_count",
+            "fails_count_qc",
+            "fails_neut_standard_qc",
+        ]
+    ].to_string(index=False, float_format=lambda v: f"{v:.4g}")
     raise ValueError(
-        f"no well of re-pool {repool} passes QC, so there is nothing to analyze"
+        f"no well of re-pool {repool} passes QC, so there is nothing to analyze. "
+        + " Also, ".join(_reasons)
+        + f". The QC thresholds are set for `{repool}` in `config.yml`.\n\n{_table}"
     )
 windows = fit_dilution_windows(fittable_wells)
 onset = linear_range_onset(windows) if windows else None
@@ -711,7 +837,7 @@ failing_analysis_wells = list(
 )
 if failing_analysis_wells:
     add_warning(
-        f"the wells used for the re-pooling math fail QC: {failing_analysis_wells}. "
+        f"the wells the composition is read from fail QC: {failing_analysis_wells}. "
         "The composition measured below, and everything computed from it, may not be "
         "reliable; choose different wells in `config.yml`."
     )
@@ -720,7 +846,7 @@ if failing_analysis_wells:
 analysis_wells_with_counts = [w for w in analysis_wells if w not in empty_wells]
 if not analysis_wells_with_counts:
     raise ValueError(
-        f"none of the wells used for the re-pooling math for re-pool {repool} have any "
+        f"none of the wells the composition of re-pool {repool} is read from have any "
         f"barcode counts: {analysis_wells}"
     )
 if analysis_wells_with_counts != analysis_wells:
@@ -762,18 +888,23 @@ assert (
     _frac_sums.sub(1).abs().lt(1e-9).all()
 ), f"'fraction_strain' does not sum to 1 per well:\n{_frac_sums}"
 
-# strain-level short names
+# Strain-level metadata: the short name, and the derived haplotype, which labels the clade
+# and the HA1 mutations on top of it. The haplotype is carried only to be shown on
+# mouseover, so that a strain out of balance can be read against its genotype without
+# leaving the report. `shortname_strain` is already constant across a strain's barcodes,
+# the per-barcode name being `shortname_barcoded_construct`, so nothing has to be stripped
+# off it here.
 strain_names = (
     viral_library.rename(columns={"shortname_strain": "shortname"})[
-        ["strain", "shortname"]
+        ["strain", "shortname", "derived_haplotype"]
     ]
     .drop_duplicates()
     .reset_index(drop=True)
 )
 if strain_names["strain"].nunique() != len(strain_names):
     raise ValueError(
-        "viral library metadata varies within a strain; 'shortname' must be constant "
-        "across a strain's barcodes"
+        "viral library metadata varies within a strain; 'shortname' and "
+        "'derived_haplotype' must be constant across a strain's barcodes"
     )
 
 
@@ -820,48 +951,76 @@ strain_order = (
 
 # --- the previous pool's volumes -------------------------------------------------------
 
-previous_repooling = pd.read_csv(snakemake.input.previous_repooling_math)
-missing_cols = [c for c in PREVIOUS_POOL_COLS if c not in previous_repooling.columns]
-if missing_cols:
-    raise ValueError(
-        f"{snakemake.input.previous_repooling_math}, the re-pooling math of pool "
-        f"{repool_config['previous_pool']} produced by the `analyze_pool` rule, lacks the "
-        f"columns {missing_cols}; a change to that rule's output needs this script updated"
-    )
+# Read only where a previous pool is configured; `previous_repooling_math` is not an input
+# to the rule otherwise. Guarded by the same flag everywhere below, so that the whole
+# comparison against those volumes drops out together.
+if previous_pool is not None:
+    # The rule declares this input as a list, so that it can be empty where no previous
+    # pool is configured. Unwrapped to the single path it holds: `pd.read_csv` cannot take
+    # the sequence Snakemake hands over, and interpolating one into the errors below would
+    # print a bracketed list where a filename belongs.
+    (previous_repooling_math,) = snakemake.input.previous_repooling_math
 
-# Every strain went into the pool at some positive volume. A zero or negative one would
-# otherwise reach the division and the logarithm below as a bare "math domain error" that
-# names neither the strain nor the file it came from.
-_bad_volumes = previous_repooling.loc[
-    ~(previous_repooling["volume_to_add_uL"] > 0), "strain"
-]
-if len(_bad_volumes):
-    raise ValueError(
-        f"{snakemake.input.previous_repooling_math} gives a 'volume_to_add_uL' that is not "
-        f"positive for {sorted(_bad_volumes)}; every strain in the pool was added at some "
-        "positive volume"
-    )
+    previous_repooling = pd.read_csv(previous_repooling_math)
+    missing_cols = [
+        c for c in PREVIOUS_POOL_COLS if c not in previous_repooling.columns
+    ]
+    if missing_cols:
+        raise ValueError(
+            f"{previous_repooling_math}, the re-pooling math of pool "
+            f"{previous_pool} produced by the `analyze_pool` rule, lacks the columns "
+            f"{missing_cols}; a change to that rule's output needs this script updated"
+        )
 
-# The strains measured here and the strains that were re-pooled must be the same set. They
-# are maintained independently -- `drop_strains.csv` builds the viral library, while
-# `strains_to_drop` in `analyze_pools` decides what got re-pooled -- so this is asserted
-# rather than assumed, and names the divergence if the two lists ever drift apart.
-measured_strains = set(strain_means["strain"])
-previous_strains = set(previous_repooling["strain"])
-if measured_strains != previous_strains:
-    raise ValueError(
-        "the strains in this re-pool do not match the strains that were re-pooled into "
-        f"it. Measured but not re-pooled: {sorted(measured_strains - previous_strains)}. "
-        f"Re-pooled but not measured: {sorted(previous_strains - measured_strains)}"
-    )
+    # Every strain went into the pool at some positive volume. A zero or negative one would
+    # otherwise reach the division and the logarithm below as a bare "math domain error"
+    # that names neither the strain nor the file it came from. A *blank* volume is called
+    # out separately, being the expected shape of the problem: `analyze_repool` records a
+    # volume only for the strains of the subpools it remade, so its output cannot serve as
+    # the previous volumes of a further pool unless every subpool was remade.
+    _blank_volumes = previous_repooling.loc[
+        previous_repooling["volume_to_add_uL"].isna(), "strain"
+    ]
+    if len(_blank_volumes):
+        raise ValueError(
+            f"{previous_repooling_math} gives no 'volume_to_add_uL' for "
+            f"{len(_blank_volumes)} of its {len(previous_repooling)} strains, so it does "
+            f"not record what made pool {repool}. This is what a re-pool that remade only "
+            "some of its subpools produces; set 'previous_pool' to null to measure this "
+            "pool's representation without comparing it against those volumes"
+        )
+    _bad_volumes = previous_repooling.loc[
+        ~(previous_repooling["volume_to_add_uL"] > 0), "strain"
+    ]
+    if len(_bad_volumes):
+        raise ValueError(
+            f"{previous_repooling_math} gives a 'volume_to_add_uL' that is "
+            f"not positive for {sorted(_bad_volumes)}; every strain in the pool was added "
+            "at some positive volume"
+        )
 
-strain_means = strain_means.merge(
-    previous_repooling[PREVIOUS_POOL_COLS].rename(
-        columns={"volume_to_add_uL": "previous_volume_uL"}
-    ),
-    on="strain",
-    validate="one_to_one",
-)
+    # The strains measured here and the strains that were re-pooled must be the same set.
+    # They are maintained independently -- `drop_strains.csv` builds the viral library,
+    # while `strains_to_drop` in `analyze_pools` decides what got re-pooled -- so this is
+    # asserted rather than assumed, and names the divergence if the two lists ever drift
+    # apart.
+    measured_strains = set(strain_means["strain"])
+    previous_strains = set(previous_repooling["strain"])
+    if measured_strains != previous_strains:
+        raise ValueError(
+            "the strains in this re-pool do not match the strains that were re-pooled "
+            "into it. Measured but not re-pooled: "
+            f"{sorted(measured_strains - previous_strains)}. Re-pooled but not measured: "
+            f"{sorted(previous_strains - measured_strains)}"
+        )
+
+    strain_means = strain_means.merge(
+        previous_repooling[PREVIOUS_POOL_COLS].rename(
+            columns={"volume_to_add_uL": "previous_volume_uL"}
+        ),
+        on="strain",
+        validate="one_to_one",
+    )
 
 add_markdown(f"""
     ## Representation of each strain in the re-pool
@@ -957,6 +1116,7 @@ strain_panel = (
         tooltip=[
             "strain",
             "shortname",
+            "derived_haplotype",
             "subpool",
             alt.Tooltip("mean_fraction_strain", format=".3g"),
             "representation",
@@ -1054,6 +1214,16 @@ n_over = int(strain_means["over_represented"].sum())
 n_under = int(strain_means["under_represented"].sum())
 most = strain_means.nlargest(1, "mean_fraction_strain").iloc[0]
 least = strain_means.nsmallest(1, "mean_fraction_strain").iloc[0]
+
+# How far apart the extremes of the pool are, over every strain measured. Infinite if a
+# strain has no counts at all, which is a real finding about the pool rather than an error,
+# so it is reported as such rather than guarded into a number.
+_measured_spread = (
+    most["mean_fraction_strain"] / least["mean_fraction_strain"]
+    if least["mean_fraction_strain"] > 0
+    else float("inf")
+)
+print(f"Whole pool as measured: {_measured_spread:.1f}x between the extremes")
 add_markdown(f"""
     **{n_over}** of the {n_strains} strains are over-represented and **{n_under}** are
     under-represented. The most abundant, `{most["strain"]}`, is at
@@ -1108,529 +1278,572 @@ add_table(subpool_summary)
 
 # --- cross-reference against the previous pool's volumes -------------------------------
 
-add_markdown(f"""
-    ### Against the volumes that made this pool
+if previous_pool is not None:
+    add_markdown(f"""
+        ### Against the volumes that made this pool
 
-    Each strain's representation here against the volume of it that went into the pool,
-    taken from the `analyze_pool` report for `{repool_config["previous_pool"]}`. A strain
-    that needed little volume was growing well, so if the imbalance tracks stock titer the
-    over-represented strains gather at the low-volume end.
-    """)
+        Each strain's representation here against the volume of it that went into the
+        pool, taken from the `analyze_pool` report for `{previous_pool}`. A strain that
+        needed little volume was growing well, so if the imbalance tracks stock titer the
+        over-represented strains gather at the low-volume end.
+        """)
 
-add_chart(
-    alt.Chart(strain_means)
-    .mark_circle(size=60)
-    .encode(
-        alt.X(
-            "previous_volume_uL",
-            scale=alt.Scale(type="log"),
-            title="volume added to make this pool (uL)",
-        ),
-        alt.Y(
-            "mean_fraction_strain",
-            scale=alt.Scale(type="log"),
-            title="fraction of pool",
-        ),
-        alt.Color(
-            "representation",
-            title="representation",
-            scale=alt.Scale(domain=REPRESENTATION_ORDER, range=REPRESENTATION_COLORS),
-        ),
-        tooltip=[
-            "strain",
-            "shortname",
-            "subpool",
-            "representation",
-            alt.Tooltip("mean_fraction_strain", format=".3g"),
-            alt.Tooltip("previous_volume_uL", format=".4g"),
-        ],
+    add_chart(
+        alt.Chart(strain_means)
+        .mark_circle(size=60)
+        .encode(
+            alt.X(
+                "previous_volume_uL",
+                scale=alt.Scale(type="log"),
+                title="volume added to make this pool (uL)",
+            ),
+            alt.Y(
+                "mean_fraction_strain",
+                scale=alt.Scale(type="log"),
+                title="fraction of pool",
+            ),
+            alt.Color(
+                "representation",
+                title="representation",
+                scale=alt.Scale(
+                    domain=REPRESENTATION_ORDER, range=REPRESENTATION_COLORS
+                ),
+            ),
+            tooltip=[
+                "strain",
+                "shortname",
+                "subpool",
+                "representation",
+                alt.Tooltip("mean_fraction_strain", format=".3g"),
+                alt.Tooltip("previous_volume_uL", format=".4g"),
+            ],
+        )
+        .properties(height=300, width=400)
+        .configure_axis(grid=False)
     )
-    .properties(height=300, width=400)
-    .configure_axis(grid=False)
-)
 
 # --- corrective re-pooling volumes -----------------------------------------------------
 
-add_markdown(f"""
-    ## Corrective re-pooling
+if corrective_repool:
+    add_markdown(f"""
+        ## Corrective re-pooling
 
-    The strains are held in subpools, which are combined to make the final pool, so the
-    imbalance has two separate causes and two separate remedies:
+        The strains are held in subpools, which are combined to make the final pool, so the
+        imbalance has two separate causes and two separate remedies:
 
-    1. **Within a subpool**, strains can be out of balance with each other. Fixing that
-       means making the subpool again from the individual strain stocks, which is
-       pipetting work proportional to the number of strains in it. A subpool is remade
-       only where `remake` is set for it in `config.yml`.
-    2. **Between subpools**, a subpool can contribute too much or too little to the final
-       pool. Fixing that is just a matter of how much of each subpool is added when they
-       are combined, so it is done for every subpool whether or not it is being remade.
+        1. **Within a subpool**, strains can be out of balance with each other. Fixing that
+           means making the subpool again from the individual strain stocks, which is
+           pipetting work proportional to the number of strains in it. A subpool is remade
+           only where `remake` is set for it in `config.yml`.
+        2. **Between subpools**, a subpool can contribute too much or too little to the final
+           pool. Fixing that is just a matter of how much of each subpool is added when they
+           are combined, so it is done for every subpool whether or not it is being remade.
 
-    The target is an equal share for every strain: each subpool has to supply virus in
-    proportion to the number of strains it holds, so that all {n_strains} strains aim for
-    the same {equal_share:.2%} of the final pool.
+        The target is an equal share for every strain: each subpool has to supply virus in
+        proportion to the number of strains it holds, so that all {n_strains} strains aim for
+        the same {equal_share:.2%} of the final pool.
 
-    The arithmetic rests on the same premise as before, stated rather than inferred
-    because nothing in the data reveals it: a strain's share of the reads is proportional
-    to the volume of it that went in *times* the titer of its stock, so the stock titer is
-    proportional to `fraction_strain / previous_volume`. Within a remade subpool the volume
-    that equalizes its strains is therefore proportional to
-    `previous_volume / fraction_strain`.
+        The arithmetic rests on the same premise as before, stated rather than inferred
+        because nothing in the data reveals it: a strain's share of the reads is proportional
+        to the volume of it that went in *times* the titer of its stock, so the stock titer is
+        proportional to `fraction_strain / previous_volume`. Within a remade subpool the volume
+        that equalizes its strains is therefore proportional to
+        `previous_volume / fraction_strain`.
 
-    How much virus a subpool has to supply and how much of it to pipette are different
-    numbers, related by its titer, the virus it holds per uL. A concentrated subpool
-    supplies its share of the virus from less of its volume than a dilute one does. Each
-    subpool's titer is therefore worked out below and the volumes divided by it, which is
-    what makes the two remedies above independent of each other.
+        How much virus a subpool has to supply and how much of it to pipette are different
+        numbers, related by its titer, the virus it holds per uL. A concentrated subpool
+        supplies its share of the virus from less of its volume than a dilute one does. Each
+        subpool's titer is therefore worked out below and the volumes divided by it, which is
+        what makes the two remedies above independent of each other.
 
-    Note this predicts the *composition* only. It says nothing about the titer of the
-    corrective pool, so unlike the initial pool no dilution is recommended here: the
-    corrective pool has to be titrated.
-    """)
+        Note this predicts the *composition* only. It says nothing about the titer of the
+        corrective pool, so unlike the initial pool no dilution is recommended here: the
+        corrective pool has to be titrated.
+        """)
 
-# Strains excluded from the corrective re-pooling: those named in the config, plus any with
-# no counts, which would need an infinite volume. Determined before the ratios and volumes,
-# which are computed over just the strains that are kept.
-drop_reasons = dict(repool_config["strains_to_drop"])
-unknown_drops = set(drop_reasons) - set(strain_means["strain"])
-if unknown_drops:
-    raise ValueError(f"'strains_to_drop' not in the library: {sorted(unknown_drops)}")
-
-no_counts_strains = [
-    strain
-    for strain in strain_means.query("mean_fraction_strain <= 0")["strain"]
-    if strain not in drop_reasons
-]
-for strain in no_counts_strains:
-    drop_reasons[strain] = NO_COUNTS_REASON
-if no_counts_strains:
-    add_warning(
-        f"{len(no_counts_strains)} strains have no counts and so cannot be re-pooled, "
-        f"but are not in `strains_to_drop` for re-pool `{repool}` in `config.yml`. They "
-        "have been dropped anyway, and should be added there with the reason each one "
-        f"failed: {', '.join(f'`{s}`' for s in no_counts_strains)}"
-    )
-
-kept = ~strain_means["strain"].isin(drop_reasons)
-
-unknown_remakes = set(subpools_to_remake) - set(strain_means["subpool"])
-if unknown_remakes:
-    raise ValueError(
-        f"'remake' is set for subpools {sorted(unknown_remakes)} of re-pool {repool}, "
-        "which no strain belongs to"
-    )
-
-strain_means["remake_subpool"] = strain_means["subpool"].isin(subpools_to_remake)
-
-# Stage 1: what each subpool will be made of.
-#
-# A remade subpool is built again from the strain stocks, at volumes that equalize its
-# strains, so its composition comes out flat. A subpool left alone keeps whatever
-# composition it already has, which is the strains' measured shares renormalized within it.
-# Either way `subpool_composition` is a strain's share *of its own subpool*, summing to one
-# within each.
-_share = (
-    strain_means["mean_fraction_strain"]
-    .where(~strain_means["remake_subpool"], 1.0)
-    .where(kept)
-)
-strain_means["subpool_composition"] = _share / _share.groupby(
-    strain_means["subpool"]
-).transform("sum")
-
-# Stage 2: how much of each subpool goes into the final pool.
-#
-# Two different quantities are in play here, and keeping them apart is the whole of this
-# stage:
-#
-#   - The share of the pool's *virus* a subpool has to supply. Equal representation fixes
-#     this: a subpool holding `n` of the `N` strains supplies `n / N` of the virus.
-#   - The share of the pool's *volume* it is added at. This is what gets pipetted.
-#
-# The two are the same number only for subpools of equal titer. A subpool's titer is the
-# virus it holds per uL, so the volume share is the virus share divided by the titer, and
-# the subpools are then renormalized to sum to one.
-subpool_strains = strain_means[kept].groupby("subpool")["strain"].nunique()
-subpool_virus_share = subpool_strains / subpool_strains.sum()
-
-# A strain's share of the *final* pool is its share of its own subpool times the share of
-# the pool's virus that subpool supplies.
-strain_means["predicted_fraction_strain"] = strain_means[
-    "subpool_composition"
-] * strain_means["subpool"].map(subpool_virus_share)
-
-# The titer of each strain's stock, in arbitrary units that cancel out of everything below:
-# a strain's share of the reads is the volume of it that went in times its stock titer, so
-# the titer is that share per uL.
-strain_means["stock_titer"] = (
-    strain_means["mean_fraction_strain"] / strain_means["previous_volume_uL"]
-)
-
-# The titer of a subpool that is not being remade is a property of the liquid already in
-# the tube: the virus it holds over the volume it was mixed at. Summed over every strain
-# physically in it, including any dropped from the corrective re-pooling below, as those
-# are in the tube whether or not they are wanted. Remade subpools get their titer from
-# their own build instead, and overwrite the value here.
-_tube = strain_means.groupby("subpool")
-subpool_titer = (
-    _tube["mean_fraction_strain"].sum() / _tube["previous_volume_uL"].sum()
-).reindex(subpool_virus_share.index)
-
-# Volumes to pipette, for the subpools being remade. `ratio_to_add` is the volume of a
-# strain relative to a typical strain *of its own subpool*, normalized to geometric mean
-# one there, so the numbers stay comparable within the subpool actually being made.
-#
-# Float NaN rather than `pd.NA`: a column initialized with `pd.NA` is `object` dtype, which
-# silently survives the arithmetic below and then breaks `nlargest` further down.
-strain_means["ratio_to_add"] = float("nan")
-strain_means["neat_volume_uL"] = float("nan")
-strain_means["dilution_factor"] = float("nan")
-strain_means["volume_to_add_uL"] = float("nan")
-
-# A remade subpool is built from the strain stocks at volumes proportional to
-# `previous_volume / fraction_strain`, which is one over the stock titer, so that every
-# strain in it delivers the same amount of virus.
-subpool_ratio_to_add = {}
-for _subpool in subpools_to_remake:
-    _in = kept & (strain_means["subpool"] == _subpool)
-    _vol = (
-        strain_means.loc[_in, "previous_volume_uL"]
-        / strain_means.loc[_in, "mean_fraction_strain"]
-    )
-    subpool_ratio_to_add[_subpool] = _vol / math.exp(_vol.map(math.log).mean())
-    strain_means.loc[_in, "ratio_to_add"] = subpool_ratio_to_add[_subpool]
-
-
-def dilution_for(neat_volume):
-    """Smallest configured dilution bringing ``neat_volume`` up to the minimum, or 1."""
-    if neat_volume >= min_pipettable_volume:
-        return 1
-    for step in dilution_steps:
-        if neat_volume * step >= min_pipettable_volume:
-            return step
-    return dilution_steps[-1]  # nothing is enough; warned about below
-
-
-def build_remade_subpool(subpool, build_volume):
-    """Write the volumes to pipette to build ``subpool`` into ``build_volume`` uL.
-
-    A strain needing too little of its stock to pipette is diluted instead, and that much
-    more of the dilution added. The virus delivered is identical, so which strains are
-    diluted does not change what the subpool is made of, only how much liquid it comes out
-    as. Returns the titer it comes out at: the virus its strains deliver over that volume.
-
-    """
-    in_subpool = kept & (strain_means["subpool"] == subpool)
-    ratio = subpool_ratio_to_add[subpool]
-    neat = ratio * (build_volume / ratio.sum())
-    factor = neat.map(dilution_for)
-    strain_means.loc[in_subpool, "neat_volume_uL"] = neat
-    strain_means.loc[in_subpool, "dilution_factor"] = factor
-    strain_means.loc[in_subpool, "volume_to_add_uL"] = neat * factor
-    return (neat * strain_means.loc[in_subpool, "stock_titer"]).sum() / (
-        neat * factor
-    ).sum()
-
-
-def combining_fractions(titers):
-    """Share of the pool's volume each subpool is added at, summing to one."""
-    fractions = subpool_virus_share / titers
-    return fractions / fractions.sum()
-
-
-# Building a remade subpool and deciding how much of it to add depend on each other: its
-# titer sets the volume of it the pool needs, and that volume sets how much to build. The
-# dependence is weak, as the titer barely moves with the scale a subpool is built at, and
-# only through which of its strains fall below `min_pipettable_volume_uL` and get diluted.
-# So build once at roughly the right scale to learn the titer, then build again at the
-# volume that titer calls for. The second build is the one written out, and the combining
-# fractions come from its titer, so only the margin is left approximate.
-for _subpool in subpools_to_remake:
-    subpool_titer[_subpool] = build_remade_subpool(
-        _subpool,
-        repool_config["total_pool_volume"] * subpool_virus_share[_subpool],
-    )
-_build_volume = (
-    BUILD_MARGIN
-    * combining_fractions(subpool_titer)
-    * repool_config["total_pool_volume"]
-)
-for _subpool in subpools_to_remake:
-    subpool_titer[_subpool] = build_remade_subpool(_subpool, _build_volume[_subpool])
-
-subpool_combining_fraction = combining_fractions(subpool_titer)
-
-for _subpool in subpools_to_remake:
-    _in = kept & (strain_means["subpool"] == _subpool)
-    _still_short = strain_means.loc[_in, "volume_to_add_uL"] < min_pipettable_volume
-    if _still_short.any():
-        add_warning(
-            f"{int(_still_short.sum())} strains of subpool `{_subpool}` still need less "
-            f"than {min_pipettable_volume} uL after the largest configured dilution of "
-            f"1:{dilution_steps[-1]}: "
-            f"{', '.join(f'`{s}`' for s in strain_means.loc[_in][_still_short]['strain'])}. "
-            "Add a larger step to `dilution_steps` in `config.yml`."
+    # Strains excluded from the corrective re-pooling: those named in the config, plus any with
+    # no counts, which would need an infinite volume. Determined before the ratios and volumes,
+    # which are computed over just the strains that are kept.
+    drop_reasons = dict(repool_config["strains_to_drop"])
+    unknown_drops = set(drop_reasons) - set(strain_means["strain"])
+    if unknown_drops:
+        raise ValueError(
+            f"'strains_to_drop' not in the library: {sorted(unknown_drops)}"
         )
 
-dropped = (
-    strain_means[~kept]
-    .assign(reason=lambda x: x["strain"].map(drop_reasons))[
-        ["shortname", "strain", "subpool", "mean_fraction_strain", "reason"]
+    no_counts_strains = [
+        strain
+        for strain in strain_means.query("mean_fraction_strain <= 0")["strain"]
+        if strain not in drop_reasons
     ]
-    .reset_index(drop=True)
-)
-repooling_math = strain_means[kept][
-    [
-        "shortname",
-        "strain",
-        "subpool",
-        "remake_subpool",
-        "mean_fraction_strain",
-        "representation",
-        "previous_volume_uL",
-        "subpool_composition",
-        "predicted_fraction_strain",
-        "ratio_to_add",
-        "neat_volume_uL",
-        "dilution_factor",
-        "volume_to_add_uL",
-    ]
-].reset_index(drop=True)
-# Only the strains of a remade subpool get a volume; the rest are not being repipetted.
-_remade = repooling_math["remake_subpool"]
-assert repooling_math.loc[_remade, "volume_to_add_uL"].notna().all()
-assert (repooling_math.loc[_remade, "volume_to_add_uL"] < float("inf")).all()
-assert repooling_math.loc[~_remade, "volume_to_add_uL"].isna().all()
-# Diluting changes how much liquid is added, never how much virus, so the volume of stock
-# a strain contributes must be what the undiluted calculation asked for.
-_stock = (
-    repooling_math.loc[_remade, "volume_to_add_uL"]
-    / repooling_math.loc[_remade, "dilution_factor"]
-)
-assert (
-    (_stock - repooling_math.loc[_remade, "neat_volume_uL"]).abs() < 1e-9
-).all(), "diluting a strain changed the amount of its stock going into the pool"
+    for strain in no_counts_strains:
+        drop_reasons[strain] = NO_COUNTS_REASON
+    if no_counts_strains:
+        add_warning(
+            f"{len(no_counts_strains)} strains have no counts and so cannot be re-pooled, "
+            f"but are not in `strains_to_drop` for re-pool `{repool}` in `config.yml`. They "
+            "have been dropped anyway, and should be added there with the reason each one "
+            f"failed: {', '.join(f'`{s}`' for s in no_counts_strains)}"
+        )
 
-# Check the predicted composition is internally consistent: a strain's share of its subpool
-# times its subpool's share of the pool, summed over everything, must be one.
-_pred = repooling_math["predicted_fraction_strain"].astype(float)
-assert (
-    abs(_pred.sum() - 1) < 1e-9
-), f"the predicted composition sums to {_pred.sum():.6f} rather than one"
+    kept = ~strain_means["strain"].isin(drop_reasons)
 
-# For a subpool being remade, forward-simulate the volumes actually being pipetted and
-# check they flatten it. Mixing volume `V` of a stock of titer `t` gives shares
-# proportional to `V x t`, and `t` is `fraction_strain / previous_volume`.
-#
-# Be clear about what this does and does not prove. The volumes are built from the same two
-# columns the implied titer is built from, so the arithmetic reduces to a constant and the
-# check passes for any input data. It is a self-consistency check on this script's
-# arithmetic, not evidence that the premise behind it holds. It does catch the mistake worth
-# catching -- using `1 / fraction_strain`, the rule that is right for the equal-volume pool
-# `analyze_pool` measures -- which blows the spread up by orders of magnitude while the
-# volumes still sum correctly with geometric mean one.
-#
-# What it cannot detect, because nothing in the data reveals any of them: stock titers that
-# drifted between the two poolings, `previous_volume_uL` differing from what was actually
-# pipetted, or a subpool being mixed from something other than the strain stocks.
-for _subpool in subpools_to_remake:
-    _r = repooling_math[repooling_math["subpool"] == _subpool]
-    _titer = _r["mean_fraction_strain"] / _r["previous_volume_uL"]
-    # the neat volume, since that is the amount of stock delivered whether or not the
-    # strain was diluted first
-    _p = _r["neat_volume_uL"].astype(float) * _titer
-    _p = _p / _p.sum()
-    _spread = _p.max() / _p.min()
-    print(f"Remade subpool {_subpool}: predicted spread {_spread:.4f}x")
-    assert _spread < 1.001, (
-        f"the volumes for subpool {_subpool} do not flatten it: predicted representation "
-        f"spans {_spread:.3f}x, expected 1.000x"
+    unknown_remakes = set(subpools_to_remake) - set(strain_means["subpool"])
+    if unknown_remakes:
+        raise ValueError(
+            f"'remake' is set for subpools {sorted(unknown_remakes)} of re-pool {repool}, "
+            "which no strain belongs to"
+        )
+
+    strain_means["remake_subpool"] = strain_means["subpool"].isin(subpools_to_remake)
+
+    # Stage 1: what each subpool will be made of.
+    #
+    # A remade subpool is built again from the strain stocks, at volumes that equalize its
+    # strains, so its composition comes out flat. A subpool left alone keeps whatever
+    # composition it already has, which is the strains' measured shares renormalized within it.
+    # Either way `subpool_composition` is a strain's share *of its own subpool*, summing to one
+    # within each.
+    _share = (
+        strain_means["mean_fraction_strain"]
+        .where(~strain_means["remake_subpool"], 1.0)
+        .where(kept)
+    )
+    strain_means["subpool_composition"] = _share / _share.groupby(
+        strain_means["subpool"]
+    ).transform("sum")
+
+    # Stage 2: how much of each subpool goes into the final pool.
+    #
+    # Two different quantities are in play here, and keeping them apart is the whole of this
+    # stage:
+    #
+    #   - The share of the pool's *virus* a subpool has to supply. Equal representation fixes
+    #     this: a subpool holding `n` of the `N` strains supplies `n / N` of the virus.
+    #   - The share of the pool's *volume* it is added at. This is what gets pipetted.
+    #
+    # The two are the same number only for subpools of equal titer. A subpool's titer is the
+    # virus it holds per uL, so the volume share is the virus share divided by the titer, and
+    # the subpools are then renormalized to sum to one.
+    subpool_strains = strain_means[kept].groupby("subpool")["strain"].nunique()
+    subpool_virus_share = subpool_strains / subpool_strains.sum()
+
+    # A strain's share of the *final* pool is its share of its own subpool times the share of
+    # the pool's virus that subpool supplies.
+    strain_means["predicted_fraction_strain"] = strain_means[
+        "subpool_composition"
+    ] * strain_means["subpool"].map(subpool_virus_share)
+
+    # The titer of each strain's stock, in arbitrary units that cancel out of everything below:
+    # a strain's share of the reads is the volume of it that went in times its stock titer, so
+    # the titer is that share per uL.
+    strain_means["stock_titer"] = (
+        strain_means["mean_fraction_strain"] / strain_means["previous_volume_uL"]
     )
 
-# A remade subpool has to hold at least the volume of it the final pool takes, and by
-# `BUILD_MARGIN` more than that.
-for _subpool in subpools_to_remake:
-    _built = strain_means.loc[
-        kept & (strain_means["subpool"] == _subpool), "volume_to_add_uL"
-    ].sum()
-    _taken = subpool_combining_fraction[_subpool] * repool_config["total_pool_volume"]
-    print(
-        f"Remade subpool {_subpool}: build {_built:.0f} uL, pool takes {_taken:.0f} uL"
+    # The titer of a subpool that is not being remade is a property of the liquid already in
+    # the tube: the virus it holds over the volume it was mixed at. Summed over every strain
+    # physically in it, including any dropped from the corrective re-pooling below, as those
+    # are in the tube whether or not they are wanted. Remade subpools get their titer from
+    # their own build instead, and overwrite the value here.
+    _tube = strain_means.groupby("subpool")
+    subpool_titer = (
+        _tube["mean_fraction_strain"].sum() / _tube["previous_volume_uL"].sum()
+    ).reindex(subpool_virus_share.index)
+
+    # Volumes to pipette, for the subpools being remade. `ratio_to_add` is the volume of a
+    # strain relative to a typical strain *of its own subpool*, normalized to geometric mean
+    # one there, so the numbers stay comparable within the subpool actually being made.
+    #
+    # Float NaN rather than `pd.NA`: a column initialized with `pd.NA` is `object` dtype, which
+    # silently survives the arithmetic below and then breaks `nlargest` further down.
+    strain_means["ratio_to_add"] = float("nan")
+    strain_means["neat_volume_uL"] = float("nan")
+    strain_means["dilution_factor"] = float("nan")
+    strain_means["volume_to_add_uL"] = float("nan")
+
+    # A remade subpool is built from the strain stocks at volumes proportional to
+    # `previous_volume / fraction_strain`, which is one over the stock titer, so that every
+    # strain in it delivers the same amount of virus.
+    subpool_ratio_to_add = {}
+    for _subpool in subpools_to_remake:
+        _in = kept & (strain_means["subpool"] == _subpool)
+        _vol = (
+            strain_means.loc[_in, "previous_volume_uL"]
+            / strain_means.loc[_in, "mean_fraction_strain"]
+        )
+        subpool_ratio_to_add[_subpool] = _vol / math.exp(_vol.map(math.log).mean())
+        strain_means.loc[_in, "ratio_to_add"] = subpool_ratio_to_add[_subpool]
+
+    def dilution_for(neat_volume):
+        """Smallest configured dilution bringing ``neat_volume`` up to the minimum, or 1."""
+        if neat_volume >= min_pipettable_volume:
+            return 1
+        for step in dilution_steps:
+            if neat_volume * step >= min_pipettable_volume:
+                return step
+        return dilution_steps[-1]  # nothing is enough; warned about below
+
+    def build_remade_subpool(subpool, build_volume):
+        """Write the volumes to pipette to build ``subpool`` into ``build_volume`` uL.
+
+        A strain needing too little of its stock to pipette is diluted instead, and that much
+        more of the dilution added. The virus delivered is identical, so which strains are
+        diluted does not change what the subpool is made of, only how much liquid it comes out
+        as. Returns the titer it comes out at: the virus its strains deliver over that volume.
+
+        """
+        in_subpool = kept & (strain_means["subpool"] == subpool)
+        ratio = subpool_ratio_to_add[subpool]
+        neat = ratio * (build_volume / ratio.sum())
+        factor = neat.map(dilution_for)
+        strain_means.loc[in_subpool, "neat_volume_uL"] = neat
+        strain_means.loc[in_subpool, "dilution_factor"] = factor
+        strain_means.loc[in_subpool, "volume_to_add_uL"] = neat * factor
+        return (neat * strain_means.loc[in_subpool, "stock_titer"]).sum() / (
+            neat * factor
+        ).sum()
+
+    def combining_fractions(titers):
+        """Share of the pool's volume each subpool is added at, summing to one."""
+        fractions = subpool_virus_share / titers
+        return fractions / fractions.sum()
+
+    # Building a remade subpool and deciding how much of it to add depend on each other: its
+    # titer sets the volume of it the pool needs, and that volume sets how much to build. The
+    # dependence is weak, as the titer barely moves with the scale a subpool is built at, and
+    # only through which of its strains fall below `min_pipettable_volume_uL` and get diluted.
+    # So build once at roughly the right scale to learn the titer, then build again at the
+    # volume that titer calls for. The second build is the one written out, and the combining
+    # fractions come from its titer, so only the margin is left approximate.
+    for _subpool in subpools_to_remake:
+        subpool_titer[_subpool] = build_remade_subpool(
+            _subpool,
+            repool_config["total_pool_volume"] * subpool_virus_share[_subpool],
+        )
+    _build_volume = (
+        BUILD_MARGIN
+        * combining_fractions(subpool_titer)
+        * repool_config["total_pool_volume"]
     )
-    assert _built > _taken, (
-        f"subpool {_subpool} is built to {_built:.1f} uL but the pool takes "
-        f"{_taken:.1f} uL of it"
+    for _subpool in subpools_to_remake:
+        subpool_titer[_subpool] = build_remade_subpool(
+            _subpool, _build_volume[_subpool]
+        )
+
+    subpool_combining_fraction = combining_fractions(subpool_titer)
+
+    for _subpool in subpools_to_remake:
+        _in = kept & (strain_means["subpool"] == _subpool)
+        _still_short = strain_means.loc[_in, "volume_to_add_uL"] < min_pipettable_volume
+        if _still_short.any():
+            add_warning(
+                f"{int(_still_short.sum())} strains of subpool `{_subpool}` still need less "
+                f"than {min_pipettable_volume} uL after the largest configured dilution of "
+                f"1:{dilution_steps[-1]}: "
+                f"{', '.join(f'`{s}`' for s in strain_means.loc[_in][_still_short]['strain'])}. "
+                "Add a larger step to `dilution_steps` in `config.yml`."
+            )
+
+    dropped = (
+        strain_means[~kept]
+        .assign(reason=lambda x: x["strain"].map(drop_reasons))[
+            ["shortname", "strain", "subpool", "mean_fraction_strain", "reason"]
+        ]
+        .reset_index(drop=True)
     )
-
-# The combining fractions are shares of the pool's volume, so check they deliver the
-# intended shares of its virus: the volume of each subpool times its titer, spread over
-# what that subpool is made of, has to reproduce `predicted_fraction_strain`. This is the
-# check that a virus share has not been used where a volume share belongs; setting the
-# combining fractions to the virus shares fails it for any subpools of unequal titer.
-_delivered = (
-    strain_means["subpool_composition"]
-    * strain_means["subpool"].map(subpool_combining_fraction * subpool_titer)
-).fillna(0.0)
-_delivered /= _delivered.sum()
-assert (
-    _delivered - strain_means["predicted_fraction_strain"].fillna(0.0)
-).abs().max() < 1e-9, (
-    "the volumes the subpools are combined at do not deliver the predicted composition"
-)
-
-_predicted_spread = _pred.max() / _pred.min()
-_current_spread = (
-    strain_means.loc[kept, "mean_fraction_strain"].max()
-    / strain_means.loc[kept, "mean_fraction_strain"].min()
-)
-print(
-    f"Whole pool: {_current_spread:.1f}x now, {_predicted_spread:.2f}x predicted after "
-    "the corrective re-pool"
-)
-
-_remade_names = ", ".join(f"`{s}`" for s in subpools_to_remake) or "none"
-add_markdown(f"""
-    ### What this gives
-
-    Subpools being remade from strain stocks: {_remade_names}. Every subpool is then
-    combined in the proportion below.
-
-    Across the {len(repooling_math)} strains that are kept (see below for the
-    {len(dropped)} that are dropped), the most and least abundant strain currently differ
-    **{_current_spread:.1f}-fold**. After the corrective re-pool they are predicted to
-    differ **{_predicted_spread:.2f}-fold**.
-
-    The volumes to pipette are in
-    `{Path(snakemake.output.subpool_repooling_math).name}/`: one CSV per subpool being
-    remade, most volume first, where `volume_to_add_uL` is what to pipette and
-    `dilution_factor` how far the stock is diluted first, so a strain with a factor of 1
-    is added neat; plus `combine_subpools.csv`, holding the fractions the finished
-    subpools are combined in. The measurement those came from is in
-    `{Path(snakemake.output.repooling_math).name}`, which also carries
-    `predicted_fraction_strain`, what each strain is expected to come out at. The strains
-    dropped from the re-pooling are in
-    `{Path(snakemake.output.dropped_strains).name}`.
-
-    **What this assumes.** The predictions hold only if each remade subpool is mixed from
-    the individual strain stocks, those stocks have not changed titer since the previous
-    pool was made, and the volumes recorded for that pool are what was actually pipetted.
-    None of those can be checked from the sequencing data, so they are premises rather than
-    findings. If any does not hold the numbers will be wrong in a way that looks perfectly
-    reasonable, and the corrective pool should be sequenced again to find out. Nothing here
-    predicts the *titer* of the corrective pool either, so it has to be titrated rather
-    than diluted by calculation.
-    """)
-
-add_markdown(f"""
-    ### Combining the subpools
-
-    **`fraction_of_pool` is the number to work from**: multiply it by whatever volume of
-    pool is being made. The fractions sum to one, so a 100 uL test pool is
-    {", ".join(
-        f"{100 * subpool_combining_fraction[_s]:.2f} uL of `{_s}`"
-        for _s in sorted(subpool_combining_fraction.index)
-    )}. `volume_uL` is the same thing for the full
-    {repool_config["total_pool_volume"]:.0f} uL.
-
-    `fraction_of_pool` is a share of the pool's **volume**, and it is not the same as
-    `target_virus_share`, the share of the pool's **virus** that subpool has to supply.
-    The two differ by `relative_titer`, how much virus the subpool holds per uL against
-    the average of them, so that a subpool twice as concentrated as the average supplies
-    its share of the virus from half as much liquid:
-
-        fraction_of_pool = (target_virus_share / relative_titer), renormalized to sum to one
-
-    For a subpool that is not being remade the titer is a property of the liquid already
-    in the tube, worked out from the share of the reads it accounts for over the volume it
-    was mixed at. For one that is being remade it comes from its own build below, and so
-    already accounts for the extra carrier liquid of any strain diluted to make it
-    pipettable.
-    """)
-subpool_plan = (
-    repooling_math.groupby("subpool", as_index=False)
-    .aggregate(
-        n_strains=pd.NamedAgg("strain", "nunique"),
-        remake=pd.NamedAgg("remake_subpool", "first"),
-        current_fraction_of_pool=pd.NamedAgg("mean_fraction_strain", "sum"),
+    repooling_math = strain_means[kept][
+        [
+            "shortname",
+            "strain",
+            "subpool",
+            "remake_subpool",
+            "mean_fraction_strain",
+            "representation",
+            "previous_volume_uL",
+            "subpool_composition",
+            "predicted_fraction_strain",
+            "ratio_to_add",
+            "neat_volume_uL",
+            "dilution_factor",
+            "volume_to_add_uL",
+        ]
+    ].reset_index(drop=True)
+    # Only the strains of a remade subpool get a volume; the rest are not being repipetted.
+    _remade = repooling_math["remake_subpool"]
+    assert repooling_math.loc[_remade, "volume_to_add_uL"].notna().all()
+    assert (repooling_math.loc[_remade, "volume_to_add_uL"] < float("inf")).all()
+    assert repooling_math.loc[~_remade, "volume_to_add_uL"].isna().all()
+    # Diluting changes how much liquid is added, never how much virus, so the volume of stock
+    # a strain contributes must be what the undiluted calculation asked for.
+    _stock = (
+        repooling_math.loc[_remade, "volume_to_add_uL"]
+        / repooling_math.loc[_remade, "dilution_factor"]
     )
-    .assign(
-        target_virus_share=lambda x: x["subpool"].map(subpool_virus_share),
-        relative_titer=lambda x: x["subpool"].map(subpool_titer / subpool_titer.mean()),
-        fraction_of_pool=lambda x: x["subpool"].map(subpool_combining_fraction),
-        volume_uL=lambda x: (
-            x["fraction_of_pool"] * repool_config["total_pool_volume"]
-        ),
-    )
-    .sort_values("subpool")
-    .reset_index(drop=True)
-)
-add_table(subpool_plan)
+    assert (
+        (_stock - repooling_math.loc[_remade, "neat_volume_uL"]).abs() < 1e-9
+    ).all(), "diluting a strain changed the amount of its stock going into the pool"
 
-if subpools_to_remake:
+    # Check the predicted composition is internally consistent: a strain's share of its subpool
+    # times its subpool's share of the pool, summed over everything, must be one.
+    _pred = repooling_math["predicted_fraction_strain"].astype(float)
+    assert (
+        abs(_pred.sum() - 1) < 1e-9
+    ), f"the predicted composition sums to {_pred.sum():.6f} rather than one"
+
+    # For a subpool being remade, forward-simulate the volumes actually being pipetted and
+    # check they flatten it. Mixing volume `V` of a stock of titer `t` gives shares
+    # proportional to `V x t`, and `t` is `fraction_strain / previous_volume`.
+    #
+    # Be clear about what this does and does not prove. The volumes are built from the same two
+    # columns the implied titer is built from, so the arithmetic reduces to a constant and the
+    # check passes for any input data. It is a self-consistency check on this script's
+    # arithmetic, not evidence that the premise behind it holds. It does catch the mistake worth
+    # catching -- using `1 / fraction_strain`, the rule that is right for the equal-volume pool
+    # `analyze_pool` measures -- which blows the spread up by orders of magnitude while the
+    # volumes still sum correctly with geometric mean one.
+    #
+    # What it cannot detect, because nothing in the data reveals any of them: stock titers that
+    # drifted between the two poolings, `previous_volume_uL` differing from what was actually
+    # pipetted, or a subpool being mixed from something other than the strain stocks.
     for _subpool in subpools_to_remake:
         _r = repooling_math[repooling_math["subpool"] == _subpool]
-        _diluted = _r[_r["dilution_factor"] > 1]
-        _built = _r["volume_to_add_uL"].sum()
+        _titer = _r["mean_fraction_strain"] / _r["previous_volume_uL"]
+        # the neat volume, since that is the amount of stock delivered whether or not the
+        # strain was diluted first
+        _p = _r["neat_volume_uL"].astype(float) * _titer
+        _p = _p / _p.sum()
+        _spread = _p.max() / _p.min()
+        print(f"Remade subpool {_subpool}: predicted spread {_spread:.4f}x")
+        assert _spread < 1.001, (
+            f"the volumes for subpool {_subpool} do not flatten it: predicted representation "
+            f"spans {_spread:.3f}x, expected 1.000x"
+        )
+
+    # A remade subpool has to hold at least the volume of it the final pool takes, and by
+    # `BUILD_MARGIN` more than that.
+    for _subpool in subpools_to_remake:
+        _built = strain_means.loc[
+            kept & (strain_means["subpool"] == _subpool), "volume_to_add_uL"
+        ].sum()
         _taken = (
             subpool_combining_fraction[_subpool] * repool_config["total_pool_volume"]
         )
-        add_markdown(f"""
-            #### Remaking `{_subpool}`
-
-            Made from {len(_r)} strains, giving {_built:.0f} uL of subpool. The final pool
-            takes {_taken:.0f} uL of that, so it is built {_built / _taken:.2f}x over what
-            is needed to leave some to spare for what is lost in pipetting it.
-            """)
-        if len(_diluted):
-            add_markdown(f"""
-                {len(_diluted)} of the {len(_r)} strains need less than
-                {min_pipettable_volume} uL of stock, so they are diluted first and that
-                much more of the dilution added. The virus delivered is the same either
-                way; the subpool just ends up holding more liquid, which its titer above
-                already accounts for.
-                """)
-            add_table(
-                _diluted.assign(
-                    dilution=lambda x: "1:"
-                    + x["dilution_factor"].astype(int).astype(str)
-                )[
-                    [
-                        "shortname",
-                        "strain",
-                        "neat_volume_uL",
-                        "dilution",
-                        "volume_to_add_uL",
-                    ]
-                ].reset_index(
-                    drop=True
-                )
-            )
-        else:
-            add_markdown(f"""
-                Every strain needs at least {min_pipettable_volume} uL of stock, so none
-                has to be diluted first.
-                """)
-        add_markdown("The 5 strains needing the most volume:")
-        add_table(
-            _r.nlargest(5, "volume_to_add_uL")[
-                ["shortname", "strain", "mean_fraction_strain", "volume_to_add_uL"]
-            ].reset_index(drop=True)
+        print(
+            f"Remade subpool {_subpool}: build {_built:.0f} uL, pool takes {_taken:.0f} uL"
         )
-else:
-    add_markdown("""
-        No subpool is being remade, so the correction is entirely in the proportions
-        above. Set `remake` for a subpool in `config.yml` to also rebalance the strains
-        within it.
+        assert _built > _taken, (
+            f"subpool {_subpool} is built to {_built:.1f} uL but the pool takes "
+            f"{_taken:.1f} uL of it"
+        )
+
+    # The combining fractions are shares of the pool's volume, so check they deliver the
+    # intended shares of its virus: the volume of each subpool times its titer, spread over
+    # what that subpool is made of, has to reproduce `predicted_fraction_strain`. This is the
+    # check that a virus share has not been used where a volume share belongs; setting the
+    # combining fractions to the virus shares fails it for any subpools of unequal titer.
+    _delivered = (
+        strain_means["subpool_composition"]
+        * strain_means["subpool"].map(subpool_combining_fraction * subpool_titer)
+    ).fillna(0.0)
+    _delivered /= _delivered.sum()
+    _delivery_error = (
+        (_delivered - strain_means["predicted_fraction_strain"].fillna(0.0)).abs().max()
+    )
+    assert _delivery_error < 1e-9, (
+        "the volumes the subpools are combined at do not deliver the predicted "
+        f"composition; off by {_delivery_error:.3g}"
+    )
+
+    _predicted_spread = _pred.max() / _pred.min()
+    _current_spread = (
+        strain_means.loc[kept, "mean_fraction_strain"].max()
+        / strain_means.loc[kept, "mean_fraction_strain"].min()
+    )
+    print(
+        f"Whole pool: {_current_spread:.1f}x now, {_predicted_spread:.2f}x predicted after "
+        "the corrective re-pool"
+    )
+
+    _remade_names = ", ".join(f"`{s}`" for s in subpools_to_remake) or "none"
+    add_markdown(f"""
+        ### What this gives
+
+        Subpools being remade from strain stocks: {_remade_names}. Every subpool is then
+        combined in the proportion below.
+
+        Across the {len(repooling_math)} strains that are kept (see below for the
+        {len(dropped)} that are dropped), the most and least abundant strain currently differ
+        **{_current_spread:.1f}-fold**. After the corrective re-pool they are predicted to
+        differ **{_predicted_spread:.2f}-fold**.
+
+        The volumes to pipette are in
+        `{Path(snakemake.output.subpool_repooling_math).name}/`: one CSV per subpool being
+        remade, most volume first, where `volume_to_add_uL` is what to pipette and
+        `dilution_factor` how far the stock is diluted first, so a strain with a factor of 1
+        is added neat; plus `combine_subpools.csv`, holding the fractions the finished
+        subpools are combined in. The measurement those came from is in
+        `{Path(snakemake.output.repooling_math).name}`, which also carries
+        `predicted_fraction_strain`, what each strain is expected to come out at. The strains
+        dropped from the re-pooling are in
+        `{Path(snakemake.output.dropped_strains).name}`.
+
+        **What this assumes.** The predictions hold only if each remade subpool is mixed from
+        the individual strain stocks, those stocks have not changed titer since the previous
+        pool was made, and the volumes recorded for that pool are what was actually pipetted.
+        None of those can be checked from the sequencing data, so they are premises rather than
+        findings. If any does not hold the numbers will be wrong in a way that looks perfectly
+        reasonable, and the corrective pool should be sequenced again to find out. Nothing here
+        predicts the *titer* of the corrective pool either, so it has to be titrated rather
+        than diluted by calculation.
         """)
 
-if len(dropped):
-    add_markdown("""
-        ### Dropped strains
+    add_markdown(f"""
+        ### Combining the subpools
 
-        These strains are excluded from the corrective re-pooling for the reasons given.
+        **`fraction_of_pool` is the number to work from**: multiply it by whatever volume of
+        pool is being made. The fractions sum to one, so a 100 uL test pool is
+        {", ".join(
+            f"{100 * subpool_combining_fraction[_s]:.2f} uL of `{_s}`"
+            for _s in sorted(subpool_combining_fraction.index)
+        )}. `volume_uL` is the same thing for the full
+        {repool_config["total_pool_volume"]:.0f} uL.
+
+        `fraction_of_pool` is a share of the pool's **volume**, and it is not the same as
+        `target_virus_share`, the share of the pool's **virus** that subpool has to supply.
+        The two differ by `relative_titer`, how much virus the subpool holds per uL against
+        the average of them, so that a subpool twice as concentrated as the average supplies
+        its share of the virus from half as much liquid:
+
+            fraction_of_pool = (target_virus_share / relative_titer), renormalized to sum to one
+
+        For a subpool that is not being remade the titer is a property of the liquid already
+        in the tube, worked out from the share of the reads it accounts for over the volume it
+        was mixed at. For one that is being remade it comes from its own build below, and so
+        already accounts for the extra carrier liquid of any strain diluted to make it
+        pipettable.
         """)
-    add_table(dropped)
+    subpool_plan = (
+        repooling_math.groupby("subpool", as_index=False)
+        .aggregate(
+            n_strains=pd.NamedAgg("strain", "nunique"),
+            remake=pd.NamedAgg("remake_subpool", "first"),
+            current_fraction_of_pool=pd.NamedAgg("mean_fraction_strain", "sum"),
+        )
+        .assign(
+            target_virus_share=lambda x: x["subpool"].map(subpool_virus_share),
+            relative_titer=lambda x: x["subpool"].map(
+                subpool_titer / subpool_titer.mean()
+            ),
+            fraction_of_pool=lambda x: x["subpool"].map(subpool_combining_fraction),
+            volume_uL=lambda x: (
+                x["fraction_of_pool"] * repool_config["total_pool_volume"]
+            ),
+        )
+        .sort_values("subpool")
+        .reset_index(drop=True)
+    )
+    add_table(subpool_plan)
+
+    if subpools_to_remake:
+        for _subpool in subpools_to_remake:
+            _r = repooling_math[repooling_math["subpool"] == _subpool]
+            _diluted = _r[_r["dilution_factor"] > 1]
+            _built = _r["volume_to_add_uL"].sum()
+            _taken = (
+                subpool_combining_fraction[_subpool]
+                * repool_config["total_pool_volume"]
+            )
+            add_markdown(f"""
+                #### Remaking `{_subpool}`
+
+                Made from {len(_r)} strains, giving {_built:.0f} uL of subpool. The final pool
+                takes {_taken:.0f} uL of that, so it is built {_built / _taken:.2f}x over what
+                is needed to leave some to spare for what is lost in pipetting it.
+                """)
+            if len(_diluted):
+                add_markdown(f"""
+                    {len(_diluted)} of the {len(_r)} strains need less than
+                    {min_pipettable_volume} uL of stock, so they are diluted first and that
+                    much more of the dilution added. The virus delivered is the same either
+                    way; the subpool just ends up holding more liquid, which its titer above
+                    already accounts for.
+                    """)
+                add_table(
+                    _diluted.assign(
+                        dilution=lambda x: "1:"
+                        + x["dilution_factor"].astype(int).astype(str)
+                    )[
+                        [
+                            "shortname",
+                            "strain",
+                            "neat_volume_uL",
+                            "dilution",
+                            "volume_to_add_uL",
+                        ]
+                    ].reset_index(
+                        drop=True
+                    )
+                )
+            else:
+                add_markdown(f"""
+                    Every strain needs at least {min_pipettable_volume} uL of stock, so none
+                    has to be diluted first.
+                    """)
+            add_markdown("The 5 strains needing the most volume:")
+            add_table(
+                _r.nlargest(5, "volume_to_add_uL")[
+                    ["shortname", "strain", "mean_fraction_strain", "volume_to_add_uL"]
+                ].reset_index(drop=True)
+            )
+    else:
+        add_markdown("""
+            No subpool is being remade, so the correction is entirely in the proportions
+            above. Set `remake` for a subpool in `config.yml` to also rebalance the strains
+            within it.
+            """)
+
+    if len(dropped):
+        add_markdown("""
+            ### Dropped strains
+
+            These strains are excluded from the corrective re-pooling for the reasons given.
+            """)
+        add_table(dropped)
+    else:
+        add_markdown("No strains are dropped from the corrective re-pooling.")
+
+
 else:
-    add_markdown("No strains are dropped from the corrective re-pooling.")
+    # Measurement only. The representation columns above are the result, so they are what
+    # the CSV holds; there is no `kept` subset and no volume to report, every strain having
+    # been measured. Named `representation` rather than `repooling_math` for the same
+    # reason: nothing here is re-pooling math.
+    representation = strain_means[
+        [
+            "shortname",
+            "strain",
+            "subpool",
+            "mean_fraction_strain",
+            "representation",
+            "over_represented",
+            "under_represented",
+        ]
+        + (["previous_volume_uL"] if previous_pool is not None else [])
+    ].assign(x_expected=lambda x: x["mean_fraction_strain"] / equal_share)
+
+    add_markdown(f"""
+        ## What this gives
+
+        No corrective re-pool is being calculated, `corrective_repool` being false for this
+        pool in `config.yml`, so this report measures how the pool came out and stops
+        there. Every strain's share of the pool, and how many fold that is off an equal
+        share, is in `{Path(snakemake.output.representation).name}`.
+
+        Across all {n_strains} strains the most and least abundant differ
+        **{_measured_spread:.1f}-fold**. Set `corrective_repool` to true, along with the
+        pipetting keys it requires, to also calculate the volumes for a further re-pool.
+        """)
 
 # --- write the outputs -----------------------------------------------------------------
 
@@ -1644,42 +1857,52 @@ if warnings:
 
 # written to four significant digits, which is far finer than anything can be pipetted
 # and keeps a negligible change in the numbers from rewriting every line of the CSVs
-repooling_math.to_csv(snakemake.output.repooling_math, index=False, float_format="%.4g")
-dropped.to_csv(snakemake.output.dropped_strains, index=False, float_format="%.4g")
-
-# One CSV per subpool being remade, holding just what is needed to pipette it: the strain,
-# the volume, and the ratio that volume came from. The whole-pool CSV above keeps the
-# measurement the volumes were derived from.
-_subpool_dir = Path(snakemake.output.subpool_repooling_math)
-_subpool_dir.mkdir(parents=True, exist_ok=True)
-
-# how the finished subpools are combined, as fractions so any volume of pool can be made
-subpool_plan.to_csv(
-    _subpool_dir / "combine_subpools.csv", index=False, float_format="%.4g"
-)
-print(f"Wrote the subpool combining fractions to {_subpool_dir}/combine_subpools.csv")
-for _subpool in subpools_to_remake:
-    _out = _subpool_dir / f"{_subpool}_repooling_math.csv"
-    (
-        repooling_math[repooling_math["subpool"] == _subpool]
-        .assign(
-            dilution_factor=lambda x: x["dilution_factor"].astype(int),
-        )[
-            [
-                "shortname",
-                "strain",
-                "subpool",
-                "ratio_to_add",
-                "neat_volume_uL",
-                "dilution_factor",
-                "volume_to_add_uL",
-            ]
-        ]
-        .sort_values("volume_to_add_uL", ascending=False)
-        .reset_index(drop=True)
-        .to_csv(_out, index=False, float_format="%.4g")
+if corrective_repool:
+    repooling_math.to_csv(
+        snakemake.output.repooling_math, index=False, float_format="%.4g"
     )
-    print(f"Wrote the re-pooling volumes for {_subpool} to {_out}")
+    dropped.to_csv(snakemake.output.dropped_strains, index=False, float_format="%.4g")
+
+    # One CSV per subpool being remade, holding just what is needed to pipette it: the
+    # strain, the volume, and the ratio that volume came from. The whole-pool CSV above
+    # keeps the measurement the volumes were derived from.
+    _subpool_dir = Path(snakemake.output.subpool_repooling_math)
+    _subpool_dir.mkdir(parents=True, exist_ok=True)
+
+    # how the finished subpools are combined, as fractions so any volume can be made
+    subpool_plan.to_csv(
+        _subpool_dir / "combine_subpools.csv", index=False, float_format="%.4g"
+    )
+    print(
+        f"Wrote the subpool combining fractions to {_subpool_dir}/combine_subpools.csv"
+    )
+    for _subpool in subpools_to_remake:
+        _out = _subpool_dir / f"{_subpool}_repooling_math.csv"
+        (
+            repooling_math[repooling_math["subpool"] == _subpool]
+            .assign(
+                dilution_factor=lambda x: x["dilution_factor"].astype(int),
+            )[
+                [
+                    "shortname",
+                    "strain",
+                    "subpool",
+                    "ratio_to_add",
+                    "neat_volume_uL",
+                    "dilution_factor",
+                    "volume_to_add_uL",
+                ]
+            ]
+            .sort_values("volume_to_add_uL", ascending=False)
+            .reset_index(drop=True)
+            .to_csv(_out, index=False, float_format="%.4g")
+        )
+        print(f"Wrote the re-pooling volumes for {_subpool} to {_out}")
+else:
+    representation.to_csv(
+        snakemake.output.representation, index=False, float_format="%.4g"
+    )
+    print(f"Wrote the strain representation to {snakemake.output.representation}")
 
 Path(snakemake.output.html).write_text(
     PAGE_TEMPLATE.format(

@@ -26,6 +26,40 @@ repool_plates = {
     for (repool, repool_d) in analyze_repools.items()
 }
 
+# Re-pools split by what `analyze_repool` does for each: calculate the volumes for a further
+# corrective re-pool, or only measure how the pool came out. The two write different files,
+# so the split decides which outputs the rule produces and which targets are collected.
+# Required rather than defaulted; read here only because `output` cannot consult the
+# `{repool}` wildcard.
+#
+# The type is checked here rather than left to the script, even though the script checks it
+# too. This split routes a re-pool to one of the two rules, and any non-boolean would be
+# routed by its truthiness -- a quoted `"false"` in the YAML is truthy, so it would take the
+# corrective rule and then fail in the script complaining about the wrong thing.
+for _repool, _repool_d in analyze_repools.items():
+    if not isinstance(_repool_d.get("corrective_repool"), bool):
+        raise ValueError(
+            f"`analyze_repools` {_repool} must set 'corrective_repool' to true or false "
+            f"in `config.yml`, but it is {_repool_d.get('corrective_repool')!r}"
+        )
+
+corrective_repools = [
+    repool
+    for (repool, repool_d) in analyze_repools.items()
+    if repool_d["corrective_repool"]
+]
+measurement_repools = [
+    repool
+    for (repool, repool_d) in analyze_repools.items()
+    if not repool_d["corrective_repool"]
+]
+
+# `previous_pool` may be null for a re-pool that is only being measured, in which case there
+# is no volumes file to read; see the script's docstring.
+repool_previous_pools = {
+    repool: repool_d["previous_pool"] for (repool, repool_d) in analyze_repools.items()
+}
+
 # The same again for each single-well analysis, except that one of those reads *several*
 # plates and reports them together, so this maps to a list rather than to one plate.
 single_well_plates = {
@@ -33,15 +67,16 @@ single_well_plates = {
     for (single_well, single_well_d) in analyze_single_well_infections.items()
 }
 
-# A re-pool is analyzed against the volumes that made the pool it came from, so that pool has
-# to be one of the pools analyzed here. Without this the missing pool surfaces as a
-# missing-input-file error naming a path, rather than as the configuration problem it is.
-for _repool, _repool_d in analyze_repools.items():
-    if _repool_d["previous_pool"] not in analyze_pools:
+# Where a re-pool is analyzed against the volumes that made the pool it came from, that pool
+# has to be one of the pools analyzed here. Without this the missing pool surfaces as a
+# missing-input-file error naming a path, rather than as the configuration problem it is. A
+# null `previous_pool` skips the comparison entirely and so names no pool to check.
+for _repool, _previous in repool_previous_pools.items():
+    if _previous is not None and _previous not in analyze_pools:
         raise ValueError(
-            f"`analyze_repools` {_repool} names the previous pool "
-            f"'{_repool_d['previous_pool']}', which is not an `analyze_pools` entry in "
-            f"`config.yml`; the pools configured there are {sorted(analyze_pools)}"
+            f"`analyze_repools` {_repool} names the previous pool '{_previous}', which is "
+            f"not an `analyze_pools` entry in `config.yml`; the pools configured there are "
+            f"{sorted(analyze_pools)}"
         )
 
 # The barcode counts of every plate in a single-well analysis are read against one
@@ -125,32 +160,58 @@ rule analyze_pool:
         "../scripts/analyze_pool.py"
 
 
+# Inputs and params shared by the two `analyze_repool` rules below, which differ only in
+# what they write. Held in dicts and splatted into each rule so the lookups are written
+# once; a helper function would be the natural way to share them, but a `.smk` defining both
+# rules and functions fails `snakemake --lint`.
+_repool_input = {
+    "counts": lambda wc: expand(
+        rules.miscellaneous_plate_count_barcodes.output.counts,
+        misc_plate=repool_plates[wc.repool],
+        well=miscellaneous_plates[repool_plates[wc.repool]]["wells"],
+    ),
+    "fates": lambda wc: expand(
+        rules.miscellaneous_plate_count_barcodes.output.fates,
+        misc_plate=repool_plates[wc.repool],
+        well=miscellaneous_plates[repool_plates[wc.repool]]["wells"],
+    ),
+    "samples_csv": lambda wc: config["miscellaneous_plates"][repool_plates[wc.repool]][
+        "samples_csv"
+    ],
+    "viral_library": lambda wc: config["viral_libraries"][
+        miscellaneous_plates[repool_plates[wc.repool]]["viral_library"]
+    ],
+    "neut_standard_set": lambda wc: config["neut_standard_sets"][
+        miscellaneous_plates[repool_plates[wc.repool]]["neut_standard_set"]
+    ],
+}
+
+_repool_params = {
+    "date": lambda wc: config["miscellaneous_plates"][repool_plates[wc.repool]]["date"],
+    "repool_config": lambda wc: analyze_repools[wc.repool],
+}
+
+# The volumes that made this pool, needed to recover each strain's stock titer. An empty
+# list where `previous_pool` is null, which is how a rule declares an input it does not
+# read: the script is guarded by the same configuration and does not open it either.
+_repool_previous_math = {
+    "previous_repooling_math": lambda wc: (
+        [
+            rules.analyze_pool.output.repooling_math.format(
+                pool=repool_previous_pools[wc.repool]
+            )
+        ]
+        if repool_previous_pools[wc.repool] is not None
+        else []
+    ),
+}
+
+
 rule analyze_repool:
     """Analyze how well a balanced re-pool came out and get corrective volumes."""
     input:
-        counts=lambda wc: expand(
-            rules.miscellaneous_plate_count_barcodes.output.counts,
-            misc_plate=repool_plates[wc.repool],
-            well=miscellaneous_plates[repool_plates[wc.repool]]["wells"],
-        ),
-        fates=lambda wc: expand(
-            rules.miscellaneous_plate_count_barcodes.output.fates,
-            misc_plate=repool_plates[wc.repool],
-            well=miscellaneous_plates[repool_plates[wc.repool]]["wells"],
-        ),
-        samples_csv=lambda wc: config["miscellaneous_plates"][
-            repool_plates[wc.repool]
-        ]["samples_csv"],
-        viral_library=lambda wc: config["viral_libraries"][
-            miscellaneous_plates[repool_plates[wc.repool]]["viral_library"]
-        ],
-        neut_standard_set=lambda wc: config["neut_standard_sets"][
-            miscellaneous_plates[repool_plates[wc.repool]]["neut_standard_set"]
-        ],
-        # the volumes that made this pool, needed to recover each strain's stock titer
-        previous_repooling_math=lambda wc: rules.analyze_pool.output.repooling_math.format(
-            pool=analyze_repools[wc.repool]["previous_pool"]
-        ),
+        **_repool_input,
+        **_repool_previous_math,
     output:
         html="results/library_qc/{repool}_analyze_repool.html",
         repooling_math="results/library_qc/{repool}_repooling_math.csv",
@@ -165,12 +226,44 @@ rule analyze_repool:
     log:
         "results/logs/analyze_repool_{repool}.txt",
     wildcard_constraints:
-        repool="|".join(analyze_repools),
+        # `(?!)` matches nothing when no re-pool is corrective
+        repool="|".join(corrective_repools) or "(?!)",
     conda:
         "../seqneut-pipeline/environment.yml"
     params:
-        date=lambda wc: config["miscellaneous_plates"][repool_plates[wc.repool]]["date"],
-        repool_config=lambda wc: analyze_repools[wc.repool],
+        **_repool_params,
+    script:
+        "../scripts/analyze_repool.py"
+
+
+rule measure_repool:
+    """Measure a re-pool's strain representation, without corrective volumes.
+
+    The same script and report as `analyze_repool`, for a pool that is not going to be
+    re-pooled again: it stops after the representation rather than prescribing a corrective
+    re-pool, and so writes one CSV of that representation instead of the pipetting CSVs.
+    Which of the two rules a re-pool gets is decided by `corrective_repool` in `config.yml`.
+
+    """
+    input:
+        **_repool_input,
+        **_repool_previous_math,
+    output:
+        # A distinct name from `analyze_repool`'s report rather than the same one, so the two
+        # rules never claim the same path. The empty `wildcard_constraints` alternation that
+        # would otherwise let them -- what either rule gets when no re-pool is in its mode --
+        # does not constrain the wildcard at all, and is guarded with `(?!)` on both.
+        html="results/library_qc/{repool}_measure_repool.html",
+        representation="results/library_qc/{repool}_strain_representation.csv",
+    log:
+        "results/logs/measure_repool_{repool}.txt",
+    wildcard_constraints:
+        # `(?!)` matches nothing when every re-pool is corrective
+        repool="|".join(measurement_repools) or "(?!)",
+    conda:
+        "../seqneut-pipeline/environment.yml"
+    params:
+        **_repool_params,
     script:
         "../scripts/analyze_repool.py"
 
@@ -258,9 +351,14 @@ if analyze_pools:
     }
 
 if analyze_repools:
+    # each re-pool's report comes from whichever of the two rules its mode selects
     _library_qc_docs["Balance of the library re-pools"] = {
         f"{_repool} ({config['miscellaneous_plates'][repool_plates[_repool]]['date']})": (
-            rules.analyze_repool.output.html.format(repool=_repool)
+            rules.analyze_repool.output.html
+            if _repool in corrective_repools
+            else rules.measure_repool.output.html
+        ).format(
+            repool=_repool
         )
         for _repool in analyze_repools
     }
@@ -281,12 +379,13 @@ if _library_qc_docs:
 library_qc_outputs = [
     *expand(rules.analyze_pool.output.repooling_math, pool=analyze_pools),
     *expand(rules.analyze_pool.output.dropped_strains, pool=analyze_pools),
-    *expand(rules.analyze_repool.output.repooling_math, repool=analyze_repools),
-    *expand(rules.analyze_repool.output.dropped_strains, repool=analyze_repools),
+    *expand(rules.analyze_repool.output.repooling_math, repool=corrective_repools),
+    *expand(rules.analyze_repool.output.dropped_strains, repool=corrective_repools),
     *expand(
         rules.analyze_repool.output.subpool_repooling_math,
-        repool=analyze_repools,
+        repool=corrective_repools,
     ),
+    *expand(rules.measure_repool.output.representation, repool=measurement_repools),
     *expand(
         rules.analyze_single_well_infections.output.well_composition,
         single_well=analyze_single_well_infections,

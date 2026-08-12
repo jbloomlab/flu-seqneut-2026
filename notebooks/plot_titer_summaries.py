@@ -6,14 +6,12 @@ app = marimo.App(width="full")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     # Titer summary plots
 
     Interactive Altair plots showing median titers, individual serum titers,
     interquartile ranges, and fraction of sera below titer cutoffs.
-    """
-    )
+    """)
     return
 
 
@@ -100,11 +98,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Read data
-    """
-    )
+    """)
     return
 
 
@@ -304,14 +300,12 @@ def _(
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Plot all the titers
 
     ### Assign label colors by subclade / vaccine type
     Define color mapping from subclade (circulating strains) or vaccine type (vaccine strains) to colors for label coloring, then create an expression that can be passed to `altair` *labelColor*:
-    """
-    )
+    """)
     return
 
 
@@ -388,11 +382,9 @@ def _(
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Now make nicely formatted charts
-    """
-    )
+    """)
     return
 
 

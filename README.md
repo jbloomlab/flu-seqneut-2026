@@ -208,7 +208,7 @@ The pipeline fails if any check does.
 
 ### Library QC
 [rules/library_qc.smk](rules/library_qc.smk) has analyses that examine the library QC, such as library pools to estimate relative strain concentrations and find the virus dilution in the linear range, or single-well infections to check for contamination.
-A re-pool is either measured and then given the volumes for a further corrective re-pool, or measured only; `corrective_repool` in [config.yml](config.yml) selects which, and decides whether the pipetting CSVs are written alongside the representation.
+A re-pool is either measured and then given the volumes for a further corrective re-pool, or measured only; `corrective_repool` selects which, and so whether the pipetting CSVs or the strain representation CSV are written.
 The numerical results are placed in [results/library_qc/](results/library_qc/) and HTML reports are generated that go into the documentation that can be rendered on GitHub Pages.
 
 ### Titer processing and plots

@@ -43,12 +43,16 @@ for _repool, _repool_d in analyze_repools.items():
             f"in `config.yml`, but it is {_repool_d.get('corrective_repool')!r}"
         )
 
-corrective_repools = {
+corrective_repools = [
     repool
     for (repool, repool_d) in analyze_repools.items()
     if repool_d["corrective_repool"]
-}
-measurement_repools = set(analyze_repools) - corrective_repools
+]
+measurement_repools = [
+    repool
+    for (repool, repool_d) in analyze_repools.items()
+    if not repool_d["corrective_repool"]
+]
 
 # `previous_pool` may be null for a re-pool that is only being measured, in which case there
 # is no volumes file to read; see the script's docstring.

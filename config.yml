@@ -517,6 +517,23 @@ plates:
       upstream2: ACGCTG # Fwd6
       upstream2_mismatch: 1
 
+  plate7:
+    group: human
+    date: 2026-08-13
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260813_plate7.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: GCTACA # Fwd1
+      upstream2_mismatch: 1
+      
 miscellaneous_plates:
   20260731_repool:
       date: 2026-07-31

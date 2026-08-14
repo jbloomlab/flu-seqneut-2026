@@ -16,3 +16,6 @@
 [submodule "nextstrain-prot-titers-tree"]
 	path = nextstrain-prot-titers-tree
 	url = https://github.com/jbloomlab/nextstrain-prot-titers-tree
+[submodule "bloomlab-coding-standards"]
+	path = bloomlab-coding-standards
+	url = https://github.com/jbloomlab/bloomlab-coding-standards

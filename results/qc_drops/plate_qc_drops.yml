@@ -999,3 +999,30 @@ plate6:
     A/Trieste/257/2025_H3N2 flu-seqneut-2026-UWMC-026: goodness_of_fit
     A/Vietnam/PF126009/2026_H1N1 flu-seqneut-2026-UWMC-026: goodness_of_fit
   serum_replicates: {}
+plate7:
+  wells: {}
+  barcodes: {}
+  barcode_wells:
+    A/Colorado/218/2024_H1N1 G3: max_frac_infectivity_per_viral_barcode_well
+    A/Singapore/MOH0547/2024_H1N1 F4: 
+      max_frac_infectivity_per_viral_barcode_well
+    A/Singapore/MOH0547/2024_H1N1 D4: 
+      max_frac_infectivity_per_viral_barcode_well
+    A/Denmark/4774/2025_H1N1 C6: max_frac_infectivity_per_viral_barcode_well
+  barcode_serum_replicates:
+    A/NewYork/NIRC-IS-1086/2026_H3N2 flu-seqneut-2026-UWMC-007: goodness_of_fit
+    A/District_Of_Columbia/27/2023_H3N2 flu-seqneut-2026-UWMC-009: 
+      goodness_of_fit
+    A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-UWMC-009: 
+      goodness_of_fit
+    A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-UWMC-009: 
+      goodness_of_fit
+    A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-UWMC-009: 
+      goodness_of_fit
+    A/Colorado/218/2024_H1N1 flu-seqneut-2026-UWMC-012: goodness_of_fit
+    A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-UWMC-014: 
+      goodness_of_fit
+    A/Ireland/91576/2025_H3N2 flu-seqneut-2026-UWMC-014: goodness_of_fit
+    A/Massachusetts/ISC-1856/2025_H3N2 flu-seqneut-2026-UWMC-014: 
+      goodness_of_fit
+  serum_replicates: {}

@@ -43,16 +43,51 @@ human:
   flu-seqneut-2026-UWMC-002: {}
   flu-seqneut-2026-UWMC-003: {}
   flu-seqneut-2026-UWMC-004: {}
-  flu-seqneut-2026-UWMC-005: {}
+  flu-seqneut-2026-UWMC-005:
+    A/Bangkok/P2391/2025_H3N2: max_fold_change_from_median
+    A/France/OCC-HCL026013263701/2026_H3N2: max_fold_change_from_median
   flu-seqneut-2026-UWMC-006: {}
-  flu-seqneut-2026-UWMC-007: {}
-  flu-seqneut-2026-UWMC-008: {}
-  flu-seqneut-2026-UWMC-009: {}
+  flu-seqneut-2026-UWMC-007:
+    A/California/NIRC-IS-1059/2026_H3N2: max_fold_change_from_median
+    A/France/HDF-RELAB-IPP00300/2026_H3N2: max_fold_change_from_median
+    A/France/NAQ-HCL026010957001/2026_H3N2: max_fold_change_from_median
+    A/Galicia/GA-CHUAC-451/2025_H3N2: max_fold_change_from_median
+    A/Massachusetts/18/2022_H3N2: max_fold_change_from_median
+    A/NovaScotia/25-365-06099/2025_H3N2: max_fold_change_from_median
+    A/Ontario/PHL202550193/2025_H3N2: max_fold_change_from_median
+    A/Peru/ANC-INS-062/2026_H3N2: max_fold_change_from_median
+    A/Saskatchewan/SKFLU477299/2025_H3N2: max_fold_change_from_median
+    A/Thailand/8/2022_H3N2: max_fold_change_from_median
+  flu-seqneut-2026-UWMC-008:
+    A/Bangkok/P2391/2025_H3N2: max_fold_change_from_median
+    A/Lisboa/216/2023_H3N2: max_fold_change_from_median
+  flu-seqneut-2026-UWMC-009:
+    A/Badajoz/18738342/2026_H3N2: max_fold_change_from_median
+    A/BritishColumbia/RV00279-26/2025_H3N2: max_fold_change_from_median
+    A/California/NIRC-IS-1059/2026_H3N2: max_fold_change_from_median
+    A/Castellon/VAHNSI_02_02400/2025_H3N2: max_fold_change_from_median
+    A/Colombia/1851/2024_H3N2: max_fold_change_from_median
+    A/France/ARA-HCL026031894402/2026_H3N2: max_fold_change_from_median
+    A/France/HDF-RELAB-IPP00300/2026_H3N2: max_fold_change_from_median
+    A/Massachusetts/18/2022_H3N2: max_fold_change_from_median
+    A/Michigan/8/2026_H3N2: max_fold_change_from_median
+    A/NakhonPhanom/P495/2026_H3N2: max_fold_change_from_median
+    A/Netherlands/888/2026_H3N2: max_fold_change_from_median
+    A/Oregon/81/2025_H3N2: max_fold_change_from_median
+    A/Romania/612042/2026_H3N2: max_fold_change_from_median
+    A/SantaCatarina/508/2026_H3N2: max_fold_change_from_median
+    A/Singapore/GP20238/2024_H3N2: max_fold_change_from_median
+    A/Singapore/SAR8915/2025_H3N2: max_fold_change_from_median
+    A/Thailand/8/2022_H3N2: max_fold_change_from_median
+    A/Trieste/257/2025_H3N2: max_fold_change_from_median
+    A/Vietnam/F7324/2024_H3N2: max_fold_change_from_median
   flu-seqneut-2026-UWMC-010: {}
   flu-seqneut-2026-UWMC-011: {}
   flu-seqneut-2026-UWMC-012: {}
-  flu-seqneut-2026-UWMC-013: {}
-  flu-seqneut-2026-UWMC-014: {}
+  flu-seqneut-2026-UWMC-013:
+    A/Bangkok/P2391/2025_H3N2: max_fold_change_from_median
+  flu-seqneut-2026-UWMC-014:
+    A/Navarra/260009/2025_H3N2: max_fold_change_from_median
   flu-seqneut-2026-UWMC-015: {}
   flu-seqneut-2026-UWMC-016: {}
   flu-seqneut-2026-UWMC-017: {}

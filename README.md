@@ -105,13 +105,11 @@ flu-seqneut-2026/
 │   ├── validate_viral_library.py                              # Viral library validation
 │   ├── analyze_pool.py                                        # Library pool composition
 │   ├── analyze_repool.py                                      # Library re-pool balance
+│   ├── analyze_single_well_infections.py                      # Single-well infection QC
 │   ├── aggregate_sera_metadata.py                             # Sera metadata aggregation
 │   ├── process_final_titer_data.py                            # Final titer data processing
+│   ├── plot_titer_summaries.py                                # Interactive titer summary plots
 │   └── nextstrain_prot_titers_tree_alignment_and_metadata.py  # Tree input preparation
-│
-├── notebooks/                   # Marimo notebooks for visualizations
-│   ├── plot_titer_summaries.py  # Interactive titer summary plots
-│   └── plot_fold_changes.py     # Interactive fold-change titer plots
 │
 ├── data/                        # Input data
 │   ├── viral_libraries/         # Barcode-to-strain mappings
@@ -212,7 +210,7 @@ A re-pool is either measured and then given the volumes for a further corrective
 The numerical results are placed in [results/library_qc/](results/library_qc/) and HTML reports are generated that go into the documentation that can be rendered on GitHub Pages.
 
 ### Titer processing and plots
-[rules/analyze_titers.smk](rules/analyze_titers.smk) aggregates the per-cohort sera metadata (see [Sera](#sera) above), QCs and subsets the titers aggregated by the pipeline into [results/final_titer_data/](results/final_titer_data/), and builds the interactive titer summary and fold-change plots.
+[rules/analyze_titers.smk](rules/analyze_titers.smk) aggregates the per-cohort sera metadata (see [Sera](#sera) above), QCs and subsets the titers aggregated by the pipeline into [results/final_titer_data/](results/final_titer_data/), and builds the interactive titer summary plots.
 
 ### Nextstrain protein trees
 [rules/trees.smk](rules/trees.smk) builds the alignment, metadata, and titers TSV for each subtype, then runs the *nextstrain-prot-titers-tree* submodule to make the auspice JSONs in [auspice/](auspice) that are linked at the top of this README.

@@ -106,8 +106,8 @@ A/Bangkok/P2391/2025_H3N2:
     plate6 H10: max_frac_infectivity_per_viral_barcode_well
     plate6 H4: max_frac_infectivity_per_viral_barcode_well
   barcodes:
-    plate3: min_neut_standard_frac_per_well
-    plate4: min_neut_standard_frac_per_well
+    plate3: no_serum_per_viral_barcode_filters
+    plate4: no_serum_per_viral_barcode_filters
 A/Blaenavon/6687/2026_H3N2:
   barcode_serum_replicates:
     plate1 flu-seqneut-2026-SCH-001: goodness_of_fit

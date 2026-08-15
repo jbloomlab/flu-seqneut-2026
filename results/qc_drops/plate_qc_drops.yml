@@ -549,7 +549,7 @@ plate2:
 plate3:
   wells: {}
   barcodes:
-    A/Bangkok/P2391/2025_H3N2: min_neut_standard_frac_per_well
+    A/Bangkok/P2391/2025_H3N2: no_serum_per_viral_barcode_filters
   barcode_wells:
     A/France/GES-IPP01077/2026_H3N2 E1: 
       max_frac_infectivity_per_viral_barcode_well
@@ -731,7 +731,7 @@ plate3:
 plate4:
   wells: {}
   barcodes:
-    A/Bangkok/P2391/2025_H3N2: min_neut_standard_frac_per_well
+    A/Bangkok/P2391/2025_H3N2: no_serum_per_viral_barcode_filters
   barcode_wells:
     A/France/GES-IPP01077/2026_H3N2 D8: 
       max_frac_infectivity_per_viral_barcode_well

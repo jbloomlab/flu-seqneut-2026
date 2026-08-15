@@ -124,10 +124,6 @@ plot_titer_summaries_params:
     - "#bebada"
     - "#8dd3c7"
 
-# Plot fold changes in titers (used for pre/post vax sera). Other plot parameters come
-# from `plot_titer_summaries_params`
-plot_fold_changes: {}
-
 # Thresholds a well of a miscellaneous plate must meet for the library QC analyses below
 # to trust what it measures. Merged into every `library_qc` analysis with `<<:`
 default_library_qc_well_qc_thresholds: &default_library_qc_well_qc_thresholds

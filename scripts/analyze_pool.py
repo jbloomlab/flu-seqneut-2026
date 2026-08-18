@@ -70,11 +70,6 @@ ODDS_AXIS_PAD = 1.5
 # material that does not belong in the pool rather than noise.
 MAX_SEQUENCING_ERROR_HAMMING = 1
 
-# The column of the invalid-barcode CSVs holding that distance. `bacode` is a typo in
-# `seqneut-pipeline`, not here; if a later version of the pipeline fixes it, this is the
-# one place to change.
-HAMMING_COL = "closest_valid_bacode_hamming_distance"
-
 # reason recorded for strains that cannot be re-pooled as they had no counts
 NO_COUNTS_REASON = "no counts in the analyzed wells"
 
@@ -708,9 +703,12 @@ add_markdown(f"""
     """)
 
 invalid = read_per_well_csvs(snakemake.input.invalid, "_invalid")
-missing_cols = {"barcode", "count", "closest_valid_barcode", HAMMING_COL} - set(
-    invalid.columns
-)
+missing_cols = {
+    "barcode",
+    "count",
+    "closest_valid_barcode",
+    "closest_valid_barcode_hamming_distance",
+} - set(invalid.columns)
 if missing_cols:
     raise ValueError(
         f"the invalid barcode CSVs lack the columns {sorted(missing_cols)}; a version of "
@@ -740,11 +738,13 @@ else:
     # sorted so that taking the first of each barcode takes its closest known barcode,
     # which can be a different one in each well when two are equally close
     invalid_barcodes = (
-        invalid.sort_values(HAMMING_COL)
+        invalid.sort_values("closest_valid_barcode_hamming_distance")
         .groupby("barcode", as_index=False)
         .aggregate(
             count=pd.NamedAgg("count", "sum"),
-            hamming_distance=pd.NamedAgg(HAMMING_COL, "first"),
+            hamming_distance=pd.NamedAgg(
+                "closest_valid_barcode_hamming_distance", "first"
+            ),
             closest_valid_barcode=pd.NamedAgg("closest_valid_barcode", "first"),
         )
         .assign(

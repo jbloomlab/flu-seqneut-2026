@@ -38,9 +38,3 @@ ignore = [
     # rather than `TypeError` when what is invalid happens to be a type
     "TRY004",
 ]
-
-[tool.ruff.lint.per-file-ignores]
-"notebooks/*.py" = [
-    "B018",  # a cell's trailing bare expression is what that cell renders
-    "PLR1711",  # `marimo` ends each cell with a `return` of the variables it exports
-]

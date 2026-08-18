@@ -78,11 +78,6 @@ MAX_OWN_STRAIN_ERROR_HAMMING = 1
 # material that does not belong on the plate at all rather than noise.
 MAX_SEQUENCING_ERROR_HAMMING = 1
 
-# The column of the invalid-barcode CSVs holding that distance. `bacode` is a typo in
-# `seqneut-pipeline`, not here; if a later version of the pipeline fixes it, this is the
-# one place to change.
-HAMMING_COL = "closest_valid_bacode_hamming_distance"
-
 # Distances further than this from a well are reported as one group rather than each on its
 # own, there being nothing to tell them apart: what matters is whether material came from a
 # neighboring well, not whether it came from five wells away or from nine.
@@ -479,7 +474,12 @@ if unexplained_fates:
 invalid = read_per_well_csvs(
     snakemake.input.invalid,
     "_invalid",
-    ["barcode", "count", "closest_valid_barcode", HAMMING_COL],
+    [
+        "barcode",
+        "count",
+        "closest_valid_barcode",
+        "closest_valid_barcode_hamming_distance",
+    ],
 )
 
 # --- which strains are assayed here ------------------------------------------------------
@@ -1235,7 +1235,7 @@ else:
             validate="many_to_one",
         )
         .assign(
-            is_sequencing_error=lambda x: x[HAMMING_COL]
+            is_sequencing_error=lambda x: x["closest_valid_barcode_hamming_distance"]
             <= MAX_SEQUENCING_ERROR_HAMMING,
             fraction_of_reads=lambda x: x["count"] / x[NON_NEUT_STANDARD_READS],
             # What a barcode appears to be. Close enough to a known barcode and it is that
@@ -1251,7 +1251,8 @@ else:
                 + x["strain"].where(~x["neut_standard"], "neut standard")
             ).where(
                 x["is_sequencing_error"],
-                x[HAMMING_COL].astype(str) + " nt from any known barcode",
+                x["closest_valid_barcode_hamming_distance"].astype(str)
+                + " nt from any known barcode",
             )
             + ")",
         )

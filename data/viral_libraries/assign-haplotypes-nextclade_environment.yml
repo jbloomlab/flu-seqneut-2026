@@ -1,0 +1,13 @@
+name: assign-haplotypes-nextclade
+
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - black
+  - nextclade=3.20
+  - pandas=2.3
+  - python=3.13
+  - ruff

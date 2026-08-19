@@ -1,0 +1,5 @@
+# written by assign-haplotypes-nextclade.py
+date: 2026-08-19
+nextclade: nextclade 3.20.0
+H1N1: nextstrain/flu/h1n1pdm/ha/MW626062 2026-04-14--11-55-23Z
+H3N2: nextstrain/flu/h3n2/ha/EPI1857216 2026-08-07--07-54-41Z

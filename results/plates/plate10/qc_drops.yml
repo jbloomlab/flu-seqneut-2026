@@ -1,0 +1,122 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Andalucia/PMC-01217/2025_H1N1 E1: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 E1: max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 E1: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Singapore/KK2768/2025_H1N1 E1: max_frac_infectivity_per_viral_barcode_well
+  A/France/NAQ-HCL026046169102/2025_H1N1 C1: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Singapore/KK2768/2025_H1N1 C1: max_frac_infectivity_per_viral_barcode_well
+  A/Vietnam/PF125413/2025_H1N1 C1: max_frac_infectivity_per_viral_barcode_well
+  A/Wisconsin/67/2022_H1N1 C1: max_frac_infectivity_per_viral_barcode_well
+  A/Colorado/218/2024_H1N1 D1: max_frac_infectivity_per_viral_barcode_well
+  A/Wisconsin/67/2022_H1N1 D1: max_frac_infectivity_per_viral_barcode_well
+  A/Colorado/218/2024_H1N1 B1: max_frac_infectivity_per_viral_barcode_well
+  A/Andalucia/PMC-01217/2025_H1N1 E3: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Netherlands/10008/2026_H1N1 C3: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 F3: max_frac_infectivity_per_viral_barcode_well
+  A/France/NAQ-HCL026046169102/2025_H1N1 D3: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Missouri/11/2025_cell_H1N1 D3: max_frac_infectivity_per_viral_barcode_well
+  A/Andalucia/PMC-01495/2025_H1N1 G3: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Netherlands/10008/2026_H1N1 B3: max_frac_infectivity_per_viral_barcode_well
+  A/Andalucia/PMC-00977/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Andalucia/PMC-01217/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Andalucia/PMC-01495/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/BritishColumbia/RV00022-26/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/BritishColumbia/RV01350-26/2026_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/BritishColumbia/RV05508-25/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/California/NIRC-IS-1356/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Colorado/218/2024_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/England/1893256/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/France/HDF-RELAB-IPP07969/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/France/NAQ-HCL026046169102/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Hawaii/70/2019_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Hawaii/ISC-1140/2025_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Hessen/18/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Kentucky/80/2025_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Maine/25/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Mauritius/26000203/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/MinasGerais/410/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Netherlands/2398/2025_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Netherlands/543/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Netherlands/864/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/NordrheinWestfalen/96/2026_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Norway/9556/2025_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Rhode_Island/11/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Singapore/KK2768/2025_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/SouthAfrica/NICD-R01647/2026_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/SouthAfrica/NICD-R01668/2026_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/SouthAfrica/PATH-CERI-C073358/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/SouthAfrica/PATH-CERI-C073366/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Switzerland/UN-SNRCI-HUG-053/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Tokyo/EIS11-277/2024_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Valencia/VAHNSI_09_02564/2025_H1N1 F4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Vietnam/PF126009/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Virginia/82/2025_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Wisconsin/67/2022_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Zambia/6-NIC-014/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Zambia/7-NIC-313/2026_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Netherlands/10008/2026_H1N1 E5: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 H5: max_frac_infectivity_per_viral_barcode_well
+  A/Victoria/4897/2022_IVR-238_H1N1 H5: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Colorado/218/2024_H1N1 G5: max_frac_infectivity_per_viral_barcode_well
+  A/Hawaii/70/2019_H1N1 G5: max_frac_infectivity_per_viral_barcode_well
+  A/Croatia/10136RV/2023_H3N2 H6: max_frac_infectivity_per_viral_barcode_well
+  A/France/NAQ-HCL026046169102/2025_H1N1 H6: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Wisconsin/588/2019_H1N1 G9: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 H11: max_frac_infectivity_per_viral_barcode_well
+  A/Colorado/218/2024_H1N1 G11: max_frac_infectivity_per_viral_barcode_well
+  A/France/NAQ-HCL026046169102/2025_H1N1 G11: 
+    max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Galicia/GA-CHUAC-612/2025_H1N1 flu-seqneut-2026-SCH-001: goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-SCH-005: 
+    goodness_of_fit
+  A/Bangkok/P2390/2025_H3N2 flu-seqneut-2026-SCH-006: goodness_of_fit
+  A/Blaenavon/6687/2026_H3N2 flu-seqneut-2026-SCH-006: goodness_of_fit
+  A/Colombia/1851/2024_H3N2 flu-seqneut-2026-SCH-006: goodness_of_fit
+  A/Colorado/218/2024_H1N1 flu-seqneut-2026-SCH-006: goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-SCH-006: 
+    goodness_of_fit
+  A/Ireland/91576/2025_H3N2 flu-seqneut-2026-SCH-006: goodness_of_fit
+  A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-SCH-006: goodness_of_fit
+  A/Mississippi/20/2026_H1N1 flu-seqneut-2026-SCH-006: goodness_of_fit
+  A/Singapore/NTF0577/2025_H3N2 flu-seqneut-2026-SCH-006: goodness_of_fit
+  A/Trieste/257/2025_H3N2 flu-seqneut-2026-SCH-006: goodness_of_fit
+  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-SCH-008: goodness_of_fit
+  A/Malaysia/IMR/SARI/2406/2025_H3N2 flu-seqneut-2026-SCH-008: goodness_of_fit
+  A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-SCH-008: goodness_of_fit
+  A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-SCH-008: goodness_of_fit
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-SCH-011: goodness_of_fit
+  A/Distrito_Federal/250106000728/2025_H3N2 flu-seqneut-2026-SCH-011: 
+    goodness_of_fit
+  A/StPetersburg/RII-25-2042S/2025_H3N2 flu-seqneut-2026-SCH-011: 
+    goodness_of_fit
+serum_replicates: {}

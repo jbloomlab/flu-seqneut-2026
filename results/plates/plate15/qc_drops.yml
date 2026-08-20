@@ -1,0 +1,40 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Arizona/40/2026_H1N1 H2: max_frac_infectivity_per_viral_barcode_well
+  A/Hawaii/ISC-1140/2025_H1N1 F2: max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 H3: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 H4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Uppsala/SE26-01293/2026_H1N1 E5: max_frac_infectivity_per_viral_barcode_well
+  A/Wisconsin/67/2022_H1N1 H5: max_frac_infectivity_per_viral_barcode_well
+  A/Ohio/259/2024_H1N1 F5: max_frac_infectivity_per_viral_barcode_well
+  A/Andalucia/PMC-01217/2025_H1N1 D6: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Arizona/40/2026_H1N1 D6: max_frac_infectivity_per_viral_barcode_well
+  A/Colorado/218/2024_H1N1 D6: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 D6: max_frac_infectivity_per_viral_barcode_well
+  A/France/NAQ-HCL026046169102/2025_H1N1 D6: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Mississippi/20/2026_H1N1 D6: max_frac_infectivity_per_viral_barcode_well
+  A/Missouri/11/2025_egg_H1N1 D6: max_frac_infectivity_per_viral_barcode_well
+  A/PaisVasco/70369726/2026_H1N1 D6: max_frac_infectivity_per_viral_barcode_well
+  A/Singapore/MOH0547/2024_H1N1 D6: max_frac_infectivity_per_viral_barcode_well
+  A/Victoria/4897/2022_IVR-238_H1N1 D6: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Wisconsin/67/2022_H1N1 D6: max_frac_infectivity_per_viral_barcode_well
+  A/Navarra/260009/2025_H3N2 D7: max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 F8: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 G9: max_frac_infectivity_per_viral_barcode_well
+  A/Missouri/11/2025_cell_H1N1 E11: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-UWMC-049: goodness_of_fit
+  A/Blaenavon/6687/2026_H3N2 flu-seqneut-2026-UWMC-054: goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-UWMC-054: 
+    goodness_of_fit
+  A/France/OCC-HCL026013263701/2026_H3N2 flu-seqneut-2026-UWMC-054: 
+    goodness_of_fit
+  A/Netherlands/543/2026_H1N1 flu-seqneut-2026-UWMC-054: goodness_of_fit
+serum_replicates: {}

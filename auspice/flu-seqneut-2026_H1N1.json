@@ -2,7 +2,7 @@
   "version": "v2",
   "meta": {
     "title": "Near real-time data on human neutralizing antibody landscape to H1N1 influenza virus as of the summer of 2026",
-    "updated": "2026-08-15",
+    "updated": "2026-08-19",
     "build_url": "https://github.com/jbloomlab/flu-seqneut-2026",
     "maintainers": [
       {
@@ -150,7 +150,7 @@
                     "value": 2024.94
                   },
                   "derived_haplotype": {
-                    "value": "C.1.9.2"
+                    "value": "C.1.9.2:A139T,A141E"
                   },
                   "strain_type": {
                     "value": "circulating_2026"
@@ -182,7 +182,7 @@
                     "value": 2024.75
                   },
                   "derived_haplotype": {
-                    "value": "C.1.9.4"
+                    "value": "C.1.9.4:V152I"
                   },
                   "strain_type": {
                     "value": "circulating_2026"
@@ -256,13 +256,13 @@
                     "value": 2025.64
                   },
                   "derived_haplotype": {
-                    "value": "C.1.9.1"
+                    "value": "C.1.9:P137S"
                   },
                   "strain_type": {
                     "value": "circulating_2026"
                   },
                   "subclade": {
-                    "value": "C.1.9.1"
+                    "value": "C.1.9"
                   }
                 },
                 "branch_attrs": {}
@@ -392,7 +392,7 @@
                                 "value": 2026.02
                               },
                               "derived_haplotype": {
-                                "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K,D274N"
+                                "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K,D274N,HA2_I45V"
                               },
                               "strain_type": {
                                 "value": "circulating_2026"
@@ -442,7 +442,7 @@
                                 "value": 2025.85
                               },
                               "derived_haplotype": {
-                                "value": "C.1.9.3:V152I"
+                                "value": "C.1.9.3:S69P,P137S,V152I,G155E,I166V,E172K"
                               },
                               "strain_type": {
                                 "value": "circulating_2026"
@@ -503,13 +503,13 @@
                     "value": 2022.81
                   },
                   "derived_haplotype": {
-                    "value": "C.1"
+                    "value": "C.1.1"
                   },
                   "strain_type": {
                     "value": "2023-2024, 2024, 2024-2025, 2025, 2025-2026 cell-based vaccine"
                   },
                   "subclade": {
-                    "value": "C.1"
+                    "value": "C.1.1"
                   }
                 },
                 "branch_attrs": {
@@ -952,13 +952,13 @@
                             "value": 2024.8
                           },
                           "derived_haplotype": {
-                            "value": "D.2"
+                            "value": "D.3.1:R113K"
                           },
                           "strain_type": {
                             "value": "circulating_2026"
                           },
                           "subclade": {
-                            "value": "D.2"
+                            "value": "D.3.1"
                           }
                         },
                         "branch_attrs": {}
@@ -1624,7 +1624,7 @@
                                             "value": 2026.18
                                           },
                                           "derived_haplotype": {
-                                            "value": "D.3.1.1:I57V,A141V,R205K"
+                                            "value": "D.3.1.1:I57V,A141V,R205K,HA2_S151N"
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"
@@ -2116,7 +2116,7 @@
                                         "value": 2026.13
                                       },
                                       "derived_haplotype": {
-                                        "value": "D.3.1.1:S157T,R205K"
+                                        "value": "D.3.1.1:S157T,R205K,HA2_V45I"
                                       },
                                       "strain_type": {
                                         "value": "circulating_2026"
@@ -2235,7 +2235,7 @@
                                             "value": 2026.09
                                           },
                                           "derived_haplotype": {
-                                            "value": "D.3.1.1:S190I,R205K"
+                                            "value": "D.3.1.1:S190I,R205K,HA2_K39R"
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"
@@ -2263,7 +2263,7 @@
                                             "value": 2026.09
                                           },
                                           "derived_haplotype": {
-                                            "value": "D.3.1.1:I166T,R205K,V220M"
+                                            "value": "D.3.1.1:I166T,R205K,V220M,HA2_K39R"
                                           },
                                           "strain_type": {
                                             "value": "circulating_2026"

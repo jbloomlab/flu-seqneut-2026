@@ -48,7 +48,7 @@ If you don't care to understand the overall repo structure and are just looking 
   - *barcode*: should be 16-nt string, all barcode entries should be unique for each row
   - *accession*: Genbank accession if available
   - *subclade*: can only be null for *strain_type* of "vaccine"
-  - *derived_haplotype*: description of derived haplotype from clade (eg, clade plus additional HA1 mutations), can only be null for *strain_type* of "vaccine". Note that HA2 mutations are not included in the derived_haplotype naming, so multiple strains may share the same derived_haplotype if they differ only in HA2.
+  - *derived_haplotype*: the *subclade* plus the amino-acid mutations separating the strain from its subclade founder, written as `subclade:mut,mut` (eg, `K:F192V,HA2_R32K`). HA1 mutations come first and are bare; HA2 mutations follow and are prefixed `HA2_`. Only the strain-derived part of the ectodomain is named, so the constant signal peptide and transmembrane / cytoplasmic tail are excluded.
   - *shortname_strain*: short name for the strain, used to assign strains to subpools in the library QC analyses
   - *shortname_barcoded_construct*: short name for the individual barcoded construct, which is *shortname_strain* plus a "_bc<n>" suffix for strains ordered with several barcodes
   - *collection_date*: collection date as float (eg, 2025.5); in many cases this may refer to the date that HA1 haplotype was last identified rather than the actual collection date of the particular named strain.

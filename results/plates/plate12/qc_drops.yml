@@ -1,0 +1,37 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Missouri/11/2025_cell_H1N1 E1: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 F1: max_frac_infectivity_per_viral_barcode_well
+  A/Hawaii/70/2019_H1N1 G1: max_frac_infectivity_per_viral_barcode_well
+  A/Victoria/4897/2022_IVR-238_H1N1 G1: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Darwin/1415/2025_H3N2 H2: max_frac_infectivity_per_viral_barcode_well
+  A/Missouri/11/2025_cell_H1N1 G2: max_frac_infectivity_per_viral_barcode_well
+  A/Valencia/VAHNSI_09_02564/2025_H1N1 H3: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Victoria/4897/2022_IVR-238_H1N1 F3: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Colorado/218/2024_H1N1 D3: max_frac_infectivity_per_viral_barcode_well
+  A/Norway/9556/2025_H1N1 H4: max_frac_infectivity_per_viral_barcode_well
+  A/Victoria/4897/2022_IVR-238_H1N1 H4: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 E7: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Arizona/40/2026_H1N1 H9: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 H11: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
+  A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-SCH-025: 
+    goodness_of_fit
+  A/Wisconsin/588/2019_H1N1 flu-seqneut-2026-SCH-027: goodness_of_fit
+  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-SCH-028: goodness_of_fit
+  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-SCH-028: 
+    goodness_of_fit
+  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-SCH-032: 
+    goodness_of_fit
+  A/Peru/ANC-INS-062/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-SCH-032: 
+    goodness_of_fit
+serum_replicates: {}

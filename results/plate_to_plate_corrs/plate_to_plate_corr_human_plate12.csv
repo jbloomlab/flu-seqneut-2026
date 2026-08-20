@@ -1,0 +1,12 @@
+plate,date,other_plate,other_date,serum,n_strains,pearson_r,n_strains_retained,pearson_r_retained
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-023,147,0.9005,147,0.9005
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-024,147,0.7378,147,0.7378
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-025,114,0.509,114,0.509
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-026,147,0.9771,147,0.9771
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-027,146,0.8741,145,0.8959
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-028,145,0.8991,145,0.8991
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-029,146,0.8061,146,0.8061
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-030,76,0.5711,76,0.5711
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-031,147,0.6763,147,0.6763
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-032,116,0.6615,116,0.6615
+plate12,2026-08-20,plate3,2026-08-05,flu-seqneut-2026-SCH-033,147,0.9518,147,0.9518

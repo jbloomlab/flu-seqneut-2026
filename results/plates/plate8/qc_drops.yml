@@ -1,0 +1,24 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Galicia/GA-CHUAC-612/2025_H1N1 H11: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 D11: 
+    max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Hawaii/ISC-1140/2025_H1N1 flu-seqneut-2026-UWMC-016: goodness_of_fit
+  A/NewYork/NIRC-IS-1086/2026_H3N2 flu-seqneut-2026-UWMC-016: goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-UWMC-016: 
+    goodness_of_fit
+  A/StPetersburg/RII-25-2600S/2026_H3N2 flu-seqneut-2026-UWMC-016: 
+    goodness_of_fit
+  A/Thuringen/39/2026_H3N2 flu-seqneut-2026-UWMC-016: goodness_of_fit
+  A/Badajoz/18811358/2026_H3N2 flu-seqneut-2026-UWMC-018: goodness_of_fit
+  A/Colorado/218/2024_H1N1 flu-seqneut-2026-UWMC-020: goodness_of_fit
+  A/Uppsala/SE26-01293/2026_H1N1 flu-seqneut-2026-UWMC-021: goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-UWMC-024: 
+    goodness_of_fit
+  A/Missouri/11/2025_cell_H1N1 flu-seqneut-2026-UWMC-026: goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-UWMC-026: 
+    goodness_of_fit
+serum_replicates: {}

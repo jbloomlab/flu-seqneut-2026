@@ -419,7 +419,7 @@ sera_override_defaults: {}
 plates:
 
   plate1:
-    group: human
+    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
     date: 2026-08-05
     viral_library: actual
     neut_standard_set: loes2023
@@ -436,7 +436,7 @@ plates:
       upstream2_mismatch: 1
 
   plate2:
-    group: human
+    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
     date: 2026-08-05
     viral_library: actual
     neut_standard_set: loes2023
@@ -453,7 +453,7 @@ plates:
       upstream2_mismatch: 1
 
   plate3:
-    group: human
+    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
     date: 2026-08-05
     viral_library: actual
     neut_standard_set: loes2023
@@ -470,7 +470,7 @@ plates:
       upstream2_mismatch: 1
 
   plate4:
-    group: human
+    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
     date: 2026-08-05
     viral_library: actual
     neut_standard_set: loes2023
@@ -487,7 +487,7 @@ plates:
       upstream2_mismatch: 1
 
   plate5:
-    group: human
+    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
     date: 2026-08-05
     viral_library: actual
     neut_standard_set: loes2023
@@ -504,7 +504,7 @@ plates:
       upstream2_mismatch: 1
 
   plate6:
-    group: human
+    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
     date: 2026-08-05
     viral_library: actual
     neut_standard_set: loes2023

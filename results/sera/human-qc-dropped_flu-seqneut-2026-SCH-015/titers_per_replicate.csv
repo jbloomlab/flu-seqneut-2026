@@ -1,0 +1,5 @@
+group,serum,virus,plate,replicate,titer,titer_bound,titer_as,titer_units,nt50,midpoint,top,bottom,slope,dropped_by_qc
+human-qc-dropped,flu-seqneut-2026-SCH-015,A/California/GKISBBBH79910/2026_H3N2,plate2,plate2-A/California/GKISBBBH79910/2026_H3N2,483.9,interpolated,midpoint,reciprocal_dilution,483.9,483.9,1,0,0.8,False
+human-qc-dropped,flu-seqneut-2026-SCH-015,A/France/OCC-HCL026013263701/2026_H3N2,plate2,plate2-A/France/OCC-HCL026013263701/2026_H3N2,383.4,interpolated,midpoint,reciprocal_dilution,534.2,383.4,0.8835,0,0.8,False
+human-qc-dropped,flu-seqneut-2026-SCH-015,A/NovaScotia/25-365-06099/2025_H3N2,plate2,plate2-A/NovaScotia/25-365-06099/2025_H3N2,433.5,interpolated,midpoint,reciprocal_dilution,433.5,433.5,1,0,0.8,False
+human-qc-dropped,flu-seqneut-2026-SCH-015,A/RiodeJaneiro/331/2026_H3N2,plate2,plate2-A/RiodeJaneiro/331/2026_H3N2,362.8,interpolated,midpoint,reciprocal_dilution,430.6,362.8,0.936,0,0.8,False

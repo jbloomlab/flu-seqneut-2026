@@ -17,7 +17,6 @@ human,flu-seqneut-2026-SCH-015,A/BritishColumbia/RV00279-26/2025_H3N2,plate11,pl
 human,flu-seqneut-2026-SCH-015,A/BritishColumbia/RV01350-26/2026_H1N1,plate11,plate11-A/BritishColumbia/RV01350-26/2026_H1N1,74.46,interpolated,midpoint,reciprocal_dilution,74.46,74.46,1,0,1.839,False
 human,flu-seqneut-2026-SCH-015,A/BritishColumbia/RV05508-25/2025_H1N1,plate11,plate11-A/BritishColumbia/RV05508-25/2025_H1N1,81.47,interpolated,midpoint,reciprocal_dilution,81.47,81.47,1,0,2.335,False
 human,flu-seqneut-2026-SCH-015,A/California/GKISBBBH79910/2026_H3N2,plate11,plate11-A/California/GKISBBBH79910/2026_H3N2,65.46,interpolated,midpoint,reciprocal_dilution,65.46,65.46,1,0,1.681,False
-human,flu-seqneut-2026-SCH-015,A/California/GKISBBBH79910/2026_H3N2,plate2,plate2-A/California/GKISBBBH79910/2026_H3N2,483.9,interpolated,midpoint,reciprocal_dilution,483.9,483.9,1,0,0.8,False
 human,flu-seqneut-2026-SCH-015,A/California/NIRC-IS-1019/2026_H1N1,plate11,plate11-A/California/NIRC-IS-1019/2026_H1N1,40,upper,midpoint,reciprocal_dilution,40,40,1,0,1.8,False
 human,flu-seqneut-2026-SCH-015,A/California/NIRC-IS-1059/2026_H3N2,plate11,plate11-A/California/NIRC-IS-1059/2026_H3N2,106.2,interpolated,midpoint,reciprocal_dilution,131.9,106.2,0.8476,0,1.681,False
 human,flu-seqneut-2026-SCH-015,A/California/NIRC-IS-1067/2026_H3N2,plate11,plate11-A/California/NIRC-IS-1067/2026_H3N2,102.8,interpolated,midpoint,reciprocal_dilution,103.2,102.8,0.9963,0,1.961,False
@@ -47,7 +46,6 @@ human,flu-seqneut-2026-SCH-015,A/France/HDF-RELAB-IPP07969/2025_H1N1,plate11,pla
 human,flu-seqneut-2026-SCH-015,A/France/NAQ-HCL026010957001/2026_H3N2,plate11,plate11-A/France/NAQ-HCL026010957001/2026_H3N2,99.7,interpolated,midpoint,reciprocal_dilution,100.9,99.7,0.9912,0,1.515,False
 human,flu-seqneut-2026-SCH-015,A/France/NAQ-HCL026046169102/2025_H1N1,plate11,plate11-A/France/NAQ-HCL026046169102/2025_H1N1,68.6,interpolated,midpoint,reciprocal_dilution,73.63,68.6,0.945,0,1.647,False
 human,flu-seqneut-2026-SCH-015,A/France/OCC-HCL026013263701/2026_H3N2,plate11,plate11-A/France/OCC-HCL026013263701/2026_H3N2,160.5,interpolated,midpoint,reciprocal_dilution,162.3,160.5,0.9922,0,1.447,False
-human,flu-seqneut-2026-SCH-015,A/France/OCC-HCL026013263701/2026_H3N2,plate2,plate2-A/France/OCC-HCL026013263701/2026_H3N2,383.4,interpolated,midpoint,reciprocal_dilution,534.2,383.4,0.8835,0,0.8,False
 human,flu-seqneut-2026-SCH-015,A/France/PAC-RELAB-HCL026021993801/2026_H3N2,plate11,plate11-A/France/PAC-RELAB-HCL026021993801/2026_H3N2,103.8,interpolated,midpoint,reciprocal_dilution,103.8,103.8,1,0,4.732,False
 human,flu-seqneut-2026-SCH-015,A/Galicia/GA-CHUAC-451/2025_H3N2,plate11,plate11-A/Galicia/GA-CHUAC-451/2025_H3N2,40,upper,midpoint,reciprocal_dilution,40,40,1,0,0.8451,False
 human,flu-seqneut-2026-SCH-015,A/Galicia/GA-CHUAC-612/2025_H1N1,plate11,plate11-A/Galicia/GA-CHUAC-612/2025_H1N1,49.89,interpolated,midpoint,reciprocal_dilution,49.89,49.89,1,0,3.188,False
@@ -92,7 +90,6 @@ human,flu-seqneut-2026-SCH-015,A/NordrheinWestfalen/54/2026_H3N2,plate11,plate11
 human,flu-seqneut-2026-SCH-015,A/NordrheinWestfalen/96/2026_H1N1,plate11,plate11-A/NordrheinWestfalen/96/2026_H1N1,51.27,interpolated,midpoint,reciprocal_dilution,51.27,51.27,1,0,1.751,False
 human,flu-seqneut-2026-SCH-015,A/Norway/9556/2025_H1N1,plate11,plate11-A/Norway/9556/2025_H1N1,47.48,interpolated,midpoint,reciprocal_dilution,47.48,47.48,1,0,2.77,False
 human,flu-seqneut-2026-SCH-015,A/NovaScotia/25-365-06099/2025_H3N2,plate11,plate11-A/NovaScotia/25-365-06099/2025_H3N2,90.82,interpolated,midpoint,reciprocal_dilution,90.82,90.82,1,0,1.754,False
-human,flu-seqneut-2026-SCH-015,A/NovaScotia/25-365-06099/2025_H3N2,plate2,plate2-A/NovaScotia/25-365-06099/2025_H3N2,433.5,interpolated,midpoint,reciprocal_dilution,433.5,433.5,1,0,0.8,False
 human,flu-seqneut-2026-SCH-015,A/Ohio/259/2024_H1N1,plate11,plate11-A/Ohio/259/2024_H1N1,41.09,interpolated,midpoint,reciprocal_dilution,41.09,41.09,1,0,10,False
 human,flu-seqneut-2026-SCH-015,A/Ontario/PHL202550193/2025_H3N2,plate11,plate11-A/Ontario/PHL202550193/2025_H3N2,85.79,interpolated,midpoint,reciprocal_dilution,88.77,85.79,0.9865,0,0.8,False
 human,flu-seqneut-2026-SCH-015,A/Oregon/81/2025_H3N2,plate11,plate11-A/Oregon/81/2025_H3N2,104,interpolated,midpoint,reciprocal_dilution,104.4,104,0.9939,0,2.94,False
@@ -101,7 +98,6 @@ human,flu-seqneut-2026-SCH-015,A/Parana/416133590/2026_H3N2,plate11,plate11-A/Pa
 human,flu-seqneut-2026-SCH-015,A/Peru/ANC-INS-062/2026_H3N2,plate11,plate11-A/Peru/ANC-INS-062/2026_H3N2,63.86,interpolated,midpoint,reciprocal_dilution,69.34,63.86,0.9597,0,1.021,False
 human,flu-seqneut-2026-SCH-015,A/Rhode_Island/11/2026_H1N1,plate11,plate11-A/Rhode_Island/11/2026_H1N1,67.34,interpolated,midpoint,reciprocal_dilution,67.34,67.34,1,0,2.223,False
 human,flu-seqneut-2026-SCH-015,A/RiodeJaneiro/331/2026_H3N2,plate11,plate11-A/RiodeJaneiro/331/2026_H3N2,103.8,interpolated,midpoint,reciprocal_dilution,107,103.8,0.9149,0,6.134,False
-human,flu-seqneut-2026-SCH-015,A/RiodeJaneiro/331/2026_H3N2,plate2,plate2-A/RiodeJaneiro/331/2026_H3N2,362.8,interpolated,midpoint,reciprocal_dilution,430.6,362.8,0.936,0,0.8,False
 human,flu-seqneut-2026-SCH-015,A/Romania/612042/2026_H3N2,plate11,plate11-A/Romania/612042/2026_H3N2,79.54,interpolated,midpoint,reciprocal_dilution,79.54,79.54,1,0,1.779,False
 human,flu-seqneut-2026-SCH-015,A/SantaCatarina/508/2026_H3N2,plate11,plate11-A/SantaCatarina/508/2026_H3N2,70.37,interpolated,midpoint,reciprocal_dilution,70.37,70.37,1,0,1.748,False
 human,flu-seqneut-2026-SCH-015,A/Saskatchewan/SKFLU477299/2025_H3N2,plate11,plate11-A/Saskatchewan/SKFLU477299/2025_H3N2,66.28,interpolated,midpoint,reciprocal_dilution,66.28,66.28,1,0,1.031,False

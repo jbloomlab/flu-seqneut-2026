@@ -43,7 +43,7 @@ rule process_final_titer_data:
         "../scripts/process_final_titer_data.py"
 
 
-# Define set of titer charts to make
+# Define set of titer charts to make, as (output path template, chart record) pairs
 titer_charts = []
 for _subtype in config["subtypes"]:
     _colorings = config["plot_titer_summaries_params"]["subtype_params"][_subtype][
@@ -64,13 +64,15 @@ for _subtype in config["subtypes"]:
                 if part
             )
             titer_charts.append(
-                {
-                    "subtype": _subtype,
-                    "strain_set": _strain_set,
-                    "color_label": _color_label,
-                    "chart_type": _chart_type,
-                    "template": f"results/titer_plots/{{group}}_{_stem}_{{orientation}}.html",
-                }
+                (
+                    f"results/titer_plots/{{group}}_{_stem}_{{orientation}}.html",
+                    {
+                        "subtype": _subtype,
+                        "strain_set": _strain_set,
+                        "color_label": _color_label,
+                        "chart_type": _chart_type,
+                    },
+                )
             )
 
 
@@ -81,12 +83,13 @@ rule plot_titer_summaries:
         sera_csv=rules.process_final_titer_data.output.sera,
         sera_multicohort_csv=rules.process_final_titer_data.output.sera_multicohort,
         viruses_csv=rules.process_final_titer_data.output.viruses,
+        # one tree per subtype, in the same order as `params.subtypes`
         trees=[
             config["nextstrain-prot-titers-tree_config"][subtype]["auspice_json"]
             for subtype in config["subtypes"]
         ],
     output:
-        chart_htmls=[chart["template"] for chart in titer_charts],
+        chart_htmls=[template for template, _ in titer_charts],
     log:
         "results/logs/plot_titer_summaries_{group}_{orientation}.txt",
     wildcard_constraints:
@@ -95,21 +98,8 @@ rule plot_titer_summaries:
     conda:
         "../seqneut-pipeline/environment.yml"
     params:
-        charts=lambda wc: [
-            dict(
-                chart,
-                path=chart["template"].format(
-                    group=wc.group, orientation=wc.orientation
-                ),
-            )
-            for chart in titer_charts
-        ],
-        tree_jsons={
-            subtype: config["nextstrain-prot-titers-tree_config"][subtype][
-                "auspice_json"
-            ]
-            for subtype in config["subtypes"]
-        },
+        # in the same order as `output.chart_htmls`, which names each chart's path
+        charts=[record for _, record in titer_charts],
         recent_vaccine_strains=config["recent_vaccine_strains"],
         circulating_strain_type=config["circulating_strain_type"],
         plot_titer_summaries_params=config["plot_titer_summaries_params"],
@@ -123,7 +113,7 @@ rule plot_titer_summaries:
 # coloring plus one for the tree-less vaccine-strain charts
 for _group in groups:
     for _orientation in ["vertical", "horizontal"]:
-        for _chart in titer_charts:
+        for _template, _chart in titer_charts:
             if _chart["strain_set"] == "recent":
                 _section = (
                     f"Interactive charts of {_group} titers, "
@@ -135,7 +125,7 @@ for _group in groups:
                 _subsection = f"{_chart['subtype']} ({_orientation})"
             add_htmls_to_docs.setdefault(_section, {}).setdefault(_subsection, {})[
                 _chart["chart_type"]
-            ] = _chart["template"].format(group=_group, orientation=_orientation)
+            ] = _template.format(group=_group, orientation=_orientation)
 
 
 analyze_titers_outputs = [

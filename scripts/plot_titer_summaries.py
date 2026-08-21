@@ -26,8 +26,6 @@ titers_csv = snakemake.input.titers_csv
 sera_csv = snakemake.input.sera_csv
 sera_multicohort_csv = snakemake.input.sera_multicohort_csv
 viruses_csv = snakemake.input.viruses_csv
-charts_to_make = snakemake.params.charts
-tree_jsons = snakemake.params.tree_jsons
 recent_vaccine_strains = snakemake.params.recent_vaccine_strains
 circulating_strain_type = snakemake.params.circulating_strain_type
 plot_titer_summaries_params = snakemake.params.plot_titer_summaries_params
@@ -36,6 +34,18 @@ facet_orientation = snakemake.params.facet_orientation
 group = snakemake.wildcards.group
 
 subtype_params = plot_titer_summaries_params["subtype_params"]
+
+# the rule lists one tree per subtype, in `subtypes` order
+tree_jsons = dict(zip(subtypes, snakemake.input.trees, strict=True))
+
+# the rule declares its outputs in the same order as `charts`, so each record's chart is
+# saved to the output path it is paired with
+charts_to_make = [
+    dict(record, path=path)
+    for record, path in zip(
+        snakemake.params.charts, snakemake.output.chart_htmls, strict=True
+    )
+]
 
 # pixels per strain along the strain axis
 STRAIN_STEP = 11
@@ -203,10 +213,6 @@ if not set(subtypes).issubset(data_subtypes):
         f"Available subtypes: {data_subtypes}"
     )
 
-missing_trees = set(subtypes) - set(tree_jsons)
-if missing_trees:
-    raise ValueError(f"no tree configured for subtype(s): {missing_trees}")
-
 # a `draw_titer_line` haplotype naming no strain would silently draw no line
 for subtype in subtypes:
     haplotype = subtype_params[subtype]["draw_titer_line"]
@@ -338,6 +344,8 @@ def slice_chart_data(subtype, strain_set):
     if strain_set == "recent":
         # matches the tree tips, which are labeled by haplotype
         chart_viruses["axis_label"] = chart_viruses["derived_haplotype"]
+        # `tree_annotated_plot` replaces this sort with the tree's tip order, so it serves
+        # only to declare the strains the chart draws, as described above
         strain_order = chart_viruses.sort_values(["subclade", "virus"])["axis_label"]
     else:
         if chart_viruses["vaccine_type"].isnull().any():
@@ -421,6 +429,16 @@ def base_chart(chart_titers, strain_order):
         .properties(**panel_size)
     )
 
+
+# sera fields looked up per serum; the lookup frame is cut to these so no chart embeds
+# columns it never draws
+METADATA_LOOKUP_FIELDS = [
+    "cohorts",
+    "serum_collection_date",
+    "age",
+    "age_numeric",
+    "sex",
+]
 
 # fields carried per strain rather than repeated on every titer row
 virus_tooltips = [
@@ -572,6 +590,20 @@ CHART_TYPES = {
     ),
 }
 
+# the rule names the charts to make, and only these are implemented here
+unknown_chart_types = {r["chart_type"] for r in charts_to_make} - set(CHART_TYPES)
+if unknown_chart_types:
+    raise ValueError(
+        f"unknown chart_type(s) {sorted(unknown_chart_types)}; "
+        f"implemented chart types are {sorted(CHART_TYPES)}"
+    )
+unknown_strain_sets = {r["strain_set"] for r in charts_to_make} - set(STRAIN_SETS)
+if unknown_strain_sets:
+    raise ValueError(
+        f"unknown strain_set(s) {sorted(unknown_strain_sets)}; "
+        f"defined strain sets are {sorted(STRAIN_SETS)}"
+    )
+
 
 def facet_and_add_lookups(chart, chart_viruses):
     """Facet `chart` by cohort and look up the serum and virus annotations.
@@ -585,15 +617,9 @@ def facet_and_add_lookups(chart, chart_viruses):
         .transform_lookup(
             lookup="serum",
             from_=alt.LookupData(
-                data=metadata,
+                data=metadata[["serum", *METADATA_LOOKUP_FIELDS]],
                 key="serum",
-                fields=[
-                    "cohorts",
-                    "serum_collection_date",
-                    "age",
-                    "age_numeric",
-                    "sex",
-                ],
+                fields=METADATA_LOOKUP_FIELDS,
             ),
         )
         .transform_lookup(
@@ -688,7 +714,6 @@ def finalize(chart, title, subtitle):
 
 # ---- build every chart, slicing the data once per subtype and strain set -----------
 
-made_charts = []
 for (subtype, strain_set), records in itertools.groupby(
     sorted(charts_to_make, key=lambda r: (r["subtype"], r["strain_set"])),
     key=lambda r: (r["subtype"], r["strain_set"]),
@@ -718,11 +743,3 @@ for (subtype, strain_set), records in itertools.groupby(
 
         print(f"Saving to {record['path']!r}")
         chart.save(record["path"])
-        made_charts.append(record["path"])
-
-if set(made_charts) != set(snakemake.output.chart_htmls):
-    raise ValueError(
-        "charts written do not match the rule's declared outputs:\n"
-        f"  not written: {sorted(set(snakemake.output.chart_htmls) - set(made_charts))}\n"
-        f"  not declared: {sorted(set(made_charts) - set(snakemake.output.chart_htmls))}"
-    )

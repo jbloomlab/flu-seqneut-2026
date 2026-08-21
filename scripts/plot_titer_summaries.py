@@ -31,7 +31,6 @@ circulating_strain_type = snakemake.params.circulating_strain_type
 plot_titer_summaries_params = snakemake.params.plot_titer_summaries_params
 subtypes = snakemake.params.subtypes
 facet_orientation = snakemake.params.facet_orientation
-group = snakemake.wildcards.group
 
 subtype_params = plot_titer_summaries_params["subtype_params"]
 

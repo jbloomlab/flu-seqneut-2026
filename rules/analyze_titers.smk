@@ -46,7 +46,7 @@ rule process_final_titer_data:
 # Define set of titer charts to make
 titer_charts = []
 for _subtype in config["subtypes"]:
-    _colorings = config["plot_titer_summaries_params"]["trees"][_subtype][
+    _colorings = config["plot_titer_summaries_params"]["subtype_params"][_subtype][
         "color_trees_by"
     ]
     for _chart_type in ["individual_sera", "interquartile_range", "frac_below_cutoff"]:
@@ -110,7 +110,6 @@ rule plot_titer_summaries:
             ]
             for subtype in config["subtypes"]
         },
-        trees=config["plot_titer_summaries_params"]["trees"],
         recent_vaccine_strains=config["recent_vaccine_strains"],
         circulating_strain_type=config["circulating_strain_type"],
         plot_titer_summaries_params=config["plot_titer_summaries_params"],

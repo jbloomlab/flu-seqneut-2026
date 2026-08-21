@@ -6,7 +6,8 @@ recent-strain charts are drawn alongside the
 the strain labels, and the coloring. The vaccine-strain charts have no tree: they are
 ordered by collection date and their labels name the vaccine type.
 
-Chart and tree are joined on `derived_haplotype`.
+Chart and tree are joined on `derived_haplotype`, which also names the strain a dashed
+reference line is optionally drawn at.
 
 """
 
@@ -27,13 +28,14 @@ sera_multicohort_csv = snakemake.input.sera_multicohort_csv
 viruses_csv = snakemake.input.viruses_csv
 charts_to_make = snakemake.params.charts
 tree_jsons = snakemake.params.tree_jsons
-tree_params = snakemake.params.trees
 recent_vaccine_strains = snakemake.params.recent_vaccine_strains
 circulating_strain_type = snakemake.params.circulating_strain_type
 plot_titer_summaries_params = snakemake.params.plot_titer_summaries_params
 subtypes = snakemake.params.subtypes
 facet_orientation = snakemake.params.facet_orientation
 group = snakemake.wildcards.group
+
+subtype_params = plot_titer_summaries_params["subtype_params"]
 
 # pixels per strain along the strain axis
 STRAIN_STEP = 11
@@ -205,6 +207,17 @@ missing_trees = set(subtypes) - set(tree_jsons)
 if missing_trees:
     raise ValueError(f"no tree configured for subtype(s): {missing_trees}")
 
+# a `draw_titer_line` haplotype naming no strain would silently draw no line
+for subtype in subtypes:
+    haplotype = subtype_params[subtype]["draw_titer_line"]
+    if haplotype is not None and haplotype not in set(
+        viruses.loc[viruses["subtype"] == subtype, "derived_haplotype"]
+    ):
+        raise ValueError(
+            f"`draw_titer_line` {haplotype!r} is not a derived_haplotype of any "
+            f"{subtype} strain; use null to draw no line"
+        )
+
 # ---- selections and sliders, shared by every chart --------------------------------
 
 virus_selection = alt.selection_point(
@@ -306,7 +319,7 @@ titer_channel = "x" if facet_orientation == "vertical" else "y"
 
 
 def slice_chart_data(subtype, strain_set):
-    """Return the titers, the virus lookup table, and the axis order for one strain set.
+    """Return the titers, virus lookup table, axis order, and reference strain for a set.
 
     Both frames are cut down to exactly the strains the chart draws. `tree_annotated_plot`
     compares the chart's strains against the tree's tips, and where no explicit axis sort
@@ -347,6 +360,19 @@ def slice_chart_data(subtype, strain_set):
             f"{chart_viruses.loc[chart_viruses['axis_label'].duplicated(keep=False), ['virus', 'axis_label']]}"
         )
 
+    # the vaccine set labels a strain `"D.3.1 (cell vaccine)"`, not by haplotype alone,
+    # so the reference line's strain is resolved per strain set
+    ref_haplotype = subtype_params[subtype]["draw_titer_line"]
+    ref_axis_label = None
+    if ref_haplotype is not None:
+        ref_rows = chart_viruses[chart_viruses["derived_haplotype"] == ref_haplotype]
+        if len(ref_rows) != 1:
+            raise ValueError(
+                f"`draw_titer_line` {ref_haplotype!r} matches {len(ref_rows)} of the "
+                f"{subtype} {strain_set} strains, but must match exactly one"
+            )
+        ref_axis_label = ref_rows["axis_label"].item()
+
     chart_titers = titers.merge(
         chart_viruses[["virus", "axis_label"]],
         on="virus",
@@ -367,6 +393,7 @@ def slice_chart_data(subtype, strain_set):
         chart_titers,
         chart_viruses[["axis_label", "virus", "strain_type", "subclade"]],
         strain_order.tolist(),
+        ref_axis_label,
     )
 
 
@@ -419,7 +446,7 @@ def median_points(base):
             },
             tooltip=[*virus_tooltips, alt.Tooltip("median_titer:Q", format=".1f")],
             color=alt.condition(virus_selection, alt.value("red"), alt.value("black")),
-            size=alt.condition(virus_selection, alt.value(80), alt.value(40)),
+            size=alt.condition(virus_selection, alt.value(92), alt.value(46)),
         )
         .mark_circle(opacity=1)
     )
@@ -494,6 +521,42 @@ def frac_below_cutoff(base):
     )
 
 
+def reference_line(chart_titers, ref_axis_label, chart_type):
+    """Dashed rule at `ref_axis_label`'s value within each cohort facet.
+
+    Built from the same frame object as the rest of the layer so `altair` hoists the data
+    to the layer, which puts this mark downstream of the facet's cohort and age filters:
+    the line is the reference strain's own value in that panel and follows the sliders.
+    `titer_cutoff_slider` is referenced but not re-added, as a param may be declared only
+    once.
+
+    """
+    line = alt.Chart(chart_titers).transform_filter(
+        alt.datum["axis_label"] == ref_axis_label
+    )
+    if chart_type == "frac_below_cutoff":
+        line = (
+            line.transform_calculate(
+                below_cutoff=alt.datum["titer"] < titer_cutoff_slider
+            )
+            .transform_aggregate(
+                n_below_cutoff="sum(below_cutoff)", n_total="distinct(serum)"
+            )
+            .transform_calculate(
+                ref_value=alt.datum["n_below_cutoff"] / alt.datum["n_total"]
+            )
+        )
+        encoding = TiterChannel("ref_value:Q", title="fraction below cutoff")
+    else:
+        line = line.transform_aggregate(ref_value="median(titer)")
+        encoding = TiterChannel("ref_value:Q", title="titer", scale=titer_scale)
+    # a burnt orange dark enough to read over the interquartile band, and far enough
+    # from the red of a hovered point not to be mistaken for one
+    return line.encode(**{titer_channel: encoding}).mark_rule(
+        color="#D95F02", strokeWidth=2, strokeDash=[4, 3]
+    )
+
+
 CHART_TYPES = {
     "individual_sera": (
         "median (points) and per-serum (lines) titers",
@@ -563,7 +626,7 @@ def add_tree(chart, subtype, color_label):
     from the tree is left to raise.
 
     """
-    params = tree_params[subtype]
+    params = subtype_params[subtype]
     return tree_annotated_plot.plot(
         tree_jsons[subtype],
         chart,
@@ -581,7 +644,7 @@ def add_tree(chart, subtype, color_label):
     )
 
 
-def finalize(chart, title):
+def finalize(chart, title, subtitle):
     """Stack the cohort legend under `chart` and apply the shared styling."""
     return (
         alt.vconcat(chart, cohort_legend, spacing=1)
@@ -611,7 +674,9 @@ def finalize(chart, title):
             orient="bottom",
         )
         .properties(
-            title=alt.TitleParams(title, anchor="middle", fontSize=13),
+            title=alt.TitleParams(
+                title, subtitle=subtitle, anchor="middle", fontSize=13
+            ),
             # recompute the layout on every view update, not just at load: toggling a
             # cohort adds a facet, and without this the view keeps its original size and
             # clips the tree. `pad` is required -- the `fit*` types do not support
@@ -628,7 +693,9 @@ for (subtype, strain_set), records in itertools.groupby(
     sorted(charts_to_make, key=lambda r: (r["subtype"], r["strain_set"])),
     key=lambda r: (r["subtype"], r["strain_set"]),
 ):
-    chart_titers, chart_viruses, strain_order = slice_chart_data(subtype, strain_set)
+    chart_titers, chart_viruses, strain_order, ref_axis_label = slice_chart_data(
+        subtype, strain_set
+    )
     print(
         f"{subtype} {strain_set}: {len(chart_viruses)} strains, {len(chart_titers)} titers"
     )
@@ -636,12 +703,18 @@ for (subtype, strain_set), records in itertools.groupby(
 
     for record in records:
         chart_title, build = CHART_TYPES[record["chart_type"]]
-        chart = facet_and_add_lookups(build(base), chart_viruses)
+        layer = build(base)
+        subtitle = ""
+        if ref_axis_label is not None:
+            # layered last so the thin line draws over the interquartile band
+            layer += reference_line(chart_titers, ref_axis_label, record["chart_type"])
+            subtitle = f"dashed orange line marks {ref_axis_label}"
+        chart = facet_and_add_lookups(layer, chart_viruses)
         title = f"{chart_title} for {subtype} {strain_set} strains"
         if strain_set == "recent":
             chart = add_tree(chart, subtype, record["color_label"])
             title += f", tree colored by {record['color_label']}"
-        chart = finalize(chart, title)
+        chart = finalize(chart, title, subtitle)
 
         print(f"Saving to {record['path']!r}")
         chart.save(record["path"])

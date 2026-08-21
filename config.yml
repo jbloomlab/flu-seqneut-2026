@@ -30,7 +30,7 @@ nextstrain-prot-titers-tree_prefix_alignment:
 # References a key from viral_libraries (e.g., "designed" or "actual").
 nextstrain-prot-titers-tree_viral_library: actual
 
-# Species for which to build tree titers (used to construct input file paths from final_titer_data).
+# Group for which to build tree titers, must be one of `groups_to_analyze`.
 # Set to null to disable titer overlay on trees.
 nextstrain-prot-titers-tree_titers_from: null
 
@@ -93,8 +93,12 @@ sera_metadata:
   - data/sera_metadata/sera_for_flu-seqneut-2026_UWMC.csv
   - data/sera_metadata/sera_for_flu-seqneut-2026_CTS.csv
 
-# Aggregate and QC final processed titer data for each serum group, which must match
-# the species designation in the serum metadata.
+# Groups (see `group` in `plates`) that get final titer data and titer plots, each mus
+# match a `species` value in sera metadata. Groups left out still processed
+# by `seqneut-pipeline` itself.
+groups_to_analyze: [human]
+
+# Aggregate and QC final processed titer data for each group in `groups_to_analyze`.
 process_final_titer_data:
   viral_library: actual  # must specify viral library in viral_libraries used to run plate
   min_frac_viruses: 0.9  # only include sera w titers against this fraction of viral strains (among viruses with at least one titer)

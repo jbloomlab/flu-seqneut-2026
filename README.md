@@ -211,6 +211,7 @@ The numerical results are placed in [results/library_qc/](results/library_qc/) a
 
 ### Titer processing and plots
 [rules/analyze_titers.smk](rules/analyze_titers.smk) aggregates the per-cohort sera metadata (see [Sera](#sera) above), QCs and subsets the titers aggregated by the pipeline into [results/final_titer_data/](results/final_titer_data/), and builds the interactive titer summary plots.
+The plate groups (see *group* in `plates`) that get this final titer data and these plots are set by `groups_to_analyze` in [config.yml](config.yml).
 
 ### Nextstrain protein trees
 [rules/trees.smk](rules/trees.smk) builds the alignment, metadata, and titers TSV for each subtype, then runs the *nextstrain-prot-titers-tree* submodule to make the auspice JSONs in [auspice/](auspice) that are linked at the top of this README.

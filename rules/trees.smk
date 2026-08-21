@@ -8,6 +8,13 @@ _any_tree_has_titers = any(
     for subtype in config["subtypes"]
 )
 
+_titers_from = config["nextstrain-prot-titers-tree_titers_from"]
+if _any_tree_has_titers and _titers_from not in groups_to_analyze:
+    raise ValueError(
+        f"`nextstrain-prot-titers-tree_titers_from` is {_titers_from!r}, which is not in "
+        "`groups_to_analyze`, so its final titer data is never built"
+    )
+
 
 rule nextstrain_prot_titers_tree_alignment_and_metadata:
     """Build alignment, metadata, and titers TSV used by `nextstrain-prot-titers-tree`."""
@@ -17,17 +24,17 @@ rule nextstrain_prot_titers_tree_alignment_and_metadata:
         ],
         # Only include titer inputs if titers are configured for any tree
         summarized_titers_csv=(
-            f"results/final_titer_data/{config['nextstrain-prot-titers-tree_titers_from']}_titers_summarized_by_virus.csv"
+            f"results/final_titer_data/{_titers_from}_titers_summarized_by_virus.csv"
             if _any_tree_has_titers
             else []
         ),
         titers_csv=(
-            f"results/final_titer_data/{config['nextstrain-prot-titers-tree_titers_from']}_titers.csv"
+            f"results/final_titer_data/{_titers_from}_titers.csv"
             if _any_tree_has_titers
             else []
         ),
         sera_metadata_csv=(
-            f"results/final_titer_data/{config['nextstrain-prot-titers-tree_titers_from']}_sera_multicohort.csv"
+            f"results/final_titer_data/{_titers_from}_sera_multicohort.csv"
             if _any_tree_has_titers
             else []
         ),

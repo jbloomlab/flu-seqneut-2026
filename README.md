@@ -40,25 +40,11 @@ If you don't care to understand the overall repo structure and are just looking 
 - Barcoded HAs with multiple barcodes per strain for some strains for internal replicates
 - Each viral construct contains the circulating HA ectodomain with signal peptide, endodomain, and cytoplasmic tail constant across strains for a given subtype
 - Library defined in in CSVs in [data/viral_libraries/](data/viral_libraries) (see [config.yml](config.yml) for active library file for each experiment)
-- Each viral library CSV must have the following required columns (additional columns are allowed):
-  - *strain*: strain name; there can be multiple rows for each strain (as we may have several barcodes for a strain), but each strain name must be uniquely paired with a single value for all other required columns except *barcode* and *shortname_barcoded_construct* (which identify the individual barcoded construct, and so vary within a strain). Note that non-required columns may also vary per barcode. Strain name must also end in "_H3N2" or "_H1N1"
-  - *subtype*: H3N2 or H1N1
-  - *strain_type*: should be "vaccine" or the *circulating_strain_type* defined in `config.yml`
-  - *vaccine_type*: if *strain_type* is "vaccine", this should be "egg" or "cell"; otherwise it should be null
-  - *barcode*: should be 16-nt string, all barcode entries should be unique for each row
-  - *accession*: Genbank accession if available
-  - *subclade*: can only be null for *strain_type* of "vaccine"
-  - *derived_haplotype*: the *subclade* plus the amino-acid mutations separating the strain from its subclade founder, written as `subclade:mut,mut` (eg, `K:F192V,HA2_R32K`). HA1 mutations come first and are bare; HA2 mutations follow and are prefixed `HA2_`. Only the strain-derived part of the ectodomain is named, so the constant signal peptide and transmembrane / cytoplasmic tail are excluded.
-  - *shortname_strain*: short name for the strain, used to assign strains to subpools in the library QC analyses
-  - *shortname_barcoded_construct*: short name for the individual barcoded construct, which is *shortname_strain* plus a "_bc<n>" suffix for strains ordered with several barcodes
-  - *collection_date*: collection date as float (eg, 2025.5); in many cases this may refer to the date that HA1 haplotype was last identified rather than the actual collection date of the particular named strain.
-  - *nt_sequence_HA_ectodomain*: nucleotide sequence of HA ectodomain, must be all A, T, C, or G (either case) and length multiple of three. Note that this is not the same as the full Twist synthesized insert, rather it is the part of the HA that is taken from that strain, and does not include flanking constant regions not derived from the strain (recall signal peptide and transmembrane / cytoplasmic tail are constant in our barcoded constructs), so it is not the full-length HA.
-  - *protein_sequence_HA_ectodomain*: protein sequence, must meet these criteria:
-      + must not contain any stop codons ("*" characters) and must be the result of translating *nt_sequence_HA_ectodomain*.
-      + must start with "CIGY" if a H1N1 *subtype*, and with "Q[KNR][IL]P" if a H3N2 *subtype* (note this is start of HA ectodomain for H3N2, for H1N1 a "DTL" must be added to get HA ectodomain since the plasmid construct used in experiments provides the first 3 ectodomain amino acids from WSN strain).
-      + must end with "NNRFQ" if a H3N2 *subtype*, and "[EK]IDG[VI]" if a *H1N1* subtype.
-      + the length should be 500 for H1N1 *subtype* and 501 for *H3N2* subtype (note this might change of H1N1 is modified to include pre-2009 seasonal H1N1 as well as pdmH1N1 lineage).
-      + Each unique protein sequence should only be associated with one *strain*.
+- The columns each viral library CSV must have, and the values they may hold, are specified under `viral_library_validations` in [config.yml](config.yml) and enforced by the `validate_viral_library` rule; additional columns are allowed and are reported as unvalidated
+- A strain may occupy several rows, one per barcode; *barcode* and *bloom_lab_plasmid_log_id* identify the individual barcoded construct and so vary within a strain, while the other specified columns hold a single value per strain
+- *derived_haplotype* is the *subclade* plus the amino-acid mutations separating the strain from its subclade founder, written as `subclade:mut,mut` (eg, `K:F192V,HA2_R32K`). HA1 mutations come first and are bare; HA2 mutations follow and are prefixed `HA2_`. Only the strain-derived part of the ectodomain is named, so the constant signal peptide and transmembrane / cytoplasmic tail are excluded
+- *collection_date* is a float (eg, 2025.5); in many cases it refers to the date that HA1 haplotype was last identified rather than the actual collection date of the particular named strain
+- *nt_sequence_HA_ectodomain* and *protein_sequence_HA_ectodomain* are not the full Twist synthesized insert nor the full-length HA, but only the part of the HA taken from that strain, excluding the flanking constant regions (recall the signal peptide and transmembrane / cytoplasmic tail are constant in our barcoded constructs). For H1N1 a "DTL" must be prepended to get the complete HA ectodomain, since the plasmid construct used in experiments provides the first three ectodomain amino acids from the WSN strain
 
 There are two CSVs in [data/viral_libraries](data/viral_libraries), one giving the originally *designed* library and the other giving the *actual* library that had strains that passed various QC and are used for the actual titer measurements.
 
@@ -201,7 +187,8 @@ Beyond the core neutralization-assay analysis done by the *seqneut-pipeline* sub
 All of them are configured in [config.yml](config.yml).
 
 ### Viral library validation
-[rules/validate_viral_library.smk](rules/validate_viral_library.smk) checks each library in `viral_libraries` against the requirements described in [Viral Library](#viral-library) above, and writes a summary of the checks to `results/validate_viral_library/`.
+[rules/validate_viral_library.smk](rules/validate_viral_library.smk) checks each library in `viral_libraries` against the requirements specified under `viral_library_validations` in [config.yml](config.yml).
+It writes a report to `results/validate_viral_library/` recording every check that ran and how much it examined, alongside a table of every column of the CSV, including any column the configuration does not cover and so does not check.
 The pipeline fails if any check does.
 
 ### Library QC

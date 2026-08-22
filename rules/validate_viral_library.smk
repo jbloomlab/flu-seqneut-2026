@@ -12,7 +12,7 @@ rule validate_viral_library:
     conda:
         "../seqneut-pipeline/environment.yml"
     params:
-        circulating_strain_type=config["circulating_strain_type"],
+        validations=config["viral_library_validations"],
     script:
         "../scripts/validate_viral_library.py"
 

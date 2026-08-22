@@ -16,7 +16,7 @@ Here are quick links with key data/results:
 
 - Interactive titer summary plots showing median titers, individual serum titers, interquartile ranges, and fraction of sera below titer cutoffs for each subtype and strain type. The recent-strain charts are drawn alongside the protein tree for their subtype, which orders and labels the strains and carries the coloring; the vaccine-strain charts have no tree and are ordered by collection date. These plots are generated in `results/titer_plots/` (not tracked in git) but viewable at the bottom of the GitHub Pages documentation at [https://jbloomlab.github.io/flu-seqneut-2026](https://jbloomlab.github.io/flu-seqneut-2026). This documentation also has detailed QC for all of the curves, titers, etc.
 
-- Interactive Nextstrain protein trees (can be colored by subclade, median titer, or fraction below titer cutoff for each cohort):
+- Interactive Nextstrain protein trees (can be colored by subclade, median titer, or fraction below titer cutoff for each cohort, and show the individual serum titers in the *Measurements* panel):
   - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2)
   - [H1N1](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1)
 
@@ -214,7 +214,7 @@ The numerical results are placed in [results/library_qc/](results/library_qc/) a
 The plate groups (see *group* in `plates`) that get this final titer data and these plots are set by `groups_to_analyze` in [config.yml](config.yml).
 
 ### Nextstrain protein trees
-[rules/trees.smk](rules/trees.smk) builds the alignment, metadata, and titers TSV for each subtype, then runs the *nextstrain-prot-titers-tree* submodule to make the auspice JSONs in [auspice/](auspice) that are linked at the top of this README.
+[rules/trees.smk](rules/trees.smk) builds the alignment, metadata, titers TSV, and titer colorings for each subtype, then runs the *nextstrain-prot-titers-tree* submodule to make the auspice JSONs in [auspice/](auspice) that are linked at the top of this README.
 
 ## Non-pipeline analyses
 The [non-pipeline_analyses/](non-pipeline_analyses/) subdirectory contains one-off analyses (library design, pooling optimization, and single-virus-per-well infections) that are **not** run by the [Snakefile](Snakefile) and are separate from the main neutralization assay pipeline.

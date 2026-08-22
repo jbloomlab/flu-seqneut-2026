@@ -1,11 +1,16 @@
 # === Analysis configuration file ======================================================
 
-__use_yte__: true  # use YAML Template Engine formatting
+# This file is templated with YTE (https://yte-template-engine.github.io), which
+# `snakemake` applies when reading it: a `?`-prefixed value is a Python expression, and
+# `?for` generates one entry per iteration.
+__use_yte__: true
+
+__variables__:
+  subtypes: [H1N1, H3N2]  # subtypes of strains; emitted as `subtypes` below
 
 # --- Configuration for custom analyses in Snakefile outside of seqneut-pipeline --------
 
-# subtypes of strains
-subtypes: [H1N1, H3N2]
+subtypes: ?subtypes
 
 # `strain_type` assigned to the recent circulating strains in the viral barcodes CSV
 circulating_strain_type: circulating_2026
@@ -30,62 +35,52 @@ nextstrain-prot-titers-tree_prefix_alignment:
 # References a key from viral_libraries (e.g., "designed" or "actual").
 nextstrain-prot-titers-tree_viral_library: actual
 
-# Group for which to build tree titers, must be one of `groups_to_analyze`.
-# Set to null to disable titer overlay on trees.
-nextstrain-prot-titers-tree_titers_from: null
-
-# Cohorts to show on tree (from cohort column in summarized titers)
-serum_cohorts_for_tree: []
+# Group whose final titer data goes on the trees, must be one of `groups_to_analyze`.
+# Only read for subtypes whose `titers` below is not null.
+nextstrain-prot-titers-tree_titers_from: human
 
 # Titer cutoffs for reporting fraction of sera below threshold (used in tree coloring
 # and in process_final_titer_data).
 titer_cutoffs: &titer_cutoffs [140]
 
-# Configuration for `nextstrain-prot-titers-tree`. For each subtype, provide the indicated arguments
-# that have the same meaning described at https://github.com/jbloomlab/nextstrain-prot-titers-tree
+# Configuration for `nextstrain-prot-titers-tree`, one block per subtype built by the
+# loop below. The keys have the same meaning as described at
+# https://github.com/jbloomlab/nextstrain-prot-titers-tree
 nextstrain-prot-titers-tree_config:
-  H3N2:
-    alignment: results/nextstrain-prot-titers-tree/H3N2/alignment.fa  # built by pipeline
-    outgroup: data/nextstrain-prot-titers-tree_data/H3N2_outgroup.fa
-    site_numbering_map: data/nextstrain-prot-titers-tree_data/H3N2_site_numbering_map.tsv
-    metadata: results/nextstrain-prot-titers-tree/H3N2/metadata.tsv  # built by pipeline
-    color_by_metadata:
-      strain_type: {}
-      subclade: {}
-    metadata_columns: [derived_haplotype]
-    titers: null
-    display_defaults:
-      color_by: subclade
-      distance_measure: div
-      branch_label: aa
-      tip_label: derived_haplotype
-    results_subdir: results/nextstrain-prot-titers-tree/H3N2/pipeline_results
-    auspice_json: auspice/flu-seqneut-2026_H3N2.json
-    addtl_export_args:
-      title: Near real-time data on human neutralizing antibody landscape to H3N2 influenza virus as of the summer of 2026
-      build-url: https://github.com/jbloomlab/flu-seqneut-2026
-      maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom
-  H1N1:
-    alignment: results/nextstrain-prot-titers-tree/H1N1/alignment.fa  # built by pipeline
-    outgroup: data/nextstrain-prot-titers-tree_data/H1N1_outgroup.fa
-    site_numbering_map: data/nextstrain-prot-titers-tree_data/H1N1_site_numbering_map.tsv
-    metadata: results/nextstrain-prot-titers-tree/H1N1/metadata.tsv  # built by pipeline
-    color_by_metadata:
-      strain_type: {}
-      subclade: {}
-    metadata_columns: [derived_haplotype]
-    titers: null
-    display_defaults:
-      color_by: subclade
-      distance_measure: div
-      branch_label: aa
-      tip_label: derived_haplotype
-    results_subdir: results/nextstrain-prot-titers-tree/H1N1/pipeline_results
-    auspice_json: auspice/flu-seqneut-2026_H1N1.json
-    addtl_export_args:
-      title: Near real-time data on human neutralizing antibody landscape to H1N1 influenza virus as of the summer of 2026
-      build-url: https://github.com/jbloomlab/flu-seqneut-2026
-      maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom
+  ?for subtype in subtypes:
+    ?subtype:
+      alignment: ?f"results/nextstrain-prot-titers-tree/{subtype}/alignment.fa"  # built by pipeline
+      outgroup: ?f"data/nextstrain-prot-titers-tree_data/{subtype}_outgroup.fa"
+      site_numbering_map: ?f"data/nextstrain-prot-titers-tree_data/{subtype}_site_numbering_map.tsv"
+      metadata: ?f"results/nextstrain-prot-titers-tree/{subtype}/metadata.tsv"  # built by pipeline
+      metadata_columns: [derived_haplotype]
+      color_by_metadata:
+        strain_type: {}
+        subclade: {}
+      # Titer colorings. Set this to null along with `titers` below for a tree that
+      # displays no titers.
+      color_by_metadata_file: ?f"results/nextstrain-prot-titers-tree/{subtype}/color_by_metadata.yaml"  # built by pipeline
+      # Per-serum titers in the measurements panel; set to null for a tree with no titers
+      titers:
+        titers_tsv: ?f"results/nextstrain-prot-titers-tree/{subtype}/titers.tsv"  # built by pipeline
+        titer_col: log2_titer
+        # the first grouping is the one the measurements panel initially groups by
+        grouping_columns: [cohort, serum, age_numeric, sex, serum_collection_date]
+        addtl_args:
+          title: serum neutralizing titers
+          x-axis-label: log2 titer
+          measurements-display: raw
+      display_defaults:
+        color_by: median_titer_All_sera
+        distance_measure: div
+        branch_label: aa
+        tip_label: derived_haplotype
+      results_subdir: ?f"results/nextstrain-prot-titers-tree/{subtype}/pipeline_results"
+      auspice_json: ?f"auspice/flu-seqneut-2026_{subtype}.json"
+      addtl_export_args:
+        title: ?f"Near real-time data on human neutralizing antibody landscape to {subtype} influenza virus as of the summer of 2026"
+        build-url: https://github.com/jbloomlab/flu-seqneut-2026
+        maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom
 
 # Sera metadata files to aggregate
 sera_metadata:

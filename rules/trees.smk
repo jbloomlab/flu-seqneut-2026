@@ -2,14 +2,15 @@
 
 import os
 
-# Check if any subtype has titers configured (non-null titers key in config)
-_any_tree_has_titers = any(
-    config["nextstrain-prot-titers-tree_config"][subtype].get("titers")
+# subtypes whose tree displays titers (the others just get an alignment and metadata)
+_subtypes_w_titers = [
+    subtype
     for subtype in config["subtypes"]
-)
+    if config["nextstrain-prot-titers-tree_config"][subtype]["titers"]
+]
 
 _titers_from = config["nextstrain-prot-titers-tree_titers_from"]
-if _any_tree_has_titers and _titers_from not in groups_to_analyze:
+if _subtypes_w_titers and _titers_from not in groups_to_analyze:
     raise ValueError(
         f"`nextstrain-prot-titers-tree_titers_from` is {_titers_from!r}, which is not in "
         "`groups_to_analyze`, so its final titer data is never built"
@@ -25,17 +26,17 @@ rule nextstrain_prot_titers_tree_alignment_and_metadata:
         # Only include titer inputs if titers are configured for any tree
         summarized_titers_csv=(
             f"results/final_titer_data/{_titers_from}_titers_summarized_by_virus.csv"
-            if _any_tree_has_titers
+            if _subtypes_w_titers
             else []
         ),
         titers_csv=(
             f"results/final_titer_data/{_titers_from}_titers.csv"
-            if _any_tree_has_titers
+            if _subtypes_w_titers
             else []
         ),
         sera_metadata_csv=(
-            f"results/final_titer_data/{_titers_from}_sera_multicohort.csv"
-            if _any_tree_has_titers
+            f"results/final_titer_data/{_titers_from}_sera.csv"
+            if _subtypes_w_titers
             else []
         ),
     output:
@@ -47,11 +48,16 @@ rule nextstrain_prot_titers_tree_alignment_and_metadata:
             f"metadata_{subtype}": f"results/nextstrain-prot-titers-tree/{subtype}/metadata.tsv"
             for subtype in config["subtypes"]
         },
-        # Only output titers TSV for subtypes that have titers configured
+        # titers and the colorings derived from them only for trees that display titers
         **{
             f"titers_{subtype}": f"results/nextstrain-prot-titers-tree/{subtype}/titers.tsv"
-            for subtype in config["subtypes"]
-            if config["nextstrain-prot-titers-tree_config"][subtype].get("titers")
+            for subtype in _subtypes_w_titers
+        },
+        **{
+            f"color_by_metadata_{subtype}": config[
+                "nextstrain-prot-titers-tree_config"
+            ][subtype]["color_by_metadata_file"]
+            for subtype in _subtypes_w_titers
         },
     log:
         "results/logs/nextstrain_prot_titers_tree_alignment_and_metadata.txt",
@@ -59,16 +65,11 @@ rule nextstrain_prot_titers_tree_alignment_and_metadata:
         "../seqneut-pipeline/environment.yml"
     params:
         subtypes=config["subtypes"],
+        subtypes_w_titers=_subtypes_w_titers,
         circulating_strain_type=config["circulating_strain_type"],
         recent_vaccine_strains=config["recent_vaccine_strains"],
         prefix_alignment=config["nextstrain-prot-titers-tree_prefix_alignment"],
-        frac_below_cols=[
-            f"frac_w_titer_below_{cutoff}" for cutoff in config["titer_cutoffs"]
-        ],
-        serum_cohorts_for_tree=(
-            config["serum_cohorts_for_tree"] if _any_tree_has_titers else []
-        ),
-        has_titers=_any_tree_has_titers,
+        titer_cutoffs=config["titer_cutoffs"],
     script:
         "../scripts/nextstrain_prot_titers_tree_alignment_and_metadata.py"
 
@@ -89,9 +90,9 @@ for subtype in config["subtypes"]:
 
 # auspice JSONs (and their measurements JSONs) built by the module above
 trees_outputs = []
-for _tree_config in config.get("nextstrain-prot-titers-tree_config", {}).values():
+for _tree_config in config["nextstrain-prot-titers-tree_config"].values():
     trees_outputs.append(_tree_config["auspice_json"])
-    if _tree_config.get("titers"):  # only add measurements.json if titers configured
+    if _tree_config["titers"]:  # only add measurements.json if titers configured
         trees_outputs.append(
             os.path.splitext(_tree_config["auspice_json"])[0] + "_measurements.json"
         )

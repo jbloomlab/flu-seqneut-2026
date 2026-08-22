@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Titers for a serum in a group</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<style>
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 80em;
+  padding: 1.5em;
+}
+h1, h2, h3 { line-height: 1.25; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+code { background: #f4f4f4; border-radius: 3px; padding: 0.1em 0.3em; }
+pre { background: #f4f4f4; border-radius: 4px; overflow-x: auto; padding: 0.6em 0.8em; }
+pre code { background: none; padding: 0; }
+/* a chart is drawn at its natural size, so a wide one scrolls rather than being clipped */
+.chart-block { margin: 1em 0; overflow-x: auto; }
+.scroll-box {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 1em 0;
+  max-height: 80vh;
+  overflow: auto;
+}
+.scroll-box table { border-collapse: collapse; font-size: 0.85em; }
+.scroll-box th, .scroll-box td {
+  border-bottom: 1px solid #eee;
+  padding: 0.25em 0.6em;
+  text-align: right;
+  white-space: nowrap;
+}
+.scroll-box th { background: #fafafa; position: sticky; top: 0; }
+</style>
+</head>
+<body>
+<h1>Titers for a serum in a group</h1>
+<div class="md-block"><p>Analyze titers for a serum assigned to a group, aggregating replicates which may be
+across multiple plates.</p></div>
+<div class="md-block"><p>Processing <code>group='human-qc-dropped'</code>, <code>serum='flu-seqneut-2026-SCH-015'</code></p></div>
+<div class="md-block"><h2>Get all titers for this plate</h2>
+<p>Combine all the pickled <code>neutcurve.CurveFits</code> from plates for this serum into a
+single <code>neutcurve.CurveFits</code>:</p></div>
+<div class="md-block"><p>Combining the curve fits for <code>group='human-qc-dropped'</code>, <code>serum='flu-seqneut-2026-SCH-015'</code> from <code>pickle_fits=['results/plates/plate2/curvefits.pickle']</code></p></div>
+<div class="md-block"><p>Get the plate that each replicate was measured on.
+Each plate records this in its <code>curvefits.csv</code>, so it does not have to be parsed out
+of the replicate name (a <code>plate_barcode</code>), which would be ambiguous when one plate
+name is a prefix of another:</p></div>
+<div class="md-block"><p><code>flu-seqneut-2026-SCH-015</code> was measured on 1 plate(s): ['plate2']</p></div>
+<div class="md-block"><p>Indicate how we are calculating the titer:</p></div>
+<div class="md-block"><p>Calculating with <code>serum_titer_as='midpoint'</code></p></div>
+<div class="md-block"><p>Get all the per-replicate fit params with the titers.
+We also convert the IC50 to NT50, and take inverse of midpoint to get it on same
+scale as NT50s:</p></div>
+<div class="md-block"><p><code>flu-seqneut-2026-SCH-015</code> has titers for a total of 4 viruses</p></div>
+<div class="md-block"><h2>Correlate NT50s with midpoints of curves</h2>
+<p>Plot the correlation of the NT50s with the midpoint (this is an interactive plot,
+mouse over points for details).
+This plot can help you determine if you made the correct choice of <code>serum_titer_as</code>
+when choosing to use the midpoint or NT50 for the titer.
+For titers where they are well correlated it should not matter which you chose.
+But if there are titers far from the correlation line, you should look at those
+measurements and curves to make sure you made the correct choice of calculating the
+titer as the NT50 versus midpoint:</p></div>
+<div class="chart-block">
+<style>
+  #chart_1.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #chart_1.vega-embed details,
+  #chart_1.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="chart_1"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "chart_1") {
+      outputDiv = document.getElementById("chart_1");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"grid": false}}, "data": {"name": "data-4310a13a1ac6ad98e93bd70f32f50116"}, "mark": {"type": "circle", "color": "black", "fillOpacity": 0.45, "stroke": "black"}, "encoding": {"color": {"field": "titer_bound", "type": "nominal"}, "size": {"condition": {"param": "param_2e2314528b4fa52b", "value": 100, "empty": false}, "value": 60}, "strokeWidth": {"condition": {"param": "param_2e2314528b4fa52b", "value": 3, "empty": false}, "value": 0}, "tooltip": [{"field": "virus", "type": "nominal"}, {"field": "plate", "type": "nominal"}, {"field": "replicate", "type": "nominal"}, {"field": "titer", "format": ".2g", "type": "quantitative"}, {"field": "titer_bound", "type": "nominal"}, {"field": "nt50", "format": ".2g", "type": "quantitative"}, {"field": "midpoint", "format": ".2g", "type": "quantitative"}, {"field": "top", "format": ".2g", "type": "quantitative"}, {"field": "bottom", "format": ".2g", "type": "quantitative"}, {"field": "slope", "format": ".2g", "type": "quantitative"}, {"field": "titer_units", "type": "nominal"}], "x": {"field": "nt50", "scale": {"nice": false, "padding": 8, "type": "log"}, "type": "quantitative"}, "y": {"field": "midpoint", "scale": {"nice": false, "padding": 8, "type": "log"}, "type": "quantitative"}}, "height": 350, "params": [{"name": "param_2e2314528b4fa52b", "select": {"type": "point", "fields": ["virus"], "on": "mouseover"}}], "title": "NT50 versus midpoint for human-qc-dropped flu-seqneut-2026-SCH-015", "transform": [{"calculate": "'reciprocal_dilution'", "as": "titer_units"}], "width": 350, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-4310a13a1ac6ad98e93bd70f32f50116": [{"virus": "A/California/GKISBBBH79910/2026_H3N2", "plate": "plate2", "replicate": "plate2-A/California/GKISBBBH79910/2026_H3N2", "titer": 483.9, "titer_bound": "interpolated", "nt50": 483.9, "midpoint": 483.9, "top": 1.0, "bottom": 0.0, "slope": 0.8}, {"virus": "A/France/OCC-HCL026013263701/2026_H3N2", "plate": "plate2", "replicate": "plate2-A/France/OCC-HCL026013263701/2026_H3N2", "titer": 383.4, "titer_bound": "interpolated", "nt50": 534.2, "midpoint": 383.4, "top": 0.8835, "bottom": 0.0, "slope": 0.8}, {"virus": "A/NovaScotia/25-365-06099/2025_H3N2", "plate": "plate2", "replicate": "plate2-A/NovaScotia/25-365-06099/2025_H3N2", "titer": 433.5, "titer_bound": "interpolated", "nt50": 433.5, "midpoint": 433.5, "top": 1.0, "bottom": 0.0, "slope": 0.8}, {"virus": "A/RiodeJaneiro/331/2026_H3N2", "plate": "plate2", "replicate": "plate2-A/RiodeJaneiro/331/2026_H3N2", "titer": 362.8, "titer_bound": "interpolated", "nt50": 430.6, "midpoint": 362.8, "top": 0.936, "bottom": 0.0, "slope": 0.8}]}}, {"mode": "vega-lite"});
+</script></div>
+<div class="md-block"><h2>Plot median titers and determine if they pass QC</h2>
+<p>Get the median titers for each virus across replicates, then add these median titers
+to the per-replicate titers and calculate the fold-change in titer between each
+replicate and its median.
+Finally, for each virus indicate whether it passes the QC:</p></div>
+<div class="md-block"><p>Using the following <code>qc_thresholds={'min_replicates': 1, 'max_fold_change_from_median': 6, 'viruses_ignore_qc': []}</code></p></div>
+<div class="md-block"><p>Now plot the per-replicate and median titers, indicating any viruses that failed QC.
+Note that potentially some of these titers may still be retained if the viruses in
+question are specified in <code>viruses_ignore_qc</code> of <code>qc_thresholds</code>.</p></div>
+<div class="chart-block">
+<style>
+  #chart_2.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #chart_2.vega-embed details,
+  #chart_2.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="chart_2"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "chart_2") {
+      outputDiv = document.getElementById("chart_2");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"grid": false}}, "layer": [{"data": {"name": "data-27444ae9122e8982955a7a713c931ccd"}, "mark": {"type": "point", "fillOpacity": 0.5, "filled": true, "size": 35, "stroke": "black", "strokeOpacity": 1}, "encoding": {"fill": {"field": "fails_qc", "legend": {"titleLimit": 500}, "title": "fails qc_thresholds['min_replicates']=1, qc_thresholds['max_fold_change_from_median']=6", "type": "nominal"}, "shape": {"field": "titer_bound", "type": "nominal"}, "strokeWidth": {"condition": {"param": "param_2e2314528b4fa52b", "value": 2, "empty": false}, "value": 0}, "tooltip": [{"field": "virus", "type": "nominal"}, {"field": "plate", "type": "nominal"}, {"field": "replicate", "type": "nominal"}, {"field": "titer", "format": ".3g", "type": "quantitative"}, {"field": "titer_bound", "type": "nominal"}, {"field": "nt50", "format": ".3g", "type": "quantitative"}, {"field": "midpoint", "format": ".3g", "type": "quantitative"}, {"field": "top", "format": ".3g", "type": "quantitative"}, {"field": "bottom", "format": ".3g", "type": "quantitative"}, {"field": "slope", "format": ".3g", "type": "quantitative"}, {"field": "fc_from_median", "format": ".3g", "type": "quantitative"}, {"field": "fails_qc", "type": "nominal"}, {"field": "titer_units", "type": "nominal"}], "x": {"field": "titer", "scale": {"nice": false, "padding": 5, "type": "log"}, "title": "titer", "type": "quantitative"}, "y": {"field": "virus", "sort": ["A/California/GKISBBBH79910/2026_H3N2", "A/France/OCC-HCL026013263701/2026_H3N2", "A/NovaScotia/25-365-06099/2025_H3N2", "A/RiodeJaneiro/331/2026_H3N2"], "type": "nominal"}}, "name": "view_b45601220d9729a2_0", "transform": [{"calculate": "'reciprocal_dilution'", "as": "titer_units"}]}, {"data": {"name": "data-14717242dca8d65bbdbfb21e928985ac"}, "mark": {"type": "point", "fillOpacity": 0.9, "filled": true, "size": 75, "stroke": "black", "strokeOpacity": 1}, "encoding": {"fill": {"field": "fails_qc", "type": "nominal"}, "shape": {"field": "titer_bound", "type": "nominal"}, "strokeWidth": {"condition": {"param": "param_2e2314528b4fa52b", "value": 2, "empty": false}, "value": 0.5}, "tooltip": [{"field": "virus", "type": "nominal"}, {"field": "titer", "format": ".3g", "type": "quantitative"}, {"field": "n_replicates", "type": "quantitative"}, {"field": "titer_sem", "format": ".3g", "type": "quantitative"}, {"field": "titer_bound", "type": "nominal"}, {"field": "max_fc_from_median", "format": ".3g", "type": "quantitative"}, {"field": "fails_qc", "type": "nominal"}, {"field": "group", "type": "nominal"}, {"field": "serum", "type": "nominal"}, {"field": "titer_as", "type": "nominal"}, {"field": "titer_units", "type": "nominal"}], "x": {"field": "titer", "scale": {"nice": false, "padding": 5, "type": "log"}, "title": "titer", "type": "quantitative"}, "y": {"field": "virus", "sort": ["A/California/GKISBBBH79910/2026_H3N2", "A/France/OCC-HCL026013263701/2026_H3N2", "A/NovaScotia/25-365-06099/2025_H3N2", "A/RiodeJaneiro/331/2026_H3N2"], "type": "nominal"}}, "transform": [{"calculate": "'human-qc-dropped'", "as": "group"}, {"calculate": "'flu-seqneut-2026-SCH-015'", "as": "serum"}, {"calculate": "'midpoint'", "as": "titer_as"}, {"calculate": "'reciprocal_dilution'", "as": "titer_units"}]}], "height": {"step": 11}, "params": [{"name": "param_2e2314528b4fa52b", "select": {"type": "point", "fields": ["virus"], "on": "mouseover"}, "views": ["view_b45601220d9729a2_0"]}], "title": "human-qc-dropped flu-seqneut-2026-SCH-015 median (large points) and per-replicate (small points) titers", "width": 250, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-27444ae9122e8982955a7a713c931ccd": [{"virus": "A/California/GKISBBBH79910/2026_H3N2", "plate": "plate2", "replicate": "plate2-A/California/GKISBBBH79910/2026_H3N2", "titer": 483.9, "titer_bound": "interpolated", "nt50": 483.9, "midpoint": 483.9, "top": 1.0, "bottom": 0.0, "slope": 0.8, "fc_from_median": 1.0, "fails_qc": false}, {"virus": "A/France/OCC-HCL026013263701/2026_H3N2", "plate": "plate2", "replicate": "plate2-A/France/OCC-HCL026013263701/2026_H3N2", "titer": 383.4, "titer_bound": "interpolated", "nt50": 534.2, "midpoint": 383.4, "top": 0.8835, "bottom": 0.0, "slope": 0.8, "fc_from_median": 1.0, "fails_qc": false}, {"virus": "A/NovaScotia/25-365-06099/2025_H3N2", "plate": "plate2", "replicate": "plate2-A/NovaScotia/25-365-06099/2025_H3N2", "titer": 433.5, "titer_bound": "interpolated", "nt50": 433.5, "midpoint": 433.5, "top": 1.0, "bottom": 0.0, "slope": 0.8, "fc_from_median": 1.0, "fails_qc": false}, {"virus": "A/RiodeJaneiro/331/2026_H3N2", "plate": "plate2", "replicate": "plate2-A/RiodeJaneiro/331/2026_H3N2", "titer": 362.8, "titer_bound": "interpolated", "nt50": 430.6, "midpoint": 362.8, "top": 0.936, "bottom": 0.0, "slope": 0.8, "fc_from_median": 1.0, "fails_qc": false}], "data-14717242dca8d65bbdbfb21e928985ac": [{"virus": "A/California/GKISBBBH79910/2026_H3N2", "titer": 483.9, "n_replicates": 1, "titer_sem": null, "titer_bound": "interpolated", "max_fc_from_median": 1.0, "fails_qc": false}, {"virus": "A/France/OCC-HCL026013263701/2026_H3N2", "titer": 383.4, "n_replicates": 1, "titer_sem": null, "titer_bound": "interpolated", "max_fc_from_median": 1.0, "fails_qc": false}, {"virus": "A/NovaScotia/25-365-06099/2025_H3N2", "titer": 433.5, "n_replicates": 1, "titer_sem": null, "titer_bound": "interpolated", "max_fc_from_median": 1.0, "fails_qc": false}, {"virus": "A/RiodeJaneiro/331/2026_H3N2", "titer": 362.8, "n_replicates": 1, "titer_sem": null, "titer_bound": "interpolated", "max_fc_from_median": 1.0, "fails_qc": false}]}}, {"mode": "vega-lite"});
+</script></div>
+<div class="md-block"><h2>Plot individual curves for any viruses failing QC</h2>
+<p>Plot individual curves for viruses failing QC.
+Note that potentially some of these titers may still be retained if the viruses in
+question are specified in <code>viruses_ignore_qc</code> of <code>qc_thresholds</code>.</p></div>
+<div class="md-block"><p>Neutralization curves for the 0 viruses failing QC:</p></div>
+<div class="md-block"><p>No curves fail QC</p></div>
+<div class="md-block"><h2>Get the viruses to drop for QC failures</h2>
+<p>Drop any viruses that fail QC and are not specified in <code>viruses_ignore_qc</code> of
+<code>qc_thresholds</code>.</p></div>
+<div class="md-block"><p>Dropping 0 viruses for failing QC:</p></div>
+<div class="md-block"><pre><code class="language-yaml">{}
+</code></pre></div>
+<div class="md-block"><p>Writing QC drops to <code>results/sera/human-qc-dropped_flu-seqneut-2026-SCH-015/qc_drops.yml</code></p></div>
+<div class="md-block"><p>Write the individual per-replicate titers to a file.
+These are all of the replicates that passed the QC applied when their plate was
+processed, and so are not filtered by the per-serum QC just applied above.
+Instead, the <code>dropped_by_qc</code> column indicates whether a replicate's virus was dropped
+by that per-serum QC, making this file a superset of the titers written below.
+Note that the per-serum QC drops a virus rather than an individual replicate, so this
+column has the same value for all replicates of a virus:</p></div>
+<div class="md-block"><p>Writing per-replicate titers to <code>results/sera/human-qc-dropped_flu-seqneut-2026-SCH-015/titers_per_replicate.csv</code></p></div>
+<div class="md-block"><h2>Plate-to-plate correlation of titers</h2>
+<p>If this serum was measured on more than one plate, compare the titers between each
+pair of plates to assess plate-to-plate reproducibility.
+The titer for a strain on a plate is the median over all of that plate's barcodes,
+all of which have already passed the per-plate QC applied when the plate was
+processed.</p>
+<p>All strains are shown, colored by whether they are retained in the final titers or
+were dropped just above by the per-serum QC on replicate-to-replicate variation.
+<strong>Use the <code>show strains</code> dropdown at the bottom of the plots to show only the
+retained or only the dropped strains</strong>, and set it back to <code>all</code> to show all of them.
+Note that a strain listed in <code>viruses_ignore_qc</code> of <code>qc_thresholds</code> is colored as
+retained even if it fails the QC, because it is kept in the final titers; mouse over
+a point for the details.
+The Pearson correlation is reported both over all strains and over just the retained
+strains, and the dashed line is <code>y = x</code>.</p></div>
+<div class="md-block"><p><code>flu-seqneut-2026-SCH-015</code> was measured on only one plate (<code>plate2</code>), so there is no plate-to-plate correlation to show.</p></div>
+<div class="md-block"><h2>Get and plot the neutralization curves for all retained viruses</h2>
+<p>First, get the <code>CurveFits</code> for just those retained viruses (dropping ones that fail
+QC), and plot:</p></div>
+
+<style>
+#svgwrap svg {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+  display: block;
+}
+</style>
+<div id="svgwrap" style="width:100%;height:80vh;overflow:auto">
+  <?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1123.2pt" height="280.8pt" viewBox="0 0 1123.2 280.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 280.8 
+L 1123.2 280.8 
+L 1123.2 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 86.703516 204.973672 
+L 329.297637 204.973672 
+L 329.297637 58.763047 
+L 86.703516 58.763047 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m87bc09844a" d="M 0 0 
+L 0 5 
+" style="stroke: #000000"/>
+      </defs>
+      <g>
+       <use xlink:href="#m87bc09844a" x="112.873497" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- $\mathdefault{10^{-4}}$ -->
+      <g transform="translate(98.773497 224.633672)">
+       <text>
+        <tspan x="0" y="-0.919" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.919" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.875" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.875" style="font-size: 8.4px; font-family: 'DejaVu Sans'">4</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m87bc09844a" x="196.915637" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- $\mathdefault{10^{-3}}$ -->
+      <g transform="translate(182.815637 224.753672)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">3</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m87bc09844a" x="280.957777" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- $\mathdefault{10^{-2}}$ -->
+      <g transform="translate(266.857777 224.753672)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="m00f2b4a2fc" d="M 0 0 
+L -5 0 
+" style="stroke: #000000"/>
+      </defs>
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="86.703516" y="195.995826" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="78.203516" y="200.55442" transform="rotate(-0 78.203516 200.55442)">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="86.703516" y="170.34484" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="78.203516" y="174.903433" transform="rotate(-0 78.203516 174.903433)">0.2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="86.703516" y="144.693853" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="78.203516" y="149.252447" transform="rotate(-0 78.203516 149.252447)">0.4</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="86.703516" y="119.042866" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="78.203516" y="123.60146" transform="rotate(-0 78.203516 123.60146)">0.6</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="86.703516" y="93.391879" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="78.203516" y="97.950473" transform="rotate(-0 78.203516 97.950473)">0.8</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="86.703516" y="67.740892" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="78.203516" y="72.299486" transform="rotate(-0 78.203516 72.299486)">1.0</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path d="M 101.599646 76.0488 
+L 124.846908 80.998944 
+L 144.517668 87.068464 
+L 164.188428 95.251866 
+L 183.859189 105.692939 
+L 207.106451 120.532222 
+L 267.906982 160.877546 
+L 287.577743 170.756909 
+L 307.248503 178.382625 
+L 314.401506 180.632312 
+L 314.401506 180.632312 
+" clip-path="url(#p7237824e8a)" style="fill: none; stroke: #999999; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <defs>
+     <path id="m34c8d1b73a" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #999999"/>
+    </defs>
+    <g clip-path="url(#p7237824e8a)">
+     <use xlink:href="#m34c8d1b73a" x="101.599646" y="87.638722" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="132.001903" y="67.740892" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="162.393039" y="68.687446" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="192.811852" y="149.204958" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="223.176372" y="130.757401" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="253.531813" y="174.799638" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="284.001125" y="124.924564" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="314.401506" y="172.212442" style="fill: #999999; stroke: #999999"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 86.703516 204.973672 
+L 86.703516 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 329.297637 204.973672 
+L 329.297637 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 86.703516 204.973672 
+L 329.297637 204.973672 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 86.703516 58.763047 
+L 329.297637 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="208.000576" y="52.763047" transform="rotate(-0 208.000576 52.763047)">A/California/GKISBBBH79910/2026_H3N2</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_7">
+     <path d="M 89.103516 204.173672 
+L 293.269766 204.173672 
+Q 294.869766 204.173672 294.869766 202.573672 
+L 294.869766 194.573047 
+Q 294.869766 192.973047 293.269766 192.973047 
+L 89.103516 192.973047 
+Q 87.503516 192.973047 87.503516 194.573047 
+L 87.503516 202.573672 
+Q 87.503516 204.173672 89.103516 204.173672 
+z
+" style="fill: #ffffff; opacity: 0.6; stroke: #cccccc; stroke-linejoin: miter"/>
+    </g>
+    <g id="line2d_12">
+     <path d="M 89.103516 197.851797 
+L 93.103516 197.851797 
+L 97.103516 197.851797 
+" style="fill: none; stroke: #999999; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#m34c8d1b73a" x="93.103516" y="197.851797" style="fill: #999999; stroke: #999999"/>
+     </g>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="100.303516" y="200.651797" transform="rotate(-0 100.303516 200.651797)">plate2-A/California/GKISBBBH79910/2026_H3N2</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_8">
+    <path d="M 345.097637 204.973672 
+L 587.691758 204.973672 
+L 587.691758 58.763047 
+L 345.097637 58.763047 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_4">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m87bc09844a" x="371.267618" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- $\mathdefault{10^{-4}}$ -->
+      <g transform="translate(357.167618 224.633672)">
+       <text>
+        <tspan x="0" y="-0.919" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.919" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.875" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.875" style="font-size: 8.4px; font-family: 'DejaVu Sans'">4</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m87bc09844a" x="455.309758" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <!-- $\mathdefault{10^{-3}}$ -->
+      <g transform="translate(441.209758 224.753672)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">3</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m87bc09844a" x="539.351898" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <!-- $\mathdefault{10^{-2}}$ -->
+      <g transform="translate(525.251898 224.753672)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_7">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="345.097637" y="195.995826" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="345.097637" y="170.34484" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="345.097637" y="144.693853" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="345.097637" y="119.042866" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="345.097637" y="93.391879" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="345.097637" y="67.740892" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_22">
+    <path d="M 359.993767 88.848889 
+L 386.817531 93.316222 
+L 408.276542 98.791494 
+L 427.947302 105.70794 
+L 447.618063 114.619284 
+L 470.865325 127.454806 
+L 538.81886 166.915466 
+L 560.277871 175.890736 
+L 572.795628 180.035386 
+L 572.795628 180.035386 
+" clip-path="url(#p32c32f34d2)" style="fill: none; stroke: #999999; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_23">
+    <g clip-path="url(#p32c32f34d2)">
+     <use xlink:href="#m34c8d1b73a" x="359.993767" y="111.114014" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="390.396024" y="67.740892" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="420.78716" y="67.740892" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="451.205973" y="165.320086" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="481.570493" y="143.819138" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="511.925934" y="153.099042" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="542.395246" y="135.809472" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="572.795628" y="176.903199" style="fill: #999999; stroke: #999999"/>
+    </g>
+   </g>
+   <g id="patch_9">
+    <path d="M 345.097637 204.973672 
+L 345.097637 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 587.691758 204.973672 
+L 587.691758 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 345.097637 204.973672 
+L 587.691758 204.973672 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 345.097637 58.763047 
+L 587.691758 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="466.394697" y="52.763047" transform="rotate(-0 466.394697 52.763047)">A/France/OCC-HCL026013263701/2026_H3N2</text>
+   </g>
+   <g id="legend_2">
+    <g id="patch_13">
+     <path d="M 347.497637 204.173672 
+L 570.956387 204.173672 
+Q 572.556387 204.173672 572.556387 202.573672 
+L 572.556387 194.573047 
+Q 572.556387 192.973047 570.956387 192.973047 
+L 347.497637 192.973047 
+Q 345.897637 192.973047 345.897637 194.573047 
+L 345.897637 202.573672 
+Q 345.897637 204.173672 347.497637 204.173672 
+z
+" style="fill: #ffffff; opacity: 0.6; stroke: #cccccc; stroke-linejoin: miter"/>
+    </g>
+    <g id="line2d_24">
+     <path d="M 347.497637 197.851797 
+L 351.497637 197.851797 
+L 355.497637 197.851797 
+" style="fill: none; stroke: #999999; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#m34c8d1b73a" x="351.497637" y="197.851797" style="fill: #999999; stroke: #999999"/>
+     </g>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="358.697637" y="200.651797" transform="rotate(-0 358.697637 200.651797)">plate2-A/France/OCC-HCL026013263701/2026_H3N2</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_14">
+    <path d="M 603.491758 204.973672 
+L 846.085879 204.973672 
+L 846.085879 58.763047 
+L 603.491758 58.763047 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_5">
+    <g id="xtick_7">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m87bc09844a" x="629.661739" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <!-- $\mathdefault{10^{-4}}$ -->
+      <g transform="translate(615.561739 224.633672)">
+       <text>
+        <tspan x="0" y="-0.919" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.919" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.875" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.875" style="font-size: 8.4px; font-family: 'DejaVu Sans'">4</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m87bc09844a" x="713.703879" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <!-- $\mathdefault{10^{-3}}$ -->
+      <g transform="translate(699.603879 224.753672)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">3</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#m87bc09844a" x="797.746019" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <!-- $\mathdefault{10^{-2}}$ -->
+      <g transform="translate(783.646019 224.753672)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_6">
+    <g id="ytick_13">
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="603.491758" y="195.995826" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="603.491758" y="170.34484" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="603.491758" y="144.693853" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="603.491758" y="119.042866" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_17">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="603.491758" y="93.391879" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_18">
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="603.491758" y="67.740892" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_34">
+    <path d="M 618.387888 75.390384 
+L 641.63515 79.988279 
+L 663.094161 86.280244 
+L 682.764922 94.21101 
+L 702.435682 104.400802 
+L 723.894693 117.820314 
+L 793.636479 163.562001 
+L 813.307239 172.873663 
+L 831.189749 179.401284 
+L 831.189749 179.401284 
+" clip-path="url(#p2b5e931ce7)" style="fill: none; stroke: #999999; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_35">
+    <g clip-path="url(#p2b5e931ce7)">
+     <use xlink:href="#m34c8d1b73a" x="618.387888" y="67.740892" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="648.790145" y="67.740892" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="679.181281" y="67.740892" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="709.600094" y="152.862696" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="739.964614" y="151.371881" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="770.320055" y="157.409232" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="800.789367" y="99.808299" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="831.189749" y="183.305848" style="fill: #999999; stroke: #999999"/>
+    </g>
+   </g>
+   <g id="patch_15">
+    <path d="M 603.491758 204.973672 
+L 603.491758 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 846.085879 204.973672 
+L 846.085879 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 603.491758 204.973672 
+L 846.085879 204.973672 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 603.491758 58.763047 
+L 846.085879 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="724.788818" y="52.763047" transform="rotate(-0 724.788818 52.763047)">A/NovaScotia/25-365-06099/2025_H3N2</text>
+   </g>
+   <g id="legend_3">
+    <g id="patch_19">
+     <path d="M 605.891758 204.173672 
+L 807.076758 204.173672 
+Q 808.676758 204.173672 808.676758 202.573672 
+L 808.676758 194.573047 
+Q 808.676758 192.973047 807.076758 192.973047 
+L 605.891758 192.973047 
+Q 604.291758 192.973047 604.291758 194.573047 
+L 604.291758 202.573672 
+Q 604.291758 204.173672 605.891758 204.173672 
+z
+" style="fill: #ffffff; opacity: 0.6; stroke: #cccccc; stroke-linejoin: miter"/>
+    </g>
+    <g id="line2d_36">
+     <path d="M 605.891758 197.851797 
+L 609.891758 197.851797 
+L 613.891758 197.851797 
+" style="fill: none; stroke: #999999; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#m34c8d1b73a" x="609.891758" y="197.851797" style="fill: #999999; stroke: #999999"/>
+     </g>
+    </g>
+    <g id="text_21">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="617.091758" y="200.651797" transform="rotate(-0 617.091758 200.651797)">plate2-A/NovaScotia/25-365-06099/2025_H3N2</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_20">
+    <path d="M 861.885879 204.973672 
+L 1104.48 204.973672 
+L 1104.48 58.763047 
+L 861.885879 58.763047 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_7">
+    <g id="xtick_10">
+     <g id="line2d_37">
+      <g>
+       <use xlink:href="#m87bc09844a" x="888.05586" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <!-- $\mathdefault{10^{-4}}$ -->
+      <g transform="translate(873.95586 224.633672)">
+       <text>
+        <tspan x="0" y="-0.919" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.919" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.875" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.875" style="font-size: 8.4px; font-family: 'DejaVu Sans'">4</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_38">
+      <g>
+       <use xlink:href="#m87bc09844a" x="972.098" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <!-- $\mathdefault{10^{-3}}$ -->
+      <g transform="translate(957.998 224.753672)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">3</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_39">
+      <g>
+       <use xlink:href="#m87bc09844a" x="1056.14014" y="204.973672" style="stroke: #000000"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <!-- $\mathdefault{10^{-2}}$ -->
+      <g transform="translate(1042.04014 224.753672)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: 'DejaVu Sans'">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">−</tspan>
+        <tspan x="22.422656" y="-5.765625" style="font-size: 8.4px; font-family: 'DejaVu Sans'">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_8">
+    <g id="ytick_19">
+     <g id="line2d_40">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="861.885879" y="195.995826" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_20">
+     <g id="line2d_41">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="861.885879" y="170.34484" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_21">
+     <g id="line2d_42">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="861.885879" y="144.693853" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_22">
+     <g id="line2d_43">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="861.885879" y="119.042866" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_23">
+     <g id="line2d_44">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="861.885879" y="93.391879" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_24">
+     <g id="line2d_45">
+      <g>
+       <use xlink:href="#m00f2b4a2fc" x="861.885879" y="67.740892" style="stroke: #000000"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_46">
+    <path d="M 876.782009 82.214318 
+L 903.605773 86.77195 
+L 925.064784 92.379182 
+L 944.735544 99.496056 
+L 964.406305 108.721608 
+L 985.865316 121.013254 
+L 1062.760106 167.695886 
+L 1082.430866 175.952679 
+L 1089.58387 178.435673 
+L 1089.58387 178.435673 
+" clip-path="url(#p21ae9dd211)" style="fill: none; stroke: #999999; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_47">
+    <g clip-path="url(#p21ae9dd211)">
+     <use xlink:href="#m34c8d1b73a" x="876.782009" y="104.909612" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="907.184267" y="67.740892" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="937.575403" y="67.740892" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="967.994215" y="135.896407" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="998.358735" y="134.808446" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="1028.714176" y="172.695671" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="1059.183488" y="118.626813" style="fill: #999999; stroke: #999999"/>
+     <use xlink:href="#m34c8d1b73a" x="1089.58387" y="188.437983" style="fill: #999999; stroke: #999999"/>
+    </g>
+   </g>
+   <g id="patch_21">
+    <path d="M 861.885879 204.973672 
+L 861.885879 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 1104.48 204.973672 
+L 1104.48 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 861.885879 204.973672 
+L 1104.48 204.973672 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 861.885879 58.763047 
+L 1104.48 58.763047 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="983.182939" y="52.763047" transform="rotate(-0 983.182939 52.763047)">A/RiodeJaneiro/331/2026_H3N2</text>
+   </g>
+   <g id="legend_4">
+    <g id="patch_25">
+     <path d="M 864.285879 204.173672 
+L 1029.079629 204.173672 
+Q 1030.679629 204.173672 1030.679629 202.573672 
+L 1030.679629 194.573047 
+Q 1030.679629 192.973047 1029.079629 192.973047 
+L 864.285879 192.973047 
+Q 862.685879 192.973047 862.685879 194.573047 
+L 862.685879 202.573672 
+Q 862.685879 204.173672 864.285879 204.173672 
+z
+" style="fill: #ffffff; opacity: 0.6; stroke: #cccccc; stroke-linejoin: miter"/>
+    </g>
+    <g id="line2d_48">
+     <path d="M 864.285879 197.851797 
+L 868.285879 197.851797 
+L 872.285879 197.851797 
+" style="fill: none; stroke: #999999; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#m34c8d1b73a" x="868.285879" y="197.851797" style="fill: #999999; stroke: #999999"/>
+     </g>
+    </g>
+    <g id="text_26">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="875.485879" y="200.651797" transform="rotate(-0 875.485879 200.651797)">plate2-A/RiodeJaneiro/331/2026_H3N2</text>
+    </g>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g id="matplotlib.axis_9">
+    <g id="xtick_13">
+     <g id="text_27">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; opacity: 0" x="86.703516" y="219.571328" transform="rotate(-0 86.703516 219.571328)">0.0</text>
+     </g>
+    </g>
+    <g id="xtick_14">
+     <g id="text_28">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; opacity: 0" x="290.258813" y="219.571328" transform="rotate(-0 290.258813 219.571328)">0.2</text>
+     </g>
+    </g>
+    <g id="xtick_15">
+     <g id="text_29">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; opacity: 0" x="493.814109" y="219.571328" transform="rotate(-0 493.814109 219.571328)">0.4</text>
+     </g>
+    </g>
+    <g id="xtick_16">
+     <g id="text_30">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; opacity: 0" x="697.369406" y="219.571328" transform="rotate(-0 697.369406 219.571328)">0.6</text>
+     </g>
+    </g>
+    <g id="xtick_17">
+     <g id="text_31">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; opacity: 0" x="900.924703" y="219.571328" transform="rotate(-0 900.924703 219.571328)">0.8</text>
+     </g>
+    </g>
+    <g id="xtick_18">
+     <g id="text_32">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; opacity: 0" x="1104.48" y="219.571328" transform="rotate(-0 1104.48 219.571328)">1.0</text>
+     </g>
+    </g>
+    <g id="text_33">
+     <text style="font-size: 15px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="595.591758" y="243.371328" transform="rotate(-0 595.591758 243.371328)">concentration</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_10">
+    <g id="ytick_25">
+     <g id="text_34">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; opacity: 0" x="79.703516" y="208.7725" transform="rotate(-0 79.703516 208.7725)">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_26">
+     <g id="text_35">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; opacity: 0" x="79.703516" y="179.530375" transform="rotate(-0 79.703516 179.530375)">0.2</text>
+     </g>
+    </g>
+    <g id="ytick_27">
+     <g id="text_36">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; opacity: 0" x="79.703516" y="150.28825" transform="rotate(-0 79.703516 150.28825)">0.4</text>
+     </g>
+    </g>
+    <g id="ytick_28">
+     <g id="text_37">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; opacity: 0" x="79.703516" y="121.046125" transform="rotate(-0 79.703516 121.046125)">0.6</text>
+     </g>
+    </g>
+    <g id="ytick_29">
+     <g id="text_38">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; opacity: 0" x="79.703516" y="91.804" transform="rotate(-0 79.703516 91.804)">0.8</text>
+     </g>
+    </g>
+    <g id="ytick_30">
+     <g id="text_39">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; opacity: 0" x="79.703516" y="62.561875" transform="rotate(-0 79.703516 62.561875)">1.0</text>
+     </g>
+    </g>
+    <g id="text_40">
+     <text style="font-size: 15px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="50.196875" y="131.868359" transform="rotate(-90 50.196875 131.868359)">fraction infectivity</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_41">
+   <text style="font-weight: 700; font-size: 18px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="561.6" y="13.677188" transform="rotate(-0 561.6 13.677188)">neutralization curves for retained viruses for human-qc-dropped flu-seqneut-2026-SCH-015</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7237824e8a">
+   <rect x="86.703516" y="58.763047" width="242.594121" height="146.210625"/>
+  </clipPath>
+  <clipPath id="p32c32f34d2">
+   <rect x="345.097637" y="58.763047" width="242.594121" height="146.210625"/>
+  </clipPath>
+  <clipPath id="p2b5e931ce7">
+   <rect x="603.491758" y="58.763047" width="242.594121" height="146.210625"/>
+  </clipPath>
+  <clipPath id="p21ae9dd211">
+   <rect x="861.885879" y="58.763047" width="242.594121" height="146.210625"/>
+  </clipPath>
+ </defs>
+</svg>
+
+</div>
+
+<div class="md-block"><p>Saving plot of curves to <code>results/sera/human-qc-dropped_flu-seqneut-2026-SCH-015/curves.pdf</code></p></div>
+<div class="md-block"><p>Save the <code>CurveFits</code> to a pickle file:</p></div>
+<div class="md-block"><p>Writing curve fits to results/sera/human-qc-dropped_flu-seqneut-2026-SCH-015/curvefits.pickle</p></div>
+<div class="md-block"><p>Write the titers (excluding QC dropped viruses) to a CSV:</p></div>
+<div class="md-block"><p>Writing titers to <code>results/sera/human-qc-dropped_flu-seqneut-2026-SCH-015/titers.csv</code></p></div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="document.querySelectorAll('.md-block').forEach(
+    (el) => renderMathInElement(el, {delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]})
+  )"></script>
+</body>
+</html>

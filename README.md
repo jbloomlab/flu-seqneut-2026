@@ -1,56 +1,74 @@
 # Near real-time data on the human neutralizing antibody landscape to influenza virus as of the summer of 2026 to inform vaccine-strain selection
 
-This study by the [Bloom lab](https://jbloomlab.org/) uses sequencing-based neutralization assays to measure titers to influenza viruses with HAs from seasonal H3N2 and H1N1 viruses representative of those circulating in mid 2026 against human sera collected in early to mid 2026.
+This study led by Caroline Kikawa, Andrew Butler, John Huddleston, and [Jesse Bloom](https://jbloomlab.org/) uses sequencing-based neutralization assays to measure titers to influenza viruses with HAs from human seasonal H3N2 and H1N1 viruses representative of those circulating in mid-2026 against human sera collected in early to mid 2026.
 
 ## Quick links to key results
-**[TODO: Note that these links will be populated when study complete]**
-Here are quick links with key data/results:
+To jump directly to the key results:
 
 - [results/final_titer_data](results/final_titer_data) has the final titer data and information on the viruses and sera for which these final data were obtained. Specifically:
   + For human sera:
-    * [results/final_titer_data/human_titers.csv](results/final_titer_data/human_titers.csv): final set of titers for each virus/serum pair (keeping only viruses for which titers measured against most sera, and sera for which titers measured against most viruses).
+    * [results/final_titer_data/human_titers.csv](results/final_titer_data/human_titers.csv): QC-ed set of titers for each virus/serum pair (keeping only viruses for which titers measured against most sera, and sera for which titers measured against most viruses).
     * [results/final_titer_data/human_sera.csv](results/final_titer_data/human_sera.csv): detailed information about the sera for which these titers were measured.
     * [results/final_titer_data/human_sera_multicohort.csv](results/final_titer_data/human_sera_multicohort.csv): sera assigned to multiple cohorts (original, "All", and days-post-vax cohorts); differs from [results/final_titer_data/human_sera.csv](results/final_titer_data/human_sera.csv) in that each serum may appear in multiple rows.
     * [results/final_titer_data/human_viruses.csv](results/final_titer_data/human_viruses.csv): detailed information about the viruses for which these titers were measured.
     * [results/final_titer_data/human_titers_summarized_by_virus.csv](results/final_titer_data/human_titers_summarized_by_virus.csv): summary statistics about the titers against each virus.
 
-- Interactive titer summary plots showing median titers, individual serum titers, interquartile ranges, and fraction of sera below titer cutoffs for each subtype and strain type. The recent-strain charts are drawn alongside the protein tree for their subtype, which orders and labels the strains and carries the coloring; the vaccine-strain charts have no tree and are ordered by collection date. These plots are generated in `results/titer_plots/` (not tracked in git) but viewable at the bottom of the GitHub Pages documentation at [https://jbloomlab.github.io/flu-seqneut-2026](https://jbloomlab.github.io/flu-seqneut-2026). This documentation also has detailed QC for all of the curves, titers, etc.
+- Interactive titer summary plots showing median titers, individual serum titers, interquartile ranges, and fraction of sera below titer cutoffs for each subtype and strain type can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade).
 
-- Interactive Nextstrain protein trees (can be colored by subclade, median titer, or fraction below titer cutoff for each cohort, and show the individual serum titers in the *Measurements* panel):
+- Interactive Nextstrain protein trees that can be colored by subclade, median titer, etc and also show individual titers in the *Measurements* panel can be viewed at the following links:
   - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2)
   - [H1N1](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1)
 
 ## Past similar studies
-For past similar studies and their papers and GitHub repositories, see:
+This study is the third in a series of studies by the Bloom lab using sequencing-based neutralization assays to provide near real-time data on the human neutralizing antibody landscape to influenza to inform vaccine strain selection.
+For past studies and their GitHub repositories, see:
 
- - *flu-seqneut-2025to2026*: [Kikawa et al (2026)](https://doi.org/10.64898/2026.02.18.706711) and [https://github.com/jbloomlab/flu-seqneut-2025to2026](https://github.com/jbloomlab/flu-seqneut-2025to2026)
+ - *flu-seqneut-2025to2026*: [Kikawa et al (2026)](https://doi.org/10.1093/ve/veag046) and [https://github.com/jbloomlab/flu-seqneut-2025to2026](https://github.com/jbloomlab/flu-seqneut-2025to2026)
  - *flu-seqneut-2025*: [Kikawa et al (2025)](https://doi.org/10.1093/ve/veaf086) and [https://github.com/jbloomlab/flu-seqneut-2025](https://github.com/jbloomlab/flu-seqneut-2025)
 
-## Study Overview
+## Experimental assay
+This repository analyzes data generated by sequencing-based neutralization assays. For details on these assays, see:
+  - [Loes et al (2024), *Journal of Virology*](https://doi.org/10.1128/jvi.00689-24)
+  - [Kikawa et al (2026), *eLife*](https://doi.org/10.7554/eLife.106811.4)
+  - [Detailed experimental protocol on protocols.io](https://www.protocols.io/view/sequencing-based-neutralization-assay-for-influenz-kqdg3xdmpg25)
 
-### Assay Method
-This repository analyzes data generated by sequencing-based neutralization assays as described in [Loes et al. (2024), *Journal of Virology*](https://doi.org/10.1128/jvi.00689-24) and [Kikawa et al. (2025), *Virus Evolution*](https://academic.oup.com/ve/article/11/1/veaf086/8313343).
-See [here](https://www.protocols.io/view/sequencing-based-neutralization-assay-for-influenz-kqdg3xdmpg25/v2) for a detailed protocol.
+## Structure of this repository
+This repository contains a snakemake pipeline that uses [seqneut-pipeline](https://github.com/jbloomlab/seqneut-pipeline) for the core analysis and contains additional rules for visualization, QC, and analysis.
 
-### Final QC-ed titer data
-If you don't care to understand the overall repo structure and are just looking for final QC-ed titer data and information on the sera / viruses for which those titers were generated, look in [results/final_titer_data/](results/final_titer_data/).
+### Repository layout
+```
+flu-seqneut-2026/
+├── Snakefile          # workflow: config, includes, `rule all`
+├── config.yml         # all pipeline configuration
+├── rules/             # rules for analyses outside seqneut-pipeline
+├── scripts/           # scripts those rules call
+├── data/              # all input data
+├── results/           # all output (key files tracked in git)
+├── auspice/           # Nextstrain JSONs for the community build
+└── non-pipeline_analyses/  # one-off analyses, not run by Snakefile
+```
+The git submodules are described under [Submodules](#submodules) below.
+`run_Hutch_cluster.bash` submits the pipeline to the Fred Hutch SLURM cluster.
 
-### Viral Library
-- Influenza strains with HAs from recent human seasonal strains (H3N2 and H1N1)
-- Barcoded HAs with multiple barcodes per strain for some strains for internal replicates
-- Each viral construct contains the circulating HA ectodomain with signal peptide, endodomain, and cytoplasmic tail constant across strains for a given subtype
-- Library defined in in CSVs in [data/viral_libraries/](data/viral_libraries) (see [config.yml](config.yml) for active library file for each experiment)
-- The columns each viral library CSV must have, and the values they may hold, are specified under `viral_library_validations` in [config.yml](config.yml) and enforced by the `validate_viral_library` rule; additional columns are allowed and are reported as unvalidated
-- A strain may occupy several rows, one per barcode; *barcode* and *bloom_lab_plasmid_log_id* identify the individual barcoded construct and so vary within a strain, while the other specified columns hold a single value per strain
-- *derived_haplotype* is the *subclade* plus the amino-acid mutations separating the strain from its subclade founder, written as `subclade:mut,mut` (eg, `K:F192V,HA2_R32K`). HA1 mutations come first and are bare; HA2 mutations follow and are prefixed `HA2_`. Only the strain-derived part of the ectodomain is named, so the constant signal peptide and transmembrane / cytoplasmic tail are excluded
-- *collection_date* is a float (eg, 2025.5); in many cases it refers to the date that HA1 haplotype was last identified rather than the actual collection date of the particular named strain
-- *nt_sequence_HA_ectodomain* and *protein_sequence_HA_ectodomain* are not the full Twist synthesized insert nor the full-length HA, but only the part of the HA taken from that strain, excluding the flanking constant regions (recall the signal peptide and transmembrane / cytoplasmic tail are constant in our barcoded constructs). For H1N1 a "DTL" must be prepended to get the complete HA ectodomain, since the plasmid construct used in experiments provides the first three ectodomain amino acids from the WSN strain
+### Input data
+All input data for the pipeline are in [./data/](data).
+For the most part, these data should be self explanatory.
+Here are some key details:
 
-There are two CSVs in [data/viral_libraries](data/viral_libraries), one giving the originally *designed* library and the other giving the *actual* library that had strains that passed various QC and are used for the actual titer measurements.
+#### Viral Library
+Details on the viral library are in [./data/viral_libraries](data/viral_libraries).
+There are CSVs defining the [designed library](data/viral_libraries/flu-seqneut-2026-barcode-to-strain-designed.csv) and the [actual library](data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv).
+The designed library is the set of strains initially designed for this project; the actual library is the set of strains used in the actual experiments (some strains were dropped due to low titers or other QC issues).
+The CSVs provide information about each barcoded HA used in the experiments. A few notes:
+ - In some cases, the same HA may have multiple barcodes to provide internal replicates
+ - For each strain, we take the HA ectodomain from a natural seasonal influenza strain and that ectodomain sequence is provided in the CSVs. The sequences in the CSVs do not include the signal peptide, endodomain, and cytoplasmic tail since those are constant across all strains as described in [Loes et al (2024), *Journal of Virology*](https://doi.org/10.1128/jvi.00689-24) and [Kikawa et al (2026), *eLife*](https://doi.org/10.7554/eLife.106811.4). For H1 HAs, a "DTL" must be prepended to these sequences to get the full ectodomain since the barcoded constructs provide the first three ectodomain amino-acids from the lab-adapted A/WSN/1933 (H1N1) HA.
+ - The columns each viral library CSV must have, and the values they may hold, are specified under `viral_library_validations` in [config.yml](config.yml).
+ - *derived_haplotype* is the *subclade* plus the amino-acid mutations separating the strain from its subclade founder (for the ectodomain only), written as `subclade:mut,mut` (eg, `K:F192V,HA2_R32K`). HA1 mutations come first and are bare; HA2 mutations follow and are prefixed `HA2_`.
+ - *collection_date* is a float (eg, 2025.5); in many cases it refers to the date that HA1 haplotype was last identified rather than the actual collection date of the particular named strain
 
-### Sera
-- Per-cohort metadata CSVs stored in [data/sera_metadata/](data/sera_metadata); note that sera may be listed here for which no titers were measured
-- Each sera metadata CSV must have the following required columns (additional columns are allowed):
+#### Sera
+Details on the sera used for the study are in [data/sera_metadata/](data/sera_metadata); note that titers may not have been measured for all sera listed here.
+There is a CSV for sera from each cohort, with the following required columns:
   - *bloom_lab_id*: unique identifier for each serum sample; must be non-null and unique across all files
   - *cohort*: cohort identifier; must be non-null
   - *species*: species of serum donor (e.g., "human"); must be non-null
@@ -58,156 +76,82 @@ There are two CSVs in [data/viral_libraries](data/viral_libraries), one giving t
   - *sex*: sex of donor; accepts various formats ("M"/"F", "male"/"female", "Male"/"Female") which are normalized during aggregation
   - *collection_date*: date of serum collection in "YYYY-MM" format (month precision)
 
-The per-cohort metadata files are aggregated and validated by `scripts/aggregate_sera_metadata.py` (Snakemake rule `aggregate_sera_metadata`) into [results/sera_metadata/all_sera_metadata.csv](results/sera_metadata/all_sera_metadata.csv).
-The aggregation performs these standardizations and validations:
-  - Renames *bloom_lab_id* to *serum*
-  - Normalizes *sex* to "Male", "Female", or "Unknown"
-  - Parses *age* to create *age_numeric* column (midpoint in years for ranges, lower bound for open-ended)
-  - Validates *collection_date* is in "YYYY-MM" format
-  - Validates uniqueness of serum IDs across all cohorts
+These per-cohort CSVs are aggregated and validated into [results/sera_metadata/all_sera_metadata.csv](results/sera_metadata/all_sera_metadata.csv), where *bloom_lab_id* is renamed to *serum* and *sex* and *age* are put in standard forms.
 
-### Aggregated titers
-The titers aggregated across plates are in [results/aggregated_titers/](results/aggregated_titers/).
+#### Plate configuration and FASTQ files
+The configuration for the sequencing-based neutralization assay plates is specified in CSVs in [./data/plates](data/plates) and [./data/miscellaneous_plates](data/miscellaneous_plates).
+These CSVs point to the FASTQ files with the barcode sequencing results, which are held on the Fred Hutch computing cluster as they are too large for this repository.
+The barcode counts extracted from them are in [./results/](results) and are tracked here.
 
-The titers after classifying by species from which the sera came and subsetting for just titers for viruses and sera which are well measured are in [results/final_titer_data/](results/final_titer_data/).
+### Configuration
+All pipeline configuration parameters are specified in [config.yml](config.yml).
+This YAML should be self explanatory.
+Many of the configuration parameters relate to `seqneut-pipeline`; see [`seqneut-pipeline/README.md`](seqneut-pipeline/README.md) for detailed documentation on those parameters.
 
-## Repository Structure
-
-### Main Pipeline Components
-
-```
-flu-seqneut-2026/
-├── Snakefile                    # Top-level workflow: config, includes, and `rule all`
-├── config.yml                   # Main pipeline configuration
-├── run_Hutch_cluster.bash       # SLURM cluster submission script
-│
-├── rules/                       # Snakemake rules for analyses outside seqneut-pipeline
-│   ├── validate_viral_library.smk  # Viral library validation
-│   ├── library_qc.smk              # QC of the viral library, its pools and re-pools
-│   ├── analyze_titers.smk          # Sera metadata, final titer data, and titer plots
-│   └── trees.smk                   # Nextstrain protein tree building
-│
-├── scripts/                     # Custom analysis scripts
-│   ├── validate_viral_library.py                              # Viral library validation
-│   ├── analyze_pool.py                                        # Library pool composition
-│   ├── analyze_repool.py                                      # Library re-pool balance
-│   ├── analyze_single_well_infections.py                      # Single-well infection QC
-│   ├── aggregate_sera_metadata.py                             # Sera metadata aggregation
-│   ├── process_final_titer_data.py                            # Final titer data processing
-│   ├── plot_titer_summaries.py                                # Interactive titer summary plots
-│   └── nextstrain_prot_titers_tree_alignment_and_metadata.py  # Tree input preparation
-│
-├── data/                        # Input data
-│   ├── viral_libraries/         # Barcode-to-strain mappings
-│   ├── neut_standard_sets/      # Neutralization control barcodes (Loes et al. 2024)
-│   ├── plates/                  # Per-plate sample metadata CSVs
-│   ├── miscellaneous_plates/    # QC and pooling validation data
-│   ├── sera_metadata/           # Per-cohort serum metadata CSVs
-│   └── nextstrain-prot-titers-tree_data/  # Outgroup and site numbering for trees
-│
-├── results/                     # Pipeline outputs (key files tracked in git)
-│   ├── barcode_counts/          # Per-sample barcode counts
-│   ├── barcode_fates/           # Read processing statistics
-│   ├── plates/                  # Per-plate analyses
-│   ├── sera/                    # Per-serum titer aggregations
-│   ├── aggregated_titers/       # Final titer matrices
-│   ├── library_qc/              # Pool composition and re-pool balance, with re-pooling math
-│   ├── final_titer_data/        # QC'd titer data with metadata (tracked in git)
-│   ├── titer_plots/             # Interactive titer summary plots (not tracked in git)
-│   ├── qc_drops/                # QC filtering documentation
-│   └── miscellaneous_plates/    # Library pooling QC results
-│
-├── auspice/                     # Nextstrain auspice JSON files for tree visualization
-│
-├── seqneut-pipeline/            # Analysis pipeline git submodule
-└── nextstrain-prot-titers-tree/ # Tree building git submodule
-```
-
-Note all input data for the pipeline are in [./data/](data).
-All output generated by pipeline goes in [./results/](results), although only some results are tracked in the GitHub repo (see [.gitignore](.gitignore)).
+### Results
+All output generated by the pipeline goes in [./results/](results), although only some results are tracked in the GitHub repo (see [.gitignore](.gitignore)).
+The exception is that the Nextstrain tree JSONs are placed in [./auspice/](auspice), where they can be viewed as [Nextstrain Community Builds](https://docs.nextstrain.org/en/latest/guides/share/community-builds.html).
+These results should be largely self-explanatory, here are the key ones to look at if you want to visualize the results:
+  - Final processed and QC-ed titer data are [./results/final_titer_data](results/final_titer_data) as described in more detail above in the [Quick links to key results](#quick-links-to-key-results) section.
+  - Titers aggregated across all plates, before the subsetting to well-measured viruses and sera, are in [./results/aggregated_titers](results/aggregated_titers).
+  - Nextstrain trees are in [./auspice](auspice), they can be viewed as [Nextstrain Community Builds](https://docs.nextstrain.org/en/latest/guides/share/community-builds.html) at the links provided in the [Quick links to key results](#quick-links-to-key-results) section.
+  - Interactive summary of results and pipeline QC are written to `results/docs` and are not tracked in the repo, but can be viewed interactively at [https://jbloomlab.github.io/flu-seqneut-2026](https://jbloomlab.github.io/flu-seqneut-2026) if you follow the steps described in the [Documentation on GitHub Pages](#documentation-on-github-pages) section.
 
 ### Snakemake pipeline
-The pipeline is specified in [Snakefile](Snakefile), which contains only the configuration, the `include` statements, and `rule all`.
-It includes:
+The pipeline is specified in [Snakefile](Snakefile), which includes:
 
- - [seqneut-pipeline/seqneut-pipeline.smk](seqneut-pipeline/seqneut-pipeline.smk), the core analysis workflow provided by the *seqneut-pipeline* submodule.
- - one `.smk` file in [rules/](rules) per analysis that is specific to this study, as described in [Additional analyses](#additional-analyses) below.
-
-Each file in [rules/](rules) defines the final outputs it contributes, and `rule all` in [Snakefile](Snakefile) collects those alongside the outputs of the core pipeline.
-Note that within these files, the paths in the `script:`, `conda:`, and `module:` directives are relative to [rules/](rules) rather than to the top-level directory, whereas the input, output, and log paths are relative to the top-level directory.
+ - [seqneut-pipeline/seqneut-pipeline.smk](seqneut-pipeline/seqneut-pipeline.smk): the core analysis workflow provided by the [seqneut-pipeline](https://github.com/jbloomlab/seqneut-pipeline) submodule.
+ - [rules/validate_viral_library.smk](rules/validate_viral_library.smk): validates the viral library and prints summary information.
+ - [rules/library_qc.smk](rules/library_qc.smk): QC of the library, including sequencing of the library pool to balance the strain titers and single-well infections with each strain to confirm the absence of contaminanation.
+ - [rules/analyze_titers.smk](rules/analyze_titers.smk): analysis of the titers to generate plots and QC-ed aggregated results.
+ - [rules/trees.smk](rules/trees.smk): builds Nextstrain trees showing the library and results in a phylogenetic context.
 
 ### Submodules
 This repository uses the following git submodules:
 
  - [seqneut-pipeline](https://github.com/jbloomlab/seqneut-pipeline) for the core analysis workflow.
  - [nextstrain-prot-titers-tree](https://github.com/jbloomlab/nextstrain-prot-titers-tree) for building interactive Nextstrain protein trees with titer data.
-
-## Configuration
-
-All pipeline parameters are specified in [`config.yml`](config.yml). 
-
-See [`seqneut-pipeline/README.md`](seqneut-pipeline/README.md) for detailed configuration documentation.
+ - [bloomlab-coding-standards](https://github.com/jbloomlab/bloomlab-coding-standards) for the lab coding standards followed here.
 
 ## Running the Pipeline
-
-### Environment Setup
-
+Clone the repository with its submodules:
 ```bash
-# Create conda environment
+git clone --recurse-submodules https://github.com/jbloomlab/flu-seqneut-2026.git
+```
+An existing clone needs `git submodule update --init --recursive`, as the pipeline will not run with empty submodule directories.
+
+Then build the `seqneut-pipeline` conda environment in [seqneut-pipeline/environment.yml](seqneut-pipeline/environment.yml):
+```bash
+# Create conda environment (only needs to be done once)
 conda env create -f seqneut-pipeline/environment.yml
 
 # Activate environment
 conda activate seqneut-pipeline
 ```
 
-### Local Execution
-
+Then to run the pipeline locally use:
 ```bash
 snakemake -j <num_cores> --software-deployment-method conda
 ```
 
-### Cluster Execution (Fred Hutch)
-
+To run the pipeline on the Fred Hutch cluster using slurm, run:
 ```bash
 sbatch run_Hutch_cluster.bash
 ```
 
 ## Documentation on GitHub Pages
-As described in [seqneut-pipeline/README.md](seqneut-pipeline/README.md), the pipeline generates HTML documentation that can be pushed to a *gh-pages* branch for publishing on GitHub Pages with:
+As described in [seqneut-pipeline/README.md](seqneut-pipeline/README.md), the pipeline generates HTML documentation in `./results/docs` (not tracked in git) that can be pushed to a *gh-pages* branch for publishing on GitHub Pages with:
 ```bash
 ./seqneut-pipeline/publish_docs_gh-pages.sh
 ```
 
-This is then displayed on GitHub Pages via the *gh-pages* branch at [https://jbloomlab.github.io/flu-seqneut-2026](https://jbloomlab.github.io/flu-seqneut-2026). 
+This documentation is then displayed on GitHub Pages via the *gh-pages* branch at [https://jbloomlab.github.io/flu-seqneut-2026](https://jbloomlab.github.io/flu-seqneut-2026).
 
 The command to publish to the *gh-pages* branch must be run manually, and GitHub must be manually configured to display the Pages from this branch.
 
-## Additional analyses
-Beyond the core neutralization-assay analysis done by the *seqneut-pipeline* submodule, the workflow here runs the analyses below, one `.smk` file in [rules/](rules) each.
-All of them are configured in [config.yml](config.yml).
-
-### Viral library validation
-[rules/validate_viral_library.smk](rules/validate_viral_library.smk) checks each library in `viral_libraries` against the requirements specified under `viral_library_validations` in [config.yml](config.yml).
-It writes a report to `results/validate_viral_library/` recording every check that ran and how much it examined, alongside a table of every column of the CSV, including any column the configuration does not cover and so does not check.
-The pipeline fails if any check does.
-
-### Library QC
-[rules/library_qc.smk](rules/library_qc.smk) has analyses that examine the library QC, such as library pools to estimate relative strain concentrations and find the virus dilution in the linear range, or single-well infections to check for contamination.
-A re-pool is either measured and then given the volumes for a further corrective re-pool, or measured only; `corrective_repool` selects which, and so whether the pipetting CSVs or the strain representation CSV are written.
-The numerical results are placed in [results/library_qc/](results/library_qc/) and HTML reports are generated that go into the documentation that can be rendered on GitHub Pages.
-
-### Titer processing and plots
-[rules/analyze_titers.smk](rules/analyze_titers.smk) aggregates the per-cohort sera metadata (see [Sera](#sera) above), QCs and subsets the titers aggregated by the pipeline into [results/final_titer_data/](results/final_titer_data/), and builds the interactive titer summary plots.
-The plate groups (see *group* in `plates`) that get this final titer data and these plots are set by `groups_to_analyze` in [config.yml](config.yml).
-
-### Nextstrain protein trees
-[rules/trees.smk](rules/trees.smk) builds the alignment, metadata, titers TSV, and titer colorings for each subtype, then runs the *nextstrain-prot-titers-tree* submodule to make the auspice JSONs in [auspice/](auspice) that are linked at the top of this README.
-
 ## Non-pipeline analyses
-The [non-pipeline_analyses/](non-pipeline_analyses/) subdirectory contains one-off analyses (library design, pooling optimization, and single-virus-per-well infections) that are **not** run by the [Snakefile](Snakefile) and are separate from the main neutralization assay pipeline.
-Note that the pooling optimization there is superseded by [Library pool QC](#library-pool-qc) above.
-See the README in each of those subdirectories for details.
+The [non-pipeline_analyses/](non-pipeline_analyses/) subdirectory contains one-off analyses that are **not** run by the [Snakefile](Snakefile) and are separate from the main pipeline.
+See the README in each of those subdirectories for details, and note some of these non-pipeline analyses may be obsolete.
 
 ## License
-
 [MIT License](LICENSE)

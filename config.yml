@@ -387,7 +387,7 @@ analyze_single_well_infections:
 seqneut-pipeline: seqneut-pipeline
 
 description: |
-  # Near real-time data on the human neutralizing antibody landscape to influenza virus as of the summmer of 2026 to inform vaccine-strain selection
+  # Near real-time data on the human neutralizing antibody landscape to influenza virus as of the summer of 2026 to inform vaccine-strain selection
 
   Study led by Caroline Kikawa, Andrew Butler, John Huddleston, and Jesse Bloom.
 

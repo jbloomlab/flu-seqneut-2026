@@ -32,9 +32,6 @@ results/**
 
 # ignores specific to custom analyses in Snakefile
 
-!results/viral_strain_seqs/recent_HA_ectodomain_nts.fa
-!results/viral_strain_seqs/recent_HA_ectodomain_prots.fa
-
 !results/validate_viral_library/*_validation.txt
 
 !results/library_qc/*.csv

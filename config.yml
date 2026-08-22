@@ -13,7 +13,47 @@ __variables__:
 subtypes: ?subtypes
 
 # `strain_type` assigned to the recent circulating strains in the viral barcodes CSV
-circulating_strain_type: circulating_2026
+circulating_strain_type: &circulating_strain_type circulating_2026
+
+# Checks applied to each CSV in `viral_libraries` by `rules/validate_viral_library.smk`.
+viral_library_validations:
+  barcode_length: 16  # nucleotide barcode length
+  # One entry per validated column:
+  #   `nulls`: whether the column may be empty.
+  #   `unique`: `barcode` if the value is unique for every barcode; `strain` if the value is
+  #     unique for every strain; omitted if value can be shared among strains. Every column
+  #     except `unique: barcode` must be unique across a strain's barcode.
+  #   `values`: the values the column may hold, where it is categorical.
+  #   `non_null_only_when`: `{column: value}`, the column being non-null for exactly the
+  #     rows where that column holds that value.
+  columns:
+    strain: {nulls: false, unique: strain}
+    barcode: {nulls: false, unique: barcode}
+    # read by no rule, but it maps a row back to the experimental set of plasmids
+    bloom_lab_plasmid_log_id: {nulls: false, unique: barcode}
+    shortname_strain: {nulls: false, unique: strain}
+    subtype: {nulls: false, values: "?subtypes"}
+    strain_type: {nulls: false, values: [vaccine, *circulating_strain_type]}
+    vaccine_type:
+      nulls: true
+      values: [egg, cell]
+      non_null_only_when: {strain_type: vaccine}
+    subclade: {nulls: false}
+    derived_haplotype: {nulls: false, unique: strain}
+    collection_date: {nulls: false}
+    nt_sequence_HA_ectodomain: {nulls: false, unique: strain}
+    protein_sequence_HA_ectodomain: {nulls: false, unique: strain}
+  # HA ectodomain conventions, which differ between the subtypes. `protein_lengths` is
+  # every length allowed for the subtype.
+  by_subtype:
+    H1N1:
+      protein_lengths: [500]
+      protein_startswith: CIGY
+      protein_endswith: "[EK]IDG[VI]"
+    H3N2:
+      protein_lengths: [501]
+      protein_startswith: "Q[KNR][IL]P"
+      protein_endswith: NNRFQ
 
 # For the most part our analyses separate recent and historical vaccine strains, but
 # consider these vaccine strains to be "recent" and include them alongside the recent strains.
@@ -347,7 +387,7 @@ analyze_single_well_infections:
 seqneut-pipeline: seqneut-pipeline
 
 description: |
-  # Near real-time data on the human neutralizing antibody landscape to influenza virus as of the summmer of 2026 to inform vaccine-strain selection
+  # Near real-time data on the human neutralizing antibody landscape to influenza virus as of the summer of 2026 to inform vaccine-strain selection
 
   Study led by Caroline Kikawa, Andrew Butler, John Huddleston, and Jesse Bloom.
 

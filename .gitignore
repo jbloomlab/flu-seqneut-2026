@@ -9,6 +9,8 @@ _*
 results/**
 !results/**/
 
+!results/validate_viral_library/*_validation.txt
+
 !results/barcode_counts/*.csv
 !results/barcode_fates/*.csv
 
@@ -31,8 +33,6 @@ results/**
 !results/miscellaneous_plates/*/*fates.csv
 
 # ignores specific to custom analyses in Snakefile
-
-!results/validate_viral_library/*_validation.txt
 
 !results/library_qc/*.csv
 

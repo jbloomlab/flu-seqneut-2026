@@ -101,7 +101,6 @@ These results should be largely self-explanatory, here are the key ones to look 
 The pipeline is specified in [Snakefile](Snakefile), which includes:
 
  - [seqneut-pipeline/seqneut-pipeline.smk](seqneut-pipeline/seqneut-pipeline.smk): the core analysis workflow provided by the [seqneut-pipeline](https://github.com/jbloomlab/seqneut-pipeline) submodule.
- - [rules/validate_viral_library.smk](rules/validate_viral_library.smk): validates the viral library and prints summary information.
  - [rules/library_qc.smk](rules/library_qc.smk): QC of the library, including sequencing of the library pool to balance the strain titers and single-well infections with each strain to confirm the absence of contaminanation.
  - [rules/analyze_titers.smk](rules/analyze_titers.smk): analysis of the titers to generate plots and QC-ed aggregated results.
  - [rules/trees.smk](rules/trees.smk): builds Nextstrain trees showing the library and results in a phylogenetic context.

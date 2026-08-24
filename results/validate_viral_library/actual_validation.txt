@@ -1,63 +1,72 @@
 === schema ===
-  OK  all columns listed in `columns` are present                                   (12 columns)
+   OK   all columns listed in `columns` are present                                                           (12 columns)
 
 === summary of data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv ===
 301 barcodes for 148 strains
-  H1N1: 66 strains (60 circulating_2026, 6 vaccine), 135 barcodes
-  H3N2: 82 strains (74 circulating_2026, 8 vaccine), 166 barcodes
+
+  subtype  strains  barcodes
+    H1N1        66       135
+    H3N2        82       166
+
+  strain_type         strains  barcodes
+    vaccine                14        35
+    circulating_2026      134       266
+
+  vaccine_type  strains  barcodes
+    egg               6        14
+    cell              8        21
 
   column                          null  non-null  distinct  max per strain  checks
-  strain                             0       301       148               1  non-null; unique per strain
+  strain                             0       301       148               1  non-null; further checks per subtype
   subtype                            0       301         2               1  non-null; values ['H1N1', 'H3N2']
   strain_type                        0       301         2               1  non-null; values ['vaccine', 'circulating_2026']
-  vaccine_type                     266        35         2               1  nulls allowed; values ['egg', 'cell']; non-null only when strain_type == vaccine
+  vaccine_type                     266        35         2               1  nulls allowed; values ['egg', 'cell']; set when strain_type is vaccine
   subclade                           0       301        18               1  non-null
-  derived_haplotype                  0       301       148               1  non-null; unique per strain
+  derived_haplotype                  0       301       148               1  non-null; names one strain
   genbank_accession                  0       301       148               1  NOT VALIDATED
-  shortname_strain                   0       301       148               1  non-null; unique per strain
+  shortname_strain                   0       301       148               1  non-null; names one strain
   shortname_barcoded_construct       0       301       287               3  NOT VALIDATED
-  bloom_lab_plasmid_log_id           0       301       301               3  non-null; unique per barcode
+  bloom_lab_plasmid_log_id           0       301       301               3  non-null; distinct per row
   passage_history_annotation       266        35         2               1  NOT VALIDATED
-  barcode                            0       301       301               3  non-null; unique per barcode
-  collection_date                    0       301        63               1  non-null
-  nt_sequence_HA_ectodomain          0       301       148               1  non-null; unique per strain
-  protein_sequence_HA_ectodomain     0       301       148               1  non-null; unique per strain
+  barcode                            0       301       301               3  non-null; distinct per row; matches ^[ACGT]{16}$
+  collection_date                    0       301        63               1  non-null; a number
+  nt_sequence_HA_ectodomain          0       301       148               1  non-null; names one strain; matches ^([ACGT]{3})+$; translates to protein_sequence_HA_ectodomain
+  protein_sequence_HA_ectodomain     0       301       148               1  non-null; names one strain; matches ^[ACDEFGHIKLMNPQRSTVWY]+$; further checks per subtype
 
 columns not listed in `viral_library_validations: columns`: ['genbank_accession', 'shortname_barcoded_construct', 'passage_history_annotation']
 
 === columns ===
-  OK  columns declared non-null have no null values                                 (11 columns)
-  OK  `subtype` holds only ['H1N1', 'H3N2']                                         (301 non-null rows)
-  OK  `strain_type` holds only ['vaccine', 'circulating_2026']                      (301 non-null rows)
-  OK  `vaccine_type` is non-null for exactly the rows with strain_type == vaccine   (301 rows)
-  OK  `vaccine_type` holds only ['egg', 'cell']                                     (35 non-null rows)
+   OK   columns declared non-null have no null values                                                         (11 columns)
+   OK   `subtype` holds only ['H1N1', 'H3N2']                                                                 (301 non-null rows)
+   OK   `strain_type` holds only ['vaccine', 'circulating_2026']                                              (301 non-null rows)
+   OK   `vaccine_type` holds only ['egg', 'cell']                                                             (35 non-null rows)
+   OK   `vaccine_type` is set for exactly the rows with strain_type == vaccine                                (301 rows)
 
-=== identifiers ===
-  OK  `barcode` is exactly 16 uppercase ACGT nucleotides                            (301 barcodes)
-  OK  `strain` ends in an underscore followed by its `subtype`                      (148 strains)
+=== numbers ===
+   OK   `collection_date` is a number                                                                         (301 non-null rows)
+      `collection_date` over 148 strains:  min 2019.76  median 2026.10  max 2026.32
+
+=== patterns ===
+   OK   `barcode` matches ^[ACGT]{16}$                                                                        (301 non-null rows)
+   OK   `strain` where subtype is H1N1 matches ^\S+_H1N1$                                                     (135 non-null rows)
+   OK   `strain` where subtype is H3N2 matches ^\S+_H3N2$                                                     (166 non-null rows)
+   OK   `nt_sequence_HA_ectodomain` matches ^([ACGT]{3})+$                                                    (301 non-null rows)
+   OK   `protein_sequence_HA_ectodomain` matches ^[ACDEFGHIKLMNPQRSTVWY]+$                                    (301 non-null rows)
+   OK   `protein_sequence_HA_ectodomain` where subtype is H1N1 matches ^CIGY                                  (135 non-null rows)
+   OK   `protein_sequence_HA_ectodomain` where subtype is H1N1 matches [EK]IDG[VI]$                           (135 non-null rows)
+   OK   `protein_sequence_HA_ectodomain` where subtype is H1N1 is 500 characters                              (135 non-null rows)
+   OK   `protein_sequence_HA_ectodomain` where subtype is H3N2 matches ^Q[KNR][IL]P                           (166 non-null rows)
+   OK   `protein_sequence_HA_ectodomain` where subtype is H3N2 matches NNRFQ$                                 (166 non-null rows)
+   OK   `protein_sequence_HA_ectodomain` where subtype is H3N2 is 501 characters                              (166 non-null rows)
 
 === uniqueness ===
-  OK  each `strain` value names one strain                                          (148 values)
-  OK  `barcode` is distinct in every row                                            (301 rows)
-  OK  `bloom_lab_plasmid_log_id` is distinct in every row                           (301 rows)
-  OK  each `shortname_strain` value names one strain                                (148 values)
-  OK  each `derived_haplotype` value names one strain                               (148 values)
-  OK  each `nt_sequence_HA_ectodomain` value names one strain                       (148 values)
-  OK  each `protein_sequence_HA_ectodomain` value names one strain                  (148 values)
-  OK  each strain has one set of values for all listed columns but ['barcode', 'bloom_lab_plasmid_log_id']  (148 strains)
+   OK   `barcode` is distinct in every row that sets it                                                       (301 non-null rows)
+   OK   `bloom_lab_plasmid_log_id` is distinct in every row that sets it                                      (301 non-null rows)
+   OK   each `shortname_strain` value names one strain                                                        (148 distinct values)
+   OK   each `derived_haplotype` value names one strain                                                       (148 distinct values)
+   OK   each `nt_sequence_HA_ectodomain` value names one strain                                               (148 distinct values)
+   OK   each `protein_sequence_HA_ectodomain` value names one strain                                          (148 distinct values)
+   OK   each strain has one set of values for all listed columns but ['barcode', 'bloom_lab_plasmid_log_id']  (148 strains)
 
 === sequences ===
-  OK  `by_subtype` covers every subtype the `subtype` column may hold               (2 subtypes)
-  OK  H1N1 protein length is one of [500]                                           (66 strains)
-  OK  H1N1 protein starts with CIGY                                                 (66 strains)
-  OK  H1N1 protein ends with [EK]IDG[VI]                                            (66 strains)
-  OK  H3N2 protein length is one of [501]                                           (82 strains)
-  OK  H3N2 protein starts with Q[KNR][IL]P                                          (82 strains)
-  OK  H3N2 protein ends with NNRFQ                                                  (82 strains)
-  OK  `protein_sequence_HA_ectodomain` has no stop codons                           (148 strains)
-  OK  `nt_sequence_HA_ectodomain` is uppercase ACGT and a whole number of codons    (148 strains)
-  OK  `nt_sequence_HA_ectodomain` translates to `protein_sequence_HA_ectodomain`    (301 rows)
-
-=== dates ===
-  OK  `collection_date` is a number                                                 (148 strains)
-      `collection_date` over 148 strains:  min 2019.76  median 2026.10  max 2026.32
+   OK   `nt_sequence_HA_ectodomain` translates to `protein_sequence_HA_ectodomain`                            (301 rows setting both)

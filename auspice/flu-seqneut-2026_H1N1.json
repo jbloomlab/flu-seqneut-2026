@@ -2,7 +2,7 @@
   "version": "v2",
   "meta": {
     "title": "Near real-time data on human neutralizing antibody landscape to H1N1 influenza virus as of the summer of 2026",
-    "updated": "2026-08-21",
+    "updated": "2026-08-23",
     "build_url": "https://github.com/jbloomlab/flu-seqneut-2026",
     "maintainers": [
       {
@@ -544,29 +544,29 @@
               "derived_haplotype": {
                 "value": "C.1.9.3"
               },
-              "frac_w_titer_below_140_SCH_sera": {
-                "value": 0.375
-              },
               "median_titer_All_sera": {
                 "value": 334.9
               },
               "subclade": {
                 "value": "C.1.9.3"
               },
-              "strain_type": {
-                "value": "circulating_2026"
-              },
-              "median_titer_UWMC_sera": {
-                "value": 465.4
+              "frac_w_titer_below_140_SCH_sera": {
+                "value": 0.375
               },
               "median_titer_SCH_sera": {
                 "value": 240.1
               },
-              "frac_w_titer_below_140_UWMC_sera": {
-                "value": 0.22
+              "strain_type": {
+                "value": "circulating_2026"
               },
               "frac_w_titer_below_140_All_sera": {
                 "value": 0.283
+              },
+              "median_titer_UWMC_sera": {
+                "value": 465.4
+              },
+              "frac_w_titer_below_140_UWMC_sera": {
+                "value": 0.22
               }
             },
             "branch_attrs": {
@@ -609,29 +609,29 @@
                   "derived_haplotype": {
                     "value": "C.1.9.2:A139T,A141E"
                   },
-                  "frac_w_titer_below_140_SCH_sera": {
-                    "value": 0.45
-                  },
                   "median_titer_All_sera": {
                     "value": 274.2
                   },
                   "subclade": {
                     "value": "C.1.9.2"
                   },
-                  "strain_type": {
-                    "value": "circulating_2026"
-                  },
-                  "median_titer_UWMC_sera": {
-                    "value": 347.6
+                  "frac_w_titer_below_140_SCH_sera": {
+                    "value": 0.45
                   },
                   "median_titer_SCH_sera": {
                     "value": 213.8
                   },
-                  "frac_w_titer_below_140_UWMC_sera": {
-                    "value": 0.203
+                  "strain_type": {
+                    "value": "circulating_2026"
                   },
                   "frac_w_titer_below_140_All_sera": {
                     "value": 0.303
+                  },
+                  "median_titer_UWMC_sera": {
+                    "value": 347.6
+                  },
+                  "frac_w_titer_below_140_UWMC_sera": {
+                    "value": 0.203
                   }
                 },
                 "branch_attrs": {
@@ -659,29 +659,29 @@
                   "derived_haplotype": {
                     "value": "C.1.9.4:V152I"
                   },
-                  "frac_w_titer_below_140_SCH_sera": {
-                    "value": 0.425
-                  },
                   "median_titer_All_sera": {
                     "value": 300.3
                   },
                   "subclade": {
                     "value": "C.1.9.4"
                   },
-                  "strain_type": {
-                    "value": "circulating_2026"
-                  },
-                  "median_titer_UWMC_sera": {
-                    "value": 547.9
+                  "frac_w_titer_below_140_SCH_sera": {
+                    "value": 0.425
                   },
                   "median_titer_SCH_sera": {
                     "value": 234.5
                   },
-                  "frac_w_titer_below_140_UWMC_sera": {
-                    "value": 0.136
+                  "strain_type": {
+                    "value": "circulating_2026"
                   },
                   "frac_w_titer_below_140_All_sera": {
                     "value": 0.253
+                  },
+                  "median_titer_UWMC_sera": {
+                    "value": 547.9
+                  },
+                  "frac_w_titer_below_140_UWMC_sera": {
+                    "value": 0.136
                   }
                 },
                 "branch_attrs": {
@@ -751,29 +751,29 @@
                   "derived_haplotype": {
                     "value": "C.1.9:P137S"
                   },
-                  "frac_w_titer_below_140_SCH_sera": {
-                    "value": 0.375
-                  },
                   "median_titer_All_sera": {
                     "value": 397.1
                   },
                   "subclade": {
                     "value": "C.1.9"
                   },
-                  "strain_type": {
-                    "value": "circulating_2026"
-                  },
-                  "median_titer_UWMC_sera": {
-                    "value": 549.6
+                  "frac_w_titer_below_140_SCH_sera": {
+                    "value": 0.375
                   },
                   "median_titer_SCH_sera": {
                     "value": 278.2
                   },
-                  "frac_w_titer_below_140_UWMC_sera": {
-                    "value": 0.186
+                  "strain_type": {
+                    "value": "circulating_2026"
                   },
                   "frac_w_titer_below_140_All_sera": {
                     "value": 0.263
+                  },
+                  "median_titer_UWMC_sera": {
+                    "value": 549.6
+                  },
+                  "frac_w_titer_below_140_UWMC_sera": {
+                    "value": 0.186
                   }
                 },
                 "branch_attrs": {}
@@ -808,29 +808,29 @@
                       "derived_haplotype": {
                         "value": "C.1.9.3:T82K,P137S,A141V,I166V"
                       },
-                      "frac_w_titer_below_140_SCH_sera": {
-                        "value": 0.45
-                      },
                       "median_titer_All_sera": {
                         "value": 356.0
                       },
                       "subclade": {
                         "value": "C.1.9.3"
                       },
-                      "strain_type": {
-                        "value": "circulating_2026"
-                      },
-                      "median_titer_UWMC_sera": {
-                        "value": 410.8
+                      "frac_w_titer_below_140_SCH_sera": {
+                        "value": 0.45
                       },
                       "median_titer_SCH_sera": {
                         "value": 209.4
                       },
-                      "frac_w_titer_below_140_UWMC_sera": {
-                        "value": 0.17
+                      "strain_type": {
+                        "value": "circulating_2026"
                       },
                       "frac_w_titer_below_140_All_sera": {
                         "value": 0.283
+                      },
+                      "median_titer_UWMC_sera": {
+                        "value": 410.8
+                      },
+                      "frac_w_titer_below_140_UWMC_sera": {
+                        "value": 0.17
                       }
                     },
                     "branch_attrs": {
@@ -874,29 +874,29 @@
                           "derived_haplotype": {
                             "value": "C.1.9.3:D86E,P137S,S143G,G155E,I166V"
                           },
-                          "frac_w_titer_below_140_SCH_sera": {
-                            "value": 0.475
-                          },
                           "median_titer_All_sera": {
                             "value": 214.0
                           },
                           "subclade": {
                             "value": "C.1.9.3"
                           },
-                          "strain_type": {
-                            "value": "circulating_2026"
-                          },
-                          "median_titer_UWMC_sera": {
-                            "value": 221.3
+                          "frac_w_titer_below_140_SCH_sera": {
+                            "value": 0.475
                           },
                           "median_titer_SCH_sera": {
                             "value": 195.8
                           },
-                          "frac_w_titer_below_140_UWMC_sera": {
-                            "value": 0.305
+                          "strain_type": {
+                            "value": "circulating_2026"
                           },
                           "frac_w_titer_below_140_All_sera": {
                             "value": 0.374
+                          },
+                          "median_titer_UWMC_sera": {
+                            "value": 221.3
+                          },
+                          "frac_w_titer_below_140_UWMC_sera": {
+                            "value": 0.305
                           }
                         },
                         "branch_attrs": {
@@ -941,29 +941,29 @@
                               "derived_haplotype": {
                                 "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K,D274N,HA2_I45V"
                               },
-                              "frac_w_titer_below_140_SCH_sera": {
-                                "value": 0.45
-                              },
                               "median_titer_All_sera": {
                                 "value": 235.6
                               },
                               "subclade": {
                                 "value": "C.1.9.3"
                               },
-                              "strain_type": {
-                                "value": "circulating_2026"
-                              },
-                              "median_titer_UWMC_sera": {
-                                "value": 236.7
+                              "frac_w_titer_below_140_SCH_sera": {
+                                "value": 0.45
                               },
                               "median_titer_SCH_sera": {
                                 "value": 194.7
                               },
-                              "frac_w_titer_below_140_UWMC_sera": {
-                                "value": 0.356
+                              "strain_type": {
+                                "value": "circulating_2026"
                               },
                               "frac_w_titer_below_140_All_sera": {
                                 "value": 0.394
+                              },
+                              "median_titer_UWMC_sera": {
+                                "value": 236.7
+                              },
+                              "frac_w_titer_below_140_UWMC_sera": {
+                                "value": 0.356
                               }
                             },
                             "branch_attrs": {
@@ -990,29 +990,29 @@
                               "derived_haplotype": {
                                 "value": "C.1.9.3:S69P,P137S,G155E,I166V,E172K"
                               },
-                              "frac_w_titer_below_140_SCH_sera": {
-                                "value": 0.425
-                              },
                               "median_titer_All_sera": {
                                 "value": 209.7
                               },
                               "subclade": {
                                 "value": "C.1.9.3"
                               },
-                              "strain_type": {
-                                "value": "circulating_2026"
-                              },
-                              "median_titer_UWMC_sera": {
-                                "value": 244.8
+                              "frac_w_titer_below_140_SCH_sera": {
+                                "value": 0.425
                               },
                               "median_titer_SCH_sera": {
                                 "value": 190.3
                               },
-                              "frac_w_titer_below_140_UWMC_sera": {
-                                "value": 0.254
+                              "strain_type": {
+                                "value": "circulating_2026"
                               },
                               "frac_w_titer_below_140_All_sera": {
                                 "value": 0.323
+                              },
+                              "median_titer_UWMC_sera": {
+                                "value": 244.8
+                              },
+                              "frac_w_titer_below_140_UWMC_sera": {
+                                "value": 0.254
                               }
                             },
                             "branch_attrs": {}
@@ -1027,29 +1027,29 @@
                               "derived_haplotype": {
                                 "value": "C.1.9.3:S69P,P137S,V152I,G155E,I166V,E172K"
                               },
-                              "frac_w_titer_below_140_SCH_sera": {
-                                "value": 0.5
-                              },
                               "median_titer_All_sera": {
                                 "value": 219.8
                               },
                               "subclade": {
                                 "value": "C.1.9.3"
                               },
-                              "strain_type": {
-                                "value": "circulating_2026"
-                              },
-                              "median_titer_UWMC_sera": {
-                                "value": 223.7
+                              "frac_w_titer_below_140_SCH_sera": {
+                                "value": 0.5
                               },
                               "median_titer_SCH_sera": {
                                 "value": 169.0
                               },
-                              "frac_w_titer_below_140_UWMC_sera": {
-                                "value": 0.288
+                              "strain_type": {
+                                "value": "circulating_2026"
                               },
                               "frac_w_titer_below_140_All_sera": {
                                 "value": 0.374
+                              },
+                              "median_titer_UWMC_sera": {
+                                "value": 223.7
+                              },
+                              "frac_w_titer_below_140_UWMC_sera": {
+                                "value": 0.288
                               }
                             },
                             "branch_attrs": {
@@ -1106,29 +1106,29 @@
                   "derived_haplotype": {
                     "value": "C.1.1"
                   },
-                  "frac_w_titer_below_140_SCH_sera": {
-                    "value": 0.375
-                  },
                   "median_titer_All_sera": {
                     "value": 367.5
                   },
                   "subclade": {
                     "value": "C.1.1"
                   },
-                  "strain_type": {
-                    "value": "2023-2024, 2024, 2024-2025, 2025, 2025-2026 cell-based vaccine"
-                  },
-                  "median_titer_UWMC_sera": {
-                    "value": 413.6
+                  "frac_w_titer_below_140_SCH_sera": {
+                    "value": 0.375
                   },
                   "median_titer_SCH_sera": {
                     "value": 240.3
                   },
-                  "frac_w_titer_below_140_UWMC_sera": {
-                    "value": 0.121
+                  "strain_type": {
+                    "value": "2023-2024, 2024, 2024-2025, 2025, 2025-2026 cell-based vaccine"
                   },
                   "frac_w_titer_below_140_All_sera": {
                     "value": 0.225
+                  },
+                  "median_titer_UWMC_sera": {
+                    "value": 413.6
+                  },
+                  "frac_w_titer_below_140_UWMC_sera": {
+                    "value": 0.121
                   }
                 },
                 "branch_attrs": {
@@ -1185,29 +1185,29 @@
                           "derived_haplotype": {
                             "value": "D.3.1:R45K"
                           },
-                          "frac_w_titer_below_140_SCH_sera": {
-                            "value": 0.45
-                          },
                           "median_titer_All_sera": {
                             "value": 364.5
                           },
                           "subclade": {
                             "value": "D.3.1"
                           },
-                          "strain_type": {
-                            "value": "circulating_2026"
-                          },
-                          "median_titer_UWMC_sera": {
-                            "value": 449.8
+                          "frac_w_titer_below_140_SCH_sera": {
+                            "value": 0.45
                           },
                           "median_titer_SCH_sera": {
                             "value": 226.8
                           },
-                          "frac_w_titer_below_140_UWMC_sera": {
-                            "value": 0.158
+                          "strain_type": {
+                            "value": "circulating_2026"
                           },
                           "frac_w_titer_below_140_All_sera": {
                             "value": 0.278
+                          },
+                          "median_titer_UWMC_sera": {
+                            "value": 449.8
+                          },
+                          "frac_w_titer_below_140_UWMC_sera": {
+                            "value": 0.158
                           }
                         },
                         "branch_attrs": {
@@ -1251,29 +1251,29 @@
                                   "derived_haplotype": {
                                     "value": "D.3.1:N130K"
                                   },
-                                  "frac_w_titer_below_140_SCH_sera": {
-                                    "value": 0.425
-                                  },
                                   "median_titer_All_sera": {
                                     "value": 355.6
                                   },
                                   "subclade": {
                                     "value": "D.3.1"
                                   },
-                                  "strain_type": {
-                                    "value": "circulating_2026"
-                                  },
-                                  "median_titer_UWMC_sera": {
-                                    "value": 498.4
+                                  "frac_w_titer_below_140_SCH_sera": {
+                                    "value": 0.425
                                   },
                                   "median_titer_SCH_sera": {
                                     "value": 192.4
                                   },
-                                  "frac_w_titer_below_140_UWMC_sera": {
-                                    "value": 0.103
+                                  "strain_type": {
+                                    "value": "circulating_2026"
                                   },
                                   "frac_w_titer_below_140_All_sera": {
                                     "value": 0.235
+                                  },
+                                  "median_titer_UWMC_sera": {
+                                    "value": 498.4
+                                  },
+                                  "frac_w_titer_below_140_UWMC_sera": {
+                                    "value": 0.103
                                   }
                                 },
                                 "branch_attrs": {
@@ -1307,29 +1307,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1:L176M"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.4
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 259.4
                                       },
                                       "subclade": {
                                         "value": "D.3.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 354.1
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.4
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 232.9
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.17
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.263
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 354.1
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.17
                                       }
                                     },
                                     "branch_attrs": {
@@ -1353,29 +1353,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.436
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 303.7
                                       },
                                       "subclade": {
                                         "value": "D.3.1"
                                       },
-                                      "strain_type": {
-                                        "value": "2026 and 2026-2027 cell-based vaccine"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 386.1
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.436
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 239.3
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.19
+                                      "strain_type": {
+                                        "value": "2026 and 2026-2027 cell-based vaccine"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.289
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 386.1
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.19
                                       }
                                     },
                                     "branch_attrs": {}
@@ -1432,29 +1432,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1:R74S,I166F"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.425
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 268.3
                                       },
                                       "subclade": {
                                         "value": "D.3.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 288.0
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.425
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 254.6
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.237
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.313
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 288.0
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.237
                                       }
                                     },
                                     "branch_attrs": {}
@@ -1488,29 +1488,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1:A48S,R74S,I166F,T270A"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.425
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 236.8
                                           },
                                           "subclade": {
                                             "value": "D.3.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 236.8
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.425
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 253.8
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.271
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.333
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 236.8
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.271
                                           }
                                         },
                                         "branch_attrs": {
@@ -1534,29 +1534,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1:A48S,R74S,I166F"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.475
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 231.4
                                           },
                                           "subclade": {
                                             "value": "D.3.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 275.4
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.475
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 213.8
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.186
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.303
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 275.4
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.186
                                           }
                                         },
                                         "branch_attrs": {}
@@ -1585,29 +1585,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1:R74S,V152I"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.475
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 271.5
                                       },
                                       "subclade": {
                                         "value": "D.3.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 336.8
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.475
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 229.8
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.237
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.333
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 336.8
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.237
                                       }
                                     },
                                     "branch_attrs": {
@@ -1641,29 +1641,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1:R74S"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.425
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 317.7
                                           },
                                           "subclade": {
                                             "value": "D.3.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 379.5
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.425
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 226.0
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.22
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.303
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 379.5
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.22
                                           }
                                         },
                                         "branch_attrs": {}
@@ -1678,29 +1678,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1:R74S,R205K"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.425
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 313.9
                                           },
                                           "subclade": {
                                             "value": "D.3.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 366.7
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.425
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 204.6
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.203
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.293
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 366.7
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.203
                                           }
                                         },
                                         "branch_attrs": {
@@ -1753,29 +1753,29 @@
                           "derived_haplotype": {
                             "value": "D.3.1:R113K"
                           },
-                          "frac_w_titer_below_140_SCH_sera": {
-                            "value": 0.436
-                          },
                           "median_titer_All_sera": {
                             "value": 285.4
                           },
                           "subclade": {
                             "value": "D.3.1"
                           },
-                          "strain_type": {
-                            "value": "circulating_2026"
-                          },
-                          "median_titer_UWMC_sera": {
-                            "value": 363.1
+                          "frac_w_titer_below_140_SCH_sera": {
+                            "value": 0.436
                           },
                           "median_titer_SCH_sera": {
                             "value": 234.2
                           },
-                          "frac_w_titer_below_140_UWMC_sera": {
-                            "value": 0.228
+                          "strain_type": {
+                            "value": "circulating_2026"
                           },
                           "frac_w_titer_below_140_All_sera": {
                             "value": 0.312
+                          },
+                          "median_titer_UWMC_sera": {
+                            "value": 363.1
+                          },
+                          "frac_w_titer_below_140_UWMC_sera": {
+                            "value": 0.228
                           }
                         },
                         "branch_attrs": {}
@@ -1830,29 +1830,29 @@
                                   "derived_haplotype": {
                                     "value": "D.3.1.1:D127N,D139N"
                                   },
-                                  "frac_w_titer_below_140_SCH_sera": {
-                                    "value": 0.45
-                                  },
                                   "median_titer_All_sera": {
                                     "value": 261.4
                                   },
                                   "subclade": {
                                     "value": "D.3.1.1"
                                   },
-                                  "strain_type": {
-                                    "value": "circulating_2026"
-                                  },
-                                  "median_titer_UWMC_sera": {
-                                    "value": 313.6
+                                  "frac_w_titer_below_140_SCH_sera": {
+                                    "value": 0.45
                                   },
                                   "median_titer_SCH_sera": {
                                     "value": 199.8
                                   },
-                                  "frac_w_titer_below_140_UWMC_sera": {
-                                    "value": 0.254
+                                  "strain_type": {
+                                    "value": "circulating_2026"
                                   },
                                   "frac_w_titer_below_140_All_sera": {
                                     "value": 0.333
+                                  },
+                                  "median_titer_UWMC_sera": {
+                                    "value": 313.6
+                                  },
+                                  "frac_w_titer_below_140_UWMC_sera": {
+                                    "value": 0.254
                                   }
                                 },
                                 "branch_attrs": {
@@ -1876,29 +1876,29 @@
                                   "derived_haplotype": {
                                     "value": "D.3.1.1:D139N,G155E"
                                   },
-                                  "frac_w_titer_below_140_SCH_sera": {
-                                    "value": 0.5
-                                  },
                                   "median_titer_All_sera": {
                                     "value": 198.7
                                   },
                                   "subclade": {
                                     "value": "D.3.1.1"
                                   },
-                                  "strain_type": {
-                                    "value": "circulating_2026"
-                                  },
-                                  "median_titer_UWMC_sera": {
-                                    "value": 217.2
+                                  "frac_w_titer_below_140_SCH_sera": {
+                                    "value": 0.5
                                   },
                                   "median_titer_SCH_sera": {
                                     "value": 140.4
                                   },
-                                  "frac_w_titer_below_140_UWMC_sera": {
-                                    "value": 0.305
+                                  "strain_type": {
+                                    "value": "circulating_2026"
                                   },
                                   "frac_w_titer_below_140_All_sera": {
                                     "value": 0.384
+                                  },
+                                  "median_titer_UWMC_sera": {
+                                    "value": 217.2
+                                  },
+                                  "frac_w_titer_below_140_UWMC_sera": {
+                                    "value": 0.305
                                   }
                                 },
                                 "branch_attrs": {
@@ -1941,29 +1941,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:D168E"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.462
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 270.1
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 284.4
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.462
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 189.6
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.322
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.378
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 284.4
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.322
                                       }
                                     },
                                     "branch_attrs": {
@@ -1987,29 +1987,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:D139N,D168E"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.5
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 246.0
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 343.6
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.5
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 159.6
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.237
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.343
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 343.6
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.237
                                       }
                                     },
                                     "branch_attrs": {}
@@ -2036,29 +2036,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:D139N,T232A"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.475
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 264.2
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 285.2
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.475
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 247.9
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.271
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.353
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 285.2
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.271
                                       }
                                     },
                                     "branch_attrs": {
@@ -2082,29 +2082,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:D139N"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.475
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 217.5
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 241.7
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.475
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 195.7
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.22
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.323
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 241.7
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.22
                                       }
                                     },
                                     "branch_attrs": {}
@@ -2133,29 +2133,29 @@
                                   "derived_haplotype": {
                                     "value": "D.3.1.1:K259R,E260K"
                                   },
-                                  "frac_w_titer_below_140_SCH_sera": {
-                                    "value": 0.475
-                                  },
                                   "median_titer_All_sera": {
                                     "value": 246.5
                                   },
                                   "subclade": {
                                     "value": "D.3.1.1"
                                   },
-                                  "strain_type": {
-                                    "value": "circulating_2026"
-                                  },
-                                  "median_titer_UWMC_sera": {
-                                    "value": 293.6
+                                  "frac_w_titer_below_140_SCH_sera": {
+                                    "value": 0.475
                                   },
                                   "median_titer_SCH_sera": {
                                     "value": 160.6
                                   },
-                                  "frac_w_titer_below_140_UWMC_sera": {
-                                    "value": 0.22
+                                  "strain_type": {
+                                    "value": "circulating_2026"
                                   },
                                   "frac_w_titer_below_140_All_sera": {
                                     "value": 0.323
+                                  },
+                                  "median_titer_UWMC_sera": {
+                                    "value": 293.6
+                                  },
+                                  "frac_w_titer_below_140_UWMC_sera": {
+                                    "value": 0.22
                                   }
                                 },
                                 "branch_attrs": {
@@ -2180,29 +2180,29 @@
                                   "derived_haplotype": {
                                     "value": "D.3.1.1:S157L,T278S"
                                   },
-                                  "frac_w_titer_below_140_SCH_sera": {
-                                    "value": 0.45
-                                  },
                                   "median_titer_All_sera": {
                                     "value": 228.0
                                   },
                                   "subclade": {
                                     "value": "D.3.1.1"
                                   },
-                                  "strain_type": {
-                                    "value": "circulating_2026"
-                                  },
-                                  "median_titer_UWMC_sera": {
-                                    "value": 309.5
+                                  "frac_w_titer_below_140_SCH_sera": {
+                                    "value": 0.45
                                   },
                                   "median_titer_SCH_sera": {
                                     "value": 195.3
                                   },
-                                  "frac_w_titer_below_140_UWMC_sera": {
-                                    "value": 0.271
+                                  "strain_type": {
+                                    "value": "circulating_2026"
                                   },
                                   "frac_w_titer_below_140_All_sera": {
                                     "value": 0.343
+                                  },
+                                  "median_titer_UWMC_sera": {
+                                    "value": 309.5
+                                  },
+                                  "frac_w_titer_below_140_UWMC_sera": {
+                                    "value": 0.271
                                   }
                                 },
                                 "branch_attrs": {
@@ -2227,29 +2227,29 @@
                                   "derived_haplotype": {
                                     "value": "D.3.1.1:L70I,K169R,I286V"
                                   },
-                                  "frac_w_titer_below_140_SCH_sera": {
-                                    "value": 0.5
-                                  },
                                   "median_titer_All_sera": {
                                     "value": 241.3
                                   },
                                   "subclade": {
                                     "value": "D.3.1.1"
                                   },
-                                  "strain_type": {
-                                    "value": "circulating_2026"
-                                  },
-                                  "median_titer_UWMC_sera": {
-                                    "value": 316.6
+                                  "frac_w_titer_below_140_SCH_sera": {
+                                    "value": 0.5
                                   },
                                   "median_titer_SCH_sera": {
                                     "value": 133.2
                                   },
-                                  "frac_w_titer_below_140_UWMC_sera": {
-                                    "value": 0.305
+                                  "strain_type": {
+                                    "value": "circulating_2026"
                                   },
                                   "frac_w_titer_below_140_All_sera": {
                                     "value": 0.384
+                                  },
+                                  "median_titer_UWMC_sera": {
+                                    "value": 316.6
+                                  },
+                                  "frac_w_titer_below_140_UWMC_sera": {
+                                    "value": 0.305
                                   }
                                 },
                                 "branch_attrs": {
@@ -2294,29 +2294,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:G155E,R205K,E235K"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.513
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 174.6
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 187.2
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.513
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 136.3
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.397
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.443
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 187.2
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.397
                                       }
                                     },
                                     "branch_attrs": {
@@ -2341,29 +2341,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:G155E"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.5
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 212.0
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 217.3
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.5
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 131.1
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.288
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.374
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 217.3
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.288
                                       }
                                     },
                                     "branch_attrs": {}
@@ -2399,29 +2399,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:S71F,V272A"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.45
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 245.1
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 297.3
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.45
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 214.8
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.22
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.313
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 297.3
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.22
                                       }
                                     },
                                     "branch_attrs": {
@@ -2445,29 +2445,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:V272A"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.45
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 257.2
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 278.4
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.45
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 195.0
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.203
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.303
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 278.4
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.203
                                       }
                                     },
                                     "branch_attrs": {}
@@ -2503,29 +2503,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:V321I"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.475
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 266.7
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 279.3
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.475
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 178.7
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.305
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.374
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 279.3
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.305
                                       }
                                     },
                                     "branch_attrs": {}
@@ -2559,29 +2559,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:P118S,R205K,V321I"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.45
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 255.4
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 280.2
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.45
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 207.7
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.271
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.343
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 280.2
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.271
                                           }
                                         },
                                         "branch_attrs": {
@@ -2605,29 +2605,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:V19I,R205K,V321I"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.475
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 251.3
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 291.5
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.475
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 179.7
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.203
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.313
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 291.5
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.203
                                           }
                                         },
                                         "branch_attrs": {
@@ -2665,29 +2665,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:A141T"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.475
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 235.6
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 239.2
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.475
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 174.9
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.237
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.333
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 239.2
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.237
                                       }
                                     },
                                     "branch_attrs": {
@@ -2730,29 +2730,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:A141V"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.475
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 284.6
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 323.9
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.475
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 172.6
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.22
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.323
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 323.9
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.22
                                           }
                                         },
                                         "branch_attrs": {}
@@ -2767,29 +2767,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:I57V,A141V,R205K,HA2_S151N"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.5
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 238.9
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 247.4
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.5
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 175.0
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.288
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.374
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 247.4
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.288
                                           }
                                         },
                                         "branch_attrs": {
@@ -2831,29 +2831,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:N130K"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.475
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 228.6
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 395.4
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.475
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 163.6
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.237
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.333
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 395.4
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.237
                                       }
                                     },
                                     "branch_attrs": {
@@ -2897,29 +2897,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:N130S,V234L,P271S"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.475
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 246.1
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 331.1
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.475
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 170.6
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.271
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.353
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 331.1
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.271
                                           }
                                         },
                                         "branch_attrs": {
@@ -2943,29 +2943,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:N130S,V234L"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.45
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 265.6
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 303.0
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.45
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 161.3
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.224
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.316
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 303.0
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.224
                                           }
                                         },
                                         "branch_attrs": {}
@@ -2994,29 +2994,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:K156R"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.525
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 209.2
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 232.4
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.525
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 126.0
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.322
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.404
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 232.4
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.322
                                       }
                                     },
                                     "branch_attrs": {
@@ -3050,29 +3050,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:T164I"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.425
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 236.8
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 279.7
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.425
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 207.2
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.237
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.313
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 279.7
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.237
                                           }
                                         },
                                         "branch_attrs": {
@@ -3106,29 +3106,29 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:K22R"
                                               },
-                                              "frac_w_titer_below_140_SCH_sera": {
-                                                "value": 0.45
-                                              },
                                               "median_titer_All_sera": {
                                                 "value": 246.3
                                               },
                                               "subclade": {
                                                 "value": "D.3.1.1"
                                               },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
-                                              },
-                                              "median_titer_UWMC_sera": {
-                                                "value": 317.6
+                                              "frac_w_titer_below_140_SCH_sera": {
+                                                "value": 0.45
                                               },
                                               "median_titer_SCH_sera": {
                                                 "value": 188.8
                                               },
-                                              "frac_w_titer_below_140_UWMC_sera": {
-                                                "value": 0.288
+                                              "strain_type": {
+                                                "value": "circulating_2026"
                                               },
                                               "frac_w_titer_below_140_All_sera": {
                                                 "value": 0.353
+                                              },
+                                              "median_titer_UWMC_sera": {
+                                                "value": 317.6
+                                              },
+                                              "frac_w_titer_below_140_UWMC_sera": {
+                                                "value": 0.288
                                               }
                                             },
                                             "branch_attrs": {
@@ -3162,29 +3162,29 @@
                                                   "derived_haplotype": {
                                                     "value": "D.3.1.1:T186N"
                                                   },
-                                                  "frac_w_titer_below_140_SCH_sera": {
-                                                    "value": 0.475
-                                                  },
                                                   "median_titer_All_sera": {
                                                     "value": 251.3
                                                   },
                                                   "subclade": {
                                                     "value": "D.3.1.1"
                                                   },
-                                                  "strain_type": {
-                                                    "value": "circulating_2026"
-                                                  },
-                                                  "median_titer_UWMC_sera": {
-                                                    "value": 325.9
+                                                  "frac_w_titer_below_140_SCH_sera": {
+                                                    "value": 0.475
                                                   },
                                                   "median_titer_SCH_sera": {
                                                     "value": 168.6
                                                   },
-                                                  "frac_w_titer_below_140_UWMC_sera": {
-                                                    "value": 0.237
+                                                  "strain_type": {
+                                                    "value": "circulating_2026"
                                                   },
                                                   "frac_w_titer_below_140_All_sera": {
                                                     "value": 0.333
+                                                  },
+                                                  "median_titer_UWMC_sera": {
+                                                    "value": 325.9
+                                                  },
+                                                  "frac_w_titer_below_140_UWMC_sera": {
+                                                    "value": 0.237
                                                   }
                                                 },
                                                 "branch_attrs": {
@@ -3218,29 +3218,29 @@
                                                       "derived_haplotype": {
                                                         "value": "D.3.1.1:R142K"
                                                       },
-                                                      "frac_w_titer_below_140_SCH_sera": {
-                                                        "value": 0.425
-                                                      },
                                                       "median_titer_All_sera": {
                                                         "value": 269.4
                                                       },
                                                       "subclade": {
                                                         "value": "D.3.1.1"
                                                       },
-                                                      "strain_type": {
-                                                        "value": "circulating_2026"
-                                                      },
-                                                      "median_titer_UWMC_sera": {
-                                                        "value": 315.9
+                                                      "frac_w_titer_below_140_SCH_sera": {
+                                                        "value": 0.425
                                                       },
                                                       "median_titer_SCH_sera": {
                                                         "value": 206.3
                                                       },
-                                                      "frac_w_titer_below_140_UWMC_sera": {
-                                                        "value": 0.254
+                                                      "strain_type": {
+                                                        "value": "circulating_2026"
                                                       },
                                                       "frac_w_titer_below_140_All_sera": {
                                                         "value": 0.323
+                                                      },
+                                                      "median_titer_UWMC_sera": {
+                                                        "value": 315.9
+                                                      },
+                                                      "frac_w_titer_below_140_UWMC_sera": {
+                                                        "value": 0.254
                                                       }
                                                     },
                                                     "branch_attrs": {
@@ -3274,29 +3274,29 @@
                                                           "derived_haplotype": {
                                                             "value": "D.3.1.1:S190I"
                                                           },
-                                                          "frac_w_titer_below_140_SCH_sera": {
-                                                            "value": 0.525
-                                                          },
                                                           "median_titer_All_sera": {
                                                             "value": 216.4
                                                           },
                                                           "subclade": {
                                                             "value": "D.3.1.1"
                                                           },
-                                                          "strain_type": {
-                                                            "value": "circulating_2026"
-                                                          },
-                                                          "median_titer_UWMC_sera": {
-                                                            "value": 228.2
+                                                          "frac_w_titer_below_140_SCH_sera": {
+                                                            "value": 0.525
                                                           },
                                                           "median_titer_SCH_sera": {
                                                             "value": 122.0
                                                           },
-                                                          "frac_w_titer_below_140_UWMC_sera": {
-                                                            "value": 0.305
+                                                          "strain_type": {
+                                                            "value": "circulating_2026"
                                                           },
                                                           "frac_w_titer_below_140_All_sera": {
                                                             "value": 0.394
+                                                          },
+                                                          "median_titer_UWMC_sera": {
+                                                            "value": 228.2
+                                                          },
+                                                          "frac_w_titer_below_140_UWMC_sera": {
+                                                            "value": 0.305
                                                           }
                                                         },
                                                         "branch_attrs": {
@@ -3330,29 +3330,29 @@
                                                               "derived_haplotype": {
                                                                 "value": "D.3.1.1"
                                                               },
-                                                              "frac_w_titer_below_140_SCH_sera": {
-                                                                "value": 0.475
-                                                              },
                                                               "median_titer_All_sera": {
                                                                 "value": 239.0
                                                               },
                                                               "subclade": {
                                                                 "value": "D.3.1.1"
                                                               },
-                                                              "strain_type": {
-                                                                "value": "circulating_2026"
-                                                              },
-                                                              "median_titer_UWMC_sera": {
-                                                                "value": 242.9
+                                                              "frac_w_titer_below_140_SCH_sera": {
+                                                                "value": 0.475
                                                               },
                                                               "median_titer_SCH_sera": {
                                                                 "value": 173.6
                                                               },
-                                                              "frac_w_titer_below_140_UWMC_sera": {
-                                                                "value": 0.254
+                                                              "strain_type": {
+                                                                "value": "circulating_2026"
                                                               },
                                                               "frac_w_titer_below_140_All_sera": {
                                                                 "value": 0.343
+                                                              },
+                                                              "median_titer_UWMC_sera": {
+                                                                "value": 242.9
+                                                              },
+                                                              "frac_w_titer_below_140_UWMC_sera": {
+                                                                "value": 0.254
                                                               }
                                                             },
                                                             "branch_attrs": {}
@@ -3367,29 +3367,29 @@
                                                               "derived_haplotype": {
                                                                 "value": "D.3.1.1:D274N"
                                                               },
-                                                              "frac_w_titer_below_140_SCH_sera": {
-                                                                "value": 0.425
-                                                              },
                                                               "median_titer_All_sera": {
                                                                 "value": 250.4
                                                               },
                                                               "subclade": {
                                                                 "value": "D.3.1.1"
                                                               },
-                                                              "strain_type": {
-                                                                "value": "circulating_2026"
-                                                              },
-                                                              "median_titer_UWMC_sera": {
-                                                                "value": 287.9
+                                                              "frac_w_titer_below_140_SCH_sera": {
+                                                                "value": 0.425
                                                               },
                                                               "median_titer_SCH_sera": {
                                                                 "value": 182.8
                                                               },
-                                                              "frac_w_titer_below_140_UWMC_sera": {
-                                                                "value": 0.254
+                                                              "strain_type": {
+                                                                "value": "circulating_2026"
                                                               },
                                                               "frac_w_titer_below_140_All_sera": {
                                                                 "value": 0.323
+                                                              },
+                                                              "median_titer_UWMC_sera": {
+                                                                "value": 287.9
+                                                              },
+                                                              "frac_w_titer_below_140_UWMC_sera": {
+                                                                "value": 0.254
                                                               }
                                                             },
                                                             "branch_attrs": {
@@ -3446,29 +3446,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:R205K,I267S,T270A"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.45
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 286.4
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 298.0
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.45
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 254.1
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.237
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.323
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 298.0
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.237
                                       }
                                     },
                                     "branch_attrs": {
@@ -3493,29 +3493,29 @@
                                       "derived_haplotype": {
                                         "value": "D.3.1.1:S157T,R205K,HA2_V45I"
                                       },
-                                      "frac_w_titer_below_140_SCH_sera": {
-                                        "value": 0.45
-                                      },
                                       "median_titer_All_sera": {
                                         "value": 238.2
                                       },
                                       "subclade": {
                                         "value": "D.3.1.1"
                                       },
-                                      "strain_type": {
-                                        "value": "circulating_2026"
-                                      },
-                                      "median_titer_UWMC_sera": {
-                                        "value": 272.7
+                                      "frac_w_titer_below_140_SCH_sera": {
+                                        "value": 0.45
                                       },
                                       "median_titer_SCH_sera": {
                                         "value": 210.2
                                       },
-                                      "frac_w_titer_below_140_UWMC_sera": {
-                                        "value": 0.271
+                                      "strain_type": {
+                                        "value": "circulating_2026"
                                       },
                                       "frac_w_titer_below_140_All_sera": {
                                         "value": 0.343
+                                      },
+                                      "median_titer_UWMC_sera": {
+                                        "value": 272.7
+                                      },
+                                      "frac_w_titer_below_140_UWMC_sera": {
+                                        "value": 0.271
                                       }
                                     },
                                     "branch_attrs": {
@@ -3552,29 +3552,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:S190R,R205K"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.55
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 135.0
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 141.9
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.55
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 116.0
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.491
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.515
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 141.9
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.491
                                           }
                                         },
                                         "branch_attrs": {
@@ -3598,29 +3598,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:S190I,R205K,A315V"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.525
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 167.6
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 193.7
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.525
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 123.2
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.373
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.434
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 193.7
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.373
                                           }
                                         },
                                         "branch_attrs": {
@@ -3666,29 +3666,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:S190I,R205K,HA2_K39R"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.5
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 235.0
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 263.6
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.5
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 134.9
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.288
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.374
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 263.6
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.288
                                           }
                                         },
                                         "branch_attrs": {
@@ -3712,29 +3712,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:I166T,R205K,V220M,HA2_K39R"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.475
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 211.8
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 225.6
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.475
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 176.3
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.305
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.374
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 225.6
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.305
                                           }
                                         },
                                         "branch_attrs": {
@@ -3771,29 +3771,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:V152I,R205K"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.45
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 253.7
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 287.5
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.45
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 155.0
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.254
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.333
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 287.5
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.254
                                           }
                                         },
                                         "branch_attrs": {
@@ -3817,29 +3817,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:R205K"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.475
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 259.1
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 306.2
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.475
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 187.1
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.288
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.364
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 306.2
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.288
                                           }
                                         },
                                         "branch_attrs": {}
@@ -3866,29 +3866,29 @@
                                           "derived_haplotype": {
                                             "value": "D.3.1.1:D168E,R205K"
                                           },
-                                          "frac_w_titer_below_140_SCH_sera": {
-                                            "value": 0.436
-                                          },
                                           "median_titer_All_sera": {
                                             "value": 225.3
                                           },
                                           "subclade": {
                                             "value": "D.3.1.1"
                                           },
-                                          "strain_type": {
-                                            "value": "circulating_2026"
-                                          },
-                                          "median_titer_UWMC_sera": {
-                                            "value": 258.4
+                                          "frac_w_titer_below_140_SCH_sera": {
+                                            "value": 0.436
                                           },
                                           "median_titer_SCH_sera": {
                                             "value": 186.9
                                           },
-                                          "frac_w_titer_below_140_UWMC_sera": {
-                                            "value": 0.328
+                                          "strain_type": {
+                                            "value": "circulating_2026"
                                           },
                                           "frac_w_titer_below_140_All_sera": {
                                             "value": 0.371
+                                          },
+                                          "median_titer_UWMC_sera": {
+                                            "value": 258.4
+                                          },
+                                          "frac_w_titer_below_140_UWMC_sera": {
+                                            "value": 0.328
                                           }
                                         },
                                         "branch_attrs": {
@@ -3931,29 +3931,29 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:D168N,L176M,R205K"
                                               },
-                                              "frac_w_titer_below_140_SCH_sera": {
-                                                "value": 0.525
-                                              },
                                               "median_titer_All_sera": {
                                                 "value": 215.0
                                               },
                                               "subclade": {
                                                 "value": "D.3.1.1"
                                               },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
-                                              },
-                                              "median_titer_UWMC_sera": {
-                                                "value": 242.6
+                                              "frac_w_titer_below_140_SCH_sera": {
+                                                "value": 0.525
                                               },
                                               "median_titer_SCH_sera": {
                                                 "value": 130.3
                                               },
-                                              "frac_w_titer_below_140_UWMC_sera": {
-                                                "value": 0.259
+                                              "strain_type": {
+                                                "value": "circulating_2026"
                                               },
                                               "frac_w_titer_below_140_All_sera": {
                                                 "value": 0.367
+                                              },
+                                              "median_titer_UWMC_sera": {
+                                                "value": 242.6
+                                              },
+                                              "frac_w_titer_below_140_UWMC_sera": {
+                                                "value": 0.259
                                               }
                                             },
                                             "branch_attrs": {
@@ -3977,29 +3977,29 @@
                                               "derived_haplotype": {
                                                 "value": "D.3.1.1:N31S,D168N,R205K"
                                               },
-                                              "frac_w_titer_below_140_SCH_sera": {
-                                                "value": 0.487
-                                              },
                                               "median_titer_All_sera": {
                                                 "value": 268.9
                                               },
                                               "subclade": {
                                                 "value": "D.3.1.1"
                                               },
-                                              "strain_type": {
-                                                "value": "circulating_2026"
-                                              },
-                                              "median_titer_UWMC_sera": {
-                                                "value": 309.2
+                                              "frac_w_titer_below_140_SCH_sera": {
+                                                "value": 0.487
                                               },
                                               "median_titer_SCH_sera": {
                                                 "value": 165.7
                                               },
-                                              "frac_w_titer_below_140_UWMC_sera": {
-                                                "value": 0.237
+                                              "strain_type": {
+                                                "value": "circulating_2026"
                                               },
                                               "frac_w_titer_below_140_All_sera": {
                                                 "value": 0.337
+                                              },
+                                              "median_titer_UWMC_sera": {
+                                                "value": 309.2
+                                              },
+                                              "frac_w_titer_below_140_UWMC_sera": {
+                                                "value": 0.237
                                               }
                                             },
                                             "branch_attrs": {

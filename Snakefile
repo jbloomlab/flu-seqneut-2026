@@ -11,7 +11,6 @@ configfile: "config.yml"
 
 
 include: "seqneut-pipeline/seqneut-pipeline.smk"
-include: "rules/validate_viral_library.smk"
 include: "rules/library_qc.smk"
 include: "rules/analyze_titers.smk"
 include: "rules/trees.smk"
@@ -20,7 +19,6 @@ include: "rules/trees.smk"
 rule all:
     input:
         seqneut_pipeline_outputs,
-        validate_viral_library_outputs,
         library_qc_outputs,
         analyze_titers_outputs,
         trees_outputs,

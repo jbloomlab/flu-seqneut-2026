@@ -16,3 +16,4 @@ dependencies:
   - ruff
   - snakefmt
   - snakemake=9.25
+  - vl-convert-python=1.9

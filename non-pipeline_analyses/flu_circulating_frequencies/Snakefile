@@ -30,7 +30,7 @@ rule count_matches:
     log:
         "results/logs/count_matches.txt",
     conda:
-        "../../seqneut-pipeline/environment.yml"
+        "environment.yml"
     threads: 16
     params:
         regions=config["regions"],
@@ -52,7 +52,7 @@ rule plot_counts:
     log:
         "results/logs/plot_counts_{subtype}_{region}.txt",
     conda:
-        "../../seqneut-pipeline/environment.yml"
+        "environment.yml"
     params:
         max_mutations_computed=config["max_mutations_computed"],
         plot_mutation_threshold=config["plot_mutation_threshold"],

@@ -54,8 +54,8 @@ than run on the login/head node:
 
     sbatch run_Hutch_cluster.bash
 
-Run this from within this directory. It uses the same conda environment as the
-main pipeline (`../../seqneut-pipeline/environment.yml`).
+Run this from within this directory. It uses its own conda environment
+([environment.yml](environment.yml)).
 
 ## Output
 

@@ -1,0 +1,12 @@
+.*
+!.git*
+_*
+*.out
+
+data/*.tar.xz
+
+results/**
+!results/**/
+!results/binned_counts.csv
+!results/plots/*.html
+!results/plots/*.svg

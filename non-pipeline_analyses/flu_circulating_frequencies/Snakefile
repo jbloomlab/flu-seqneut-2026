@@ -1,0 +1,61 @@
+"""Compare public circulating HA sequences to the flu-seqneut-2026 library."""
+
+
+configfile: "config.yml"
+
+
+SUBTYPES = list(config["gisaid_fasta_members"])
+REGIONS = list(config["regions"])
+
+
+rule all:
+    input:
+        "results/binned_counts.csv",
+        expand(
+            "results/plots/{subtype}_{region}_counts.{ext}",
+            subtype=SUBTYPES,
+            region=REGIONS,
+            ext=["html", "svg"],
+        ),
+
+
+rule count_matches:
+    """Count public sequences by mutation-count category vs. library strains."""
+    input:
+        library_csv=config["library_csv"],
+        gisaid_tar=config["gisaid_tar"],
+        mutation_categories_module="scripts/mutation_categories.py",
+    output:
+        counts_csv="results/binned_counts.csv",
+    log:
+        "results/logs/count_matches.txt",
+    conda:
+        "../../seqneut-pipeline/environment.yml"
+    threads: 16
+    params:
+        regions=config["regions"],
+        gisaid_fasta_members=config["gisaid_fasta_members"],
+        max_mutations_computed=config["max_mutations_computed"],
+        time_bin_freq=config["time_bin_freq"],
+    script:
+        "scripts/count_matches.py"
+
+
+rule plot_counts:
+    """Plot binned counts over time for one subtype / region combination."""
+    input:
+        counts_csv="results/binned_counts.csv",
+        mutation_categories_module="scripts/mutation_categories.py",
+    output:
+        chart_html="results/plots/{subtype}_{region}_counts.html",
+        chart_svg="results/plots/{subtype}_{region}_counts.svg",
+    log:
+        "results/logs/plot_counts_{subtype}_{region}.txt",
+    conda:
+        "../../seqneut-pipeline/environment.yml"
+    params:
+        max_mutations_computed=config["max_mutations_computed"],
+        plot_mutation_threshold=config["plot_mutation_threshold"],
+        gisaid_snapshot_date=config["gisaid_snapshot_date"],
+    script:
+        "scripts/plot_counts.py"

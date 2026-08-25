@@ -1,0 +1,48 @@
+# the viral libraries CSV
+library_csv: ../../data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv
+
+# Public sequences, provided by John Huddleston on 2026-08-24, described as:
+#
+#   The attached tarball includes those FASTAs for H3 and H1 with HA amino acid
+#   sequences. Headers contain metadata fields including gisaid_epi_isl, strain,
+#   full_location (GISAID-style), and collection date. I filtered to records
+#   with "good" Nextclade QC, passage != egg, excluding records with any date
+#   ambiguity (XXXX-XX-XX, 2026-XX-XX, etc.), and keeping records collected in
+#   the last 2 years. There were 56,747 H1N1 HAs and 75,477 H3N2 HAs.
+#
+# Not tracked in this repository.
+gisaid_tar: data/HA_translations_with_metadata.tar.xz
+gisaid_fasta_members:
+  H1N1: h1n1pdm_HA_with_metadata.fasta
+  H3N2: h3n2_HA_with_metadata.fasta
+
+# 1-indexed inclusive residue ranges on the `protein_sequence_HA_ectodomain` column
+# of `library_csv`. Ectodomain ranges are the full stored sequence length (500aa for
+# H1N1, 501aa for H3N2); HA1 boundaries follow the same convention used for the
+# flu-seqneut-2025to2026 library.
+regions:
+  HA1:
+    H1N1: [1, 324]
+    H3N2: [1, 328]
+  ectodomain:
+    H1N1: [1, 500]
+    H3N2: [1, 501]
+
+# fuzzy-match bound: sequences beyond this many mutations (substitutions,
+# insertions, or deletions) from every library strain are binned into the
+# "more_than_N_mutations" catch-all category. Always computed at full resolution
+# regardless of what's shown in the plots (see plot_mutation_threshold).
+max_mutations_computed: 4
+
+# how many individual "N mutations different" categories to show before
+# collapsing the rest into a ">threshold mutations different" bucket at plot
+# time. Change this without rerunning count_matches. Must be 0 <= value <=
+# max_mutations_computed.
+plot_mutation_threshold: 3
+
+# date the GISAID-derived tarball (data/HA_translations_with_metadata.tar.xz) was
+# generated, used in plot titles
+gisaid_snapshot_date: "2026-08-24"
+
+# pandas period frequency alias used to bin match counts over time
+time_bin_freq: W

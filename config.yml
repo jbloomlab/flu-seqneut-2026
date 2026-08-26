@@ -790,7 +790,7 @@ plates:
       upstream2_mismatch: 1
 
   plate21:
-    group: human
+    group: human-qc-dropped
     date: 2026-08-24
     viral_library: actual
     neut_standard_set: loes2023
@@ -807,7 +807,7 @@ plates:
       upstream2_mismatch: 1
 
   plate22:
-    group: human
+    group: human-qc-dropped
     date: 2026-08-24
     viral_library: actual
     neut_standard_set: loes2023
@@ -824,7 +824,7 @@ plates:
       upstream2_mismatch: 1
 
   plate23:
-    group: human
+    group: human-qc-dropped
     date: 2026-08-24
     viral_library: actual
     neut_standard_set: loes2023
@@ -841,7 +841,7 @@ plates:
       upstream2_mismatch: 1
 
   plate24:
-    group: human
+    group: human-qc-dropped
     date: 2026-08-24
     viral_library: actual
     neut_standard_set: loes2023

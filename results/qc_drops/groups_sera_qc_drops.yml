@@ -1,4 +1,36 @@
 human:
+  flu-seqneut-2026-CTS-001: {}
+  flu-seqneut-2026-CTS-002: {}
+  flu-seqneut-2026-CTS-003: {}
+  flu-seqneut-2026-CTS-004: {}
+  flu-seqneut-2026-CTS-005: {}
+  flu-seqneut-2026-CTS-006: {}
+  flu-seqneut-2026-CTS-007: {}
+  flu-seqneut-2026-CTS-008: {}
+  flu-seqneut-2026-CTS-009: {}
+  flu-seqneut-2026-CTS-010: {}
+  flu-seqneut-2026-CTS-011: {}
+  flu-seqneut-2026-CTS-012: {}
+  flu-seqneut-2026-CTS-013: {}
+  flu-seqneut-2026-CTS-014: {}
+  flu-seqneut-2026-CTS-015: {}
+  flu-seqneut-2026-CTS-016: {}
+  flu-seqneut-2026-CTS-017: {}
+  flu-seqneut-2026-CTS-018: {}
+  flu-seqneut-2026-CTS-019: {}
+  flu-seqneut-2026-CTS-020: {}
+  flu-seqneut-2026-CTS-021: {}
+  flu-seqneut-2026-CTS-022: {}
+  flu-seqneut-2026-CTS-023: {}
+  flu-seqneut-2026-CTS-024: {}
+  flu-seqneut-2026-CTS-025: {}
+  flu-seqneut-2026-CTS-026: {}
+  flu-seqneut-2026-CTS-051: {}
+  flu-seqneut-2026-CTS-052: {}
+  flu-seqneut-2026-CTS-053: {}
+  flu-seqneut-2026-CTS-054: {}
+  flu-seqneut-2026-CTS-055: {}
+  flu-seqneut-2026-CTS-056: {}
   flu-seqneut-2026-SCH-001: {}
   flu-seqneut-2026-SCH-002: {}
   flu-seqneut-2026-SCH-003: {}
@@ -98,7 +130,113 @@ human:
   flu-seqneut-2026-UWMC-057: {}
   flu-seqneut-2026-UWMC-058: {}
   flu-seqneut-2026-UWMC-059: {}
+  flu-seqneut-2026-UWMC-060: {}
+  flu-seqneut-2026-UWMC-061: {}
+  flu-seqneut-2026-UWMC-062: {}
+  flu-seqneut-2026-UWMC-063: {}
+  flu-seqneut-2026-UWMC-064: {}
+  flu-seqneut-2026-UWMC-065: {}
+  flu-seqneut-2026-UWMC-066: {}
+  flu-seqneut-2026-UWMC-067: {}
+  flu-seqneut-2026-UWMC-068: {}
+  flu-seqneut-2026-UWMC-069: {}
+  flu-seqneut-2026-UWMC-070: {}
+  flu-seqneut-2026-UWMC-071: {}
+  flu-seqneut-2026-UWMC-072: {}
+  flu-seqneut-2026-UWMC-073: {}
+  flu-seqneut-2026-UWMC-074: {}
+  flu-seqneut-2026-UWMC-075: {}
+  flu-seqneut-2026-UWMC-076: {}
+  flu-seqneut-2026-UWMC-077: {}
+  flu-seqneut-2026-UWMC-078: {}
+  flu-seqneut-2026-UWMC-079: {}
+  flu-seqneut-2026-UWMC-080: {}
+  flu-seqneut-2026-UWMC-081: {}
+  flu-seqneut-2026-UWMC-082: {}
+  flu-seqneut-2026-UWMC-083: {}
+  flu-seqneut-2026-UWMC-084: {}
+  flu-seqneut-2026-UWMC-085: {}
+  flu-seqneut-2026-UWMC-086: {}
+  flu-seqneut-2026-UWMC-087: {}
+  flu-seqneut-2026-UWMC-088: {}
+  flu-seqneut-2026-VIDRL-011_post-vax: {}
+  flu-seqneut-2026-VIDRL-011_pre-vax: {}
+  flu-seqneut-2026-VIDRL-012_post-vax: {}
+  flu-seqneut-2026-VIDRL-012_pre-vax: {}
+  flu-seqneut-2026-VIDRL-013_post-vax: {}
+  flu-seqneut-2026-VIDRL-013_pre-vax: {}
+  flu-seqneut-2026-VIDRL-014_post-vax: {}
+  flu-seqneut-2026-VIDRL-014_pre-vax: {}
+  flu-seqneut-2026-VIDRL-015_post-vax: {}
+  flu-seqneut-2026-VIDRL-015_pre-vax: {}
+  flu-seqneut-2026-VIDRL-016_post-vax: {}
+  flu-seqneut-2026-VIDRL-016_pre-vax: {}
+  flu-seqneut-2026-VIDRL-017_post-vax: {}
+  flu-seqneut-2026-VIDRL-017_pre-vax: {}
+  flu-seqneut-2026-VIDRL-018_post-vax: {}
+  flu-seqneut-2026-VIDRL-018_pre-vax: {}
+  flu-seqneut-2026-VIDRL-019_post-vax: {}
+  flu-seqneut-2026-VIDRL-019_pre-vax: {}
+  flu-seqneut-2026-VIDRL-020_post-vax: {}
+  flu-seqneut-2026-VIDRL-020_pre-vax: {}
+  flu-seqneut-2026-VIDRL-021_post-vax: {}
+  flu-seqneut-2026-VIDRL-021_pre-vax: {}
+  flu-seqneut-2026-VIDRL-022_post-vax: {}
+  flu-seqneut-2026-VIDRL-022_pre-vax: {}
+  flu-seqneut-2026-VIDRL-023_post-vax: {}
+  flu-seqneut-2026-VIDRL-023_pre-vax: {}
+  flu-seqneut-2026-VIDRL-024_post-vax: {}
+  flu-seqneut-2026-VIDRL-024_pre-vax: {}
+  flu-seqneut-2026-VIDRL-025_post-vax: {}
+  flu-seqneut-2026-VIDRL-025_pre-vax: {}
+  flu-seqneut-2026-VIDRL-026_post-vax: {}
+  flu-seqneut-2026-VIDRL-026_pre-vax: {}
+  flu-seqneut-2026-VIDRL-027_post-vax: {}
+  flu-seqneut-2026-VIDRL-027_pre-vax: {}
+  flu-seqneut-2026-VIDRL-028_post-vax: {}
+  flu-seqneut-2026-VIDRL-028_pre-vax: {}
+  flu-seqneut-2026-VIDRL-029_post-vax: {}
+  flu-seqneut-2026-VIDRL-029_pre-vax: {}
+  flu-seqneut-2026-VIDRL-030_post-vax: {}
+  flu-seqneut-2026-VIDRL-030_pre-vax: {}
+  flu-seqneut-2026-VIDRL-031_post-vax: {}
+  flu-seqneut-2026-VIDRL-031_pre-vax: {}
+  flu-seqneut-2026-VIDRL-032_post-vax: {}
+  flu-seqneut-2026-VIDRL-032_pre-vax: {}
+  flu-seqneut-2026-VIDRL-033_post-vax: {}
+  flu-seqneut-2026-VIDRL-033_pre-vax: {}
+  flu-seqneut-2026-VIDRL-034_post-vax: {}
+  flu-seqneut-2026-VIDRL-034_pre-vax: {}
+  flu-seqneut-2026-VIDRL-035_post-vax: {}
+  flu-seqneut-2026-VIDRL-035_pre-vax: {}
+  flu-seqneut-2026-VIDRL-036_post-vax: {}
+  flu-seqneut-2026-VIDRL-036_pre-vax: {}
+  flu-seqneut-2026-VIDRL-037_post-vax: {}
+  flu-seqneut-2026-VIDRL-037_pre-vax: {}
+  flu-seqneut-2026-VIDRL-038_post-vax: {}
+  flu-seqneut-2026-VIDRL-038_pre-vax: {}
+  flu-seqneut-2026-VIDRL-039_post-vax: {}
+  flu-seqneut-2026-VIDRL-039_pre-vax: {}
+  flu-seqneut-2026-VIDRL-040_post-vax: {}
+  flu-seqneut-2026-VIDRL-040_pre-vax: {}
 human-qc-dropped:
+  flu-seqneut-2026-CTS-027: {}
+  flu-seqneut-2026-CTS-028: {}
+  flu-seqneut-2026-CTS-029: {}
+  flu-seqneut-2026-CTS-031: {}
+  flu-seqneut-2026-CTS-032: {}
+  flu-seqneut-2026-CTS-036: {}
+  flu-seqneut-2026-CTS-037: {}
+  flu-seqneut-2026-CTS-039: {}
+  flu-seqneut-2026-CTS-040: {}
+  flu-seqneut-2026-CTS-042: {}
+  flu-seqneut-2026-CTS-043: {}
+  flu-seqneut-2026-CTS-044: {}
+  flu-seqneut-2026-CTS-045: {}
+  flu-seqneut-2026-CTS-047: {}
+  flu-seqneut-2026-CTS-048: {}
+  flu-seqneut-2026-CTS-049: {}
+  flu-seqneut-2026-CTS-050: {}
   flu-seqneut-2026-SCH-001: {}
   flu-seqneut-2026-SCH-002: {}
   flu-seqneut-2026-SCH-003: {}
@@ -165,3 +303,23 @@ human-qc-dropped:
   flu-seqneut-2026-UWMC-024: {}
   flu-seqneut-2026-UWMC-025: {}
   flu-seqneut-2026-UWMC-026: {}
+  flu-seqneut-2026-VIDRL-001_post-vax: {}
+  flu-seqneut-2026-VIDRL-001_pre-vax: {}
+  flu-seqneut-2026-VIDRL-002_post-vax: {}
+  flu-seqneut-2026-VIDRL-002_pre-vax: {}
+  flu-seqneut-2026-VIDRL-003_post-vax: {}
+  flu-seqneut-2026-VIDRL-003_pre-vax: {}
+  flu-seqneut-2026-VIDRL-004_post-vax: {}
+  flu-seqneut-2026-VIDRL-004_pre-vax: {}
+  flu-seqneut-2026-VIDRL-005_post-vax: {}
+  flu-seqneut-2026-VIDRL-005_pre-vax: {}
+  flu-seqneut-2026-VIDRL-006_post-vax: {}
+  flu-seqneut-2026-VIDRL-006_pre-vax: {}
+  flu-seqneut-2026-VIDRL-007_post-vax: {}
+  flu-seqneut-2026-VIDRL-007_pre-vax: {}
+  flu-seqneut-2026-VIDRL-008_post-vax: {}
+  flu-seqneut-2026-VIDRL-008_pre-vax: {}
+  flu-seqneut-2026-VIDRL-009_post-vax: {}
+  flu-seqneut-2026-VIDRL-009_pre-vax: {}
+  flu-seqneut-2026-VIDRL-010_post-vax: {}
+  flu-seqneut-2026-VIDRL-010_pre-vax: {}

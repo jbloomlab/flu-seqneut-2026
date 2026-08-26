@@ -1,0 +1,32 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/France/NAQ-HCL026046169102/2025_H1N1 G2: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/France/GES-IPP01077/2026_H3N2 H3: 
+    max_frac_infectivity_per_viral_barcode_well
+  A/Missouri/11/2025_cell_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
+  A/Netherlands/10008/2026_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/3940/2025_H3N2 H5: max_frac_infectivity_per_viral_barcode_well
+  A/Ohio/259/2024_H1N1 H5: max_frac_infectivity_per_viral_barcode_well
+  A/Singapore/MOH0547/2024_H1N1 G5: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 G8: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Bangkok/P2390/2025_H3N2 flu-seqneut-2026-UWMC-071: goodness_of_fit
+  A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-UWMC-071: 
+    goodness_of_fit
+  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-UWMC-071: 
+    goodness_of_fit
+  A/Michigan/8/2026_H3N2 flu-seqneut-2026-UWMC-071: goodness_of_fit
+  A/Badajoz/18813527/2026_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
+  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
+  A/France/HDF-IPP01550/2026_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
+  A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
+  A/Missouri/11/2025_cell_H1N1 flu-seqneut-2026-UWMC-074: goodness_of_fit
+  A/Romania/612042/2026_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
+  A/Saskatchewan/SKFLU477299/2025_H3N2 flu-seqneut-2026-UWMC-074: 
+    goodness_of_fit
+  A/Badajoz/18738342/2026_H3N2 flu-seqneut-2026-UWMC-077: goodness_of_fit
+  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-UWMC-077: goodness_of_fit
+  A/Trieste/257/2025_H3N2 flu-seqneut-2026-UWMC-077: goodness_of_fit
+serum_replicates: {}

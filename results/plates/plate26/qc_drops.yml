@@ -1,0 +1,18 @@
+wells: {}
+barcodes: {}
+barcode_wells: {}
+barcode_serum_replicates:
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-VIDRL-016_pre-vax: goodness_of_fit
+  A/Lisboa/216/2023_H3N2 flu-seqneut-2026-VIDRL-016_pre-vax: goodness_of_fit
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-VIDRL-019_pre-vax: goodness_of_fit
+  A/Germany/LRMC_0113/2025_H3N2 flu-seqneut-2026-VIDRL-019_pre-vax: 
+    goodness_of_fit
+  A/Malaysia/IMR/SARI/2406/2025_H3N2 flu-seqneut-2026-VIDRL-019_pre-vax: 
+    goodness_of_fit
+  A/StPetersburg/RII-25-2321S/2025_H3N2 flu-seqneut-2026-VIDRL-019_pre-vax: 
+    goodness_of_fit
+  A/Trieste/257/2025_H3N2 flu-seqneut-2026-VIDRL-019_pre-vax: goodness_of_fit
+  A/Bangkok/P2390/2025_H3N2 flu-seqneut-2026-VIDRL-020_pre-vax: goodness_of_fit
+  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-VIDRL-020_pre-vax: 
+    goodness_of_fit
+serum_replicates: {}

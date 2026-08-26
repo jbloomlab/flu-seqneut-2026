@@ -1,0 +1,11 @@
+group,serum,virus,plate,replicate,titer,titer_bound,titer_as,titer_units,nt50,midpoint,top,bottom,slope,dropped_by_qc
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/California/NIRC-IS-1059/2026_H3N2,plate21,plate21-A/California/NIRC-IS-1059/2026_H3N2,450.5,interpolated,midpoint,reciprocal_dilution,616.1,450.5,0.684,0,3.192,False
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/Colorado/218/2024_H1N1,plate21,plate21-A/Colorado/218/2024_H1N1,198.5,interpolated,midpoint,reciprocal_dilution,215.4,198.5,0.7209,0,10,False
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/District_Of_Columbia/27/2023_H3N2,plate21,plate21-A/District_Of_Columbia/27/2023_H3N2,366.8,interpolated,midpoint,reciprocal_dilution,511.2,366.8,0.6,0,4.847,False
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/Missouri/11/2025_cell_H1N1,plate21,plate21-A/Missouri/11/2025_cell_H1N1,224.8,interpolated,midpoint,reciprocal_dilution,247.5,224.8,0.6917,0,10,False
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/Netherlands/543/2026_H1N1,plate21,plate21-A/Netherlands/543/2026_H1N1,121.3,interpolated,midpoint,reciprocal_dilution,133.8,121.3,0.7411,0,7.408,False
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/Norway/9556/2025_H1N1,plate21,plate21-A/Norway/9556/2025_H1N1,150.5,interpolated,midpoint,reciprocal_dilution,173.9,150.5,0.7512,0,4.76,False
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/Ohio/259/2024_H1N1,plate21,plate21-A/Ohio/259/2024_H1N1,140.8,interpolated,midpoint,reciprocal_dilution,175.9,140.8,0.7165,0,3.761,False
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/Tokyo/EIS11-277/2024_H1N1,plate21,plate21-A/Tokyo/EIS11-277/2024_H1N1,149,interpolated,midpoint,reciprocal_dilution,191.1,149,0.6823,0,4.057,False
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/Wisconsin/588/2019_H1N1,plate21,plate21-A/Wisconsin/588/2019_H1N1,707.2,interpolated,midpoint,reciprocal_dilution,1026,707.2,0.6646,0,2.988,False
+human-qc-dropped,flu-seqneut-2026-CTS-029,A/Wisconsin/67/2022_H1N1,plate21,plate21-A/Wisconsin/67/2022_H1N1,251.9,interpolated,midpoint,reciprocal_dilution,380.2,251.9,0.7174,0,2.024,False

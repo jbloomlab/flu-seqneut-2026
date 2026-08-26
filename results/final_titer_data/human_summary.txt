@@ -3,7 +3,7 @@ Processing final titer data for group: human
 ======================================================================
 
 Loading input data...
-  Loaded 36591 titer measurements from results/aggregated_titers/titers_human.csv
+  Loaded 32272 titer measurements from results/aggregated_titers/titers_human.csv
   Loaded 632 sera from results/sera_metadata/all_sera_metadata.csv
   Loaded 301 barcodes from data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv
 
@@ -14,39 +14,28 @@ Validating input data...
   All viruses found in viral library
 
 Processing titer data...
-  Initial: 36591 rows, 257 sera, 148 viruses
+  Initial: 32272 rows, 220 sera, 148 viruses
 
 Step 1: Dropping explicitly specified sera and viruses...
   No viruses specified in viruses_to_drop
   No sera specified in sera_to_drop
 
 Step 2: Applying min_frac_viruses=0.9, min_frac_sera=0.8 (action=drop)...
-  Iteration 1: dropped 13 sera, 0 viruses
+  Iteration 1: dropped 2 sera, 0 viruses
   min_frac filters converged after 2 iterations
 
-  Sera dropped for min_frac_viruses < 0.9 (13 total):
-    flu-seqneut-2026-CTS-036: frac_viruses=0.0608
-    flu-seqneut-2026-CTS-029: frac_viruses=0.0676
-    flu-seqneut-2026-CTS-037: frac_viruses=0.1554
-    flu-seqneut-2026-CTS-031: frac_viruses=0.2230
-    flu-seqneut-2026-CTS-045: frac_viruses=0.2500
-    flu-seqneut-2026-CTS-044: frac_viruses=0.2770
-    flu-seqneut-2026-CTS-028: frac_viruses=0.2838
-    flu-seqneut-2026-CTS-047: frac_viruses=0.4054
-    flu-seqneut-2026-CTS-027: frac_viruses=0.5270
-    flu-seqneut-2026-CTS-039: frac_viruses=0.5270
+  Sera dropped for min_frac_viruses < 0.9 (2 total):
     flu-seqneut-2026-VIDRL-015_pre-vax: frac_viruses=0.6081
     flu-seqneut-2026-VIDRL-030_pre-vax: frac_viruses=0.8446
-    flu-seqneut-2026-CTS-040: frac_viruses=0.8581
 
 Processing complete:
-  Final: 35838 rows, 244 sera, 148 viruses
-  Dropped: 753 rows, 13 sera, 0 viruses
+  Final: 32057 rows, 218 sera, 148 viruses
+  Dropped: 215 rows, 2 sera, 0 viruses
 
 Generating output files...
-  Written: results/final_titer_data/human_titers.csv (35838 rows)
-  Written: results/final_titer_data/human_sera.csv (244 rows)
-  Written: results/final_titer_data/human_sera_multicohort.csv (488 rows)
+  Written: results/final_titer_data/human_titers.csv (32057 rows)
+  Written: results/final_titer_data/human_sera.csv (218 rows)
+  Written: results/final_titer_data/human_sera_multicohort.csv (436 rows)
   Written: results/final_titer_data/human_viruses.csv (148 rows)
   Written: results/final_titer_data/human_titers_summarized_by_virus.csv (740 rows)
 
@@ -54,16 +43,16 @@ Generating output files...
 FINAL SUMMARY
 ======================================================================
 Group: human
-Sera: 244
+Sera: 218
 Viruses: 148
-Total titers: 35838
+Total titers: 32057
 
 Cohorts in titers_summarized_by_virus.csv:
-  All: 244 sera, 35838 titers
-  CTS: 38 sera, 5598 titers
+  All: 218 sera, 32057 titers
+  CTS: 32 sera, 4721 titers
   SCH: 40 sera, 5883 titers
   UWMC: 88 sera, 12915 titers
-  VIDRL: 78 sera, 11442 titers
+  VIDRL: 58 sera, 8538 titers
 
 Viruses per subtype:
   H1N1: 66

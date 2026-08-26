@@ -1,0 +1,10 @@
+group,serum,virus,titer,titer_bound,titer_sem,n_replicates,titer_as,titer_units
+human-qc-dropped,flu-seqneut-2026-CTS-036,A/Bangkok/P2391/2025_H3N2,1254,interpolated,,1,midpoint,reciprocal_dilution
+human-qc-dropped,flu-seqneut-2026-CTS-036,A/California/NIRC-IS-1019/2026_H1N1,113.6,interpolated,,1,midpoint,reciprocal_dilution
+human-qc-dropped,flu-seqneut-2026-CTS-036,A/Darwin/1454/2025_H3N2,1258,interpolated,,1,midpoint,reciprocal_dilution
+human-qc-dropped,flu-seqneut-2026-CTS-036,A/Kentucky/80/2025_H1N1,566.6,interpolated,,1,midpoint,reciprocal_dilution
+human-qc-dropped,flu-seqneut-2026-CTS-036,A/PaisVasco/70369726/2026_H1N1,116.5,interpolated,,1,midpoint,reciprocal_dilution
+human-qc-dropped,flu-seqneut-2026-CTS-036,A/Singapore/GP20238/2024_H3N2,1372,interpolated,,1,midpoint,reciprocal_dilution
+human-qc-dropped,flu-seqneut-2026-CTS-036,A/SouthAfrica/PATH-CERI-C075119/2026_H1N1,112.7,interpolated,,1,midpoint,reciprocal_dilution
+human-qc-dropped,flu-seqneut-2026-CTS-036,A/Thailand/8/2022_H3N2,1354,interpolated,,1,midpoint,reciprocal_dilution
+human-qc-dropped,flu-seqneut-2026-CTS-036,A/Victoria/4897/2022_IVR-238_H1N1,1321,interpolated,,1,midpoint,reciprocal_dilution

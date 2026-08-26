@@ -50,17 +50,30 @@ rule process_final_titer_data:
         "../scripts/process_final_titer_data.py"
 
 
+# Strain sets each chart type is made for. The fold-change charts are recent-strain
+# only: they plot each titer relative to the serum's median over the strains the chart
+# draws, which is not a baseline worth plotting against for the few vaccine strains.
+titer_chart_types = {
+    "individual_sera": ["recent", "vaccine"],
+    "interquartile_range": ["recent", "vaccine"],
+    "frac_below_cutoff": ["recent", "vaccine"],
+    "individual_sera_fold_change": ["recent"],
+    "interquartile_range_fold_change": ["recent"],
+}
+
 # Define set of titer charts to make, as (output path template, chart record) pairs
 titer_charts = []
 for _subtype in config["subtypes"]:
     _colorings = config["plot_titer_summaries_params"]["subtype_params"][_subtype][
         "color_trees_by"
     ]
-    for _chart_type in ["individual_sera", "interquartile_range", "frac_below_cutoff"]:
+    for _chart_type, _strain_sets in titer_chart_types.items():
         for _strain_set, _color_label in [
             *(("recent", _label) for _label in _colorings),
             ("vaccine", None),
         ]:
+            if _strain_set not in _strain_sets:
+                continue
             if _color_label and not re.fullmatch(r"[A-Za-z0-9_-]+", _color_label):
                 raise ValueError(
                     f"`color_trees_by` key {_color_label!r} has invalid characters."

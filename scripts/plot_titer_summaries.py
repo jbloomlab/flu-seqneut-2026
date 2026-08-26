@@ -12,6 +12,7 @@ reference line is optionally drawn at.
 """
 
 import itertools
+import math
 import sys
 
 import altair as alt
@@ -282,11 +283,69 @@ titer_cutoff_slider = alt.param(
     ),
 )
 
+# `log10` units for the median-titer sliders; one step is ~12% in titer, fine enough that
+# the slider never steps over a serum
+MEDIAN_SLIDER_STEP = 0.05
+
+# the slider ends reach 1% past the medians they bound, so `pow(10, slider)` at an end
+# cannot land a hair inside the data and drop the lowest- or highest-median serum
+MEDIAN_SLIDER_PAD = 1.01
+
+# significant digits the slider ends are rounded to, so the widget reads out a short
+# number rather than the full `log10` of a titer
+MEDIAN_SLIDER_DIGITS = 3
+
+
+def _round_outward(x, round_):
+    """Return `x` rounded to `MEDIAN_SLIDER_DIGITS` significant digits by `round_`.
+
+    `round_` is `math.floor` for a lower bound and `math.ceil` for an upper one, so the
+    result never moves inward and so can never exclude a value `x` includes.
+
+    """
+    if x == 0:
+        return 0.0
+    scale = 10 ** (MEDIAN_SLIDER_DIGITS - 1 - math.floor(math.log10(abs(x))))
+    return round_(x * scale) / scale
+
+
+def median_titer_sliders(serum_medians):
+    """Return the sliders bounding which sera are drawn, by their median titer.
+
+    Both are in `log10` titer units, as the medians span orders of magnitude, and each
+    starts at an end of the observed range, so nothing is filtered until one is moved.
+
+    """
+    medians = serum_medians["median_titer_serum"]
+    lo = _round_outward(math.log10(medians.min() / MEDIAN_SLIDER_PAD), math.floor)
+    hi = _round_outward(math.log10(medians.max() * MEDIAN_SLIDER_PAD), math.ceil)
+    return tuple(
+        alt.param(
+            value=value,
+            bind=alt.binding_range(min=lo, max=hi, step=MEDIAN_SLIDER_STEP, name=name),
+        )
+        for value, name in [
+            (lo, "minimum serum median titer (log10)"),
+            (hi, "maximum serum median titer (log10)"),
+        ]
+    )
+
+
 # no explicit domain: `altair` fits it to whatever each chart draws, which is the spread of
-# the individual titers for the per-serum charts but only the interquartile band for the
-# interquartile-range ones. Leaving it to `altair` also means the axis follows the cohort
-# and age filters, so a filtered view can never fall outside the axis.
+# the individual values for the per-serum charts but only the interquartile band for the
+# interquartile-range ones. Leaving it to `altair` also means the axis follows the cohort,
+# age, and median-titer filters, so a filtered view can never fall outside the axis. Fold
+# changes span orders of magnitude for the same reason titers do, so both use this scale.
 titer_scale = alt.Scale(type="log", nice=False, padding=4)
+
+# what a chart plots on the titer axis: the field, its axis title, and its tooltip
+# format. A list of strings is an axis title split over that many lines.
+VALUE_TITER = {"field": "titer", "title": "titer", "format": ".1f"}
+VALUE_FOLD_CHANGE = {
+    "field": "fold_change",
+    "title": ["titer fold change", "from serum's median"],
+    "format": ".3g",
+}
 
 # dummy chart to bind the selectable legend for serum cohort
 cohort_legend = (
@@ -303,6 +362,43 @@ cohort_legend = (
     )
     .properties(width=1, height=1)  # tiny plot; legend renders outside
 )
+
+
+# width of the readout view, which `alt.vconcat(center=True)` then centers under the
+# chart title; the text is centered within it
+READOUT_WIDTH = 300
+
+
+def median_titer_readout(min_median_slider, max_median_slider):
+    """Text naming the titers the median-titer sliders are currently set to.
+
+    The sliders read out in `log10` units, so the titers those correspond to are drawn
+    here instead. Its own one-row frame keeps this mark out of the faceted chart's
+    filters, so the line still reads when the sliders exclude every serum, and declaring
+    the sliders here rather than on the plot lifts them to the top level of the
+    concatenated chart, where they are in scope for the filters.
+
+    """
+    return (
+        alt.Chart(pd.DataFrame({"row": [0]}))
+        .add_params(min_median_slider, max_median_slider)
+        .transform_calculate(
+            # 4 significant digits, and `~` to trim the trailing zeros that leaves; a
+            # plain `g` would read out a titer over 1000 in scientific notation
+            readout="showing sera with median titer "
+            + alt.expr.format(alt.expr.pow(10, min_median_slider), ".4~r")
+            + " to "
+            + alt.expr.format(alt.expr.pow(10, max_median_slider), ".4~r")
+        )
+        .mark_text(align="center", fontSize=12)
+        .encode(text="readout:N", x=alt.value(READOUT_WIDTH / 2), y=alt.value(7))
+        # no stroke: this is a line of text, not a panel, and `configure_view` boxes
+        # every view in the chart
+        .properties(
+            width=READOUT_WIDTH, height=14, view=alt.ViewBackground(stroke=None)
+        )
+    )
+
 
 # the strain axis is on y when facets run in columns, and on x when they run in rows
 if facet_orientation == "vertical":
@@ -324,7 +420,7 @@ titer_channel = "x" if facet_orientation == "vertical" else "y"
 
 
 def slice_chart_data(subtype, strain_set):
-    """Return the titers, virus lookup table, axis order, and reference strain for a set.
+    """Return the titers, lookup tables, axis order, and reference strain for a set.
 
     Both frames are cut down to exactly the strains the chart draws. `tree_annotated_plot`
     compares the chart's strains against the tree's tips, and where no explicit axis sort
@@ -396,11 +492,26 @@ def slice_chart_data(subtype, strain_set):
             f"{subtype} {strain_set} strains with no titers: {sorted(strains_without_titers)}"
         )
 
+    # the median titer of each serum over the strains this chart draws, which the fold
+    # changes are relative to and the median-titer sliders filter on. Kept out of
+    # `chart_titers` and looked up instead, as it is one value per serum rather than per
+    # titer, and rounded because a median over an even number of titers is otherwise 18
+    # digits of precision far below a pixel.
+    serum_medians = (
+        chart_titers.groupby("serum")["titer"]
+        .median()
+        .round(1)
+        .rename("median_titer_serum")
+        .reset_index()
+    )
+    assert serum_medians["serum"].is_unique  # the key of a `transform_lookup`
+
     return (
         chart_titers,
         chart_viruses[["axis_label", "virus", "strain_type", "subclade"]],
         strain_order.tolist(),
         ref_axis_label,
+        serum_medians,
     )
 
 
@@ -451,17 +562,24 @@ virus_tooltips = [
 virus_groupby = ["axis_label", "virus", "strain_type", "subclade", "cohort"]
 
 
-def median_points(base):
-    """Median titer per strain and cohort, as points."""
+def median_points(base, value):
+    """Median of the plotted value per strain and cohort, as points."""
+    field = value["field"]
+    aggregates = {f"median_{field}": f"median({field})"}
+    tooltips = [alt.Tooltip(f"median_{field}:Q", format=value["format"])]
+    if field != "titer":
+        # the titer stays in the tooltip even when the chart plots the fold change
+        aggregates["median_titer"] = "median(titer)"
+        tooltips.append(alt.Tooltip("median_titer:Q", format=VALUE_TITER["format"]))
     return (
-        base.transform_aggregate(median_titer="median(titer)", groupby=virus_groupby)
+        base.transform_aggregate(**aggregates, groupby=virus_groupby)
         .encode(
             **{
                 titer_channel: TiterChannel(
-                    "median_titer:Q", title="titer", scale=titer_scale
+                    f"median_{field}:Q", title=value["title"], scale=titer_scale
                 )
             },
-            tooltip=[*virus_tooltips, alt.Tooltip("median_titer:Q", format=".1f")],
+            tooltip=[*virus_tooltips, *tooltips],
             color=alt.condition(virus_selection, alt.value("red"), alt.value("black")),
             size=alt.condition(virus_selection, alt.value(92), alt.value(46)),
         )
@@ -469,15 +587,28 @@ def median_points(base):
     )
 
 
-def serum_lines(base):
+def serum_lines(base, value):
     """One line per serum across the strains."""
+    field = value["field"]
+    value_tooltips = [alt.Tooltip(f"{field}:Q", format=value["format"])]
+    if field != "titer":
+        value_tooltips.append(alt.Tooltip("titer:Q", format=VALUE_TITER["format"]))
     return base.encode(
-        **{titer_channel: TiterChannel("titer", scale=titer_scale)},
+        **{
+            titer_channel: TiterChannel(
+                f"{field}:Q", title=value["title"], scale=titer_scale
+            )
+        },
         detail=alt.Detail("serum"),
         tooltip=[
             *virus_tooltips,
             alt.Tooltip("serum:N"),
-            alt.Tooltip("titer", format=".1f"),
+            *value_tooltips,
+            alt.Tooltip(
+                "median_titer_serum:Q",
+                title="serum median titer",
+                format=VALUE_TITER["format"],
+            ),
             alt.Tooltip("serum_collection_date:N", title="serum date"),
             alt.Tooltip("age:N", title="age"),
             alt.Tooltip("sex:N"),
@@ -487,23 +618,28 @@ def serum_lines(base):
     ).mark_line()
 
 
-def interquartile_range(base):
-    """Shaded interquartile range of the titers for each strain."""
+def interquartile_range(base, value):
+    """Shaded interquartile range of the plotted value for each strain."""
+    field = value["field"]
+    aggregates = {
+        f"median_{field}": f"median({field})",
+        f"{field}_q1": f"q1({field})",
+        f"{field}_q3": f"q3({field})",
+    }
+    tooltips = [alt.Tooltip(f"{name}:Q", format=value["format"]) for name in aggregates]
+    if field != "titer":
+        # the titer stays in the tooltip even when the chart plots the fold change
+        aggregates["median_titer"] = "median(titer)"
+        tooltips.append(alt.Tooltip("median_titer:Q", format=VALUE_TITER["format"]))
     return (
-        base.transform_joinaggregate(
-            median_titer="median(titer)",
-            titer_q1="q1(titer)",
-            titer_q3="q3(titer)",
-            groupby=["axis_label"],
-        )
+        base.transform_joinaggregate(**aggregates, groupby=["axis_label"])
         .encode(
-            **{titer_channel: TiterChannel("titer", scale=titer_scale)},
-            tooltip=[
-                *virus_tooltips,
-                alt.Tooltip("median_titer:Q", format=".1f"),
-                alt.Tooltip("titer_q1:Q", format=".1f"),
-                alt.Tooltip("titer_q3:Q", format=".1f"),
-            ],
+            **{
+                titer_channel: TiterChannel(
+                    f"{field}:Q", title=value["title"], scale=titer_scale
+                )
+            },
+            tooltip=[*virus_tooltips, *tooltips],
         )
         .mark_errorband(extent="iqr", opacity=0.5, interpolate="linear")
     )
@@ -538,7 +674,7 @@ def frac_below_cutoff(base):
     )
 
 
-def reference_line(chart_titers, ref_axis_label, chart_type):
+def reference_line(chart_titers, ref_axis_label, chart_type, value):
     """Dashed rule at `ref_axis_label`'s value within each cohort facet.
 
     Built from the same frame object as the rest of the layer so `altair` hoists the data
@@ -565,8 +701,8 @@ def reference_line(chart_titers, ref_axis_label, chart_type):
         )
         encoding = TiterChannel("ref_value:Q", title="fraction below cutoff")
     else:
-        line = line.transform_aggregate(ref_value="median(titer)")
-        encoding = TiterChannel("ref_value:Q", title="titer", scale=titer_scale)
+        line = line.transform_aggregate(ref_value=f"median({value['field']})")
+        encoding = TiterChannel("ref_value:Q", title=value["title"], scale=titer_scale)
     # a burnt orange dark enough to read over the interquartile band, and far enough
     # from the red of a hovered point not to be mistaken for one
     return line.encode(**{titer_channel: encoding}).mark_rule(
@@ -574,19 +710,40 @@ def reference_line(chart_titers, ref_axis_label, chart_type):
     )
 
 
+# each chart type names its title, how it is built from the mark builders, and the value
+# it plots on the titer axis
 CHART_TYPES = {
-    "individual_sera": (
-        "median (points) and per-serum (lines) titers",
-        lambda base: serum_lines(base) + median_points(base),
-    ),
-    "interquartile_range": (
-        "median (points) and interquartile range titers",
-        lambda base: interquartile_range(base) + median_points(base),
-    ),
-    "frac_below_cutoff": (
-        "fraction sera below titer cutoff",
-        frac_below_cutoff,
-    ),
+    "individual_sera": {
+        "title": "median (points) and per-serum (lines) titers",
+        "build": lambda base, value: serum_lines(base, value)
+        + median_points(base, value),
+        "value": VALUE_TITER,
+    },
+    "interquartile_range": {
+        "title": "median (points) and interquartile range titers",
+        "build": lambda base, value: interquartile_range(base, value)
+        + median_points(base, value),
+        "value": VALUE_TITER,
+    },
+    "frac_below_cutoff": {
+        "title": "fraction sera below titer cutoff",
+        "build": lambda base, value: frac_below_cutoff(base),
+        "value": VALUE_TITER,
+    },
+    "individual_sera_fold_change": {
+        "title": (
+            "median (points) and per-serum (lines) fold change from the serum's median"
+        ),
+        "build": lambda base, value: serum_lines(base, value)
+        + median_points(base, value),
+        "value": VALUE_FOLD_CHANGE,
+    },
+    "interquartile_range_fold_change": {
+        "title": "median (points) and interquartile range fold change from the serum's median",
+        "build": lambda base, value: interquartile_range(base, value)
+        + median_points(base, value),
+        "value": VALUE_FOLD_CHANGE,
+    },
 }
 
 # the rule names the charts to make, and only these are implemented here
@@ -603,12 +760,32 @@ if unknown_strain_sets:
         f"defined strain sets are {sorted(STRAIN_SETS)}"
     )
 
+# a fold change is relative to the serum's median over the strains the chart draws, which
+# is only a baseline worth plotting against for the recent strains
+misplaced_fold_change = sorted(
+    {
+        (r["chart_type"], r["strain_set"])
+        for r in charts_to_make
+        if CHART_TYPES[r["chart_type"]]["value"] is VALUE_FOLD_CHANGE
+        and r["strain_set"] != "recent"
+    }
+)
+if misplaced_fold_change:
+    raise ValueError(
+        f"fold-change charts are only made for the recent strains: {misplaced_fold_change}"
+    )
 
-def facet_and_add_lookups(chart, chart_viruses):
+
+def facet_and_add_lookups(
+    chart, chart_viruses, serum_medians, min_median_slider, max_median_slider
+):
     """Facet `chart` by cohort and look up the serum and virus annotations.
 
     Scoping when layering and faceting charts with `transform_lookup` requires the
-    faceting to be done before the lookups, so both happen here.
+    faceting to be done before the lookups, so both happen here. The fold change and the
+    median-titer filters follow the lookup that brings in the serum's median, which also
+    puts them upstream of the per-cohort counts in the facet labels: those fall as the
+    sliders exclude sera.
 
     """
     return (
@@ -629,12 +806,27 @@ def facet_and_add_lookups(chart, chart_viruses):
                 fields=["virus", "strain_type", "subclade"],
             ),
         )
+        .transform_lookup(
+            lookup="serum",
+            from_=alt.LookupData(
+                data=serum_medians, key="serum", fields=["median_titer_serum"]
+            ),
+        )
+        .transform_calculate(
+            fold_change=alt.datum["titer"] / alt.datum["median_titer_serum"]
+        )
         # flatten cohorts list (from sera_multicohort) to one row per cohort
         .transform_flatten(["cohorts"], as_=["cohort"])
-        # filter by cohort and age
+        # filter by cohort, age, and the serum's median titer
         .transform_filter(cohort_selection)
         .transform_filter(alt.datum["age_numeric"] >= min_age_slider)
         .transform_filter(alt.datum["age_numeric"] <= max_age_slider)
+        .transform_filter(
+            alt.datum["median_titer_serum"] >= alt.expr.pow(10, min_median_slider)
+        )
+        .transform_filter(
+            alt.datum["median_titer_serum"] <= alt.expr.pow(10, max_median_slider)
+        )
         # make facet labels w n per cohort
         .transform_joinaggregate(n_per_cohort="distinct(serum)", groupby=["cohort"])
         .transform_calculate(
@@ -669,10 +861,16 @@ def add_tree(chart, subtype, color_label):
     )
 
 
-def finalize(chart, title, subtitle):
-    """Stack the cohort legend under `chart` and apply the shared styling."""
+def finalize(chart, title, subtitle, min_median_slider, max_median_slider):
+    """Stack the slider readout and cohort legend around `chart`, and style it."""
     return (
-        alt.vconcat(chart, cohort_legend, spacing=1)
+        alt.vconcat(
+            median_titer_readout(min_median_slider, max_median_slider),
+            chart,
+            cohort_legend,
+            spacing=1,
+            center=True,
+        )
         .resolve_scale(fill="independent", color="independent")
         .configure_axis(
             grid=False,
@@ -717,28 +915,36 @@ for (subtype, strain_set), records in itertools.groupby(
     sorted(charts_to_make, key=lambda r: (r["subtype"], r["strain_set"])),
     key=lambda r: (r["subtype"], r["strain_set"]),
 ):
-    chart_titers, chart_viruses, strain_order, ref_axis_label = slice_chart_data(
-        subtype, strain_set
+    chart_titers, chart_viruses, strain_order, ref_axis_label, serum_medians = (
+        slice_chart_data(subtype, strain_set)
     )
+    medians = serum_medians["median_titer_serum"]
     print(
-        f"{subtype} {strain_set}: {len(chart_viruses)} strains, {len(chart_titers)} titers"
+        f"{subtype} {strain_set}: {len(chart_viruses)} strains, {len(chart_titers)} "
+        f"titers, serum median titers {medians.min()} to {medians.max()}"
     )
     base = base_chart(chart_titers, strain_order)
+    min_median_slider, max_median_slider = median_titer_sliders(serum_medians)
 
     for record in records:
-        chart_title, build = CHART_TYPES[record["chart_type"]]
-        layer = build(base)
+        chart_type = CHART_TYPES[record["chart_type"]]
+        value = chart_type["value"]
+        layer = chart_type["build"](base, value)
         subtitle = ""
         if ref_axis_label is not None:
             # layered last so the thin line draws over the interquartile band
-            layer += reference_line(chart_titers, ref_axis_label, record["chart_type"])
+            layer += reference_line(
+                chart_titers, ref_axis_label, record["chart_type"], value
+            )
             subtitle = f"dashed orange line marks {ref_axis_label}"
-        chart = facet_and_add_lookups(layer, chart_viruses)
-        title = f"{chart_title} for {subtype} {strain_set} strains"
+        chart = facet_and_add_lookups(
+            layer, chart_viruses, serum_medians, min_median_slider, max_median_slider
+        )
+        title = f"{chart_type['title']} for {subtype} {strain_set} strains"
         if strain_set == "recent":
             chart = add_tree(chart, subtype, record["color_label"])
             title += f", tree colored by {record['color_label']}"
-        chart = finalize(chart, title, subtitle)
+        chart = finalize(chart, title, subtitle, min_median_slider, max_median_slider)
 
         print(f"Saving to {record['path']!r}")
         chart.save(record["path"])

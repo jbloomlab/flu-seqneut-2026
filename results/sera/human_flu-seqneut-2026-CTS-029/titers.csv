@@ -1,0 +1,11 @@
+group,serum,virus,titer,titer_bound,titer_sem,n_replicates,titer_as,titer_units
+human,flu-seqneut-2026-CTS-029,A/California/NIRC-IS-1059/2026_H3N2,450.5,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-CTS-029,A/Colorado/218/2024_H1N1,198.5,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-CTS-029,A/District_Of_Columbia/27/2023_H3N2,366.8,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-CTS-029,A/Missouri/11/2025_cell_H1N1,224.8,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-CTS-029,A/Netherlands/543/2026_H1N1,121.3,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-CTS-029,A/Norway/9556/2025_H1N1,150.5,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-CTS-029,A/Ohio/259/2024_H1N1,140.8,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-CTS-029,A/Tokyo/EIS11-277/2024_H1N1,149,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-CTS-029,A/Wisconsin/588/2019_H1N1,707.2,interpolated,,1,midpoint,reciprocal_dilution
+human,flu-seqneut-2026-CTS-029,A/Wisconsin/67/2022_H1N1,251.9,interpolated,,1,midpoint,reciprocal_dilution

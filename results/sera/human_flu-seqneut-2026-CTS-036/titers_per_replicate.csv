@@ -1,0 +1,10 @@
+group,serum,virus,plate,replicate,titer,titer_bound,titer_as,titer_units,nt50,midpoint,top,bottom,slope,dropped_by_qc
+human,flu-seqneut-2026-CTS-036,A/Bangkok/P2391/2025_H3N2,plate21,plate21-A/Bangkok/P2391/2025_H3N2,1254,interpolated,midpoint,reciprocal_dilution,1389,1254,0.6797,0,10,False
+human,flu-seqneut-2026-CTS-036,A/California/NIRC-IS-1019/2026_H1N1,plate21,plate21-A/California/NIRC-IS-1019/2026_H1N1,113.6,interpolated,midpoint,reciprocal_dilution,132,113.6,0.7385,0,4.956,False
+human,flu-seqneut-2026-CTS-036,A/Darwin/1454/2025_H3N2,plate21,plate21-A/Darwin/1454/2025_H3N2,1258,interpolated,midpoint,reciprocal_dilution,1398,1258,0.674,0,10,False
+human,flu-seqneut-2026-CTS-036,A/Kentucky/80/2025_H1N1,plate21,plate21-A/Kentucky/80/2025_H1N1,566.6,interpolated,midpoint,reciprocal_dilution,1114,566.6,0.6827,0,1.49,False
+human,flu-seqneut-2026-CTS-036,A/PaisVasco/70369726/2026_H1N1,plate21,plate21-A/PaisVasco/70369726/2026_H1N1,116.5,interpolated,midpoint,reciprocal_dilution,128.2,116.5,0.7214,0,8.505,False
+human,flu-seqneut-2026-CTS-036,A/Singapore/GP20238/2024_H3N2,plate21,plate21-A/Singapore/GP20238/2024_H3N2,1372,interpolated,midpoint,reciprocal_dilution,1612,1372,0.6,0,10,False
+human,flu-seqneut-2026-CTS-036,A/SouthAfrica/PATH-CERI-C075119/2026_H1N1,plate21,plate21-A/SouthAfrica/PATH-CERI-C075119/2026_H1N1,112.7,interpolated,midpoint,reciprocal_dilution,127.2,112.7,0.7603,0,5.381,False
+human,flu-seqneut-2026-CTS-036,A/Thailand/8/2022_H3N2,plate21,plate21-A/Thailand/8/2022_H3N2,1354,interpolated,midpoint,reciprocal_dilution,1498,1354,0.682,0,10,False
+human,flu-seqneut-2026-CTS-036,A/Victoria/4897/2022_IVR-238_H1N1,plate21,plate21-A/Victoria/4897/2022_IVR-238_H1N1,1321,interpolated,midpoint,reciprocal_dilution,1440,1321,0.7104,0,10,False

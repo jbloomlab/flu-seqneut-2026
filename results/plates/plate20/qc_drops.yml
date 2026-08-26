@@ -1,0 +1,28 @@
+wells:
+  B7: avg_barcode_counts_per_well
+  B9: avg_barcode_counts_per_well
+  C5: avg_barcode_counts_per_well
+barcodes: {}
+barcode_wells:
+  A/Singapore/NTF0577/2025_H3N2 H2: max_frac_infectivity_per_viral_barcode_well
+  A/Montana/51/2025_H3N2 H4: max_frac_infectivity_per_viral_barcode_well
+  A/Missouri/11/2025_cell_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Vietnam/PF125413/2025_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
+  A/Netherlands/864/2026_H1N1 G6: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-CTS-016: 
+    goodness_of_fit
+  A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-CTS-020: goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-CTS-020: 
+    goodness_of_fit
+  A/Uppsala/SE26-01293/2026_H1N1 flu-seqneut-2026-CTS-023: goodness_of_fit
+  A/Victoria/4897/2022_IVR-238_H1N1 flu-seqneut-2026-CTS-024: goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-CTS-025: 
+    goodness_of_fit
+  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-CTS-025: goodness_of_fit
+  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-CTS-025: 
+    goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-CTS-025: 
+    goodness_of_fit
+  A/Victoria/2948/2025_H3N2 flu-seqneut-2026-CTS-025: goodness_of_fit
+serum_replicates: {}

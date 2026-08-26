@@ -13,7 +13,7 @@ To jump directly to the key results:
     * [results/final_titer_data/human_viruses.csv](results/final_titer_data/human_viruses.csv): detailed information about the viruses for which these titers were measured.
     * [results/final_titer_data/human_titers_summarized_by_virus.csv](results/final_titer_data/human_titers_summarized_by_virus.csv): summary statistics about the titers against each virus.
 
-- Interactive titer summary plots showing median titers, individual serum titers, interquartile ranges, and fraction of sera below titer cutoffs for each subtype and strain type can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade).
+- Interactive titer summary plots showing median titers, individual serum titers, interquartile ranges, fraction of sera below titer cutoffs, and (for the recent strains) titers as a fold change from each serum's median titer, for each subtype and strain type can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade).
 
 - Interactive Nextstrain protein trees that can be colored by subclade, median titer, etc and also show individual titers in the *Measurements* panel can be viewed at the following links:
   - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2)

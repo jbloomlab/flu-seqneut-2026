@@ -15,6 +15,8 @@ To jump directly to the key results:
 
 - Interactive titer summary plots showing median titers, individual serum titers, interquartile ranges, fraction of sera below titer cutoffs, and (for the recent strains) titers as a fold change from each serum's median titer, for each subtype and strain type can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade).
 
+- Interactive charts comparing the titers of paired pre- and post-vaccination sera, both overlaid and as the fold change from before to after vaccination, with a facet per vaccination arm, can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts).
+
 - Interactive Nextstrain protein trees that can be colored by subclade, median titer, etc and also show individual titers in the *Measurements* panel can be viewed at the following links:
   - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2)
   - [H1N1](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1)

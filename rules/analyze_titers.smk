@@ -61,8 +61,8 @@ titer_chart_types = {
     "interquartile_range_fold_change": ["recent"],
 }
 
-# Define set of titer charts to make, as (output path template, chart record) pairs
-titer_charts = []
+# Define set of titer summary charts to make, as (output path template, chart record) pairs
+titer_summary_charts = []
 for _subtype in config["subtypes"]:
     _colorings = config["plot_titer_summaries_params"]["subtype_params"][_subtype][
         "color_trees_by"
@@ -83,7 +83,7 @@ for _subtype in config["subtypes"]:
                 for part in (_subtype, _strain_set, _chart_type, _color_label)
                 if part
             )
-            titer_charts.append(
+            titer_summary_charts.append(
                 (
                     f"results/titer_plots/{{group}}_{_stem}_{{orientation}}.html",
                     {
@@ -111,7 +111,7 @@ rule plot_titer_summaries:
             for subtype in config["subtypes"]
         ],
     output:
-        chart_htmls=[template for template, _ in titer_charts],
+        chart_htmls=[template for template, _ in titer_summary_charts],
     log:
         "results/logs/plot_titer_summaries_{group}_{orientation}.txt",
     wildcard_constraints:
@@ -121,7 +121,7 @@ rule plot_titer_summaries:
         "../seqneut-pipeline/environment.yml"
     params:
         # in the same order as `output.chart_htmls`, which names each chart's path
-        charts=[record for _, record in titer_charts],
+        charts=[record for _, record in titer_summary_charts],
         recent_vaccine_strains=config["recent_vaccine_strains"],
         circulating_strain_type=config["circulating_strain_type"],
         plot_titer_summaries_params=config["plot_titer_summaries_params"],
@@ -131,11 +131,93 @@ rule plot_titer_summaries:
         "../scripts/plot_titer_summaries.py"
 
 
+# Charts of the paired pre- and post-vaccination titers. The chart set is the same for
+# every `plot_pre_post_titers` entry, so one list serves them all; the entry is a wildcard
+# that names which cohorts are compared. These live in their own directory as their file
+# names are otherwise shaped like the summary charts'.
+pre_post_chart_types = [
+    "individual_sera",
+    "interquartile_range",
+    "individual_sera_fold_change",
+    "interquartile_range_fold_change",
+]
+
+pre_post_charts = []
+for _subtype in config["subtypes"]:
+    _colorings = config["plot_titer_summaries_params"]["subtype_params"][_subtype][
+        "color_trees_by"
+    ]
+    for _chart_type in pre_post_chart_types:
+        for _strain_set, _color_label in [
+            *(("recent", _label) for _label in _colorings),
+            ("vaccine", None),
+        ]:
+            _stem = "_".join(
+                part
+                for part in (_subtype, _strain_set, _chart_type, _color_label)
+                if part
+            )
+            pre_post_charts.append(
+                (
+                    f"results/pre_post_titer_plots/{{pre_post_name}}_{_stem}_{{orientation}}.html",
+                    {
+                        "subtype": _subtype,
+                        "strain_set": _strain_set,
+                        "color_label": _color_label,
+                        "chart_type": _chart_type,
+                    },
+                )
+            )
+
+
+rule plot_pre_post_titers:
+    """Create interactive Altair charts comparing paired pre-/post-vaccination titers."""
+    input:
+        unpack(
+            lambda wc: {
+                key: f"results/final_titer_data/{config['plot_pre_post_titers'][wc.pre_post_name]['group']}_{output_type}.csv"
+                for key, output_type in [
+                    ("titers_csv", "titers"),
+                    ("sera_csv", "sera"),
+                    ("sera_multicohort_csv", "sera_multicohort"),
+                    ("viruses_csv", "viruses"),
+                ]
+            }
+        ),
+        # imported by the script, so declared here or edits to it trigger no rerun
+        module="scripts/titer_charts.py",
+        # one tree per subtype, in the same order as `params.subtypes`
+        trees=[
+            config["nextstrain-prot-titers-tree_config"][subtype]["auspice_json"]
+            for subtype in config["subtypes"]
+        ],
+    output:
+        chart_htmls=[template for template, _ in pre_post_charts],
+    log:
+        "results/logs/plot_pre_post_titers_{pre_post_name}_{orientation}.txt",
+    wildcard_constraints:
+        pre_post_name="|".join(config["plot_pre_post_titers"]),
+        orientation="vertical|horizontal",
+    conda:
+        "../seqneut-pipeline/environment.yml"
+    params:
+        # in the same order as `output.chart_htmls`, which names each chart's path
+        charts=[record for _, record in pre_post_charts],
+        recent_vaccine_strains=config["recent_vaccine_strains"],
+        circulating_strain_type=config["circulating_strain_type"],
+        plot_titer_summaries_params=config["plot_titer_summaries_params"],
+        subtypes=config["subtypes"],
+        facet_orientation=lambda wc: wc.orientation,
+        pre_post_config=lambda wc: config["plot_pre_post_titers"][wc.pre_post_name],
+    script:
+        "../scripts/plot_pre_post_titers.py"
+
+
 # Add titer summary plots to docs HTMLs generated by pipeline, one section per tree
 # coloring plus one for the tree-less vaccine-strain charts
 for _group in groups_to_analyze:
     for _orientation in ["vertical", "horizontal"]:
-        for _template, _chart in titer_charts:
+        for _template, _chart in titer_summary_charts:
             if _chart["strain_set"] == "recent":
                 _section = (
                     f"Interactive charts of {_group} titers, "
@@ -148,6 +230,19 @@ for _group in groups_to_analyze:
             add_htmls_to_docs.setdefault(_section, {}).setdefault(_subsection, {})[
                 _chart["chart_type"]
             ] = _template.format(group=_group, orientation=_orientation)
+
+
+# Add the pre-/post-vaccination charts to the docs, one section per set of comparisons
+for _pre_post_name, _pre_post_config in config["plot_pre_post_titers"].items():
+    for _orientation in ["vertical", "horizontal"]:
+        for _template, _chart in pre_post_charts:
+            _section = f"Interactive charts of {_pre_post_config['title']}"
+            _subsection = (
+                f"{_chart['subtype']} {_chart['strain_set']} strains ({_orientation})"
+            )
+            add_htmls_to_docs.setdefault(_section, {}).setdefault(_subsection, {})[
+                _chart["chart_type"]
+            ] = _template.format(pre_post_name=_pre_post_name, orientation=_orientation)
 
 
 analyze_titers_outputs = [
@@ -170,6 +265,12 @@ analyze_titers_outputs = [
     *expand(
         rules.plot_titer_summaries.output.chart_htmls,
         group=groups_to_analyze,
+        orientation=["vertical", "horizontal"],
+    ),
+    # charts of the paired pre-/post-vaccination titers
+    *expand(
+        rules.plot_pre_post_titers.output.chart_htmls,
+        pre_post_name=config["plot_pre_post_titers"],
         orientation=["vertical", "horizontal"],
     ),
 ]

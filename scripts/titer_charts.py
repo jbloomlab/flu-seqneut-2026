@@ -242,6 +242,10 @@ class Layout:
     facet_channel: str
     panel_size: dict
     header_label_orient: str
+    # side of the chart the tree does not occupy, and so where a legend on the chart sits
+    # clear of the gap between the two: `add_tree` puts the tree on the side the strain
+    # axis runs along, to the left when facets run in columns and beneath when in rows
+    legend_orient: str
 
 
 def layout(facet_orientation, facet_size):
@@ -256,6 +260,7 @@ def layout(facet_orientation, facet_size):
             facet_channel="column",
             panel_size={"height": alt.Step(STRAIN_STEP), "width": facet_size},
             header_label_orient="top",
+            legend_orient="bottom",
         )
     elif facet_orientation == "horizontal":
         return Layout(
@@ -267,6 +272,7 @@ def layout(facet_orientation, facet_size):
             facet_channel="row",
             panel_size={"width": alt.Step(STRAIN_STEP), "height": facet_size},
             header_label_orient="right",
+            legend_orient="left",
         )
     else:
         raise ValueError(f"invalid {facet_orientation=}")

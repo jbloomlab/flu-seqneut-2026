@@ -9,6 +9,8 @@ ordered by collection date and their labels name the vaccine type.
 Chart and tree are joined on `derived_haplotype`, which also names the strain a dashed
 reference line is optionally drawn at.
 
+Each chart facets by serum cohort, and a serum appears in every cohort it belongs to.
+
 """
 
 import itertools
@@ -17,16 +19,12 @@ import sys
 
 import altair as alt
 import pandas as pd
-import tree_annotated_plot
+import titer_charts
 
 sys.stderr = sys.stdout = open(snakemake.log[0], "w")
 
 _ = alt.data_transformers.disable_max_rows()
 
-titers_csv = snakemake.input.titers_csv
-sera_csv = snakemake.input.sera_csv
-sera_multicohort_csv = snakemake.input.sera_multicohort_csv
-viruses_csv = snakemake.input.viruses_csv
 recent_vaccine_strains = snakemake.params.recent_vaccine_strains
 circulating_strain_type = snakemake.params.circulating_strain_type
 plot_titer_summaries_params = snakemake.params.plot_titer_summaries_params
@@ -47,72 +45,20 @@ charts_to_make = [
     )
 ]
 
-# pixels per strain along the strain axis
-STRAIN_STEP = 11
+STRAIN_SETS = titer_charts.strain_sets(circulating_strain_type)
 
-# `strain_type` values plotted in each strain set. The recent vaccine strains are in both,
-# labeled by haplotype alone among the recent strains and by vaccine type among the others.
-STRAIN_SETS = {
-    "recent": [circulating_strain_type, "recent_vaccine"],
-    "vaccine": ["vaccine", "recent_vaccine"],
-}
+lay = titer_charts.layout(facet_orientation, plot_titer_summaries_params["facet_size"])
 
-if facet_orientation not in {"vertical", "horizontal"}:
-    raise ValueError(f"invalid {facet_orientation=}")
-
-# Read titers
-titers = pd.read_csv(titers_csv, dtype={"serum": str, "virus": str})
-print(f"Read {len(titers)=} titers from {titers_csv=}")
-
-required_titer_cols = {"serum", "virus", "titer"}
-missing_titer_cols = required_titer_cols - set(titers.columns)
-if missing_titer_cols:
-    raise ValueError(f"titers_csv missing required columns: {missing_titer_cols}")
-
-duplicate_pairs = titers.groupby(["serum", "virus"]).size()
-duplicate_pairs = duplicate_pairs[duplicate_pairs > 1]
-if len(duplicate_pairs) > 0:
-    raise ValueError(
-        f"Found {len(duplicate_pairs)} duplicate serum-virus pairs in titers:\n"
-        f"{duplicate_pairs.head(10).to_string()}"
-    )
-
-# Read sera metadata (one row per serum)
-metadata = pd.read_csv(sera_csv, dtype={"serum": str})
-print(f"Read {len(metadata)=} sera from {sera_csv=}")
-
-required_sera_cols = {
-    "serum",
-    "cohort",
-    "age_numeric",
-    "serum_collection_date",
-    "age",
-    "sex",
-}
-missing_sera_cols = required_sera_cols - set(metadata.columns)
-if missing_sera_cols:
-    raise ValueError(f"sera_csv missing required columns: {missing_sera_cols}")
-
-titers_sera = set(titers["serum"])
-metadata_sera = set(metadata["serum"])
-if titers_sera != metadata_sera:
-    raise ValueError(
-        f"Serum mismatch between titers and sera metadata.\n"
-        f"  In titers but not metadata: {titers_sera - metadata_sera}\n"
-        f"  In metadata but not titers: {metadata_sera - titers_sera}"
-    )
-
-# Read sera multicohort (multiple rows per serum, one per cohort assignment)
-sera_multicohort = pd.read_csv(sera_multicohort_csv, dtype={"serum": str})
-print(f"Read {len(sera_multicohort)=} rows from {sera_multicohort_csv=}")
-
-multicohort_sera = set(sera_multicohort["serum"])
-if titers_sera != multicohort_sera:
-    raise ValueError(
-        f"Serum mismatch between titers and sera_multicohort.\n"
-        f"  In titers but not multicohort: {titers_sera - multicohort_sera}\n"
-        f"  In multicohort but not titers: {multicohort_sera - titers_sera}"
-    )
+titers, metadata, sera_multicohort, viruses = titer_charts.load_and_validate(
+    snakemake.input.titers_csv,
+    snakemake.input.sera_csv,
+    snakemake.input.sera_multicohort_csv,
+    snakemake.input.viruses_csv,
+    recent_vaccine_strains=recent_vaccine_strains,
+    circulating_strain_type=circulating_strain_type,
+    subtypes=subtypes,
+    subtype_params=subtype_params,
+)
 
 if "All" not in sera_multicohort["cohort"].values:
     raise ValueError(
@@ -151,88 +97,7 @@ if sera_missing_cohorts:
         f"Some sera missing cohort assignments: {sera_missing_cohorts[:10]}"
     )
 
-# Read viruses
-viruses = pd.read_csv(viruses_csv, dtype={"virus": str})
-print(f"Read {len(viruses)=} viruses from {viruses_csv=}")
-
-required_virus_cols = {
-    "virus",
-    "subtype",
-    "strain_type",
-    "subclade",
-    "derived_haplotype",
-    "vaccine_type",
-    "virus_collection_date",
-}
-missing_virus_cols = required_virus_cols - set(viruses.columns)
-if missing_virus_cols:
-    raise ValueError(f"viruses_csv missing required columns: {missing_virus_cols}")
-
-if not viruses["virus"].is_unique:
-    raise ValueError(
-        "viruses_csv has more than one row per virus: "
-        f"{viruses.loc[viruses['virus'].duplicated(), 'virus'].tolist()}"
-    )
-
-# `derived_haplotype` is the key joining each chart to its tree and is the axis label, so
-# a strain sharing one with another would silently collapse two strains onto one row
-if viruses["derived_haplotype"].isnull().any():
-    raise ValueError(
-        "viruses_csv has a null derived_haplotype for: "
-        f"{viruses.loc[viruses['derived_haplotype'].isnull(), 'virus'].tolist()}"
-    )
-shared_haplotypes = viruses[viruses.duplicated("derived_haplotype", keep=False)]
-if len(shared_haplotypes):
-    raise ValueError(
-        "derived_haplotype must be unique per strain, but these strains share one:\n"
-        f"{shared_haplotypes[['virus', 'derived_haplotype']].sort_values('derived_haplotype')}"
-    )
-
-missing_vaccine_strains = set(recent_vaccine_strains) - set(viruses["virus"])
-if missing_vaccine_strains:
-    raise ValueError(
-        f"recent_vaccine_strains not in viruses: {missing_vaccine_strains}"
-    )
-
-valid_strain_types = {circulating_strain_type, "vaccine"}
-invalid_strain_types = set(viruses["strain_type"]) - valid_strain_types
-if invalid_strain_types:
-    raise ValueError(
-        f"Invalid strain_type values: {invalid_strain_types}. Expected: {valid_strain_types}"
-    )
-
-# Mark recent vaccine strains as "recent_vaccine" strain_type
-viruses["strain_type"] = viruses["strain_type"].where(
-    ~viruses["virus"].isin(recent_vaccine_strains), "recent_vaccine"
-)
-
-data_subtypes = set(viruses["subtype"].unique())
-if not set(subtypes).issubset(data_subtypes):
-    raise ValueError(
-        f"subtypes param {set(subtypes)} not all in viruses data. "
-        f"Available subtypes: {data_subtypes}"
-    )
-
-# a `draw_titer_line` haplotype naming no strain would silently draw no line
-for subtype in subtypes:
-    haplotype = subtype_params[subtype]["draw_titer_line"]
-    if haplotype is not None and haplotype not in set(
-        viruses.loc[viruses["subtype"] == subtype, "derived_haplotype"]
-    ):
-        raise ValueError(
-            f"`draw_titer_line` {haplotype!r} is not a derived_haplotype of any "
-            f"{subtype} strain; use null to draw no line"
-        )
-
 # ---- selections and sliders, shared by every chart --------------------------------
-
-virus_selection = alt.selection_point(
-    fields=["axis_label"], on="mouseover", empty=False, clear="mouseout", nearest=False
-)
-
-serum_selection = alt.selection_point(
-    fields=["serum"], on="mouseover", empty=False, clear="mouseout", nearest=False
-)
 
 cohort_selection = alt.selection_point(
     fields=["cohort"],
@@ -249,20 +114,7 @@ cohort_selection = alt.selection_point(
     ),
 )
 
-max_age = 5 * int(metadata["age_numeric"].max() // 5) + 5
-assert all(metadata["age_numeric"] <= max_age)
-min_age_slider = alt.param(
-    value=0,
-    bind=alt.binding_range(
-        min=0, max=max_age, step=5, name="minimum subject age (years)"
-    ),
-)
-max_age_slider = alt.param(
-    value=max_age,
-    bind=alt.binding_range(
-        min=0, max=max_age, step=5, name="maximum subject age (years)"
-    ),
-)
+min_age_slider, max_age_slider = titer_charts.age_sliders(metadata)
 
 titer_cutoff = plot_titer_summaries_params["titer_cutoff"]
 
@@ -331,16 +183,7 @@ def median_titer_sliders(serum_medians):
     )
 
 
-# no explicit domain: `altair` fits it to whatever each chart draws, which is the spread of
-# the individual values for the per-serum charts but only the interquartile band for the
-# interquartile-range ones. Leaving it to `altair` also means the axis follows the cohort,
-# age, and median-titer filters, so a filtered view can never fall outside the axis. Fold
-# changes span orders of magnitude for the same reason titers do, so both use this scale.
-titer_scale = alt.Scale(type="log", nice=False, padding=4)
-
-# what a chart plots on the titer axis: the field, its axis title, and its tooltip
-# format. A list of strings is an axis title split over that many lines.
-VALUE_TITER = {"field": "titer", "title": "titer", "format": ".1f"}
+VALUE_TITER = titer_charts.VALUE_TITER
 VALUE_FOLD_CHANGE = {
     "field": "fold_change",
     "title": ["titer fold change", "from serum's median"],
@@ -400,146 +243,6 @@ def median_titer_readout(min_median_slider, max_median_slider):
     )
 
 
-# the strain axis is on y when facets run in columns, and on x when they run in rows
-if facet_orientation == "vertical":
-    StrainChannel, TiterChannel, FacetChannel = alt.Y, alt.X, alt.Column
-    facet_channel = "column"
-    panel_size = {
-        "height": alt.Step(STRAIN_STEP),
-        "width": plot_titer_summaries_params["facet_size"],
-    }
-else:
-    StrainChannel, TiterChannel, FacetChannel = alt.X, alt.Y, alt.Row
-    facet_channel = "row"
-    panel_size = {
-        "width": alt.Step(STRAIN_STEP),
-        "height": plot_titer_summaries_params["facet_size"],
-    }
-strain_channel = "y" if facet_orientation == "vertical" else "x"
-titer_channel = "x" if facet_orientation == "vertical" else "y"
-
-
-def slice_chart_data(subtype, strain_set):
-    """Return the titers, lookup tables, axis order, and reference strain for a set.
-
-    Both frames are cut down to exactly the strains the chart draws. `tree_annotated_plot`
-    compares the chart's strains against the tree's tips, and where no explicit axis sort
-    is present it gathers them by walking every inline frame in the spec -- the lookup
-    table included -- so an unsliced frame would contribute strains the chart never draws.
-    Slicing also keeps the embedded data, and so the saved HTML, as small as the chart.
-
-    """
-    chart_viruses = viruses[
-        (viruses["subtype"] == subtype)
-        & viruses["strain_type"].isin(STRAIN_SETS[strain_set])
-    ].copy()
-    if not len(chart_viruses):
-        raise ValueError(f"no {strain_set} strains for {subtype=}")
-
-    if strain_set == "recent":
-        # matches the tree tips, which are labeled by haplotype
-        chart_viruses["axis_label"] = chart_viruses["derived_haplotype"]
-        # `tree_annotated_plot` replaces this sort with the tree's tip order, so it serves
-        # only to declare the strains the chart draws, as described above
-        strain_order = chart_viruses.sort_values(["subclade", "virus"])["axis_label"]
-    else:
-        if chart_viruses["vaccine_type"].isnull().any():
-            raise ValueError(
-                "vaccine strains with no vaccine_type: "
-                f"{chart_viruses.loc[chart_viruses['vaccine_type'].isnull(), 'virus'].tolist()}"
-            )
-        chart_viruses["axis_label"] = (
-            chart_viruses["derived_haplotype"]
-            + " ("
-            + chart_viruses["vaccine_type"]
-            + " vaccine)"
-        )
-        strain_order = chart_viruses.sort_values("virus_collection_date")["axis_label"]
-
-    # `axis_label` is the axis field and the `transform_lookup` key, so it must be 1:1
-    if not chart_viruses["axis_label"].is_unique:
-        raise ValueError(
-            f"axis labels are not unique for {subtype} {strain_set} strains:\n"
-            f"{chart_viruses.loc[chart_viruses['axis_label'].duplicated(keep=False), ['virus', 'axis_label']]}"
-        )
-
-    # the vaccine set labels a strain `"D.3.1 (cell vaccine)"`, not by haplotype alone,
-    # so the reference line's strain is resolved per strain set
-    ref_haplotype = subtype_params[subtype]["draw_titer_line"]
-    ref_axis_label = None
-    if ref_haplotype is not None:
-        ref_rows = chart_viruses[chart_viruses["derived_haplotype"] == ref_haplotype]
-        if len(ref_rows) != 1:
-            raise ValueError(
-                f"`draw_titer_line` {ref_haplotype!r} matches {len(ref_rows)} of the "
-                f"{subtype} {strain_set} strains, but must match exactly one"
-            )
-        ref_axis_label = ref_rows["axis_label"].item()
-
-    chart_titers = titers.merge(
-        chart_viruses[["virus", "axis_label"]],
-        on="virus",
-        how="inner",
-        validate="many_to_one",
-    )[["serum", "axis_label", "titer"]]
-
-    # a strain with no titers would otherwise become an empty row on the axis
-    strains_without_titers = set(chart_viruses["axis_label"]) - set(
-        chart_titers["axis_label"]
-    )
-    if strains_without_titers:
-        raise ValueError(
-            f"{subtype} {strain_set} strains with no titers: {sorted(strains_without_titers)}"
-        )
-
-    # the median titer of each serum over the strains this chart draws, which the fold
-    # changes are relative to and the median-titer sliders filter on. Kept out of
-    # `chart_titers` and looked up instead, as it is one value per serum rather than per
-    # titer, and rounded because a median over an even number of titers is otherwise 18
-    # digits of precision far below a pixel.
-    serum_medians = (
-        chart_titers.groupby("serum")["titer"]
-        .median()
-        .round(1)
-        .rename("median_titer_serum")
-        .reset_index()
-    )
-    assert serum_medians["serum"].is_unique  # the key of a `transform_lookup`
-
-    return (
-        chart_titers,
-        chart_viruses[["axis_label", "virus", "strain_type", "subclade"]],
-        strain_order.tolist(),
-        ref_axis_label,
-        serum_medians,
-    )
-
-
-def base_chart(chart_titers, strain_order):
-    """Return the chart every chart type is built from, sized one step per strain."""
-    return (
-        alt.Chart(chart_titers)
-        .add_params(
-            virus_selection,
-            serum_selection,
-            cohort_selection,
-            min_age_slider,
-            max_age_slider,
-        )
-        .encode(
-            **{
-                strain_channel: StrainChannel(
-                    "axis_label",
-                    sort=strain_order,
-                    title=None,
-                    axis=alt.Axis(labelLimit=500),
-                )
-            }
-        )
-        .properties(**panel_size)
-    )
-
-
 # sera fields looked up per serum; the lookup frame is cut to these so no chart embeds
 # columns it never draws
 METADATA_LOOKUP_FIELDS = [
@@ -550,98 +253,63 @@ METADATA_LOOKUP_FIELDS = [
     "sex",
 ]
 
-# fields carried per strain rather than repeated on every titer row
-virus_tooltips = [
-    alt.Tooltip("axis_label:N", title="strain"),
-    alt.Tooltip("virus:N"),
-    alt.Tooltip("strain_type:N"),
-    alt.Tooltip("subclade:N"),
+# the aggregates split by cohort as well, since the facet is what separates the cohorts
+virus_groupby = [*titer_charts.VIRUS_GROUPBY, "cohort"]
+
+# the titer stays in the tooltip even when the chart plots the fold change
+FOLD_CHANGE_AGGREGATE_EXTRAS = {"median_titer": "median(titer)"}
+FOLD_CHANGE_TOOLTIP_EXTRAS = [
+    alt.Tooltip("median_titer:Q", format=VALUE_TITER["format"])
 ]
 
-# groupby for the aggregates, which must carry through the looked-up virus annotations
-virus_groupby = ["axis_label", "virus", "strain_type", "subclade", "cohort"]
+# the serum's own annotations, tooltipped on its line
+SERUM_TOOLTIPS = [
+    alt.Tooltip(
+        "median_titer_serum:Q",
+        title="serum median titer",
+        format=VALUE_TITER["format"],
+    ),
+    alt.Tooltip("serum_collection_date:N", title="serum date"),
+    alt.Tooltip("age:N", title="age"),
+    alt.Tooltip("sex:N"),
+]
 
 
 def median_points(base, value):
     """Median of the plotted value per strain and cohort, as points."""
-    field = value["field"]
-    aggregates = {f"median_{field}": f"median({field})"}
-    tooltips = [alt.Tooltip(f"median_{field}:Q", format=value["format"])]
-    if field != "titer":
-        # the titer stays in the tooltip even when the chart plots the fold change
-        aggregates["median_titer"] = "median(titer)"
-        tooltips.append(alt.Tooltip("median_titer:Q", format=VALUE_TITER["format"]))
-    return (
-        base.transform_aggregate(**aggregates, groupby=virus_groupby)
-        .encode(
-            **{
-                titer_channel: TiterChannel(
-                    f"median_{field}:Q", title=value["title"], scale=titer_scale
-                )
-            },
-            tooltip=[*virus_tooltips, *tooltips],
-            color=alt.condition(virus_selection, alt.value("red"), alt.value("black")),
-            size=alt.condition(virus_selection, alt.value(92), alt.value(46)),
-        )
-        .mark_circle(opacity=1)
+    fold_change = value is VALUE_FOLD_CHANGE
+    return titer_charts.median_points(
+        base,
+        value,
+        lay,
+        groupby=virus_groupby,
+        aggregate_extras=FOLD_CHANGE_AGGREGATE_EXTRAS if fold_change else None,
+        tooltip_extras=FOLD_CHANGE_TOOLTIP_EXTRAS if fold_change else (),
     )
 
 
 def serum_lines(base, value):
     """One line per serum across the strains."""
-    field = value["field"]
-    value_tooltips = [alt.Tooltip(f"{field}:Q", format=value["format"])]
-    if field != "titer":
-        value_tooltips.append(alt.Tooltip("titer:Q", format=VALUE_TITER["format"]))
-    return base.encode(
-        **{
-            titer_channel: TiterChannel(
-                f"{field}:Q", title=value["title"], scale=titer_scale
-            )
-        },
-        detail=alt.Detail("serum"),
-        tooltip=[
-            *virus_tooltips,
-            alt.Tooltip("serum:N"),
-            *value_tooltips,
-            alt.Tooltip(
-                "median_titer_serum:Q",
-                title="serum median titer",
-                format=VALUE_TITER["format"],
-            ),
-            alt.Tooltip("serum_collection_date:N", title="serum date"),
-            alt.Tooltip("age:N", title="age"),
-            alt.Tooltip("sex:N"),
-        ],
-        size=alt.condition(serum_selection, alt.value(3), alt.value(1.5)),
-        opacity=alt.condition(serum_selection, alt.value(1), alt.value(0.2)),
-    ).mark_line()
+    titer_tooltip = (
+        [alt.Tooltip("titer:Q", format=VALUE_TITER["format"])]
+        if value is VALUE_FOLD_CHANGE
+        else []
+    )
+    return titer_charts.serum_lines(
+        base, value, lay, tooltip_extras=[*titer_tooltip, *SERUM_TOOLTIPS]
+    )
 
 
 def interquartile_range(base, value):
     """Shaded interquartile range of the plotted value for each strain."""
-    field = value["field"]
-    aggregates = {
-        f"median_{field}": f"median({field})",
-        f"{field}_q1": f"q1({field})",
-        f"{field}_q3": f"q3({field})",
-    }
-    tooltips = [alt.Tooltip(f"{name}:Q", format=value["format"]) for name in aggregates]
-    if field != "titer":
-        # the titer stays in the tooltip even when the chart plots the fold change
-        aggregates["median_titer"] = "median(titer)"
-        tooltips.append(alt.Tooltip("median_titer:Q", format=VALUE_TITER["format"]))
-    return (
-        base.transform_joinaggregate(**aggregates, groupby=["axis_label"])
-        .encode(
-            **{
-                titer_channel: TiterChannel(
-                    f"{field}:Q", title=value["title"], scale=titer_scale
-                )
-            },
-            tooltip=[*virus_tooltips, *tooltips],
-        )
-        .mark_errorband(extent="iqr", opacity=0.5, interpolate="linear")
+    fold_change = value is VALUE_FOLD_CHANGE
+    return titer_charts.interquartile_range(
+        base,
+        value,
+        lay,
+        groupby=["axis_label"],
+        aggregate_extras=FOLD_CHANGE_AGGREGATE_EXTRAS if fold_change else None,
+        tooltip_extras=FOLD_CHANGE_TOOLTIP_EXTRAS if fold_change else (),
     )
 
 
@@ -660,15 +328,17 @@ def frac_below_cutoff(base):
         )
         .encode(
             **{
-                titer_channel: TiterChannel(
+                lay.titer_channel: lay.TiterChannel(
                     "frac_below_cutoff:Q", title="fraction below cutoff"
                 )
             },
             tooltip=[
-                *virus_tooltips,
+                *titer_charts.virus_tooltips,
                 alt.Tooltip("frac_below_cutoff:Q", format=".2f"),
             ],
-            color=alt.condition(virus_selection, alt.value("red"), alt.value("black")),
+            color=alt.condition(
+                titer_charts.virus_selection, alt.value("red"), alt.value("black")
+            ),
         )
         .mark_bar(opacity=0.8)
     )
@@ -699,13 +369,15 @@ def reference_line(chart_titers, ref_axis_label, chart_type, value):
                 ref_value=alt.datum["n_below_cutoff"] / alt.datum["n_total"]
             )
         )
-        encoding = TiterChannel("ref_value:Q", title="fraction below cutoff")
+        encoding = lay.TiterChannel("ref_value:Q", title="fraction below cutoff")
     else:
         line = line.transform_aggregate(ref_value=f"median({value['field']})")
-        encoding = TiterChannel("ref_value:Q", title=value["title"], scale=titer_scale)
+        encoding = lay.TiterChannel(
+            "ref_value:Q", title=value["title"], scale=titer_charts.titer_scale
+        )
     # a burnt orange dark enough to read over the interquartile band, and far enough
     # from the red of a hovered point not to be mistaken for one
-    return line.encode(**{titer_channel: encoding}).mark_rule(
+    return line.encode(**{lay.titer_channel: encoding}).mark_rule(
         color="#D95F02", strokeWidth=2, strokeDash=[4, 3]
     )
 
@@ -789,7 +461,7 @@ def facet_and_add_lookups(
 
     """
     return (
-        chart.facet({facet_channel: FacetChannel("cohort_n:N", title=None)})
+        chart.facet({lay.facet_channel: lay.FacetChannel("cohort_n:N", title=None)})
         .transform_lookup(
             lookup="serum",
             from_=alt.LookupData(
@@ -835,80 +507,6 @@ def facet_and_add_lookups(
     )
 
 
-def add_tree(chart, subtype, color_label):
-    """Return `chart` with its subtype's tree drawn alongside the strain axis.
-
-    Tree tips absent from the chart are pruned, since the tree is built from the whole
-    viral library while the titer QC may have dropped a strain. A chart strain absent
-    from the tree is left to raise.
-
-    """
-    params = subtype_params[subtype]
-    return tree_annotated_plot.plot(
-        tree_jsons[subtype],
-        chart,
-        chart_strain_field="axis_label",
-        tree_strain_field="derived_haplotype",
-        branch_length="div",
-        tree_size=params["tree_size"],
-        color_tree_by=params["color_trees_by"][color_label],
-        prune_tree_to_chart=True,
-        prune_chart_to_tree=False,
-        connect_leader_to_label=True,
-        strain_label_font_size=params["strain_label_font_size"],
-        shift_tree_loc=params["shift_tree_loc"],
-        tree_color_legend_format={"orient": "left", "columns": 1},
-    )
-
-
-def finalize(chart, title, subtitle, min_median_slider, max_median_slider):
-    """Stack the slider readout and cohort legend around `chart`, and style it."""
-    return (
-        alt.vconcat(
-            median_titer_readout(min_median_slider, max_median_slider),
-            chart,
-            cohort_legend,
-            spacing=1,
-            center=True,
-        )
-        .resolve_scale(fill="independent", color="independent")
-        .configure_axis(
-            grid=False,
-            titleFontWeight="normal",
-            titleFontSize=13,
-            labelOverlap=True,
-        )
-        .configure_header(
-            title=None,
-            labelOrient="top" if facet_orientation == "vertical" else "right",
-            labelFontSize=13,
-            labelPadding=2,
-        )
-        .configure_view(stroke="black")
-        .configure_facet(spacing=8)
-        .configure_legend(
-            labelFontSize=12,
-            titleFontSize=13,
-            titleLimit=0,  # no truncation; the cohort legend's title is wider than the 180px default
-            symbolStrokeWidth=1,
-            symbolOpacity=1,
-            symbolStrokeColor="black",
-            columns=12,
-            orient="bottom",
-        )
-        .properties(
-            title=alt.TitleParams(
-                title, subtitle=subtitle, anchor="middle", fontSize=13
-            ),
-            # recompute the layout on every view update, not just at load: toggling a
-            # cohort adds a facet, and without this the view keeps its original size and
-            # clips the tree. `pad` is required -- the `fit*` types do not support
-            # concatenated or faceted views.
-            autosize=alt.AutoSizeParams(type="pad", resize=True),
-        )
-    )
-
-
 # ---- build every chart, slicing the data once per subtype and strain set -----------
 
 for (subtype, strain_set), records in itertools.groupby(
@@ -916,14 +514,32 @@ for (subtype, strain_set), records in itertools.groupby(
     key=lambda r: (r["subtype"], r["strain_set"]),
 ):
     chart_titers, chart_viruses, strain_order, ref_axis_label, serum_medians = (
-        slice_chart_data(subtype, strain_set)
+        titer_charts.slice_chart_data(
+            titers,
+            viruses,
+            subtype,
+            strain_set,
+            STRAIN_SETS[strain_set],
+            subtype_params,
+        )
     )
     medians = serum_medians["median_titer_serum"]
     print(
         f"{subtype} {strain_set}: {len(chart_viruses)} strains, {len(chart_titers)} "
         f"titers, serum median titers {medians.min()} to {medians.max()}"
     )
-    base = base_chart(chart_titers, strain_order)
+    base = titer_charts.base_chart(
+        chart_titers,
+        strain_order,
+        lay,
+        [
+            titer_charts.virus_selection,
+            titer_charts.serum_selection,
+            cohort_selection,
+            min_age_slider,
+            max_age_slider,
+        ],
+    )
     min_median_slider, max_median_slider = median_titer_sliders(serum_medians)
 
     for record in records:
@@ -942,9 +558,21 @@ for (subtype, strain_set), records in itertools.groupby(
         )
         title = f"{chart_type['title']} for {subtype} {strain_set} strains"
         if strain_set == "recent":
-            chart = add_tree(chart, subtype, record["color_label"])
+            chart = titer_charts.add_tree(
+                chart,
+                tree_jsons[subtype],
+                subtype_params[subtype],
+                record["color_label"],
+            )
             title += f", tree colored by {record['color_label']}"
-        chart = finalize(chart, title, subtitle, min_median_slider, max_median_slider)
+        chart = titer_charts.finalize(
+            chart,
+            title,
+            subtitle,
+            lay,
+            above=[median_titer_readout(min_median_slider, max_median_slider)],
+            below=[cohort_legend],
+        )
 
         print(f"Saving to {record['path']!r}")
         chart.save(record["path"])

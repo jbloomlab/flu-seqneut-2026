@@ -9,11 +9,13 @@ To jump directly to the key results:
   + For human sera:
     * [results/final_titer_data/human_titers.csv](results/final_titer_data/human_titers.csv): QC-ed set of titers for each virus/serum pair (keeping only viruses for which titers measured against most sera, and sera for which titers measured against most viruses).
     * [results/final_titer_data/human_sera.csv](results/final_titer_data/human_sera.csv): detailed information about the sera for which these titers were measured.
-    * [results/final_titer_data/human_sera_multicohort.csv](results/final_titer_data/human_sera_multicohort.csv): sera assigned to multiple cohorts (original, "All", and days-post-vax cohorts); differs from [results/final_titer_data/human_sera.csv](results/final_titer_data/human_sera.csv) in that each serum may appear in multiple rows.
+    * [results/final_titer_data/human_sera_multicohort.csv](results/final_titer_data/human_sera_multicohort.csv): sera assigned to multiple cohorts ("All", each serum's own cohort, and the cohorts built from the sera metadata columns named by `multicohorts` in [config.yml](config.yml)); differs from [results/final_titer_data/human_sera.csv](results/final_titer_data/human_sera.csv) in that each serum may appear in multiple rows (eg, all sera occur in both "All" and their cohort, and pre- / post-vaccine sera will also appear again under those annotations).
     * [results/final_titer_data/human_viruses.csv](results/final_titer_data/human_viruses.csv): detailed information about the viruses for which these titers were measured.
     * [results/final_titer_data/human_titers_summarized_by_virus.csv](results/final_titer_data/human_titers_summarized_by_virus.csv): summary statistics about the titers against each virus.
 
 - Interactive titer summary plots showing median titers, individual serum titers, interquartile ranges, fraction of sera below titer cutoffs, and (for the recent strains) titers as a fold change from each serum's median titer, for each subtype and strain type can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade).
+
+- Interactive charts comparing the titers of paired pre- and post-vaccination sera, both overlaid and as the fold change from before to after vaccination, with a facet per vaccination arm, can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts).
 
 - Interactive Nextstrain protein trees that can be colored by subclade, median titer, etc and also show individual titers in the *Measurements* panel can be viewed at the following links:
   - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2)
@@ -75,6 +77,8 @@ There is a CSV for sera from each cohort, with the following required columns:
   - *age*: age of donor; can be numeric (e.g., "45"), a range with or without 'y' suffix (e.g., "10-19y", "18-29"), or open-ended (e.g., "75+")
   - *sex*: sex of donor; accepts various formats ("M"/"F", "male"/"female", "Male"/"Female") which are normalized during aggregation
   - *collection_date*: date of serum collection in "YYYY-MM" format (month precision)
+
+A CSV may carry further columns describing its cohort (eg, the vaccination status); `multicohorts` in [config.yml](config.yml) can use these columns to further group sera into additional cohorts.
 
 These per-cohort CSVs are aggregated and validated into [results/sera_metadata/all_sera_metadata.csv](results/sera_metadata/all_sera_metadata.csv), where *bloom_lab_id* is renamed to *serum* and *sex* and *age* are put in standard forms.
 

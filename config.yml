@@ -103,6 +103,27 @@ process_final_titer_data:
   sera_to_drop: []  # list names of sera to drop
   viruses_to_drop: []  # list names of viral strains to drop
   titer_cutoffs: *titer_cutoffs  # report fraction below cutoff
+  # Cohorts each serum is assigned to beyond "All" and the serum's own `cohort`. Each
+  # entry lists sera metadata columns whose values are joined with the serum's `cohort`
+  # by "_" to name a cohort. A serum joins only if it has a value in every column of
+  # the entry.
+  multicohorts:
+    - [vaccine_cohort, pre_or_post_vaccine]
+
+# Charts comparing the titers of paired pre- and post-vaccination sera, one entry per set
+# of comparisons. Each `comparisons` entry is one facet of the charts, naming the
+# multicohorts (see `multicohorts` above) holding a subject's pre- and post-vaccination
+# serum; a subject is drawn only if both of its sera passed QC. The strains drawn, their
+# coloring, and the tree come from `plot_titer_summaries_params` below.
+plot_pre_post_titers:
+  VIDRL_vaccination:
+    group: human  # must be one of `groups_to_analyze`
+    title: titers before and after vaccination in the VIDRL cohorts
+    pair_by: subject_id  # sera metadata column pairing a subject's two sera
+    comparisons:
+      adult-cell: {pre: VIDRL_adult-cell_pre, post: VIDRL_adult-cell_post}
+      adult-egg: {pre: VIDRL_adult-egg_pre, post: VIDRL_adult-egg_post}
+    colors: {pre: "#4d4d4d", post: "#1b5e8a"}  # dark gray and dark blue
 
 # Merged into each subtype's entry in `plot_titer_summaries_params.subtype_params`;
 # override a key by restating it there (`<<:` merges shallowly)

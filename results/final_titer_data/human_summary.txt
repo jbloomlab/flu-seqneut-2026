@@ -35,9 +35,9 @@ Processing complete:
 Generating output files...
   Written: results/final_titer_data/human_titers.csv (32057 rows)
   Written: results/final_titer_data/human_sera.csv (218 rows)
-  Written: results/final_titer_data/human_sera_multicohort.csv (436 rows)
+  Written: results/final_titer_data/human_sera_multicohort.csv (494 rows)
   Written: results/final_titer_data/human_viruses.csv (148 rows)
-  Written: results/final_titer_data/human_titers_summarized_by_virus.csv (740 rows)
+  Written: results/final_titer_data/human_titers_summarized_by_virus.csv (1332 rows)
 
 ======================================================================
 FINAL SUMMARY
@@ -53,6 +53,10 @@ Cohorts in titers_summarized_by_virus.csv:
   SCH: 40 sera, 5883 titers
   UWMC: 88 sera, 12915 titers
   VIDRL: 58 sera, 8538 titers
+  VIDRL_adult-cell_post: 10 sera, 1480 titers
+  VIDRL_adult-cell_pre: 9 sera, 1307 titers
+  VIDRL_adult-egg_post: 20 sera, 2953 titers
+  VIDRL_adult-egg_pre: 19 sera, 2798 titers
 
 Viruses per subtype:
   H1N1: 66

@@ -48,6 +48,7 @@ min_frac_action = config["min_frac_action"]
 sera_to_drop = config["sera_to_drop"]
 viruses_to_drop = config["viruses_to_drop"]
 titer_cutoffs = config["titer_cutoffs"]
+multicohorts = config["multicohorts"]
 
 # Validate min_frac_action
 if min_frac_action not in ("raise", "drop"):
@@ -389,8 +390,9 @@ sera_output.to_csv(output_sera_csv, index=False)
 log_message(f"  Written: {output_sera_csv} ({len(sera_output)} rows)")
 
 # --- Output 3: Sera multicohort CSV ---
-# First validate no conflicting cohort names (fail fast)
-original_cohorts = sera_output["cohort"].unique()
+# Each serum is assigned to "All", to its own `cohort`, and to one cohort per
+# `multicohorts` entry whose columns it has values for.
+original_cohorts = set(sera_output["cohort"])
 
 # Check for "All" conflict (case-insensitive)
 if any(c.lower() == "all" for c in original_cohorts if pd.notna(c)):
@@ -399,43 +401,47 @@ if any(c.lower() == "all" for c in original_cohorts if pd.notna(c)):
         "the derived 'All' cohort"
     )
 
-# Build list of derived days-post-vax cohort names that will be created
-derived_dpv_cohorts = set()
-if "days_post_vax" in sera_output.columns:
-    for _, row in sera_output.iterrows():
-        if pd.notna(row.get("days_post_vax")):
-            days = int(row["days_post_vax"])
-            dpv_cohort = f"{row['cohort']}_{days}d-post-vax"
-            derived_dpv_cohorts.add(dpv_cohort)
 
-# Check for conflicts with derived days-post-vax cohort names
-conflicting_cohorts = set(original_cohorts) & derived_dpv_cohorts
+def cohort_name_part(value):
+    """Value as it appears in a derived cohort name, without a float's trailing `.0`."""
+    return f"{value:g}" if pd.api.types.is_number(value) else str(value)
+
+
+derived_assignments = []
+for cols in multicohorts:
+    missing_cols = [c for c in cols if c not in sera_output.columns]
+    if missing_cols:
+        raise ValueError(
+            f"`multicohorts` entry {cols} names columns not in the sera metadata: "
+            f"{missing_cols}"
+        )
+    has_all_cols = sera_output[cols].notnull().all(axis=1)
+    partly_annotated = sera_output[cols].notnull().any(axis=1) & ~has_all_cols
+    if partly_annotated.any():
+        raise ValueError(
+            f"Sera with values for only some of {cols}: "
+            f"{sera_output.loc[partly_annotated, 'serum'].tolist()}"
+        )
+    for _, row in sera_output[has_all_cols].iterrows():
+        derived_cohort = "_".join(
+            [row["cohort"], *(cohort_name_part(row[c]) for c in cols)]
+        )
+        derived_assignments.append({"serum": row["serum"], "cohort": derived_cohort})
+
+conflicting_cohorts = {a["cohort"] for a in derived_assignments} & (
+    original_cohorts | {"All"}
+)
 if conflicting_cohorts:
     raise ValueError(
-        f"Original cohort names conflict with derived days-post-vax cohort names: "
-        f"{sorted(conflicting_cohorts)}"
+        f"Cohort names derived from `multicohorts` conflict with cohorts already in "
+        f"the sera metadata: {sorted(conflicting_cohorts)}"
     )
 
-# Build cohort assignments: each serum gets "All", their original cohort,
-# and optionally a days-post-vax cohort
-cohort_assignments = []
-for _, row in sera_output.iterrows():
-    serum = row["serum"]
-    original_cohort = row["cohort"]
-
-    # All sera belong to "All" cohort
-    cohort_assignments.append({"serum": serum, "cohort": "All"})
-
-    # Original cohort
-    cohort_assignments.append({"serum": serum, "cohort": original_cohort})
-
-    # Days-post-vax cohort if applicable
-    if "days_post_vax" in sera_output.columns and pd.notna(row.get("days_post_vax")):
-        days = int(row["days_post_vax"])
-        dpv_cohort = f"{original_cohort}_{days}d-post-vax"
-        cohort_assignments.append({"serum": serum, "cohort": dpv_cohort})
-
-cohort_assignments_df = pd.DataFrame(cohort_assignments)
+cohort_assignments_df = pd.DataFrame(
+    [{"serum": serum, "cohort": "All"} for serum in sera_output["serum"]]
+    + sera_output[["serum", "cohort"]].to_dict("records")
+    + derived_assignments
+)
 
 # Merge with sera metadata (drop original cohort column first to avoid conflict)
 sera_multicohort = cohort_assignments_df.merge(
@@ -548,14 +554,13 @@ def compute_virus_summary(df):
 titers_summarized = compute_virus_summary(titers_multicohort)
 
 
-# Sort by virus, then cohort (with "All" first, original cohorts second, dpv last)
+# Sort by virus, then cohort ("All" first, the metadata's own cohorts second, the
+# cohorts derived from `multicohorts` last)
 def cohort_sort_key(cohort):
     if cohort == "All":
         return (0, "")
-    elif "d-post-vax" in cohort:
-        return (2, cohort)
     else:
-        return (1, cohort)
+        return (1 if cohort in original_cohorts else 2, cohort)
 
 
 titers_summarized["_sort_key"] = titers_summarized["cohort"].apply(cohort_sort_key)

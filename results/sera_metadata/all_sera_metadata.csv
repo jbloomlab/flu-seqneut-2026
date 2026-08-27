@@ -1,633 +1,633 @@
-serum,cohort,species,age,sex,collection_date,age_numeric,exposure_info,notes
-flu-seqneut-2026-SCH-001,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-002,SCH,human,11-15y,Female,2026-06,13.0,,
-flu-seqneut-2026-SCH-003,SCH,human,5-10y,Female,2026-06,7.5,,
-flu-seqneut-2026-SCH-004,SCH,human,11-15y,Female,2026-06,13.0,,
-flu-seqneut-2026-SCH-005,SCH,human,11-15y,Male,2026-06,13.0,,
-flu-seqneut-2026-SCH-006,SCH,human,2-4y,Male,2026-05,3.0,,
-flu-seqneut-2026-SCH-007,SCH,human,2-4y,Male,2026-06,3.0,,
-flu-seqneut-2026-SCH-008,SCH,human,11-15y,Female,2026-06,13.0,,
-flu-seqneut-2026-SCH-009,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-010,SCH,human,5-10y,Female,2026-06,7.5,,
-flu-seqneut-2026-SCH-011,SCH,human,2-4y,Female,2026-06,3.0,,
-flu-seqneut-2026-SCH-012,SCH,human,5-10y,Female,2026-06,7.5,,
-flu-seqneut-2026-SCH-013,SCH,human,11-15y,Male,2026-06,13.0,,
-flu-seqneut-2026-SCH-014,SCH,human,11-15y,Male,2026-06,13.0,,
-flu-seqneut-2026-SCH-015,SCH,human,2-4y,Female,2026-06,3.0,,
-flu-seqneut-2026-SCH-016,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-017,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-018,SCH,human,11-15y,Female,2026-06,13.0,,
-flu-seqneut-2026-SCH-019,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-020,SCH,human,11-15y,Female,2026-06,13.0,,
-flu-seqneut-2026-SCH-021,SCH,human,5-10y,Female,2026-06,7.5,,
-flu-seqneut-2026-SCH-022,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-023,SCH,human,11-15y,Male,2026-06,13.0,,
-flu-seqneut-2026-SCH-024,SCH,human,11-15y,Male,2026-06,13.0,,
-flu-seqneut-2026-SCH-025,SCH,human,0-1y,Female,2026-06,0.5,,
-flu-seqneut-2026-SCH-026,SCH,human,11-15y,Female,2026-06,13.0,,
-flu-seqneut-2026-SCH-027,SCH,human,5-10y,Female,2026-06,7.5,,
-flu-seqneut-2026-SCH-028,SCH,human,11-15y,Female,2026-06,13.0,,
-flu-seqneut-2026-SCH-029,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-030,SCH,human,5-10y,Female,2026-06,7.5,,
-flu-seqneut-2026-SCH-031,SCH,human,11-15y,Male,2026-06,13.0,,
-flu-seqneut-2026-SCH-032,SCH,human,11-15y,Male,2026-06,13.0,,
-flu-seqneut-2026-SCH-033,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-034,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-035,SCH,human,0-1y,Male,2026-06,0.5,,
-flu-seqneut-2026-SCH-036,SCH,human,2-4y,Female,2026-06,3.0,,
-flu-seqneut-2026-SCH-037,SCH,human,5-10y,Male,2026-06,7.5,,
-flu-seqneut-2026-SCH-038,SCH,human,2-4y,Male,2026-06,3.0,,
-flu-seqneut-2026-SCH-039,SCH,human,2-4y,Male,2026-06,3.0,,
-flu-seqneut-2026-SCH-040,SCH,human,2-4y,Male,2026-06,3.0,,
-flu-seqneut-2026-UWMC-001,UWMC,human,78,Male,2026-06,78.0,,
-flu-seqneut-2026-UWMC-002,UWMC,human,76,Female,2026-06,76.0,,
-flu-seqneut-2026-UWMC-003,UWMC,human,73,Male,2026-06,73.0,,
-flu-seqneut-2026-UWMC-004,UWMC,human,72,Female,2026-06,72.0,,
-flu-seqneut-2026-UWMC-005,UWMC,human,72,Female,2026-06,72.0,,
-flu-seqneut-2026-UWMC-006,UWMC,human,72,Male,2026-06,72.0,,
-flu-seqneut-2026-UWMC-007,UWMC,human,69,Male,2026-06,69.0,,
-flu-seqneut-2026-UWMC-008,UWMC,human,68,Male,2026-06,68.0,,
-flu-seqneut-2026-UWMC-009,UWMC,human,66,Female,2026-06,66.0,,
-flu-seqneut-2026-UWMC-010,UWMC,human,65,Male,2026-06,65.0,,
-flu-seqneut-2026-UWMC-011,UWMC,human,64,Female,2026-06,64.0,,
-flu-seqneut-2026-UWMC-012,UWMC,human,64,Male,2026-06,64.0,,
-flu-seqneut-2026-UWMC-013,UWMC,human,63,Male,2026-06,63.0,,
-flu-seqneut-2026-UWMC-014,UWMC,human,62,Male,2026-06,62.0,,
-flu-seqneut-2026-UWMC-015,UWMC,human,61,Male,2026-06,61.0,,
-flu-seqneut-2026-UWMC-016,UWMC,human,60,Female,2026-06,60.0,,
-flu-seqneut-2026-UWMC-017,UWMC,human,60,Female,2026-06,60.0,,
-flu-seqneut-2026-UWMC-018,UWMC,human,57,Male,2026-06,57.0,,
-flu-seqneut-2026-UWMC-019,UWMC,human,57,Female,2026-06,57.0,,
-flu-seqneut-2026-UWMC-020,UWMC,human,57,Female,2026-06,57.0,,
-flu-seqneut-2026-UWMC-021,UWMC,human,56,Female,2026-06,56.0,,
-flu-seqneut-2026-UWMC-022,UWMC,human,56,Female,2026-06,56.0,,
-flu-seqneut-2026-UWMC-023,UWMC,human,56,Male,2026-06,56.0,,
-flu-seqneut-2026-UWMC-024,UWMC,human,56,Male,2026-06,56.0,,
-flu-seqneut-2026-UWMC-025,UWMC,human,55,Female,2026-06,55.0,,
-flu-seqneut-2026-UWMC-026,UWMC,human,55,Female,2026-06,55.0,,
-flu-seqneut-2026-UWMC-027,UWMC,human,55,Male,2026-06,55.0,,
-flu-seqneut-2026-UWMC-028,UWMC,human,54,Female,2026-06,54.0,,
-flu-seqneut-2026-UWMC-029,UWMC,human,53,Male,2026-06,53.0,,
-flu-seqneut-2026-UWMC-030,UWMC,human,53,Male,2026-06,53.0,,
-flu-seqneut-2026-UWMC-031,UWMC,human,52,Female,2026-06,52.0,,
-flu-seqneut-2026-UWMC-032,UWMC,human,51,Male,2026-06,51.0,,
-flu-seqneut-2026-UWMC-033,UWMC,human,50,Female,2026-06,50.0,,
-flu-seqneut-2026-UWMC-034,UWMC,human,50,Male,2026-06,50.0,,
-flu-seqneut-2026-UWMC-035,UWMC,human,48,Male,2026-06,48.0,,
-flu-seqneut-2026-UWMC-036,UWMC,human,47,Female,2026-06,47.0,,
-flu-seqneut-2026-UWMC-037,UWMC,human,47,Male,2026-06,47.0,,
-flu-seqneut-2026-UWMC-038,UWMC,human,46,Female,2026-06,46.0,,
-flu-seqneut-2026-UWMC-039,UWMC,human,46,Female,2026-06,46.0,,
-flu-seqneut-2026-UWMC-040,UWMC,human,45,Female,2026-06,45.0,,
-flu-seqneut-2026-UWMC-041,UWMC,human,44,Male,2026-06,44.0,,
-flu-seqneut-2026-UWMC-042,UWMC,human,43,Female,2026-06,43.0,,
-flu-seqneut-2026-UWMC-043,UWMC,human,43,Female,2026-06,43.0,,
-flu-seqneut-2026-UWMC-044,UWMC,human,43,Male,2026-06,43.0,,
-flu-seqneut-2026-UWMC-045,UWMC,human,43,Female,2026-06,43.0,,
-flu-seqneut-2026-UWMC-046,UWMC,human,42,Female,2026-06,42.0,,
-flu-seqneut-2026-UWMC-047,UWMC,human,42,Male,2026-06,42.0,,
-flu-seqneut-2026-UWMC-048,UWMC,human,41,Male,2026-06,41.0,,
-flu-seqneut-2026-UWMC-049,UWMC,human,41,Male,2026-06,41.0,,
-flu-seqneut-2026-UWMC-050,UWMC,human,41,Male,2026-06,41.0,,
-flu-seqneut-2026-UWMC-051,UWMC,human,41,Female,2026-06,41.0,,
-flu-seqneut-2026-UWMC-052,UWMC,human,40,Male,2026-06,40.0,,
-flu-seqneut-2026-UWMC-053,UWMC,human,40,Female,2026-06,40.0,,
-flu-seqneut-2026-UWMC-054,UWMC,human,39,Male,2026-06,39.0,,
-flu-seqneut-2026-UWMC-055,UWMC,human,38,Male,2026-06,38.0,,
-flu-seqneut-2026-UWMC-056,UWMC,human,37,Female,2026-06,37.0,,
-flu-seqneut-2026-UWMC-057,UWMC,human,37,Male,2026-06,37.0,,
-flu-seqneut-2026-UWMC-058,UWMC,human,36,Female,2026-06,36.0,,
-flu-seqneut-2026-UWMC-059,UWMC,human,36,Male,2026-06,36.0,,
-flu-seqneut-2026-UWMC-060,UWMC,human,35,Male,2026-06,35.0,,
-flu-seqneut-2026-UWMC-061,UWMC,human,35,Female,2026-06,35.0,,
-flu-seqneut-2026-UWMC-062,UWMC,human,35,Male,2026-06,35.0,,
-flu-seqneut-2026-UWMC-063,UWMC,human,35,Female,2026-06,35.0,,
-flu-seqneut-2026-UWMC-064,UWMC,human,34,Male,2026-06,34.0,,
-flu-seqneut-2026-UWMC-065,UWMC,human,34,Female,2026-06,34.0,,
-flu-seqneut-2026-UWMC-066,UWMC,human,34,Female,2026-06,34.0,,
-flu-seqneut-2026-UWMC-067,UWMC,human,33,Female,2026-06,33.0,,
-flu-seqneut-2026-UWMC-068,UWMC,human,32,Female,2026-06,32.0,,
-flu-seqneut-2026-UWMC-069,UWMC,human,31,Male,2026-06,31.0,,
-flu-seqneut-2026-UWMC-070,UWMC,human,31,Female,2026-06,31.0,,
-flu-seqneut-2026-UWMC-071,UWMC,human,30,Male,2026-06,30.0,,
-flu-seqneut-2026-UWMC-072,UWMC,human,30,Male,2026-06,30.0,,
-flu-seqneut-2026-UWMC-073,UWMC,human,30,Female,2026-06,30.0,,
-flu-seqneut-2026-UWMC-074,UWMC,human,29,Male,2026-06,29.0,,
-flu-seqneut-2026-UWMC-075,UWMC,human,28,Female,2026-06,28.0,,
-flu-seqneut-2026-UWMC-076,UWMC,human,28,Female,2026-06,28.0,,
-flu-seqneut-2026-UWMC-077,UWMC,human,27,Male,2026-06,27.0,,
-flu-seqneut-2026-UWMC-078,UWMC,human,27,Male,2026-06,27.0,,
-flu-seqneut-2026-UWMC-079,UWMC,human,27,Female,2026-06,27.0,,
-flu-seqneut-2026-UWMC-080,UWMC,human,27,Female,2026-06,27.0,,
-flu-seqneut-2026-UWMC-081,UWMC,human,26,Male,2026-06,26.0,,
-flu-seqneut-2026-UWMC-082,UWMC,human,24,Female,2026-06,24.0,,
-flu-seqneut-2026-UWMC-083,UWMC,human,23,Male,2026-06,23.0,,
-flu-seqneut-2026-UWMC-084,UWMC,human,23,Male,2026-06,23.0,,
-flu-seqneut-2026-UWMC-085,UWMC,human,21,Male,2026-06,21.0,,
-flu-seqneut-2026-UWMC-086,UWMC,human,21,Female,2026-06,21.0,,
-flu-seqneut-2026-UWMC-087,UWMC,human,19,Female,2026-06,19.0,,
-flu-seqneut-2026-UWMC-088,UWMC,human,19,Female,2026-06,19.0,,
-flu-seqneut-2026-CTS-001,CTS,human,29,Male,2026-05,29.0,,
-flu-seqneut-2026-CTS-002,CTS,human,41,Female,2026-05,41.0,,
-flu-seqneut-2026-CTS-003,CTS,human,51,Male,2026-05,51.0,,
-flu-seqneut-2026-CTS-004,CTS,human,39,Female,2026-05,39.0,,
-flu-seqneut-2026-CTS-005,CTS,human,59,Male,2026-05,59.0,,
-flu-seqneut-2026-CTS-006,CTS,human,76,Male,2026-05,76.0,,
-flu-seqneut-2026-CTS-007,CTS,human,54,Male,2026-05,54.0,,
-flu-seqneut-2026-CTS-008,CTS,human,31,Male,2026-05,31.0,,
-flu-seqneut-2026-CTS-009,CTS,human,44,Male,2026-05,44.0,,
-flu-seqneut-2026-CTS-010,CTS,human,56,Male,2026-05,56.0,,
-flu-seqneut-2026-CTS-011,CTS,human,72,Female,2026-05,72.0,,
-flu-seqneut-2026-CTS-012,CTS,human,32,Male,2026-05,32.0,,
-flu-seqneut-2026-CTS-013,CTS,human,63,Male,2026-05,63.0,,
-flu-seqneut-2026-CTS-014,CTS,human,75,Female,2026-05,75.0,,
-flu-seqneut-2026-CTS-015,CTS,human,28,Female,2026-05,28.0,,
-flu-seqneut-2026-CTS-016,CTS,human,65,Female,2026-05,65.0,,
-flu-seqneut-2026-CTS-017,CTS,human,72,Female,2026-05,72.0,,
-flu-seqneut-2026-CTS-018,CTS,human,39,Female,2026-05,39.0,,
-flu-seqneut-2026-CTS-019,CTS,human,74,Female,2026-05,74.0,,
-flu-seqneut-2026-CTS-020,CTS,human,26,Male,2026-05,26.0,,
-flu-seqneut-2026-CTS-021,CTS,human,78,Female,2026-05,78.0,,
-flu-seqneut-2026-CTS-022,CTS,human,69,Male,2026-05,69.0,,
-flu-seqneut-2026-CTS-023,CTS,human,45,Female,2026-05,45.0,,
-flu-seqneut-2026-CTS-024,CTS,human,78,Female,2026-05,78.0,,
-flu-seqneut-2026-CTS-025,CTS,human,40,Male,2026-05,40.0,,
-flu-seqneut-2026-CTS-026,CTS,human,82,Male,2026-05,82.0,,
-flu-seqneut-2026-CTS-027,CTS,human,37,Female,2026-05,37.0,,
-flu-seqneut-2026-CTS-028,CTS,human,68,Female,2026-05,68.0,,
-flu-seqneut-2026-CTS-029,CTS,human,79,Male,2026-05,79.0,,
-flu-seqneut-2026-CTS-030,CTS,human,52,Female,2026-05,52.0,,
-flu-seqneut-2026-CTS-031,CTS,human,32,Male,2026-05,32.0,,
-flu-seqneut-2026-CTS-032,CTS,human,40,Female,2026-05,40.0,,
-flu-seqneut-2026-CTS-033,CTS,human,75,Female,2026-05,75.0,,
-flu-seqneut-2026-CTS-034,CTS,human,26,Male,2026-05,26.0,,
-flu-seqneut-2026-CTS-035,CTS,human,48,Male,2026-05,48.0,,
-flu-seqneut-2026-CTS-036,CTS,human,41,Male,2026-05,41.0,,
-flu-seqneut-2026-CTS-037,CTS,human,72,Male,2026-05,72.0,,
-flu-seqneut-2026-CTS-038,CTS,human,74,Female,2026-05,74.0,,
-flu-seqneut-2026-CTS-039,CTS,human,63,Male,2026-05,63.0,,
-flu-seqneut-2026-CTS-040,CTS,human,61,Male,2026-05,61.0,,
-flu-seqneut-2026-CTS-041,CTS,human,65,Male,2026-05,65.0,,
-flu-seqneut-2026-CTS-042,CTS,human,62,Male,2026-05,62.0,,
-flu-seqneut-2026-CTS-043,CTS,human,75,Female,2026-05,75.0,,
-flu-seqneut-2026-CTS-044,CTS,human,29,Male,2026-05,29.0,,
-flu-seqneut-2026-CTS-045,CTS,human,39,Male,2026-05,39.0,,
-flu-seqneut-2026-CTS-046,CTS,human,41,Male,2026-05,41.0,,
-flu-seqneut-2026-CTS-047,CTS,human,21,Male,2026-05,21.0,,
-flu-seqneut-2026-CTS-048,CTS,human,74,Female,2026-05,74.0,,
-flu-seqneut-2026-CTS-049,CTS,human,76,Male,2026-05,76.0,,
-flu-seqneut-2026-CTS-050,CTS,human,78,Male,2026-05,78.0,,
-flu-seqneut-2026-CTS-051,CTS,human,27,Female,2026-05,27.0,,
-flu-seqneut-2026-CTS-052,CTS,human,38,Female,2026-05,38.0,,
-flu-seqneut-2026-CTS-053,CTS,human,43,Female,2026-05,43.0,,
-flu-seqneut-2026-CTS-054,CTS,human,47,Male,2026-05,47.0,,
-flu-seqneut-2026-CTS-055,CTS,human,53,Female,2026-05,53.0,,
-flu-seqneut-2026-CTS-056,CTS,human,65,Female,2026-05,65.0,,
-flu-seqneut-2026-CTS-057,CTS,human,46,Female,2026-05,46.0,,
-flu-seqneut-2026-CTS-058,CTS,human,48,Female,2026-05,48.0,,
-flu-seqneut-2026-CTS-059,CTS,human,56,Female,2026-05,56.0,,
-flu-seqneut-2026-CTS-060,CTS,human,58,Male,2026-05,58.0,,
-flu-seqneut-2026-CTS-061,CTS,human,58,Male,2026-05,58.0,,
-flu-seqneut-2026-CTS-062,CTS,human,20,Female,2026-05,20.0,,
-flu-seqneut-2026-CTS-063,CTS,human,66,Male,2026-05,66.0,,
-flu-seqneut-2026-CTS-064,CTS,human,65,Male,2026-05,65.0,,
-flu-seqneut-2026-CTS-065,CTS,human,75,Male,2026-05,75.0,,
-flu-seqneut-2026-CTS-066,CTS,human,56,Female,2026-05,56.0,,
-flu-seqneut-2026-CTS-067,CTS,human,56,Female,2026-05,56.0,,
-flu-seqneut-2026-CTS-068,CTS,human,59,Female,2026-05,59.0,,
-flu-seqneut-2026-CTS-069,CTS,human,32,Male,2026-05,32.0,,
-flu-seqneut-2026-CTS-070,CTS,human,66,Female,2026-05,66.0,,
-flu-seqneut-2026-CTS-071,CTS,human,39,Female,2026-05,39.0,,
-flu-seqneut-2026-CTS-072,CTS,human,86,Male,2026-05,86.0,,
-flu-seqneut-2026-CTS-073,CTS,human,54,Female,2026-05,54.0,,
-flu-seqneut-2026-CTS-074,CTS,human,79,Male,2026-05,79.0,,
-flu-seqneut-2026-CTS-075,CTS,human,60,Male,2026-05,60.0,,
-flu-seqneut-2026-CTS-076,CTS,human,51,Female,2026-05,51.0,,
-flu-seqneut-2026-CTS-077,CTS,human,76,Male,2026-05,76.0,,
-flu-seqneut-2026-CTS-078,CTS,human,50,Female,2026-05,50.0,,
-flu-seqneut-2026-CTS-079,CTS,human,42,Female,2026-05,42.0,,
-flu-seqneut-2026-CTS-080,CTS,human,61,Male,2026-05,61.0,,
-flu-seqneut-2026-CTS-081,CTS,human,26,Female,2026-05,26.0,,
-flu-seqneut-2026-CTS-082,CTS,human,76,Male,2026-05,76.0,,
-flu-seqneut-2026-CTS-083,CTS,human,37,Female,2026-05,37.0,,
-flu-seqneut-2026-CTS-084,CTS,human,71,Female,2026-05,71.0,,
-flu-seqneut-2026-CTS-085,CTS,human,61,Male,2026-05,61.0,,
-flu-seqneut-2026-CTS-086,CTS,human,36,Female,2026-05,36.0,,
-flu-seqneut-2026-CTS-087,CTS,human,67,Male,2026-05,67.0,,
-flu-seqneut-2026-CTS-088,CTS,human,48,Female,2026-05,48.0,,
-flu-seqneut-2026-CTS-089,CTS,human,28,Male,2026-05,28.0,,
-flu-seqneut-2026-CTS-090,CTS,human,53,Female,2026-05,53.0,,
-flu-seqneut-2026-CTS-091,CTS,human,60,Female,2026-05,60.0,,
-flu-seqneut-2026-CTS-092,CTS,human,54,Female,2026-05,54.0,,
-flu-seqneut-2026-CTS-093,CTS,human,71,Female,2026-05,71.0,,
-flu-seqneut-2026-CTS-094,CTS,human,73,Male,2026-05,73.0,,
-flu-seqneut-2026-CTS-095,CTS,human,44,Male,2026-05,44.0,,
-flu-seqneut-2026-CTS-096,CTS,human,45,Female,2026-05,45.0,,
-flu-seqneut-2026-CTS-097,CTS,human,79,Male,2026-05,79.0,,
-flu-seqneut-2026-CTS-098,CTS,human,29,Female,2026-05,29.0,,
-flu-seqneut-2026-CTS-099,CTS,human,51,Female,2026-05,51.0,,
-flu-seqneut-2026-CTS-100,CTS,human,76,Male,2026-05,76.0,,
-flu-seqneut-2026-CTS-101,CTS,human,34,Male,2026-05,34.0,,
-flu-seqneut-2026-CTS-102,CTS,human,23,Male,2026-05,23.0,,
-flu-seqneut-2026-CTS-103,CTS,human,31,Male,2026-05,31.0,,
-flu-seqneut-2026-CTS-104,CTS,human,44,Female,2026-05,44.0,,
-flu-seqneut-2026-CTS-105,CTS,human,23,Female,2026-05,23.0,,
-flu-seqneut-2026-CTS-106,CTS,human,61,Male,2026-05,61.0,,
-flu-seqneut-2026-VIDRL-001_pre-vax,VIDRL,human,45,Female,2026-04,45.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-001_post-vax,VIDRL,human,45,Female,2026-05,45.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-002_pre-vax,VIDRL,human,25,Female,2026-04,25.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-002_post-vax,VIDRL,human,25,Female,2026-05,25.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-003_pre-vax,VIDRL,human,29,Female,2026-04,29.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-003_post-vax,VIDRL,human,29,Female,2026-05,29.0,flucelvax group: 23 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-004_pre-vax,VIDRL,human,23,Male,2026-04,23.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-004_post-vax,VIDRL,human,23,Male,2026-05,23.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-005_pre-vax,VIDRL,human,37,Female,2026-04,37.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-005_post-vax,VIDRL,human,37,Female,2026-05,37.0,flucelvax group: 23 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-006_pre-vax,VIDRL,human,35,Female,2026-04,35.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-006_post-vax,VIDRL,human,35,Female,2026-05,35.0,flucelvax group: 22 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-007_pre-vax,VIDRL,human,35,Female,2026-05,35.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-007_post-vax,VIDRL,human,35,Female,2026-05,35.0,flucelvax group: 18 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-008_pre-vax,VIDRL,human,19,Female,2026-05,19.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-008_post-vax,VIDRL,human,19,Female,2026-05,19.0,flucelvax group: 24 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-009_pre-vax,VIDRL,human,51,Female,2026-05,51.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-009_post-vax,VIDRL,human,51,Female,2026-05,51.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-010_pre-vax,VIDRL,human,25,Male,2026-05,25.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-010_post-vax,VIDRL,human,25,Male,2026-06,25.0,flucelvax group: 25 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-011_pre-vax,VIDRL,human,31,Male,2026-05,31.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-011_post-vax,VIDRL,human,31,Male,2026-05,31.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-012_pre-vax,VIDRL,human,58,Female,2026-05,58.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-012_post-vax,VIDRL,human,58,Female,2026-06,58.0,flucelvax group: 25 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-013_pre-vax,VIDRL,human,54,Female,2026-05,54.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-013_post-vax,VIDRL,human,54,Female,2026-06,54.0,flucelvax group: 22 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-014_pre-vax,VIDRL,human,36,Female,2026-05,36.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-014_post-vax,VIDRL,human,36,Female,2026-06,36.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-015_pre-vax,VIDRL,human,55,Male,2026-05,55.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-015_post-vax,VIDRL,human,55,Male,2026-06,55.0,flucelvax group: 22 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-016_pre-vax,VIDRL,human,31,Female,2026-05,31.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-016_post-vax,VIDRL,human,31,Female,2026-06,31.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-017_pre-vax,VIDRL,human,32,Male,2026-05,32.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-017_post-vax,VIDRL,human,32,Male,2026-06,32.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-018_pre-vax,VIDRL,human,59,Female,2026-06,59.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-018_post-vax,VIDRL,human,59,Female,2026-06,59.0,flucelvax group: 19 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-019_pre-vax,VIDRL,human,25,Male,2026-06,25.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-019_post-vax,VIDRL,human,25,Male,2026-06,25.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-020_pre-vax,VIDRL,human,19,Female,2026-06,19.0,flucelvax group: 0 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-020_post-vax,VIDRL,human,19,Female,2026-07,19.0,flucelvax group: 21 days post-vaccination,"cohort 002, arm adult-cell"
-flu-seqneut-2026-VIDRL-021_pre-vax,VIDRL,human,49,Female,2026-04,49.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-021_post-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-022_pre-vax,VIDRL,human,36,Male,2026-04,36.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-022_post-vax,VIDRL,human,36,Male,2026-05,36.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-023_pre-vax,VIDRL,human,32,Female,2026-04,32.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-023_post-vax,VIDRL,human,32,Female,2026-05,32.0,Fluzone group: 20 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-024_pre-vax,VIDRL,human,48,Male,2026-04,48.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-024_post-vax,VIDRL,human,48,Male,2026-05,48.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-025_pre-vax,VIDRL,human,38,Male,2026-04,38.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-025_post-vax,VIDRL,human,38,Male,2026-05,38.0,Fluzone group: 23 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-026_pre-vax,VIDRL,human,62,Female,2026-04,62.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-026_post-vax,VIDRL,human,62,Female,2026-05,62.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-027_pre-vax,VIDRL,human,46,Male,2026-04,46.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-027_post-vax,VIDRL,human,46,Male,2026-05,46.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-028_pre-vax,VIDRL,human,28,Female,2026-04,28.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-028_post-vax,VIDRL,human,28,Female,2026-05,28.0,Fluzone group: 18 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-029_pre-vax,VIDRL,human,18,Female,2026-04,18.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-029_post-vax,VIDRL,human,18,Female,2026-05,18.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-030_pre-vax,VIDRL,human,30,Male,2026-04,30.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-030_post-vax,VIDRL,human,30,Male,2026-05,30.0,Fluzone group: 22 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-031_pre-vax,VIDRL,human,50,Male,2026-04,50.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-031_post-vax,VIDRL,human,50,Male,2026-05,50.0,Fluzone group: 20 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-032_pre-vax,VIDRL,human,51,Female,2026-04,51.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-032_post-vax,VIDRL,human,51,Female,2026-05,51.0,Fluzone group: 18 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-033_pre-vax,VIDRL,human,38,Female,2026-04,38.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-033_post-vax,VIDRL,human,38,Female,2026-05,38.0,Fluzone group: 25 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-034_pre-vax,VIDRL,human,18,Female,2026-04,18.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-034_post-vax,VIDRL,human,18,Female,2026-05,18.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-035_pre-vax,VIDRL,human,30,Female,2026-04,30.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-035_post-vax,VIDRL,human,30,Female,2026-05,30.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-036_pre-vax,VIDRL,human,38,Female,2026-04,38.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-036_post-vax,VIDRL,human,38,Female,2026-05,38.0,Fluzone group: 22 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-037_pre-vax,VIDRL,human,62,Female,2026-04,62.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-037_post-vax,VIDRL,human,62,Female,2026-05,62.0,Fluzone group: 22 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-038_pre-vax,VIDRL,human,39,Male,2026-04,39.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-038_post-vax,VIDRL,human,39,Male,2026-05,39.0,Fluzone group: 25 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-039_pre-vax,VIDRL,human,54,Female,2026-04,54.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-039_post-vax,VIDRL,human,54,Female,2026-05,54.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-040_pre-vax,VIDRL,human,48,Female,2026-04,48.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-040_post-vax,VIDRL,human,48,Female,2026-05,48.0,Fluzone group: 18 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-041_pre-vax,VIDRL,human,51,Female,2026-04,51.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-041_post-vax,VIDRL,human,51,Female,2026-05,51.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-042_pre-vax,VIDRL,human,49,Female,2026-04,49.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-042_post-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-043_pre-vax,VIDRL,human,43,Female,2026-04,43.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-043_post-vax,VIDRL,human,43,Female,2026-05,43.0,Fluzone group: 23 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-044_pre-vax,VIDRL,human,39,Female,2026-04,39.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-044_post-vax,VIDRL,human,39,Female,2026-05,39.0,Fluzone group: 23 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-045_pre-vax,VIDRL,human,43,Female,2026-04,43.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-045_post-vax,VIDRL,human,43,Female,2026-05,43.0,Fluzone group: 20 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-046_pre-vax,VIDRL,human,49,Female,2026-04,49.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-046_post-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-047_pre-vax,VIDRL,human,32,Female,2026-04,32.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-047_post-vax,VIDRL,human,32,Female,2026-05,32.0,Fluzone group: 22 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-048_pre-vax,VIDRL,human,26,Male,2026-05,26.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-048_post-vax,VIDRL,human,26,Male,2026-05,26.0,Fluzone group: 19 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-049_pre-vax,VIDRL,human,37,Female,2026-05,37.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-049_post-vax,VIDRL,human,37,Female,2026-05,37.0,Fluzone group: 20 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-050_pre-vax,VIDRL,human,19,Female,2026-05,19.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-050_post-vax,VIDRL,human,19,Female,2026-05,19.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-051_pre-vax,VIDRL,human,58,Female,2026-05,58.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-051_post-vax,VIDRL,human,58,Female,2026-06,58.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-052_pre-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-052_post-vax,VIDRL,human,49,Female,2026-06,49.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-053_pre-vax,VIDRL,human,56,Female,2026-05,56.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-053_post-vax,VIDRL,human,56,Female,2026-06,56.0,Fluzone group: 19 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-054_pre-vax,VIDRL,human,59,Male,2026-05,59.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-054_post-vax,VIDRL,human,59,Male,2026-06,59.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-055_pre-vax,VIDRL,human,30,Male,2026-05,30.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-055_post-vax,VIDRL,human,30,Male,2026-06,30.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-056_pre-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-056_post-vax,VIDRL,human,49,Female,2026-06,49.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-057_pre-vax,VIDRL,human,53,Female,2026-05,53.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-057_post-vax,VIDRL,human,53,Female,2026-06,53.0,Fluzone group: 24 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-058_pre-vax,VIDRL,human,30,Male,2026-05,30.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-058_post-vax,VIDRL,human,30,Male,2026-06,30.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-059_pre-vax,VIDRL,human,48,Female,2026-05,48.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-059_post-vax,VIDRL,human,48,Female,2026-06,48.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-060_pre-vax,VIDRL,human,33,Female,2026-05,33.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-060_post-vax,VIDRL,human,33,Female,2026-06,33.0,Fluzone group: 23 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-061_pre-vax,VIDRL,human,19,Male,2026-05,19.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-061_post-vax,VIDRL,human,19,Male,2026-06,19.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-062_pre-vax,VIDRL,human,44,Female,2026-05,44.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-062_post-vax,VIDRL,human,44,Female,2026-06,44.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-063_pre-vax,VIDRL,human,29,Female,2026-05,29.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-063_post-vax,VIDRL,human,29,Female,2026-06,29.0,Fluzone group: 20 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-064_pre-vax,VIDRL,human,63,Female,2026-05,63.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-064_post-vax,VIDRL,human,63,Female,2026-06,63.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-065_pre-vax,VIDRL,human,31,Female,2026-05,31.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-065_post-vax,VIDRL,human,31,Female,2026-06,31.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-066_pre-vax,VIDRL,human,45,Female,2026-05,45.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-066_post-vax,VIDRL,human,45,Female,2026-06,45.0,Fluzone group: 18 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-067_pre-vax,VIDRL,human,23,Male,2026-05,23.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-067_post-vax,VIDRL,human,23,Male,2026-06,23.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-068_pre-vax,VIDRL,human,36,Female,2026-05,36.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-068_post-vax,VIDRL,human,36,Female,2026-06,36.0,Fluzone group: 20 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-069_pre-vax,VIDRL,human,32,Male,2026-05,32.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-069_post-vax,VIDRL,human,32,Male,2026-06,32.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-070_pre-vax,VIDRL,human,37,Female,2026-06,37.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-070_post-vax,VIDRL,human,37,Female,2026-06,37.0,Fluzone group: 22 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-071_pre-vax,VIDRL,human,18,Male,2026-06,18.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-071_post-vax,VIDRL,human,18,Male,2026-06,18.0,Fluzone group: 22 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-072_pre-vax,VIDRL,human,45,Male,2026-06,45.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-072_post-vax,VIDRL,human,45,Male,2026-06,45.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-073_pre-vax,VIDRL,human,39,Female,2026-06,39.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-073_post-vax,VIDRL,human,39,Female,2026-06,39.0,Fluzone group: 19 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-074_pre-vax,VIDRL,human,19,Female,2026-06,19.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-074_post-vax,VIDRL,human,19,Female,2026-07,19.0,Fluzone group: 29 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-075_pre-vax,VIDRL,human,26,Female,2026-06,26.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-075_post-vax,VIDRL,human,26,Female,2026-06,26.0,Fluzone group: 20 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-076_pre-vax,VIDRL,human,62,Female,2026-06,62.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-076_post-vax,VIDRL,human,62,Female,2026-06,62.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-077_pre-vax,VIDRL,human,43,Male,2026-06,43.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-077_post-vax,VIDRL,human,43,Male,2026-07,43.0,Fluzone group: 23 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-078_pre-vax,VIDRL,human,50,Female,2026-06,50.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-078_post-vax,VIDRL,human,50,Female,2026-06,50.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-079_pre-vax,VIDRL,human,33,Female,2026-06,33.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-079_post-vax,VIDRL,human,33,Female,2026-07,33.0,Fluzone group: 20 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-080_pre-vax,VIDRL,human,43,Female,2026-06,43.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-080_post-vax,VIDRL,human,43,Female,2026-07,43.0,Fluzone group: 22 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-081_pre-vax,VIDRL,human,64,Male,2026-06,64.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-081_post-vax,VIDRL,human,64,Male,2026-07,64.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-082_pre-vax,VIDRL,human,53,Female,2026-06,53.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-082_post-vax,VIDRL,human,53,Female,2026-07,53.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-083_pre-vax,VIDRL,human,51,Female,2026-06,51.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-083_post-vax,VIDRL,human,51,Female,2026-07,51.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-084_pre-vax,VIDRL,human,46,Female,2026-06,46.0,Fluzone group: 0 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-084_post-vax,VIDRL,human,46,Female,2026-07,46.0,Fluzone group: 21 days post-vaccination,"cohort 002, arm adult-egg"
-flu-seqneut-2026-VIDRL-085_pre-vax,VIDRL,human,65,Female,2026-04,65.0,Fluad group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-085_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-086_pre-vax,VIDRL,human,65,Male,2026-04,65.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-086_post-vax,VIDRL,human,65,Male,2026-05,65.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-087_pre-vax,VIDRL,human,68,Female,2026-04,68.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-087_post-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-088_pre-vax,VIDRL,human,71,Female,2026-04,71.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-088_post-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-089_pre-vax,VIDRL,human,74,Male,2026-04,74.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-089_post-vax,VIDRL,human,74,Male,2026-05,74.0,Fluad  group: 23 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-090_pre-vax,VIDRL,human,76,Male,2026-04,76.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-090_post-vax,VIDRL,human,76,Male,2026-05,76.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-091_pre-vax,VIDRL,human,72,Female,2026-04,72.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-091_post-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad  group: 25 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-092_pre-vax,VIDRL,human,66,Male,2026-04,66.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-092_post-vax,VIDRL,human,66,Male,2026-05,66.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-093_pre-vax,VIDRL,human,75,Female,2026-04,75.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-093_post-vax,VIDRL,human,75,Female,2026-05,75.0,Fluad  group: 24 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-094_pre-vax,VIDRL,human,71,Male,2026-04,71.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-094_post-vax,VIDRL,human,71,Male,2026-05,71.0,Fluad  group: 22 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-095_pre-vax,VIDRL,human,73,Male,2026-04,73.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-095_post-vax,VIDRL,human,73,Male,2026-05,73.0,Fluad  group: 23 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-096_pre-vax,VIDRL,human,66,Male,2026-04,66.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-096_post-vax,VIDRL,human,66,Male,2026-05,66.0,Fluad  group: 20 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-097_pre-vax,VIDRL,human,72,Female,2026-04,72.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-097_post-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad  group: 22 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-098_pre-vax,VIDRL,human,71,Female,2026-04,71.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-098_post-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad  group: 19 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-099_pre-vax,VIDRL,human,78,Female,2026-04,78.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-099_post-vax,VIDRL,human,78,Female,2026-05,78.0,Fluad  group: 20 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-100_pre-vax,VIDRL,human,78,Male,2026-04,78.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-100_post-vax,VIDRL,human,78,Male,2026-05,78.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-101_pre-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-101_post-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad  group: 20 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-102_pre-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-102_post-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 20 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-103_pre-vax,VIDRL,human,66,Female,2026-05,66.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-103_post-vax,VIDRL,human,66,Female,2026-05,66.0,Fluad  group: 25 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-104_pre-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-104_post-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-105_pre-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-105_post-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-106_pre-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-106_post-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-107_pre-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-107_post-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-108_pre-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-108_post-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-109_pre-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-109_post-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad  group: 20 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-110_pre-vax,VIDRL,human,74,Female,2026-05,74.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-110_post-vax,VIDRL,human,74,Female,2026-05,74.0,Fluad  group: 22 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-111_pre-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-111_post-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 22 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-112_pre-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-112_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad  group: 19 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-113_pre-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-113_post-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 22 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-114_pre-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-114_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-115_pre-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-115_post-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-116_pre-vax,VIDRL,human,65,Male,2026-05,65.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-116_post-vax,VIDRL,human,65,Male,2026-06,65.0,Fluad  group: 22 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-117_pre-vax,VIDRL,human,67,Female,2026-05,67.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-117_post-vax,VIDRL,human,67,Female,2026-06,67.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-118_pre-vax,VIDRL,human,75,Male,2026-05,75.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-118_post-vax,VIDRL,human,75,Male,2026-06,75.0,Fluad  group: 21 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-119_pre-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad  group: 0 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-119_post-vax,VIDRL,human,71,Female,2026-06,71.0,Fluad  group: 19 days post-vaccination,"cohort 002, arm elderly-egg"
-flu-seqneut-2026-VIDRL-120_pre-vax,VIDRL,human,60,Female,2026-04,60.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-120_post-vax,VIDRL,human,60,Female,2026-05,60.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-121_pre-vax,VIDRL,human,64,Female,2026-04,64.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-121_post-vax,VIDRL,human,64,Female,2026-05,64.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-122_pre-vax,VIDRL,human,57,Female,2026-04,57.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-122_post-vax,VIDRL,human,57,Female,2026-05,57.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-123_pre-vax,VIDRL,human,40,Female,2026-04,40.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-123_post-vax,VIDRL,human,40,Female,2026-05,40.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-124_pre-vax,VIDRL,human,54,Female,2026-04,54.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-124_post-vax,VIDRL,human,54,Female,2026-05,54.0,Flucelvax group: 22 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-125_pre-vax,VIDRL,human,62,Female,2026-04,62.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-125_post-vax,VIDRL,human,62,Female,2026-05,62.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-126_pre-vax,VIDRL,human,48,Female,2026-04,48.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-126_post-vax,VIDRL,human,48,Female,2026-05,48.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-127_pre-vax,VIDRL,human,49,Female,2026-04,49.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-127_post-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 18 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-128_pre-vax,VIDRL,human,51,Male,2026-04,51.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-128_post-vax,VIDRL,human,51,Male,2026-05,51.0,Flucelvax group: 20 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-129_pre-vax,VIDRL,human,27,Female,2026-04,27.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-129_post-vax,VIDRL,human,27,Female,2026-05,27.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-130_pre-vax,VIDRL,human,61,Female,2026-04,61.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-130_post-vax,VIDRL,human,61,Female,2026-05,61.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-131_pre-vax,VIDRL,human,45,Female,2026-04,45.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-131_post-vax,VIDRL,human,45,Female,2026-05,45.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-132_pre-vax,VIDRL,human,55,Female,2026-04,55.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-132_post-vax,VIDRL,human,55,Female,2026-05,55.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-133_pre-vax,VIDRL,human,49,Male,2026-04,49.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-133_post-vax,VIDRL,human,49,Male,2026-05,49.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-134_pre-vax,VIDRL,human,36,Female,2026-04,36.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-134_post-vax,VIDRL,human,36,Female,2026-05,36.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-135_pre-vax,VIDRL,human,55,Female,2026-04,55.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-135_post-vax,VIDRL,human,55,Female,2026-05,55.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-136_pre-vax,VIDRL,human,53,Female,2026-04,53.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-136_post-vax,VIDRL,human,53,Female,2026-05,53.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-137_pre-vax,VIDRL,human,57,Female,2026-04,57.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-137_post-vax,VIDRL,human,57,Female,2026-05,57.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-138_pre-vax,VIDRL,human,46,Female,2026-04,46.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-138_post-vax,VIDRL,human,46,Female,2026-05,46.0,Flucelvax group: 22 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-139_pre-vax,VIDRL,human,53,Female,2026-04,53.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-139_post-vax,VIDRL,human,53,Female,2026-05,53.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-140_pre-vax,VIDRL,human,60,Female,2026-04,60.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-140_post-vax,VIDRL,human,60,Female,2026-05,60.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-141_pre-vax,VIDRL,human,36,Female,2026-04,36.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-141_post-vax,VIDRL,human,36,Female,2026-05,36.0,Flucelvax group: 20 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-142_pre-vax,VIDRL,human,59,Female,2026-04,59.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-142_post-vax,VIDRL,human,59,Female,2026-05,59.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-143_pre-vax,VIDRL,human,40,Male,2026-04,40.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-143_post-vax,VIDRL,human,40,Male,2026-05,40.0,Flucelvax group: 23 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-144_pre-vax,VIDRL,human,55,Female,2026-04,55.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-144_post-vax,VIDRL,human,55,Female,2026-05,55.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-145_pre-vax,VIDRL,human,57,Female,2026-04,57.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-145_post-vax,VIDRL,human,57,Female,2026-05,57.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-146_pre-vax,VIDRL,human,38,Female,2026-04,38.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-146_post-vax,VIDRL,human,38,Female,2026-05,38.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-147_pre-vax,VIDRL,human,61,Female,2026-04,61.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-147_post-vax,VIDRL,human,61,Female,2026-05,61.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-148_pre-vax,VIDRL,human,59,Male,2026-04,59.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-148_post-vax,VIDRL,human,59,Male,2026-05,59.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-149_pre-vax,VIDRL,human,51,Female,2026-04,51.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-149_post-vax,VIDRL,human,51,Female,2026-05,51.0,Flucelvax group: 22 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-150_pre-vax,VIDRL,human,48,Female,2026-04,48.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-150_post-vax,VIDRL,human,48,Female,2026-05,48.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-151_pre-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-151_post-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-152_pre-vax,VIDRL,human,53,Male,2026-05,53.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-152_post-vax,VIDRL,human,53,Male,2026-05,53.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-153_pre-vax,VIDRL,human,30,Female,2026-05,30.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-153_post-vax,VIDRL,human,30,Female,2026-05,30.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-154_pre-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-154_post-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-155_pre-vax,VIDRL,human,44,Female,2026-05,44.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-155_post-vax,VIDRL,human,44,Female,2026-05,44.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-156_pre-vax,VIDRL,human,39,Male,2026-05,39.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-156_post-vax,VIDRL,human,39,Male,2026-05,39.0,Flucelvax group: 22 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-157_pre-vax,VIDRL,human,50,Female,2026-05,50.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-157_post-vax,VIDRL,human,50,Female,2026-05,50.0,Flucelvax group: 22 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-158_pre-vax,VIDRL,human,37,Female,2026-05,37.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-158_post-vax,VIDRL,human,37,Female,2026-05,37.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-159_pre-vax,VIDRL,human,45,Female,2026-05,45.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-159_post-vax,VIDRL,human,45,Female,2026-05,45.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-160_pre-vax,VIDRL,human,42,Female,2026-05,42.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-160_post-vax,VIDRL,human,42,Female,2026-05,42.0,Flucelvax group: 23 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-161_pre-vax,VIDRL,human,57,Male,2026-05,57.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-161_post-vax,VIDRL,human,57,Male,2026-06,57.0,Flucelvax group: 24 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-162_pre-vax,VIDRL,human,55,Male,2026-05,55.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-162_post-vax,VIDRL,human,55,Male,2026-06,55.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-163_pre-vax,VIDRL,human,59,Female,2026-05,59.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-163_post-vax,VIDRL,human,59,Female,2026-06,59.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-164_pre-vax,VIDRL,human,51,Female,2026-05,51.0,Flucelvax group: 0 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-164_post-vax,VIDRL,human,51,Female,2026-06,51.0,Flucelvax group: 21 days post-vaccination,"cohort 001, arm adult-cell"
-flu-seqneut-2026-VIDRL-165_pre-vax,VIDRL,human,70,Female,2026-04,70.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-165_post-vax,VIDRL,human,70,Female,2026-05,70.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-166_pre-vax,VIDRL,human,75,Female,2026-04,75.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-166_post-vax,VIDRL,human,75,Female,2026-05,75.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-167_pre-vax,VIDRL,human,65,Female,2026-04,65.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-167_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-168_pre-vax,VIDRL,human,71,Female,2026-04,71.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-168_post-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-169_pre-vax,VIDRL,human,72,Male,2026-04,72.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-169_post-vax,VIDRL,human,72,Male,2026-05,72.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-170_pre-vax,VIDRL,human,67,Male,2026-04,67.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-170_post-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad group: 20 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-171_pre-vax,VIDRL,human,67,Male,2026-04,67.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-171_post-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-172_pre-vax,VIDRL,human,86,Female,2026-04,86.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-172_post-vax,VIDRL,human,86,Female,2026-05,86.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-173_pre-vax,VIDRL,human,76,Female,2026-04,76.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-173_post-vax,VIDRL,human,76,Female,2026-05,76.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-174_pre-vax,VIDRL,human,73,Female,2026-04,73.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-174_post-vax,VIDRL,human,73,Female,2026-05,73.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-175_pre-vax,VIDRL,human,65,Female,2026-04,65.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-175_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-176_pre-vax,VIDRL,human,70,Female,2026-04,70.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-176_post-vax,VIDRL,human,70,Female,2026-05,70.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-177_pre-vax,VIDRL,human,75,Male,2026-04,75.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-177_post-vax,VIDRL,human,75,Male,2026-05,75.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-178_pre-vax,VIDRL,human,69,Female,2026-04,69.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-178_post-vax,VIDRL,human,69,Female,2026-05,69.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-179_pre-vax,VIDRL,human,76,Female,2026-04,76.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-179_post-vax,VIDRL,human,76,Female,2026-05,76.0,Fluad group: 22 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-180_pre-vax,VIDRL,human,80,Male,2026-04,80.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-180_post-vax,VIDRL,human,80,Male,2026-05,80.0,Fluad group: 22 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-181_pre-vax,VIDRL,human,68,Female,2026-04,68.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-181_post-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-182_pre-vax,VIDRL,human,68,Male,2026-04,68.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-182_post-vax,VIDRL,human,68,Male,2026-05,68.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-183_pre-vax,VIDRL,human,79,Male,2026-04,79.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-183_post-vax,VIDRL,human,79,Male,2026-05,79.0,Fluad group: 20 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-184_pre-vax,VIDRL,human,67,Female,2026-04,67.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-184_post-vax,VIDRL,human,67,Female,2026-05,67.0,Fluad group: 17 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-185_pre-vax,VIDRL,human,72,Female,2026-04,72.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-185_post-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-186_pre-vax,VIDRL,human,73,Female,2026-04,73.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-186_post-vax,VIDRL,human,73,Female,2026-05,73.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-187_pre-vax,VIDRL,human,78,Female,2026-04,78.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-187_post-vax,VIDRL,human,78,Female,2026-05,78.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-188_pre-vax,VIDRL,human,78,Female,2026-04,78.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-188_post-vax,VIDRL,human,78,Female,2026-05,78.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-189_pre-vax,VIDRL,human,82,Female,2026-04,82.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-189_post-vax,VIDRL,human,82,Female,2026-05,82.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-190_pre-vax,VIDRL,human,77,Male,2026-04,77.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-190_post-vax,VIDRL,human,77,Male,2026-05,77.0,Fluad group: 22 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-191_pre-vax,VIDRL,human,71,Female,2026-04,71.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-191_post-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-192_pre-vax,VIDRL,human,68,Female,2026-04,68.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-192_post-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-193_pre-vax,VIDRL,human,69,Female,2026-05,69.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-193_post-vax,VIDRL,human,69,Female,2026-05,69.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-194_pre-vax,VIDRL,human,74,Female,2026-05,74.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-194_post-vax,VIDRL,human,74,Female,2026-06,74.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-195_pre-vax,VIDRL,human,76,Male,2026-05,76.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-195_post-vax,VIDRL,human,76,Male,2026-06,76.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-196_pre-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-196_post-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad group: 17 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-197_pre-vax,VIDRL,human,66,Female,2026-05,66.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-197_post-vax,VIDRL,human,66,Female,2026-06,66.0,Fluad group: 21 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-198_pre-vax,VIDRL,human,67,Female,2026-05,67.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-198_post-vax,VIDRL,human,67,Female,2026-06,67.0,Fluad group: 23 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-199_pre-vax,VIDRL,human,71,Male,2026-05,71.0,Fluad group: 0 days post-vaccination,"cohort 001, arm elderly-egg"
-flu-seqneut-2026-VIDRL-199_post-vax,VIDRL,human,71,Male,2026-06,71.0,Fluad group: 22 days post-vaccination,"cohort 001, arm elderly-egg"
+serum,cohort,species,age,sex,collection_date,age_numeric,exposure_info,subject_id,pre_or_post_vaccine,vaccine_cohort,days_post_vaccination,notes
+flu-seqneut-2026-SCH-001,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-002,SCH,human,11-15y,Female,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-003,SCH,human,5-10y,Female,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-004,SCH,human,11-15y,Female,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-005,SCH,human,11-15y,Male,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-006,SCH,human,2-4y,Male,2026-05,3.0,,,,,,
+flu-seqneut-2026-SCH-007,SCH,human,2-4y,Male,2026-06,3.0,,,,,,
+flu-seqneut-2026-SCH-008,SCH,human,11-15y,Female,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-009,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-010,SCH,human,5-10y,Female,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-011,SCH,human,2-4y,Female,2026-06,3.0,,,,,,
+flu-seqneut-2026-SCH-012,SCH,human,5-10y,Female,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-013,SCH,human,11-15y,Male,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-014,SCH,human,11-15y,Male,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-015,SCH,human,2-4y,Female,2026-06,3.0,,,,,,
+flu-seqneut-2026-SCH-016,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-017,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-018,SCH,human,11-15y,Female,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-019,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-020,SCH,human,11-15y,Female,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-021,SCH,human,5-10y,Female,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-022,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-023,SCH,human,11-15y,Male,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-024,SCH,human,11-15y,Male,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-025,SCH,human,0-1y,Female,2026-06,0.5,,,,,,
+flu-seqneut-2026-SCH-026,SCH,human,11-15y,Female,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-027,SCH,human,5-10y,Female,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-028,SCH,human,11-15y,Female,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-029,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-030,SCH,human,5-10y,Female,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-031,SCH,human,11-15y,Male,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-032,SCH,human,11-15y,Male,2026-06,13.0,,,,,,
+flu-seqneut-2026-SCH-033,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-034,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-035,SCH,human,0-1y,Male,2026-06,0.5,,,,,,
+flu-seqneut-2026-SCH-036,SCH,human,2-4y,Female,2026-06,3.0,,,,,,
+flu-seqneut-2026-SCH-037,SCH,human,5-10y,Male,2026-06,7.5,,,,,,
+flu-seqneut-2026-SCH-038,SCH,human,2-4y,Male,2026-06,3.0,,,,,,
+flu-seqneut-2026-SCH-039,SCH,human,2-4y,Male,2026-06,3.0,,,,,,
+flu-seqneut-2026-SCH-040,SCH,human,2-4y,Male,2026-06,3.0,,,,,,
+flu-seqneut-2026-UWMC-001,UWMC,human,78,Male,2026-06,78.0,,,,,,
+flu-seqneut-2026-UWMC-002,UWMC,human,76,Female,2026-06,76.0,,,,,,
+flu-seqneut-2026-UWMC-003,UWMC,human,73,Male,2026-06,73.0,,,,,,
+flu-seqneut-2026-UWMC-004,UWMC,human,72,Female,2026-06,72.0,,,,,,
+flu-seqneut-2026-UWMC-005,UWMC,human,72,Female,2026-06,72.0,,,,,,
+flu-seqneut-2026-UWMC-006,UWMC,human,72,Male,2026-06,72.0,,,,,,
+flu-seqneut-2026-UWMC-007,UWMC,human,69,Male,2026-06,69.0,,,,,,
+flu-seqneut-2026-UWMC-008,UWMC,human,68,Male,2026-06,68.0,,,,,,
+flu-seqneut-2026-UWMC-009,UWMC,human,66,Female,2026-06,66.0,,,,,,
+flu-seqneut-2026-UWMC-010,UWMC,human,65,Male,2026-06,65.0,,,,,,
+flu-seqneut-2026-UWMC-011,UWMC,human,64,Female,2026-06,64.0,,,,,,
+flu-seqneut-2026-UWMC-012,UWMC,human,64,Male,2026-06,64.0,,,,,,
+flu-seqneut-2026-UWMC-013,UWMC,human,63,Male,2026-06,63.0,,,,,,
+flu-seqneut-2026-UWMC-014,UWMC,human,62,Male,2026-06,62.0,,,,,,
+flu-seqneut-2026-UWMC-015,UWMC,human,61,Male,2026-06,61.0,,,,,,
+flu-seqneut-2026-UWMC-016,UWMC,human,60,Female,2026-06,60.0,,,,,,
+flu-seqneut-2026-UWMC-017,UWMC,human,60,Female,2026-06,60.0,,,,,,
+flu-seqneut-2026-UWMC-018,UWMC,human,57,Male,2026-06,57.0,,,,,,
+flu-seqneut-2026-UWMC-019,UWMC,human,57,Female,2026-06,57.0,,,,,,
+flu-seqneut-2026-UWMC-020,UWMC,human,57,Female,2026-06,57.0,,,,,,
+flu-seqneut-2026-UWMC-021,UWMC,human,56,Female,2026-06,56.0,,,,,,
+flu-seqneut-2026-UWMC-022,UWMC,human,56,Female,2026-06,56.0,,,,,,
+flu-seqneut-2026-UWMC-023,UWMC,human,56,Male,2026-06,56.0,,,,,,
+flu-seqneut-2026-UWMC-024,UWMC,human,56,Male,2026-06,56.0,,,,,,
+flu-seqneut-2026-UWMC-025,UWMC,human,55,Female,2026-06,55.0,,,,,,
+flu-seqneut-2026-UWMC-026,UWMC,human,55,Female,2026-06,55.0,,,,,,
+flu-seqneut-2026-UWMC-027,UWMC,human,55,Male,2026-06,55.0,,,,,,
+flu-seqneut-2026-UWMC-028,UWMC,human,54,Female,2026-06,54.0,,,,,,
+flu-seqneut-2026-UWMC-029,UWMC,human,53,Male,2026-06,53.0,,,,,,
+flu-seqneut-2026-UWMC-030,UWMC,human,53,Male,2026-06,53.0,,,,,,
+flu-seqneut-2026-UWMC-031,UWMC,human,52,Female,2026-06,52.0,,,,,,
+flu-seqneut-2026-UWMC-032,UWMC,human,51,Male,2026-06,51.0,,,,,,
+flu-seqneut-2026-UWMC-033,UWMC,human,50,Female,2026-06,50.0,,,,,,
+flu-seqneut-2026-UWMC-034,UWMC,human,50,Male,2026-06,50.0,,,,,,
+flu-seqneut-2026-UWMC-035,UWMC,human,48,Male,2026-06,48.0,,,,,,
+flu-seqneut-2026-UWMC-036,UWMC,human,47,Female,2026-06,47.0,,,,,,
+flu-seqneut-2026-UWMC-037,UWMC,human,47,Male,2026-06,47.0,,,,,,
+flu-seqneut-2026-UWMC-038,UWMC,human,46,Female,2026-06,46.0,,,,,,
+flu-seqneut-2026-UWMC-039,UWMC,human,46,Female,2026-06,46.0,,,,,,
+flu-seqneut-2026-UWMC-040,UWMC,human,45,Female,2026-06,45.0,,,,,,
+flu-seqneut-2026-UWMC-041,UWMC,human,44,Male,2026-06,44.0,,,,,,
+flu-seqneut-2026-UWMC-042,UWMC,human,43,Female,2026-06,43.0,,,,,,
+flu-seqneut-2026-UWMC-043,UWMC,human,43,Female,2026-06,43.0,,,,,,
+flu-seqneut-2026-UWMC-044,UWMC,human,43,Male,2026-06,43.0,,,,,,
+flu-seqneut-2026-UWMC-045,UWMC,human,43,Female,2026-06,43.0,,,,,,
+flu-seqneut-2026-UWMC-046,UWMC,human,42,Female,2026-06,42.0,,,,,,
+flu-seqneut-2026-UWMC-047,UWMC,human,42,Male,2026-06,42.0,,,,,,
+flu-seqneut-2026-UWMC-048,UWMC,human,41,Male,2026-06,41.0,,,,,,
+flu-seqneut-2026-UWMC-049,UWMC,human,41,Male,2026-06,41.0,,,,,,
+flu-seqneut-2026-UWMC-050,UWMC,human,41,Male,2026-06,41.0,,,,,,
+flu-seqneut-2026-UWMC-051,UWMC,human,41,Female,2026-06,41.0,,,,,,
+flu-seqneut-2026-UWMC-052,UWMC,human,40,Male,2026-06,40.0,,,,,,
+flu-seqneut-2026-UWMC-053,UWMC,human,40,Female,2026-06,40.0,,,,,,
+flu-seqneut-2026-UWMC-054,UWMC,human,39,Male,2026-06,39.0,,,,,,
+flu-seqneut-2026-UWMC-055,UWMC,human,38,Male,2026-06,38.0,,,,,,
+flu-seqneut-2026-UWMC-056,UWMC,human,37,Female,2026-06,37.0,,,,,,
+flu-seqneut-2026-UWMC-057,UWMC,human,37,Male,2026-06,37.0,,,,,,
+flu-seqneut-2026-UWMC-058,UWMC,human,36,Female,2026-06,36.0,,,,,,
+flu-seqneut-2026-UWMC-059,UWMC,human,36,Male,2026-06,36.0,,,,,,
+flu-seqneut-2026-UWMC-060,UWMC,human,35,Male,2026-06,35.0,,,,,,
+flu-seqneut-2026-UWMC-061,UWMC,human,35,Female,2026-06,35.0,,,,,,
+flu-seqneut-2026-UWMC-062,UWMC,human,35,Male,2026-06,35.0,,,,,,
+flu-seqneut-2026-UWMC-063,UWMC,human,35,Female,2026-06,35.0,,,,,,
+flu-seqneut-2026-UWMC-064,UWMC,human,34,Male,2026-06,34.0,,,,,,
+flu-seqneut-2026-UWMC-065,UWMC,human,34,Female,2026-06,34.0,,,,,,
+flu-seqneut-2026-UWMC-066,UWMC,human,34,Female,2026-06,34.0,,,,,,
+flu-seqneut-2026-UWMC-067,UWMC,human,33,Female,2026-06,33.0,,,,,,
+flu-seqneut-2026-UWMC-068,UWMC,human,32,Female,2026-06,32.0,,,,,,
+flu-seqneut-2026-UWMC-069,UWMC,human,31,Male,2026-06,31.0,,,,,,
+flu-seqneut-2026-UWMC-070,UWMC,human,31,Female,2026-06,31.0,,,,,,
+flu-seqneut-2026-UWMC-071,UWMC,human,30,Male,2026-06,30.0,,,,,,
+flu-seqneut-2026-UWMC-072,UWMC,human,30,Male,2026-06,30.0,,,,,,
+flu-seqneut-2026-UWMC-073,UWMC,human,30,Female,2026-06,30.0,,,,,,
+flu-seqneut-2026-UWMC-074,UWMC,human,29,Male,2026-06,29.0,,,,,,
+flu-seqneut-2026-UWMC-075,UWMC,human,28,Female,2026-06,28.0,,,,,,
+flu-seqneut-2026-UWMC-076,UWMC,human,28,Female,2026-06,28.0,,,,,,
+flu-seqneut-2026-UWMC-077,UWMC,human,27,Male,2026-06,27.0,,,,,,
+flu-seqneut-2026-UWMC-078,UWMC,human,27,Male,2026-06,27.0,,,,,,
+flu-seqneut-2026-UWMC-079,UWMC,human,27,Female,2026-06,27.0,,,,,,
+flu-seqneut-2026-UWMC-080,UWMC,human,27,Female,2026-06,27.0,,,,,,
+flu-seqneut-2026-UWMC-081,UWMC,human,26,Male,2026-06,26.0,,,,,,
+flu-seqneut-2026-UWMC-082,UWMC,human,24,Female,2026-06,24.0,,,,,,
+flu-seqneut-2026-UWMC-083,UWMC,human,23,Male,2026-06,23.0,,,,,,
+flu-seqneut-2026-UWMC-084,UWMC,human,23,Male,2026-06,23.0,,,,,,
+flu-seqneut-2026-UWMC-085,UWMC,human,21,Male,2026-06,21.0,,,,,,
+flu-seqneut-2026-UWMC-086,UWMC,human,21,Female,2026-06,21.0,,,,,,
+flu-seqneut-2026-UWMC-087,UWMC,human,19,Female,2026-06,19.0,,,,,,
+flu-seqneut-2026-UWMC-088,UWMC,human,19,Female,2026-06,19.0,,,,,,
+flu-seqneut-2026-CTS-001,CTS,human,29,Male,2026-05,29.0,,,,,,
+flu-seqneut-2026-CTS-002,CTS,human,41,Female,2026-05,41.0,,,,,,
+flu-seqneut-2026-CTS-003,CTS,human,51,Male,2026-05,51.0,,,,,,
+flu-seqneut-2026-CTS-004,CTS,human,39,Female,2026-05,39.0,,,,,,
+flu-seqneut-2026-CTS-005,CTS,human,59,Male,2026-05,59.0,,,,,,
+flu-seqneut-2026-CTS-006,CTS,human,76,Male,2026-05,76.0,,,,,,
+flu-seqneut-2026-CTS-007,CTS,human,54,Male,2026-05,54.0,,,,,,
+flu-seqneut-2026-CTS-008,CTS,human,31,Male,2026-05,31.0,,,,,,
+flu-seqneut-2026-CTS-009,CTS,human,44,Male,2026-05,44.0,,,,,,
+flu-seqneut-2026-CTS-010,CTS,human,56,Male,2026-05,56.0,,,,,,
+flu-seqneut-2026-CTS-011,CTS,human,72,Female,2026-05,72.0,,,,,,
+flu-seqneut-2026-CTS-012,CTS,human,32,Male,2026-05,32.0,,,,,,
+flu-seqneut-2026-CTS-013,CTS,human,63,Male,2026-05,63.0,,,,,,
+flu-seqneut-2026-CTS-014,CTS,human,75,Female,2026-05,75.0,,,,,,
+flu-seqneut-2026-CTS-015,CTS,human,28,Female,2026-05,28.0,,,,,,
+flu-seqneut-2026-CTS-016,CTS,human,65,Female,2026-05,65.0,,,,,,
+flu-seqneut-2026-CTS-017,CTS,human,72,Female,2026-05,72.0,,,,,,
+flu-seqneut-2026-CTS-018,CTS,human,39,Female,2026-05,39.0,,,,,,
+flu-seqneut-2026-CTS-019,CTS,human,74,Female,2026-05,74.0,,,,,,
+flu-seqneut-2026-CTS-020,CTS,human,26,Male,2026-05,26.0,,,,,,
+flu-seqneut-2026-CTS-021,CTS,human,78,Female,2026-05,78.0,,,,,,
+flu-seqneut-2026-CTS-022,CTS,human,69,Male,2026-05,69.0,,,,,,
+flu-seqneut-2026-CTS-023,CTS,human,45,Female,2026-05,45.0,,,,,,
+flu-seqneut-2026-CTS-024,CTS,human,78,Female,2026-05,78.0,,,,,,
+flu-seqneut-2026-CTS-025,CTS,human,40,Male,2026-05,40.0,,,,,,
+flu-seqneut-2026-CTS-026,CTS,human,82,Male,2026-05,82.0,,,,,,
+flu-seqneut-2026-CTS-027,CTS,human,37,Female,2026-05,37.0,,,,,,
+flu-seqneut-2026-CTS-028,CTS,human,68,Female,2026-05,68.0,,,,,,
+flu-seqneut-2026-CTS-029,CTS,human,79,Male,2026-05,79.0,,,,,,
+flu-seqneut-2026-CTS-030,CTS,human,52,Female,2026-05,52.0,,,,,,
+flu-seqneut-2026-CTS-031,CTS,human,32,Male,2026-05,32.0,,,,,,
+flu-seqneut-2026-CTS-032,CTS,human,40,Female,2026-05,40.0,,,,,,
+flu-seqneut-2026-CTS-033,CTS,human,75,Female,2026-05,75.0,,,,,,
+flu-seqneut-2026-CTS-034,CTS,human,26,Male,2026-05,26.0,,,,,,
+flu-seqneut-2026-CTS-035,CTS,human,48,Male,2026-05,48.0,,,,,,
+flu-seqneut-2026-CTS-036,CTS,human,41,Male,2026-05,41.0,,,,,,
+flu-seqneut-2026-CTS-037,CTS,human,72,Male,2026-05,72.0,,,,,,
+flu-seqneut-2026-CTS-038,CTS,human,74,Female,2026-05,74.0,,,,,,
+flu-seqneut-2026-CTS-039,CTS,human,63,Male,2026-05,63.0,,,,,,
+flu-seqneut-2026-CTS-040,CTS,human,61,Male,2026-05,61.0,,,,,,
+flu-seqneut-2026-CTS-041,CTS,human,65,Male,2026-05,65.0,,,,,,
+flu-seqneut-2026-CTS-042,CTS,human,62,Male,2026-05,62.0,,,,,,
+flu-seqneut-2026-CTS-043,CTS,human,75,Female,2026-05,75.0,,,,,,
+flu-seqneut-2026-CTS-044,CTS,human,29,Male,2026-05,29.0,,,,,,
+flu-seqneut-2026-CTS-045,CTS,human,39,Male,2026-05,39.0,,,,,,
+flu-seqneut-2026-CTS-046,CTS,human,41,Male,2026-05,41.0,,,,,,
+flu-seqneut-2026-CTS-047,CTS,human,21,Male,2026-05,21.0,,,,,,
+flu-seqneut-2026-CTS-048,CTS,human,74,Female,2026-05,74.0,,,,,,
+flu-seqneut-2026-CTS-049,CTS,human,76,Male,2026-05,76.0,,,,,,
+flu-seqneut-2026-CTS-050,CTS,human,78,Male,2026-05,78.0,,,,,,
+flu-seqneut-2026-CTS-051,CTS,human,27,Female,2026-05,27.0,,,,,,
+flu-seqneut-2026-CTS-052,CTS,human,38,Female,2026-05,38.0,,,,,,
+flu-seqneut-2026-CTS-053,CTS,human,43,Female,2026-05,43.0,,,,,,
+flu-seqneut-2026-CTS-054,CTS,human,47,Male,2026-05,47.0,,,,,,
+flu-seqneut-2026-CTS-055,CTS,human,53,Female,2026-05,53.0,,,,,,
+flu-seqneut-2026-CTS-056,CTS,human,65,Female,2026-05,65.0,,,,,,
+flu-seqneut-2026-CTS-057,CTS,human,46,Female,2026-05,46.0,,,,,,
+flu-seqneut-2026-CTS-058,CTS,human,48,Female,2026-05,48.0,,,,,,
+flu-seqneut-2026-CTS-059,CTS,human,56,Female,2026-05,56.0,,,,,,
+flu-seqneut-2026-CTS-060,CTS,human,58,Male,2026-05,58.0,,,,,,
+flu-seqneut-2026-CTS-061,CTS,human,58,Male,2026-05,58.0,,,,,,
+flu-seqneut-2026-CTS-062,CTS,human,20,Female,2026-05,20.0,,,,,,
+flu-seqneut-2026-CTS-063,CTS,human,66,Male,2026-05,66.0,,,,,,
+flu-seqneut-2026-CTS-064,CTS,human,65,Male,2026-05,65.0,,,,,,
+flu-seqneut-2026-CTS-065,CTS,human,75,Male,2026-05,75.0,,,,,,
+flu-seqneut-2026-CTS-066,CTS,human,56,Female,2026-05,56.0,,,,,,
+flu-seqneut-2026-CTS-067,CTS,human,56,Female,2026-05,56.0,,,,,,
+flu-seqneut-2026-CTS-068,CTS,human,59,Female,2026-05,59.0,,,,,,
+flu-seqneut-2026-CTS-069,CTS,human,32,Male,2026-05,32.0,,,,,,
+flu-seqneut-2026-CTS-070,CTS,human,66,Female,2026-05,66.0,,,,,,
+flu-seqneut-2026-CTS-071,CTS,human,39,Female,2026-05,39.0,,,,,,
+flu-seqneut-2026-CTS-072,CTS,human,86,Male,2026-05,86.0,,,,,,
+flu-seqneut-2026-CTS-073,CTS,human,54,Female,2026-05,54.0,,,,,,
+flu-seqneut-2026-CTS-074,CTS,human,79,Male,2026-05,79.0,,,,,,
+flu-seqneut-2026-CTS-075,CTS,human,60,Male,2026-05,60.0,,,,,,
+flu-seqneut-2026-CTS-076,CTS,human,51,Female,2026-05,51.0,,,,,,
+flu-seqneut-2026-CTS-077,CTS,human,76,Male,2026-05,76.0,,,,,,
+flu-seqneut-2026-CTS-078,CTS,human,50,Female,2026-05,50.0,,,,,,
+flu-seqneut-2026-CTS-079,CTS,human,42,Female,2026-05,42.0,,,,,,
+flu-seqneut-2026-CTS-080,CTS,human,61,Male,2026-05,61.0,,,,,,
+flu-seqneut-2026-CTS-081,CTS,human,26,Female,2026-05,26.0,,,,,,
+flu-seqneut-2026-CTS-082,CTS,human,76,Male,2026-05,76.0,,,,,,
+flu-seqneut-2026-CTS-083,CTS,human,37,Female,2026-05,37.0,,,,,,
+flu-seqneut-2026-CTS-084,CTS,human,71,Female,2026-05,71.0,,,,,,
+flu-seqneut-2026-CTS-085,CTS,human,61,Male,2026-05,61.0,,,,,,
+flu-seqneut-2026-CTS-086,CTS,human,36,Female,2026-05,36.0,,,,,,
+flu-seqneut-2026-CTS-087,CTS,human,67,Male,2026-05,67.0,,,,,,
+flu-seqneut-2026-CTS-088,CTS,human,48,Female,2026-05,48.0,,,,,,
+flu-seqneut-2026-CTS-089,CTS,human,28,Male,2026-05,28.0,,,,,,
+flu-seqneut-2026-CTS-090,CTS,human,53,Female,2026-05,53.0,,,,,,
+flu-seqneut-2026-CTS-091,CTS,human,60,Female,2026-05,60.0,,,,,,
+flu-seqneut-2026-CTS-092,CTS,human,54,Female,2026-05,54.0,,,,,,
+flu-seqneut-2026-CTS-093,CTS,human,71,Female,2026-05,71.0,,,,,,
+flu-seqneut-2026-CTS-094,CTS,human,73,Male,2026-05,73.0,,,,,,
+flu-seqneut-2026-CTS-095,CTS,human,44,Male,2026-05,44.0,,,,,,
+flu-seqneut-2026-CTS-096,CTS,human,45,Female,2026-05,45.0,,,,,,
+flu-seqneut-2026-CTS-097,CTS,human,79,Male,2026-05,79.0,,,,,,
+flu-seqneut-2026-CTS-098,CTS,human,29,Female,2026-05,29.0,,,,,,
+flu-seqneut-2026-CTS-099,CTS,human,51,Female,2026-05,51.0,,,,,,
+flu-seqneut-2026-CTS-100,CTS,human,76,Male,2026-05,76.0,,,,,,
+flu-seqneut-2026-CTS-101,CTS,human,34,Male,2026-05,34.0,,,,,,
+flu-seqneut-2026-CTS-102,CTS,human,23,Male,2026-05,23.0,,,,,,
+flu-seqneut-2026-CTS-103,CTS,human,31,Male,2026-05,31.0,,,,,,
+flu-seqneut-2026-CTS-104,CTS,human,44,Female,2026-05,44.0,,,,,,
+flu-seqneut-2026-CTS-105,CTS,human,23,Female,2026-05,23.0,,,,,,
+flu-seqneut-2026-CTS-106,CTS,human,61,Male,2026-05,61.0,,,,,,
+flu-seqneut-2026-VIDRL-001_pre-vax,VIDRL,human,45,Female,2026-04,45.0,flucelvax group: 0 days post-vaccination,s001,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-001_post-vax,VIDRL,human,45,Female,2026-05,45.0,flucelvax group: 21 days post-vaccination,s001,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-002_pre-vax,VIDRL,human,25,Female,2026-04,25.0,flucelvax group: 0 days post-vaccination,s002,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-002_post-vax,VIDRL,human,25,Female,2026-05,25.0,flucelvax group: 21 days post-vaccination,s002,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-003_pre-vax,VIDRL,human,29,Female,2026-04,29.0,flucelvax group: 0 days post-vaccination,s003,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-003_post-vax,VIDRL,human,29,Female,2026-05,29.0,flucelvax group: 23 days post-vaccination,s003,post,adult-cell,23.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-004_pre-vax,VIDRL,human,23,Male,2026-04,23.0,flucelvax group: 0 days post-vaccination,s004,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-004_post-vax,VIDRL,human,23,Male,2026-05,23.0,flucelvax group: 21 days post-vaccination,s004,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-005_pre-vax,VIDRL,human,37,Female,2026-04,37.0,flucelvax group: 0 days post-vaccination,s005,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-005_post-vax,VIDRL,human,37,Female,2026-05,37.0,flucelvax group: 23 days post-vaccination,s005,post,adult-cell,23.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-006_pre-vax,VIDRL,human,35,Female,2026-04,35.0,flucelvax group: 0 days post-vaccination,s006,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-006_post-vax,VIDRL,human,35,Female,2026-05,35.0,flucelvax group: 22 days post-vaccination,s006,post,adult-cell,22.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-007_pre-vax,VIDRL,human,35,Female,2026-05,35.0,flucelvax group: 0 days post-vaccination,s007,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-007_post-vax,VIDRL,human,35,Female,2026-05,35.0,flucelvax group: 18 days post-vaccination,s007,post,adult-cell,18.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-008_pre-vax,VIDRL,human,19,Female,2026-05,19.0,flucelvax group: 0 days post-vaccination,s008,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-008_post-vax,VIDRL,human,19,Female,2026-05,19.0,flucelvax group: 24 days post-vaccination,s008,post,adult-cell,24.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-009_pre-vax,VIDRL,human,51,Female,2026-05,51.0,flucelvax group: 0 days post-vaccination,s009,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-009_post-vax,VIDRL,human,51,Female,2026-05,51.0,flucelvax group: 21 days post-vaccination,s009,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-010_pre-vax,VIDRL,human,25,Male,2026-05,25.0,flucelvax group: 0 days post-vaccination,s010,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-010_post-vax,VIDRL,human,25,Male,2026-06,25.0,flucelvax group: 25 days post-vaccination,s010,post,adult-cell,25.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-011_pre-vax,VIDRL,human,31,Male,2026-05,31.0,flucelvax group: 0 days post-vaccination,s011,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-011_post-vax,VIDRL,human,31,Male,2026-05,31.0,flucelvax group: 21 days post-vaccination,s011,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-012_pre-vax,VIDRL,human,58,Female,2026-05,58.0,flucelvax group: 0 days post-vaccination,s012,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-012_post-vax,VIDRL,human,58,Female,2026-06,58.0,flucelvax group: 25 days post-vaccination,s012,post,adult-cell,25.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-013_pre-vax,VIDRL,human,54,Female,2026-05,54.0,flucelvax group: 0 days post-vaccination,s013,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-013_post-vax,VIDRL,human,54,Female,2026-06,54.0,flucelvax group: 22 days post-vaccination,s013,post,adult-cell,22.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-014_pre-vax,VIDRL,human,36,Female,2026-05,36.0,flucelvax group: 0 days post-vaccination,s014,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-014_post-vax,VIDRL,human,36,Female,2026-06,36.0,flucelvax group: 21 days post-vaccination,s014,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-015_pre-vax,VIDRL,human,55,Male,2026-05,55.0,flucelvax group: 0 days post-vaccination,s015,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-015_post-vax,VIDRL,human,55,Male,2026-06,55.0,flucelvax group: 22 days post-vaccination,s015,post,adult-cell,22.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-016_pre-vax,VIDRL,human,31,Female,2026-05,31.0,flucelvax group: 0 days post-vaccination,s016,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-016_post-vax,VIDRL,human,31,Female,2026-06,31.0,flucelvax group: 21 days post-vaccination,s016,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-017_pre-vax,VIDRL,human,32,Male,2026-05,32.0,flucelvax group: 0 days post-vaccination,s017,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-017_post-vax,VIDRL,human,32,Male,2026-06,32.0,flucelvax group: 21 days post-vaccination,s017,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-018_pre-vax,VIDRL,human,59,Female,2026-06,59.0,flucelvax group: 0 days post-vaccination,s018,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-018_post-vax,VIDRL,human,59,Female,2026-06,59.0,flucelvax group: 19 days post-vaccination,s018,post,adult-cell,19.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-019_pre-vax,VIDRL,human,25,Male,2026-06,25.0,flucelvax group: 0 days post-vaccination,s019,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-019_post-vax,VIDRL,human,25,Male,2026-06,25.0,flucelvax group: 21 days post-vaccination,s019,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-020_pre-vax,VIDRL,human,19,Female,2026-06,19.0,flucelvax group: 0 days post-vaccination,s020,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-020_post-vax,VIDRL,human,19,Female,2026-07,19.0,flucelvax group: 21 days post-vaccination,s020,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-021_pre-vax,VIDRL,human,49,Female,2026-04,49.0,Fluzone group: 0 days post-vaccination,s021,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-021_post-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 21 days post-vaccination,s021,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-022_pre-vax,VIDRL,human,36,Male,2026-04,36.0,Fluzone group: 0 days post-vaccination,s022,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-022_post-vax,VIDRL,human,36,Male,2026-05,36.0,Fluzone group: 21 days post-vaccination,s022,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-023_pre-vax,VIDRL,human,32,Female,2026-04,32.0,Fluzone group: 0 days post-vaccination,s023,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-023_post-vax,VIDRL,human,32,Female,2026-05,32.0,Fluzone group: 20 days post-vaccination,s023,post,adult-egg,20.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-024_pre-vax,VIDRL,human,48,Male,2026-04,48.0,Fluzone group: 0 days post-vaccination,s024,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-024_post-vax,VIDRL,human,48,Male,2026-05,48.0,Fluzone group: 21 days post-vaccination,s024,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-025_pre-vax,VIDRL,human,38,Male,2026-04,38.0,Fluzone group: 0 days post-vaccination,s025,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-025_post-vax,VIDRL,human,38,Male,2026-05,38.0,Fluzone group: 23 days post-vaccination,s025,post,adult-egg,23.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-026_pre-vax,VIDRL,human,62,Female,2026-04,62.0,Fluzone group: 0 days post-vaccination,s026,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-026_post-vax,VIDRL,human,62,Female,2026-05,62.0,Fluzone group: 21 days post-vaccination,s026,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-027_pre-vax,VIDRL,human,46,Male,2026-04,46.0,Fluzone group: 0 days post-vaccination,s027,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-027_post-vax,VIDRL,human,46,Male,2026-05,46.0,Fluzone group: 21 days post-vaccination,s027,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-028_pre-vax,VIDRL,human,28,Female,2026-04,28.0,Fluzone group: 0 days post-vaccination,s028,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-028_post-vax,VIDRL,human,28,Female,2026-05,28.0,Fluzone group: 18 days post-vaccination,s028,post,adult-egg,18.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-029_pre-vax,VIDRL,human,18,Female,2026-04,18.0,Fluzone group: 0 days post-vaccination,s029,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-029_post-vax,VIDRL,human,18,Female,2026-05,18.0,Fluzone group: 21 days post-vaccination,s029,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-030_pre-vax,VIDRL,human,30,Male,2026-04,30.0,Fluzone group: 0 days post-vaccination,s030,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-030_post-vax,VIDRL,human,30,Male,2026-05,30.0,Fluzone group: 22 days post-vaccination,s030,post,adult-egg,22.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-031_pre-vax,VIDRL,human,50,Male,2026-04,50.0,Fluzone group: 0 days post-vaccination,s031,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-031_post-vax,VIDRL,human,50,Male,2026-05,50.0,Fluzone group: 20 days post-vaccination,s031,post,adult-egg,20.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-032_pre-vax,VIDRL,human,51,Female,2026-04,51.0,Fluzone group: 0 days post-vaccination,s032,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-032_post-vax,VIDRL,human,51,Female,2026-05,51.0,Fluzone group: 18 days post-vaccination,s032,post,adult-egg,18.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-033_pre-vax,VIDRL,human,38,Female,2026-04,38.0,Fluzone group: 0 days post-vaccination,s033,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-033_post-vax,VIDRL,human,38,Female,2026-05,38.0,Fluzone group: 25 days post-vaccination,s033,post,adult-egg,25.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-034_pre-vax,VIDRL,human,18,Female,2026-04,18.0,Fluzone group: 0 days post-vaccination,s034,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-034_post-vax,VIDRL,human,18,Female,2026-05,18.0,Fluzone group: 21 days post-vaccination,s034,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-035_pre-vax,VIDRL,human,30,Female,2026-04,30.0,Fluzone group: 0 days post-vaccination,s035,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-035_post-vax,VIDRL,human,30,Female,2026-05,30.0,Fluzone group: 21 days post-vaccination,s035,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-036_pre-vax,VIDRL,human,38,Female,2026-04,38.0,Fluzone group: 0 days post-vaccination,s036,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-036_post-vax,VIDRL,human,38,Female,2026-05,38.0,Fluzone group: 22 days post-vaccination,s036,post,adult-egg,22.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-037_pre-vax,VIDRL,human,62,Female,2026-04,62.0,Fluzone group: 0 days post-vaccination,s037,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-037_post-vax,VIDRL,human,62,Female,2026-05,62.0,Fluzone group: 22 days post-vaccination,s037,post,adult-egg,22.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-038_pre-vax,VIDRL,human,39,Male,2026-04,39.0,Fluzone group: 0 days post-vaccination,s038,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-038_post-vax,VIDRL,human,39,Male,2026-05,39.0,Fluzone group: 25 days post-vaccination,s038,post,adult-egg,25.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-039_pre-vax,VIDRL,human,54,Female,2026-04,54.0,Fluzone group: 0 days post-vaccination,s039,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-039_post-vax,VIDRL,human,54,Female,2026-05,54.0,Fluzone group: 21 days post-vaccination,s039,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-040_pre-vax,VIDRL,human,48,Female,2026-04,48.0,Fluzone group: 0 days post-vaccination,s040,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-040_post-vax,VIDRL,human,48,Female,2026-05,48.0,Fluzone group: 18 days post-vaccination,s040,post,adult-egg,18.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-041_pre-vax,VIDRL,human,51,Female,2026-04,51.0,Fluzone group: 0 days post-vaccination,s041,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-041_post-vax,VIDRL,human,51,Female,2026-05,51.0,Fluzone group: 21 days post-vaccination,s041,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-042_pre-vax,VIDRL,human,49,Female,2026-04,49.0,Fluzone group: 0 days post-vaccination,s042,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-042_post-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 21 days post-vaccination,s042,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-043_pre-vax,VIDRL,human,43,Female,2026-04,43.0,Fluzone group: 0 days post-vaccination,s043,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-043_post-vax,VIDRL,human,43,Female,2026-05,43.0,Fluzone group: 23 days post-vaccination,s043,post,adult-egg,23.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-044_pre-vax,VIDRL,human,39,Female,2026-04,39.0,Fluzone group: 0 days post-vaccination,s044,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-044_post-vax,VIDRL,human,39,Female,2026-05,39.0,Fluzone group: 23 days post-vaccination,s044,post,adult-egg,23.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-045_pre-vax,VIDRL,human,43,Female,2026-04,43.0,Fluzone group: 0 days post-vaccination,s045,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-045_post-vax,VIDRL,human,43,Female,2026-05,43.0,Fluzone group: 20 days post-vaccination,s045,post,adult-egg,20.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-046_pre-vax,VIDRL,human,49,Female,2026-04,49.0,Fluzone group: 0 days post-vaccination,s046,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-046_post-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 21 days post-vaccination,s046,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-047_pre-vax,VIDRL,human,32,Female,2026-04,32.0,Fluzone group: 0 days post-vaccination,s047,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-047_post-vax,VIDRL,human,32,Female,2026-05,32.0,Fluzone group: 22 days post-vaccination,s047,post,adult-egg,22.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-048_pre-vax,VIDRL,human,26,Male,2026-05,26.0,Fluzone group: 0 days post-vaccination,s048,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-048_post-vax,VIDRL,human,26,Male,2026-05,26.0,Fluzone group: 19 days post-vaccination,s048,post,adult-egg,19.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-049_pre-vax,VIDRL,human,37,Female,2026-05,37.0,Fluzone group: 0 days post-vaccination,s049,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-049_post-vax,VIDRL,human,37,Female,2026-05,37.0,Fluzone group: 20 days post-vaccination,s049,post,adult-egg,20.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-050_pre-vax,VIDRL,human,19,Female,2026-05,19.0,Fluzone group: 0 days post-vaccination,s050,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-050_post-vax,VIDRL,human,19,Female,2026-05,19.0,Fluzone group: 21 days post-vaccination,s050,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-051_pre-vax,VIDRL,human,58,Female,2026-05,58.0,Fluzone group: 0 days post-vaccination,s051,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-051_post-vax,VIDRL,human,58,Female,2026-06,58.0,Fluzone group: 21 days post-vaccination,s051,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-052_pre-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 0 days post-vaccination,s052,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-052_post-vax,VIDRL,human,49,Female,2026-06,49.0,Fluzone group: 21 days post-vaccination,s052,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-053_pre-vax,VIDRL,human,56,Female,2026-05,56.0,Fluzone group: 0 days post-vaccination,s053,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-053_post-vax,VIDRL,human,56,Female,2026-06,56.0,Fluzone group: 19 days post-vaccination,s053,post,adult-egg,19.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-054_pre-vax,VIDRL,human,59,Male,2026-05,59.0,Fluzone group: 0 days post-vaccination,s054,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-054_post-vax,VIDRL,human,59,Male,2026-06,59.0,Fluzone group: 21 days post-vaccination,s054,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-055_pre-vax,VIDRL,human,30,Male,2026-05,30.0,Fluzone group: 0 days post-vaccination,s055,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-055_post-vax,VIDRL,human,30,Male,2026-06,30.0,Fluzone group: 21 days post-vaccination,s055,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-056_pre-vax,VIDRL,human,49,Female,2026-05,49.0,Fluzone group: 0 days post-vaccination,s056,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-056_post-vax,VIDRL,human,49,Female,2026-06,49.0,Fluzone group: 21 days post-vaccination,s056,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-057_pre-vax,VIDRL,human,53,Female,2026-05,53.0,Fluzone group: 0 days post-vaccination,s057,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-057_post-vax,VIDRL,human,53,Female,2026-06,53.0,Fluzone group: 24 days post-vaccination,s057,post,adult-egg,24.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-058_pre-vax,VIDRL,human,30,Male,2026-05,30.0,Fluzone group: 0 days post-vaccination,s058,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-058_post-vax,VIDRL,human,30,Male,2026-06,30.0,Fluzone group: 21 days post-vaccination,s058,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-059_pre-vax,VIDRL,human,48,Female,2026-05,48.0,Fluzone group: 0 days post-vaccination,s059,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-059_post-vax,VIDRL,human,48,Female,2026-06,48.0,Fluzone group: 21 days post-vaccination,s059,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-060_pre-vax,VIDRL,human,33,Female,2026-05,33.0,Fluzone group: 0 days post-vaccination,s060,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-060_post-vax,VIDRL,human,33,Female,2026-06,33.0,Fluzone group: 23 days post-vaccination,s060,post,adult-egg,23.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-061_pre-vax,VIDRL,human,19,Male,2026-05,19.0,Fluzone group: 0 days post-vaccination,s061,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-061_post-vax,VIDRL,human,19,Male,2026-06,19.0,Fluzone group: 21 days post-vaccination,s061,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-062_pre-vax,VIDRL,human,44,Female,2026-05,44.0,Fluzone group: 0 days post-vaccination,s062,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-062_post-vax,VIDRL,human,44,Female,2026-06,44.0,Fluzone group: 21 days post-vaccination,s062,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-063_pre-vax,VIDRL,human,29,Female,2026-05,29.0,Fluzone group: 0 days post-vaccination,s063,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-063_post-vax,VIDRL,human,29,Female,2026-06,29.0,Fluzone group: 20 days post-vaccination,s063,post,adult-egg,20.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-064_pre-vax,VIDRL,human,63,Female,2026-05,63.0,Fluzone group: 0 days post-vaccination,s064,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-064_post-vax,VIDRL,human,63,Female,2026-06,63.0,Fluzone group: 21 days post-vaccination,s064,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-065_pre-vax,VIDRL,human,31,Female,2026-05,31.0,Fluzone group: 0 days post-vaccination,s065,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-065_post-vax,VIDRL,human,31,Female,2026-06,31.0,Fluzone group: 21 days post-vaccination,s065,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-066_pre-vax,VIDRL,human,45,Female,2026-05,45.0,Fluzone group: 0 days post-vaccination,s066,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-066_post-vax,VIDRL,human,45,Female,2026-06,45.0,Fluzone group: 18 days post-vaccination,s066,post,adult-egg,18.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-067_pre-vax,VIDRL,human,23,Male,2026-05,23.0,Fluzone group: 0 days post-vaccination,s067,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-067_post-vax,VIDRL,human,23,Male,2026-06,23.0,Fluzone group: 21 days post-vaccination,s067,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-068_pre-vax,VIDRL,human,36,Female,2026-05,36.0,Fluzone group: 0 days post-vaccination,s068,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-068_post-vax,VIDRL,human,36,Female,2026-06,36.0,Fluzone group: 20 days post-vaccination,s068,post,adult-egg,20.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-069_pre-vax,VIDRL,human,32,Male,2026-05,32.0,Fluzone group: 0 days post-vaccination,s069,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-069_post-vax,VIDRL,human,32,Male,2026-06,32.0,Fluzone group: 21 days post-vaccination,s069,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-070_pre-vax,VIDRL,human,37,Female,2026-06,37.0,Fluzone group: 0 days post-vaccination,s070,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-070_post-vax,VIDRL,human,37,Female,2026-06,37.0,Fluzone group: 22 days post-vaccination,s070,post,adult-egg,22.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-071_pre-vax,VIDRL,human,18,Male,2026-06,18.0,Fluzone group: 0 days post-vaccination,s071,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-071_post-vax,VIDRL,human,18,Male,2026-06,18.0,Fluzone group: 22 days post-vaccination,s071,post,adult-egg,22.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-072_pre-vax,VIDRL,human,45,Male,2026-06,45.0,Fluzone group: 0 days post-vaccination,s072,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-072_post-vax,VIDRL,human,45,Male,2026-06,45.0,Fluzone group: 21 days post-vaccination,s072,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-073_pre-vax,VIDRL,human,39,Female,2026-06,39.0,Fluzone group: 0 days post-vaccination,s073,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-073_post-vax,VIDRL,human,39,Female,2026-06,39.0,Fluzone group: 19 days post-vaccination,s073,post,adult-egg,19.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-074_pre-vax,VIDRL,human,19,Female,2026-06,19.0,Fluzone group: 0 days post-vaccination,s074,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-074_post-vax,VIDRL,human,19,Female,2026-07,19.0,Fluzone group: 29 days post-vaccination,s074,post,adult-egg,29.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-075_pre-vax,VIDRL,human,26,Female,2026-06,26.0,Fluzone group: 0 days post-vaccination,s075,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-075_post-vax,VIDRL,human,26,Female,2026-06,26.0,Fluzone group: 20 days post-vaccination,s075,post,adult-egg,20.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-076_pre-vax,VIDRL,human,62,Female,2026-06,62.0,Fluzone group: 0 days post-vaccination,s076,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-076_post-vax,VIDRL,human,62,Female,2026-06,62.0,Fluzone group: 21 days post-vaccination,s076,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-077_pre-vax,VIDRL,human,43,Male,2026-06,43.0,Fluzone group: 0 days post-vaccination,s077,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-077_post-vax,VIDRL,human,43,Male,2026-07,43.0,Fluzone group: 23 days post-vaccination,s077,post,adult-egg,23.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-078_pre-vax,VIDRL,human,50,Female,2026-06,50.0,Fluzone group: 0 days post-vaccination,s078,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-078_post-vax,VIDRL,human,50,Female,2026-06,50.0,Fluzone group: 21 days post-vaccination,s078,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-079_pre-vax,VIDRL,human,33,Female,2026-06,33.0,Fluzone group: 0 days post-vaccination,s079,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-079_post-vax,VIDRL,human,33,Female,2026-07,33.0,Fluzone group: 20 days post-vaccination,s079,post,adult-egg,20.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-080_pre-vax,VIDRL,human,43,Female,2026-06,43.0,Fluzone group: 0 days post-vaccination,s080,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-080_post-vax,VIDRL,human,43,Female,2026-07,43.0,Fluzone group: 22 days post-vaccination,s080,post,adult-egg,22.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-081_pre-vax,VIDRL,human,64,Male,2026-06,64.0,Fluzone group: 0 days post-vaccination,s081,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-081_post-vax,VIDRL,human,64,Male,2026-07,64.0,Fluzone group: 21 days post-vaccination,s081,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-082_pre-vax,VIDRL,human,53,Female,2026-06,53.0,Fluzone group: 0 days post-vaccination,s082,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-082_post-vax,VIDRL,human,53,Female,2026-07,53.0,Fluzone group: 21 days post-vaccination,s082,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-083_pre-vax,VIDRL,human,51,Female,2026-06,51.0,Fluzone group: 0 days post-vaccination,s083,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-083_post-vax,VIDRL,human,51,Female,2026-07,51.0,Fluzone group: 21 days post-vaccination,s083,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-084_pre-vax,VIDRL,human,46,Female,2026-06,46.0,Fluzone group: 0 days post-vaccination,s084,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-084_post-vax,VIDRL,human,46,Female,2026-07,46.0,Fluzone group: 21 days post-vaccination,s084,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-085_pre-vax,VIDRL,human,65,Female,2026-04,65.0,Fluad group: 0 days post-vaccination,s085,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-085_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad group: 21 days post-vaccination,s085,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-086_pre-vax,VIDRL,human,65,Male,2026-04,65.0,Fluad  group: 0 days post-vaccination,s086,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-086_post-vax,VIDRL,human,65,Male,2026-05,65.0,Fluad  group: 21 days post-vaccination,s086,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-087_pre-vax,VIDRL,human,68,Female,2026-04,68.0,Fluad  group: 0 days post-vaccination,s087,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-087_post-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad  group: 21 days post-vaccination,s087,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-088_pre-vax,VIDRL,human,71,Female,2026-04,71.0,Fluad  group: 0 days post-vaccination,s088,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-088_post-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad  group: 21 days post-vaccination,s088,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-089_pre-vax,VIDRL,human,74,Male,2026-04,74.0,Fluad  group: 0 days post-vaccination,s089,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-089_post-vax,VIDRL,human,74,Male,2026-05,74.0,Fluad  group: 23 days post-vaccination,s089,post,elderly-egg,23.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-090_pre-vax,VIDRL,human,76,Male,2026-04,76.0,Fluad  group: 0 days post-vaccination,s090,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-090_post-vax,VIDRL,human,76,Male,2026-05,76.0,Fluad  group: 21 days post-vaccination,s090,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-091_pre-vax,VIDRL,human,72,Female,2026-04,72.0,Fluad  group: 0 days post-vaccination,s091,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-091_post-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad  group: 25 days post-vaccination,s091,post,elderly-egg,25.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-092_pre-vax,VIDRL,human,66,Male,2026-04,66.0,Fluad  group: 0 days post-vaccination,s092,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-092_post-vax,VIDRL,human,66,Male,2026-05,66.0,Fluad  group: 21 days post-vaccination,s092,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-093_pre-vax,VIDRL,human,75,Female,2026-04,75.0,Fluad  group: 0 days post-vaccination,s093,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-093_post-vax,VIDRL,human,75,Female,2026-05,75.0,Fluad  group: 24 days post-vaccination,s093,post,elderly-egg,24.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-094_pre-vax,VIDRL,human,71,Male,2026-04,71.0,Fluad  group: 0 days post-vaccination,s094,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-094_post-vax,VIDRL,human,71,Male,2026-05,71.0,Fluad  group: 22 days post-vaccination,s094,post,elderly-egg,22.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-095_pre-vax,VIDRL,human,73,Male,2026-04,73.0,Fluad  group: 0 days post-vaccination,s095,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-095_post-vax,VIDRL,human,73,Male,2026-05,73.0,Fluad  group: 23 days post-vaccination,s095,post,elderly-egg,23.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-096_pre-vax,VIDRL,human,66,Male,2026-04,66.0,Fluad  group: 0 days post-vaccination,s096,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-096_post-vax,VIDRL,human,66,Male,2026-05,66.0,Fluad  group: 20 days post-vaccination,s096,post,elderly-egg,20.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-097_pre-vax,VIDRL,human,72,Female,2026-04,72.0,Fluad  group: 0 days post-vaccination,s097,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-097_post-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad  group: 22 days post-vaccination,s097,post,elderly-egg,22.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-098_pre-vax,VIDRL,human,71,Female,2026-04,71.0,Fluad  group: 0 days post-vaccination,s098,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-098_post-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad  group: 19 days post-vaccination,s098,post,elderly-egg,19.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-099_pre-vax,VIDRL,human,78,Female,2026-04,78.0,Fluad  group: 0 days post-vaccination,s099,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-099_post-vax,VIDRL,human,78,Female,2026-05,78.0,Fluad  group: 20 days post-vaccination,s099,post,elderly-egg,20.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-100_pre-vax,VIDRL,human,78,Male,2026-04,78.0,Fluad  group: 0 days post-vaccination,s100,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-100_post-vax,VIDRL,human,78,Male,2026-05,78.0,Fluad  group: 21 days post-vaccination,s100,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-101_pre-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad  group: 0 days post-vaccination,s101,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-101_post-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad  group: 20 days post-vaccination,s101,post,elderly-egg,20.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-102_pre-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 0 days post-vaccination,s102,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-102_post-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 20 days post-vaccination,s102,post,elderly-egg,20.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-103_pre-vax,VIDRL,human,66,Female,2026-05,66.0,Fluad  group: 0 days post-vaccination,s103,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-103_post-vax,VIDRL,human,66,Female,2026-05,66.0,Fluad  group: 25 days post-vaccination,s103,post,elderly-egg,25.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-104_pre-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 0 days post-vaccination,s104,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-104_post-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 21 days post-vaccination,s104,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-105_pre-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 0 days post-vaccination,s105,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-105_post-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 21 days post-vaccination,s105,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-106_pre-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 0 days post-vaccination,s106,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-106_post-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 21 days post-vaccination,s106,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-107_pre-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad  group: 0 days post-vaccination,s107,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-107_post-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad  group: 21 days post-vaccination,s107,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-108_pre-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 0 days post-vaccination,s108,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-108_post-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad  group: 21 days post-vaccination,s108,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-109_pre-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad  group: 0 days post-vaccination,s109,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-109_post-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad  group: 20 days post-vaccination,s109,post,elderly-egg,20.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-110_pre-vax,VIDRL,human,74,Female,2026-05,74.0,Fluad  group: 0 days post-vaccination,s110,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-110_post-vax,VIDRL,human,74,Female,2026-05,74.0,Fluad  group: 22 days post-vaccination,s110,post,elderly-egg,22.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-111_pre-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 0 days post-vaccination,s111,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-111_post-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 22 days post-vaccination,s111,post,elderly-egg,22.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-112_pre-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad  group: 0 days post-vaccination,s112,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-112_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad  group: 19 days post-vaccination,s112,post,elderly-egg,19.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-113_pre-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 0 days post-vaccination,s113,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-113_post-vax,VIDRL,human,77,Female,2026-05,77.0,Fluad  group: 22 days post-vaccination,s113,post,elderly-egg,22.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-114_pre-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad  group: 0 days post-vaccination,s114,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-114_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad  group: 21 days post-vaccination,s114,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-115_pre-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad  group: 0 days post-vaccination,s115,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-115_post-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad  group: 21 days post-vaccination,s115,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-116_pre-vax,VIDRL,human,65,Male,2026-05,65.0,Fluad  group: 0 days post-vaccination,s116,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-116_post-vax,VIDRL,human,65,Male,2026-06,65.0,Fluad  group: 22 days post-vaccination,s116,post,elderly-egg,22.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-117_pre-vax,VIDRL,human,67,Female,2026-05,67.0,Fluad  group: 0 days post-vaccination,s117,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-117_post-vax,VIDRL,human,67,Female,2026-06,67.0,Fluad  group: 21 days post-vaccination,s117,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-118_pre-vax,VIDRL,human,75,Male,2026-05,75.0,Fluad  group: 0 days post-vaccination,s118,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-118_post-vax,VIDRL,human,75,Male,2026-06,75.0,Fluad  group: 21 days post-vaccination,s118,post,elderly-egg,21.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-119_pre-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad  group: 0 days post-vaccination,s119,pre,elderly-egg,0.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-119_post-vax,VIDRL,human,71,Female,2026-06,71.0,Fluad  group: 19 days post-vaccination,s119,post,elderly-egg,19.0,"cohort 002, arm elderly-egg"
+flu-seqneut-2026-VIDRL-120_pre-vax,VIDRL,human,60,Female,2026-04,60.0,Flucelvax group: 0 days post-vaccination,s120,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-120_post-vax,VIDRL,human,60,Female,2026-05,60.0,Flucelvax group: 21 days post-vaccination,s120,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-121_pre-vax,VIDRL,human,64,Female,2026-04,64.0,Flucelvax group: 0 days post-vaccination,s121,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-121_post-vax,VIDRL,human,64,Female,2026-05,64.0,Flucelvax group: 21 days post-vaccination,s121,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-122_pre-vax,VIDRL,human,57,Female,2026-04,57.0,Flucelvax group: 0 days post-vaccination,s122,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-122_post-vax,VIDRL,human,57,Female,2026-05,57.0,Flucelvax group: 21 days post-vaccination,s122,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-123_pre-vax,VIDRL,human,40,Female,2026-04,40.0,Flucelvax group: 0 days post-vaccination,s123,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-123_post-vax,VIDRL,human,40,Female,2026-05,40.0,Flucelvax group: 21 days post-vaccination,s123,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-124_pre-vax,VIDRL,human,54,Female,2026-04,54.0,Flucelvax group: 0 days post-vaccination,s124,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-124_post-vax,VIDRL,human,54,Female,2026-05,54.0,Flucelvax group: 22 days post-vaccination,s124,post,adult-cell,22.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-125_pre-vax,VIDRL,human,62,Female,2026-04,62.0,Flucelvax group: 0 days post-vaccination,s125,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-125_post-vax,VIDRL,human,62,Female,2026-05,62.0,Flucelvax group: 21 days post-vaccination,s125,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-126_pre-vax,VIDRL,human,48,Female,2026-04,48.0,Flucelvax group: 0 days post-vaccination,s126,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-126_post-vax,VIDRL,human,48,Female,2026-05,48.0,Flucelvax group: 21 days post-vaccination,s126,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-127_pre-vax,VIDRL,human,49,Female,2026-04,49.0,Flucelvax group: 0 days post-vaccination,s127,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-127_post-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 18 days post-vaccination,s127,post,adult-cell,18.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-128_pre-vax,VIDRL,human,51,Male,2026-04,51.0,Flucelvax group: 0 days post-vaccination,s128,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-128_post-vax,VIDRL,human,51,Male,2026-05,51.0,Flucelvax group: 20 days post-vaccination,s128,post,adult-cell,20.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-129_pre-vax,VIDRL,human,27,Female,2026-04,27.0,Flucelvax group: 0 days post-vaccination,s129,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-129_post-vax,VIDRL,human,27,Female,2026-05,27.0,Flucelvax group: 21 days post-vaccination,s129,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-130_pre-vax,VIDRL,human,61,Female,2026-04,61.0,Flucelvax group: 0 days post-vaccination,s130,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-130_post-vax,VIDRL,human,61,Female,2026-05,61.0,Flucelvax group: 21 days post-vaccination,s130,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-131_pre-vax,VIDRL,human,45,Female,2026-04,45.0,Flucelvax group: 0 days post-vaccination,s131,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-131_post-vax,VIDRL,human,45,Female,2026-05,45.0,Flucelvax group: 21 days post-vaccination,s131,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-132_pre-vax,VIDRL,human,55,Female,2026-04,55.0,Flucelvax group: 0 days post-vaccination,s132,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-132_post-vax,VIDRL,human,55,Female,2026-05,55.0,Flucelvax group: 21 days post-vaccination,s132,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-133_pre-vax,VIDRL,human,49,Male,2026-04,49.0,Flucelvax group: 0 days post-vaccination,s133,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-133_post-vax,VIDRL,human,49,Male,2026-05,49.0,Flucelvax group: 21 days post-vaccination,s133,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-134_pre-vax,VIDRL,human,36,Female,2026-04,36.0,Flucelvax group: 0 days post-vaccination,s134,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-134_post-vax,VIDRL,human,36,Female,2026-05,36.0,Flucelvax group: 21 days post-vaccination,s134,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-135_pre-vax,VIDRL,human,55,Female,2026-04,55.0,Flucelvax group: 0 days post-vaccination,s135,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-135_post-vax,VIDRL,human,55,Female,2026-05,55.0,Flucelvax group: 21 days post-vaccination,s135,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-136_pre-vax,VIDRL,human,53,Female,2026-04,53.0,Flucelvax group: 0 days post-vaccination,s136,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-136_post-vax,VIDRL,human,53,Female,2026-05,53.0,Flucelvax group: 21 days post-vaccination,s136,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-137_pre-vax,VIDRL,human,57,Female,2026-04,57.0,Flucelvax group: 0 days post-vaccination,s137,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-137_post-vax,VIDRL,human,57,Female,2026-05,57.0,Flucelvax group: 21 days post-vaccination,s137,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-138_pre-vax,VIDRL,human,46,Female,2026-04,46.0,Flucelvax group: 0 days post-vaccination,s138,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-138_post-vax,VIDRL,human,46,Female,2026-05,46.0,Flucelvax group: 22 days post-vaccination,s138,post,adult-cell,22.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-139_pre-vax,VIDRL,human,53,Female,2026-04,53.0,Flucelvax group: 0 days post-vaccination,s139,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-139_post-vax,VIDRL,human,53,Female,2026-05,53.0,Flucelvax group: 21 days post-vaccination,s139,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-140_pre-vax,VIDRL,human,60,Female,2026-04,60.0,Flucelvax group: 0 days post-vaccination,s140,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-140_post-vax,VIDRL,human,60,Female,2026-05,60.0,Flucelvax group: 21 days post-vaccination,s140,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-141_pre-vax,VIDRL,human,36,Female,2026-04,36.0,Flucelvax group: 0 days post-vaccination,s141,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-141_post-vax,VIDRL,human,36,Female,2026-05,36.0,Flucelvax group: 20 days post-vaccination,s141,post,adult-cell,20.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-142_pre-vax,VIDRL,human,59,Female,2026-04,59.0,Flucelvax group: 0 days post-vaccination,s142,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-142_post-vax,VIDRL,human,59,Female,2026-05,59.0,Flucelvax group: 21 days post-vaccination,s142,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-143_pre-vax,VIDRL,human,40,Male,2026-04,40.0,Flucelvax group: 0 days post-vaccination,s143,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-143_post-vax,VIDRL,human,40,Male,2026-05,40.0,Flucelvax group: 23 days post-vaccination,s143,post,adult-cell,23.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-144_pre-vax,VIDRL,human,55,Female,2026-04,55.0,Flucelvax group: 0 days post-vaccination,s144,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-144_post-vax,VIDRL,human,55,Female,2026-05,55.0,Flucelvax group: 21 days post-vaccination,s144,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-145_pre-vax,VIDRL,human,57,Female,2026-04,57.0,Flucelvax group: 0 days post-vaccination,s145,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-145_post-vax,VIDRL,human,57,Female,2026-05,57.0,Flucelvax group: 21 days post-vaccination,s145,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-146_pre-vax,VIDRL,human,38,Female,2026-04,38.0,Flucelvax group: 0 days post-vaccination,s146,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-146_post-vax,VIDRL,human,38,Female,2026-05,38.0,Flucelvax group: 21 days post-vaccination,s146,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-147_pre-vax,VIDRL,human,61,Female,2026-04,61.0,Flucelvax group: 0 days post-vaccination,s147,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-147_post-vax,VIDRL,human,61,Female,2026-05,61.0,Flucelvax group: 21 days post-vaccination,s147,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-148_pre-vax,VIDRL,human,59,Male,2026-04,59.0,Flucelvax group: 0 days post-vaccination,s148,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-148_post-vax,VIDRL,human,59,Male,2026-05,59.0,Flucelvax group: 21 days post-vaccination,s148,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-149_pre-vax,VIDRL,human,51,Female,2026-04,51.0,Flucelvax group: 0 days post-vaccination,s149,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-149_post-vax,VIDRL,human,51,Female,2026-05,51.0,Flucelvax group: 22 days post-vaccination,s149,post,adult-cell,22.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-150_pre-vax,VIDRL,human,48,Female,2026-04,48.0,Flucelvax group: 0 days post-vaccination,s150,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-150_post-vax,VIDRL,human,48,Female,2026-05,48.0,Flucelvax group: 21 days post-vaccination,s150,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-151_pre-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 0 days post-vaccination,s151,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-151_post-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 21 days post-vaccination,s151,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-152_pre-vax,VIDRL,human,53,Male,2026-05,53.0,Flucelvax group: 0 days post-vaccination,s152,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-152_post-vax,VIDRL,human,53,Male,2026-05,53.0,Flucelvax group: 21 days post-vaccination,s152,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-153_pre-vax,VIDRL,human,30,Female,2026-05,30.0,Flucelvax group: 0 days post-vaccination,s153,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-153_post-vax,VIDRL,human,30,Female,2026-05,30.0,Flucelvax group: 21 days post-vaccination,s153,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-154_pre-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 0 days post-vaccination,s154,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-154_post-vax,VIDRL,human,49,Female,2026-05,49.0,Flucelvax group: 21 days post-vaccination,s154,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-155_pre-vax,VIDRL,human,44,Female,2026-05,44.0,Flucelvax group: 0 days post-vaccination,s155,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-155_post-vax,VIDRL,human,44,Female,2026-05,44.0,Flucelvax group: 21 days post-vaccination,s155,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-156_pre-vax,VIDRL,human,39,Male,2026-05,39.0,Flucelvax group: 0 days post-vaccination,s156,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-156_post-vax,VIDRL,human,39,Male,2026-05,39.0,Flucelvax group: 22 days post-vaccination,s156,post,adult-cell,22.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-157_pre-vax,VIDRL,human,50,Female,2026-05,50.0,Flucelvax group: 0 days post-vaccination,s157,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-157_post-vax,VIDRL,human,50,Female,2026-05,50.0,Flucelvax group: 22 days post-vaccination,s157,post,adult-cell,22.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-158_pre-vax,VIDRL,human,37,Female,2026-05,37.0,Flucelvax group: 0 days post-vaccination,s158,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-158_post-vax,VIDRL,human,37,Female,2026-05,37.0,Flucelvax group: 21 days post-vaccination,s158,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-159_pre-vax,VIDRL,human,45,Female,2026-05,45.0,Flucelvax group: 0 days post-vaccination,s159,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-159_post-vax,VIDRL,human,45,Female,2026-05,45.0,Flucelvax group: 21 days post-vaccination,s159,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-160_pre-vax,VIDRL,human,42,Female,2026-05,42.0,Flucelvax group: 0 days post-vaccination,s160,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-160_post-vax,VIDRL,human,42,Female,2026-05,42.0,Flucelvax group: 23 days post-vaccination,s160,post,adult-cell,23.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-161_pre-vax,VIDRL,human,57,Male,2026-05,57.0,Flucelvax group: 0 days post-vaccination,s161,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-161_post-vax,VIDRL,human,57,Male,2026-06,57.0,Flucelvax group: 24 days post-vaccination,s161,post,adult-cell,24.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-162_pre-vax,VIDRL,human,55,Male,2026-05,55.0,Flucelvax group: 0 days post-vaccination,s162,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-162_post-vax,VIDRL,human,55,Male,2026-06,55.0,Flucelvax group: 21 days post-vaccination,s162,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-163_pre-vax,VIDRL,human,59,Female,2026-05,59.0,Flucelvax group: 0 days post-vaccination,s163,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-163_post-vax,VIDRL,human,59,Female,2026-06,59.0,Flucelvax group: 21 days post-vaccination,s163,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-164_pre-vax,VIDRL,human,51,Female,2026-05,51.0,Flucelvax group: 0 days post-vaccination,s164,pre,adult-cell,0.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-164_post-vax,VIDRL,human,51,Female,2026-06,51.0,Flucelvax group: 21 days post-vaccination,s164,post,adult-cell,21.0,"cohort 001, arm adult-cell"
+flu-seqneut-2026-VIDRL-165_pre-vax,VIDRL,human,70,Female,2026-04,70.0,Fluad group: 0 days post-vaccination,s165,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-165_post-vax,VIDRL,human,70,Female,2026-05,70.0,Fluad group: 21 days post-vaccination,s165,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-166_pre-vax,VIDRL,human,75,Female,2026-04,75.0,Fluad group: 0 days post-vaccination,s166,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-166_post-vax,VIDRL,human,75,Female,2026-05,75.0,Fluad group: 21 days post-vaccination,s166,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-167_pre-vax,VIDRL,human,65,Female,2026-04,65.0,Fluad group: 0 days post-vaccination,s167,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-167_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad group: 21 days post-vaccination,s167,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-168_pre-vax,VIDRL,human,71,Female,2026-04,71.0,Fluad group: 0 days post-vaccination,s168,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-168_post-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad group: 21 days post-vaccination,s168,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-169_pre-vax,VIDRL,human,72,Male,2026-04,72.0,Fluad group: 0 days post-vaccination,s169,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-169_post-vax,VIDRL,human,72,Male,2026-05,72.0,Fluad group: 21 days post-vaccination,s169,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-170_pre-vax,VIDRL,human,67,Male,2026-04,67.0,Fluad group: 0 days post-vaccination,s170,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-170_post-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad group: 20 days post-vaccination,s170,post,elderly-egg,20.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-171_pre-vax,VIDRL,human,67,Male,2026-04,67.0,Fluad group: 0 days post-vaccination,s171,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-171_post-vax,VIDRL,human,67,Male,2026-05,67.0,Fluad group: 21 days post-vaccination,s171,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-172_pre-vax,VIDRL,human,86,Female,2026-04,86.0,Fluad group: 0 days post-vaccination,s172,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-172_post-vax,VIDRL,human,86,Female,2026-05,86.0,Fluad group: 21 days post-vaccination,s172,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-173_pre-vax,VIDRL,human,76,Female,2026-04,76.0,Fluad group: 0 days post-vaccination,s173,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-173_post-vax,VIDRL,human,76,Female,2026-05,76.0,Fluad group: 21 days post-vaccination,s173,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-174_pre-vax,VIDRL,human,73,Female,2026-04,73.0,Fluad group: 0 days post-vaccination,s174,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-174_post-vax,VIDRL,human,73,Female,2026-05,73.0,Fluad group: 21 days post-vaccination,s174,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-175_pre-vax,VIDRL,human,65,Female,2026-04,65.0,Fluad group: 0 days post-vaccination,s175,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-175_post-vax,VIDRL,human,65,Female,2026-05,65.0,Fluad group: 21 days post-vaccination,s175,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-176_pre-vax,VIDRL,human,70,Female,2026-04,70.0,Fluad group: 0 days post-vaccination,s176,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-176_post-vax,VIDRL,human,70,Female,2026-05,70.0,Fluad group: 21 days post-vaccination,s176,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-177_pre-vax,VIDRL,human,75,Male,2026-04,75.0,Fluad group: 0 days post-vaccination,s177,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-177_post-vax,VIDRL,human,75,Male,2026-05,75.0,Fluad group: 21 days post-vaccination,s177,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-178_pre-vax,VIDRL,human,69,Female,2026-04,69.0,Fluad group: 0 days post-vaccination,s178,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-178_post-vax,VIDRL,human,69,Female,2026-05,69.0,Fluad group: 21 days post-vaccination,s178,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-179_pre-vax,VIDRL,human,76,Female,2026-04,76.0,Fluad group: 0 days post-vaccination,s179,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-179_post-vax,VIDRL,human,76,Female,2026-05,76.0,Fluad group: 22 days post-vaccination,s179,post,elderly-egg,22.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-180_pre-vax,VIDRL,human,80,Male,2026-04,80.0,Fluad group: 0 days post-vaccination,s180,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-180_post-vax,VIDRL,human,80,Male,2026-05,80.0,Fluad group: 22 days post-vaccination,s180,post,elderly-egg,22.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-181_pre-vax,VIDRL,human,68,Female,2026-04,68.0,Fluad group: 0 days post-vaccination,s181,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-181_post-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad group: 21 days post-vaccination,s181,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-182_pre-vax,VIDRL,human,68,Male,2026-04,68.0,Fluad group: 0 days post-vaccination,s182,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-182_post-vax,VIDRL,human,68,Male,2026-05,68.0,Fluad group: 21 days post-vaccination,s182,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-183_pre-vax,VIDRL,human,79,Male,2026-04,79.0,Fluad group: 0 days post-vaccination,s183,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-183_post-vax,VIDRL,human,79,Male,2026-05,79.0,Fluad group: 20 days post-vaccination,s183,post,elderly-egg,20.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-184_pre-vax,VIDRL,human,67,Female,2026-04,67.0,Fluad group: 0 days post-vaccination,s184,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-184_post-vax,VIDRL,human,67,Female,2026-05,67.0,Fluad group: 17 days post-vaccination,s184,post,elderly-egg,17.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-185_pre-vax,VIDRL,human,72,Female,2026-04,72.0,Fluad group: 0 days post-vaccination,s185,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-185_post-vax,VIDRL,human,72,Female,2026-05,72.0,Fluad group: 21 days post-vaccination,s185,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-186_pre-vax,VIDRL,human,73,Female,2026-04,73.0,Fluad group: 0 days post-vaccination,s186,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-186_post-vax,VIDRL,human,73,Female,2026-05,73.0,Fluad group: 21 days post-vaccination,s186,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-187_pre-vax,VIDRL,human,78,Female,2026-04,78.0,Fluad group: 0 days post-vaccination,s187,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-187_post-vax,VIDRL,human,78,Female,2026-05,78.0,Fluad group: 21 days post-vaccination,s187,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-188_pre-vax,VIDRL,human,78,Female,2026-04,78.0,Fluad group: 0 days post-vaccination,s188,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-188_post-vax,VIDRL,human,78,Female,2026-05,78.0,Fluad group: 21 days post-vaccination,s188,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-189_pre-vax,VIDRL,human,82,Female,2026-04,82.0,Fluad group: 0 days post-vaccination,s189,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-189_post-vax,VIDRL,human,82,Female,2026-05,82.0,Fluad group: 21 days post-vaccination,s189,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-190_pre-vax,VIDRL,human,77,Male,2026-04,77.0,Fluad group: 0 days post-vaccination,s190,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-190_post-vax,VIDRL,human,77,Male,2026-05,77.0,Fluad group: 22 days post-vaccination,s190,post,elderly-egg,22.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-191_pre-vax,VIDRL,human,71,Female,2026-04,71.0,Fluad group: 0 days post-vaccination,s191,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-191_post-vax,VIDRL,human,71,Female,2026-05,71.0,Fluad group: 21 days post-vaccination,s191,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-192_pre-vax,VIDRL,human,68,Female,2026-04,68.0,Fluad group: 0 days post-vaccination,s192,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-192_post-vax,VIDRL,human,68,Female,2026-05,68.0,Fluad group: 21 days post-vaccination,s192,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-193_pre-vax,VIDRL,human,69,Female,2026-05,69.0,Fluad group: 0 days post-vaccination,s193,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-193_post-vax,VIDRL,human,69,Female,2026-05,69.0,Fluad group: 21 days post-vaccination,s193,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-194_pre-vax,VIDRL,human,74,Female,2026-05,74.0,Fluad group: 0 days post-vaccination,s194,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-194_post-vax,VIDRL,human,74,Female,2026-06,74.0,Fluad group: 21 days post-vaccination,s194,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-195_pre-vax,VIDRL,human,76,Male,2026-05,76.0,Fluad group: 0 days post-vaccination,s195,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-195_post-vax,VIDRL,human,76,Male,2026-06,76.0,Fluad group: 21 days post-vaccination,s195,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-196_pre-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad group: 0 days post-vaccination,s196,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-196_post-vax,VIDRL,human,69,Male,2026-05,69.0,Fluad group: 17 days post-vaccination,s196,post,elderly-egg,17.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-197_pre-vax,VIDRL,human,66,Female,2026-05,66.0,Fluad group: 0 days post-vaccination,s197,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-197_post-vax,VIDRL,human,66,Female,2026-06,66.0,Fluad group: 21 days post-vaccination,s197,post,elderly-egg,21.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-198_pre-vax,VIDRL,human,67,Female,2026-05,67.0,Fluad group: 0 days post-vaccination,s198,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-198_post-vax,VIDRL,human,67,Female,2026-06,67.0,Fluad group: 23 days post-vaccination,s198,post,elderly-egg,23.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-199_pre-vax,VIDRL,human,71,Male,2026-05,71.0,Fluad group: 0 days post-vaccination,s199,pre,elderly-egg,0.0,"cohort 001, arm elderly-egg"
+flu-seqneut-2026-VIDRL-199_post-vax,VIDRL,human,71,Male,2026-06,71.0,Fluad group: 22 days post-vaccination,s199,post,elderly-egg,22.0,"cohort 001, arm elderly-egg"

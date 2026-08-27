@@ -103,6 +103,8 @@ rule plot_titer_summaries:
         sera_csv=rules.process_final_titer_data.output.sera,
         sera_multicohort_csv=rules.process_final_titer_data.output.sera_multicohort,
         viruses_csv=rules.process_final_titer_data.output.viruses,
+        # imported by the script, so declared here or edits to it trigger no rerun
+        module="scripts/titer_charts.py",
         # one tree per subtype, in the same order as `params.subtypes`
         trees=[
             config["nextstrain-prot-titers-tree_config"][subtype]["auspice_json"]

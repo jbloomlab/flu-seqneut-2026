@@ -105,9 +105,8 @@ process_final_titer_data:
   titer_cutoffs: *titer_cutoffs  # report fraction below cutoff
   # Cohorts each serum is assigned to beyond "All" and the serum's own `cohort`. Each
   # entry lists sera metadata columns whose values are joined with the serum's `cohort`
-  # by "_" to name a cohort, so `[vaccine_cohort, pre_or_post_vaccine]` puts a VIDRL
-  # serum in "VIDRL_adult-egg_pre-vaccine". A serum joins only if it has a value in
-  # every column of the entry, which leaves out sera whose cohort does not record them.
+  # by "_" to name a cohort. A serum joins only if it has a value in every column of
+  # the entry.
   multicohorts:
     - [vaccine_cohort, pre_or_post_vaccine]
 

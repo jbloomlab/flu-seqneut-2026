@@ -136,7 +136,7 @@ default_titer_plot_subtype_params: &default_titer_plot_subtype_params
 # Parameters for titer summary plots
 plot_titer_summaries_params:
   titer_cutoff: 140  # initial slider value for fraction below cutoff
-  facet_size: 150  # width of each cohort facet column
+  facet_size: 150  # height of each cohort facet row
   initial_cohorts: [All]  # cohorts to initially show in selectable legend, null for all
   subtype_params:  # settings per subtype
     H1N1:

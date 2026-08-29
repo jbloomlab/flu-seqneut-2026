@@ -29,7 +29,6 @@ recent_vaccine_strains = snakemake.params.recent_vaccine_strains
 circulating_strain_type = snakemake.params.circulating_strain_type
 plot_titer_summaries_params = snakemake.params.plot_titer_summaries_params
 subtypes = snakemake.params.subtypes
-facet_orientation = snakemake.params.facet_orientation
 
 subtype_params = plot_titer_summaries_params["subtype_params"]
 
@@ -46,8 +45,6 @@ charts_to_make = [
 ]
 
 STRAIN_SETS = titer_charts.strain_sets(circulating_strain_type)
-
-lay = titer_charts.layout(facet_orientation, plot_titer_summaries_params["facet_size"])
 
 titers, metadata, sera_multicohort, viruses = titer_charts.load_and_validate(
     snakemake.input.titers_csv,
@@ -281,7 +278,6 @@ def median_points(base, value):
     return titer_charts.median_points(
         base,
         value,
-        lay,
         groupby=virus_groupby,
         aggregate_extras=FOLD_CHANGE_AGGREGATE_EXTRAS if fold_change else None,
         tooltip_extras=FOLD_CHANGE_TOOLTIP_EXTRAS if fold_change else (),
@@ -296,7 +292,7 @@ def serum_lines(base, value):
         else []
     )
     return titer_charts.serum_lines(
-        base, value, lay, tooltip_extras=[*titer_tooltip, *SERUM_TOOLTIPS]
+        base, value, tooltip_extras=[*titer_tooltip, *SERUM_TOOLTIPS]
     )
 
 
@@ -306,7 +302,6 @@ def interquartile_range(base, value):
     return titer_charts.interquartile_range(
         base,
         value,
-        lay,
         groupby=["axis_label"],
         aggregate_extras=FOLD_CHANGE_AGGREGATE_EXTRAS if fold_change else None,
         tooltip_extras=FOLD_CHANGE_TOOLTIP_EXTRAS if fold_change else (),
@@ -327,11 +322,7 @@ def frac_below_cutoff(base):
             frac_below_cutoff=alt.datum["n_below_cutoff"] / alt.datum["n_total"]
         )
         .encode(
-            **{
-                lay.titer_channel: lay.TiterChannel(
-                    "frac_below_cutoff:Q", title="fraction below cutoff"
-                )
-            },
+            y=alt.Y("frac_below_cutoff:Q", title="fraction below cutoff"),
             tooltip=[
                 *titer_charts.virus_tooltips,
                 alt.Tooltip("frac_below_cutoff:Q", format=".2f"),
@@ -369,15 +360,15 @@ def reference_line(chart_titers, ref_axis_label, chart_type, value):
                 ref_value=alt.datum["n_below_cutoff"] / alt.datum["n_total"]
             )
         )
-        encoding = lay.TiterChannel("ref_value:Q", title="fraction below cutoff")
+        encoding = alt.Y("ref_value:Q", title="fraction below cutoff")
     else:
         line = line.transform_aggregate(ref_value=f"median({value['field']})")
-        encoding = lay.TiterChannel(
+        encoding = alt.Y(
             "ref_value:Q", title=value["title"], scale=titer_charts.titer_scale
         )
     # a burnt orange dark enough to read over the interquartile band, and far enough
     # from the red of a hovered point not to be mistaken for one
-    return line.encode(**{lay.titer_channel: encoding}).mark_rule(
+    return line.encode(y=encoding).mark_rule(
         color="#D95F02", strokeWidth=2, strokeDash=[4, 3]
     )
 
@@ -461,7 +452,7 @@ def facet_and_add_lookups(
 
     """
     return (
-        chart.facet({lay.facet_channel: lay.FacetChannel("cohort_n:N", title=None)})
+        chart.facet(row=alt.Row("cohort_n:N", title=None))
         .transform_lookup(
             lookup="serum",
             from_=alt.LookupData(
@@ -531,7 +522,7 @@ for (subtype, strain_set), records in itertools.groupby(
     base = titer_charts.base_chart(
         chart_titers,
         strain_order,
-        lay,
+        plot_titer_summaries_params["facet_size"],
         [
             titer_charts.virus_selection,
             titer_charts.serum_selection,
@@ -569,7 +560,6 @@ for (subtype, strain_set), records in itertools.groupby(
             chart,
             title,
             subtitle,
-            lay,
             above=[median_titer_readout(min_median_slider, max_median_slider)],
             below=[cohort_legend],
         )

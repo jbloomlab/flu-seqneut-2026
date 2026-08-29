@@ -20,3 +20,12 @@ range, depending on what the cohort released. Both forms are accepted and docume
 `README.md`, and `scripts/aggregate_sera_metadata.py` parses them into `age_numeric`.
 This is a deliberate exception to the standards' "one column, one job" rule: do not flag
 it, and do not propose splitting it into separate bound columns.
+
+## Testing rules without re-running the whole pipeline
+
+A full run takes many hours, so when testing a new or changed rule, target only the
+output files that rule makes and pass `--rerun-triggers mtime`. Check the job count with
+`-n` first and stop if the dry run queues upstream rules such as `count_barcodes`.
+
+Never use `-F` or `--forceall`: they force the entire upstream DAG, and a run killed
+partway through leaves outputs deleted and Snakemake metadata marked incomplete.

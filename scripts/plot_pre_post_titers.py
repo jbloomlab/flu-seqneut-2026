@@ -26,7 +26,6 @@ recent_vaccine_strains = snakemake.params.recent_vaccine_strains
 circulating_strain_type = snakemake.params.circulating_strain_type
 plot_titer_summaries_params = snakemake.params.plot_titer_summaries_params
 subtypes = snakemake.params.subtypes
-facet_orientation = snakemake.params.facet_orientation
 pre_post_config = snakemake.params.pre_post_config
 
 subtype_params = plot_titer_summaries_params["subtype_params"]
@@ -48,8 +47,6 @@ STRAIN_SETS = titer_charts.strain_sets(circulating_strain_type)
 # the two sera compared, in the order they are drawn and colored; the fold change is of
 # the second relative to the first
 CONDITIONS = ["pre", "post"]
-
-lay = titer_charts.layout(facet_orientation, plot_titer_summaries_params["facet_size"])
 
 titers, metadata, sera_multicohort, viruses = titer_charts.load_and_validate(
     snakemake.input.titers_csv,
@@ -167,11 +164,7 @@ condition_color = alt.Color(
     "condition:N",
     title="vaccination",
     scale=alt.Scale(domain=CONDITIONS, range=[colors[c] for c in CONDITIONS]),
-    legend=alt.Legend(
-        orient=lay.legend_orient,
-        # stacked when beside the chart, in a row when beneath it
-        columns=1 if lay.legend_orient == "left" else len(CONDITIONS),
-    ),
+    legend=alt.Legend(orient="left", columns=1),
 )
 
 # sera fields looked up per serum; the lookup frame is cut to these so no chart embeds
@@ -222,7 +215,6 @@ def overlay_median_points(base):
     return titer_charts.median_points(
         base,
         titer_charts.VALUE_TITER,
-        lay,
         groupby=[*COMPARISON_GROUPBY, "condition"],
         color=condition_color,
     )
@@ -233,7 +225,6 @@ def overlay_serum_lines(base):
     return titer_charts.serum_lines(
         base,
         titer_charts.VALUE_TITER,
-        lay,
         tooltip_extras=OVERLAY_SERUM_TOOLTIPS,
         color=condition_color,
     )
@@ -244,7 +235,6 @@ def overlay_interquartile_range(base):
     return titer_charts.interquartile_range(
         base,
         titer_charts.VALUE_TITER,
-        lay,
         groupby=["axis_label", "condition"],
         color=condition_color,
     )
@@ -255,7 +245,6 @@ def fold_change_median_points(base):
     return titer_charts.median_points(
         base,
         VALUE_FOLD_CHANGE,
-        lay,
         groupby=COMPARISON_GROUPBY,
         aggregate_extras=FOLD_CHANGE_AGGREGATE_EXTRAS,
         tooltip_extras=FOLD_CHANGE_TOOLTIP_EXTRAS,
@@ -265,7 +254,7 @@ def fold_change_median_points(base):
 def fold_change_serum_lines(base):
     """One line per subject, keyed on its post-vaccination serum."""
     return titer_charts.serum_lines(
-        base, VALUE_FOLD_CHANGE, lay, tooltip_extras=FOLD_CHANGE_SERUM_TOOLTIPS
+        base, VALUE_FOLD_CHANGE, tooltip_extras=FOLD_CHANGE_SERUM_TOOLTIPS
     )
 
 
@@ -274,7 +263,6 @@ def fold_change_interquartile_range(base):
     return titer_charts.interquartile_range(
         base,
         VALUE_FOLD_CHANGE,
-        lay,
         groupby=["axis_label"],
         aggregate_extras=FOLD_CHANGE_AGGREGATE_EXTRAS,
         tooltip_extras=FOLD_CHANGE_TOOLTIP_EXTRAS,
@@ -291,7 +279,7 @@ def no_change_line(chart_data):
     """
     return (
         alt.Chart(chart_data)
-        .encode(**{lay.titer_channel: alt.datum(1)})
+        .encode(y=alt.datum(1))
         .mark_rule(color="#888888", strokeWidth=1, strokeDash=[4, 3])
     )
 
@@ -435,7 +423,7 @@ for (subtype, strain_set), records in itertools.groupby(
         fold_change: titer_charts.base_chart(
             fold_change_data if fold_change else overlay_data,
             strain_order,
-            lay,
+            plot_titer_summaries_params["facet_size"],
             [
                 titer_charts.virus_selection,
                 titer_charts.serum_selection,
@@ -456,9 +444,7 @@ for (subtype, strain_set), records in itertools.groupby(
             layer += no_change_line(fold_change_data)
             subtitle += "; dashed gray line marks no change in titer"
         chart = (
-            layer.facet(
-                {lay.facet_channel: lay.FacetChannel("comparison_n:N", title=None)}
-            )
+            layer.facet(row=alt.Row("comparison_n:N", title=None))
             .transform_lookup(
                 lookup="serum",
                 from_=alt.LookupData(
@@ -496,7 +482,7 @@ for (subtype, strain_set), records in itertools.groupby(
                 record["color_label"],
             )
             title += f", tree colored by {record['color_label']}"
-        chart = titer_charts.finalize(chart, title, subtitle, lay)
+        chart = titer_charts.finalize(chart, title, subtitle)
 
         print(f"Saving to {record['path']!r}")
         chart.save(record["path"])

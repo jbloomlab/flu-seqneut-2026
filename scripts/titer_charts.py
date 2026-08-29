@@ -1,16 +1,13 @@
 """Shared machinery for the interactive Altair charts of the final titers.
 
-Holds what those charts have in common: reading and validating the final titer data, the
-channels that depend on the facet orientation, slicing the data to the strains one chart
-draws, the marks the chart types are built from, aligning a tree to the strain axis, and
-the styling of a finished chart.
+Holds what those charts have in common: reading and validating the final titer data,
+slicing the data to the strains one chart draws, the marks the chart types are built
+from, aligning a tree to the strain axis, and the styling of a finished chart.
 
 What each script keeps for itself is which sera a chart draws, what it facets by, and
 the chart types it assembles from these marks.
 
 """
-
-import dataclasses
 
 import altair as alt
 import pandas as pd
@@ -224,60 +221,6 @@ def age_sliders(metadata):
     )
 
 
-@dataclasses.dataclass(frozen=True)
-class Layout:
-    """The channels and panel size implied by which way the facets run.
-
-    The strain axis is on y when facets run in columns, and on x when they run in rows.
-    Every chart encodes through these rather than naming `alt.X` / `alt.Y` directly, or
-    it draws correctly in only one orientation.
-
-    """
-
-    StrainChannel: type
-    TiterChannel: type
-    FacetChannel: type
-    strain_channel: str
-    titer_channel: str
-    facet_channel: str
-    panel_size: dict
-    header_label_orient: str
-    # side of the chart the tree does not occupy, and so where a legend on the chart sits
-    # clear of the gap between the two: `add_tree` puts the tree on the side the strain
-    # axis runs along, to the left when facets run in columns and beneath when in rows
-    legend_orient: str
-
-
-def layout(facet_orientation, facet_size):
-    """Return the `Layout` for an orientation, sizing each panel for `facet_size`."""
-    if facet_orientation == "vertical":
-        return Layout(
-            StrainChannel=alt.Y,
-            TiterChannel=alt.X,
-            FacetChannel=alt.Column,
-            strain_channel="y",
-            titer_channel="x",
-            facet_channel="column",
-            panel_size={"height": alt.Step(STRAIN_STEP), "width": facet_size},
-            header_label_orient="top",
-            legend_orient="bottom",
-        )
-    elif facet_orientation == "horizontal":
-        return Layout(
-            StrainChannel=alt.X,
-            TiterChannel=alt.Y,
-            FacetChannel=alt.Row,
-            strain_channel="x",
-            titer_channel="y",
-            facet_channel="row",
-            panel_size={"width": alt.Step(STRAIN_STEP), "height": facet_size},
-            header_label_orient="right",
-            legend_orient="left",
-        )
-    else:
-        raise ValueError(f"invalid {facet_orientation=}")
-
-
 def slice_chart_data(
     titers, viruses, subtype, strain_set, strain_types, subtype_params
 ):
@@ -375,7 +318,7 @@ def slice_chart_data(
     )
 
 
-def base_chart(chart_titers, strain_order, lay, params):
+def base_chart(chart_titers, strain_order, facet_size, params):
     """Return the chart every chart type is built from, sized one step per strain.
 
     `params` are declared here because a param may be declared only once per spec, so
@@ -386,21 +329,19 @@ def base_chart(chart_titers, strain_order, lay, params):
         alt.Chart(chart_titers)
         .add_params(*params)
         .encode(
-            **{
-                lay.strain_channel: lay.StrainChannel(
-                    "axis_label",
-                    sort=strain_order,
-                    title=None,
-                    axis=alt.Axis(labelLimit=500),
-                )
-            }
+            x=alt.X(
+                "axis_label",
+                sort=strain_order,
+                title=None,
+                axis=alt.Axis(labelLimit=500),
+            )
         )
-        .properties(**lay.panel_size)
+        .properties(width=alt.Step(STRAIN_STEP), height=facet_size)
     )
 
 
 def median_points(
-    base, value, lay, *, groupby, aggregate_extras=None, tooltip_extras=(), color=None
+    base, value, *, groupby, aggregate_extras=None, tooltip_extras=(), color=None
 ):
     """Median of the plotted value per strain, as points.
 
@@ -415,11 +356,7 @@ def median_points(
     return (
         base.transform_aggregate(**aggregates, groupby=groupby)
         .encode(
-            **{
-                lay.titer_channel: lay.TiterChannel(
-                    f"median_{field}:Q", title=value["title"], scale=titer_scale
-                )
-            },
+            y=alt.Y(f"median_{field}:Q", title=value["title"], scale=titer_scale),
             tooltip=[
                 *virus_tooltips,
                 alt.Tooltip(f"median_{field}:Q", format=value["format"]),
@@ -438,15 +375,11 @@ def median_points(
     )
 
 
-def serum_lines(base, value, lay, *, tooltip_extras=(), color=None):
+def serum_lines(base, value, *, tooltip_extras=(), color=None):
     """One line per serum across the strains, thickened where hovered."""
     field = value["field"]
     return base.encode(
-        **{
-            lay.titer_channel: lay.TiterChannel(
-                f"{field}:Q", title=value["title"], scale=titer_scale
-            )
-        },
+        y=alt.Y(f"{field}:Q", title=value["title"], scale=titer_scale),
         detail=alt.Detail("serum"),
         tooltip=[
             *virus_tooltips,
@@ -461,7 +394,7 @@ def serum_lines(base, value, lay, *, tooltip_extras=(), color=None):
 
 
 def interquartile_range(
-    base, value, lay, *, groupby, aggregate_extras=None, tooltip_extras=(), color=None
+    base, value, *, groupby, aggregate_extras=None, tooltip_extras=(), color=None
 ):
     """Shaded interquartile range of the plotted value for each strain."""
     field = value["field"]
@@ -475,11 +408,7 @@ def interquartile_range(
     return (
         base.transform_joinaggregate(**aggregates, groupby=groupby)
         .encode(
-            **{
-                lay.titer_channel: lay.TiterChannel(
-                    f"{field}:Q", title=value["title"], scale=titer_scale
-                )
-            },
+            y=alt.Y(f"{field}:Q", title=value["title"], scale=titer_scale),
             tooltip=[*virus_tooltips, *tooltips, *tooltip_extras],
             **({} if color is None else {"color": color}),
         )
@@ -512,7 +441,7 @@ def add_tree(chart, tree_json, params, color_label):
     )
 
 
-def finalize(chart, title, subtitle, lay, *, above=(), below=()):
+def finalize(chart, title, subtitle, *, above=(), below=()):
     """Stack `above` and `below` around `chart`, and style it.
 
     Must run after `add_tree`, which hoists the top-level attributes off the chart it is
@@ -530,7 +459,7 @@ def finalize(chart, title, subtitle, lay, *, above=(), below=()):
         )
         .configure_header(
             title=None,
-            labelOrient=lay.header_label_orient,
+            labelOrient="right",
             labelFontSize=13,
             labelPadding=2,
         )

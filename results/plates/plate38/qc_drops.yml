@@ -1,0 +1,6 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Rhode_Island/11/2026_H1N1 D2: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates: {}
+serum_replicates: {}

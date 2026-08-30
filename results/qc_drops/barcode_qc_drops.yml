@@ -83,6 +83,7 @@ A/Andalucia/PMC-01495/2025_H1N1:
     plate22 G7: max_frac_infectivity_per_viral_barcode_well
     plate22 G8: max_frac_infectivity_per_viral_barcode_well
     plate23 C5: max_frac_infectivity_per_viral_barcode_well
+    plate32 E8: max_frac_infectivity_per_viral_barcode_well
     plate9 H1: max_frac_infectivity_per_viral_barcode_well
 A/Arizona/40/2026_H1N1:
   barcode_serum_replicates:
@@ -229,6 +230,8 @@ A/Badajoz/18811358/2026_H3N2:
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
     plate24 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_post-vax: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_post-vax: goodness_of_fit
     plate8 flu-seqneut-2026-UWMC-018: goodness_of_fit
   barcode_wells:
     plate21 G4: max_frac_infectivity_per_viral_barcode_well
@@ -305,6 +308,7 @@ A/Bangkok/P2390/2025_H3N2:
     plate26 flu-seqneut-2026-VIDRL-020_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate33 flu-seqneut-2026-VIDRL-085_pre-vax: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
   barcode_wells:
     plate19 E3: max_frac_infectivity_per_viral_barcode_well
@@ -360,6 +364,8 @@ A/Bangkok/P2391/2025_H3N2:
     plate26 flu-seqneut-2026-VIDRL-019_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-027_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+    plate34 flu-seqneut-2026-CTS-058: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-007_pre-vax: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-007: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-009: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
@@ -649,6 +655,7 @@ A/California/GKISBBBH79910/2026_H3N2:
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-032: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
   barcode_wells:
@@ -707,6 +714,7 @@ A/California/NIRC-IS-1059/2026_H3N2:
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-007_pre-vax: goodness_of_fit
   barcode_wells:
     plate22 G1: max_frac_infectivity_per_viral_barcode_well
     plate22 G10: max_frac_infectivity_per_viral_barcode_well
@@ -789,6 +797,7 @@ A/California/NIRC-IS-1356/2025_H1N1:
     plate22 G8: max_frac_infectivity_per_viral_barcode_well
     plate22 H1: max_frac_infectivity_per_viral_barcode_well
     plate22 H9: max_frac_infectivity_per_viral_barcode_well
+    plate33 G7: max_frac_infectivity_per_viral_barcode_well
     plate9 G7: max_frac_infectivity_per_viral_barcode_well
 A/Castellon/VAHNSI_02_02400/2025_H3N2:
   barcode_serum_replicates:
@@ -1111,6 +1120,7 @@ A/Denmark/4774/2025_H1N1:
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-091_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-011: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
@@ -1190,6 +1200,7 @@ A/District_Of_Columbia/27/2023_H3N2:
     plate22 H1: max_frac_infectivity_per_viral_barcode_well
     plate22 H2: max_frac_infectivity_per_viral_barcode_well
     plate22 H9: max_frac_infectivity_per_viral_barcode_well
+    plate32 G2: max_frac_infectivity_per_viral_barcode_well
 A/Distrito_Federal/250106000728/2025_H3N2:
   barcode_serum_replicates:
     plate10 flu-seqneut-2026-SCH-011: goodness_of_fit
@@ -1418,6 +1429,8 @@ A/France/GES-IPP01077/2026_H3N2:
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate26 flu-seqneut-2026-VIDRL-020_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_post-vax: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-018: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
   barcode_wells:
@@ -1516,6 +1529,7 @@ A/France/HDF-RELAB-IPP00300/2026_H3N2:
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-032: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-011: goodness_of_fit
     plate9 flu-seqneut-2026-UWMC-036: goodness_of_fit
@@ -1524,6 +1538,7 @@ A/France/HDF-RELAB-IPP00300/2026_H3N2:
     plate2 G6: max_frac_infectivity_per_viral_barcode_well
     plate21 H12: min_no_serum_count_per_viral_barcode_well
     plate22 G5: max_frac_infectivity_per_viral_barcode_well
+    plate36 H5: max_frac_infectivity_per_viral_barcode_well
 A/France/HDF-RELAB-IPP00303/2026_H3N2:
   barcode_serum_replicates:
     plate1 flu-seqneut-2026-SCH-001: goodness_of_fit
@@ -1686,6 +1701,7 @@ A/France/OCC-HCL026013263701/2026_H3N2:
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
     plate28 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-013: goodness_of_fit
   barcode_wells:
     plate13 H5: max_frac_infectivity_per_viral_barcode_well
@@ -1800,6 +1816,7 @@ A/Galicia/GA-CHUAC-612/2025_H1N1:
     plate24 flu-seqneut-2026-VIDRL-010_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-032: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-021: goodness_of_fit
   barcode_wells:
     plate1 G3: max_frac_infectivity_per_viral_barcode_well
@@ -1822,6 +1839,10 @@ A/Galicia/GA-CHUAC-612/2025_H1N1:
     plate22 H2: max_frac_infectivity_per_viral_barcode_well
     plate23 F3: max_frac_infectivity_per_viral_barcode_well
     plate23 F5: max_frac_infectivity_per_viral_barcode_well
+    plate34 F2: max_frac_infectivity_per_viral_barcode_well
+    plate34 F9: max_frac_infectivity_per_viral_barcode_well
+    plate35 E9: max_frac_infectivity_per_viral_barcode_well
+    plate36 H5: max_frac_infectivity_per_viral_barcode_well
     plate8 D11: max_frac_infectivity_per_viral_barcode_well
     plate8 H11: max_frac_infectivity_per_viral_barcode_well
 A/Germany/LRMC_0104/2025_H3N2:
@@ -1847,6 +1868,7 @@ A/Germany/LRMC_0104/2025_H3N2:
     plate23 flu-seqneut-2026-CTS-049: goodness_of_fit
     plate23 flu-seqneut-2026-VIDRL-002_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-UWMC-004: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-013: goodness_of_fit
@@ -1937,6 +1959,7 @@ A/Hawaii/ISC-1140/2025_H1N1:
     plate16 C7: max_frac_infectivity_per_viral_barcode_well
     plate2 G4: max_frac_infectivity_per_viral_barcode_well
     plate21 G2: max_frac_infectivity_per_viral_barcode_well
+    plate36 G5: max_frac_infectivity_per_viral_barcode_well
 A/Hessen/18/2026_H1N1:
   barcode_serum_replicates:
     plate1 flu-seqneut-2026-SCH-006: goodness_of_fit
@@ -2045,6 +2068,7 @@ A/Kentucky/80/2025_H1N1:
     plate22 G4: max_frac_infectivity_per_viral_barcode_well
     plate22 G5: max_frac_infectivity_per_viral_barcode_well
     plate22 G7: max_frac_infectivity_per_viral_barcode_well
+    plate36 H5: max_frac_infectivity_per_viral_barcode_well
 A/Lisboa/216/2023_H3N2:
   barcode_serum_replicates:
     plate1 flu-seqneut-2026-SCH-001: goodness_of_fit
@@ -2069,6 +2093,7 @@ A/Lisboa/216/2023_H3N2:
     plate26 flu-seqneut-2026-VIDRL-016_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-005: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-009: goodness_of_fit
@@ -2108,11 +2133,11 @@ A/Luxembourg/LNS9132577/2026_H3N2:
     plate22 flu-seqneut-2026-CTS-045: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
-    plate23 flu-seqneut-2026-VIDRL-004_post-vax: 
-      min_dilutions_per_barcode_serum_replicate
+    plate23 flu-seqneut-2026-VIDRL-004_post-vax: min_dilutions_per_barcode_serum_replicate
     plate24 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
   barcode_wells:
@@ -2148,6 +2173,7 @@ A/Maine/25/2026_H1N1:
     plate22 flu-seqneut-2026-CTS-045: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
+    plate32 flu-seqneut-2026-VIDRL-037_pre-vax: goodness_of_fit
   barcode_wells:
     plate10 F4: max_frac_infectivity_per_viral_barcode_well
     plate22 G10: max_frac_infectivity_per_viral_barcode_well
@@ -2185,6 +2211,7 @@ A/Malaysia/IMR/SARI/2406/2025_H3N2:
     plate27 flu-seqneut-2026-VIDRL-022_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
   barcode_wells:
@@ -2218,6 +2245,7 @@ A/Massachusetts/18/2022_H3N2:
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-013: goodness_of_fit
   barcode_wells:
     plate22 G10: max_frac_infectivity_per_viral_barcode_well
@@ -2255,6 +2283,7 @@ A/Massachusetts/ISC-1856/2025_H3N2:
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_post-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate4 flu-seqneut-2026-UWMC-004: goodness_of_fit
     plate7 flu-seqneut-2026-UWMC-014: goodness_of_fit
@@ -2276,6 +2305,7 @@ A/Massachusetts/ISC-1856/2025_H3N2:
     plate22 H6: max_frac_infectivity_per_viral_barcode_well
     plate22 H8: max_frac_infectivity_per_viral_barcode_well
     plate22 H9: max_frac_infectivity_per_viral_barcode_well
+    plate32 H7: max_frac_infectivity_per_viral_barcode_well
 A/Mauritius/26000203/2026_H1N1:
   barcode_serum_replicates:
     plate2 flu-seqneut-2026-SCH-015: goodness_of_fit
@@ -2390,6 +2420,7 @@ A/Michigan/UM-10068134090/2025_H3N2:
     plate25 flu-seqneut-2026-VIDRL-014_pre-vax: goodness_of_fit
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate4 flu-seqneut-2026-UWMC-004: goodness_of_fit
     plate7 flu-seqneut-2026-UWMC-009: goodness_of_fit
@@ -2650,6 +2681,7 @@ A/Missouri/11/2025_cell_H1N1:
     plate22 G7: max_frac_infectivity_per_viral_barcode_well
     plate22 G8: max_frac_infectivity_per_viral_barcode_well
     plate22 H1: max_frac_infectivity_per_viral_barcode_well
+    plate32 E9: max_frac_infectivity_per_viral_barcode_well
 A/Missouri/11/2025_egg_H1N1:
   barcode_serum_replicates:
     plate2 flu-seqneut-2026-SCH-015: goodness_of_fit
@@ -2755,6 +2787,9 @@ A/Montana/51/2025_H3N2:
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-032: goodness_of_fit
+    plate32 flu-seqneut-2026-VIDRL-036_pre-vax: goodness_of_fit
+    plate32 flu-seqneut-2026-VIDRL-037_pre-vax: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_post-vax: goodness_of_fit
     plate4 flu-seqneut-2026-UWMC-004: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
   barcode_wells:
@@ -2837,6 +2872,8 @@ A/Navarra/260009/2025_H3N2:
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-032: goodness_of_fit
+    plate35 flu-seqneut-2026-VIDRL-002_pre-vax: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate4 flu-seqneut-2026-UWMC-004: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
@@ -2917,6 +2954,7 @@ A/Netherlands/10008/2026_H1N1:
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-032: goodness_of_fit
+    plate33 flu-seqneut-2026-VIDRL-085_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-036: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-013: goodness_of_fit
@@ -3053,6 +3091,7 @@ A/Netherlands/888/2026_H3N2:
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-032: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
   barcode_wells:
@@ -3069,6 +3108,7 @@ A/Netherlands/888/2026_H3N2:
     plate22 H2: max_frac_infectivity_per_viral_barcode_well
     plate22 H8: max_frac_infectivity_per_viral_barcode_well
     plate22 H9: max_frac_infectivity_per_viral_barcode_well
+    plate34 H2: max_frac_infectivity_per_viral_barcode_well
 A/Netherlands/968/2026_H3N2:
   barcode_serum_replicates:
     plate2 flu-seqneut-2026-SCH-015: goodness_of_fit
@@ -3182,6 +3222,7 @@ A/NordrheinWestfalen/54/2026_H3N2:
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
@@ -3258,8 +3299,8 @@ A/Norway/9556/2025_H1N1:
     plate22 flu-seqneut-2026-CTS-045: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
-    plate23 flu-seqneut-2026-VIDRL-004_post-vax: 
-      min_dilutions_per_barcode_serum_replicate
+    plate23 flu-seqneut-2026-VIDRL-004_post-vax: min_dilutions_per_barcode_serum_replicate
+    plate33 flu-seqneut-2026-VIDRL-088_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-036: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
   barcode_wells:
@@ -3354,6 +3395,7 @@ A/Ontario/PHL202550193/2025_H3N2:
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
   barcode_wells:
@@ -3497,6 +3539,7 @@ A/Peru/ANC-INS-062/2026_H3N2:
     plate24 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-009_pre-vax: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-009: goodness_of_fit
   barcode_wells:
     plate19 G3: max_frac_infectivity_per_viral_barcode_well
@@ -3541,6 +3584,7 @@ A/Rhode_Island/11/2026_H1N1:
     plate22 G6: max_frac_infectivity_per_viral_barcode_well
     plate22 G8: max_frac_infectivity_per_viral_barcode_well
     plate22 H2: max_frac_infectivity_per_viral_barcode_well
+    plate38 D2: max_frac_infectivity_per_viral_barcode_well
 A/RiodeJaneiro/331/2026_H3N2:
   barcode_serum_replicates:
     plate1 flu-seqneut-2026-SCH-001: goodness_of_fit
@@ -3630,6 +3674,7 @@ A/SantaCatarina/508/2026_H3N2:
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-026: goodness_of_fit
@@ -3666,6 +3711,8 @@ A/Saskatchewan/SKFLU477299/2025_H3N2:
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
     plate23 flu-seqneut-2026-VIDRL-002_pre-vax: goodness_of_fit
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-092_pre-vax: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-SCH-037: goodness_of_fit
     plate4 flu-seqneut-2026-UWMC-004: goodness_of_fit
     plate9 flu-seqneut-2026-UWMC-036: goodness_of_fit
@@ -3810,6 +3857,7 @@ A/Singapore/MOH0547/2024_H1N1:
     plate22 flu-seqneut-2026-CTS-039: goodness_of_fit
     plate22 flu-seqneut-2026-CTS-041: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
+    plate36 flu-seqneut-2026-VIDRL-009_pre-vax: goodness_of_fit
   barcode_wells:
     plate11 D11: max_frac_infectivity_per_viral_barcode_well
     plate13 D3: max_frac_infectivity_per_viral_barcode_well
@@ -3821,6 +3869,8 @@ A/Singapore/MOH0547/2024_H1N1:
     plate2 G6: max_frac_infectivity_per_viral_barcode_well
     plate22 G5: max_frac_infectivity_per_viral_barcode_well
     plate22 G6: max_frac_infectivity_per_viral_barcode_well
+    plate33 G1: max_frac_infectivity_per_viral_barcode_well
+    plate33 H4: max_frac_infectivity_per_viral_barcode_well
     plate5 G4: max_frac_infectivity_per_viral_barcode_well
     plate7 D4: max_frac_infectivity_per_viral_barcode_well
     plate7 F4: max_frac_infectivity_per_viral_barcode_well
@@ -3850,6 +3900,7 @@ A/Singapore/NTF0577/2025_H3N2:
     plate22 flu-seqneut-2026-CTS-047: min_dilutions_per_barcode_serum_replicate
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_post-vax: goodness_of_fit
   barcode_wells:
     plate20 H2: max_frac_infectivity_per_viral_barcode_well
     plate22 G10: max_frac_infectivity_per_viral_barcode_well
@@ -3913,6 +3964,7 @@ A/SouthAfrica/NHLS-SU-CERI-C075557/2026_H1N1:
     plate22 flu-seqneut-2026-CTS-038: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-041: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
+    plate34 flu-seqneut-2026-VIDRL-092_post-vax: goodness_of_fit
   barcode_wells:
     plate19 H5: max_frac_infectivity_per_viral_barcode_well
     plate22 G11: max_frac_infectivity_per_viral_barcode_well
@@ -4185,6 +4237,8 @@ A/South_Australia/2527213276/2025_H3N2:
     plate24 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate25 flu-seqneut-2026-VIDRL-013_pre-vax: goodness_of_fit
     plate25 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-009_pre-vax: goodness_of_fit
     plate6 flu-seqneut-2026-UWMC-016: goodness_of_fit
     plate7 flu-seqneut-2026-UWMC-009: goodness_of_fit
     plate8 flu-seqneut-2026-UWMC-016: goodness_of_fit
@@ -4573,6 +4627,7 @@ A/Thuringen/39/2026_H3N2:
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-093_pre-vax: goodness_of_fit
     plate8 flu-seqneut-2026-UWMC-016: goodness_of_fit
   barcode_wells:
     plate13 H1: max_frac_infectivity_per_viral_barcode_well
@@ -4676,6 +4731,8 @@ A/Trieste/380/2026_H3N2:
     plate28 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-025: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate33 flu-seqneut-2026-VIDRL-086_pre-vax: goodness_of_fit
+    plate36 flu-seqneut-2026-VIDRL-008_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-UWMC-004: goodness_of_fit
     plate5 flu-seqneut-2026-UWMC-010: goodness_of_fit
   barcode_wells:
@@ -4804,6 +4861,8 @@ A/Victoria/2948/2025_H3N2:
     plate24 flu-seqneut-2026-VIDRL-009_pre-vax: goodness_of_fit
     plate28 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
     plate3 flu-seqneut-2026-SCH-030: goodness_of_fit
+    plate32 flu-seqneut-2026-VIDRL-037_pre-vax: goodness_of_fit
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate4 flu-seqneut-2026-UWMC-004: goodness_of_fit
   barcode_wells:
     plate2 G2: max_frac_infectivity_per_viral_barcode_well
@@ -4920,6 +4979,7 @@ A/Vietnam/PF125413/2025_H1N1:
     plate22 G6: max_frac_infectivity_per_viral_barcode_well
     plate22 G7: max_frac_infectivity_per_viral_barcode_well
     plate22 G8: max_frac_infectivity_per_viral_barcode_well
+    plate32 H11: max_frac_infectivity_per_viral_barcode_well
 A/Vietnam/PF126009/2026_H1N1:
   barcode_serum_replicates:
     plate1 flu-seqneut-2026-SCH-001: goodness_of_fit
@@ -5020,6 +5080,7 @@ A/Wisconsin/588/2019_H1N1:
     plate10 G9: max_frac_infectivity_per_viral_barcode_well
     plate22 G10: max_frac_infectivity_per_viral_barcode_well
     plate22 G6: max_frac_infectivity_per_viral_barcode_well
+    plate32 H9: max_frac_infectivity_per_viral_barcode_well
 A/Wisconsin/67/2022_H1N1:
   barcode_serum_replicates:
     plate2 flu-seqneut-2026-SCH-015: goodness_of_fit
@@ -5122,6 +5183,7 @@ A/Zambia/7-NIC-313/2026_H1N1:
     plate22 flu-seqneut-2026-CTS-038: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-041: min_dilutions_per_barcode_serum_replicate
     plate22 flu-seqneut-2026-CTS-046: min_dilutions_per_barcode_serum_replicate
+    plate34 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
     plate9 flu-seqneut-2026-UWMC-034: goodness_of_fit
   barcode_wells:
     plate10 F4: max_frac_infectivity_per_viral_barcode_well

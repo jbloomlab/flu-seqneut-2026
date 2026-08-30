@@ -3,7 +3,7 @@ Processing final titer data for group: human
 ======================================================================
 
 Loading input data...
-  Loaded 32272 titer measurements from results/aggregated_titers/titers_human.csv
+  Loaded 41998 titer measurements from results/aggregated_titers/titers_human.csv
   Loaded 632 sera from results/sera_metadata/all_sera_metadata.csv
   Loaded 301 barcodes from data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv
 
@@ -14,7 +14,7 @@ Validating input data...
   All viruses found in viral library
 
 Processing titer data...
-  Initial: 32272 rows, 220 sera, 148 viruses
+  Initial: 41998 rows, 286 sera, 148 viruses
 
 Step 1: Dropping explicitly specified sera and viruses...
   No viruses specified in viruses_to_drop
@@ -29,34 +29,36 @@ Step 2: Applying min_frac_viruses=0.9, min_frac_sera=0.8 (action=drop)...
     flu-seqneut-2026-VIDRL-030_pre-vax: frac_viruses=0.8446
 
 Processing complete:
-  Final: 32057 rows, 218 sera, 148 viruses
+  Final: 41783 rows, 284 sera, 148 viruses
   Dropped: 215 rows, 2 sera, 0 viruses
 
 Generating output files...
-  Written: results/final_titer_data/human_titers.csv (32057 rows)
-  Written: results/final_titer_data/human_sera.csv (218 rows)
-  Written: results/final_titer_data/human_sera_multicohort.csv (494 rows)
+  Written: results/final_titer_data/human_titers.csv (41783 rows)
+  Written: results/final_titer_data/human_sera.csv (284 rows)
+  Written: results/final_titer_data/human_sera_multicohort.csv (686 rows)
   Written: results/final_titer_data/human_viruses.csv (148 rows)
-  Written: results/final_titer_data/human_titers_summarized_by_virus.csv (1332 rows)
+  Written: results/final_titer_data/human_titers_summarized_by_virus.csv (1628 rows)
 
 ======================================================================
 FINAL SUMMARY
 ======================================================================
 Group: human
-Sera: 218
+Sera: 284
 Viruses: 148
-Total titers: 32057
+Total titers: 41783
 
 Cohorts in titers_summarized_by_virus.csv:
-  All: 218 sera, 32057 titers
-  CTS: 32 sera, 4721 titers
+  All: 284 sera, 41783 titers
+  CTS: 38 sera, 5608 titers
   SCH: 40 sera, 5883 titers
   UWMC: 88 sera, 12915 titers
-  VIDRL: 58 sera, 8538 titers
-  VIDRL_adult-cell_post: 10 sera, 1480 titers
-  VIDRL_adult-cell_pre: 9 sera, 1307 titers
+  VIDRL: 118 sera, 17377 titers
+  VIDRL_adult-cell_post: 20 sera, 2957 titers
+  VIDRL_adult-cell_pre: 19 sera, 2772 titers
   VIDRL_adult-egg_post: 20 sera, 2953 titers
   VIDRL_adult-egg_pre: 19 sera, 2798 titers
+  VIDRL_elderly-egg_post: 20 sera, 2956 titers
+  VIDRL_elderly-egg_pre: 20 sera, 2941 titers
 
 Viruses per subtype:
   H1N1: 66

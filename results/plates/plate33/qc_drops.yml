@@ -1,0 +1,12 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Singapore/MOH0547/2024_H1N1 G1: max_frac_infectivity_per_viral_barcode_well
+  A/Singapore/MOH0547/2024_H1N1 H4: max_frac_infectivity_per_viral_barcode_well
+  A/California/NIRC-IS-1356/2025_H1N1 G7: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Bangkok/P2390/2025_H3N2 flu-seqneut-2026-VIDRL-085_pre-vax: goodness_of_fit
+  A/Netherlands/10008/2026_H1N1 flu-seqneut-2026-VIDRL-085_pre-vax: goodness_of_fit
+  A/Trieste/380/2026_H3N2 flu-seqneut-2026-VIDRL-086_pre-vax: goodness_of_fit
+  A/Norway/9556/2025_H1N1 flu-seqneut-2026-VIDRL-088_pre-vax: goodness_of_fit
+serum_replicates: {}

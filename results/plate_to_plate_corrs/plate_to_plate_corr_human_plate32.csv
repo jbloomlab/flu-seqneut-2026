@@ -1,0 +1,12 @@
+plate,date,other_plate,other_date,serum,n_strains,pearson_r,n_strains_retained,pearson_r_retained
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-CTS-056,148,0.5416,148,0.5416
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-036_post-vax,148,0.8835,148,0.8835
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-036_pre-vax,147,0.8957,147,0.8957
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-037_post-vax,148,0.5978,148,0.5978
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-037_pre-vax,145,0.5282,145,0.5282
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-038_post-vax,148,0.8202,148,0.8202
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-038_pre-vax,148,0.7752,148,0.7752
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-039_post-vax,148,0.8151,148,0.8151
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-039_pre-vax,148,0.7522,148,0.7522
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-040_post-vax,148,0.9483,148,0.9483
+plate32,2026-08-28,plate30,2026-08-24,flu-seqneut-2026-VIDRL-040_pre-vax,148,0.8192,148,0.8192

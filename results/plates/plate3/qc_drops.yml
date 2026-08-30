@@ -2,8 +2,7 @@ wells: {}
 barcodes:
   A/Bangkok/P2391/2025_H3N2: no_serum_per_viral_barcode_filters
 barcode_wells:
-  A/France/GES-IPP01077/2026_H3N2 E1: 
-    max_frac_infectivity_per_viral_barcode_well
+  A/France/GES-IPP01077/2026_H3N2 E1: max_frac_infectivity_per_viral_barcode_well
   A/Croatia/10136RV/2023_H3N2 C8: max_frac_infectivity_per_viral_barcode_well
   A/Croatia/10136RV/2023_H3N2 B8: max_frac_infectivity_per_viral_barcode_well
 barcode_serum_replicates:
@@ -11,16 +10,13 @@ barcode_serum_replicates:
   A/Bangkok/P2390/2025_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/California/NIRC-IS-1059/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
-  A/Castellon/VAHNSI_02_02400/2025_H3N2 flu-seqneut-2026-SCH-025: 
-    goodness_of_fit
+  A/Castellon/VAHNSI_02_02400/2025_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/Croatia/10136RV/2023_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/District_Of_Columbia/27/2023_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/Florida/ISC-1069/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/France/HDF-IPP01550/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
-  A/France/HDF-RELAB-IPP00303/2026_H3N2 flu-seqneut-2026-SCH-025: 
-    goodness_of_fit
-  A/France/PAC-RELAB-HCL026021993801/2026_H3N2 flu-seqneut-2026-SCH-025: 
-    goodness_of_fit
+  A/France/HDF-RELAB-IPP00303/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
+  A/France/PAC-RELAB-HCL026021993801/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/Galicia/GA-CHUAC-451/2025_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/Hessen/18/2026_H1N1 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/Lisboa/216/2023_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
@@ -33,10 +29,8 @@ barcode_serum_replicates:
   A/Peru/ANC-INS-062/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/Romania/612042/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/SantaCatarina/508/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
-  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-SCH-025: 
-    goodness_of_fit
-  A/StPetersburg/RII-25-2600S/2026_H3N2 flu-seqneut-2026-SCH-025: 
-    goodness_of_fit
+  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
+  A/StPetersburg/RII-25-2600S/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/Sydney/50/2026_H1N1 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/Thuringen/39/2026_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
   A/Trieste/257/2025_H3N2 flu-seqneut-2026-SCH-025: goodness_of_fit
@@ -48,8 +42,7 @@ barcode_serum_replicates:
   A/Bangkok/P2390/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Blaenavon/6687/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Bolivia/OR5702/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
-  A/BritishColumbia/RV00279-26/2025_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
+  A/BritishColumbia/RV00279-26/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/California/NIRC-IS-1059/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Colombia/1851/2024_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
@@ -58,16 +51,12 @@ barcode_serum_replicates:
   A/Denmark/4547/2025_H1N1 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Denmark/4774/2025_H1N1 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/District_Of_Columbia/27/2023_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
-  A/Distrito_Federal/250106000728/2025_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
+  A/Distrito_Federal/250106000728/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Florida/ISC-1069/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
-  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/France/HDF-IPP01550/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
-  A/France/NAQ-HCL026010957001/2026_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
-  A/France/PAC-RELAB-HCL026021993801/2026_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
+  A/France/NAQ-HCL026010957001/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
+  A/France/PAC-RELAB-HCL026021993801/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Galicia/GA-CHUAC-451/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Galicia/GA-CHUAC-612/2025_H1N1 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Germany/LRMC_0104/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
@@ -106,16 +95,11 @@ barcode_serum_replicates:
   A/Singapore/NTF0577/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Singapore/SAR8915/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/SouthAfrica/NICD-R01647/2026_H1N1 flu-seqneut-2026-SCH-030: goodness_of_fit
-  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
-  A/South_Australia/2523812314/2025_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
-  A/StPetersburg/RII-25-2042S/2025_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
-  A/StPetersburg/RII-25-2321S/2025_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
-  A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-SCH-030: 
-    goodness_of_fit
+  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
+  A/South_Australia/2523812314/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
+  A/StPetersburg/RII-25-2042S/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
+  A/StPetersburg/RII-25-2321S/2025_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
+  A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Sydney/1359/2024_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Sydney/50/2026_H1N1 flu-seqneut-2026-SCH-030: goodness_of_fit
   A/Thuringen/16/2026_H3N2 flu-seqneut-2026-SCH-030: goodness_of_fit
@@ -132,14 +116,10 @@ barcode_serum_replicates:
   A/Darwin/1415/2025_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
   A/Florida/ISC-1069/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
   A/France/HDF-IPP01550/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
-  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-SCH-032: 
-    goodness_of_fit
-  A/France/HDF-RELAB-IPP00303/2026_H3N2 flu-seqneut-2026-SCH-032: 
-    goodness_of_fit
-  A/France/NAQ-HCL026010957001/2026_H3N2 flu-seqneut-2026-SCH-032: 
-    goodness_of_fit
-  A/France/PAC-RELAB-HCL026021993801/2026_H3N2 flu-seqneut-2026-SCH-032: 
-    goodness_of_fit
+  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
+  A/France/HDF-RELAB-IPP00303/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
+  A/France/NAQ-HCL026010957001/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
+  A/France/PAC-RELAB-HCL026021993801/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
   A/Galicia/GA-CHUAC-612/2025_H1N1 flu-seqneut-2026-SCH-032: goodness_of_fit
   A/Ireland/91576/2025_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
   A/Michigan/8/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
@@ -155,7 +135,6 @@ barcode_serum_replicates:
   A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
   A/Oregon/81/2025_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
   A/Romania/612042/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
-  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-SCH-032: 
-    goodness_of_fit
+  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
   A/Trieste/257/2025_H3N2 flu-seqneut-2026-SCH-032: goodness_of_fit
 serum_replicates: {}

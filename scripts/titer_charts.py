@@ -9,6 +9,8 @@ the chart types it assembles from these marks.
 
 """
 
+import math
+
 import altair as alt
 import pandas as pd
 import tree_annotated_plot
@@ -218,6 +220,90 @@ def age_sliders(metadata):
             (0, "minimum subject age (years)"),
             (max_age, "maximum subject age (years)"),
         ]
+    )
+
+
+# `log10` units for the median-titer sliders; one step is ~12% in titer, fine enough that
+# the slider never steps over a serum
+MEDIAN_SLIDER_STEP = 0.05
+
+# the slider ends reach 1% past the medians they bound, so `pow(10, slider)` at an end
+# cannot land a hair inside the data and drop the lowest- or highest-median serum
+MEDIAN_SLIDER_PAD = 1.01
+
+# significant digits the slider ends are rounded to, so the widget reads out a short
+# number rather than the full `log10` of a titer
+MEDIAN_SLIDER_DIGITS = 3
+
+
+def _round_outward(x, round_):
+    """Return `x` rounded to `MEDIAN_SLIDER_DIGITS` significant digits by `round_`.
+
+    `round_` is `math.floor` for a lower bound and `math.ceil` for an upper one, so the
+    result never moves inward and so can never exclude a value `x` includes.
+
+    """
+    if x == 0:
+        return 0.0
+    scale = 10 ** (MEDIAN_SLIDER_DIGITS - 1 - math.floor(math.log10(abs(x))))
+    return round_(x * scale) / scale
+
+
+def median_titer_sliders(serum_medians):
+    """Return the sliders bounding which sera are drawn, by their median titer.
+
+    Both are in `log10` titer units, as the medians span orders of magnitude, and each
+    starts at an end of the observed range, so nothing is filtered until one is moved.
+
+    """
+    medians = serum_medians["median_titer_serum"]
+    lo = _round_outward(math.log10(medians.min() / MEDIAN_SLIDER_PAD), math.floor)
+    hi = _round_outward(math.log10(medians.max() * MEDIAN_SLIDER_PAD), math.ceil)
+    return tuple(
+        alt.param(
+            value=value,
+            bind=alt.binding_range(min=lo, max=hi, step=MEDIAN_SLIDER_STEP, name=name),
+        )
+        for value, name in [
+            (lo, "minimum serum median titer (log10)"),
+            (hi, "maximum serum median titer (log10)"),
+        ]
+    )
+
+
+# width of the readout view, which `alt.vconcat(center=True)` then centers under the
+# chart title; the text is centered within it
+READOUT_WIDTH = 300
+
+
+def median_titer_readout(min_median_slider, max_median_slider):
+    """Text naming the titers the median-titer sliders are currently set to.
+
+    The sliders read out in `log10` units, so the titers those correspond to are drawn
+    here instead. Its own one-row frame keeps this mark out of the faceted chart's
+    filters, so the line still reads when the sliders exclude every serum, and declaring
+    the sliders here rather than on the plot lifts them to the top level of the
+    concatenated chart, where they are in scope for the filters.
+
+    """
+    return (
+        alt.Chart(pd.DataFrame({"row": [0]}))
+        .add_params(min_median_slider, max_median_slider)
+        .transform_calculate(
+            # 4 significant digits, and `~` to trim the trailing zeros that leaves; a
+            # plain `g` would read out a titer over 1000 in scientific notation
+            readout="showing sera with median titer "
+            + alt.expr.format(alt.expr.pow(10, min_median_slider), ".4~r")
+            + " to "
+            + alt.expr.format(alt.expr.pow(10, max_median_slider), ".4~r")
+        )
+        .mark_text(align="center", fontSize=12)
+        .encode(text="readout:N", x=alt.value(READOUT_WIDTH / 2), y=alt.value(7))
+        # no stroke: this is a line of text, not a panel, and `configure_view` boxes
+        # every view in the chart
+        .properties(
+            width=READOUT_WIDTH, height=14, view=alt.ViewBackground(stroke=None)
+        )
     )
 
 

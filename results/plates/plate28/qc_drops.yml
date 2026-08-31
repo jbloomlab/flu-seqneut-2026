@@ -3,72 +3,43 @@ barcodes: {}
 barcode_wells:
   A/Peru/ANC-INS-062/2026_H3N2 E10: max_frac_infectivity_per_viral_barcode_well
 barcode_serum_replicates:
-  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-CTS-054: 
-    goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-CTS-054: goodness_of_fit
   A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-VIDRL-027_pre-vax: goodness_of_fit
-  A/BritishColumbia/RV00279-26/2025_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: 
-    goodness_of_fit
+  A/BritishColumbia/RV00279-26/2025_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
   A/Denmark/4774/2025_H1N1 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
-  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: 
-    goodness_of_fit
-  A/France/NAQ-HCL026010957001/2026_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: 
-    goodness_of_fit
-  A/France/OCC-HCL026013263701/2026_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: 
-    goodness_of_fit
-  A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: 
-    goodness_of_fit
-  A/Ontario/PHL202550193/2025_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: 
-    goodness_of_fit
-  A/Croatia/10136RV/2023_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: 
-    goodness_of_fit
-  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: 
-    goodness_of_fit
-  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: 
-    goodness_of_fit
-  A/Malaysia/IMR/SARI/2406/2025_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: 
-    goodness_of_fit
-  A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: 
-    goodness_of_fit
-  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: 
-    goodness_of_fit
-  A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: 
-    goodness_of_fit
-  A/Badajoz/18813527/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
+  A/France/NAQ-HCL026010957001/2026_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
+  A/France/OCC-HCL026013263701/2026_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
+  A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
+  A/Ontario/PHL202550193/2025_H3N2 flu-seqneut-2026-VIDRL-028_pre-vax: goodness_of_fit
+  A/Croatia/10136RV/2023_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
+  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
+  A/Malaysia/IMR/SARI/2406/2025_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
+  A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
+  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
+  A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
+  A/Badajoz/18813527/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
   A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
   A/Bolivia/OR5702/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-  A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
-  A/Croatia/10136RV/2023_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
-  A/District_Of_Columbia/27/2023_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
-  A/England/1893256/2026_H1N1 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
-  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
-  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
+  A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+  A/Croatia/10136RV/2023_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+  A/District_Of_Columbia/27/2023_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+  A/England/1893256/2026_H1N1 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
   A/Hessen/18/2026_H1N1 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-  A/Massachusetts/ISC-1856/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
-  A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
+  A/Massachusetts/ISC-1856/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+  A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
   A/Montana/51/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-  A/NakhonPhanom/P495/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
-  A/Netherlands/888/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
-  A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
+  A/NakhonPhanom/P495/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+  A/Netherlands/888/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+  A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
   A/Oregon/81/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-  A/Parana/416133590/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
+  A/Parana/416133590/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
   A/Romania/612042/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
-  A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: 
-    goodness_of_fit
+  A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
+  A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
   A/Trieste/380/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
   A/Victoria/2948/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
 serum_replicates: {}

@@ -10,11 +10,9 @@ barcode_serum_replicates:
   A/District_Of_Columbia/27/2023_H3N2 flu-seqneut-2026-UWMC-009: goodness_of_fit
   A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-UWMC-009: goodness_of_fit
   A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-UWMC-009: goodness_of_fit
-  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-UWMC-009: 
-    goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-UWMC-009: goodness_of_fit
   A/Colorado/218/2024_H1N1 flu-seqneut-2026-UWMC-012: goodness_of_fit
-  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-UWMC-014: 
-    goodness_of_fit
+  A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-UWMC-014: goodness_of_fit
   A/Ireland/91576/2025_H3N2 flu-seqneut-2026-UWMC-014: goodness_of_fit
   A/Massachusetts/ISC-1856/2025_H3N2 flu-seqneut-2026-UWMC-014: goodness_of_fit
 serum_replicates: {}

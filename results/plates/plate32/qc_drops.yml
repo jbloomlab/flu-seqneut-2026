@@ -1,0 +1,15 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Vietnam/PF125413/2025_H1N1 H11: max_frac_infectivity_per_viral_barcode_well
+  A/District_Of_Columbia/27/2023_H3N2 G2: max_frac_infectivity_per_viral_barcode_well
+  A/Andalucia/PMC-01495/2025_H1N1 E8: max_frac_infectivity_per_viral_barcode_well
+  A/Massachusetts/ISC-1856/2025_H3N2 H7: max_frac_infectivity_per_viral_barcode_well
+  A/Missouri/11/2025_cell_H1N1 E9: max_frac_infectivity_per_viral_barcode_well
+  A/Wisconsin/588/2019_H1N1 H9: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Montana/51/2025_H3N2 flu-seqneut-2026-VIDRL-036_pre-vax: goodness_of_fit
+  A/Maine/25/2026_H1N1 flu-seqneut-2026-VIDRL-037_pre-vax: goodness_of_fit
+  A/Montana/51/2025_H3N2 flu-seqneut-2026-VIDRL-037_pre-vax: goodness_of_fit
+  A/Victoria/2948/2025_H3N2 flu-seqneut-2026-VIDRL-037_pre-vax: goodness_of_fit
+serum_replicates: {}

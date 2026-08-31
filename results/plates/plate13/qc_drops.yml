@@ -5,47 +5,36 @@ barcode_wells:
   A/Lisboa/216/2023_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
   A/Thuringen/39/2026_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
   A/Ukraine/5214/2026_H1N1 H1: max_frac_infectivity_per_viral_barcode_well
-  A/Victoria/4897/2022_IVR-238_H1N1 G1: 
-    max_frac_infectivity_per_viral_barcode_well
+  A/Victoria/4897/2022_IVR-238_H1N1 G1: max_frac_infectivity_per_viral_barcode_well
   A/Denmark/4774/2025_H1N1 E2: max_frac_infectivity_per_viral_barcode_well
   A/Colorado/218/2024_H1N1 H2: max_frac_infectivity_per_viral_barcode_well
   A/Missouri/11/2025_egg_H1N1 E3: max_frac_infectivity_per_viral_barcode_well
   A/Arizona/40/2026_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
-  A/France/HDF-RELAB-IPP07969/2025_H1N1 H3: 
-    max_frac_infectivity_per_viral_barcode_well
+  A/France/HDF-RELAB-IPP07969/2025_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
   A/Hawaii/70/2019_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
-  A/Michigan/UM-10068449788/2025_H3N2 H3: 
-    max_frac_infectivity_per_viral_barcode_well
+  A/Michigan/UM-10068449788/2025_H3N2 H3: max_frac_infectivity_per_viral_barcode_well
   A/MinasGerais/410/2026_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
   A/Missouri/11/2025_egg_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
   A/Netherlands/543/2026_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
   A/Uppsala/SE26-01293/2026_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
   A/Vietnam/PF125413/2025_H1N1 H3: max_frac_infectivity_per_viral_barcode_well
-  A/NordrheinWestfalen/96/2026_H1N1 A3: 
-    max_frac_infectivity_per_viral_barcode_well
+  A/NordrheinWestfalen/96/2026_H1N1 A3: max_frac_infectivity_per_viral_barcode_well
   A/Singapore/MOH0547/2024_H1N1 D3: max_frac_infectivity_per_viral_barcode_well
   A/Denmark/4774/2025_H1N1 G3: max_frac_infectivity_per_viral_barcode_well
-  A/France/ARA-HCL025195259501/2025_H1N1 G3: 
-    max_frac_infectivity_per_viral_barcode_well
+  A/France/ARA-HCL025195259501/2025_H1N1 G3: max_frac_infectivity_per_viral_barcode_well
   A/Norway/9556/2025_H1N1 F4: max_frac_infectivity_per_viral_barcode_well
   A/Badajoz/18813527/2026_H3N2 H5: max_frac_infectivity_per_viral_barcode_well
-  A/France/GES-IPP01077/2026_H3N2 H5: 
-    max_frac_infectivity_per_viral_barcode_well
-  A/France/OCC-HCL026013263701/2026_H3N2 H5: 
-    max_frac_infectivity_per_viral_barcode_well
+  A/France/GES-IPP01077/2026_H3N2 H5: max_frac_infectivity_per_viral_barcode_well
+  A/France/OCC-HCL026013263701/2026_H3N2 H5: max_frac_infectivity_per_viral_barcode_well
   A/Wisconsin/67/2022_H1N1 H5: max_frac_infectivity_per_viral_barcode_well
-  A/France/NAQ-HCL026046169102/2025_H1N1 G5: 
-    max_frac_infectivity_per_viral_barcode_well
+  A/France/NAQ-HCL026046169102/2025_H1N1 G5: max_frac_infectivity_per_viral_barcode_well
   A/Wisconsin/67/2022_H1N1 H7: max_frac_infectivity_per_viral_barcode_well
   A/Colorado/218/2024_H1N1 G7: max_frac_infectivity_per_viral_barcode_well
   A/Hawaii/ISC-1140/2025_H1N1 H9: max_frac_infectivity_per_viral_barcode_well
   A/Missouri/11/2025_cell_H1N1 H9: max_frac_infectivity_per_viral_barcode_well
-  A/Victoria/4897/2022_IVR-238_H1N1 H10: 
-    max_frac_infectivity_per_viral_barcode_well
-  A/NordrheinWestfalen/96/2026_H1N1 H11: 
-    max_frac_infectivity_per_viral_barcode_well
-  A/Galicia/GA-CHUAC-612/2025_H1N1 D11: 
-    max_frac_infectivity_per_viral_barcode_well
+  A/Victoria/4897/2022_IVR-238_H1N1 H10: max_frac_infectivity_per_viral_barcode_well
+  A/NordrheinWestfalen/96/2026_H1N1 H11: max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 D11: max_frac_infectivity_per_viral_barcode_well
   A/Missouri/11/2025_cell_H1N1 G11: max_frac_infectivity_per_viral_barcode_well
   A/Singapore/KK2768/2025_H1N1 G11: max_frac_infectivity_per_viral_barcode_well
 barcode_serum_replicates:

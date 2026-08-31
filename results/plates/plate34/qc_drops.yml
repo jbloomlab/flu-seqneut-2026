@@ -1,0 +1,28 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Netherlands/888/2026_H3N2 H2: max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 F2: max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 F9: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-CTS-058: goodness_of_fit
+  A/Badajoz/18811358/2026_H3N2 flu-seqneut-2026-VIDRL-090_post-vax: goodness_of_fit
+  A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-VIDRL-090_post-vax: goodness_of_fit
+  A/Massachusetts/ISC-1856/2025_H3N2 flu-seqneut-2026-VIDRL-090_post-vax: goodness_of_fit
+  A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Galicia/GA-CHUAC-612/2025_H1N1 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Germany/LRMC_0104/2025_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Luxembourg/LNS9132577/2026_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Malaysia/IMR/SARI/2406/2025_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Netherlands/888/2026_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Ontario/PHL202550193/2025_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/SantaCatarina/508/2026_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Victoria/2948/2025_H3N2 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Zambia/7-NIC-313/2026_H1N1 flu-seqneut-2026-VIDRL-090_pre-vax: goodness_of_fit
+  A/Denmark/4774/2025_H1N1 flu-seqneut-2026-VIDRL-091_pre-vax: goodness_of_fit
+  A/SouthAfrica/NHLS-SU-CERI-C075557/2026_H1N1 flu-seqneut-2026-VIDRL-092_post-vax: goodness_of_fit
+  A/Saskatchewan/SKFLU477299/2025_H3N2 flu-seqneut-2026-VIDRL-092_pre-vax: goodness_of_fit
+  A/Thuringen/39/2026_H3N2 flu-seqneut-2026-VIDRL-093_pre-vax: goodness_of_fit
+serum_replicates: {}

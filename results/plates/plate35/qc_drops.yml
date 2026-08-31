@@ -1,0 +1,7 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Galicia/GA-CHUAC-612/2025_H1N1 E9: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Navarra/260009/2025_H3N2 flu-seqneut-2026-VIDRL-002_pre-vax: goodness_of_fit
+serum_replicates: {}

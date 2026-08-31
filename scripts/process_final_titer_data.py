@@ -543,7 +543,7 @@ def compute_virus_summary(df):
         col_name = f"frac_w_titer_below_{cutoff}"
         frac_below = (
             df.groupby(["virus", "cohort"])["titer"]
-            .apply(lambda x: (x < cutoff).mean())
+            .apply(lambda x, cutoff=cutoff: (x < cutoff).mean())
             .reset_index(name=col_name)
         )
         summary = summary.merge(frac_below, on=["virus", "cohort"])

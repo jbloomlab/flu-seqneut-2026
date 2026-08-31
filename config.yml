@@ -125,6 +125,21 @@ plot_pre_post_titers:
       adult-egg: {pre: VIDRL_adult-egg_pre, post: VIDRL_adult-egg_post}
     colors: {pre: "#4d4d4d", post: "#1b5e8a"}  # dark gray and dark blue
 
+# Titer charts with the sera split into two groups by each serum's titer ratio between a
+# comparator and a reference strain. Set this key to null to make no such charts.
+# `charts` names one entry per subtype and strain set to draw, and need list only the
+# wanted combinations; `reference` and `comparator` are `derived_haplotype`s of strains in
+# that set and give the chart's dropdowns their initial values, and
+# `fold_change_threshold` is where the threshold slider starts. The strains drawn, their
+# coloring, and the tree come from `plot_titer_summaries_params` below.
+plot_stratified_titers:
+  group_colors: {above: "#d95f02", at_or_below: "#1b9e77"}  # orange and green
+  charts:
+    H3N2:
+      recent: {reference: K, comparator: "K:V223I", fold_change_threshold: 0.5}
+    H1N1:
+      recent: {reference: D.3.1.1, comparator: "D.3.1.1:G155E", fold_change_threshold: 0.5}
+
 # Merged into each subtype's entry in `plot_titer_summaries_params.subtype_params`;
 # override a key by restating it there (`<<:` merges shallowly)
 default_titer_plot_subtype_params: &default_titer_plot_subtype_params

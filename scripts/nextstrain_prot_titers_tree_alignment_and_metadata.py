@@ -68,7 +68,7 @@ print(
 )
 
 # Ensure collection_date is in valid format (numerical year)
-year = datetime.datetime.now().year
+year = datetime.datetime.now(datetime.timezone.utc).year
 if all((df["collection_date"] > year - 100) & (df["collection_date"] < year + 1)):
     df = df.rename(columns={"collection_date": "date"})
 else:
@@ -123,7 +123,7 @@ if subtypes_w_titers:
         assert col not in df.columns, f"{col} already in df columns"
         pivoted = (
             summarized_titers.assign(
-                cohort_col=lambda x: f"{col}_" + x["cohort"] + "_sera"
+                cohort_col=lambda x, col=col: f"{col}_" + x["cohort"] + "_sera"
             )
             .pivot_table(index="strain", values=col, columns="cohort_col")
             .reset_index()
@@ -211,9 +211,9 @@ for subtype in subtypes:
         )
 
         print(f"Writing titers to {titers_file=}")
-        subtype_titers.assign(strain=lambda x: x["strain"].map(strain_rename)).to_csv(
-            titers_file, sep="\t", index=False, float_format="%.6g"
-        )
+        subtype_titers.assign(
+            strain=lambda x, strain_rename=strain_rename: x["strain"].map(strain_rename)
+        ).to_csv(titers_file, sep="\t", index=False, float_format="%.6g")
 
         colorings_file = snakemake.output[f"color_by_metadata_{subtype}"]
         missing_cols = [c for c in colorings if c not in metadata.columns]

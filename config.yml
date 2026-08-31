@@ -285,57 +285,60 @@ analyze_repools:
         remake: true
     strains_to_drop: {}  # strains excluded from the corrective re-pooling, and why
 
-  20260810_repool_wash_spikein_cdna:
-    <<: *default_library_qc_well_qc_thresholds
-    miscellaneous_plate: 20260810_repool_wash_spikein_cdna
-    previous_pool: null
-    corrective_repool: false
-    description: |
-      The rebalanced pool made from the corrective volumes calculated for
-      `20260731_repool`, used to infect MDCK-SIAT1 cells over a serial dilution. The
-      barcodes were sequenced to check the strain representation that resulted.
-      Additionally, in this experiment, the cells were **washed 1x with PBS** prior to
-      lysis and the **spikein was added to the cDNA mastermix**.
-    linear_range_wells: calculate
-    over_representation_factor: 1.5
-    under_representation_factor: 1.5
-    subpools: *library_qc_subpools_no_remake
+  # dropped to remove clutter - spike-in now always added to lysis buffer
+  # 20260810_repool_wash_spikein_cdna:
+  #   <<: *default_library_qc_well_qc_thresholds
+  #   miscellaneous_plate: 20260810_repool_wash_spikein_cdna
+  #   previous_pool: null
+  #   corrective_repool: false
+  #   description: |
+  #     The rebalanced pool made from the corrective volumes calculated for
+  #     `20260731_repool`, used to infect MDCK-SIAT1 cells over a serial dilution. The
+  #     barcodes were sequenced to check the strain representation that resulted.
+  #     Additionally, in this experiment, the cells were **washed 1x with PBS** prior to
+  #     lysis and the **spikein was added to the cDNA mastermix**.
+  #   linear_range_wells: calculate
+  #   over_representation_factor: 1.5
+  #   under_representation_factor: 1.5
+  #   subpools: *library_qc_subpools_no_remake
 
-  20260810_repool_nowash_spikein_cdna:
-    <<: *default_library_qc_well_qc_thresholds
-    miscellaneous_plate: 20260810_repool_nowash_spikein_cdna
-    previous_pool: null
-    corrective_repool: false
-    description: |
-      The rebalanced pool made from the corrective volumes calculated for
-      `20260731_repool`, used to infect MDCK-SIAT1 cells over a serial dilution. The
-      barcodes were sequenced to check the strain representation that resulted.
-      Additionally, in this experiment, the cells were **not washed** with PBS prior to
-      lysis and the **spikein was added to the cDNA mastermix**.
-    linear_range_wells: calculate
-    over_representation_factor: 1.5
-    under_representation_factor: 1.5
-    subpools: *library_qc_subpools_no_remake
+  # dropped to remove clutter - spike-in now always added to lysis buffer
+  # 20260810_repool_nowash_spikein_cdna:
+  #   <<: *default_library_qc_well_qc_thresholds
+  #   miscellaneous_plate: 20260810_repool_nowash_spikein_cdna
+  #   previous_pool: null
+  #   corrective_repool: false
+  #   description: |
+  #     The rebalanced pool made from the corrective volumes calculated for
+  #     `20260731_repool`, used to infect MDCK-SIAT1 cells over a serial dilution. The
+  #     barcodes were sequenced to check the strain representation that resulted.
+  #     Additionally, in this experiment, the cells were **not washed** with PBS prior to
+  #     lysis and the **spikein was added to the cDNA mastermix**.
+  #   linear_range_wells: calculate
+  #   over_representation_factor: 1.5
+  #   under_representation_factor: 1.5
+  #   subpools: *library_qc_subpools_no_remake
 
-  20260810_repool_wash_spikein_cdna_h3_44:
-    <<: *default_library_qc_well_qc_thresholds
-    miscellaneous_plate: 20260810_repool_wash_spikein_cdna_h3_44
-    previous_pool: null
-    corrective_repool: false
-    description: |
-      The rebalanced pool made from the corrective volumes calculated for
-      `20260731_repool` **with the addition of 1uL of flu-seqneut-2026_H3N2_44**. The
-      derived haplotype for this strain is `K:G62E,S145R`. This strain failed to grow
-      initially and this experiment was intended to see if we can recover any counts from
-      it on a re-rescue/re-passage attempt. This pool was used to infect MDCK-SIAT1 cells
-      over a serial dilution. The barcodes were sequenced to check the strain
-      representation that resulted. Additionally, in this experiment, the cells were
-      **washed 1x with PBS** prior to lysis and the **spikein was added to the cDNA
-      mastermix**.
-    linear_range_wells: calculate
-    over_representation_factor: 1.5
-    under_representation_factor: 1.5
-    subpools: *library_qc_subpools_no_remake
+  # dropped to remove clutter - spike-in now always added to lysis buffer
+  # 20260810_repool_wash_spikein_cdna_h3_44:
+  #   <<: *default_library_qc_well_qc_thresholds
+  #   miscellaneous_plate: 20260810_repool_wash_spikein_cdna_h3_44
+  #   previous_pool: null
+  #   corrective_repool: false
+  #   description: |
+  #     The rebalanced pool made from the corrective volumes calculated for
+  #     `20260731_repool` **with the addition of 1uL of flu-seqneut-2026_H3N2_44**. The
+  #     derived haplotype for this strain is `K:G62E,S145R`. This strain failed to grow
+  #     initially and this experiment was intended to see if we can recover any counts from
+  #     it on a re-rescue/re-passage attempt. This pool was used to infect MDCK-SIAT1 cells
+  #     over a serial dilution. The barcodes were sequenced to check the strain
+  #     representation that resulted. Additionally, in this experiment, the cells were
+  #     **washed 1x with PBS** prior to lysis and the **spikein was added to the cDNA
+  #     mastermix**.
+  #   linear_range_wells: calculate
+  #   over_representation_factor: 1.5
+  #   under_representation_factor: 1.5
+  #   subpools: *library_qc_subpools_no_remake
 
   20260810_repool_wash_spikein_lysis:
     <<: *default_library_qc_well_qc_thresholds
@@ -485,107 +488,107 @@ sera_override_defaults: {}
 
 plates:
 
-  plate1:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
-    date: 2026-08-05
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260805_plate1.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: GCTACA # Fwd1
-      upstream2_mismatch: 1
+  # plate1:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
+  #   date: 2026-08-05
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260805_plate1.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: GCTACA # Fwd1
+  #     upstream2_mismatch: 1
 
-  plate2:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
-    date: 2026-08-05
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260805_plate2.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: ATCGAT # Fwd2
-      upstream2_mismatch: 1
+  # plate2:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
+  #   date: 2026-08-05
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260805_plate2.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: ATCGAT # Fwd2
+  #     upstream2_mismatch: 1
 
-  plate3:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
-    date: 2026-08-05
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260805_plate3.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: TGACGC # Fwd3
-      upstream2_mismatch: 1
+  # plate3:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
+  #   date: 2026-08-05
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260805_plate3.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: TGACGC # Fwd3
+  #     upstream2_mismatch: 1
 
-  plate4:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
-    date: 2026-08-05
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260805_plate4.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: CAGTTG # Fwd4
-      upstream2_mismatch: 1
+  # plate4:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
+  #   date: 2026-08-05
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260805_plate4.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: CAGTTG # Fwd4
+  #     upstream2_mismatch: 1
 
-  plate5:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
-    date: 2026-08-05
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260805_plate5.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: GTCTAA # Fwd5
-      upstream2_mismatch: 1
+  # plate5:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
+  #   date: 2026-08-05
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260805_plate5.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: GTCTAA # Fwd5
+  #     upstream2_mismatch: 1
 
-  plate6:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
-    date: 2026-08-05
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260805_plate6.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: ACGCTG # Fwd6
-      upstream2_mismatch: 1
+  # plate6:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/issues/31
+  #   date: 2026-08-05
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260805_plate6.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: ACGCTG # Fwd6
+  #     upstream2_mismatch: 1
 
   plate7:
     group: human
@@ -825,73 +828,73 @@ plates:
       upstream2: CAGTTG # Fwd4
       upstream2_mismatch: 1
 
-  plate21:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/pull/37
-    date: 2026-08-24
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260824_plate21.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: GTCTAA # Fwd5
-      upstream2_mismatch: 1
+  # plate21:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/pull/37
+  #   date: 2026-08-24
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260824_plate21.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: GTCTAA # Fwd5
+  #     upstream2_mismatch: 1
 
-  plate22:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/pull/37
-    date: 2026-08-24
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260824_plate22.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: ACGCTG # Fwd6
-      upstream2_mismatch: 1
+  # plate22:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/pull/37
+  #   date: 2026-08-24
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260824_plate22.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: ACGCTG # Fwd6
+  #     upstream2_mismatch: 1
 
-  plate23:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/pull/37
-    date: 2026-08-24
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260824_plate23.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: TATAGC # Fwd7
-      upstream2_mismatch: 1
+  # plate23:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/pull/37
+  #   date: 2026-08-24
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260824_plate23.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: TATAGC # Fwd7
+  #     upstream2_mismatch: 1
 
-  plate24:
-    group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/pull/37
-    date: 2026-08-24
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/plates/20260824_plate24.csv
-    manual_drops: {}
-    qc_thresholds:
-      <<: *default_process_plate_qc_thresholds
-    curvefit_params:
-      <<: *default_process_plate_curvefit_params
-    curvefit_qc:
-      <<: *default_process_plate_curvefit_qc
-    illumina_barcode_parser_params:
-      upstream2: CGAGCT # Fwd8
-      upstream2_mismatch: 1
+  # plate24:
+  #   group: human-qc-dropped  # https://github.com/jbloomlab/flu-seqneut-2026/pull/37
+  #   date: 2026-08-24
+  #   viral_library: actual
+  #   neut_standard_set: loes2023
+  #   samples_csv: data/plates/20260824_plate24.csv
+  #   manual_drops: {}
+  #   qc_thresholds:
+  #     <<: *default_process_plate_qc_thresholds
+  #   curvefit_params:
+  #     <<: *default_process_plate_curvefit_params
+  #   curvefit_qc:
+  #     <<: *default_process_plate_curvefit_qc
+  #   illumina_barcode_parser_params:
+  #     upstream2: CGAGCT # Fwd8
+  #     upstream2_mismatch: 1
 
   plate25:
     group: human

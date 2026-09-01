@@ -121,8 +121,9 @@ plot_pre_post_titers:
     title: titers before and after vaccination in the VIDRL cohorts
     pair_by: subject_id  # sera metadata column pairing a subject's two sera
     comparisons:
-      adult-cell: {pre: VIDRL_adult-cell_pre, post: VIDRL_adult-cell_post}
-      adult-egg: {pre: VIDRL_adult-egg_pre, post: VIDRL_adult-egg_post}
+      adult-Flucelvax: {pre: VIDRL_adult-cell_pre, post: VIDRL_adult-cell_post}
+      adult-Fluzone: {pre: VIDRL_adult-egg_pre, post: VIDRL_adult-egg_post}
+      elderly-Fluad: {pre: VIDRL_elderly-egg_pre, post: VIDRL_elderly-egg_post}
     colors: {pre: "#4d4d4d", post: "#1b5e8a"}  # dark gray and dark blue
 
 # Titer charts with the sera split into two groups by each serum's titer ratio between a

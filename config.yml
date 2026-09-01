@@ -1154,32 +1154,33 @@ miscellaneous_plates:
         upstream2: TGACGC # Fwd3
         upstream2_mismatch: 1
 
-  20260810_repool_wash_spikein_cdna:
-    date: 2026-08-10
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/miscellaneous_plates/2026-08-10_repool_wash_spikein_cdna.csv
-    illumina_barcode_parser_params:
-      upstream2: GCTACA # Fwd1
-      upstream2_mismatch: 1
-
-  20260810_repool_nowash_spikein_cdna:
-    date: 2026-08-10
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/miscellaneous_plates/2026-08-10_repool_nowash_spikein_cdna.csv
-    illumina_barcode_parser_params:
-      upstream2: GCTACA # Fwd1
-      upstream2_mismatch: 1
-
-  20260810_repool_wash_spikein_cdna_h3_44:
-    date: 2026-08-10
-    viral_library: actual
-    neut_standard_set: loes2023
-    samples_csv: data/miscellaneous_plates/2026-08-10_repool_wash_spikein_cdna_h3_44.csv
-    illumina_barcode_parser_params:
-      upstream2: GCTACA # Fwd1
-      upstream2_mismatch: 1
+# next three plates commented out for reason at https://github.com/jbloomlab/flu-seqneut-2026/pull/44#issue-5305170426
+#  20260810_repool_wash_spikein_cdna:
+#    date: 2026-08-10
+#    viral_library: actual
+#    neut_standard_set: loes2023
+#    samples_csv: data/miscellaneous_plates/2026-08-10_repool_wash_spikein_cdna.csv
+#    illumina_barcode_parser_params:
+#      upstream2: GCTACA # Fwd1
+#      upstream2_mismatch: 1
+#
+#  20260810_repool_nowash_spikein_cdna:
+#    date: 2026-08-10
+#    viral_library: actual
+#    neut_standard_set: loes2023
+#    samples_csv: data/miscellaneous_plates/2026-08-10_repool_nowash_spikein_cdna.csv
+#    illumina_barcode_parser_params:
+#      upstream2: GCTACA # Fwd1
+#      upstream2_mismatch: 1
+#
+#  20260810_repool_wash_spikein_cdna_h3_44:
+#    date: 2026-08-10
+#    viral_library: actual
+#    neut_standard_set: loes2023
+#    samples_csv: data/miscellaneous_plates/2026-08-10_repool_wash_spikein_cdna_h3_44.csv
+#    illumina_barcode_parser_params:
+#      upstream2: GCTACA # Fwd1
+#      upstream2_mismatch: 1
 
   20260810_repool_wash_spikein_lysis:
     date: 2026-08-10

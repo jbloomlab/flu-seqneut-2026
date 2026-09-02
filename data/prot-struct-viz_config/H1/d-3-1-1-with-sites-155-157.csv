@@ -1,0 +1,19 @@
+chain,residue,color,label,representation,notes
+A,113,#e41a1c,R113K_HA1,,"HA1 site 113 differs: R in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+A,139,#e41a1c,A139D_HA1,,"HA1 site 139 differs: A in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), D in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+A,155,#332288,155_HA1,,HA1 site 155; antigenic region Sa of Wilson et al. 2015 Virology 485:252-62; the site of G155E on the D.3.1.1 background
+A,157,#332288,157_HA1,,"HA1 site 157; antigenic region Sa of Wilson et al. 2015 Virology 485:252-62; the site of S157L, S157T on the D.3.1.1 background"
+A,283,#e41a1c,E283K_HA1,,"HA1 site 283 differs: E in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+A,302,#e41a1c,K302E_HA1,,"HA1 site 302 differs: K in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), E in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+B,113,#e41a1c,R113K_HA1,,"HA1 site 113 differs: R in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+B,139,#e41a1c,A139D_HA1,,"HA1 site 139 differs: A in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), D in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+B,155,#332288,155_HA1,,HA1 site 155; antigenic region Sa of Wilson et al. 2015 Virology 485:252-62; the site of G155E on the D.3.1.1 background
+B,157,#332288,157_HA1,,"HA1 site 157; antigenic region Sa of Wilson et al. 2015 Virology 485:252-62; the site of S157L, S157T on the D.3.1.1 background"
+B,283,#e41a1c,E283K_HA1,,"HA1 site 283 differs: E in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+B,302,#e41a1c,K302E_HA1,,"HA1 site 302 differs: K in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), E in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+C,113,#e41a1c,R113K_HA1,,"HA1 site 113 differs: R in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+C,139,#e41a1c,A139D_HA1,,"HA1 site 139 differs: A in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), D in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+C,155,#332288,155_HA1,,HA1 site 155; antigenic region Sa of Wilson et al. 2015 Virology 485:252-62; the site of G155E on the D.3.1.1 background
+C,157,#332288,157_HA1,,"HA1 site 157; antigenic region Sa of Wilson et al. 2015 Virology 485:252-62; the site of S157L, S157T on the D.3.1.1 background"
+C,283,#e41a1c,E283K_HA1,,"HA1 site 283 differs: E in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+C,302,#e41a1c,K302E_HA1,,"HA1 site 302 differs: K in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), E in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"

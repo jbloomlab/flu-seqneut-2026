@@ -2,6 +2,7 @@
 Structure of H3N2 HA ([PDB 8FAW](https://www.rcsb.org/structure/8FAW)) with red indicating every site that differs between
 the 2025-2026 vaccine strain (A/District Of Columbia/27/2023, subclade J.2:S145N)
 and the 2026-2027 vaccine strain (A/Darwin/1415/2025, subclade K), and purple showing sites 222 and 223 in antigenic region D.
+A sialic-acid analog bound to the HA is shown in black sticks.
 
 Subclade K and J.2:S145N differ at 10 sites (shown in red):
 

@@ -146,6 +146,7 @@ plot_stratified_titers:
 # Markdown captions it references; the value labels the page in the docs. Set this key
 # to null to make no such pages.
 prot-struct-viz:
+  H1: key H1 HA mutations shown on protein structure
   H3: key H3 HA mutations shown on protein structure
 
 # Merged into each subtype's entry in `plot_titer_summaries_params.subtype_params`;

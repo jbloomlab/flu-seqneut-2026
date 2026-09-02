@@ -1,4 +1,5 @@
-wells: {}
+wells:
+  G7: manual_drop
 barcodes: {}
 barcode_wells:
   A/Netherlands/888/2026_H3N2 H2: max_frac_infectivity_per_viral_barcode_well

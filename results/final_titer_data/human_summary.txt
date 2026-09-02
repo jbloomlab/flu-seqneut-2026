@@ -3,7 +3,7 @@ Processing final titer data for group: human
 ======================================================================
 
 Loading input data...
-  Loaded 41998 titer measurements from results/aggregated_titers/titers_human.csv
+  Loaded 41928 titer measurements from results/aggregated_titers/titers_human.csv
   Loaded 632 sera from results/sera_metadata/all_sera_metadata.csv
   Loaded 301 barcodes from data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv
 
@@ -14,28 +14,23 @@ Validating input data...
   All viruses found in viral library
 
 Processing titer data...
-  Initial: 41998 rows, 286 sera, 148 viruses
+  Initial: 41928 rows, 285 sera, 148 viruses
 
 Step 1: Dropping explicitly specified sera and viruses...
   No viruses specified in viruses_to_drop
   No sera specified in sera_to_drop
 
 Step 2: Applying min_frac_viruses=0.9, min_frac_sera=0.8 (action=drop)...
-  Iteration 1: dropped 2 sera, 0 viruses
-  min_frac filters converged after 2 iterations
-
-  Sera dropped for min_frac_viruses < 0.9 (2 total):
-    flu-seqneut-2026-VIDRL-015_pre-vax: frac_viruses=0.6081
-    flu-seqneut-2026-VIDRL-030_pre-vax: frac_viruses=0.8446
+  min_frac filters converged after 1 iterations
 
 Processing complete:
-  Final: 41783 rows, 284 sera, 148 viruses
-  Dropped: 215 rows, 2 sera, 0 viruses
+  Final: 41928 rows, 285 sera, 148 viruses
+  Dropped: 0 rows, 0 sera, 0 viruses
 
 Generating output files...
-  Written: results/final_titer_data/human_titers.csv (41783 rows)
-  Written: results/final_titer_data/human_sera.csv (284 rows)
-  Written: results/final_titer_data/human_sera_multicohort.csv (686 rows)
+  Written: results/final_titer_data/human_titers.csv (41928 rows)
+  Written: results/final_titer_data/human_sera.csv (285 rows)
+  Written: results/final_titer_data/human_sera_multicohort.csv (690 rows)
   Written: results/final_titer_data/human_viruses.csv (148 rows)
   Written: results/final_titer_data/human_titers_summarized_by_virus.csv (1628 rows)
 
@@ -43,20 +38,20 @@ Generating output files...
 FINAL SUMMARY
 ======================================================================
 Group: human
-Sera: 284
+Sera: 285
 Viruses: 148
-Total titers: 41783
+Total titers: 41928
 
 Cohorts in titers_summarized_by_virus.csv:
-  All: 284 sera, 41783 titers
+  All: 285 sera, 41928 titers
   CTS: 38 sera, 5608 titers
   SCH: 40 sera, 5883 titers
-  UWMC: 88 sera, 12915 titers
-  VIDRL: 118 sera, 17377 titers
+  UWMC: 87 sera, 12769 titers
+  VIDRL: 120 sera, 17668 titers
   VIDRL_adult-cell_post: 20 sera, 2957 titers
-  VIDRL_adult-cell_pre: 19 sera, 2772 titers
+  VIDRL_adult-cell_pre: 20 sera, 2918 titers
   VIDRL_adult-egg_post: 20 sera, 2953 titers
-  VIDRL_adult-egg_pre: 19 sera, 2798 titers
+  VIDRL_adult-egg_pre: 20 sera, 2943 titers
   VIDRL_elderly-egg_post: 20 sera, 2956 titers
   VIDRL_elderly-egg_pre: 20 sera, 2941 titers
 

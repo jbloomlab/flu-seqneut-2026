@@ -37,23 +37,10 @@ plate8:
     A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-UWMC-026: goodness_of_fit
   serum_replicates: {}
 plate9:
-  wells: {}
+  wells:
+    H1: manual_drop
   barcodes: {}
   barcode_wells:
-    A/Andalucia/PMC-01495/2025_H1N1 H1: max_frac_infectivity_per_viral_barcode_well
-    A/Astrakhan/RII-MH273373S/2025_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
-    A/BritishColumbia/RV01350-26/2026_H1N1 H1: max_frac_infectivity_per_viral_barcode_well
-    A/BritishColumbia/RV05508-25/2025_H1N1 H1: max_frac_infectivity_per_viral_barcode_well
-    A/Colombia/1851/2024_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
-    A/France/GES-IPP01077/2026_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
-    A/France/NAQ-HCL026010957001/2026_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
-    A/Hawaii/70/2019_H1N1 H1: max_frac_infectivity_per_viral_barcode_well
-    A/Michigan/UM-10068456988/2025_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
-    A/Ontario/PHL202550193/2025_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
-    A/Singapore/MOH0547/2024_H1N1 H1: max_frac_infectivity_per_viral_barcode_well
-    A/SouthCarolina/USAFSAM-17046/2026_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
-    A/Trieste/380/2026_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
-    A/Zambia/6-NIC-014/2026_H1N1 H1: max_frac_infectivity_per_viral_barcode_well
     A/Ohio/259/2024_H1N1 E5: max_frac_infectivity_per_viral_barcode_well
     A/Singapore/MOH0547/2024_H1N1 E5: max_frac_infectivity_per_viral_barcode_well
     A/California/NIRC-IS-1356/2025_H1N1 G7: max_frac_infectivity_per_viral_barcode_well
@@ -89,7 +76,8 @@ plate9:
     A/Saskatchewan/SKFLU477299/2025_H3N2 flu-seqneut-2026-UWMC-036: goodness_of_fit
     A/Trieste/257/2025_H3N2 flu-seqneut-2026-UWMC-036: goodness_of_fit
     A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-UWMC-037: goodness_of_fit
-  serum_replicates: {}
+  serum_replicates:
+    flu-seqneut-2026-UWMC-027: manual_drop
 plate10:
   wells: {}
   barcodes: {}
@@ -372,7 +360,8 @@ plate16:
     A/Saskatchewan/SKFLU477299/2025_H3N2 flu-seqneut-2026-UWMC-065: goodness_of_fit
   serum_replicates: {}
 plate17:
-  wells: {}
+  wells:
+    F4: manual_drop
   barcodes: {}
   barcode_wells:
     A/France/NAQ-HCL026046169102/2025_H1N1 G2: max_frac_infectivity_per_viral_barcode_well
@@ -388,12 +377,10 @@ plate17:
     A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-UWMC-071: goodness_of_fit
     A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-UWMC-071: goodness_of_fit
     A/Michigan/8/2026_H3N2 flu-seqneut-2026-UWMC-071: goodness_of_fit
-    A/Badajoz/18813527/2026_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
+    A/England/1893256/2026_H1N1 flu-seqneut-2026-UWMC-074: goodness_of_fit
     A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
     A/France/HDF-IPP01550/2026_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
-    A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
     A/Missouri/11/2025_cell_H1N1 flu-seqneut-2026-UWMC-074: goodness_of_fit
-    A/Romania/612042/2026_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
     A/Saskatchewan/SKFLU477299/2025_H3N2 flu-seqneut-2026-UWMC-074: goodness_of_fit
     A/Badajoz/18738342/2026_H3N2 flu-seqneut-2026-UWMC-077: goodness_of_fit
     A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-UWMC-077: goodness_of_fit
@@ -506,7 +493,8 @@ plate20:
     A/Victoria/2948/2025_H3N2 flu-seqneut-2026-CTS-025: goodness_of_fit
   serum_replicates: {}
 plate25:
-  wells: {}
+  wells:
+    G9: manual_drop
   barcodes: {}
   barcode_wells: {}
   barcode_serum_replicates:
@@ -526,64 +514,8 @@ plate25:
     A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-VIDRL-014_pre-vax: goodness_of_fit
     A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-VIDRL-014_pre-vax: goodness_of_fit
     A/StPetersburg/RII-25-2321S/2025_H3N2 flu-seqneut-2026-VIDRL-014_pre-vax: goodness_of_fit
-    A/Badajoz/18811358/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Badajoz/18813527/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Bangkok/P2390/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Bolivia/OR5702/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/BritishColumbia/RV00022-26/2025_H1N1 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/BritishColumbia/RV00279-26/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/California/NIRC-IS-1019/2026_H1N1 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Castellon/VAHNSI_02_02400/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Connecticut/5/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Darwin/1415/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Denmark/4774/2025_H1N1 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/District_Of_Columbia/27/2023_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/France/GES-IPP01077/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/France/HDF-IPP01550/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/France/HDF-RELAB-IPP00303/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/France/NAQ-HCL026010957001/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Galicia/GA-CHUAC-451/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Germany/LRMC_0113/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Lisboa/216/2023_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Luxembourg/LNS9132577/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Malaysia/IMR/SARI/2406/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Massachusetts/18/2022_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Massachusetts/ISC-1856/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Michigan/UM-10068449788/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/MinasGerais/671/2026_H1N1 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Missouri/NIRC-AV-1003/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     A/NakhonPhanom/P495/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Nebraska/34/2026_H1N1 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Netherlands/864/2026_H1N1 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Netherlands/888/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Netherlands/968/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/NewYork/NIRC-IS-1086/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Ontario/PHL202550193/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Oregon/81/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Parana/416133590/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Romania/612042/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/SantaCatarina/508/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Saskatchewan/SKFLU477299/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Saskatchewan/SKFLU477727/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Singapore/KK2768/2025_H1N1 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Singapore/NTF0577/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Singapore/SAR8915/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/South_Australia/2523812314/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/South_Australia/2527213276/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/StPetersburg/RII-25-2042S/2025_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/StPetersburg/RII-25-2600S/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
     A/Thuringen/16/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Trieste/380/2026_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Vietnam/F7324/2024_H3N2 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
-    A/Virginia/82/2025_H1N1 flu-seqneut-2026-VIDRL-015_pre-vax: goodness_of_fit
   serum_replicates: {}
 plate26:
   wells: {}
@@ -613,7 +545,8 @@ plate27:
     A/MinasGerais/410/2026_H1N1 flu-seqneut-2026-VIDRL-024_pre-vax: goodness_of_fit
   serum_replicates: {}
 plate28:
-  wells: {}
+  wells:
+    F9: manual_drop
   barcodes: {}
   barcode_wells:
     A/Peru/ANC-INS-062/2026_H3N2 E10: max_frac_infectivity_per_viral_barcode_well
@@ -634,29 +567,9 @@ plate28:
     A/Michigan/UM-10068134090/2025_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
     A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
     A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-VIDRL-030_post-vax: goodness_of_fit
-    A/Badajoz/18813527/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
     A/Bangkok/P2391/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Bolivia/OR5702/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/California/GKISBBBH79910/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Croatia/10136RV/2023_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/District_Of_Columbia/27/2023_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/England/1893256/2026_H1N1 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/France/ARA-HCL026031894402/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/France/HDF-RELAB-IPP00300/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
     A/Hessen/18/2026_H1N1 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Massachusetts/ISC-1856/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Michigan/UM-10068456988/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Montana/51/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/NakhonPhanom/P495/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
     A/Netherlands/888/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/NovaScotia/25-365-06099/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Oregon/81/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Parana/416133590/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Romania/612042/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/SouthAustralia/2605715552/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/StPetersburg/RII-25-2506S/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Trieste/380/2026_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
-    A/Victoria/2948/2025_H3N2 flu-seqneut-2026-VIDRL-030_pre-vax: goodness_of_fit
   serum_replicates: {}
 plate29:
   wells: {}
@@ -700,7 +613,8 @@ plate33:
     A/Norway/9556/2025_H1N1 flu-seqneut-2026-VIDRL-088_pre-vax: goodness_of_fit
   serum_replicates: {}
 plate34:
-  wells: {}
+  wells:
+    G7: manual_drop
   barcodes: {}
   barcode_wells:
     A/Netherlands/888/2026_H3N2 H2: max_frac_infectivity_per_viral_barcode_well

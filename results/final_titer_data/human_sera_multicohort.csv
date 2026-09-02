@@ -65,7 +65,6 @@ flu-seqneut-2026-UWMC-023,All,56,Male,2026-06,56.0,,,,,,
 flu-seqneut-2026-UWMC-024,All,56,Male,2026-06,56.0,,,,,,
 flu-seqneut-2026-UWMC-025,All,55,Female,2026-06,55.0,,,,,,
 flu-seqneut-2026-UWMC-026,All,55,Female,2026-06,55.0,,,,,,
-flu-seqneut-2026-UWMC-027,All,55,Male,2026-06,55.0,,,,,,
 flu-seqneut-2026-UWMC-028,All,54,Female,2026-06,54.0,,,,,,
 flu-seqneut-2026-UWMC-029,All,53,Male,2026-06,53.0,,,,,,
 flu-seqneut-2026-UWMC-030,All,53,Male,2026-06,53.0,,,,,,
@@ -193,6 +192,7 @@ flu-seqneut-2026-VIDRL-013_pre-vax,All,54,Female,2026-05,54.0,flucelvax group: 0
 flu-seqneut-2026-VIDRL-013_post-vax,All,54,Female,2026-06,54.0,flucelvax group: 22 days post-vaccination,s013,post,adult-cell,22.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-014_pre-vax,All,36,Female,2026-05,36.0,flucelvax group: 0 days post-vaccination,s014,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-014_post-vax,All,36,Female,2026-06,36.0,flucelvax group: 21 days post-vaccination,s014,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-015_pre-vax,All,55,Male,2026-05,55.0,flucelvax group: 0 days post-vaccination,s015,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-015_post-vax,All,55,Male,2026-06,55.0,flucelvax group: 22 days post-vaccination,s015,post,adult-cell,22.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-016_pre-vax,All,31,Female,2026-05,31.0,flucelvax group: 0 days post-vaccination,s016,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-016_post-vax,All,31,Female,2026-06,31.0,flucelvax group: 21 days post-vaccination,s016,post,adult-cell,21.0,"cohort 002, arm adult-cell"
@@ -222,6 +222,7 @@ flu-seqneut-2026-VIDRL-028_pre-vax,All,28,Female,2026-04,28.0,Fluzone group: 0 d
 flu-seqneut-2026-VIDRL-028_post-vax,All,28,Female,2026-05,28.0,Fluzone group: 18 days post-vaccination,s028,post,adult-egg,18.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-029_pre-vax,All,18,Female,2026-04,18.0,Fluzone group: 0 days post-vaccination,s029,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-029_post-vax,All,18,Female,2026-05,18.0,Fluzone group: 21 days post-vaccination,s029,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-030_pre-vax,All,30,Male,2026-04,30.0,Fluzone group: 0 days post-vaccination,s030,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-030_post-vax,All,30,Male,2026-05,30.0,Fluzone group: 22 days post-vaccination,s030,post,adult-egg,22.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-031_pre-vax,All,50,Male,2026-04,50.0,Fluzone group: 0 days post-vaccination,s031,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-031_post-vax,All,50,Male,2026-05,50.0,Fluzone group: 20 days post-vaccination,s031,post,adult-egg,20.0,"cohort 002, arm adult-egg"
@@ -349,7 +350,6 @@ flu-seqneut-2026-UWMC-023,UWMC,56,Male,2026-06,56.0,,,,,,
 flu-seqneut-2026-UWMC-024,UWMC,56,Male,2026-06,56.0,,,,,,
 flu-seqneut-2026-UWMC-025,UWMC,55,Female,2026-06,55.0,,,,,,
 flu-seqneut-2026-UWMC-026,UWMC,55,Female,2026-06,55.0,,,,,,
-flu-seqneut-2026-UWMC-027,UWMC,55,Male,2026-06,55.0,,,,,,
 flu-seqneut-2026-UWMC-028,UWMC,54,Female,2026-06,54.0,,,,,,
 flu-seqneut-2026-UWMC-029,UWMC,53,Male,2026-06,53.0,,,,,,
 flu-seqneut-2026-UWMC-030,UWMC,53,Male,2026-06,53.0,,,,,,
@@ -477,6 +477,7 @@ flu-seqneut-2026-VIDRL-013_pre-vax,VIDRL,54,Female,2026-05,54.0,flucelvax group:
 flu-seqneut-2026-VIDRL-013_post-vax,VIDRL,54,Female,2026-06,54.0,flucelvax group: 22 days post-vaccination,s013,post,adult-cell,22.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-014_pre-vax,VIDRL,36,Female,2026-05,36.0,flucelvax group: 0 days post-vaccination,s014,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-014_post-vax,VIDRL,36,Female,2026-06,36.0,flucelvax group: 21 days post-vaccination,s014,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-015_pre-vax,VIDRL,55,Male,2026-05,55.0,flucelvax group: 0 days post-vaccination,s015,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-015_post-vax,VIDRL,55,Male,2026-06,55.0,flucelvax group: 22 days post-vaccination,s015,post,adult-cell,22.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-016_pre-vax,VIDRL,31,Female,2026-05,31.0,flucelvax group: 0 days post-vaccination,s016,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-016_post-vax,VIDRL,31,Female,2026-06,31.0,flucelvax group: 21 days post-vaccination,s016,post,adult-cell,21.0,"cohort 002, arm adult-cell"
@@ -506,6 +507,7 @@ flu-seqneut-2026-VIDRL-028_pre-vax,VIDRL,28,Female,2026-04,28.0,Fluzone group: 0
 flu-seqneut-2026-VIDRL-028_post-vax,VIDRL,28,Female,2026-05,28.0,Fluzone group: 18 days post-vaccination,s028,post,adult-egg,18.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-029_pre-vax,VIDRL,18,Female,2026-04,18.0,Fluzone group: 0 days post-vaccination,s029,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-029_post-vax,VIDRL,18,Female,2026-05,18.0,Fluzone group: 21 days post-vaccination,s029,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-030_pre-vax,VIDRL,30,Male,2026-04,30.0,Fluzone group: 0 days post-vaccination,s030,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-030_post-vax,VIDRL,30,Male,2026-05,30.0,Fluzone group: 22 days post-vaccination,s030,post,adult-egg,22.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-031_pre-vax,VIDRL,50,Male,2026-04,50.0,Fluzone group: 0 days post-vaccination,s031,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-031_post-vax,VIDRL,50,Male,2026-05,50.0,Fluzone group: 20 days post-vaccination,s031,post,adult-egg,20.0,"cohort 002, arm adult-egg"
@@ -595,6 +597,7 @@ flu-seqneut-2026-VIDRL-013_pre-vax,VIDRL_adult-cell_pre,54,Female,2026-05,54.0,f
 flu-seqneut-2026-VIDRL-013_post-vax,VIDRL_adult-cell_post,54,Female,2026-06,54.0,flucelvax group: 22 days post-vaccination,s013,post,adult-cell,22.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-014_pre-vax,VIDRL_adult-cell_pre,36,Female,2026-05,36.0,flucelvax group: 0 days post-vaccination,s014,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-014_post-vax,VIDRL_adult-cell_post,36,Female,2026-06,36.0,flucelvax group: 21 days post-vaccination,s014,post,adult-cell,21.0,"cohort 002, arm adult-cell"
+flu-seqneut-2026-VIDRL-015_pre-vax,VIDRL_adult-cell_pre,55,Male,2026-05,55.0,flucelvax group: 0 days post-vaccination,s015,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-015_post-vax,VIDRL_adult-cell_post,55,Male,2026-06,55.0,flucelvax group: 22 days post-vaccination,s015,post,adult-cell,22.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-016_pre-vax,VIDRL_adult-cell_pre,31,Female,2026-05,31.0,flucelvax group: 0 days post-vaccination,s016,pre,adult-cell,0.0,"cohort 002, arm adult-cell"
 flu-seqneut-2026-VIDRL-016_post-vax,VIDRL_adult-cell_post,31,Female,2026-06,31.0,flucelvax group: 21 days post-vaccination,s016,post,adult-cell,21.0,"cohort 002, arm adult-cell"
@@ -624,6 +627,7 @@ flu-seqneut-2026-VIDRL-028_pre-vax,VIDRL_adult-egg_pre,28,Female,2026-04,28.0,Fl
 flu-seqneut-2026-VIDRL-028_post-vax,VIDRL_adult-egg_post,28,Female,2026-05,28.0,Fluzone group: 18 days post-vaccination,s028,post,adult-egg,18.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-029_pre-vax,VIDRL_adult-egg_pre,18,Female,2026-04,18.0,Fluzone group: 0 days post-vaccination,s029,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-029_post-vax,VIDRL_adult-egg_post,18,Female,2026-05,18.0,Fluzone group: 21 days post-vaccination,s029,post,adult-egg,21.0,"cohort 002, arm adult-egg"
+flu-seqneut-2026-VIDRL-030_pre-vax,VIDRL_adult-egg_pre,30,Male,2026-04,30.0,Fluzone group: 0 days post-vaccination,s030,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-030_post-vax,VIDRL_adult-egg_post,30,Male,2026-05,30.0,Fluzone group: 22 days post-vaccination,s030,post,adult-egg,22.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-031_pre-vax,VIDRL_adult-egg_pre,50,Male,2026-04,50.0,Fluzone group: 0 days post-vaccination,s031,pre,adult-egg,0.0,"cohort 002, arm adult-egg"
 flu-seqneut-2026-VIDRL-031_post-vax,VIDRL_adult-egg_post,50,Male,2026-05,50.0,Fluzone group: 20 days post-vaccination,s031,post,adult-egg,20.0,"cohort 002, arm adult-egg"

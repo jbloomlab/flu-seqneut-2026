@@ -57948,564 +57948,6 @@
           "value": 6.4588
         },
         {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Andalucia/PMC-00977/2025",
-          "value": 12.708
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Andalucia/PMC-01217/2025",
-          "value": 12.634
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Andalucia/PMC-01495/2025",
-          "value": 12.532
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Arizona/40/2026",
-          "value": 12.694
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Asturias/232590913/2025",
-          "value": 12.692
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/BritishColumbia/RV00022-26/2025",
-          "value": 12.717
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/BritishColumbia/RV01350-26/2026",
-          "value": 12.532
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/BritishColumbia/RV05508-25/2025",
-          "value": 10.812
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/California/NIRC-IS-1019/2026",
-          "value": 12.824
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/California/NIRC-IS-1356/2025",
-          "value": 12.68
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Colorado/218/2024",
-          "value": 12.716
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Denmark/4547/2025",
-          "value": 12.736
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Denmark/4774/2025",
-          "value": 11.785
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/England/1893256/2026",
-          "value": 12.514
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/France/ARA-HCL025195259501/2025",
-          "value": 12.746
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/France/GES-IPP00659/2026",
-          "value": 12.742
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/France/HDF-RELAB-IPP07969/2025",
-          "value": 11.497
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/France/NAQ-HCL026046169102/2025",
-          "value": 12.787
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Galicia/GA-CHUAC-612/2025",
-          "value": 12.715
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Hawaii/ISC-1140/2025",
-          "value": 12.601
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Hessen/18/2026",
-          "value": 12.634
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Kentucky/80/2025",
-          "value": 10.036
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Maine/25/2026",
-          "value": 12.675
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Mauritius/26000203/2026",
-          "value": 13.004
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/MinasGerais/410/2026",
-          "value": 12.546
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/MinasGerais/671/2026",
-          "value": 12.761
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Mississippi/20/2026",
-          "value": 12.743
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Missouri/11/2025_cell",
-          "value": 12.587
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Nebraska/34/2026",
-          "value": 12.764
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Netherlands/10008/2026",
-          "value": 12.544
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Netherlands/2398/2025",
-          "value": 10.07
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Netherlands/543/2026",
-          "value": 12.707
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Netherlands/864/2026",
-          "value": 12.674
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026",
-          "value": 12.778
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/NordrheinWestfalen/96/2026",
-          "value": 12.662
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Norway/9556/2025",
-          "value": 11.682
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Ohio/259/2024",
-          "value": 13.523
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/PaisVasco/70369726/2026",
-          "value": 12.739
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Rhode_Island/11/2026",
-          "value": 12.071
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Saskatchewan/SKFLU490586/2026",
-          "value": 12.451
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Singapore/KK2768/2025",
-          "value": 12.226
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Singapore/MOH0547/2024",
-          "value": 12.532
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/SouthAfrica/NHLS-SU-CERI-C075557/2026",
-          "value": 12.639
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/SouthAfrica/NICD-R01647/2026",
-          "value": 12.735
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/SouthAfrica/NICD-R01668/2026",
-          "value": 12.735
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/SouthAfrica/PATH-CERI-C073358/2025",
-          "value": 12.72
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/SouthAfrica/PATH-CERI-C073366/2025",
-          "value": 12.752
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/SouthAfrica/PATH-CERI-C075119/2026",
-          "value": 12.694
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Switzerland/UN-SNRCI-HUG-053/2025",
-          "value": 12.144
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Sydney/50/2026",
-          "value": 12.651
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Texas/29/2026",
-          "value": 12.743
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Tokyo/EIS11-277/2024",
-          "value": 12.91
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Ukraine/5214/2026",
-          "value": 12.702
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Uppsala/SE26-01293/2026",
-          "value": 12.597
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Valencia/VAHNSI_09_02564/2025",
-          "value": 12.675
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Vietnam/PF125413/2025",
-          "value": 11.507
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Vietnam/PF126009/2026",
-          "value": 12.136
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Virginia/82/2025",
-          "value": 12.708
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Wisconsin/67/2022",
-          "value": 12.758
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Zacapa/FLU-012/2025",
-          "value": 12.962
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Zambia/6-NIC-014/2026",
-          "value": 12.532
-        },
-        {
-          "age_numeric": 55.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-027",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Zambia/7-NIC-313/2026",
-          "value": 12.628
-        },
-        {
           "age_numeric": 54.0,
           "cohort": "UWMC",
           "serum": "flu-seqneut-2026-UWMC-028",
@@ -84108,7 +83550,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Andalucia/PMC-00977/2025",
-          "value": 7.1158
+          "value": 7.1967
         },
         {
           "age_numeric": 29.0,
@@ -84117,7 +83559,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Andalucia/PMC-01217/2025",
-          "value": 7.7576
+          "value": 7.9027
         },
         {
           "age_numeric": 29.0,
@@ -84126,7 +83568,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Andalucia/PMC-01495/2025",
-          "value": 7.8342
+          "value": 7.9466
         },
         {
           "age_numeric": 29.0,
@@ -84135,7 +83577,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Arizona/40/2026",
-          "value": 7.2104
+          "value": 7.406
         },
         {
           "age_numeric": 29.0,
@@ -84144,7 +83586,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Asturias/232590913/2025",
-          "value": 7.6323
+          "value": 7.7748
         },
         {
           "age_numeric": 29.0,
@@ -84153,7 +83595,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/BritishColumbia/RV00022-26/2025",
-          "value": 6.879
+          "value": 7.2593
         },
         {
           "age_numeric": 29.0,
@@ -84162,7 +83604,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/BritishColumbia/RV01350-26/2026",
-          "value": 7.3794
+          "value": 7.5407
         },
         {
           "age_numeric": 29.0,
@@ -84171,7 +83613,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/BritishColumbia/RV05508-25/2025",
-          "value": 7.8839
+          "value": 8.0213
         },
         {
           "age_numeric": 29.0,
@@ -84180,7 +83622,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/California/NIRC-IS-1019/2026",
-          "value": 7.5244
+          "value": 7.7184
         },
         {
           "age_numeric": 29.0,
@@ -84189,7 +83631,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/California/NIRC-IS-1356/2025",
-          "value": 7.3637
+          "value": 7.641
         },
         {
           "age_numeric": 29.0,
@@ -84198,7 +83640,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Colorado/218/2024",
-          "value": 7.7918
+          "value": 7.8028
         },
         {
           "age_numeric": 29.0,
@@ -84207,7 +83649,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Denmark/4547/2025",
-          "value": 7.4782
+          "value": 7.7053
         },
         {
           "age_numeric": 29.0,
@@ -84216,16 +83658,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Denmark/4774/2025",
-          "value": 8.477
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/England/1893256/2026",
-          "value": 5.5783
+          "value": 8.4842
         },
         {
           "age_numeric": 29.0,
@@ -84234,7 +83667,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/France/ARA-HCL025195259501/2025",
-          "value": 7.4635
+          "value": 7.6482
         },
         {
           "age_numeric": 29.0,
@@ -84243,114 +83676,6 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/France/GES-IPP00659/2026",
-          "value": 7.0736
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/France/HDF-RELAB-IPP07969/2025",
-          "value": 6.6104
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/France/NAQ-HCL026046169102/2025",
-          "value": 7.0323
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Galicia/GA-CHUAC-612/2025",
-          "value": 6.7655
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Hawaii/ISC-1140/2025",
-          "value": 7.8361
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Hessen/18/2026",
-          "value": 6.9932
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Kentucky/80/2025",
-          "value": 7.3837
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Maine/25/2026",
-          "value": 7.4085
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Mauritius/26000203/2026",
-          "value": 7.7448
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/MinasGerais/410/2026",
-          "value": 6.8442
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/MinasGerais/671/2026",
-          "value": 7.4009
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Mississippi/20/2026",
-          "value": 8.0996
-        },
-        {
-          "age_numeric": 29.0,
-          "cohort": "UWMC",
-          "serum": "flu-seqneut-2026-UWMC-074",
-          "serum_collection_date": "2026-06",
-          "sex": "Male",
-          "strain": "A/Nebraska/34/2026",
           "value": 7.2743
         },
         {
@@ -84359,8 +83684,8 @@
           "serum": "flu-seqneut-2026-UWMC-074",
           "serum_collection_date": "2026-06",
           "sex": "Male",
-          "strain": "A/Netherlands/10008/2026",
-          "value": 7.4692
+          "strain": "A/France/HDF-RELAB-IPP07969/2025",
+          "value": 6.7401
         },
         {
           "age_numeric": 29.0,
@@ -84368,8 +83693,8 @@
           "serum": "flu-seqneut-2026-UWMC-074",
           "serum_collection_date": "2026-06",
           "sex": "Male",
-          "strain": "A/Netherlands/2398/2025",
-          "value": 5.4343
+          "strain": "A/France/NAQ-HCL026046169102/2025",
+          "value": 7.2761
         },
         {
           "age_numeric": 29.0,
@@ -84377,8 +83702,8 @@
           "serum": "flu-seqneut-2026-UWMC-074",
           "serum_collection_date": "2026-06",
           "sex": "Male",
-          "strain": "A/Netherlands/543/2026",
-          "value": 6.4431
+          "strain": "A/Galicia/GA-CHUAC-612/2025",
+          "value": 6.8189
         },
         {
           "age_numeric": 29.0,
@@ -84386,8 +83711,8 @@
           "serum": "flu-seqneut-2026-UWMC-074",
           "serum_collection_date": "2026-06",
           "sex": "Male",
-          "strain": "A/Netherlands/864/2026",
-          "value": 6.9069
+          "strain": "A/Hawaii/ISC-1140/2025",
+          "value": 7.9111
         },
         {
           "age_numeric": 29.0,
@@ -84395,7 +83720,43 @@
           "serum": "flu-seqneut-2026-UWMC-074",
           "serum_collection_date": "2026-06",
           "sex": "Male",
-          "strain": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026",
+          "strain": "A/Hessen/18/2026",
+          "value": 7.29
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/Kentucky/80/2025",
+          "value": 7.4635
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/Maine/25/2026",
+          "value": 7.3558
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/Mauritius/26000203/2026",
+          "value": 7.8073
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/MinasGerais/410/2026",
           "value": 7.3074
         },
         {
@@ -84404,8 +83765,80 @@
           "serum": "flu-seqneut-2026-UWMC-074",
           "serum_collection_date": "2026-06",
           "sex": "Male",
+          "strain": "A/MinasGerais/671/2026",
+          "value": 7.5962
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/Mississippi/20/2026",
+          "value": 8.029
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/Nebraska/34/2026",
+          "value": 7.5038
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/Netherlands/10008/2026",
+          "value": 7.6525
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/Netherlands/2398/2025",
+          "value": 5.4423
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/Netherlands/543/2026",
+          "value": 6.7866
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/Netherlands/864/2026",
+          "value": 6.7853
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
+          "strain": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026",
+          "value": 7.6177
+        },
+        {
+          "age_numeric": 29.0,
+          "cohort": "UWMC",
+          "serum": "flu-seqneut-2026-UWMC-074",
+          "serum_collection_date": "2026-06",
+          "sex": "Male",
           "strain": "A/NordrheinWestfalen/96/2026",
-          "value": 7.8048
+          "value": 7.7695
         },
         {
           "age_numeric": 29.0,
@@ -84414,7 +83847,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Norway/9556/2025",
-          "value": 7.3291
+          "value": 7.6272
         },
         {
           "age_numeric": 29.0,
@@ -84423,7 +83856,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Ohio/259/2024",
-          "value": 7.5361
+          "value": 7.6823
         },
         {
           "age_numeric": 29.0,
@@ -84432,7 +83865,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/PaisVasco/70369726/2026",
-          "value": 7.0179
+          "value": 7.2124
         },
         {
           "age_numeric": 29.0,
@@ -84441,7 +83874,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Rhode_Island/11/2026",
-          "value": 7.433
+          "value": 7.5515
         },
         {
           "age_numeric": 29.0,
@@ -84450,7 +83883,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Saskatchewan/SKFLU490586/2026",
-          "value": 8.107
+          "value": 8.2531
         },
         {
           "age_numeric": 29.0,
@@ -84459,7 +83892,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Singapore/KK2768/2025",
-          "value": 7.7067
+          "value": 7.8151
         },
         {
           "age_numeric": 29.0,
@@ -84468,7 +83901,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Singapore/MOH0547/2024",
-          "value": 7.858
+          "value": 7.8227
         },
         {
           "age_numeric": 29.0,
@@ -84477,7 +83910,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/SouthAfrica/NHLS-SU-CERI-C075557/2026",
-          "value": 6.7655
+          "value": 6.9818
         },
         {
           "age_numeric": 29.0,
@@ -84486,7 +83919,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/SouthAfrica/NICD-R01647/2026",
-          "value": 7.3567
+          "value": 7.6125
         },
         {
           "age_numeric": 29.0,
@@ -84495,7 +83928,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/SouthAfrica/NICD-R01668/2026",
-          "value": 7.5515
+          "value": 7.7025
         },
         {
           "age_numeric": 29.0,
@@ -84504,7 +83937,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/SouthAfrica/PATH-CERI-C073358/2025",
-          "value": 7.1779
+          "value": 7.3549
         },
         {
           "age_numeric": 29.0,
@@ -84513,7 +83946,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/SouthAfrica/PATH-CERI-C073366/2025",
-          "value": 7.1888
+          "value": 7.3318
         },
         {
           "age_numeric": 29.0,
@@ -84522,7 +83955,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/SouthAfrica/PATH-CERI-C075119/2026",
-          "value": 7.585
+          "value": 7.7204
         },
         {
           "age_numeric": 29.0,
@@ -84531,7 +83964,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Switzerland/UN-SNRCI-HUG-053/2025",
-          "value": 6.5396
+          "value": 6.5507
         },
         {
           "age_numeric": 29.0,
@@ -84540,7 +83973,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Sydney/50/2026",
-          "value": 7.2172
+          "value": 7.3957
         },
         {
           "age_numeric": 29.0,
@@ -84549,7 +83982,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Texas/29/2026",
-          "value": 7.3923
+          "value": 7.5306
         },
         {
           "age_numeric": 29.0,
@@ -84558,7 +83991,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Tokyo/EIS11-277/2024",
-          "value": 7.6724
+          "value": 7.8035
         },
         {
           "age_numeric": 29.0,
@@ -84567,7 +84000,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Ukraine/5214/2026",
-          "value": 7.2517
+          "value": 7.382
         },
         {
           "age_numeric": 29.0,
@@ -84576,7 +84009,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Uppsala/SE26-01293/2026",
-          "value": 7.5515
+          "value": 7.5438
         },
         {
           "age_numeric": 29.0,
@@ -84585,7 +84018,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Valencia/VAHNSI_09_02564/2025",
-          "value": 7.4717
+          "value": 7.7721
         },
         {
           "age_numeric": 29.0,
@@ -84594,7 +84027,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Vietnam/PF125413/2025",
-          "value": 7.4496
+          "value": 7.4562
         },
         {
           "age_numeric": 29.0,
@@ -84603,7 +84036,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Vietnam/PF126009/2026",
-          "value": 7.817
+          "value": 7.7032
         },
         {
           "age_numeric": 29.0,
@@ -84612,7 +84045,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Virginia/82/2025",
-          "value": 7.2498
+          "value": 7.5188
         },
         {
           "age_numeric": 29.0,
@@ -84621,7 +84054,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Wisconsin/67/2022",
-          "value": 7.3932
+          "value": 7.5407
         },
         {
           "age_numeric": 29.0,
@@ -84630,7 +84063,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Zacapa/FLU-012/2025",
-          "value": 7.5895
+          "value": 7.7996
         },
         {
           "age_numeric": 29.0,
@@ -84639,7 +84072,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Zambia/6-NIC-014/2026",
-          "value": 7.734
+          "value": 7.7944
         },
         {
           "age_numeric": 29.0,
@@ -84648,7 +84081,7 @@
           "serum_collection_date": "2026-06",
           "sex": "Male",
           "strain": "A/Zambia/7-NIC-313/2026",
-          "value": 7.3681
+          "value": 7.3724
         },
         {
           "age_numeric": 28.0,
@@ -108636,6 +108069,564 @@
           "value": 12.796
         },
         {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Andalucia/PMC-00977/2025",
+          "value": 6.5209
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Andalucia/PMC-01217/2025",
+          "value": 6.7495
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Andalucia/PMC-01495/2025",
+          "value": 6.2611
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Arizona/40/2026",
+          "value": 6.717
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Asturias/232590913/2025",
+          "value": 6.6413
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/BritishColumbia/RV00022-26/2025",
+          "value": 6.3069
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/BritishColumbia/RV01350-26/2026",
+          "value": 6.438
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/BritishColumbia/RV05508-25/2025",
+          "value": 7.8189
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/California/NIRC-IS-1019/2026",
+          "value": 6.1338
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/California/NIRC-IS-1356/2025",
+          "value": 6.5998
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Colorado/218/2024",
+          "value": 7.5014
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Denmark/4547/2025",
+          "value": 5.988
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Denmark/4774/2025",
+          "value": 6.5489
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/England/1893256/2026",
+          "value": 6.5857
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/France/ARA-HCL025195259501/2025",
+          "value": 6.2519
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/France/GES-IPP00659/2026",
+          "value": 6.5567
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/France/HDF-RELAB-IPP07969/2025",
+          "value": 5.5075
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/France/NAQ-HCL026046169102/2025",
+          "value": 5.6118
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Galicia/GA-CHUAC-612/2025",
+          "value": 6.5965
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Hawaii/ISC-1140/2025",
+          "value": 7.417
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Hessen/18/2026",
+          "value": 6.3837
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Kentucky/80/2025",
+          "value": 10.091
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Maine/25/2026",
+          "value": 6.4153
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Mauritius/26000203/2026",
+          "value": 6.784
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/MinasGerais/410/2026",
+          "value": 6.5633
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/MinasGerais/671/2026",
+          "value": 6.0135
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Mississippi/20/2026",
+          "value": 6.7306
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Missouri/11/2025_cell",
+          "value": 7.4396
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Nebraska/34/2026",
+          "value": 5.7184
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Netherlands/10008/2026",
+          "value": 6.1094
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Netherlands/2398/2025",
+          "value": 10.018
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Netherlands/543/2026",
+          "value": 5.7584
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Netherlands/864/2026",
+          "value": 6.1406
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026",
+          "value": 6.4326
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/NordrheinWestfalen/96/2026",
+          "value": 5.8014
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Norway/9556/2025",
+          "value": 6.586
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Ohio/259/2024",
+          "value": 7.2659
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/PaisVasco/70369726/2026",
+          "value": 6.5862
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Rhode_Island/11/2026",
+          "value": 6.8912
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Saskatchewan/SKFLU490586/2026",
+          "value": 7.0693
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Singapore/KK2768/2025",
+          "value": 8.3372
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Singapore/MOH0547/2024",
+          "value": 6.6283
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/NHLS-SU-CERI-C075557/2026",
+          "value": 6.9045
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/NICD-R01647/2026",
+          "value": 6.3227
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/NICD-R01668/2026",
+          "value": 6.5226
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/PATH-CERI-C073358/2025",
+          "value": 6.8985
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/PATH-CERI-C073366/2025",
+          "value": 6.5204
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/PATH-CERI-C075119/2026",
+          "value": 7.0411
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Switzerland/UN-SNRCI-HUG-053/2025",
+          "value": 6.96
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Sydney/50/2026",
+          "value": 6.2445
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Texas/29/2026",
+          "value": 6.6302
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Tokyo/EIS11-277/2024",
+          "value": 6.9875
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Ukraine/5214/2026",
+          "value": 5.6502
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Uppsala/SE26-01293/2026",
+          "value": 6.8704
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Valencia/VAHNSI_09_02564/2025",
+          "value": 7.2365
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Vietnam/PF125413/2025",
+          "value": 7.08
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Vietnam/PF126009/2026",
+          "value": 6.7156
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Virginia/82/2025",
+          "value": 6.442
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Wisconsin/67/2022",
+          "value": 8.0661
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Zacapa/FLU-012/2025",
+          "value": 5.9406
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Zambia/6-NIC-014/2026",
+          "value": 6.3125
+        },
+        {
+          "age_numeric": 55.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-015_pre-vax",
+          "serum_collection_date": "2026-05",
+          "sex": "Male",
+          "strain": "A/Zambia/7-NIC-313/2026",
+          "value": 6.6372
+        },
+        {
           "age_numeric": 31.0,
           "cohort": "VIDRL",
           "serum": "flu-seqneut-2026-VIDRL-016_post-vax",
@@ -124789,6 +124780,555 @@
           "sex": "Male",
           "strain": "A/Zambia/7-NIC-313/2026",
           "value": 7.5653
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Andalucia/PMC-00977/2025",
+          "value": 5.9921
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Andalucia/PMC-01217/2025",
+          "value": 6.3189
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Andalucia/PMC-01495/2025",
+          "value": 6.5201
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Arizona/40/2026",
+          "value": 6.3656
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Asturias/232590913/2025",
+          "value": 6.2819
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/BritishColumbia/RV00022-26/2025",
+          "value": 6.3087
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/BritishColumbia/RV01350-26/2026",
+          "value": 5.8359
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/BritishColumbia/RV05508-25/2025",
+          "value": 6.4241
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/California/NIRC-IS-1019/2026",
+          "value": 6.603
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/California/NIRC-IS-1356/2025",
+          "value": 6.0691
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Colorado/218/2024",
+          "value": 7.0693
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Denmark/4547/2025",
+          "value": 6.29
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Denmark/4774/2025",
+          "value": 5.5286
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/England/1893256/2026",
+          "value": 5.9619
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/France/ARA-HCL025195259501/2025",
+          "value": 6.4266
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/France/GES-IPP00659/2026",
+          "value": 6.2774
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/France/HDF-RELAB-IPP07969/2025",
+          "value": 6.0555
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/France/NAQ-HCL026046169102/2025",
+          "value": 6.3574
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Galicia/GA-CHUAC-612/2025",
+          "value": 6.0607
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Hawaii/ISC-1140/2025",
+          "value": 6.8316
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Kentucky/80/2025",
+          "value": 6.4119
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Maine/25/2026",
+          "value": 6.4089
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Mauritius/26000203/2026",
+          "value": 6.5729
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/MinasGerais/410/2026",
+          "value": 5.7485
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/MinasGerais/671/2026",
+          "value": 5.667
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Mississippi/20/2026",
+          "value": 5.887
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Missouri/11/2025_cell",
+          "value": 6.3897
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Nebraska/34/2026",
+          "value": 6.1373
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Netherlands/10008/2026",
+          "value": 6.0834
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Netherlands/2398/2025",
+          "value": 6.1299
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Netherlands/543/2026",
+          "value": 6.1127
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Netherlands/864/2026",
+          "value": 6.0237
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026",
+          "value": 6.5554
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/NordrheinWestfalen/96/2026",
+          "value": 6.2367
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Norway/9556/2025",
+          "value": 5.8975
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Ohio/259/2024",
+          "value": 7.0672
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/PaisVasco/70369726/2026",
+          "value": 6.3349
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Rhode_Island/11/2026",
+          "value": 6.2681
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Saskatchewan/SKFLU490586/2026",
+          "value": 6.4661
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Singapore/KK2768/2025",
+          "value": 6.5275
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Singapore/MOH0547/2024",
+          "value": 6.9977
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/NHLS-SU-CERI-C075557/2026",
+          "value": 6.4323
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/NICD-R01647/2026",
+          "value": 6.2532
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/NICD-R01668/2026",
+          "value": 6.2625
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/PATH-CERI-C073358/2025",
+          "value": 6.4288
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/PATH-CERI-C073366/2025",
+          "value": 6.3165
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/SouthAfrica/PATH-CERI-C075119/2026",
+          "value": 6.2685
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Switzerland/UN-SNRCI-HUG-053/2025",
+          "value": 6.6276
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Sydney/50/2026",
+          "value": 5.4614
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Texas/29/2026",
+          "value": 6.356
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Tokyo/EIS11-277/2024",
+          "value": 6.8667
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Ukraine/5214/2026",
+          "value": 5.6985
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Uppsala/SE26-01293/2026",
+          "value": 6.3621
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Valencia/VAHNSI_09_02564/2025",
+          "value": 6.439
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Vietnam/PF125413/2025",
+          "value": 6.4426
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Vietnam/PF126009/2026",
+          "value": 6.1813
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Virginia/82/2025",
+          "value": 5.9683
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Wisconsin/67/2022",
+          "value": 6.4502
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Zacapa/FLU-012/2025",
+          "value": 6.5544
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Zambia/6-NIC-014/2026",
+          "value": 6.2837
+        },
+        {
+          "age_numeric": 30.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-030_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Male",
+          "strain": "A/Zambia/7-NIC-313/2026",
+          "value": 6.1801
         },
         {
           "age_numeric": 50.0,
@@ -145389,7 +145929,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Andalucia/PMC-00977/2025",
-          "value": 6.8253
+          "value": 7.009
         },
         {
           "age_numeric": 75.0,
@@ -145398,348 +145938,6 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Andalucia/PMC-01217/2025",
-          "value": 7.7892
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Andalucia/PMC-01495/2025",
-          "value": 7.6475
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Arizona/40/2026",
-          "value": 7.0101
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Asturias/232590913/2025",
-          "value": 7.7702
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/BritishColumbia/RV00022-26/2025",
-          "value": 7.052
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/BritishColumbia/RV01350-26/2026",
-          "value": 7.4051
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/BritishColumbia/RV05508-25/2025",
-          "value": 7.8405
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/California/NIRC-IS-1019/2026",
-          "value": 7.7421
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/California/NIRC-IS-1356/2025",
-          "value": 8.7662
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Colorado/218/2024",
-          "value": 7.5384
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Denmark/4547/2025",
-          "value": 7.3165
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Denmark/4774/2025",
-          "value": 8.0536
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/England/1893256/2026",
-          "value": 7.4254
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/France/ARA-HCL025195259501/2025",
-          "value": 7.6632
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/France/GES-IPP00659/2026",
-          "value": 7.5014
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/France/HDF-RELAB-IPP07969/2025",
-          "value": 7.4594
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/France/NAQ-HCL026046169102/2025",
-          "value": 7.0135
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Galicia/GA-CHUAC-612/2025",
-          "value": 6.5932
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Hawaii/ISC-1140/2025",
-          "value": 8.0509
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Hessen/18/2026",
-          "value": 6.8642
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Kentucky/80/2025",
-          "value": 8.931
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Maine/25/2026",
-          "value": 7.8673
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Mauritius/26000203/2026",
-          "value": 7.7149
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/MinasGerais/410/2026",
-          "value": 7.5306
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/MinasGerais/671/2026",
-          "value": 7.7549
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Mississippi/20/2026",
-          "value": 6.4353
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Missouri/11/2025_cell",
-          "value": 7.5932
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Nebraska/34/2026",
-          "value": 6.9681
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Netherlands/10008/2026",
-          "value": 7.7087
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Netherlands/2398/2025",
-          "value": 8.0891
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Netherlands/543/2026",
-          "value": 7.3246
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Netherlands/864/2026",
-          "value": 7.0725
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026",
-          "value": 7.2075
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/NordrheinWestfalen/96/2026",
-          "value": 7.9015
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Norway/9556/2025",
-          "value": 8.1257
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Ohio/259/2024",
-          "value": 7.9402
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/PaisVasco/70369726/2026",
-          "value": 7.4263
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Rhode_Island/11/2026",
-          "value": 7.5314
-        },
-        {
-          "age_numeric": 75.0,
-          "cohort": "VIDRL",
-          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
-          "serum_collection_date": "2026-04",
-          "sex": "Female",
-          "strain": "A/Saskatchewan/SKFLU490586/2026",
           "value": 7.9027
         },
         {
@@ -145748,8 +145946,350 @@
           "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
           "serum_collection_date": "2026-04",
           "sex": "Female",
+          "strain": "A/Andalucia/PMC-01495/2025",
+          "value": 7.8673
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Arizona/40/2026",
+          "value": 7.0079
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Asturias/232590913/2025",
+          "value": 7.7708
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/BritishColumbia/RV00022-26/2025",
+          "value": 7.0789
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/BritishColumbia/RV01350-26/2026",
+          "value": 7.7535
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/BritishColumbia/RV05508-25/2025",
+          "value": 7.9864
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/California/NIRC-IS-1019/2026",
+          "value": 7.9129
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/California/NIRC-IS-1356/2025",
+          "value": 8.7184
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Colorado/218/2024",
+          "value": 7.5683
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Denmark/4547/2025",
+          "value": 7.3672
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Denmark/4774/2025",
+          "value": 8.0569
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/England/1893256/2026",
+          "value": 7.7018
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/France/ARA-HCL025195259501/2025",
+          "value": 7.6717
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/France/GES-IPP00659/2026",
+          "value": 7.6191
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/France/HDF-RELAB-IPP07969/2025",
+          "value": 7.2761
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/France/NAQ-HCL026046169102/2025",
+          "value": 7.4119
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Galicia/GA-CHUAC-612/2025",
+          "value": 6.651
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Hawaii/ISC-1140/2025",
+          "value": 8.4275
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Hessen/18/2026",
+          "value": 7.12
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Kentucky/80/2025",
+          "value": 9.1669
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Maine/25/2026",
+          "value": 7.9051
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Mauritius/26000203/2026",
+          "value": 7.8734
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/MinasGerais/410/2026",
+          "value": 7.8054
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/MinasGerais/671/2026",
+          "value": 7.9744
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Mississippi/20/2026",
+          "value": 6.6525
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Missouri/11/2025_cell",
+          "value": 7.9189
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Nebraska/34/2026",
+          "value": 7.1938
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Netherlands/10008/2026",
+          "value": 7.8972
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Netherlands/2398/2025",
+          "value": 8.3385
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Netherlands/543/2026",
+          "value": 7.5244
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Netherlands/864/2026",
+          "value": 7.3282
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026",
+          "value": 7.2798
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/NordrheinWestfalen/96/2026",
+          "value": 8.0816
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Norway/9556/2025",
+          "value": 8.4073
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Ohio/259/2024",
+          "value": 8.2041
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/PaisVasco/70369726/2026",
+          "value": 7.8518
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Rhode_Island/11/2026",
+          "value": 7.9141
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
+          "strain": "A/Saskatchewan/SKFLU490586/2026",
+          "value": 8.3038
+        },
+        {
+          "age_numeric": 75.0,
+          "cohort": "VIDRL",
+          "serum": "flu-seqneut-2026-VIDRL-093_pre-vax",
+          "serum_collection_date": "2026-04",
+          "sex": "Female",
           "strain": "A/Singapore/KK2768/2025",
-          "value": 7.5038
+          "value": 7.7136
         },
         {
           "age_numeric": 75.0,
@@ -145758,7 +146298,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Singapore/MOH0547/2024",
-          "value": 8.1684
+          "value": 8.2322
         },
         {
           "age_numeric": 75.0,
@@ -145767,7 +146307,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/SouthAfrica/NHLS-SU-CERI-C075557/2026",
-          "value": 7.9307
+          "value": 8.0677
         },
         {
           "age_numeric": 75.0,
@@ -145776,7 +146316,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/SouthAfrica/NICD-R01647/2026",
-          "value": 7.4313
+          "value": 7.5607
         },
         {
           "age_numeric": 75.0,
@@ -145785,7 +146325,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/SouthAfrica/NICD-R01668/2026",
-          "value": 7.9272
+          "value": 8.2026
         },
         {
           "age_numeric": 75.0,
@@ -145794,7 +146334,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/SouthAfrica/PATH-CERI-C073358/2025",
-          "value": 8.0938
+          "value": 8.4955
         },
         {
           "age_numeric": 75.0,
@@ -145803,7 +146343,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/SouthAfrica/PATH-CERI-C073366/2025",
-          "value": 7.529
+          "value": 7.8966
         },
         {
           "age_numeric": 75.0,
@@ -145812,7 +146352,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/SouthAfrica/PATH-CERI-C075119/2026",
-          "value": 7.784
+          "value": 7.8436
         },
         {
           "age_numeric": 75.0,
@@ -145821,7 +146361,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Switzerland/UN-SNRCI-HUG-053/2025",
-          "value": 6.7655
+          "value": 6.7495
         },
         {
           "age_numeric": 75.0,
@@ -145830,7 +146370,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Sydney/50/2026",
-          "value": 7.1085
+          "value": 7.3957
         },
         {
           "age_numeric": 75.0,
@@ -145839,7 +146379,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Texas/29/2026",
-          "value": 7.9177
+          "value": 8.2201
         },
         {
           "age_numeric": 75.0,
@@ -145848,7 +146388,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Tokyo/EIS11-277/2024",
-          "value": 7.7635
+          "value": 7.8163
         },
         {
           "age_numeric": 75.0,
@@ -145866,7 +146406,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Uppsala/SE26-01293/2026",
-          "value": 8.1416
+          "value": 8.1406
         },
         {
           "age_numeric": 75.0,
@@ -145875,7 +146415,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Valencia/VAHNSI_09_02564/2025",
-          "value": 7.843
+          "value": 8.312
         },
         {
           "age_numeric": 75.0,
@@ -145884,7 +146424,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Vietnam/PF125413/2025",
-          "value": 7.923
+          "value": 7.946
         },
         {
           "age_numeric": 75.0,
@@ -145893,7 +146433,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Vietnam/PF126009/2026",
-          "value": 7.9554
+          "value": 8.0168
         },
         {
           "age_numeric": 75.0,
@@ -145902,7 +146442,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Virginia/82/2025",
-          "value": 7.6417
+          "value": 7.7622
         },
         {
           "age_numeric": 75.0,
@@ -145911,7 +146451,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Wisconsin/67/2022",
-          "value": 8.1834
+          "value": 8.3593
         },
         {
           "age_numeric": 75.0,
@@ -145920,7 +146460,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Zacapa/FLU-012/2025",
-          "value": 7.4429
+          "value": 7.5622
         },
         {
           "age_numeric": 75.0,
@@ -145929,7 +146469,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Zambia/6-NIC-014/2026",
-          "value": 7.3354
+          "value": 7.5954
         },
         {
           "age_numeric": 75.0,
@@ -145938,7 +146478,7 @@
           "serum_collection_date": "2026-04",
           "sex": "Female",
           "strain": "A/Zambia/7-NIC-313/2026",
-          "value": 7.5446
+          "value": 7.9818
         },
         {
           "age_numeric": 71.0,

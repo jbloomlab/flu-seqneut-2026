@@ -13,15 +13,13 @@ To jump directly to the key results:
     * [results/final_titer_data/human_viruses.csv](results/final_titer_data/human_viruses.csv): detailed information about the viruses for which these titers were measured.
     * [results/final_titer_data/human_titers_summarized_by_virus.csv](results/final_titer_data/human_titers_summarized_by_virus.csv): summary statistics about the titers against each virus.
 
-- Interactive titer summary plots showing median titers, individual serum titers, interquartile ranges, fraction of sera below titer cutoffs, and (for the recent strains) titers as a fold change from each serum's median titer, for each subtype and strain type can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade).
+- See [https://jbloomlab.github.io/flu-seqneut-2026](https://jbloomlab.github.io/flu-seqneut-2026) for interactive results, including:
+  +  Interactive plots summarizing the titers in various ways can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade).
+  + Interactive charts that split the sera into two groups by each serum's titer ratio between a comparator and a reference strain can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-with-sera-split-by-relative-titer](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-with-sera-split-by-relative-titer).
+  + Interactive charts comparing the titers of paired pre- and post-vaccination sera can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts).
+  + Interactive views of the hemagglutinin structure indicating can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#protein-structure-visualizations](https://jbloomlab.github.io/flu-seqneut-2026/#protein-structure-visualizations).
 
-- Interactive charts that split the sera into two groups by each serum's titer ratio between a comparator and a reference strain, both chosen from dropdowns, with the fold-change threshold set by a slider and the age distribution of each group drawn alongside, can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-with-sera-split-by-relative-titer](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-with-sera-split-by-relative-titer).
-
-- Interactive charts comparing the titers of paired pre- and post-vaccination sera, both overlaid and as the fold change from before to after vaccination, with a facet per vaccination arm, can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts).
-
-- Interactive views of the influenza hemagglutinin structure, showing the antigenic regions and the substitutions between recent strains, with a selector to switch between views, can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#protein-structure-visualizations](https://jbloomlab.github.io/flu-seqneut-2026/#protein-structure-visualizations).
-
-- Interactive Nextstrain protein trees that can be colored by subclade, median titer, etc and also show individual titers in the *Measurements* panel can be viewed at the following links:
+- Interactive Nextstrain protein trees that can be colored by subclade, median titer, etc and also show individual titers in the *Measurements* panel can be viewed at:
   - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2)
   - [H1N1](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1)
 

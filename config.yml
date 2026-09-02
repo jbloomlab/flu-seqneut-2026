@@ -146,7 +146,7 @@ plot_stratified_titers:
 # Markdown captions it references; the value labels the page in the docs. Set this key
 # to null to make no such pages.
 prot-struct-viz:
-  8faw_antigenic_regions: H3 HA antigenic regions and recent substitutions (PDB 8FAW)
+  H3: key H3 HA mutations shown on protein structure
 
 # Merged into each subtype's entry in `plot_titer_summaries_params.subtype_params`;
 # override a key by restating it there (`<<:` merges shallowly)

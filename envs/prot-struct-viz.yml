@@ -9,4 +9,4 @@ dependencies:
   - python=3.14
   - pip
   - pip:
-    - prot-struct-viz==0.2.0
+    - prot-struct-viz==0.3.0

@@ -141,6 +141,13 @@ plot_stratified_titers:
     H1N1:
       recent: {reference: D.3.1.1, comparator: "D.3.1.1:G155E", fold_change_threshold: 0.5}
 
+# Protein-structure pages built by `prot-struct-viz`. Each key names a directory
+# `data/prot-struct-viz_config/<key>/` holding the `spec.yaml` and the CSVs and
+# Markdown captions it references; the value labels the page in the docs. Set this key
+# to null to make no such pages.
+prot-struct-viz:
+  8faw_antigenic_regions: H3 HA antigenic regions and recent substitutions (PDB 8FAW)
+
 # Merged into each subtype's entry in `plot_titer_summaries_params.subtype_params`;
 # override a key by restating it there (`<<:` merges shallowly)
 default_titer_plot_subtype_params: &default_titer_plot_subtype_params

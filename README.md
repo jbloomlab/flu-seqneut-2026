@@ -19,6 +19,8 @@ To jump directly to the key results:
 
 - Interactive charts comparing the titers of paired pre- and post-vaccination sera, both overlaid and as the fold change from before to after vaccination, with a facet per vaccination arm, can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts).
 
+- Interactive views of the influenza hemagglutinin structure, showing the antigenic regions and the substitutions between recent strains, with a selector to switch between views, can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#protein-structure-visualizations](https://jbloomlab.github.io/flu-seqneut-2026/#protein-structure-visualizations).
+
 - Interactive Nextstrain protein trees that can be colored by subclade, median titer, etc and also show individual titers in the *Measurements* panel can be viewed at the following links:
   - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2)
   - [H1N1](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1)
@@ -46,6 +48,7 @@ flu-seqneut-2026/
 ├── config.yml         # all pipeline configuration
 ├── rules/             # rules for analyses outside seqneut-pipeline
 ├── scripts/           # scripts those rules call
+├── envs/              # conda environments for individual rules
 ├── data/              # all input data
 ├── results/           # all output (key files tracked in git)
 ├── auspice/           # Nextstrain JSONs for the community build
@@ -101,6 +104,7 @@ These results should be largely self-explanatory, here are the key ones to look 
   - Final processed and QC-ed titer data are [./results/final_titer_data](results/final_titer_data) as described in more detail above in the [Quick links to key results](#quick-links-to-key-results) section.
   - Titers aggregated across all plates, before the subsetting to well-measured viruses and sera, are in [./results/aggregated_titers](results/aggregated_titers).
   - Nextstrain trees are in [./auspice](auspice), they can be viewed as [Nextstrain Community Builds](https://docs.nextstrain.org/en/latest/guides/share/community-builds.html) at the links provided in the [Quick links to key results](#quick-links-to-key-results) section.
+  - Interactive views of protein structures are in [./results/prot-struct-viz](results/prot-struct-viz); each page is a single self-contained HTML file, and only the validation report written beside it is tracked in the repo.
   - Interactive summary of results and pipeline QC are written to `results/docs` and are not tracked in the repo, but can be viewed interactively at [https://jbloomlab.github.io/flu-seqneut-2026](https://jbloomlab.github.io/flu-seqneut-2026) if you follow the steps described in the [Documentation on GitHub Pages](#documentation-on-github-pages) section.
 
 ### Snakemake pipeline
@@ -110,6 +114,7 @@ The pipeline is specified in [Snakefile](Snakefile), which includes:
  - [rules/library_qc.smk](rules/library_qc.smk): QC of the library, including sequencing of the library pool to balance the strain titers and single-well infections with each strain to confirm the absence of contaminanation.
  - [rules/analyze_titers.smk](rules/analyze_titers.smk): analysis of the titers to generate plots and QC-ed aggregated results.
  - [rules/trees.smk](rules/trees.smk): builds Nextstrain trees showing the library and results in a phylogenetic context.
+ - [rules/prot-struct-viz.smk](rules/prot-struct-viz.smk): renders interactive views of protein structures with [prot-struct-viz](https://github.com/jbloomlab/prot-struct-viz), one page per directory of [data/prot-struct-viz_config](data/prot-struct-viz_config).
 
 ### Submodules
 This repository uses the following git submodules:

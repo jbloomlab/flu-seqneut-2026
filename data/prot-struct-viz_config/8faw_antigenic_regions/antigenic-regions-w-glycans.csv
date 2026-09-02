@@ -1,0 +1,500 @@
+chain,residue,color,label,representation,notes
+A,11,#e8e8e8,11_HA1,,HA1 site 11; not in a defined antigenic site
+A,12,#e8e8e8,12_HA1,,HA1 site 12; not in a defined antigenic site
+A,13,#e8e8e8,13_HA1,,HA1 site 13; not in a defined antigenic site
+A,14,#e8e8e8,14_HA1,,HA1 site 14; not in a defined antigenic site
+A,15,#e8e8e8,15_HA1,,HA1 site 15; not in a defined antigenic site
+A,16,#e8e8e8,16_HA1,,HA1 site 16; not in a defined antigenic site
+A,17,#e8e8e8,17_HA1,,HA1 site 17; not in a defined antigenic site
+A,18,#e8e8e8,18_HA1,,HA1 site 18; not in a defined antigenic site
+A,19,#e8e8e8,19_HA1,,HA1 site 19; not in a defined antigenic site
+A,20,#e8e8e8,20_HA1,,HA1 site 20; not in a defined antigenic site
+A,21,#e8e8e8,21_HA1,,HA1 site 21; not in a defined antigenic site
+A,22,#e8e8e8,22_HA1,,HA1 site 22; not in a defined antigenic site
+A,23,#e8e8e8,23_HA1,,HA1 site 23; not in a defined antigenic site
+A,24,#e8e8e8,24_HA1,,HA1 site 24; not in a defined antigenic site
+A,25,#e8e8e8,25_HA1,,HA1 site 25; not in a defined antigenic site
+A,26,#e8e8e8,26_HA1,,HA1 site 26; not in a defined antigenic site
+A,27,#e8e8e8,27_HA1,,HA1 site 27; not in a defined antigenic site
+A,28,#e8e8e8,28_HA1,,HA1 site 28; not in a defined antigenic site
+A,29,#e8e8e8,29_HA1,,HA1 site 29; not in a defined antigenic site
+A,30,#e8e8e8,30_HA1,,HA1 site 30; not in a defined antigenic site
+A,31,#e8e8e8,31_HA1,,HA1 site 31; not in a defined antigenic site
+A,32,#e8e8e8,32_HA1,,HA1 site 32; not in a defined antigenic site
+A,33,#e8e8e8,33_HA1,,HA1 site 33; not in a defined antigenic site
+A,34,#e8e8e8,34_HA1,,HA1 site 34; not in a defined antigenic site
+A,35,#e8e8e8,35_HA1,,HA1 site 35; not in a defined antigenic site
+A,36,#e8e8e8,36_HA1,,HA1 site 36; not in a defined antigenic site
+A,37,#e8e8e8,37_HA1,,HA1 site 37; not in a defined antigenic site
+A,38,#e8e8e8,38_HA1,,HA1 site 38; not in a defined antigenic site
+A,39,#e8e8e8,39_HA1,,HA1 site 39; not in a defined antigenic site
+A,40,#e8e8e8,40_HA1,,HA1 site 40; not in a defined antigenic site
+A,41,#e8e8e8,41_HA1,,HA1 site 41; not in a defined antigenic site
+A,42,#e8e8e8,42_HA1,,HA1 site 42; not in a defined antigenic site
+A,43,#e8e8e8,43_HA1,,HA1 site 43; not in a defined antigenic site
+A,44,#e8e8e8,44_HA1,,HA1 site 44; not in a defined antigenic site
+A,45,#e8e8e8,45_HA1,,HA1 site 45; not in a defined antigenic site
+A,46,#e8e8e8,46_HA1,,HA1 site 46; not in a defined antigenic site
+A,47,#e8e8e8,47_HA1,,HA1 site 47; not in a defined antigenic site
+A,48,#e8e8e8,48_HA1,,HA1 site 48; not in a defined antigenic site
+A,49,#117733,49_HA1,,HA1 site 49; antigenic site C of Stray & Pittman 2012 Virol J 9:91
+A,50,#117733,50_HA1,,HA1 site 50; antigenic site C of Stray & Pittman 2012 Virol J 9:91
+A,51,#e8e8e8,51_HA1,,HA1 site 51; not in a defined antigenic site
+A,52,#e8e8e8,52_HA1,,HA1 site 52; not in a defined antigenic site
+A,53,#117733,53_HA1,,HA1 site 53; antigenic site C of Stray & Pittman 2012 Virol J 9:91
+A,54,#117733,54_HA1,,HA1 site 54; antigenic site C of Stray & Pittman 2012 Virol J 9:91
+A,55,#e8e8e8,55_HA1,,HA1 site 55; not in a defined antigenic site
+A,56,#e8e8e8,56_HA1,,HA1 site 56; not in a defined antigenic site
+A,57,#e8e8e8,57_HA1,,HA1 site 57; not in a defined antigenic site
+A,58,#e8e8e8,58_HA1,,HA1 site 58; not in a defined antigenic site
+A,59,#e8e8e8,59_HA1,,HA1 site 59; not in a defined antigenic site
+A,60,#e8e8e8,60_HA1,,HA1 site 60; not in a defined antigenic site
+A,61,#e8e8e8,61_HA1,,HA1 site 61; not in a defined antigenic site
+A,62,#44AA99,62_HA1,,HA1 site 62; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,63,#44AA99,63_HA1,,HA1 site 63; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,64,#e8e8e8,64_HA1,,HA1 site 64; not in a defined antigenic site
+A,65,#e8e8e8,65_HA1,,HA1 site 65; not in a defined antigenic site
+A,66,#e8e8e8,66_HA1,,HA1 site 66; not in a defined antigenic site
+A,67,#e8e8e8,67_HA1,,HA1 site 67; not in a defined antigenic site
+A,68,#e8e8e8,68_HA1,,HA1 site 68; not in a defined antigenic site
+A,69,#e8e8e8,69_HA1,,HA1 site 69; not in a defined antigenic site
+A,70,#e8e8e8,70_HA1,,HA1 site 70; not in a defined antigenic site
+A,71,#e8e8e8,71_HA1,,HA1 site 71; not in a defined antigenic site
+A,72,#e8e8e8,72_HA1,,HA1 site 72; not in a defined antigenic site
+A,73,#e8e8e8,73_HA1,,HA1 site 73; not in a defined antigenic site
+A,74,#e8e8e8,74_HA1,,HA1 site 74; not in a defined antigenic site
+A,75,#44AA99,75_HA1,,HA1 site 75; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,76,#e8e8e8,76_HA1,,HA1 site 76; not in a defined antigenic site
+A,77,#e8e8e8,77_HA1,,HA1 site 77; not in a defined antigenic site
+A,78,#44AA99,78_HA1,,HA1 site 78; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,79,#44AA99,79_HA1,,HA1 site 79; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,80,#44AA99,80_HA1,,HA1 site 80; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,81,#44AA99,81_HA1,,HA1 site 81; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,82,#44AA99,82_HA1,,HA1 site 82; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,83,#44AA99,83_HA1,,HA1 site 83; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,84,#e8e8e8,84_HA1,,HA1 site 84; not in a defined antigenic site
+A,85,#e8e8e8,85_HA1,,HA1 site 85; not in a defined antigenic site
+A,86,#e8e8e8,86_HA1,,HA1 site 86; not in a defined antigenic site
+A,87,#e8e8e8,87_HA1,,HA1 site 87; not in a defined antigenic site
+A,88,#e8e8e8,88_HA1,,HA1 site 88; not in a defined antigenic site
+A,89,#e8e8e8,89_HA1,,HA1 site 89; not in a defined antigenic site
+A,90,#e8e8e8,90_HA1,,HA1 site 90; not in a defined antigenic site
+A,91,#44AA99,91_HA1,,HA1 site 91; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,92,#44AA99,92_HA1,,HA1 site 92; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,93,#e8e8e8,93_HA1,,HA1 site 93; not in a defined antigenic site
+A,94,#44AA99,94_HA1,,HA1 site 94; antigenic site E of Stray & Pittman 2012 Virol J 9:91
+A,95,#e8e8e8,95_HA1,,HA1 site 95; not in a defined antigenic site
+A,96,#e8e8e8,96_HA1,,HA1 site 96; not in a defined antigenic site
+A,97,#e8e8e8,97_HA1,,HA1 site 97; not in a defined antigenic site
+A,98,#e8e8e8,98_HA1,,HA1 site 98; not in a defined antigenic site
+A,99,#e8e8e8,99_HA1,,HA1 site 99; not in a defined antigenic site
+A,100,#e8e8e8,100_HA1,,HA1 site 100; not in a defined antigenic site
+A,101,#e8e8e8,101_HA1,,HA1 site 101; not in a defined antigenic site
+A,102,#e8e8e8,102_HA1,,HA1 site 102; not in a defined antigenic site
+A,103,#e8e8e8,103_HA1,,HA1 site 103; not in a defined antigenic site
+A,104,#e8e8e8,104_HA1,,HA1 site 104; not in a defined antigenic site
+A,105,#e8e8e8,105_HA1,,HA1 site 105; not in a defined antigenic site
+A,106,#e8e8e8,106_HA1,,HA1 site 106; not in a defined antigenic site
+A,107,#e8e8e8,107_HA1,,HA1 site 107; not in a defined antigenic site
+A,108,#e8e8e8,108_HA1,,HA1 site 108; not in a defined antigenic site
+A,109,#e8e8e8,109_HA1,,HA1 site 109; not in a defined antigenic site
+A,110,#e8e8e8,110_HA1,,HA1 site 110; not in a defined antigenic site
+A,111,#e8e8e8,111_HA1,,HA1 site 111; not in a defined antigenic site
+A,112,#e8e8e8,112_HA1,,HA1 site 112; not in a defined antigenic site
+A,113,#e8e8e8,113_HA1,,HA1 site 113; not in a defined antigenic site
+A,114,#e8e8e8,114_HA1,,HA1 site 114; not in a defined antigenic site
+A,115,#e8e8e8,115_HA1,,HA1 site 115; not in a defined antigenic site
+A,116,#e8e8e8,116_HA1,,HA1 site 116; not in a defined antigenic site
+A,117,#e8e8e8,117_HA1,,HA1 site 117; not in a defined antigenic site
+A,118,#e8e8e8,118_HA1,,HA1 site 118; not in a defined antigenic site
+A,119,#e8e8e8,119_HA1,,HA1 site 119; not in a defined antigenic site
+A,120,#e8e8e8,120_HA1,,HA1 site 120; not in a defined antigenic site
+A,121,#332288,121_HA1,,HA1 site 121; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,122,#332288,122_HA1,,HA1 site 122; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,123,#332288,123_HA1,,HA1 site 123; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,124,#332288,124_HA1,,HA1 site 124; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,125,#332288,125_HA1,,HA1 site 125; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,126,#332288,126_HA1,,HA1 site 126; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,127,#332288,127_HA1,,HA1 site 127; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,128,#e8e8e8,128_HA1,,HA1 site 128; not in a defined antigenic site
+A,129,#332288,129_HA1,,HA1 site 129; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,130,#e8e8e8,130_HA1,,HA1 site 130; not in a defined antigenic site
+A,131,#332288,131_HA1,,HA1 site 131; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,132,#332288,132_HA1,,HA1 site 132; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,133,#332288,133_HA1,,HA1 site 133; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,134,#332288,134_HA1,,HA1 site 134; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,135,#332288,135_HA1,,HA1 site 135; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,136,#332288,136_HA1,,HA1 site 136; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,137,#332288,137_HA1,,HA1 site 137; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,138,#332288,138_HA1,,HA1 site 138; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,139,#e8e8e8,139_HA1,,HA1 site 139; not in a defined antigenic site
+A,140,#332288,140_HA1,,HA1 site 140; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,141,#e8e8e8,141_HA1,,HA1 site 141; not in a defined antigenic site
+A,142,#332288,142_HA1,,HA1 site 142; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,143,#332288,143_HA1,,HA1 site 143; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,144,#332288,144_HA1,,HA1 site 144; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,145,#332288,145_HA1,,HA1 site 145; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,146,#332288,146_HA1,,HA1 site 146; antigenic site A of Stray & Pittman 2012 Virol J 9:91
+A,147,#e8e8e8,147_HA1,,HA1 site 147; not in a defined antigenic site
+A,148,#e8e8e8,148_HA1,,HA1 site 148; not in a defined antigenic site
+A,149,#e8e8e8,149_HA1,,HA1 site 149; not in a defined antigenic site
+A,150,#e8e8e8,150_HA1,,HA1 site 150; not in a defined antigenic site
+A,151,#e8e8e8,151_HA1,,HA1 site 151; not in a defined antigenic site
+A,152,#e8e8e8,152_HA1,,HA1 site 152; not in a defined antigenic site
+A,153,#e8e8e8,153_HA1,,HA1 site 153; not in a defined antigenic site
+A,154,#e8e8e8,154_HA1,,HA1 site 154; not in a defined antigenic site
+A,155,#88CCEE,155_HA1,,HA1 site 155; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,156,#88CCEE,156_HA1,,HA1 site 156; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,157,#88CCEE,157_HA1,,HA1 site 157; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,158,#88CCEE,158_HA1,,HA1 site 158; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,159,#88CCEE,159_HA1,,HA1 site 159; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,160,#88CCEE,160_HA1,,HA1 site 160; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,161,#e8e8e8,161_HA1,,HA1 site 161; not in a defined antigenic site
+A,162,#e8e8e8,162_HA1,,HA1 site 162; not in a defined antigenic site
+A,163,#e8e8e8,163_HA1,,HA1 site 163; not in a defined antigenic site
+A,164,#e8e8e8,164_HA1,,HA1 site 164; not in a defined antigenic site
+A,165,#e8e8e8,165_HA1,,HA1 site 165; not in a defined antigenic site
+A,166,#e8e8e8,166_HA1,,HA1 site 166; not in a defined antigenic site
+A,167,#AA4499,167_HA1,,HA1 site 167; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,168,#e8e8e8,168_HA1,,HA1 site 168; not in a defined antigenic site
+A,169,#e8e8e8,169_HA1,,HA1 site 169; not in a defined antigenic site
+A,170,#e8e8e8,170_HA1,,HA1 site 170; not in a defined antigenic site
+A,171,#e8e8e8,171_HA1,,HA1 site 171; not in a defined antigenic site
+A,172,#e8e8e8,172_HA1,,HA1 site 172; not in a defined antigenic site
+A,173,#e8e8e8,173_HA1,,HA1 site 173; not in a defined antigenic site
+A,174,#e8e8e8,174_HA1,,HA1 site 174; not in a defined antigenic site
+A,175,#e8e8e8,175_HA1,,HA1 site 175; not in a defined antigenic site
+A,176,#e8e8e8,176_HA1,,HA1 site 176; not in a defined antigenic site
+A,177,#e8e8e8,177_HA1,,HA1 site 177; not in a defined antigenic site
+A,178,#e8e8e8,178_HA1,,HA1 site 178; not in a defined antigenic site
+A,179,#e8e8e8,179_HA1,,HA1 site 179; not in a defined antigenic site
+A,180,#e8e8e8,180_HA1,,HA1 site 180; not in a defined antigenic site
+A,181,#e8e8e8,181_HA1,,HA1 site 181; not in a defined antigenic site
+A,182,#e8e8e8,182_HA1,,HA1 site 182; not in a defined antigenic site
+A,183,#e8e8e8,183_HA1,,HA1 site 183; not in a defined antigenic site
+A,184,#e8e8e8,184_HA1,,HA1 site 184; not in a defined antigenic site
+A,185,#e8e8e8,185_HA1,,HA1 site 185; not in a defined antigenic site
+A,186,#88CCEE,186_HA1,,HA1 site 186; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,187,#e8e8e8,187_HA1,,HA1 site 187; not in a defined antigenic site
+A,188,#88CCEE,188_HA1,,HA1 site 188; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,189,#88CCEE,189_HA1,,HA1 site 189; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,190,#88CCEE,190_HA1,,HA1 site 190; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,191,#e8e8e8,191_HA1,,HA1 site 191; not in a defined antigenic site
+A,192,#88CCEE,192_HA1,,HA1 site 192; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,193,#88CCEE,193_HA1,,HA1 site 193; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,194,#88CCEE,194_HA1,,HA1 site 194; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,195,#e8e8e8,195_HA1,,HA1 site 195; not in a defined antigenic site
+A,196,#88CCEE,196_HA1,,HA1 site 196; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,197,#88CCEE,197_HA1,,HA1 site 197; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,198,#88CCEE,198_HA1,,HA1 site 198; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,199,#88CCEE,199_HA1,,HA1 site 199; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,200,#e8e8e8,200_HA1,,HA1 site 200; not in a defined antigenic site
+A,201,#AA4499,201_HA1,,HA1 site 201; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,202,#AA4499,202_HA1,,HA1 site 202; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,203,#AA4499,203_HA1,,HA1 site 203; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,204,#AA4499,204_HA1,,HA1 site 204; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,205,#AA4499,205_HA1,,HA1 site 205; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,206,#AA4499,206_HA1,,HA1 site 206; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,207,#AA4499,207_HA1,,HA1 site 207; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,208,#e8e8e8,208_HA1,,HA1 site 208; not in a defined antigenic site
+A,209,#e8e8e8,209_HA1,,HA1 site 209; not in a defined antigenic site
+A,210,#e8e8e8,210_HA1,,HA1 site 210; not in a defined antigenic site
+A,211,#e8e8e8,211_HA1,,HA1 site 211; not in a defined antigenic site
+A,212,#e8e8e8,212_HA1,,HA1 site 212; not in a defined antigenic site
+A,213,#e8e8e8,213_HA1,,HA1 site 213; not in a defined antigenic site
+A,214,#AA4499,214_HA1,,HA1 site 214; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,215,#e8e8e8,215_HA1,,HA1 site 215; not in a defined antigenic site
+A,216,#AA4499,216_HA1,,HA1 site 216; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,217,#AA4499,217_HA1,,HA1 site 217; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,218,#AA4499,218_HA1,,HA1 site 218; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,219,#AA4499,219_HA1,,HA1 site 219; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,220,#AA4499,220_HA1,,HA1 site 220; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,221,#e8e8e8,221_HA1,,HA1 site 221; not in a defined antigenic site
+A,222,#AA4499,222_HA1,,HA1 site 222; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,223,#AA4499,223_HA1,,HA1 site 223; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,224,#e8e8e8,224_HA1,,HA1 site 224; not in a defined antigenic site
+A,225,#AA4499,225_HA1,,HA1 site 225; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,226,#AA4499,226_HA1,,HA1 site 226; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,227,#AA4499,227_HA1,,HA1 site 227; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,228,#e8e8e8,228_HA1,,HA1 site 228; not in a defined antigenic site
+A,229,#e8e8e8,229_HA1,,HA1 site 229; not in a defined antigenic site
+A,230,#e8e8e8,230_HA1,,HA1 site 230; not in a defined antigenic site
+A,231,#e8e8e8,231_HA1,,HA1 site 231; not in a defined antigenic site
+A,232,#e8e8e8,232_HA1,,HA1 site 232; not in a defined antigenic site
+A,233,#e8e8e8,233_HA1,,HA1 site 233; not in a defined antigenic site
+A,234,#e8e8e8,234_HA1,,HA1 site 234; not in a defined antigenic site
+A,235,#e8e8e8,235_HA1,,HA1 site 235; not in a defined antigenic site
+A,236,#e8e8e8,236_HA1,,HA1 site 236; not in a defined antigenic site
+A,237,#e8e8e8,237_HA1,,HA1 site 237; not in a defined antigenic site
+A,238,#e8e8e8,238_HA1,,HA1 site 238; not in a defined antigenic site
+A,239,#e8e8e8,239_HA1,,HA1 site 239; not in a defined antigenic site
+A,240,#e8e8e8,240_HA1,,HA1 site 240; not in a defined antigenic site
+A,241,#e8e8e8,241_HA1,,HA1 site 241; not in a defined antigenic site
+A,242,#AA4499,242_HA1,,HA1 site 242; antigenic site D of Stray & Pittman 2012 Virol J 9:91
+A,243,#e8e8e8,243_HA1,,HA1 site 243; not in a defined antigenic site
+A,244,#e8e8e8,244_HA1,,HA1 site 244; not in a defined antigenic site
+A,245,#e8e8e8,245_HA1,,HA1 site 245; not in a defined antigenic site
+A,246,#88CCEE,246_HA1,,HA1 site 246; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,247,#88CCEE,247_HA1,,HA1 site 247; antigenic site B of Stray & Pittman 2012 Virol J 9:91
+A,248,#e8e8e8,248_HA1,,HA1 site 248; not in a defined antigenic site
+A,249,#e8e8e8,249_HA1,,HA1 site 249; not in a defined antigenic site
+A,250,#e8e8e8,250_HA1,,HA1 site 250; not in a defined antigenic site
+A,251,#e8e8e8,251_HA1,,HA1 site 251; not in a defined antigenic site
+A,252,#e8e8e8,252_HA1,,HA1 site 252; not in a defined antigenic site
+A,253,#e8e8e8,253_HA1,,HA1 site 253; not in a defined antigenic site
+A,254,#e8e8e8,254_HA1,,HA1 site 254; not in a defined antigenic site
+A,255,#e8e8e8,255_HA1,,HA1 site 255; not in a defined antigenic site
+A,256,#e8e8e8,256_HA1,,HA1 site 256; not in a defined antigenic site
+A,257,#e8e8e8,257_HA1,,HA1 site 257; not in a defined antigenic site
+A,258,#e8e8e8,258_HA1,,HA1 site 258; not in a defined antigenic site
+A,259,#e8e8e8,259_HA1,,HA1 site 259; not in a defined antigenic site
+A,260,#e8e8e8,260_HA1,,HA1 site 260; not in a defined antigenic site
+A,261,#e8e8e8,261_HA1,,HA1 site 261; not in a defined antigenic site
+A,262,#e8e8e8,262_HA1,,HA1 site 262; not in a defined antigenic site
+A,263,#e8e8e8,263_HA1,,HA1 site 263; not in a defined antigenic site
+A,264,#e8e8e8,264_HA1,,HA1 site 264; not in a defined antigenic site
+A,265,#e8e8e8,265_HA1,,HA1 site 265; not in a defined antigenic site
+A,266,#e8e8e8,266_HA1,,HA1 site 266; not in a defined antigenic site
+A,267,#e8e8e8,267_HA1,,HA1 site 267; not in a defined antigenic site
+A,268,#e8e8e8,268_HA1,,HA1 site 268; not in a defined antigenic site
+A,269,#e8e8e8,269_HA1,,HA1 site 269; not in a defined antigenic site
+A,270,#e8e8e8,270_HA1,,HA1 site 270; not in a defined antigenic site
+A,271,#117733,271_HA1,,HA1 site 271; antigenic site C of Stray & Pittman 2012 Virol J 9:91
+A,272,#e8e8e8,272_HA1,,HA1 site 272; not in a defined antigenic site
+A,273,#117733,273_HA1,,HA1 site 273; antigenic site C of Stray & Pittman 2012 Virol J 9:91
+A,274,#e8e8e8,274_HA1,,HA1 site 274; not in a defined antigenic site
+A,275,#117733,275_HA1,,HA1 site 275; antigenic site C of Stray & Pittman 2012 Virol J 9:91
+A,276,#117733,276_HA1,,HA1 site 276; antigenic site C of Stray & Pittman 2012 Virol J 9:91
+A,277,#e8e8e8,277_HA1,,HA1 site 277; not in a defined antigenic site
+A,278,#117733,278_HA1,,HA1 site 278; antigenic site C of Stray & Pittman 2012 Virol J 9:91
+A,279,#e8e8e8,279_HA1,,HA1 site 279; not in a defined antigenic site
+A,280,#e8e8e8,280_HA1,,HA1 site 280; not in a defined antigenic site
+A,281,#e8e8e8,281_HA1,,HA1 site 281; not in a defined antigenic site
+A,282,#e8e8e8,282_HA1,,HA1 site 282; not in a defined antigenic site
+A,283,#e8e8e8,283_HA1,,HA1 site 283; not in a defined antigenic site
+A,284,#e8e8e8,284_HA1,,HA1 site 284; not in a defined antigenic site
+A,285,#e8e8e8,285_HA1,,HA1 site 285; not in a defined antigenic site
+A,286,#e8e8e8,286_HA1,,HA1 site 286; not in a defined antigenic site
+A,287,#e8e8e8,287_HA1,,HA1 site 287; not in a defined antigenic site
+A,288,#e8e8e8,288_HA1,,HA1 site 288; not in a defined antigenic site
+A,289,#e8e8e8,289_HA1,,HA1 site 289; not in a defined antigenic site
+A,290,#e8e8e8,290_HA1,,HA1 site 290; not in a defined antigenic site
+A,291,#e8e8e8,291_HA1,,HA1 site 291; not in a defined antigenic site
+A,292,#e8e8e8,292_HA1,,HA1 site 292; not in a defined antigenic site
+A,293,#e8e8e8,293_HA1,,HA1 site 293; not in a defined antigenic site
+A,294,#e8e8e8,294_HA1,,HA1 site 294; not in a defined antigenic site
+A,295,#e8e8e8,295_HA1,,HA1 site 295; not in a defined antigenic site
+A,296,#e8e8e8,296_HA1,,HA1 site 296; not in a defined antigenic site
+A,297,#e8e8e8,297_HA1,,HA1 site 297; not in a defined antigenic site
+A,298,#e8e8e8,298_HA1,,HA1 site 298; not in a defined antigenic site
+A,299,#e8e8e8,299_HA1,,HA1 site 299; not in a defined antigenic site
+A,300,#e8e8e8,300_HA1,,HA1 site 300; not in a defined antigenic site
+A,301,#e8e8e8,301_HA1,,HA1 site 301; not in a defined antigenic site
+A,302,#e8e8e8,302_HA1,,HA1 site 302; not in a defined antigenic site
+A,303,#e8e8e8,303_HA1,,HA1 site 303; not in a defined antigenic site
+A,304,#e8e8e8,304_HA1,,HA1 site 304; not in a defined antigenic site
+A,305,#e8e8e8,305_HA1,,HA1 site 305; not in a defined antigenic site
+A,306,#e8e8e8,306_HA1,,HA1 site 306; not in a defined antigenic site
+A,307,#e8e8e8,307_HA1,,HA1 site 307; not in a defined antigenic site
+A,308,#e8e8e8,308_HA1,,HA1 site 308; not in a defined antigenic site
+A,309,#e8e8e8,309_HA1,,HA1 site 309; not in a defined antigenic site
+A,310,#e8e8e8,310_HA1,,HA1 site 310; not in a defined antigenic site
+A,311,#e8e8e8,311_HA1,,HA1 site 311; not in a defined antigenic site
+A,312,#e8e8e8,312_HA1,,HA1 site 312; not in a defined antigenic site
+A,313,#e8e8e8,313_HA1,,HA1 site 313; not in a defined antigenic site
+A,314,#e8e8e8,314_HA1,,HA1 site 314; not in a defined antigenic site
+A,315,#e8e8e8,315_HA1,,HA1 site 315; not in a defined antigenic site
+A,316,#e8e8e8,316_HA1,,HA1 site 316; not in a defined antigenic site
+A,317,#e8e8e8,317_HA1,,HA1 site 317; not in a defined antigenic site
+A,318,#e8e8e8,318_HA1,,HA1 site 318; not in a defined antigenic site
+A,319,#e8e8e8,319_HA1,,HA1 site 319; not in a defined antigenic site
+A,320,#e8e8e8,320_HA1,,HA1 site 320; not in a defined antigenic site
+A,321,#e8e8e8,321_HA1,,HA1 site 321; not in a defined antigenic site
+A,322,#e8e8e8,322_HA1,,HA1 site 322; not in a defined antigenic site
+A,323,#e8e8e8,323_HA1,,HA1 site 323; not in a defined antigenic site
+A,324,#e8e8e8,324_HA1,,HA1 site 324; not in a defined antigenic site
+A,325,#e8e8e8,325_HA1,,HA1 site 325; not in a defined antigenic site
+A,330,#bdbdbd,1_HA2,,HA2 site 1; not in a defined antigenic site
+A,331,#bdbdbd,2_HA2,,HA2 site 2; not in a defined antigenic site
+A,332,#bdbdbd,3_HA2,,HA2 site 3; not in a defined antigenic site
+A,333,#bdbdbd,4_HA2,,HA2 site 4; not in a defined antigenic site
+A,334,#bdbdbd,5_HA2,,HA2 site 5; not in a defined antigenic site
+A,335,#bdbdbd,6_HA2,,HA2 site 6; not in a defined antigenic site
+A,336,#bdbdbd,7_HA2,,HA2 site 7; not in a defined antigenic site
+A,337,#bdbdbd,8_HA2,,HA2 site 8; not in a defined antigenic site
+A,338,#bdbdbd,9_HA2,,HA2 site 9; not in a defined antigenic site
+A,339,#bdbdbd,10_HA2,,HA2 site 10; not in a defined antigenic site
+A,340,#bdbdbd,11_HA2,,HA2 site 11; not in a defined antigenic site
+A,341,#bdbdbd,12_HA2,,HA2 site 12; not in a defined antigenic site
+A,342,#bdbdbd,13_HA2,,HA2 site 13; not in a defined antigenic site
+A,343,#bdbdbd,14_HA2,,HA2 site 14; not in a defined antigenic site
+A,344,#bdbdbd,15_HA2,,HA2 site 15; not in a defined antigenic site
+A,345,#bdbdbd,16_HA2,,HA2 site 16; not in a defined antigenic site
+A,346,#bdbdbd,17_HA2,,HA2 site 17; not in a defined antigenic site
+A,347,#bdbdbd,18_HA2,,HA2 site 18; not in a defined antigenic site
+A,348,#bdbdbd,19_HA2,,HA2 site 19; not in a defined antigenic site
+A,349,#bdbdbd,20_HA2,,HA2 site 20; not in a defined antigenic site
+A,350,#bdbdbd,21_HA2,,HA2 site 21; not in a defined antigenic site
+A,351,#bdbdbd,22_HA2,,HA2 site 22; not in a defined antigenic site
+A,352,#bdbdbd,23_HA2,,HA2 site 23; not in a defined antigenic site
+A,353,#bdbdbd,24_HA2,,HA2 site 24; not in a defined antigenic site
+A,354,#bdbdbd,25_HA2,,HA2 site 25; not in a defined antigenic site
+A,355,#bdbdbd,26_HA2,,HA2 site 26; not in a defined antigenic site
+A,356,#bdbdbd,27_HA2,,HA2 site 27; not in a defined antigenic site
+A,357,#bdbdbd,28_HA2,,HA2 site 28; not in a defined antigenic site
+A,358,#bdbdbd,29_HA2,,HA2 site 29; not in a defined antigenic site
+A,359,#bdbdbd,30_HA2,,HA2 site 30; not in a defined antigenic site
+A,360,#bdbdbd,31_HA2,,HA2 site 31; not in a defined antigenic site
+A,361,#bdbdbd,32_HA2,,HA2 site 32; not in a defined antigenic site
+A,362,#bdbdbd,33_HA2,,HA2 site 33; not in a defined antigenic site
+A,363,#bdbdbd,34_HA2,,HA2 site 34; not in a defined antigenic site
+A,364,#bdbdbd,35_HA2,,HA2 site 35; not in a defined antigenic site
+A,365,#bdbdbd,36_HA2,,HA2 site 36; not in a defined antigenic site
+A,366,#bdbdbd,37_HA2,,HA2 site 37; not in a defined antigenic site
+A,367,#bdbdbd,38_HA2,,HA2 site 38; not in a defined antigenic site
+A,368,#bdbdbd,39_HA2,,HA2 site 39; not in a defined antigenic site
+A,369,#bdbdbd,40_HA2,,HA2 site 40; not in a defined antigenic site
+A,370,#bdbdbd,41_HA2,,HA2 site 41; not in a defined antigenic site
+A,371,#bdbdbd,42_HA2,,HA2 site 42; not in a defined antigenic site
+A,372,#bdbdbd,43_HA2,,HA2 site 43; not in a defined antigenic site
+A,373,#bdbdbd,44_HA2,,HA2 site 44; not in a defined antigenic site
+A,374,#bdbdbd,45_HA2,,HA2 site 45; not in a defined antigenic site
+A,375,#bdbdbd,46_HA2,,HA2 site 46; not in a defined antigenic site
+A,376,#bdbdbd,47_HA2,,HA2 site 47; not in a defined antigenic site
+A,377,#bdbdbd,48_HA2,,HA2 site 48; not in a defined antigenic site
+A,378,#bdbdbd,49_HA2,,HA2 site 49; not in a defined antigenic site
+A,379,#bdbdbd,50_HA2,,HA2 site 50; not in a defined antigenic site
+A,380,#bdbdbd,51_HA2,,HA2 site 51; not in a defined antigenic site
+A,381,#bdbdbd,52_HA2,,HA2 site 52; not in a defined antigenic site
+A,382,#bdbdbd,53_HA2,,HA2 site 53; not in a defined antigenic site
+A,383,#bdbdbd,54_HA2,,HA2 site 54; not in a defined antigenic site
+A,384,#bdbdbd,55_HA2,,HA2 site 55; not in a defined antigenic site
+A,385,#bdbdbd,56_HA2,,HA2 site 56; not in a defined antigenic site
+A,386,#bdbdbd,57_HA2,,HA2 site 57; not in a defined antigenic site
+A,387,#bdbdbd,58_HA2,,HA2 site 58; not in a defined antigenic site
+A,388,#bdbdbd,59_HA2,,HA2 site 59; not in a defined antigenic site
+A,389,#bdbdbd,60_HA2,,HA2 site 60; not in a defined antigenic site
+A,390,#bdbdbd,61_HA2,,HA2 site 61; not in a defined antigenic site
+A,391,#bdbdbd,62_HA2,,HA2 site 62; not in a defined antigenic site
+A,392,#bdbdbd,63_HA2,,HA2 site 63; not in a defined antigenic site
+A,393,#bdbdbd,64_HA2,,HA2 site 64; not in a defined antigenic site
+A,394,#bdbdbd,65_HA2,,HA2 site 65; not in a defined antigenic site
+A,395,#bdbdbd,66_HA2,,HA2 site 66; not in a defined antigenic site
+A,396,#bdbdbd,67_HA2,,HA2 site 67; not in a defined antigenic site
+A,397,#bdbdbd,68_HA2,,HA2 site 68; not in a defined antigenic site
+A,398,#bdbdbd,69_HA2,,HA2 site 69; not in a defined antigenic site
+A,399,#bdbdbd,70_HA2,,HA2 site 70; not in a defined antigenic site
+A,400,#bdbdbd,71_HA2,,HA2 site 71; not in a defined antigenic site
+A,401,#bdbdbd,72_HA2,,HA2 site 72; not in a defined antigenic site
+A,402,#bdbdbd,73_HA2,,HA2 site 73; not in a defined antigenic site
+A,403,#bdbdbd,74_HA2,,HA2 site 74; not in a defined antigenic site
+A,404,#bdbdbd,75_HA2,,HA2 site 75; not in a defined antigenic site
+A,405,#bdbdbd,76_HA2,,HA2 site 76; not in a defined antigenic site
+A,406,#bdbdbd,77_HA2,,HA2 site 77; not in a defined antigenic site
+A,407,#bdbdbd,78_HA2,,HA2 site 78; not in a defined antigenic site
+A,408,#bdbdbd,79_HA2,,HA2 site 79; not in a defined antigenic site
+A,409,#bdbdbd,80_HA2,,HA2 site 80; not in a defined antigenic site
+A,410,#bdbdbd,81_HA2,,HA2 site 81; not in a defined antigenic site
+A,411,#bdbdbd,82_HA2,,HA2 site 82; not in a defined antigenic site
+A,412,#bdbdbd,83_HA2,,HA2 site 83; not in a defined antigenic site
+A,413,#bdbdbd,84_HA2,,HA2 site 84; not in a defined antigenic site
+A,414,#bdbdbd,85_HA2,,HA2 site 85; not in a defined antigenic site
+A,415,#bdbdbd,86_HA2,,HA2 site 86; not in a defined antigenic site
+A,416,#bdbdbd,87_HA2,,HA2 site 87; not in a defined antigenic site
+A,417,#bdbdbd,88_HA2,,HA2 site 88; not in a defined antigenic site
+A,418,#bdbdbd,89_HA2,,HA2 site 89; not in a defined antigenic site
+A,419,#bdbdbd,90_HA2,,HA2 site 90; not in a defined antigenic site
+A,420,#bdbdbd,91_HA2,,HA2 site 91; not in a defined antigenic site
+A,421,#bdbdbd,92_HA2,,HA2 site 92; not in a defined antigenic site
+A,422,#bdbdbd,93_HA2,,HA2 site 93; not in a defined antigenic site
+A,423,#bdbdbd,94_HA2,,HA2 site 94; not in a defined antigenic site
+A,424,#bdbdbd,95_HA2,,HA2 site 95; not in a defined antigenic site
+A,425,#bdbdbd,96_HA2,,HA2 site 96; not in a defined antigenic site
+A,426,#bdbdbd,97_HA2,,HA2 site 97; not in a defined antigenic site
+A,427,#bdbdbd,98_HA2,,HA2 site 98; not in a defined antigenic site
+A,428,#bdbdbd,99_HA2,,HA2 site 99; not in a defined antigenic site
+A,429,#bdbdbd,100_HA2,,HA2 site 100; not in a defined antigenic site
+A,430,#bdbdbd,101_HA2,,HA2 site 101; not in a defined antigenic site
+A,431,#bdbdbd,102_HA2,,HA2 site 102; not in a defined antigenic site
+A,432,#bdbdbd,103_HA2,,HA2 site 103; not in a defined antigenic site
+A,433,#bdbdbd,104_HA2,,HA2 site 104; not in a defined antigenic site
+A,434,#bdbdbd,105_HA2,,HA2 site 105; not in a defined antigenic site
+A,435,#bdbdbd,106_HA2,,HA2 site 106; not in a defined antigenic site
+A,436,#bdbdbd,107_HA2,,HA2 site 107; not in a defined antigenic site
+A,437,#bdbdbd,108_HA2,,HA2 site 108; not in a defined antigenic site
+A,438,#bdbdbd,109_HA2,,HA2 site 109; not in a defined antigenic site
+A,439,#bdbdbd,110_HA2,,HA2 site 110; not in a defined antigenic site
+A,440,#bdbdbd,111_HA2,,HA2 site 111; not in a defined antigenic site
+A,441,#bdbdbd,112_HA2,,HA2 site 112; not in a defined antigenic site
+A,442,#bdbdbd,113_HA2,,HA2 site 113; not in a defined antigenic site
+A,443,#bdbdbd,114_HA2,,HA2 site 114; not in a defined antigenic site
+A,444,#bdbdbd,115_HA2,,HA2 site 115; not in a defined antigenic site
+A,445,#bdbdbd,116_HA2,,HA2 site 116; not in a defined antigenic site
+A,446,#bdbdbd,117_HA2,,HA2 site 117; not in a defined antigenic site
+A,447,#bdbdbd,118_HA2,,HA2 site 118; not in a defined antigenic site
+A,448,#bdbdbd,119_HA2,,HA2 site 119; not in a defined antigenic site
+A,449,#bdbdbd,120_HA2,,HA2 site 120; not in a defined antigenic site
+A,450,#bdbdbd,121_HA2,,HA2 site 121; not in a defined antigenic site
+A,451,#bdbdbd,122_HA2,,HA2 site 122; not in a defined antigenic site
+A,452,#bdbdbd,123_HA2,,HA2 site 123; not in a defined antigenic site
+A,453,#bdbdbd,124_HA2,,HA2 site 124; not in a defined antigenic site
+A,454,#bdbdbd,125_HA2,,HA2 site 125; not in a defined antigenic site
+A,455,#bdbdbd,126_HA2,,HA2 site 126; not in a defined antigenic site
+A,456,#bdbdbd,127_HA2,,HA2 site 127; not in a defined antigenic site
+A,457,#bdbdbd,128_HA2,,HA2 site 128; not in a defined antigenic site
+A,458,#bdbdbd,129_HA2,,HA2 site 129; not in a defined antigenic site
+A,459,#bdbdbd,130_HA2,,HA2 site 130; not in a defined antigenic site
+A,460,#bdbdbd,131_HA2,,HA2 site 131; not in a defined antigenic site
+A,461,#bdbdbd,132_HA2,,HA2 site 132; not in a defined antigenic site
+A,462,#bdbdbd,133_HA2,,HA2 site 133; not in a defined antigenic site
+A,463,#bdbdbd,134_HA2,,HA2 site 134; not in a defined antigenic site
+A,464,#bdbdbd,135_HA2,,HA2 site 135; not in a defined antigenic site
+A,465,#bdbdbd,136_HA2,,HA2 site 136; not in a defined antigenic site
+A,466,#bdbdbd,137_HA2,,HA2 site 137; not in a defined antigenic site
+A,467,#bdbdbd,138_HA2,,HA2 site 138; not in a defined antigenic site
+A,468,#bdbdbd,139_HA2,,HA2 site 139; not in a defined antigenic site
+A,469,#bdbdbd,140_HA2,,HA2 site 140; not in a defined antigenic site
+A,470,#bdbdbd,141_HA2,,HA2 site 141; not in a defined antigenic site
+A,471,#bdbdbd,142_HA2,,HA2 site 142; not in a defined antigenic site
+A,472,#bdbdbd,143_HA2,,HA2 site 143; not in a defined antigenic site
+A,473,#bdbdbd,144_HA2,,HA2 site 144; not in a defined antigenic site
+A,474,#bdbdbd,145_HA2,,HA2 site 145; not in a defined antigenic site
+A,475,#bdbdbd,146_HA2,,HA2 site 146; not in a defined antigenic site
+A,476,#bdbdbd,147_HA2,,HA2 site 147; not in a defined antigenic site
+A,477,#bdbdbd,148_HA2,,HA2 site 148; not in a defined antigenic site
+A,478,#bdbdbd,149_HA2,,HA2 site 149; not in a defined antigenic site
+A,479,#bdbdbd,150_HA2,,HA2 site 150; not in a defined antigenic site
+A,480,#bdbdbd,151_HA2,,HA2 site 151; not in a defined antigenic site
+A,481,#bdbdbd,152_HA2,,HA2 site 152; not in a defined antigenic site
+A,482,#bdbdbd,153_HA2,,HA2 site 153; not in a defined antigenic site
+A,483,#bdbdbd,154_HA2,,HA2 site 154; not in a defined antigenic site
+A,484,#bdbdbd,155_HA2,,HA2 site 155; not in a defined antigenic site
+A,485,#bdbdbd,156_HA2,,HA2 site 156; not in a defined antigenic site
+A,486,#bdbdbd,157_HA2,,HA2 site 157; not in a defined antigenic site
+A,487,#bdbdbd,158_HA2,,HA2 site 158; not in a defined antigenic site
+A,488,#bdbdbd,159_HA2,,HA2 site 159; not in a defined antigenic site
+A,489,#bdbdbd,160_HA2,,HA2 site 160; not in a defined antigenic site
+A,490,#bdbdbd,161_HA2,,HA2 site 161; not in a defined antigenic site
+A,491,#bdbdbd,162_HA2,,HA2 site 162; not in a defined antigenic site
+A,492,#bdbdbd,163_HA2,,HA2 site 163; not in a defined antigenic site
+A,493,#bdbdbd,164_HA2,,HA2 site 164; not in a defined antigenic site
+A,494,#bdbdbd,165_HA2,,HA2 site 165; not in a defined antigenic site
+A,495,#bdbdbd,166_HA2,,HA2 site 166; not in a defined antigenic site
+A,496,#bdbdbd,167_HA2,,HA2 site 167; not in a defined antigenic site
+A,497,#bdbdbd,168_HA2,,HA2 site 168; not in a defined antigenic site
+A,498,#bdbdbd,169_HA2,,HA2 site 169; not in a defined antigenic site
+A,499,#bdbdbd,170_HA2,,HA2 site 170; not in a defined antigenic site
+A,500,#bdbdbd,171_HA2,,HA2 site 171; not in a defined antigenic site
+A,501,#bdbdbd,172_HA2,,HA2 site 172; not in a defined antigenic site
+A,502,#bdbdbd,173_HA2,,HA2 site 173; not in a defined antigenic site
+A,601,#ffd700,NAG,ball-and-stick,Host N-glycan sugar (NAG); named here so it is drawn in this color rather than as an SNFG symbol
+A,602,#ffd700,NAG,ball-and-stick,Host N-glycan sugar (NAG); named here so it is drawn in this color rather than as an SNFG symbol
+B,1,#ffd700,NAG,ball-and-stick,Host N-glycan sugar (NAG); named here so it is drawn in this color rather than as an SNFG symbol
+B,2,#ffd700,NAG,ball-and-stick,Host N-glycan sugar (NAG); named here so it is drawn in this color rather than as an SNFG symbol
+C,1,#ffd700,NAG,ball-and-stick,Host N-glycan sugar (NAG); named here so it is drawn in this color rather than as an SNFG symbol
+C,2,#ffd700,NAG,ball-and-stick,Host N-glycan sugar (NAG); named here so it is drawn in this color rather than as an SNFG symbol
+D,1,#000000,BGC,ball-and-stick,"LSTc sugar 1 of 5 (BGC); named here so it is drawn in this color rather than as an SNFG symbol, and so that `glycans: hide` does not take it away"
+D,2,#000000,GAL,ball-and-stick,"LSTc sugar 2 of 5 (GAL); named here so it is drawn in this color rather than as an SNFG symbol, and so that `glycans: hide` does not take it away"
+D,3,#000000,NAG,ball-and-stick,"LSTc sugar 3 of 5 (NAG); named here so it is drawn in this color rather than as an SNFG symbol, and so that `glycans: hide` does not take it away"
+D,4,#000000,GAL,ball-and-stick,"LSTc sugar 4 of 5 (GAL); named here so it is drawn in this color rather than as an SNFG symbol, and so that `glycans: hide` does not take it away"
+D,5,#000000,LSTc,ball-and-stick,"LSTc sugar 5 of 5 (SIA); named here so it is drawn in this color rather than as an SNFG symbol, and so that `glycans: hide` does not take it away"

@@ -14,6 +14,7 @@ include: "seqneut-pipeline/seqneut-pipeline.smk"
 include: "rules/library_qc.smk"
 include: "rules/analyze_titers.smk"
 include: "rules/trees.smk"
+include: "rules/prot-struct-viz.smk"
 
 
 rule all:
@@ -22,3 +23,4 @@ rule all:
         library_qc_outputs,
         analyze_titers_outputs,
         trees_outputs,
+        prot_struct_viz_outputs,

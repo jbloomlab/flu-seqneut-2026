@@ -1,0 +1,12 @@
+# Environment for `rule prot_struct_viz_page`. `prot-struct-viz` is not on conda-forge or
+# bioconda, so it is installed with pip; it brings its own dependencies (gemmi, jinja2,
+# markdown-it-py, molviewspec, pyyaml). No linters here, as no code of this project's own
+# runs in this environment.
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.14
+  - pip
+  - pip:
+    - prot-struct-viz==0.2.0

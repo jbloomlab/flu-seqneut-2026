@@ -631,7 +631,9 @@ plates:
     viral_library: actual
     neut_standard_set: loes2023
     samples_csv: data/plates/20260820_plate9.csv
-    manual_drops: {}
+    manual_drops:
+      wells: [H1]  # unknown experimental issue
+      serum_replicates: [flu-seqneut-2026-UWMC-027]  # most titers estimated at lowered bound (missing well H1)
     qc_thresholds:
       <<: *default_process_plate_qc_thresholds
     curvefit_params:
@@ -767,7 +769,8 @@ plates:
     viral_library: actual
     neut_standard_set: loes2023
     samples_csv: data/plates/20260824_plate17.csv
-    manual_drops: {}
+    manual_drops:
+      wells: [F4]  # unknown experimental issue
     qc_thresholds:
       <<: *default_process_plate_qc_thresholds
     curvefit_params:
@@ -903,7 +906,8 @@ plates:
     viral_library: actual
     neut_standard_set: loes2023
     samples_csv: data/plates/20260824_plate25.csv
-    manual_drops: {}
+    manual_drops:
+      wells: [G9]  # unknown experimental issue
     qc_thresholds:
       <<: *default_process_plate_qc_thresholds
     curvefit_params:
@@ -954,7 +958,8 @@ plates:
     viral_library: actual
     neut_standard_set: loes2023
     samples_csv: data/plates/20260824_plate28.csv
-    manual_drops: {}
+    manual_drops:
+      wells: [F9]  # unknown experimental issue
     qc_thresholds:
       <<: *default_process_plate_qc_thresholds
     curvefit_params:
@@ -1039,7 +1044,8 @@ plates:
     viral_library: actual
     neut_standard_set: loes2023
     samples_csv: data/plates/20260828_plate34.csv
-    manual_drops: {}
+    manual_drops:
+      wells: [G7]  # unknown experimental issue
     qc_thresholds:
       <<: *default_process_plate_qc_thresholds
     curvefit_params:

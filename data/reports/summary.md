@@ -33,8 +33,8 @@ The HAs we chose largely covered the current diversity of human seasonal influen
 
 For interactive Nextstrain phylogenetic trees showing the strains included in the library colored by their subclade identities, see the following links:
 
- - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?c=subclade)
- - [H1N1](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?c=subclade)
+ - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?c=subclade&m_groupBy=serum)
+ - [H1N1](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?c=subclade&m_groupBy=serum)
 
 ## Human sera tested
 Overall we tested 285 human sera, all collected between April and July 2026 from individuals of a wide range of ages.
@@ -69,12 +69,12 @@ This figure is much busier, but if you interactively mouse over the lines you ca
 ### Titers projected on phylogenetic tree
 A helpful way to examine the titers is on an interactive Nextstrain phylogenetic tree.
 
-The figure below shows a Nextstrain tree (available [as a standalone link here](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2)) of the HA proteins in the library colored by the median titer against all sera.
+The figure below shows a Nextstrain tree (available [as a standalone link here](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?m_groupBy=serum)) of the HA proteins in the library colored by the median titer against all sera.
 The sidebar provides numerous options to change the coloring, including coloring by HA genotype or other properties. You can also click on strains for more details, and use the *Measurements* panel below the tree to break down the titers in various ways.
 
-![Interactive tree of the H3N2 HA proteins, colored by the median titer against all sera. Use the interactive toolbar at left to visualize the data in many other helpful views, and also examine the *Measurements* panel below the tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?onlyPanels&d=tree,measurements){height=700}
+![Interactive tree of the H3N2 HA proteins, colored by the median titer against all sera. Use the interactive toolbar at left to visualize the data in many other helpful views, and also examine the *Measurements* panel below the tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?onlyPanels&d=tree,measurements&m_groupBy=serum)
 
-Note that you can also use the *Scatter* option to the left of the tree to stratify titers against strains with specific mutations, such as [in this view showing the median titers against strains with different amino-acid identities at site 223](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?c=gt-HA1_223&d=tree,measurements&l=scatter&m_display=mean&onlyPanels&scatterX=median_titer_All_sera&scatterY=gt).
+Note that you can also use the *Scatter* option to the left of the tree to stratify titers against strains with specific mutations, such as [in this view showing the median titers against strains with different amino-acid identities at site 223](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?c=gt-HA1_223&d=tree,measurements&l=scatter&m_display=mean&onlyPanels&scatterX=median_titer_All_sera&scatterY=gt&m_groupBy=serum).
 
 ### Pre- and post-vaccination titers
 For the VIDRL cohort, we have pre- and post-vaccination titers for adults who received an egg-based (Fluzone) or cell-based (Flucelvax) vaccine, as well as elderly individuals who received an egg-based (Fluad) vaccine.
@@ -125,11 +125,11 @@ You can use the interactive options to also stratify sera by relative titers to 
 Note the [comparable plot for H3N2](docs:results/stratified_titer_plots/human_stratified_H3N2_recent_interquartile_range_subclade.html) does not show similarly dramatic stratification for the largest-antigenic-effect mutations.
 
 ### Titers projected on phylogenetic tree
-The figure below shows a Nextstrain tree (available [as a standalone link here](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1)) of the HA proteins in the library colored by the median titer against all sera.
+The figure below shows a Nextstrain tree (available [as a standalone link here](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?m_groupBy=serum)) of the HA proteins in the library colored by the median titer against all sera.
 
-![Interactive tree of the H1N1 HA proteins, colored by the median titer against all sera. Use the interactive toolbar at left to visualize the data in many other helpful views, and also examine the *Measurements* panel below the tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?onlyPanels&d=tree,measurements){height=700}
+![Interactive tree of the H1N1 HA proteins, colored by the median titer against all sera. Use the interactive toolbar at left to visualize the data in many other helpful views, and also examine the *Measurements* panel below the tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?onlyPanels&d=tree,measurements&m_groupBy=serum)
 
-Note that you can also use the *Scatter* option to the left of the tree to stratify titers against strains with specific mutations, such as [in this view showing the median titers against strains with different amino-acid identities at site 155](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?c=gt-HA1_155&d=tree,measurements&l=scatter&m_display=mean&onlyPanels&scatterX=median_titer_All_sera&scatterY=gt).
+Note that you can also use the *Scatter* option to the left of the tree to stratify titers against strains with specific mutations, such as [in this view showing the median titers against strains with different amino-acid identities at site 155](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?c=gt-HA1_155&d=tree,measurements&l=scatter&m_display=mean&onlyPanels&scatterX=median_titer_All_sera&scatterY=gt&m_groupBy=serum).
 
 ### Pre- and post-vaccination titers
 The figure below shows the pre- and post-vaccination titers for each group to all of the strains:

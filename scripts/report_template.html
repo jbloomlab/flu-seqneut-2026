@@ -19,7 +19,7 @@
   .sidebar a:hover { text-decoration: underline; }
   .sidebar a.active { font-weight: 600; color: #111; }
 
-  main { min-width: 0; max-width: 60em; padding: 1.5em 2.5em 6em; }
+  main { min-width: 0; padding: 1.5em 2.5em 6em; }
   h1 { line-height: 1.25; margin-top: 0; }
   h2, h3, h4 { line-height: 1.25; }
   h2 { border-bottom: 1px solid #ddd; padding-bottom: 0.2em; margin-top: 2em; }
@@ -33,11 +33,11 @@
          font-size: 0.9em; }
   pre code { display: block; padding: 0.8em; overflow-x: auto; }
 
-  figure.embed { margin: 1.6em 0; }
-  /* The height set here is what stands until the chart can be measured, and is all a
-     cross-origin frame -- an embedded tree, or any embed opened over `file://` -- ever
-     gets. `data-height` on the frame overrides it for embeds that cannot be measured. */
-  iframe.embed { display: block; width: 100%; height: 600px; border: 1px solid #ddd;
+  /* Prose keeps a readable measure; an embed spans the whole column so a wide chart is
+     not cut off, and is as tall as the window so every embed is sized the same way. */
+  main > * { max-width: 60em; }
+  figure.embed { margin: 1.6em 0; max-width: none; }
+  iframe.embed { display: block; width: 100%; height: 100vh; border: 1px solid #ddd;
                  border-radius: 4px; background: #fff; }
   figure.figure { margin: 1.6em 0; }
   figure.figure img { display: block; max-width: 100%; height: auto;
@@ -64,62 +64,6 @@ $body
 </div>
 <script>
 (function () {
-  var MIN_HEIGHT = 250;   // px, so a chart still drawing is not a sliver
-  var MAX_HEIGHT = 4000;  // px, so one embed cannot swallow the whole page
-
-  // Throws or returns null when the frame is cross-origin, which is the case for an
-  // embedded Nextstrain tree and for every embed when the page is opened over `file://`.
-  function documentOf(frame) {
-    try {
-      return frame.contentDocument;
-    } catch (err) {
-      return null;
-    }
-  }
-
-  function fit(frame) {
-    var doc = documentOf(frame);
-    if (!doc || !doc.body) return;
-    var style = frame.contentWindow.getComputedStyle(doc.body);
-    // The body's own box, not `documentElement`: `documentElement` grows to fill the
-    // height we set, so measuring it would let the frame grow but never shrink back.
-    var height = doc.body.getBoundingClientRect().height
-      + parseFloat(style.marginTop) + parseFloat(style.marginBottom);
-    height = Math.min(Math.max(Math.ceil(height) + 2, MIN_HEIGHT), MAX_HEIGHT);
-    frame.style.height = height + "px";
-  }
-
-  function watch(frame) {
-    var doc = documentOf(frame);
-    if (!doc || !doc.body) return;  // cannot measure it; the CSS height stands
-    fit(frame);
-    if (window.ResizeObserver) {
-      // Clicking a serum cohort in a chart's legend adds or drops a facet row, so the
-      // height changes long after load; observing the body catches every such relayout.
-      new ResizeObserver(function () { fit(frame); }).observe(doc.body);
-    }
-    // vega draws asynchronously after `load`, so measure again once it has settled
-    setTimeout(function () { fit(frame); }, 400);
-    setTimeout(function () { fit(frame); }, 2500);
-  }
-
-  var frames = document.querySelectorAll("iframe.embed");
-  for (var i = 0; i < frames.length; i++) {
-    (function (frame) {
-      var height = frame.getAttribute("data-height");
-      if (height) {
-        frame.style.height = height + "px";
-        return;  // an explicit height means the frame is not to be measured
-      }
-      var doc = documentOf(frame);
-      if (doc && doc.readyState === "complete") {
-        watch(frame);  // served from cache, so `load` will not fire again
-      } else {
-        frame.addEventListener("load", function () { watch(frame); });
-      }
-    })(frames[i]);
-  }
-
   // highlight the sidebar entry for the section currently in view
   if (window.IntersectionObserver) {
     var links = {};

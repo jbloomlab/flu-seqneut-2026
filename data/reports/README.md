@@ -42,8 +42,8 @@ The code and data are at <{repo_url}>, and the open issues are at {repo_url}/iss
 ```
 
 Angle brackets around it make the URL itself the link text; `[the code]({repo_url})`
-links other words to it instead. Only that exact token is replaced, so braces a report
-writes for other reasons -- an embed's `{height=}` -- are left alone.
+links other words to it instead. Only that exact token is replaced, so any other braces
+a report writes are left alone.
 
 ## Embedding a plot or a tree
 
@@ -53,17 +53,15 @@ own with an `embed:` target, which is either a `docs:`-style path or a full URL:
 ```markdown
 ![Median titer of each serum against recent H1N1 strains.](embed:results/titer_plots/human_H1N1_recent_individual_sera_subclade.html)
 
-![The H1N1 tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?onlyPanels&d=tree,measurements&sidebar=closed){height=900}
+![The H1N1 tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?onlyPanels&d=tree,measurements&sidebar=closed)
 ```
 
 The caption is shown beneath the frame, followed by a link that opens the same page in a
 new tab.
 
-A page of this site is measured in the browser, so its frame follows the chart as it
-grows and shrinks — which matters for the charts whose height changes when serum cohorts
-are toggled in the legend. Anything on another site cannot be measured, so give it a
-`{height=<px>}`; for a Nextstrain tree, `onlyPanels` drops the site header and footer,
-and `d=` and `sidebar=closed` choose what is shown.
+Every frame is as wide as the page and as tall as the browser window, so an embed takes
+no sizing of its own. For a Nextstrain tree, `onlyPanels` drops the site header and
+footer, and `d=` and `sidebar=closed` choose what is shown.
 
 Embeds are loaded lazily, but each chart is still 250 KB to 8 MB, so embed the few that
 carry the argument and link to the rest.
@@ -96,11 +94,9 @@ snakemake -j1 --sdm conda -- results/reports/<report>_link_check.txt
 checked afterwards against the site that was actually built, and the result is written to
 `results/reports/<report>_link_check.txt`.
 
-To preview, serve the built site rather than opening the file directly:
+To preview, serve the built site rather than opening the file directly, so that the
+embeds and the links between pages behave as they will once published:
 
 ```bash
 cd results/docs && python -m http.server
 ```
-
-Opened over `file://`, every embed counts as another site and falls back to a fixed
-height, so the resizing cannot be seen.

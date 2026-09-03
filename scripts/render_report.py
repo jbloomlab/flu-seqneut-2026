@@ -29,10 +29,6 @@ sys.stderr = sys.stdout = open(snakemake.log[0], "w")
 #: sidebar starts at `##`; `####` and deeper render but would make the sidebar a wall.
 TOC_DEPTH = "2-3"
 
-#: Height in px given to an embed that cannot be measured in the browser and that names
-#: no height of its own. Only reached by a cross-origin embed, such as a tree.
-DEFAULT_EMBED_HEIGHT = 800
-
 #: MIME type of each image format a `figure:` may name
 FIGURE_MIME_TYPES = {
     ".svg": "image/svg+xml",
@@ -41,12 +37,11 @@ FIGURE_MIME_TYPES = {
     ".jpeg": "image/jpeg",
 }
 
-#: `![caption](embed:target)` or `![caption](figure:target)` alone on a line, an embed
-#: optionally followed by a height. Anywhere else these are an error, since neither an
-#: iframe nor a captioned figure can sit inside the flow of a paragraph.
+#: `![caption](embed:target)` or `![caption](figure:target)` alone on a line. Anywhere
+#: else these are an error, since neither an iframe nor a captioned figure can sit
+#: inside the flow of a paragraph.
 INLINE_RE = re.compile(
-    r"^!\[(?P<caption>[^\]]*)\]\((?P<kind>embed|figure):(?P<target>[^)\s]+)\)"
-    r"(?:\{height=(?P<height>\d+)\})?[ \t]*$",
+    r"^!\[(?P<caption>[^\]]*)\]\((?P<kind>embed|figure):(?P<target>[^)\s]+)\)[ \t]*$",
     re.MULTILINE,
 )
 
@@ -91,19 +86,14 @@ def resolve(href):
     )
 
 
-def embed_html(caption, target, height):
+def embed_html(caption, target):
     """The raw HTML of one inline plot or tree: an iframe plus its caption."""
     src = resolve(target if ":" in target else f"docs:{target}")
-    # A cross-origin frame cannot be measured from this page, so an absolute URL keeps
-    # whatever height it is given; a page of our own docs site is measured and resized.
-    attrs = ""
-    if height or "//" in src:
-        attrs = f' data-height="{height or DEFAULT_EMBED_HEIGHT}"'
     quoted = html.escape(src, quote=True)
     return (
         '<figure class="embed">\n'
         f'<iframe class="embed" src="{quoted}" loading="lazy" '
-        f'title="{html.escape(caption, quote=True)}"{attrs}></iframe>\n'
+        f'title="{html.escape(caption, quote=True)}"></iframe>\n'
         f"<figcaption>{html.escape(caption)} "
         f'(<a href="{quoted}" target="_blank" rel="noopener">open in a new tab</a>)'
         "</figcaption>\n"
@@ -146,14 +136,9 @@ class EmbedPreprocessor(markdown.preprocessors.Preprocessor):
     def run(self, lines):
         def stash(match):
             caption = " ".join(match.group("caption").split())
-            target, height = match.group("target"), match.group("height")
+            target = match.group("target")
             if match.group("kind") == "embed":
-                html_text = embed_html(caption, target, height)
-            elif height:
-                raise ValueError(
-                    f"`figure:{target}` names a height, but a figure is sized by the "
-                    "width of the text; only an `embed:` takes a height"
-                )
+                html_text = embed_html(caption, target)
             else:
                 html_text = figure_html(caption, target)
             return self.md.htmlStash.store(html_text)
@@ -189,8 +174,8 @@ figures = set(snakemake.input.figures)
 tracked = tracked_paths()
 
 text = pathlib.Path(snakemake.input.markdown).read_text()
-# Replacing just this token, rather than formatting the whole text, so that the
-# braces a report writes for other reasons -- an embed's `{height=}` -- are untouched
+# Replacing just this token, rather than formatting the whole text, so that any other
+# braces a report writes are untouched
 text = text.replace("{repo_url}", repo_url)
 
 headings = [line for line in text.split("\n") if re.fullmatch(r"#[^#].*", line)]

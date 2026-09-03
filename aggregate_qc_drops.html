@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aggregate and analyze the drops from QC-ing the plates and sera</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<style>
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 80em;
+  padding: 1.5em;
+}
+h1, h2, h3 { line-height: 1.25; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+code { background: #f4f4f4; border-radius: 3px; padding: 0.1em 0.3em; }
+pre { background: #f4f4f4; border-radius: 4px; overflow-x: auto; padding: 0.6em 0.8em; }
+pre code { background: none; padding: 0; }
+/* a chart is drawn at its natural size, so a wide one scrolls rather than being clipped */
+.chart-block { margin: 1em 0; overflow-x: auto; }
+.scroll-box {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 1em 0;
+  max-height: 80vh;
+  overflow: auto;
+}
+.scroll-box table { border-collapse: collapse; font-size: 0.85em; }
+.scroll-box th, .scroll-box td {
+  border-bottom: 1px solid #eee;
+  padding: 0.25em 0.6em;
+  text-align: right;
+  white-space: nowrap;
+}
+.scroll-box th { background: #fafafa; position: sticky; top: 0; }
+</style>
+</head>
+<body>
+<h1>Aggregate and analyze the drops from QC-ing the plates and sera</h1>
+<div class="md-block"><h2>Analyze plate QC drops</h2>
+<p>Read QC drops for individual plates into a merged dictionary, write it to YAML, and
+also convert to a DataFrame.
+If you really want to look into the details of what is being dropped, you will want
+to look at that merged YAML file.</p></div>
+<div class="md-block"><p>Writing merged plate drops to results/qc_drops/plate_qc_drops.yml</p></div>
+<div class="md-block"><p>No plate had any drops of the following types, so they are not plotted below: <code>barcodes</code></p></div>
+<div class="md-block"><p>Now plot the number of drops for each plate.
+A plate with no drops at all still gets a row, which is simply empty.
+You should be worried (maybe re-do or discard) any plates with a very large number
+of drops:</p></div>
+<div class="chart-block">
+<style>
+  #chart_1.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #chart_1.vega-embed details,
+  #chart_1.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="chart_1"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "chart_1") {
+      outputDiv = document.getElementById("chart_1");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"grid": false}}, "data": {"name": "data-c668449a466d499d5917011b8af2a680"}, "mark": {"type": "bar", "height": {"band": 0.8}, "stroke": "black"}, "encoding": {"color": {"field": "reason", "legend": {"columns": 1, "labelLimit": 230, "orient": "top", "padding": 1, "title": null}, "type": "nominal"}, "column": {"field": "drop type", "header": {"labelFontSize": 12, "labelFontStyle": "bold", "labelPadding": 1}, "spacing": 5, "title": null, "type": "nominal"}, "strokeWidth": {"condition": {"param": "param_721621bb0f0222e0", "value": 3, "empty": false}, "value": 0.5}, "tooltip": [{"field": "plate", "type": "nominal"}, {"field": "drop type", "type": "nominal"}, {"field": "reason", "type": "nominal"}, {"field": "n_drops", "type": "quantitative"}], "x": {"field": "n_drops", "title": "number of drops", "type": "quantitative"}, "y": {"axis": {"labelFontSize": 11, "labelFontStyle": "bold"}, "field": "plate", "scale": {"domain": ["plate7", "plate8", "plate9", "plate10", "plate11", "plate12", "plate13", "plate14", "plate15", "plate16", "plate17", "plate18", "plate19", "plate20", "plate25", "plate26", "plate27", "plate28", "plate29", "plate30", "plate32", "plate33", "plate34", "plate35", "plate36", "plate37", "plate38"]}, "title": null, "type": "nominal"}}, "height": {"step": 16}, "params": [{"name": "param_721621bb0f0222e0", "select": {"type": "point", "fields": ["plate"], "on": "mouseover"}}], "resolve": {"scale": {"color": "independent", "x": "independent"}}, "title": {"text": "Number of QC drops when processing plates", "anchor": "middle", "dy": -2}, "width": 230, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-c668449a466d499d5917011b8af2a680": [{"plate": "plate10", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 19}, {"plate": "plate10", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 68}, {"plate": "plate11", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 5}, {"plate": "plate11", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 14}, {"plate": "plate12", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 9}, {"plate": "plate12", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 14}, {"plate": "plate13", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 6}, {"plate": "plate13", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 36}, {"plate": "plate14", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 19}, {"plate": "plate14", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 10}, {"plate": "plate15", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 5}, {"plate": "plate15", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 22}, {"plate": "plate16", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 6}, {"plate": "plate16", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 6}, {"plate": "plate17", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 12}, {"plate": "plate17", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 8}, {"plate": "plate17", "drop type": "wells", "reason": "manual_drop", "n_drops": 1}, {"plate": "plate18", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 17}, {"plate": "plate18", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 2}, {"plate": "plate19", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 3}, {"plate": "plate19", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 46}, {"plate": "plate19", "drop type": "wells", "reason": "avg_barcode_counts_per_well", "n_drops": 2}, {"plate": "plate20", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 10}, {"plate": "plate20", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 5}, {"plate": "plate20", "drop type": "wells", "reason": "avg_barcode_counts_per_well", "n_drops": 3}, {"plate": "plate25", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 18}, {"plate": "plate25", "drop type": "wells", "reason": "manual_drop", "n_drops": 1}, {"plate": "plate26", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 9}, {"plate": "plate27", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 6}, {"plate": "plate28", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 19}, {"plate": "plate28", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 1}, {"plate": "plate28", "drop type": "wells", "reason": "manual_drop", "n_drops": 1}, {"plate": "plate32", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 4}, {"plate": "plate32", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 6}, {"plate": "plate33", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 4}, {"plate": "plate33", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 3}, {"plate": "plate34", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 20}, {"plate": "plate34", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 3}, {"plate": "plate34", "drop type": "wells", "reason": "manual_drop", "n_drops": 1}, {"plate": "plate35", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 1}, {"plate": "plate35", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 1}, {"plate": "plate36", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 17}, {"plate": "plate36", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 4}, {"plate": "plate38", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 1}, {"plate": "plate7", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 9}, {"plate": "plate7", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 4}, {"plate": "plate8", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 11}, {"plate": "plate8", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 2}, {"plate": "plate9", "drop type": "barcode_serum_replicates", "reason": "goodness_of_fit", "n_drops": 27}, {"plate": "plate9", "drop type": "barcode_wells", "reason": "max_frac_infectivity_per_viral_barcode_well", "n_drops": 7}, {"plate": "plate9", "drop type": "serum_replicates", "reason": "manual_drop", "n_drops": 1}, {"plate": "plate9", "drop type": "wells", "reason": "manual_drop", "n_drops": 1}]}}, {"mode": "vega-lite"});
+</script></div>
+<div class="md-block"><h2>Analyze barcode QC drops</h2>
+<p>If a barcode is dropped especially often across plates, that could indicate something
+problematic with that barcode such that it should be removed altogether from the
+library analysis.</p>
+<p>First, write a YAML with this information:</p></div>
+<div class="md-block"><p>Writing merged barcode drops to results/qc_drops/barcode_qc_drops.yml</p></div>
+<div class="md-block"><p>Now make a plot showing how often each barcode is dropped for each reason:</p></div>
+<div class="chart-block">
+<style>
+  #chart_2.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #chart_2.vega-embed details,
+  #chart_2.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="chart_2"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "chart_2") {
+      outputDiv = document.getElementById("chart_2");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"grid": false}}, "data": {"name": "data-696bd0346d224a10e52d80bbb19d990c"}, "mark": {"type": "bar", "height": {"band": 0.8}, "stroke": "black"}, "encoding": {"column": {"field": "drop type", "header": {"labelFontSize": 12, "labelFontStyle": "bold", "labelPadding": 1}, "spacing": 8, "title": null, "type": "nominal"}, "strokeWidth": {"condition": {"param": "param_5803177e0db4c896", "value": 3, "empty": false}, "value": 0.5}, "tooltip": [{"field": "drop type", "type": "nominal"}, {"field": "barcode", "type": "nominal"}, {"field": "plates_where_dropped", "type": "quantitative"}, {"field": "total_drops", "type": "quantitative"}], "x": {"field": "total_drops", "title": "times barcode dropped", "type": "quantitative"}, "y": {"axis": {"labelFontSize": 9}, "field": "barcode", "sort": {"field": "total_drops", "order": "descending"}, "type": "nominal"}}, "height": {"step": 10}, "params": [{"name": "param_5803177e0db4c896", "select": {"type": "point", "fields": ["barcode"], "on": "mouseover"}}], "resolve": {"scale": {"color": "independent", "x": "independent", "y": "independent"}}, "title": {"text": "Number of QC drops when processing plates", "anchor": "middle", "dy": -2}, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-696bd0346d224a10e52d80bbb19d990c": [{"drop type": "barcode_serum_replicates", "barcode": "A/Astrakhan/RII-MH273373S/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Badajoz/18738342/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Badajoz/18811358/2026_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Bangkok/P2390/2025_H3N2", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_serum_replicates", "barcode": "A/Bangkok/P2391/2025_H3N2", "plates_where_dropped": 9, "total_drops": 11}, {"drop type": "barcode_serum_replicates", "barcode": "A/Blaenavon/6687/2026_H3N2", "plates_where_dropped": 6, "total_drops": 6}, {"drop type": "barcode_serum_replicates", "barcode": "A/Bolivia/OR5702/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/BritishColumbia/RV00279-26/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/California/GKISBBBH79910/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/California/NIRC-IS-1059/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Castellon/VAHNSI_02_02400/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Colombia/1851/2024_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Colorado/218/2024_H1N1", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Croatia/10136RV/2023_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Darwin/1415/2025_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Denmark/4774/2025_H1N1", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_serum_replicates", "barcode": "A/District_Of_Columbia/27/2023_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Distrito_Federal/250106000728/2025_H3N2", "plates_where_dropped": 3, "total_drops": 4}, {"drop type": "barcode_serum_replicates", "barcode": "A/England/1893256/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/France/ARA-HCL026031894402/2026_H3N2", "plates_where_dropped": 7, "total_drops": 9}, {"drop type": "barcode_serum_replicates", "barcode": "A/France/GES-IPP01077/2026_H3N2", "plates_where_dropped": 11, "total_drops": 15}, {"drop type": "barcode_serum_replicates", "barcode": "A/France/HDF-IPP01550/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/France/HDF-RELAB-IPP00300/2026_H3N2", "plates_where_dropped": 6, "total_drops": 7}, {"drop type": "barcode_serum_replicates", "barcode": "A/France/NAQ-HCL026010957001/2026_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/France/OCC-HCL026013263701/2026_H3N2", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_serum_replicates", "barcode": "A/Galicia/GA-CHUAC-451/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Galicia/GA-CHUAC-612/2025_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Germany/LRMC_0104/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Germany/LRMC_0113/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Hawaii/70/2019_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Hawaii/ISC-1140/2025_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Hessen/18/2026_H1N1", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Ireland/91576/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Kentucky/80/2025_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Lisboa/216/2023_H3N2", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_serum_replicates", "barcode": "A/Luxembourg/LNS9132577/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Maine/25/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Malaysia/IMR/SARI/2406/2025_H3N2", "plates_where_dropped": 5, "total_drops": 5}, {"drop type": "barcode_serum_replicates", "barcode": "A/Massachusetts/18/2022_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Massachusetts/ISC-1856/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Michigan/8/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Michigan/UM-10068071276/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Michigan/UM-10068134090/2025_H3N2", "plates_where_dropped": 9, "total_drops": 10}, {"drop type": "barcode_serum_replicates", "barcode": "A/Michigan/UM-10068449788/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Michigan/UM-10068456988/2025_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Michigan/UM-10068747355/2026_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/MinasGerais/410/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Mississippi/20/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Missouri/11/2025_cell_H1N1", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Montana/51/2025_H3N2", "plates_where_dropped": 4, "total_drops": 5}, {"drop type": "barcode_serum_replicates", "barcode": "A/NakhonPhanom/P495/2026_H3N2", "plates_where_dropped": 2, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Navarra/260009/2025_H3N2", "plates_where_dropped": 6, "total_drops": 6}, {"drop type": "barcode_serum_replicates", "barcode": "A/Netherlands/10008/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Netherlands/543/2026_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Netherlands/888/2026_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/NewYork/NIRC-IS-1086/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/NordrheinWestfalen/54/2026_H3N2", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_serum_replicates", "barcode": "A/Norway/9556/2025_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/NovaScotia/25-365-06099/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Ontario/PHL202550193/2025_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Oregon/81/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Parana/416133590/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Peru/ANC-INS-062/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/SantaCatarina/508/2026_H3N2", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_serum_replicates", "barcode": "A/Saskatchewan/SKFLU477299/2025_H3N2", "plates_where_dropped": 6, "total_drops": 6}, {"drop type": "barcode_serum_replicates", "barcode": "A/Singapore/MOH0547/2024_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Singapore/NTF0577/2025_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/SouthAfrica/NHLS-SU-CERI-C075557/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/SouthAustralia/2605715552/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/South_Australia/2527213276/2025_H3N2", "plates_where_dropped": 11, "total_drops": 17}, {"drop type": "barcode_serum_replicates", "barcode": "A/StPetersburg/RII-25-2042S/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/StPetersburg/RII-25-2321S/2025_H3N2", "plates_where_dropped": 2, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/StPetersburg/RII-25-2506S/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/StPetersburg/RII-25-2600S/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Thailand/8/2022_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Thuringen/16/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Thuringen/39/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Trieste/257/2025_H3N2", "plates_where_dropped": 6, "total_drops": 7}, {"drop type": "barcode_serum_replicates", "barcode": "A/Trieste/380/2026_H3N2", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_serum_replicates", "barcode": "A/Uppsala/SE26-01293/2026_H1N1", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Victoria/2948/2025_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_serum_replicates", "barcode": "A/Victoria/4897/2022_IVR-238_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Vietnam/F7324/2024_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Wisconsin/588/2019_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_serum_replicates", "barcode": "A/Wisconsin/67/2022_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_serum_replicates", "barcode": "A/Zambia/7-NIC-313/2026_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Andalucia/PMC-00977/2025_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Andalucia/PMC-01217/2025_H1N1", "plates_where_dropped": 2, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/Andalucia/PMC-01495/2025_H1N1", "plates_where_dropped": 3, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/Arizona/40/2026_H1N1", "plates_where_dropped": 3, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/Badajoz/18738342/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Badajoz/18813527/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Bangkok/P2390/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/BritishColumbia/RV00022-26/2025_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/BritishColumbia/RV01350-26/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/BritishColumbia/RV05508-25/2025_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/California/NIRC-IS-1356/2025_H1N1", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/Colorado/218/2024_H1N1", "plates_where_dropped": 9, "total_drops": 15}, {"drop type": "barcode_wells", "barcode": "A/Croatia/10136RV/2023_H3N2", "plates_where_dropped": 3, "total_drops": 3}, {"drop type": "barcode_wells", "barcode": "A/Darwin/1415/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Denmark/3940/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Denmark/4774/2025_H1N1", "plates_where_dropped": 8, "total_drops": 20}, {"drop type": "barcode_wells", "barcode": "A/District_Of_Columbia/27/2023_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/England/1893256/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/France/ARA-HCL025195259501/2025_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/France/GES-IPP01077/2026_H3N2", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/France/HDF-RELAB-IPP00300/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/France/HDF-RELAB-IPP00303/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/France/HDF-RELAB-IPP07969/2025_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/France/NAQ-HCL026046169102/2025_H1N1", "plates_where_dropped": 4, "total_drops": 8}, {"drop type": "barcode_wells", "barcode": "A/France/OCC-HCL026013263701/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Galicia/GA-CHUAC-612/2025_H1N1", "plates_where_dropped": 10, "total_drops": 15}, {"drop type": "barcode_wells", "barcode": "A/Hawaii/70/2019_H1N1", "plates_where_dropped": 4, "total_drops": 6}, {"drop type": "barcode_wells", "barcode": "A/Hawaii/ISC-1140/2025_H1N1", "plates_where_dropped": 5, "total_drops": 5}, {"drop type": "barcode_wells", "barcode": "A/Hessen/18/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Kentucky/80/2025_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Lisboa/216/2023_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Maine/25/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Massachusetts/ISC-1856/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Mauritius/26000203/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Michigan/UM-10068449788/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Michigan/UM-10068747355/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/MinasGerais/410/2026_H1N1", "plates_where_dropped": 3, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/Mississippi/20/2026_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Missouri/11/2025_cell_H1N1", "plates_where_dropped": 8, "total_drops": 10}, {"drop type": "barcode_wells", "barcode": "A/Missouri/11/2025_egg_H1N1", "plates_where_dropped": 2, "total_drops": 3}, {"drop type": "barcode_wells", "barcode": "A/Missouri/NIRC-AV-1003/2025_H3N2", "plates_where_dropped": 1, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Montana/51/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Navarra/260009/2025_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Nebraska/34/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Netherlands/10008/2026_H1N1", "plates_where_dropped": 2, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/Netherlands/2398/2025_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Netherlands/543/2026_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Netherlands/864/2026_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Netherlands/888/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/NewBrunswick/NBPHLFLUA10B-MM00057R/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/NordrheinWestfalen/54/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/NordrheinWestfalen/96/2026_H1N1", "plates_where_dropped": 3, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/Norway/9556/2025_H1N1", "plates_where_dropped": 4, "total_drops": 6}, {"drop type": "barcode_wells", "barcode": "A/Ohio/259/2024_H1N1", "plates_where_dropped": 4, "total_drops": 5}, {"drop type": "barcode_wells", "barcode": "A/PaisVasco/70369726/2026_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Peru/ANC-INS-062/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Rhode_Island/11/2026_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Saskatchewan/SKFLU490586/2026_H1N1", "plates_where_dropped": 2, "total_drops": 3}, {"drop type": "barcode_wells", "barcode": "A/Singapore/KK2768/2025_H1N1", "plates_where_dropped": 3, "total_drops": 5}, {"drop type": "barcode_wells", "barcode": "A/Singapore/MOH0547/2024_H1N1", "plates_where_dropped": 9, "total_drops": 12}, {"drop type": "barcode_wells", "barcode": "A/Singapore/NTF0577/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/SouthAfrica/NHLS-SU-CERI-C075557/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/SouthAfrica/NICD-R01647/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/SouthAfrica/NICD-R01668/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/SouthAfrica/PATH-CERI-C073358/2025_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/SouthAfrica/PATH-CERI-C073366/2025_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/SouthAfrica/PATH-CERI-C075119/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/SouthCarolina/USAFSAM-17046/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/South_Australia/2523812314/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/South_Australia/2527213276/2025_H3N2", "plates_where_dropped": 1, "total_drops": 3}, {"drop type": "barcode_wells", "barcode": "A/StPetersburg/RII-25-2042S/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Switzerland/UN-SNRCI-HUG-053/2025_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Thuringen/39/2026_H3N2", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Tokyo/EIS11-277/2024_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Trieste/257/2025_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Trieste/380/2026_H3N2", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Ukraine/5214/2026_H1N1", "plates_where_dropped": 4, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/Uppsala/SE26-01293/2026_H1N1", "plates_where_dropped": 4, "total_drops": 5}, {"drop type": "barcode_wells", "barcode": "A/Valencia/VAHNSI_09_02564/2025_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Victoria/4897/2022_IVR-238_H1N1", "plates_where_dropped": 4, "total_drops": 7}, {"drop type": "barcode_wells", "barcode": "A/Vietnam/PF125413/2025_H1N1", "plates_where_dropped": 6, "total_drops": 7}, {"drop type": "barcode_wells", "barcode": "A/Vietnam/PF126009/2026_H1N1", "plates_where_dropped": 2, "total_drops": 4}, {"drop type": "barcode_wells", "barcode": "A/Virginia/82/2025_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Wisconsin/588/2019_H1N1", "plates_where_dropped": 2, "total_drops": 2}, {"drop type": "barcode_wells", "barcode": "A/Wisconsin/67/2022_H1N1", "plates_where_dropped": 5, "total_drops": 9}, {"drop type": "barcode_wells", "barcode": "A/Zambia/6-NIC-014/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}, {"drop type": "barcode_wells", "barcode": "A/Zambia/7-NIC-313/2026_H1N1", "plates_where_dropped": 1, "total_drops": 1}]}}, {"mode": "vega-lite"});
+</script></div>
+<div class="md-block"><h2>Analyze the groups/sera QC</h2>
+<p>Analyze the QC performed on the groups/sera, which involves completely dropping
+titers for certain virus-sera pairs.</p>
+<p>Read the QC for different groups/sera into a merged dictionary, write it to YAML, and
+also convert to a DataFrame.
+If you really want to look into the details of what is being dropped, you will want
+to look at that merged YAML file.</p></div>
+<div class="md-block"><p>Writing merged groups/sera drops to results/qc_drops/groups_sera_qc_drops.yml</p></div>
+<div class="md-block"><p>No virus titers were dropped at serum QC, so the two plots below are empty.</p></div>
+<div class="md-block"><p>Plot the number of viruses dropped for each group/serum.
+If a group/serum has many missed viruses, then you will lack a lot of titers and so
+it may be worth reviewing the cause of the drops.</p></div>
+<div class="chart-block">
+<style>
+  #chart_3.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #chart_3.vega-embed details,
+  #chart_3.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="chart_3"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "chart_3") {
+      outputDiv = document.getElementById("chart_3");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"grid": false}}, "data": {"name": "data-4f53cda18c2baa0c0354bb5f9a3ecbe5"}, "mark": {"type": "bar", "height": {"band": 0.8}}, "encoding": {"color": {"field": "reason", "legend": {"labelLimit": 350}, "title": "reason dropped", "type": "nominal"}, "row": {"field": "group", "type": "nominal"}, "tooltip": [{"field": "group", "type": "nominal"}, {"field": "serum", "type": "nominal"}, {"field": "reason", "type": "nominal"}, {"field": "n_viruses", "type": "quantitative"}], "x": {"field": "n_viruses", "title": "number of viruses dropped", "type": "quantitative"}, "y": {"field": "serum", "type": "nominal"}}, "height": {"step": 13}, "resolve": {"scale": {"x": "independent", "y": "independent"}}, "title": "Number of viruses dropped at serum QC for each serum", "width": 250, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-4f53cda18c2baa0c0354bb5f9a3ecbe5": []}}, {"mode": "vega-lite"});
+</script></div>
+<div class="md-block"><p>Plot the number of sera for which each virus is dropped during serum QC.
+If a virus is dropped for many sera, that may indicate some issue with that virus in
+assays:</p></div>
+<div class="chart-block">
+<style>
+  #chart_4.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #chart_4.vega-embed details,
+  #chart_4.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="chart_4"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "chart_4") {
+      outputDiv = document.getElementById("chart_4");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"grid": false}}, "data": {"name": "data-4f53cda18c2baa0c0354bb5f9a3ecbe5"}, "mark": {"type": "bar", "height": {"band": 0.8}}, "encoding": {"color": {"field": "reason", "legend": {"labelLimit": 350}, "title": "reason dropped", "type": "nominal"}, "row": {"field": "group", "type": "nominal"}, "tooltip": [{"field": "group", "type": "nominal"}, {"field": "virus", "type": "nominal"}, {"field": "reason", "type": "nominal"}, {"field": "n_sera", "type": "quantitative"}], "x": {"field": "n_sera", "title": "number of sera for which virus is dropped", "type": "quantitative"}, "y": {"field": "virus", "sort": {"field": "n_sera", "order": "descending"}, "type": "nominal"}}, "height": {"step": 13}, "resolve": {"scale": {"x": "independent", "y": "independent"}}, "title": "Number of sera for which each virus is dropped at serum QC", "width": 250, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-4f53cda18c2baa0c0354bb5f9a3ecbe5": []}}, {"mode": "vega-lite"});
+</script></div>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="document.querySelectorAll('.md-block').forEach(
+    (el) => renderMathInElement(el, {delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]})
+  )"></script>
+</body>
+</html>

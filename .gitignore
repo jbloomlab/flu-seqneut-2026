@@ -42,3 +42,9 @@ results/**
 
 !results/final_titer_data/*.csv
 !results/final_titer_data/*_summary.txt
+
+# the validation report of each `prot-struct-viz` page, not its (large) HTML
+!results/prot-struct-viz/*_report.txt
+
+# the link check of each narrative report, not its (large) HTML
+!results/reports/*_link_check.txt

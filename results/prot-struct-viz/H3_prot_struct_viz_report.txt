@@ -1,0 +1,67 @@
+structure source: 8FAW
+format: mmcif
+assemblies defined: ['1']
+assembly used: 1
+rendering style: default
+chains found: ['A', 'B', 'C', 'D']
+  chain A: 604 residues
+  chain B: 2 residues
+  chain C: 2 residues
+  chain D: 5 residues
+views: ['subclade K mutations also indicating sites 222 and 223', 'subclade K mutations', 'antigenic regions']
+
+=== view: subclade K mutations also indicating sites 222 and 223 ===
+chains displayed: ['A', 'B', 'C', 'D']
+residue classes displayed: {'glycan': 11, 'polymer': 488, 'water': 114}
+heteroatom baseline: waters=hide ligands=show glycans=hide ions=show
+base representation: gaussian-surface
+CSV: data/prot-struct-viz_config/H3/subclade-k-with-region-d-mutations.csv, 15 rows
+
+Mismatch report
+===============
+
+Residues in CSV but not in structure: 0
+
+Residues in structure but not in CSV: 484
+  polymer (478): A/11, A/12, A/13, A/14, A/15, A/16, A/17, A/18, A/19, A/20, A/21, A/22, A/23, A/24, A/25, A/26, A/27, A/28, A/29, A/30, ... (458 more)
+  glycan (6): A/601, A/602, B/1, B/2, C/1, C/2
+
+Residues in CSV and structure but absent from the chosen assembly: 0
+
+=== view: subclade K mutations ===
+chains displayed: ['A', 'B', 'C', 'D']
+residue classes displayed: {'glycan': 11, 'polymer': 488, 'water': 114}
+heteroatom baseline: waters=hide ligands=show glycans=hide ions=show
+base representation: gaussian-surface
+CSV: data/prot-struct-viz_config/H3/subclade-k-mutations.csv, 13 rows
+
+Mismatch report
+===============
+
+Residues in CSV but not in structure: 0
+
+Residues in structure but not in CSV: 486
+  polymer (480): A/11, A/12, A/13, A/14, A/15, A/16, A/17, A/18, A/19, A/20, A/21, A/22, A/23, A/24, A/25, A/26, A/27, A/28, A/29, A/30, ... (460 more)
+  glycan (6): A/601, A/602, B/1, B/2, C/1, C/2
+
+Residues in CSV and structure but absent from the chosen assembly: 0
+
+=== view: antigenic regions ===
+chains displayed: ['A', 'B', 'C', 'D']
+residue classes displayed: {'glycan': 11, 'polymer': 488, 'water': 114}
+heteroatom baseline: waters=hide ligands=show glycans=hide ions=show
+base representation: gaussian-surface
+CSV: data/prot-struct-viz_config/H3/antigenic-regions.csv, 493 rows
+
+Mismatch report
+===============
+
+Residues in CSV but not in structure: 0
+
+Residues in structure but not in CSV: 6
+  glycan (6): A/601, A/602, B/1, B/2, C/1, C/2
+
+Residues in CSV and structure but absent from the chosen assembly: 0
+
+wrote results/prot-struct-viz/H3_prot_struct_viz.html (0.20 MB)
+wrote results/prot-struct-viz/H3_prot_struct_viz_report.txt

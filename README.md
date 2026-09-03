@@ -2,6 +2,8 @@
 
 This study led by Caroline Kikawa, Andrew Butler, John Huddleston, and [Jesse Bloom](https://jbloomlab.org/) uses sequencing-based neutralization assays to measure titers to influenza viruses with HAs from human seasonal H3N2 and H1N1 viruses representative of those circulating in mid-2026 against human sera collected in early to mid 2026.
 
+**[Here is a summary of key results](https://jbloomlab.github.io/flu-seqneut-2026/summary.html)**.
+
 ## Quick links to key results
 To jump directly to the key results:
 
@@ -9,17 +11,13 @@ To jump directly to the key results:
   + For human sera:
     * [results/final_titer_data/human_titers.csv](results/final_titer_data/human_titers.csv): QC-ed set of titers for each virus/serum pair (keeping only viruses for which titers measured against most sera, and sera for which titers measured against most viruses).
     * [results/final_titer_data/human_sera.csv](results/final_titer_data/human_sera.csv): detailed information about the sera for which these titers were measured.
-    * [results/final_titer_data/human_sera_multicohort.csv](results/final_titer_data/human_sera_multicohort.csv): sera assigned to multiple cohorts ("All", each serum's own cohort, and the cohorts built from the sera metadata columns named by `multicohorts` in [config.yml](config.yml)); differs from [results/final_titer_data/human_sera.csv](results/final_titer_data/human_sera.csv) in that each serum may appear in multiple rows (eg, all sera occur in both "All" and their cohort, and pre- / post-vaccine sera will also appear again under those annotations).
+    * [results/final_titer_data/human_sera_multicohort.csv](results/final_titer_data/human_sera_multicohort.csv): the same sera assigned to additional finer-grained cohorts (named by `multicohorts` in [config.yml](config.yml)), so each serum may appear in several rows.
     * [results/final_titer_data/human_viruses.csv](results/final_titer_data/human_viruses.csv): detailed information about the viruses for which these titers were measured.
     * [results/final_titer_data/human_titers_summarized_by_virus.csv](results/final_titer_data/human_titers_summarized_by_virus.csv): summary statistics about the titers against each virus.
 
-- Interactive titer summary plots showing median titers, individual serum titers, interquartile ranges, fraction of sera below titer cutoffs, and (for the recent strains) titers as a fold change from each serum's median titer, for each subtype and strain type can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade).
+- The [interactive documentation](https://jbloomlab.github.io/flu-seqneut-2026) holds a detailed set of plots showing all of the fitted curves and per-plate and per-serum analysis and QC as well as plots summarizing the results. See the [report summary](https://jbloomlab.github.io/flu-seqneut-2026/summary.html) for a narrated overview of the summarized results.
 
-- Interactive charts that split the sera into two groups by each serum's titer ratio between a comparator and a reference strain, both chosen from dropdowns, with the fold-change threshold set by a slider and the age distribution of each group drawn alongside, can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-with-sera-split-by-relative-titer](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-with-sera-split-by-relative-titer).
-
-- Interactive charts comparing the titers of paired pre- and post-vaccination sera, both overlaid and as the fold change from before to after vaccination, with a facet per vaccination arm, can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-titers-before-and-after-vaccination-in-the-vidrl-cohorts).
-
-- Interactive Nextstrain protein trees that can be colored by subclade, median titer, etc and also show individual titers in the *Measurements* panel can be viewed at the following links:
+- Interactive Nextstrain protein trees that can be colored by subclade, median titer, etc and also show individual titers in the *Measurements* panel can be viewed at:
   - [H3N2](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2)
   - [H1N1](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1)
 
@@ -46,6 +44,7 @@ flu-seqneut-2026/
 ├── config.yml         # all pipeline configuration
 ├── rules/             # rules for analyses outside seqneut-pipeline
 ├── scripts/           # scripts those rules call
+├── envs/              # conda environments for individual rules
 ├── data/              # all input data
 ├── results/           # all output (key files tracked in git)
 ├── auspice/           # Nextstrain JSONs for the community build
@@ -101,6 +100,7 @@ These results should be largely self-explanatory, here are the key ones to look 
   - Final processed and QC-ed titer data are [./results/final_titer_data](results/final_titer_data) as described in more detail above in the [Quick links to key results](#quick-links-to-key-results) section.
   - Titers aggregated across all plates, before the subsetting to well-measured viruses and sera, are in [./results/aggregated_titers](results/aggregated_titers).
   - Nextstrain trees are in [./auspice](auspice), they can be viewed as [Nextstrain Community Builds](https://docs.nextstrain.org/en/latest/guides/share/community-builds.html) at the links provided in the [Quick links to key results](#quick-links-to-key-results) section.
+  - Interactive views of protein structures are in [./results/prot-struct-viz](results/prot-struct-viz); each page is a single self-contained HTML file, and only the validation report written beside it is tracked in the repo.
   - Interactive summary of results and pipeline QC are written to `results/docs` and are not tracked in the repo, but can be viewed interactively at [https://jbloomlab.github.io/flu-seqneut-2026](https://jbloomlab.github.io/flu-seqneut-2026) if you follow the steps described in the [Documentation on GitHub Pages](#documentation-on-github-pages) section.
 
 ### Snakemake pipeline
@@ -110,6 +110,8 @@ The pipeline is specified in [Snakefile](Snakefile), which includes:
  - [rules/library_qc.smk](rules/library_qc.smk): QC of the library, including sequencing of the library pool to balance the strain titers and single-well infections with each strain to confirm the absence of contaminanation.
  - [rules/analyze_titers.smk](rules/analyze_titers.smk): analysis of the titers to generate plots and QC-ed aggregated results.
  - [rules/trees.smk](rules/trees.smk): builds Nextstrain trees showing the library and results in a phylogenetic context.
+ - [rules/prot-struct-viz.smk](rules/prot-struct-viz.smk): renders interactive views of protein structures with [prot-struct-viz](https://github.com/jbloomlab/prot-struct-viz), one page per directory of [data/prot-struct-viz_config](data/prot-struct-viz_config).
+ - [rules/reports.smk](rules/reports.smk): renders the hand-written narrative reports in [data/reports](data/reports) to HTML pages of the documentation, and checks the links they make against the built site.
 
 ### Submodules
 This repository uses the following git submodules:

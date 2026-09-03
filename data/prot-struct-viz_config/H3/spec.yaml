@@ -1,0 +1,39 @@
+# Influenza A/Victoria/22/2020 (H3N2) hemagglutinin with the LSTc receptor
+# analogue bound (PDB 8FAW), as the biological trimer.
+#
+# Rendered by `rule prot_struct_viz_page`, which passes `--out`; there is
+# deliberately no `out` key here.
+
+structure: 8FAW
+assembly: "1"
+on_mismatch: error-extra-in-csv
+viewer_height: 80vh
+molstar_ui: hide
+
+definitions:
+  base: &base
+    default_color: "#d9d9d9"
+    default_representation: gaussian-surface
+    waters: hide
+    ligands: show
+    ions: show
+    glycans: hide
+
+views:
+  - <<: *base
+    name: subclade K mutations also indicating sites 222 and 223
+    csv: subclade-k-with-region-d-mutations.csv
+    title_md: subclade-k-with-region-d-mutations.md
+    orientation:
+      position: [-148.08, 69.84, -2.14]
+      target: [-0.41, -57.45, 13.82]
+      up: [0.13, 0.01, -0.99]
+      radius: 76.11
+  - <<: *base
+    name: subclade K mutations
+    csv: subclade-k-mutations.csv
+    title_md: subclade-k-mutations.md
+  - <<: *base
+    name: antigenic regions
+    csv: antigenic-regions.csv
+    title_md: antigenic-regions.md

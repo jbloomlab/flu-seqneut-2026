@@ -1,0 +1,13 @@
+chain,residue,color,label,representation,notes
+A,113,#e41a1c,R113K_HA1,,"HA1 site 113 differs: R in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+A,139,#e41a1c,A139D_HA1,,"HA1 site 139 differs: A in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), D in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+A,283,#e41a1c,E283K_HA1,,"HA1 site 283 differs: E in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+A,302,#e41a1c,K302E_HA1,,"HA1 site 302 differs: K in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), E in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+B,113,#e41a1c,R113K_HA1,,"HA1 site 113 differs: R in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+B,139,#e41a1c,A139D_HA1,,"HA1 site 139 differs: A in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), D in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+B,283,#e41a1c,E283K_HA1,,"HA1 site 283 differs: E in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+B,302,#e41a1c,K302E_HA1,,"HA1 site 302 differs: K in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), E in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+C,113,#e41a1c,R113K_HA1,,"HA1 site 113 differs: R in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+C,139,#e41a1c,A139D_HA1,,"HA1 site 139 differs: A in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), D in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+C,283,#e41a1c,E283K_HA1,,"HA1 site 283 differs: E in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), K in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"
+C,302,#e41a1c,K302E_HA1,,"HA1 site 302 differs: K in subclade D.3.1 (A/Missouri/11/2025_cell_H1N1, PV886191), E in subclade D.3.1.1 (A/Andalucia/PMC-00977/2025_H1N1, PX399795)"

@@ -137,7 +137,13 @@ group_scale = alt.Scale(
 )
 
 group_color = alt.Color(
-    "group:N", title="comparator titer relative to reference", scale=group_scale
+    "group:N",
+    title="comparator vs reference titer",
+    scale=group_scale,
+    # left of the titer panel, since the tree is drawn directly below it and a legend at
+    # the chart-wide default `orient="bottom"` lands between the two. `columns` because
+    # `titer_charts.finalize` defaults it to 12, which would lay the entries side by side.
+    legend=alt.Legend(orient="left", columns=1),
 )
 
 # the density panel shares the titers' legend rather than drawing a second one

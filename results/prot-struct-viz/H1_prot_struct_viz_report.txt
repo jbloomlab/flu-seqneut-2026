@@ -1,0 +1,72 @@
+structure source: 9GSP
+format: mmcif
+assemblies defined: ['1']
+assembly used: au
+rendering style: default
+chains found: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+  chain A: 492 residues
+  chain B: 492 residues
+  chain C: 492 residues
+  chain D: 2 residues
+  chain E: 3 residues
+  chain F: 2 residues
+  chain G: 3 residues
+  chain H: 3 residues
+  chain I: 2 residues
+views: ['D.3.1.1 mutations also indicating sites 155 and 157', 'D.3.1.1 mutations', 'antigenic regions']
+
+=== view: D.3.1.1 mutations also indicating sites 155 and 157 ===
+chains displayed: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+residue classes displayed: {'glycan': 27, 'polymer': 1464}
+heteroatom baseline: waters=hide ligands=show glycans=hide ions=show
+base representation: gaussian-surface
+CSV: data/prot-struct-viz_config/H1/d-3-1-1-with-sites-155-157.csv, 18 rows
+
+Mismatch report
+===============
+
+Residues in CSV but not in structure: 0
+
+Residues in structure but not in CSV: 1473
+  polymer (1446): A/1, A/2, A/3, A/4, A/5, A/6, A/7, A/8, A/9, A/10, A/11, A/12, A/13, A/14, A/15, A/16, A/17, A/18, A/19, A/20, ... (1426 more)
+  glycan (27): A/601, A/602, A/603, A/604, B/601, B/602, B/603, B/604, C/601, C/602, C/603, C/604, D/1, D/2, E/1, E/2, E/3, F/1, F/2, G/1, ... (7 more)
+
+Residues in CSV and structure but absent from the chosen assembly: 0
+
+=== view: D.3.1.1 mutations ===
+chains displayed: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+residue classes displayed: {'glycan': 27, 'polymer': 1464}
+heteroatom baseline: waters=hide ligands=show glycans=hide ions=show
+base representation: gaussian-surface
+CSV: data/prot-struct-viz_config/H1/d-3-1-1-mutations.csv, 12 rows
+
+Mismatch report
+===============
+
+Residues in CSV but not in structure: 0
+
+Residues in structure but not in CSV: 1479
+  polymer (1452): A/1, A/2, A/3, A/4, A/5, A/6, A/7, A/8, A/9, A/10, A/11, A/12, A/13, A/14, A/15, A/16, A/17, A/18, A/19, A/20, ... (1432 more)
+  glycan (27): A/601, A/602, A/603, A/604, B/601, B/602, B/603, B/604, C/601, C/602, C/603, C/604, D/1, D/2, E/1, E/2, E/3, F/1, F/2, G/1, ... (7 more)
+
+Residues in CSV and structure but absent from the chosen assembly: 0
+
+=== view: antigenic regions ===
+chains displayed: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+residue classes displayed: {'glycan': 27, 'polymer': 1464}
+heteroatom baseline: waters=hide ligands=show glycans=hide ions=show
+base representation: gaussian-surface
+CSV: data/prot-struct-viz_config/H1/antigenic-regions.csv, 1464 rows
+
+Mismatch report
+===============
+
+Residues in CSV but not in structure: 0
+
+Residues in structure but not in CSV: 27
+  glycan (27): A/601, A/602, A/603, A/604, B/601, B/602, B/603, B/604, C/601, C/602, C/603, C/604, D/1, D/2, E/1, E/2, E/3, F/1, F/2, G/1, ... (7 more)
+
+Residues in CSV and structure but absent from the chosen assembly: 0
+
+wrote results/prot-struct-viz/H1_prot_struct_viz.html (0.72 MB)
+wrote results/prot-struct-viz/H1_prot_struct_viz_report.txt

@@ -1,0 +1,41 @@
+# Influenza A/Victoria/2570/2019 (H1N1)pdm09 hemagglutinin, uncleaved (PDB 9GSP),
+# as the deposited trimer.
+#
+# Rendered by `rule prot_struct_viz_page`, which passes `--out`; there is
+# deliberately no `out` key here.
+
+structure: 9GSP
+# 9GSP deposits all three protomers, so the asymmetric unit is already the trimer
+# and there is no symmetry for Mol* to expand.
+assembly: au
+on_mismatch: error-extra-in-csv
+viewer_height: 80vh
+molstar_ui: hide
+
+definitions:
+  base: &base
+    default_color: "#d9d9d9"
+    default_representation: gaussian-surface
+    waters: hide
+    ligands: show
+    ions: show
+    glycans: hide
+
+views:
+  - <<: *base
+    name: D.3.1.1 mutations also indicating sites 155 and 157
+    csv: d-3-1-1-with-sites-155-157.csv
+    title_md: d-3-1-1-with-sites-155-157.md
+    orientation:
+      position: [-62.44, 102.76, 154.99]
+      target: [126.87, 127.02, 121.9]
+      up: [0.19, -0.13, 0.98]
+      radius: 77.12
+  - <<: *base
+    name: D.3.1.1 mutations
+    csv: d-3-1-1-mutations.csv
+    title_md: d-3-1-1-mutations.md
+  - <<: *base
+    name: antigenic regions
+    csv: antigenic-regions.csv
+    title_md: antigenic-regions.md

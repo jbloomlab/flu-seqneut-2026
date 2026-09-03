@@ -1,0 +1,21 @@
+Local links made by results/reports/summary.html, checked against results/docs
+
+  ok       H1_prot_struct_viz.html
+  ok       H3_prot_struct_viz.html
+  ok       VIDRL_vaccination_H1N1_recent_individual_sera_fold_change_subclade.html
+  ok       VIDRL_vaccination_H1N1_recent_individual_sera_subclade.html
+  ok       VIDRL_vaccination_H1N1_recent_interquartile_range_fold_change_subclade.html
+  ok       VIDRL_vaccination_H1N1_recent_interquartile_range_subclade.html
+  ok       VIDRL_vaccination_H3N2_recent_individual_sera_fold_change_subclade.html
+  ok       VIDRL_vaccination_H3N2_recent_individual_sera_subclade.html
+  ok       VIDRL_vaccination_H3N2_recent_interquartile_range_fold_change_subclade.html
+  ok       VIDRL_vaccination_H3N2_recent_interquartile_range_subclade.html
+  ok       human_H1N1_recent_individual_sera_subclade.html
+  ok       human_H1N1_recent_interquartile_range_subclade.html
+  ok       human_H3N2_recent_individual_sera_subclade.html
+  ok       human_H3N2_recent_interquartile_range_subclade.html
+  ok       human_stratified_H1N1_recent_interquartile_range_subclade.html
+  ok       human_stratified_H3N2_recent_interquartile_range_subclade.html
+  ok       index.html
+
+17 of 17 local links resolve.

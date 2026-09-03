@@ -7,6 +7,7 @@ __use_yte__: true
 
 __variables__:
   subtypes: [H1N1, H3N2]  # subtypes of strains; emitted as `subtypes` below
+  repo_url: https://github.com/jbloomlab/flu-seqneut-2026  # this project's GitHub repository
 
 # --- Configuration for custom analyses in Snakefile outside of seqneut-pipeline --------
 
@@ -79,7 +80,7 @@ nextstrain-prot-titers-tree_config:
       auspice_json: ?f"auspice/flu-seqneut-2026_{subtype}.json"
       addtl_export_args:
         title: ?f"Near real-time data on human neutralizing antibody landscape to {subtype} influenza virus as of the summer of 2026"
-        build-url: https://github.com/jbloomlab/flu-seqneut-2026
+        build-url: ?repo_url
         maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom
 
 # Sera metadata files to aggregate
@@ -148,6 +149,17 @@ plot_stratified_titers:
 prot-struct-viz:
   H1: key H1 HA mutations shown on protein structure
   H3: key H3 HA mutations shown on protein structure
+
+# Narrative reports hand-written in Markdown and rendered to HTML pages in the docs. Each
+# key names a report and is the wildcard naming its output, so it must be safe in a file
+# name; `markdown` is its hand-written source, `title` labels its page in the docs index,
+# and `repo:` links in the Markdown are resolved against `repo_url`. Set this key to null
+# to make no such reports.
+reports:
+  summary:
+    markdown: data/reports/summary.md
+    title: Summary of key results
+    repo_url: ?repo_url
 
 # Merged into each subtype's entry in `plot_titer_summaries_params.subtype_params`;
 # override a key by restating it there (`<<:` merges shallowly)
@@ -396,11 +408,15 @@ analyze_single_well_infections:
 seqneut-pipeline: seqneut-pipeline
 
 description: |
+  ?f"""
   # Near real-time data on the human neutralizing antibody landscape to influenza virus as of the summer of 2026 to inform vaccine-strain selection
 
   Study led by Caroline Kikawa, Andrew Butler, John Huddleston, and Jesse Bloom.
 
-  The numerical data and computer code are at [https://github.com/jbloomlab/flu-seqneut-2026](https://github.com/jbloomlab/flu-seqneut-2026)
+  See the [summary of key results](summary.html) for an overview of the results.
+
+  The numerical data and computer code are at [{repo_url}]({repo_url})
+  """
 
 viral_libraries:
   designed: data/viral_libraries/flu-seqneut-2026-barcode-to-strain-designed.csv

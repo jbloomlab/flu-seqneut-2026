@@ -15,6 +15,7 @@ include: "rules/library_qc.smk"
 include: "rules/analyze_titers.smk"
 include: "rules/trees.smk"
 include: "rules/prot-struct-viz.smk"
+include: "rules/reports.smk"
 
 
 rule all:
@@ -24,3 +25,4 @@ rule all:
         analyze_titers_outputs,
         trees_outputs,
         prot_struct_viz_outputs,
+        reports_outputs,

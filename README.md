@@ -13,6 +13,8 @@ To jump directly to the key results:
     * [results/final_titer_data/human_viruses.csv](results/final_titer_data/human_viruses.csv): detailed information about the viruses for which these titers were measured.
     * [results/final_titer_data/human_titers_summarized_by_virus.csv](results/final_titer_data/human_titers_summarized_by_virus.csv): summary statistics about the titers against each virus.
 
+- A narrative summary of the key results, with the interactive charts and trees shown inline, can be read at [https://jbloomlab.github.io/flu-seqneut-2026/summary.html](https://jbloomlab.github.io/flu-seqneut-2026/summary.html). It is written by hand in [data/reports/summary.md](data/reports/summary.md).
+
 - See [https://jbloomlab.github.io/flu-seqneut-2026](https://jbloomlab.github.io/flu-seqneut-2026) for interactive results, including:
   +  Interactive plots summarizing the titers in various ways can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-tree-colored-by-subclade).
   + Interactive charts that split the sera into two groups by each serum's titer ratio between a comparator and a reference strain can be viewed at [https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-with-sera-split-by-relative-titer](https://jbloomlab.github.io/flu-seqneut-2026/#interactive-charts-of-human-titers-with-sera-split-by-relative-titer).
@@ -113,6 +115,7 @@ The pipeline is specified in [Snakefile](Snakefile), which includes:
  - [rules/analyze_titers.smk](rules/analyze_titers.smk): analysis of the titers to generate plots and QC-ed aggregated results.
  - [rules/trees.smk](rules/trees.smk): builds Nextstrain trees showing the library and results in a phylogenetic context.
  - [rules/prot-struct-viz.smk](rules/prot-struct-viz.smk): renders interactive views of protein structures with [prot-struct-viz](https://github.com/jbloomlab/prot-struct-viz), one page per directory of [data/prot-struct-viz_config](data/prot-struct-viz_config).
+ - [rules/reports.smk](rules/reports.smk): renders the hand-written narrative reports in [data/reports](data/reports) to HTML pages of the documentation, and checks the links they make against the built site.
 
 ### Submodules
 This repository uses the following git submodules:

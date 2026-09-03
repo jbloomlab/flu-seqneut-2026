@@ -72,7 +72,7 @@ A helpful way to examine the titers is on an interactive Nextstrain phylogenetic
 The figure below shows a Nextstrain tree (available [as a standalone link here](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?m_groupBy=serum)) of the HA proteins in the library colored by the median titer against all sera.
 The sidebar provides numerous options to change the coloring, including coloring by HA genotype or other properties. You can also click on strains for more details, and use the *Measurements* panel below the tree to break down the titers in various ways.
 
-![Interactive tree of the H3N2 HA proteins, colored by the median titer against all sera. Use the interactive toolbar at left to visualize the data in many other helpful views, and also examine the *Measurements* panel below the tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?onlyPanels&d=tree,measurements&m_groupBy=serum){height=700}
+![Interactive tree of the H3N2 HA proteins, colored by the median titer against all sera. Use the interactive toolbar at left to visualize the data in many other helpful views, and also examine the *Measurements* panel below the tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?onlyPanels&d=tree,measurements&m_groupBy=serum)
 
 Note that you can also use the *Scatter* option to the left of the tree to stratify titers against strains with specific mutations, such as [in this view showing the median titers against strains with different amino-acid identities at site 223](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?c=gt-HA1_223&d=tree,measurements&l=scatter&m_display=mean&onlyPanels&scatterX=median_titer_All_sera&scatterY=gt&m_groupBy=serum).
 
@@ -127,7 +127,7 @@ Note the [comparable plot for H3N2](docs:results/stratified_titer_plots/human_st
 ### Titers projected on phylogenetic tree
 The figure below shows a Nextstrain tree (available [as a standalone link here](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?m_groupBy=serum)) of the HA proteins in the library colored by the median titer against all sera.
 
-![Interactive tree of the H1N1 HA proteins, colored by the median titer against all sera. Use the interactive toolbar at left to visualize the data in many other helpful views, and also examine the *Measurements* panel below the tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?onlyPanels&d=tree,measurements&m_groupBy=serum){height=700}
+![Interactive tree of the H1N1 HA proteins, colored by the median titer against all sera. Use the interactive toolbar at left to visualize the data in many other helpful views, and also examine the *Measurements* panel below the tree.](embed:https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?onlyPanels&d=tree,measurements&m_groupBy=serum)
 
 Note that you can also use the *Scatter* option to the left of the tree to stratify titers against strains with specific mutations, such as [in this view showing the median titers against strains with different amino-acid identities at site 155](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?c=gt-HA1_155&d=tree,measurements&l=scatter&m_display=mean&onlyPanels&scatterX=median_titer_All_sera&scatterY=gt&m_groupBy=serum).
 

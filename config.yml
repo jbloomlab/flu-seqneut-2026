@@ -125,6 +125,7 @@ plot_pre_post_titers:
       adult-Flucelvax: {pre: VIDRL_adult-cell_pre, post: VIDRL_adult-cell_post}
       adult-Fluzone: {pre: VIDRL_adult-egg_pre, post: VIDRL_adult-egg_post}
       elderly-Fluad: {pre: VIDRL_elderly-egg_pre, post: VIDRL_elderly-egg_post}
+      paed-Fluzone: {pre: VIDRL_paed-egg_pre, post: VIDRL_paed-egg_post}
     colors: {pre: "#4d4d4d", post: "#1b5e8a"}  # dark gray and dark blue
 
 # Titer charts with the sera split into two groups by each serum's titer ratio between a
@@ -1147,7 +1148,96 @@ plates:
     illumina_barcode_parser_params:
       upstream2: CGAGCT # Fwd8
       upstream2_mismatch: 1
+  
+  plate39:
+    group: human
+    date: 2026-09-03
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260903_plate39.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: GCTACA # Fwd1
+      upstream2_mismatch: 1
 
+  plate40:
+    group: human
+    date: 2026-09-03
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260903_plate40.csv
+    manual_drops: 
+      serum_replicates: [flu-seqneut-2026-VIDRL-205_pre-vax]  # pre/post accidentally split across plates
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: ATCGAT # Fwd2
+      upstream2_mismatch: 1
+
+  plate41:
+    group: human
+    date: 2026-09-03
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260903_plate41.csv
+    manual_drops: 
+      serum_replicates: [flu-seqneut-2026-VIDRL-205_post-vax] # pre/post accidentally split across plates
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: TGACGC # Fwd3
+      upstream2_mismatch: 1
+
+  plate42:
+    group: human
+    date: 2026-09-03
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260903_plate42.csv
+    manual_drops: 
+      serum_replicates: [flu-seqneut-2026-VIDRL-216_pre-vax] # pre/post accidentally split across plates
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: CAGTTG # Fwd4
+      upstream2_mismatch: 1
+
+  plate43:
+    group: human
+    date: 2026-09-03
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260903_plate43.csv
+    manual_drops: 
+      serum_replicates: [flu-seqneut-2026-VIDRL-216_post-vax] # pre/post accidentally split across plates
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: GTCTAA # Fwd5
+      upstream2_mismatch: 1
+    
 miscellaneous_plates:
   20260731_repool:
       date: 2026-07-31

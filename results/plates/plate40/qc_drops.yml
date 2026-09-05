@@ -1,0 +1,13 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Galicia/GA-CHUAC-612/2025_H1N1 H4: max_frac_infectivity_per_viral_barcode_well
+  A/Norway/9556/2025_H1N1 F3: max_frac_infectivity_per_viral_barcode_well
+  A/Singapore/MOH0547/2024_H1N1 F3: max_frac_infectivity_per_viral_barcode_well
+  A/Hawaii/ISC-1140/2025_H1N1 E6: max_frac_infectivity_per_viral_barcode_well
+  A/Galicia/GA-CHUAC-612/2025_H1N1 H6: max_frac_infectivity_per_viral_barcode_well
+  A/Denmark/4774/2025_H1N1 F5: max_frac_infectivity_per_viral_barcode_well
+  A/Colorado/218/2024_H1N1 H7: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates: {}
+serum_replicates:
+  flu-seqneut-2026-VIDRL-205_pre-vax: manual_drop

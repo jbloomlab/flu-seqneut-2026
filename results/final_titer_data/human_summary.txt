@@ -52,10 +52,10 @@ Cohorts in titers_summarized_by_virus.csv:
   VIDRL_adult-cell_pre: 20 sera, 2918 titers
   VIDRL_adult-egg_post: 20 sera, 2953 titers
   VIDRL_adult-egg_pre: 20 sera, 2943 titers
+  VIDRL_child-egg_post: 20 sera, 2958 titers
+  VIDRL_child-egg_pre: 20 sera, 2956 titers
   VIDRL_elderly-egg_post: 20 sera, 2956 titers
   VIDRL_elderly-egg_pre: 20 sera, 2941 titers
-  VIDRL_paed-egg_post: 20 sera, 2958 titers
-  VIDRL_paed-egg_pre: 20 sera, 2956 titers
 
 Viruses per subtype:
   H1N1: 66

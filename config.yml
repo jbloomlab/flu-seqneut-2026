@@ -125,7 +125,7 @@ plot_pre_post_titers:
       adult-Flucelvax: {pre: VIDRL_adult-cell_pre, post: VIDRL_adult-cell_post}
       adult-Fluzone: {pre: VIDRL_adult-egg_pre, post: VIDRL_adult-egg_post}
       elderly-Fluad: {pre: VIDRL_elderly-egg_pre, post: VIDRL_elderly-egg_post}
-      paed-Fluzone: {pre: VIDRL_paed-egg_pre, post: VIDRL_paed-egg_post}
+      child-Fluzone: {pre: VIDRL_child-egg_pre, post: VIDRL_child-egg_post}
     colors: {pre: "#4d4d4d", post: "#1b5e8a"}  # dark gray and dark blue
 
 # Titer charts with the sera split into two groups by each serum's titer ratio between a

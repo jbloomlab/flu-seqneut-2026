@@ -37,17 +37,10 @@ For interactive Nextstrain phylogenetic trees showing the strains included in th
  - [H1N1](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H1N1?c=subclade)
 
 ## Human sera tested
-Overall we tested 285 human sera, all collected between April and July 2026 from individuals of a wide range of ages.
-See [here](repo:results/final_titer_data/human_sera.csv) for full details on these sera; briefly:
+The sera come from a variety of sources as summarized in the table below;
+see [here](repo:results/final_titer_data/human_sera.csv) for the full details on the individual sera.
 
- - 40 residual human sera from Seattle Children's Hospital in the USA (abbreviated SCH)
- - 87 residual human sera from University of Washington Medical Center in the USA (abbreviated UWMC)
- - 38 human sera from a blood donor biobank maintained by Creative Testing Solutions via a collaboration of Vitalant Research Institute and the American Red Cross (abbreviated CTS)
- - 120 human sera from the Victorian Infectious Diseases Reference Laboratory in Australia (abbreviated VIDRL). These sera are pre- and post-vaccination, including:
-
-   + 20 pre- and 20 post-vaccination sera from adults given the Fluzone (egg-based) vaccine
-   + 20 pre- and 20 post-vaccination sera from adults given the Flucelvax (cell-based) vaccine
-   + 20 pre- and 20 post-vaccination sera from elderly individuals given the Fluad (egg-based) vaccine
+![Human sera tested. Ages are in years. The final row summarizes all sera tested.](table:results/final_titer_data/human_sera_summary.csv){tfoot=1}
 
 ## H3N2 results
 
@@ -77,8 +70,8 @@ The sidebar provides numerous options to change the coloring, including coloring
 Note that you can also use the *Scatter* option to the left of the tree to stratify titers against strains with specific mutations, such as [in this view showing the median titers against strains with different amino-acid identities at site 223](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?c=gt-HA1_223&d=tree,measurements&l=scatter&m_display=mean&onlyPanels&scatterX=median_titer_All_sera&scatterY=gt).
 
 ### Pre- and post-vaccination titers
-For the VIDRL cohort, we have pre- and post-vaccination titers for adults who received an egg-based (Fluzone) or cell-based (Flucelvax) vaccine, as well as elderly individuals who received an egg-based (Fluad) vaccine.
-The post-vaccination sera are collected a median of 21 days after vaccination (range 18-25 days).
+For the VIDRL cohort, we have pre- and post-vaccination titers for adults who received an egg-based (Fluzone) or cell-based (Flucelvax) vaccine, elderly individuals who received an egg-based (Fluad) vaccine, and children who received an egg-based (Fluzone) vaccine.
+The days after vaccination at which the post-vaccination sera were collected are in the [table above](#human-sera-tested).
 
 The figure below shows the pre- and post-vaccination titers for each group to all of the strains:
 

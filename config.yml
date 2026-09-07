@@ -128,6 +128,26 @@ plot_pre_post_titers:
       child-Fluzone: {pre: VIDRL_child-egg_pre, post: VIDRL_child-egg_post}
     colors: {pre: "#4d4d4d", post: "#1b5e8a"}  # dark gray and dark blue
 
+# Table summarizing the sera in each sera set, written for each group in
+# `groups_to_analyze`. Set this key to null to make no such table.
+summarize_sera:
+  # Descriptive name shown for each sera set, in the order the table rows them. These
+  # cohorts (see `multicohorts` above) must together hold each serum exactly once, since
+  # the table's final row totals them; a serum in none of them, or in two, is an error.
+  cohort_names:
+    SCH: residual sera, Seattle Children's Hospital, USA
+    UWMC: residual sera, University of Washington Medical Center, USA
+    CTS: blood donors, Creative Testing Solutions, USA
+    VIDRL_adult-cell_pre: VIDRL, Australia, adults, Flucelvax (cell-based), pre-vaccination
+    VIDRL_adult-cell_post: VIDRL, Australia, adults, Flucelvax (cell-based), post-vaccination
+    VIDRL_adult-egg_pre: VIDRL, Australia, adults, Fluzone (egg-based), pre-vaccination
+    VIDRL_adult-egg_post: VIDRL, Australia, adults, Fluzone (egg-based), post-vaccination
+    VIDRL_elderly-egg_pre: VIDRL, Australia, elderly, Fluad (egg-based), pre-vaccination
+    VIDRL_elderly-egg_post: VIDRL, Australia, elderly, Fluad (egg-based), post-vaccination
+    VIDRL_child-egg_pre: VIDRL, Australia, children, Fluzone (egg-based), pre-vaccination
+    VIDRL_child-egg_post: VIDRL, Australia, children, Fluzone (egg-based), post-vaccination
+  total_name: all sera  # name of the final row, which totals the sets above it
+
 # Titer charts with the sera split into two groups by each serum's titer ratio between a
 # comparator and a reference strain. Set this key to null to make no such charts.
 # `charts` names one entry per subtype and strain set to draw, and need list only the

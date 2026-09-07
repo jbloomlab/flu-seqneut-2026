@@ -9,6 +9,7 @@ that whether a `docs:` target is really a page of the site is left to
 """
 
 import base64
+import csv
 import html
 import os
 import pathlib
@@ -41,12 +42,16 @@ FIGURE_MIME_TYPES = {
     ".jpeg": "image/jpeg",
 }
 
-#: `![caption](embed:target)` or `![caption](figure:target)` alone on a line, an embed
-#: optionally followed by a height. Anywhere else these are an error, since neither an
-#: iframe nor a captioned figure can sit inside the flow of a paragraph.
+#: The option each kind takes after its target, as `{<option>=<number>}`
+KIND_OPTIONS = {"embed": "height", "figure": None, "table": "tfoot"}
+
+#: `![caption](embed:target)`, `![caption](figure:target)` or `![caption](table:target)`
+#: alone on a line, optionally followed by the kind's option. Anywhere else these are an
+#: error, since none of an iframe, a captioned figure or a table can sit inside the flow
+#: of a paragraph.
 INLINE_RE = re.compile(
-    r"^!\[(?P<caption>[^\]]*)\]\((?P<kind>embed|figure):(?P<target>[^)\s]+)\)"
-    r"(?:\{height=(?P<height>\d+)\})?[ \t]*$",
+    r"^!\[(?P<caption>[^\]]*)\]\((?P<kind>embed|figure|table):(?P<target>[^)\s]+)\)"
+    r"(?:\{(?P<option>\w+)=(?P<value>\d+)\})?[ \t]*$",
     re.MULTILINE,
 )
 
@@ -140,22 +145,67 @@ def figure_html(caption, target):
     )
 
 
+def table_html(caption, target, tfoot):
+    """The raw HTML of one table read from a CSV, plus its caption.
+
+    The last `tfoot` rows are put in the table's footer, which is how a row totalling
+    the rows above it is marked; the CSV itself just holds that row last.
+
+    """
+    if pathlib.Path(target).suffix.lower() != ".csv":
+        raise ValueError(f"`table:{target}` must name a `.csv` written by a rule")
+    if target not in tables:
+        raise ValueError(
+            f"`table:{target}` is not among the tables `rules/reports.smk` found in "
+            "this report, so a change to it would not rebuild the report"
+        )
+    with open(target, newline="") as f:
+        rows = list(csv.reader(f))
+    if len(rows) < 2 + tfoot:
+        raise ValueError(f"`table:{target}` has too few rows: {len(rows)}")
+
+    def cells(row, tag):
+        return (
+            "<tr>" + "".join(f"<{tag}>{html.escape(c)}</{tag}>" for c in row) + "</tr>"
+        )
+
+    body = rows[1 : len(rows) - tfoot]
+    parts = [
+        "<thead>" + cells(rows[0], "th") + "</thead>",
+        "<tbody>" + "".join(cells(row, "td") for row in body) + "</tbody>",
+    ]
+    if tfoot:
+        parts.append(
+            "<tfoot>" + "".join(cells(row, "td") for row in rows[-tfoot:]) + "</tfoot>"
+        )
+    return (
+        '<figure class="table">\n'
+        f"<table>{''.join(parts)}</table>\n"
+        f"<figcaption>{html.escape(caption)}</figcaption>\n"
+        "</figure>"
+    )
+
+
 class EmbedPreprocessor(markdown.preprocessors.Preprocessor):
-    """Replace each embed or figure line with the stashed raw HTML it stands for."""
+    """Replace each embed, figure or table line with the raw HTML it stands for."""
 
     def run(self, lines):
         def stash(match):
             caption = " ".join(match.group("caption").split())
-            target, height = match.group("target"), match.group("height")
-            if match.group("kind") == "embed":
-                html_text = embed_html(caption, target, height)
-            elif height:
+            kind, target = match.group("kind"), match.group("target")
+            option, value = match.group("option"), match.group("value")
+            if option and option != KIND_OPTIONS[kind]:
+                takes = KIND_OPTIONS[kind]
                 raise ValueError(
-                    f"`figure:{target}` names a height, but a figure is sized by the "
-                    "width of the text; only an `embed:` takes a height"
+                    f"`{kind}:{target}` names `{option}=`, but a {kind} takes "
+                    + (f"only `{takes}=`" if takes else "no option")
                 )
-            else:
+            if kind == "embed":
+                html_text = embed_html(caption, target, value)
+            elif kind == "figure":
                 html_text = figure_html(caption, target)
+            else:
+                html_text = table_html(caption, target, int(value or 0))
             return self.md.htmlStash.store(html_text)
 
         return INLINE_RE.sub(stash, "\n".join(lines)).split("\n")
@@ -169,8 +219,8 @@ class LinkTreeprocessor(markdown.treeprocessors.Treeprocessor):
             element.set("href", resolve(element.get("href")))
         for element in root.iter("img"):
             raise ValueError(
-                f"{element.get('src')!r} is an image whose target is neither an "
-                "`embed:` nor a `figure:`, or is one that is not alone on its line"
+                f"{element.get('src')!r} is an image whose target is not an `embed:`, "
+                "a `figure:` or a `table:`, or is one that is not alone on its line"
             )
 
 
@@ -186,6 +236,7 @@ class ReportExtension(markdown.extensions.Extension):
 report = snakemake.wildcards.report
 repo_url = snakemake.params.repo_url.rstrip("/")
 figures = set(snakemake.input.figures)
+tables = set(snakemake.input.tables)
 tracked = tracked_paths()
 
 text = pathlib.Path(snakemake.input.markdown).read_text()

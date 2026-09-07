@@ -68,6 +68,24 @@ and `d=` and `sidebar=closed` choose what is shown.
 Embeds are loaded lazily, but each chart is still 250 KB to 8 MB, so embed the few that
 carry the argument and link to the rest.
 
+## Showing a table
+
+A CSV written by a rule is shown as a table with a `table:` target on a line of its own:
+
+```markdown
+![The human sera tested.](table:results/final_titer_data/human_sera_summary.csv){tfoot=1}
+```
+
+Write the path within the repository. The CSV is read at build time and rendered as a
+real table in the page -- not an iframe -- so the report never recomputes anything it
+shows, the report is rebuilt whenever the table changes, and the build fails if the path
+is wrong. A CSV shown this way is written to be read: format its numbers and combine a
+minimum and maximum into one range column in the rule that writes it, not here.
+
+`{tfoot=<n>}` puts the last *n* rows in the table's footer, where they are shown in
+bold. That is how a row totalling the rows above it is marked; the CSV itself simply
+holds that row last.
+
 ## Showing a static figure
 
 An SVG or PNG in this repository is shown the same way as a plot, with a `figure:`

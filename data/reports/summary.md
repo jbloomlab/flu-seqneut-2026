@@ -152,6 +152,6 @@ You can use the dropdown below the figure to also color the HA by antigenic regi
 ## Contributors
 This study was led by Caroline Kikawa, Andrew Butler, John Huddleston, and [Jesse Bloom](https://jbloomlab.org/).
 
-Contributors include Heidi Peck and Ian Barr (Doherty Institute, Australia); Janet Englund and Kirsten Lacombe (Seattle Children's Hospital); Alex Greninger (University of Washington); Michael Busch, Marion Lanteri, Mars Stone,
+Contributors include Heidi Peck and Ian Barr (Doherty Institute, Australia) and Shidan Tosif (The Royal Children's Hospital, Australia); Janet Englund and Kirsten Lacombe (Seattle Children's Hospital); Alex Greninger (University of Washington); Michael Busch, Marion Lanteri, Mars Stone,
 and Bryan Spencer (Vitalant Research Institute and the American Red Cross); Sam Turner and Derek Smith (University of Cambridge); and Scott Hensley (University of Pennsylvania).
 

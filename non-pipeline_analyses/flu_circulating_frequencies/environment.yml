@@ -9,7 +9,9 @@ dependencies:
   - altair=6.2
   - biopython=1.88
   - black
-  - matplotlib=3.11
+  # held at 3.10 because matplotlib-base 3.11 requires libraqm, which needs
+  # glibc >= 2.28; the gizmo cluster nodes have glibc 2.27
+  - matplotlib=3.10
   - pandas=2.3
   - python=3.14
   - regex=2026.7

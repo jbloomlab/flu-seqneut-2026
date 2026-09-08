@@ -11,7 +11,7 @@ library_csv: ../../data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actua
 #   the last 2 years. There were 56,747 H1N1 HAs and 75,477 H3N2 HAs.
 #
 # Not tracked in this repository.
-gisaid_tar: data/HA_translations_with_metadata.tar.xz
+gisaid_tar: data/HA_translations_with_metadata_2026-09-03.tar.xz
 gisaid_fasta_members:
   H1N1: h1n1pdm_HA_with_metadata.fasta
   H3N2: h3n2_HA_with_metadata.fasta
@@ -42,7 +42,7 @@ plot_mutation_threshold: 3
 
 # date the GISAID-derived tarball (data/HA_translations_with_metadata.tar.xz) was
 # generated, used in plot titles
-gisaid_snapshot_date: "2026-08-24"
+gisaid_snapshot_date: "2026-09-03"
 
 # pandas period frequency alias used to bin match counts over time
 time_bin_freq: W

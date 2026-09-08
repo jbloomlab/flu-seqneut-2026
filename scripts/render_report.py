@@ -30,10 +30,6 @@ sys.stderr = sys.stdout = open(snakemake.log[0], "w")
 #: sidebar starts at `##`; `####` and deeper render but would make the sidebar a wall.
 TOC_DEPTH = "2-3"
 
-#: Height in px given to an embed that cannot be measured in the browser and that names
-#: no height of its own. Only reached by a cross-origin embed, such as a tree.
-DEFAULT_EMBED_HEIGHT = 800
-
 #: MIME type of each image format a `figure:` may name
 FIGURE_MIME_TYPES = {
     ".svg": "image/svg+xml",
@@ -43,7 +39,7 @@ FIGURE_MIME_TYPES = {
 }
 
 #: The option each kind takes after its target, as `{<option>=<number>}`
-KIND_OPTIONS = {"embed": "height", "figure": None, "table": "tfoot"}
+KIND_OPTIONS = {"embed": None, "figure": None, "table": "tfoot"}
 
 #: `![caption](embed:target)`, `![caption](figure:target)` or `![caption](table:target)`
 #: alone on a line, optionally followed by the kind's option. Anywhere else these are an
@@ -96,19 +92,14 @@ def resolve(href):
     )
 
 
-def embed_html(caption, target, height):
+def embed_html(caption, target):
     """The raw HTML of one inline plot or tree: an iframe plus its caption."""
     src = resolve(target if ":" in target else f"docs:{target}")
-    # A cross-origin frame cannot be measured from this page, so an absolute URL keeps
-    # whatever height it is given; a page of our own docs site is measured and resized.
-    attrs = ""
-    if height or "//" in src:
-        attrs = f' data-height="{height or DEFAULT_EMBED_HEIGHT}"'
     quoted = html.escape(src, quote=True)
     return (
         '<figure class="embed">\n'
         f'<iframe class="embed" src="{quoted}" loading="lazy" '
-        f'title="{html.escape(caption, quote=True)}"{attrs}></iframe>\n'
+        f'title="{html.escape(caption, quote=True)}"></iframe>\n'
         f"<figcaption>{html.escape(caption)} "
         f'(<a href="{quoted}" target="_blank" rel="noopener">open in a new tab</a>)'
         "</figcaption>\n"
@@ -201,7 +192,7 @@ class EmbedPreprocessor(markdown.preprocessors.Preprocessor):
                     + (f"only `{takes}=`" if takes else "no option")
                 )
             if kind == "embed":
-                html_text = embed_html(caption, target, value)
+                html_text = embed_html(caption, target)
             elif kind == "figure":
                 html_text = figure_html(caption, target)
             else:
@@ -240,8 +231,8 @@ tables = set(snakemake.input.tables)
 tracked = tracked_paths()
 
 text = pathlib.Path(snakemake.input.markdown).read_text()
-# Replacing just this token, rather than formatting the whole text, so that the
-# braces a report writes for other reasons -- an embed's `{height=}` -- are untouched
+# Replacing just this token, rather than formatting the whole text, so that any other
+# braces a report writes are untouched
 text = text.replace("{repo_url}", repo_url)
 
 headings = [line for line in text.split("\n") if re.fullmatch(r"#[^#].*", line)]

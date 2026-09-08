@@ -1,0 +1,53 @@
+"""Assemble the figures for the paper from the outputs of the other analyses.
+
+The figure scripts only compose SVGs that the other analyses already produced, and
+so need nothing beyond the standard library. Rules therefore declare no `conda:`
+environment and this workflow just runs in the `seqneut-pipeline` environment used
+by the main pipeline; see README.md.
+"""
+
+COUNTS_PLOTS = "../flu_circulating_frequencies/results/plots"
+
+# each figure's descriptive name mapped to its number in the manuscript; every figure is
+# built under both names, so renumbering a figure only means editing this mapping
+FIGURE_NUMBERS = {
+    "flu_circulating_frequencies": "Figure_1",
+}
+
+FIGURE_NAMES = {number: name for name, number in FIGURE_NUMBERS.items()}
+assert len(FIGURE_NAMES) == len(
+    FIGURE_NUMBERS
+), f"duplicate number in {FIGURE_NUMBERS=}"
+
+
+rule all:
+    input:
+        expand("figures/{name}.svg", name=FIGURE_NUMBERS),
+        expand("figures/{number}.svg", number=FIGURE_NAMES),
+
+
+rule numbered_figure:
+    """Copy a figure to a file named for its number in the manuscript."""
+    input:
+        lambda wc: f"figures/{FIGURE_NAMES[wc.number]}.svg",
+    output:
+        numbered_svg="figures/{number}.svg",
+    log:
+        "logs/{number}.txt",
+    wildcard_constraints:
+        number="|".join(FIGURE_NAMES),
+    shell:
+        "cp {input} {output} &> {log}"
+
+
+rule flu_circulating_frequencies:
+    """H3N2 and H1N1 circulating HA1 sequences vs. the library, one shared color key."""
+    input:
+        h3n2_svg=f"{COUNTS_PLOTS}/H3N2_HA1_counts.svg",
+        h1n1_svg=f"{COUNTS_PLOTS}/H1N1_HA1_counts.svg",
+    output:
+        figure_svg="figures/flu_circulating_frequencies.svg",
+    log:
+        "logs/flu_circulating_frequencies.txt",
+    script:
+        "scripts/flu_circulating_frequencies.py"

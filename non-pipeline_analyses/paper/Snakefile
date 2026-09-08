@@ -7,13 +7,16 @@ The figure scripts only rearrange and render those plots, so they need nothing t
 
 COUNTS_PLOTS = "../flu_circulating_frequencies/results/plots"
 TITER_PLOTS = "../../results/titer_plots"
+PRE_POST_TITER_PLOTS = "../../results/pre_post_titer_plots"
 
 # each figure's descriptive name mapped to its number in the manuscript; every figure is
 # built under both names, so renumbering a figure only means editing this mapping
 FIGURE_NUMBERS = {
     "flu_circulating_frequencies": "Figure_1",
     "H3N2_median_interquartile_range": "Figure_2",
+    "H3N2_vaccination_median_interquartile_range": "Figure_3",
     "H1N1_median_interquartile_range": "Figure_5",
+    "H1N1_vaccination_median_interquartile_range": "Figure_6",
 }
 
 FIGURE_NAMES = {number: name for name, number in FIGURE_NUMBERS.items()}
@@ -55,18 +58,26 @@ rule flu_circulating_frequencies:
         "scripts/flu_circulating_frequencies.py"
 
 
-rule median_interquartile_range:
-    """Median and interquartile-range titers by cohort, beside the strain tree.
+# the interactive chart each median / interquartile-range figure freezes. The charts
+# drawn over whole cohorts and those comparing titers before and after vaccination are
+# written to different directories by the pipeline.
+MEDIAN_IQR_CHARTS = {
+    "H3N2_median_interquartile_range": f"{TITER_PLOTS}/human_H3N2_recent_interquartile_range_subclade.html",
+    "H1N1_median_interquartile_range": f"{TITER_PLOTS}/human_H1N1_recent_interquartile_range_subclade.html",
+    "H3N2_vaccination_median_interquartile_range": f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H3N2_recent_interquartile_range_subclade.html",
+    "H1N1_vaccination_median_interquartile_range": f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H1N1_recent_interquartile_range_subclade.html",
+}
 
-    Drawn for each subtype, whose charts differ only in their data.
-    """
+
+rule median_interquartile_range:
+    """Median and interquartile-range titers by cohort, beside the strain tree."""
     input:
-        chart_html=(
-            f"{TITER_PLOTS}/human_{{subtype}}_recent_interquartile_range_subclade.html"
-        ),
+        chart_html=lambda wc: MEDIAN_IQR_CHARTS[wc.figure],
     output:
-        figure_svg="figures/{subtype}_median_interquartile_range.svg",
+        figure_svg="figures/{figure}.svg",
     log:
-        "logs/{subtype}_median_interquartile_range.txt",
+        "logs/{figure}.txt",
+    wildcard_constraints:
+        figure="|".join(MEDIAN_IQR_CHARTS),
     script:
         "scripts/median_interquartile_range.py"

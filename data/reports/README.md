@@ -59,9 +59,17 @@ own with an `embed:` target, which is either a `docs:`-style path or a full URL:
 The caption is shown beneath the frame, followed by a link that opens the same page in a
 new tab.
 
-Every frame is as wide as the page and as tall as the browser window, so an embed takes
-no sizing of its own. For a Nextstrain tree, `onlyPanels` drops the site header and
-footer, and `d=` and `sidebar=closed` choose what is shown.
+Every frame is as wide as the page and is fitted to the height of the chart it holds, so
+an embed takes no sizing of its own. A frame starts a window tall and, once its page has
+loaded, shrinks or grows to that page's own height, refitting whenever the page changes
+height -- a chart redrawn by one of its own controls, a window resized.
+
+Fitting a frame means reading the page inside it, which a browser allows only for a page
+from the same site. A frame keeps its window's height for an embed of another site, such
+as a Nextstrain tree, and for every embed when a report is opened from disk rather than
+served -- a further reason to preview by serving the site, as below. For a Nextstrain
+tree, `onlyPanels` drops the site header and footer, and `d=` and `sidebar=closed` choose
+what is shown.
 
 Embeds are loaded lazily, but each chart is still 250 KB to 8 MB, so embed the few that
 carry the argument and link to the rest.

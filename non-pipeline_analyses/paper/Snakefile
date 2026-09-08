@@ -1,9 +1,8 @@
-"""Assemble the figures for the paper from the outputs of the other analyses.
+"""Assemble the figures for the paper from plots the pipeline and analyses produce.
 
-The figure scripts only compose SVGs that the other analyses already produced, and
-so need nothing beyond the standard library. Rules therefore declare no `conda:`
-environment and this workflow just runs in the `seqneut-pipeline` environment used
-by the main pipeline; see README.md.
+The figure scripts only rearrange and render those plots, so they need nothing the
+`seqneut-pipeline` environment does not already have. Rules therefore declare no
+`conda:` environment and this workflow just runs in that one; see README.md.
 """
 
 COUNTS_PLOTS = "../flu_circulating_frequencies/results/plots"
@@ -14,6 +13,7 @@ TITER_PLOTS = "../../results/titer_plots"
 FIGURE_NUMBERS = {
     "flu_circulating_frequencies": "Figure_1",
     "H3N2_median_interquartile_range": "Figure_2",
+    "H1N1_median_interquartile_range": "Figure_5",
 }
 
 FIGURE_NAMES = {number: name for name, number in FIGURE_NUMBERS.items()}
@@ -55,13 +55,18 @@ rule flu_circulating_frequencies:
         "scripts/flu_circulating_frequencies.py"
 
 
-rule H3N2_median_interquartile_range:
-    """H3N2 median and interquartile-range titers by cohort, beside the strain tree."""
+rule median_interquartile_range:
+    """Median and interquartile-range titers by cohort, beside the strain tree.
+
+    Drawn for each subtype, whose charts differ only in their data.
+    """
     input:
-        chart_html=f"{TITER_PLOTS}/human_H3N2_recent_interquartile_range_subclade.html",
+        chart_html=(
+            f"{TITER_PLOTS}/human_{{subtype}}_recent_interquartile_range_subclade.html"
+        ),
     output:
-        figure_svg="figures/H3N2_median_interquartile_range.svg",
+        figure_svg="figures/{subtype}_median_interquartile_range.svg",
     log:
-        "logs/H3N2_median_interquartile_range.txt",
+        "logs/{subtype}_median_interquartile_range.txt",
     script:
-        "scripts/H3N2_median_interquartile_range.py"
+        "scripts/median_interquartile_range.py"

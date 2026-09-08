@@ -8,6 +8,11 @@ imported by the top-level [CLAUDE.md](../../CLAUDE.md) otherwise apply.
 Each figure is a heavily hand-tuned one-off, so it gets its own rule in `Snakefile` and
 its own script in `scripts/`, both named for what the figure shows (not `figure_1`).
 
+Where the same figure is drawn for more than one unit — a subtype, a serum group — that
+is one rule with a wildcard and one script, not near-duplicates of either. The figure
+files still carry the per-unit descriptive name, so the rule and script are named for
+the figure with that part left out.
+
 A figure's number in the manuscript comes only from the `FIGURE_NUMBERS` mapping at the
 top of `Snakefile`, and the `numbered_figure` rule copies each figure to a `Figure_N.svg`
 alongside it. Never name a rule, a script, or a figure's own output for its number, and

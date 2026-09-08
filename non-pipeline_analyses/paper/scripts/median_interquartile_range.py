@@ -1,4 +1,4 @@
-"""Freeze the interactive H3N2 titer chart into a static figure.
+"""Freeze one subtype's interactive titer chart into a static figure.
 
 The pipeline's chart is a Vega-Lite `vconcat` whose cohorts are chosen by clicking a
 legend and whose sera are filtered by bound sliders. This pulls the spec out of the
@@ -6,6 +6,9 @@ chart's HTML, fixes the cohort selection, drops the parts that do not belong in 
 and renders it the same way the vega-embed menu's "Save as SVG" would -- but offline and
 reproducibly. Nothing derived from the clock is written, so an unchanged chart always
 yields a byte-identical figure.
+
+The subtypes' charts are structurally identical, so one script draws each of them; the
+`subtype` wildcard says which.
 """
 
 import json
@@ -128,6 +131,6 @@ svg = vl_convert.vegalite_to_svg(json.dumps(spec))
 with open(snakemake.output.figure_svg, "w", encoding="utf-8") as f:
     f.write(svg)
 
-print(f"cohorts shown: {', '.join(COHORTS)}")
+print(f"{snakemake.wildcards.subtype} cohorts shown: {', '.join(COHORTS)}")
 print("rendered " + re.search(r'width="\d+" height="\d+"', svg).group())
 print(f"wrote {snakemake.output.figure_svg}")

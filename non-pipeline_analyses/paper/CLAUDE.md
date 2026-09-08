@@ -13,6 +13,11 @@ is one rule with a wildcard and one script, not near-duplicates of either. The f
 files still carry the per-unit descriptive name, so the rule and script are named for
 the figure with that part left out.
 
+Mechanics that more than one figure needs — pulling a spec out of a chart's HTML,
+rendering one — go in a module in `scripts/` that the figure scripts import, declared as
+a rule `input:` so editing it triggers a rerun. Only mechanics: what a given figure
+keeps, drops, or relabels stays in that figure's own script.
+
 A figure's number in the manuscript comes only from the `FIGURE_NUMBERS` mapping at the
 top of `Snakefile`, and the `numbered_figure` rule copies each figure to a `Figure_N.svg`
 alongside it. Never name a rule, a script, or a figure's own output for its number, and

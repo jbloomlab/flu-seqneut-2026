@@ -16,7 +16,7 @@ import json
 import re
 import sys
 
-import vl_convert
+from interactive_charts import extract_spec, mark_type, render_svg
 
 sys.stdout = sys.stderr = open(snakemake.log[0], "w")
 
@@ -36,7 +36,8 @@ COHORT_LEGEND_TITLE = "serum cohort (click to select)"
 # The pre-/post-vaccination charts' color key, identified the same way. Vega gives a
 # faceted chart's legend a gutter to the left of the whole plot, which for a two-entry
 # key is mostly empty, so put it in a tight row above the plot instead. Vega-Lite cannot
-# align a legend within that row, so `LEGEND_ROW_LAYOUT` aligns it at render time.
+# align a legend within that row, so rendering goes through Vega; see
+# `interactive_charts.LEGEND_ROW_LAYOUT`.
 VACCINATION_LEGEND_TITLE = "vaccination"
 VACCINATION_LEGEND = {
     "orient": "top",
@@ -44,27 +45,6 @@ VACCINATION_LEGEND = {
     "columns": 2,
     "titleOrient": "left",  # keeps the row one line tall
 }
-LEGEND_ROW_LAYOUT = {"top": {"anchor": "start", "direction": "horizontal"}}
-
-
-def extract_spec(html_path):
-    """The Vega-Lite spec embedded in a chart HTML written by Altair."""
-    with open(html_path) as f:
-        html = f.read()
-    matches = re.findall(r"var spec = (\{.*?\});\n\s*var embedOpt", html, re.DOTALL)
-    if len(matches) != 1:
-        raise ValueError(
-            f"{html_path}: found {len(matches)} embedded specs, expected 1"
-        )
-    return json.loads(matches[0])
-
-
-def mark_type(node):
-    """A spec node's mark type, or None if it is not a single-mark chart."""
-    mark = node.get("mark")
-    if isinstance(mark, dict):
-        return mark.get("type")
-    return mark
 
 
 def legend_title(node):
@@ -190,12 +170,7 @@ for param in spec["params"]:
 moved = raise_vaccination_legend(panels)
 print(f"moved {moved} color key(s) to a row above the plot")
 
-# Compile to Vega rather than rendering the Vega-Lite spec directly, so the legend row
-# above the plot can be right-aligned; a chart with no legend in that row renders
-# byte-identically either way.
-vega = vl_convert.vegalite_to_vega(json.dumps(spec))
-vega["config"]["legend"]["layout"] = LEGEND_ROW_LAYOUT
-svg = vl_convert.vega_to_svg(json.dumps(vega))
+svg = render_svg(spec)
 with open(snakemake.output.figure_svg, "w", encoding="utf-8") as f:
     f.write(svg)
 

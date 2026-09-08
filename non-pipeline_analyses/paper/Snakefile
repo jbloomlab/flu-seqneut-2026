@@ -8,6 +8,7 @@ The figure scripts only rearrange and render those plots, so they need nothing t
 COUNTS_PLOTS = "../flu_circulating_frequencies/results/plots"
 TITER_PLOTS = "../../results/titer_plots"
 PRE_POST_TITER_PLOTS = "../../results/pre_post_titer_plots"
+STRATIFIED_TITER_PLOTS = "../../results/stratified_titer_plots"
 
 # each figure's descriptive name mapped to its number in the manuscript; every figure is
 # built under both names, so renumbering a figure only means editing this mapping
@@ -17,6 +18,7 @@ FIGURE_NUMBERS = {
     "H3N2_vaccination_median_interquartile_range": "Figure_3",
     "H1N1_median_interquartile_range": "Figure_5",
     "H1N1_vaccination_median_interquartile_range": "Figure_6",
+    "H1N1_stratified_median_interquartile_range": "Figure_7",
 }
 
 FIGURE_NAMES = {number: name for name, number in FIGURE_NUMBERS.items()}
@@ -73,6 +75,7 @@ rule median_interquartile_range:
     """Median and interquartile-range titers by cohort, beside the strain tree."""
     input:
         chart_html=lambda wc: MEDIAN_IQR_CHARTS[wc.figure],
+        module="scripts/interactive_charts.py",
     output:
         figure_svg="figures/{figure}.svg",
     log:
@@ -81,3 +84,18 @@ rule median_interquartile_range:
         figure="|".join(MEDIAN_IQR_CHARTS),
     script:
         "scripts/median_interquartile_range.py"
+
+
+rule H1N1_stratified_median_interquartile_range:
+    """H1N1 titers with the sera split by their titer ratio against two strains."""
+    input:
+        chart_html=(
+            f"{STRATIFIED_TITER_PLOTS}/human_stratified_H1N1_recent_interquartile_range_subclade.html"
+        ),
+        module="scripts/interactive_charts.py",
+    output:
+        figure_svg="figures/H1N1_stratified_median_interquartile_range.svg",
+    log:
+        "logs/H1N1_stratified_median_interquartile_range.txt",
+    script:
+        "scripts/H1N1_stratified_median_interquartile_range.py"

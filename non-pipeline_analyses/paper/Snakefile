@@ -1,0 +1,154 @@
+"""Assemble the figures for the paper from plots the pipeline and analyses produce.
+
+The figure scripts only rearrange and render those plots, so they need nothing the
+`seqneut-pipeline` environment does not already have. Rules therefore declare no
+`conda:` environment and this workflow just runs in that one. The one thing that
+environment does not supply is a browser, which `rule molstar_render` needs because the
+plots it renders are Mol* viewers; see README.md.
+"""
+
+COUNTS_PLOTS = "../flu_circulating_frequencies/results/plots"
+TITER_PLOTS = "../../results/titer_plots"
+PRE_POST_TITER_PLOTS = "../../results/pre_post_titer_plots"
+STRATIFIED_TITER_PLOTS = "../../results/stratified_titer_plots"
+PROT_STRUCT_VIZ = "../../results/prot-struct-viz"
+
+# each figure's descriptive name mapped to its number in the manuscript; every figure is
+# built under both names, so renumbering a figure only means editing this mapping
+FIGURE_NUMBERS = {
+    "flu_circulating_frequencies": "Figure_1",
+    "H3N2_median_interquartile_range": "Figure_2",
+    "H3N2_vaccination_median_interquartile_range": "Figure_3",
+    "H3_subclade_K_mutations_structure": "Figure_4",
+    "H1N1_median_interquartile_range": "Figure_5",
+    "H1N1_vaccination_median_interquartile_range": "Figure_6",
+    "H1N1_stratified_median_interquartile_range": "Figure_7",
+    "H1_D_3_1_1_mutations_structure": "Figure_8",
+}
+
+FIGURE_NAMES = {number: name for name, number in FIGURE_NUMBERS.items()}
+assert len(FIGURE_NAMES) == len(
+    FIGURE_NUMBERS
+), f"duplicate number in {FIGURE_NUMBERS=}"
+
+
+rule all:
+    input:
+        expand("figures/{name}.svg", name=FIGURE_NUMBERS),
+        expand("figures/{number}.svg", number=FIGURE_NAMES),
+
+
+rule numbered_figure:
+    """Copy a figure to a file named for its number in the manuscript."""
+    input:
+        lambda wc: f"figures/{FIGURE_NAMES[wc.number]}.svg",
+    output:
+        numbered_svg="figures/{number}.svg",
+    log:
+        "logs/{number}.txt",
+    wildcard_constraints:
+        number="|".join(FIGURE_NAMES),
+    shell:
+        "cp {input} {output} &> {log}"
+
+
+rule flu_circulating_frequencies:
+    """H3N2 and H1N1 circulating HA1 sequences vs. the library, one shared color key."""
+    input:
+        h3n2_svg=f"{COUNTS_PLOTS}/H3N2_HA1_counts.svg",
+        h1n1_svg=f"{COUNTS_PLOTS}/H1N1_HA1_counts.svg",
+    output:
+        figure_svg="figures/flu_circulating_frequencies.svg",
+    log:
+        "logs/flu_circulating_frequencies.txt",
+    script:
+        "scripts/flu_circulating_frequencies.py"
+
+
+# the interactive chart each median / interquartile-range figure freezes. The charts
+# drawn over whole cohorts and those comparing titers before and after vaccination are
+# written to different directories by the pipeline.
+MEDIAN_IQR_CHARTS = {
+    "H3N2_median_interquartile_range": f"{TITER_PLOTS}/human_H3N2_recent_interquartile_range_subclade.html",
+    "H1N1_median_interquartile_range": f"{TITER_PLOTS}/human_H1N1_recent_interquartile_range_subclade.html",
+    "H3N2_vaccination_median_interquartile_range": f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H3N2_recent_interquartile_range_subclade.html",
+    "H1N1_vaccination_median_interquartile_range": f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H1N1_recent_interquartile_range_subclade.html",
+}
+
+
+rule median_interquartile_range:
+    """Median and interquartile-range titers by cohort, beside the strain tree."""
+    input:
+        chart_html=lambda wc: MEDIAN_IQR_CHARTS[wc.figure],
+        module="scripts/interactive_charts.py",
+    output:
+        figure_svg="figures/{figure}.svg",
+    log:
+        "logs/{figure}.txt",
+    wildcard_constraints:
+        figure="|".join(MEDIAN_IQR_CHARTS),
+    script:
+        "scripts/median_interquartile_range.py"
+
+
+rule H1N1_stratified_median_interquartile_range:
+    """H1N1 titers with the sera split by their titer ratio against two strains."""
+    input:
+        chart_html=(
+            f"{STRATIFIED_TITER_PLOTS}/human_stratified_H1N1_recent_interquartile_range_subclade.html"
+        ),
+        module="scripts/interactive_charts.py",
+    output:
+        figure_svg="figures/H1N1_stratified_median_interquartile_range.svg",
+    log:
+        "logs/H1N1_stratified_median_interquartile_range.txt",
+    script:
+        "scripts/H1N1_stratified_median_interquartile_range.py"
+
+
+# The `prot-struct-viz` page each structure figure renders, and the coloring CSV of the
+# view it shows. Which view that is, and how its labels are placed, are the figure's own
+# business and live in the scripts.
+STRUCTURE_PAGES = {
+    "H3_subclade_K_mutations_structure": (
+        f"{PROT_STRUCT_VIZ}/H3_prot_struct_viz.html",
+        "../../data/prot-struct-viz_config/H3/subclade-k-with-region-d-mutations.csv",
+    ),
+    "H1_D_3_1_1_mutations_structure": (
+        f"{PROT_STRUCT_VIZ}/H1_prot_struct_viz.html",
+        "../../data/prot-struct-viz_config/H1/d-3-1-1-with-sites-155-157.csv",
+    ),
+}
+
+
+rule molstar_render:
+    """Render a structure page to a high-resolution image and locate its labeled sites."""
+    input:
+        page_html=lambda wc: STRUCTURE_PAGES[wc.figure][0],
+        coloring_csv=lambda wc: STRUCTURE_PAGES[wc.figure][1],
+        injected_js="scripts/molstar_figure.js",
+    output:
+        structure_png="results/{figure}.png",
+        anchors_csv="results/{figure}_anchors.csv",
+    log:
+        "logs/molstar_render_{figure}.txt",
+    wildcard_constraints:
+        figure="|".join(STRUCTURE_PAGES),
+    script:
+        "scripts/molstar_render.py"
+
+
+rule labeled_structure:
+    """An HA surface from a structure page, with its colored sites labeled."""
+    input:
+        structure_png=rules.molstar_render.output.structure_png,
+        anchors_csv=rules.molstar_render.output.anchors_csv,
+        coloring_csv=lambda wc: STRUCTURE_PAGES[wc.figure][1],
+    output:
+        figure_svg="figures/{figure}.svg",
+    log:
+        "logs/{figure}.txt",
+    wildcard_constraints:
+        figure="|".join(STRUCTURE_PAGES),
+    script:
+        "scripts/labeled_structure.py"

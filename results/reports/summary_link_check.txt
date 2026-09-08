@@ -6,16 +6,27 @@ Local links made by results/reports/summary.html, checked against results/docs
   ok       VIDRL_vaccination_H1N1_recent_individual_sera_subclade.html
   ok       VIDRL_vaccination_H1N1_recent_interquartile_range_fold_change_subclade.html
   ok       VIDRL_vaccination_H1N1_recent_interquartile_range_subclade.html
+  ok       VIDRL_vaccination_H1N1_vaccine_individual_sera.html
+  ok       VIDRL_vaccination_H1N1_vaccine_interquartile_range.html
+  ok       VIDRL_vaccination_H1N1_vaccine_interquartile_range_fold_change.html
   ok       VIDRL_vaccination_H3N2_recent_individual_sera_fold_change_subclade.html
   ok       VIDRL_vaccination_H3N2_recent_individual_sera_subclade.html
   ok       VIDRL_vaccination_H3N2_recent_interquartile_range_fold_change_subclade.html
   ok       VIDRL_vaccination_H3N2_recent_interquartile_range_subclade.html
+  ok       VIDRL_vaccination_H3N2_vaccine_individual_sera.html
+  ok       VIDRL_vaccination_H3N2_vaccine_individual_sera_fold_change.html
+  ok       VIDRL_vaccination_H3N2_vaccine_interquartile_range.html
+  ok       VIDRL_vaccination_H3N2_vaccine_interquartile_range_fold_change.html
   ok       human_H1N1_recent_individual_sera_subclade.html
   ok       human_H1N1_recent_interquartile_range_subclade.html
+  ok       human_H1N1_vaccine_individual_sera.html
+  ok       human_H1N1_vaccine_interquartile_range.html
   ok       human_H3N2_recent_individual_sera_subclade.html
   ok       human_H3N2_recent_interquartile_range_subclade.html
+  ok       human_H3N2_vaccine_individual_sera.html
+  ok       human_H3N2_vaccine_interquartile_range.html
   ok       human_stratified_H1N1_recent_interquartile_range_subclade.html
   ok       human_stratified_H3N2_recent_interquartile_range_subclade.html
   ok       index.html
 
-17 of 17 local links resolve.
+28 of 28 local links resolve.

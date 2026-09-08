@@ -34,7 +34,11 @@
   pre code { display: block; padding: 0.8em; overflow-x: auto; }
 
   /* Prose keeps a readable measure; an embed spans the whole column so a wide chart is
-     not cut off, and is as tall as the window so every embed is sized the same way. */
+     not cut off. This height is the fallback: the script at the foot of the page fits
+     each frame to the page it holds, and a window's height stays in place for a frame
+     that cannot be fitted -- one holding a page from another site, any frame at all when
+     the report is opened from disk rather than served, and a page sizing itself off its
+     frame. */
   main > * { max-width: 60em; }
   figure.embed { margin: 1.6em 0; max-width: none; }
   iframe.embed { display: block; width: 100%; height: 100vh; border: 1px solid #ddd;
@@ -86,6 +90,78 @@ $body
       var heading = document.getElementById(id);
       if (heading) spy.observe(heading);
     }
+  }
+})();
+
+(function () {
+  // Fit each embedded chart to the page it holds, so a short chart leaves no dead space
+  // below it and a tall one needs no scrolling inside its frame. The CSS gives every
+  // frame a window's height, and that stays in place for a frame this cannot measure:
+  // one holding a page from another site, and every frame when the report is opened from
+  // disk, where a browser treats a frame's document as another origin.
+  //
+  // Only a chart page is fitted, recognized by the `vis` container Vega-Embed draws
+  // into. A page that sizes itself off its frame -- the structure viewers give their
+  // viewer `80vh` -- would shrink on every pass, since inside a frame `vh` resolves
+  // against the very height being set.
+
+  // A page measuring shorter than this has not drawn its chart yet, since Vega draws
+  // asynchronously and `load` can fire on an all but empty document. Such a frame keeps
+  // the CSS height rather than collapsing, and the observer fits it once the chart
+  // appears.
+  var MIN_FITTABLE = 120;
+
+  // The height of a frame's own content, or null if there is none to fit. Deliberately
+  // not `documentElement.scrollHeight`, which never reports less than the frame's own
+  // height: measured that way a frame could only ever grow, leaving a chart shorter than
+  // the window the dead space this is here to remove.
+  function pageHeight(frame) {
+    var doc;
+    try {
+      doc = frame.contentDocument;
+    } catch (e) {
+      return null; // a page from another site
+    }
+    if (!doc || !doc.body || !doc.getElementById("vis")) return null;
+    var win = frame.contentWindow;
+    var margins = win.getComputedStyle(doc.body);
+    var content = Math.max(
+      doc.body.getBoundingClientRect().height +
+        parseFloat(margins.marginTop) + parseFloat(margins.marginBottom),
+      doc.documentElement.getBoundingClientRect().height
+    );
+    // Room for the horizontal scrollbar a chart wider than its frame puts inside the
+    // frame; without it that scrollbar covers the foot of the chart and the frame
+    // scrolls vertically to reach what it covered. Zero when there is no scrollbar.
+    var scrollbar = win.innerHeight - doc.documentElement.clientHeight;
+    return Math.ceil(content + Math.max(scrollbar, 0));
+  }
+
+  function fit(frame) {
+    var height = pageHeight(frame);
+    if (height === null || height < MIN_FITTABLE) return;
+    // writing an unchanged height would have the observer below refire for nothing
+    if (frame.style.height !== height + "px") frame.style.height = height + "px";
+  }
+
+  var frames = document.querySelectorAll("iframe.embed");
+  for (var n = 0; n < frames.length; n++) {
+    // Every embed is loaded lazily, so a frame below the fold reaches this whenever the
+    // reader scrolls down to it.
+    frames[n].addEventListener("load", function () {
+      var frame = this;
+      if (pageHeight(frame) === null) return;
+      fit(frame);
+      // Refit whenever the page's own height changes: a chart redrawn by one of its own
+      // controls, since toggling a cohort adds a facet row, or one whose widgets
+      // rewrapped because the window was resized.
+      var Observer = frame.contentWindow.ResizeObserver;
+      if (Observer) {
+        new Observer(function () {
+          fit(frame);
+        }).observe(frame.contentDocument.body);
+      }
+    });
   }
 })();
 </script>

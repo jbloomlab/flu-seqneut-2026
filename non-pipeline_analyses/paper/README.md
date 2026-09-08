@@ -15,12 +15,18 @@ the top of [Snakefile](Snakefile), and is the only place a figure's number appea
 
 A figure built from one of the pipeline's interactive charts is frozen at a chosen
 selection state and stripped to the panels that belong in print, rendered offline with
-`vl_convert` rather than exported by hand from the chart's menu. Those charts under
-`results/` are not tracked in this repository, so rebuilding such a figure requires
-having run the main pipeline; the figure's own SVG is tracked, so reading the paper's
-figures does not.
+`vl_convert` rather than exported by hand from the chart's menu. A figure built from a
+`prot-struct-viz` structure page works the same way, except that the page is a Mol\*
+viewer and so has to be run to be rendered: a headless browser loads it, changes the
+surface, and exports the image Mol\* renders offscreen, and the labels are then drawn
+over that image as vector text. Those intermediate images land in this directory's own
+`results/`, which is not tracked. Those pages and charts under `results/` are not tracked
+in this repository, so rebuilding such a figure requires having run the main pipeline;
+the figure's own SVG is tracked, so reading the paper's figures does not.
 
-Building the figures needs only the `seqneut-pipeline` conda environment used by the
-main pipeline (see the top-level [README.md](../../README.md)). Run from this directory:
+Building the figures needs the `seqneut-pipeline` conda environment used by the main
+pipeline (see the top-level [README.md](../../README.md)). The structure figures
+additionally need a `chromium-browser` on `PATH` and network access, since the pages they
+render load Mol\* from a CDN. Run from this directory:
 
     snakemake -j 1

@@ -41,6 +41,9 @@ whenever it is rebuilt, so a rerun does not show up as a diff.
 
 ## Compose panels, do not re-plot them
 
-A figure reads the SVGs the other analyses already produce and composes them. Do not
-re-plot from their underlying data: that duplicates their plotting code and lets the
-figure drift from the analysis it is supposed to show.
+A figure reads what the other analyses already produce -- an SVG, a chart's embedded
+spec, a structure viewer's page -- and composes or re-renders that. Do not re-plot from
+their underlying data: that duplicates their plotting code and lets the figure drift
+from the analysis it is supposed to show. Where a figure needs something the analysis
+did not draw, change what a figure keeps, restyles, or overlays; do not rebuild the
+thing itself.

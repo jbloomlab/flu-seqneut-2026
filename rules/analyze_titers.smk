@@ -50,6 +50,32 @@ rule process_final_titer_data:
         "../scripts/process_final_titer_data.py"
 
 
+# may be absent or null: a project need not summarize its sera sets
+summarize_sera_config = config.get("summarize_sera") or {}
+
+summarize_sera_csv = "results/final_titer_data/{group}_sera_summary.csv"
+
+
+# Defined only when there is a configuration for it, so that a report naming the table
+# when there is none fails on the missing input rather than inside the script.
+if summarize_sera_config:
+
+    rule summarize_sera:
+        """Table summarizing the sera in each sera set, for a report to inline."""
+        input:
+            sera_multicohort=rules.process_final_titer_data.output.sera_multicohort,
+        output:
+            csv=summarize_sera_csv,
+        log:
+            "results/logs/summarize_sera_{group}.txt",
+        conda:
+            "../seqneut-pipeline/environment.yml"
+        params:
+            config=summarize_sera_config,
+        script:
+            "../scripts/summarize_sera.py"
+
+
 # Strain sets each chart type is made for. The fold-change charts are recent-strain
 # only: they plot each titer relative to the serum's median over the strains the chart
 # draws, which is not a baseline worth plotting against for the few vaccine strains.
@@ -346,6 +372,11 @@ analyze_titers_outputs = [
         ],
     ),
     *expand(rules.process_final_titer_data.output.summary, group=groups_to_analyze),
+    # table summarizing the sera in each sera set, unless none is configured
+    *expand(
+        summarize_sera_csv,
+        group=groups_to_analyze if summarize_sera_config else [],
+    ),
     # titer summary plots
     *expand(
         rules.plot_titer_summaries.output.chart_htmls,

@@ -1,0 +1,10 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Denmark/4774/2025_H1N1 G3: max_frac_infectivity_per_viral_barcode_well
+  A/Hawaii/ISC-1140/2025_H1N1 F5: max_frac_infectivity_per_viral_barcode_well
+  A/NordrheinWestfalen/54/2026_H3N2 C10: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/Michigan/UM-10068449788/2025_H3N2 flu-seqneut-2026-VIDRL-208_pre-vax: goodness_of_fit
+serum_replicates:
+  flu-seqneut-2026-VIDRL-205_post-vax: manual_drop

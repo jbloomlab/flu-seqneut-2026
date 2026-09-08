@@ -1,0 +1,7 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/Andalucia/PMC-01217/2025_H1N1 F8: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates: {}
+serum_replicates:
+  flu-seqneut-2026-VIDRL-216_post-vax: manual_drop

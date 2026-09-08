@@ -12,6 +12,7 @@ To jump directly to the key results:
     * [results/final_titer_data/human_titers.csv](results/final_titer_data/human_titers.csv): QC-ed set of titers for each virus/serum pair (keeping only viruses for which titers measured against most sera, and sera for which titers measured against most viruses).
     * [results/final_titer_data/human_sera.csv](results/final_titer_data/human_sera.csv): detailed information about the sera for which these titers were measured.
     * [results/final_titer_data/human_sera_multicohort.csv](results/final_titer_data/human_sera_multicohort.csv): the same sera assigned to additional finer-grained cohorts (named by `multicohorts` in [config.yml](config.yml)), so each serum may appear in several rows.
+    * [results/final_titer_data/human_sera_summary.csv](results/final_titer_data/human_sera_summary.csv): table summarizing the sera in each sera set.
     * [results/final_titer_data/human_viruses.csv](results/final_titer_data/human_viruses.csv): detailed information about the viruses for which these titers were measured.
     * [results/final_titer_data/human_titers_summarized_by_virus.csv](results/final_titer_data/human_titers_summarized_by_virus.csv): summary statistics about the titers against each virus.
 

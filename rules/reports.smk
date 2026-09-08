@@ -18,6 +18,11 @@ reports = config.get("reports") or {}
 #: editing a figure rebuilds the report that inlines it.
 FIGURE_RE = re.compile(r"\]\(figure:([^)\s]+)\)")
 
+#: A report's `table:` targets, declared as inputs like the figures so that regenerating
+#: a table rebuilds the report that inlines it. A table is always a file of this
+#: project, so unlike a figure it has no URL form to leave out.
+TABLE_RE = re.compile(r"\]\(table:([^)\s]+)\)")
+
 # `build_docs` copies every HTML into `results/docs` by basename and rejects duplicates,
 # so the report name alone could collide with another analysis' chart
 report_html = "results/reports/{report}.html"
@@ -36,6 +41,13 @@ rule render_report:
                 )
                 if not target.startswith(("http://", "https://"))
             }
+        ),
+        tables=lambda wc: sorted(
+            set(
+                TABLE_RE.findall(
+                    pathlib.Path(reports[wc.report]["markdown"]).read_text()
+                )
+            )
         ),
     output:
         html=report_html,

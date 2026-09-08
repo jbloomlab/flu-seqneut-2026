@@ -142,6 +142,35 @@ You can use the dropdown below the figure to also color the HA by antigenic regi
 
 ![Key sites shown on the HA protein structure. Use the dropdown below the structure to show additional views, and note also that the structure is interactive (click the wrench icon to open a full toolbar).](embed:results/prot-struct-viz/H1_prot_struct_viz.html)
 
+## Titers to older and egg-based vaccine strains
+The above plots show only the titers to recently circulating strains and recent cell-based vaccine strains.
+However, we also measured neutralization titers against some older vaccine strains including egg-based ones.
+The reason that they are not shown in the above plots is that they sometimes "blow out" the scale as adults can have very high titers to older strains, and we consistently measure higher titers to egg-based vaccine strains (which tend to have non-natural egg adaptation mutations) than cell-based vaccine strains as described in [Kikawa et al (2026)](https://elifesciences.org/articles/106811).
+
+We therefore have created separate plots showing the titers against just the vaccine strains, including older strains and egg-based vaccine strains.
+The overall titers against these H3N2 and H1N1 strains are shown below:
+
+![Median (points) and interquartile range (shaded region) titers against all tested H3N2 egg- and cell-based vaccine strains.](embed:results/titer_plots/human_H3N2_vaccine_interquartile_range.html)
+
+![Median (points) and interquartile range (shaded region) titers against all tested H1N1 egg- and cell-based vaccine strains.](embed:results/titer_plots/human_H1N1_vaccine_interquartile_range.html)
+
+Other plots for the vaccine strains are at the following links:
+
+  - H3N2:
+
+    + [Titers for individual sera against all tested egg- and cell-based vaccine strains](docs:results/titer_plots/human_H3N2_vaccine_individual_sera.html)
+    + [Pre- and post-vaccination titers to all tested egg-and cell-based vaccine strains, interquartile range](docs:results/pre_post_titer_plots/VIDRL_vaccination_H3N2_vaccine_interquartile_range.html)
+    + [Pre- and post-vaccination titers to all tested egg- and cell-based vaccine strains, individual sera](docs:results/pre_post_titer_plots/VIDRL_vaccination_H3N2_vaccine_individual_sera.html)
+    + [Fold change post-vaccination to all tested egg- and cell-based vaccine strains, interquartile range](docs:results/pre_post_titer_plots/VIDRL_vaccination_H3N2_vaccine_interquartile_range_fold_change.html)
+    + [Fold change post-vaccination to all tested egg- and cell-based vaccine strains, individual sera](docs:results/pre_post_titer_plots/VIDRL_vaccination_H3N2_vaccine_individual_sera_fold_change.html)
+
+  - H1N1:
+
+    + [Titers for individual sera against all tested egg- and cell-based vaccine strains](docs:results/titer_plots/human_H1N1_vaccine_individual_sera.html)
+    + [Pre- and post-vaccination titers to all tested egg-and cell-based vaccine strains, interquartile range](docs:results/pre_post_titer_plots/VIDRL_vaccination_H1N1_vaccine_interquartile_range.html)
+    + [Pre- and post-vaccination titers to all tested egg- and cell-based vaccine strains, individual sera](docs:results/pre_post_titer_plots/VIDRL_vaccination_H1N1_vaccine_individual_sera.html)
+    + [Fold change post-vaccination to all tested egg- and cell-based vaccine strains, interquartile range](docs:results/pre_post_titer_plots/VIDRL_vaccination_H1N1_vaccine_interquartile_range_fold_change.html)
+
 ## Contributors
 This study was led by Caroline Kikawa, Andrew Butler, John Huddleston, and [Jesse Bloom](https://jbloomlab.org/).
 

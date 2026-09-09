@@ -147,6 +147,10 @@ summarize_sera:
     VIDRL_child-egg_pre: VIDRL, Australia, children, Fluzone (egg-based), pre-vaccination
     VIDRL_child-egg_post: VIDRL, Australia, children, Fluzone (egg-based), post-vaccination
   total_name: all sera  # name of the final row, which totals the sets above it
+  # Sera metadata column recording whether a donor was vaccinated in the year before the
+  # serum was collected. Its values must be `Yes` or `No`, and the table reports the
+  # percent `Yes` among the sera of each set that record it.
+  prior_year_vaccination_column: flu_vax_in_2025
 
 # Titer charts with the sera split into two groups by each serum's titer ratio between a
 # comparator and a reference strain. Set this key to null to make no such charts.

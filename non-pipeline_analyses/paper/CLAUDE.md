@@ -1,7 +1,9 @@
 # Instructions for Claude Code
 
-Conventions for this directory, which builds the paper's figures. The lab standards
-imported by the top-level [CLAUDE.md](../../CLAUDE.md) otherwise apply.
+Conventions for this directory, which builds the paper's figures and tables. The lab
+standards imported by the top-level [CLAUDE.md](../../CLAUDE.md) otherwise apply. A table
+is built like a figure and follows every convention below, reading `FIGURE_NUMBERS` as
+`TABLE_NUMBERS` and `figures/` as `tables/`.
 
 ## Name figures for what they show, not for their number
 

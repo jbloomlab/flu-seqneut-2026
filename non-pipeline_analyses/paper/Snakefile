@@ -1,10 +1,10 @@
-"""Assemble the figures for the paper from plots the pipeline and analyses produce.
+"""Assemble the paper's figures and tables from what the pipeline and analyses produce.
 
-The figure scripts only rearrange and render those plots, so they need nothing the
-`seqneut-pipeline` environment does not already have. Rules therefore declare no
-`conda:` environment and this workflow just runs in that one. The one thing that
-environment does not supply is a browser, which `rule molstar_render` needs because the
-plots it renders are Mol* viewers; see README.md.
+The figure and table scripts only rearrange and render those outputs, so they need
+nothing the `seqneut-pipeline` environment does not already have. Rules therefore
+declare no `conda:` environment and this workflow just runs in that one. The one thing
+that environment does not supply is a browser, which `rule molstar_render` needs because
+the plots it renders are Mol* viewers; see README.md.
 """
 
 COUNTS_PLOTS = "../flu_circulating_frequencies/results/plots"
@@ -12,6 +12,7 @@ TITER_PLOTS = "../../results/titer_plots"
 PRE_POST_TITER_PLOTS = "../../results/pre_post_titer_plots"
 STRATIFIED_TITER_PLOTS = "../../results/stratified_titer_plots"
 PROT_STRUCT_VIZ = "../../results/prot-struct-viz"
+FINAL_TITER_DATA = "../../results/final_titer_data"
 
 # each figure's descriptive name mapped to its number in the manuscript; every figure is
 # built under both names, so renumbering a figure only means editing this mapping
@@ -31,11 +32,21 @@ assert len(FIGURE_NAMES) == len(
     FIGURE_NUMBERS
 ), f"duplicate number in {FIGURE_NUMBERS=}"
 
+# the same mapping for the tables, which are numbered and built exactly as the figures
+TABLE_NUMBERS = {
+    "sera_metadata": "Table_1",
+}
+
+TABLE_NAMES = {number: name for name, number in TABLE_NUMBERS.items()}
+assert len(TABLE_NAMES) == len(TABLE_NUMBERS), f"duplicate number in {TABLE_NUMBERS=}"
+
 
 rule all:
     input:
         expand("figures/{name}.svg", name=FIGURE_NUMBERS),
         expand("figures/{number}.svg", number=FIGURE_NAMES),
+        expand("tables/{name}.html", name=TABLE_NUMBERS),
+        expand("tables/{number}.html", number=TABLE_NAMES),
 
 
 rule numbered_figure:
@@ -50,6 +61,32 @@ rule numbered_figure:
         number="|".join(FIGURE_NAMES),
     shell:
         "cp {input} {output} &> {log}"
+
+
+rule numbered_table:
+    """Copy a table to a file named for its number in the manuscript."""
+    input:
+        lambda wc: f"tables/{TABLE_NAMES[wc.number]}.html",
+    output:
+        numbered_html="tables/{number}.html",
+    log:
+        "logs/{number}.txt",
+    wildcard_constraints:
+        number="|".join(TABLE_NAMES),
+    shell:
+        "cp {input} {output} &> {log}"
+
+
+rule sera_metadata:
+    """The human sera in the study, as the pipeline summarizes them by cohort."""
+    input:
+        summary_csv=f"{FINAL_TITER_DATA}/human_sera_summary.csv",
+    output:
+        table_html="tables/sera_metadata.html",
+    log:
+        "logs/sera_metadata.txt",
+    script:
+        "scripts/sera_metadata.py"
 
 
 rule flu_circulating_frequencies:

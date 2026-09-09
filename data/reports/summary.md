@@ -40,7 +40,7 @@ For interactive Nextstrain phylogenetic trees showing the strains included in th
 The sera come from a variety of sources as summarized in the table below;
 see [here](repo:results/final_titer_data/human_sera.csv) for the full details on the individual sera.
 
-![Human sera tested. Ages are in years. The final row summarizes all sera tested.](table:results/final_titer_data/human_sera_summary.csv){tfoot=1}
+![Human sera tested. Ages are in years, and the percent vaccinated in the prior year is blank for the sera sets that do not record it. The final row summarizes all sera tested.](table:results/final_titer_data/human_sera_summary.csv){tfoot=1}
 
 ## H3N2 results
 
@@ -72,6 +72,7 @@ Note that you can also use the *Scatter* option to the left of the tree to strat
 ### Pre- and post-vaccination titers
 For the VIDRL cohort, we have pre- and post-vaccination titers for adults who received an egg-based (Fluzone) or cell-based (Flucelvax) vaccine, elderly individuals who received an egg-based (Fluad) vaccine, and children who received an egg-based (Fluzone) vaccine.
 The days after vaccination at which the post-vaccination sera were collected are in the [table above](#human-sera-tested).
+[The table](#human-sera-tested) also shows the fraction vaccinated in the prior year for each group; these fractions differ among groups so **comparisons of absolute vaccine responses among groups who received different vaccines are potentially confounded** since prior-year vaccination can influence current-year vaccine responses (see [Cowling et al (2024)](https://academic.oup.com/cid/article/79/4/901/7718587)).
 
 The figure below shows the pre- and post-vaccination titers for each group to all of the strains:
 

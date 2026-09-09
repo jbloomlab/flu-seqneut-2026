@@ -1,13 +1,13 @@
-description,cohort,n_individuals,n_sera,collection_date_median,collection_date_range,age_median,age_range,days_post_vaccination_median,days_post_vaccination_range
-"residual sera, Seattle Children's Hospital, USA",SCH,40,40,2026-06,2026-05 to 2026-06,7.5,0.5 to 13,,
-"residual sera, University of Washington Medical Center, USA",UWMC,87,87,2026-06,2026-06 to 2026-06,43,19 to 78,,
-"blood donors, Creative Testing Solutions, USA",CTS,38,38,2026-05,2026-05 to 2026-05,53.5,26 to 82,,
-"VIDRL, Australia, adults, Flucelvax (cell-based), pre-vaccination",VIDRL_adult-cell_pre,20,20,2026-05,2026-04 to 2026-06,33.5,19 to 59,,
-"VIDRL, Australia, adults, Flucelvax (cell-based), post-vaccination",VIDRL_adult-cell_post,20,20,2026-06,2026-05 to 2026-07,33.5,19 to 59,21,18 to 25
-"VIDRL, Australia, adults, Fluzone (egg-based), pre-vaccination",VIDRL_adult-egg_pre,20,20,2026-04,2026-04 to 2026-04,38.5,18 to 62,,
-"VIDRL, Australia, adults, Fluzone (egg-based), post-vaccination",VIDRL_adult-egg_post,20,20,2026-05,2026-05 to 2026-05,38.5,18 to 62,21,18 to 25
-"VIDRL, Australia, elderly, Fluad (egg-based), pre-vaccination",VIDRL_elderly-egg_pre,20,20,2026-04,2026-04 to 2026-05,71,65 to 78,,
-"VIDRL, Australia, elderly, Fluad (egg-based), post-vaccination",VIDRL_elderly-egg_post,20,20,2026-05,2026-05 to 2026-05,71,65 to 78,21,19 to 25
-"VIDRL, Australia, children, Fluzone (egg-based), pre-vaccination",VIDRL_child-egg_pre,20,20,2026-05,2026-04 to 2026-07,5,2.1 to 9.8,,
-"VIDRL, Australia, children, Fluzone (egg-based), post-vaccination",VIDRL_child-egg_post,20,20,2026-06,2026-05 to 2026-08,5,2.1 to 9.8,34,28 to 42
-all sera,,245,325,2026-06,2026-04 to 2026-08,38,0.5 to 82,,
+description,cohort,n_individuals,n_sera,collection_date_median,collection_date_range,age_median,age_range,days_post_vaccination_median,days_post_vaccination_range,percent_vaccinated_in_prior_year
+"residual sera, Seattle Children's Hospital, USA",SCH,40,40,2026-06,2026-05 to 2026-06,7.5,0.5 to 13,,,
+"residual sera, University of Washington Medical Center, USA",UWMC,87,87,2026-06,2026-06 to 2026-06,43,19 to 78,,,
+"blood donors, Creative Testing Solutions, USA",CTS,38,38,2026-05,2026-05 to 2026-05,53.5,26 to 82,,,
+"VIDRL, Australia, adults, Flucelvax (cell-based), pre-vaccination",VIDRL_adult-cell_pre,20,20,2026-05,2026-04 to 2026-06,33.5,19 to 59,,,0
+"VIDRL, Australia, adults, Flucelvax (cell-based), post-vaccination",VIDRL_adult-cell_post,20,20,2026-06,2026-05 to 2026-07,33.5,19 to 59,21,18 to 25,0
+"VIDRL, Australia, adults, Fluzone (egg-based), pre-vaccination",VIDRL_adult-egg_pre,20,20,2026-04,2026-04 to 2026-04,38.5,18 to 62,,,80
+"VIDRL, Australia, adults, Fluzone (egg-based), post-vaccination",VIDRL_adult-egg_post,20,20,2026-05,2026-05 to 2026-05,38.5,18 to 62,21,18 to 25,80
+"VIDRL, Australia, elderly, Fluad (egg-based), pre-vaccination",VIDRL_elderly-egg_pre,20,20,2026-04,2026-04 to 2026-05,71,65 to 78,,,70
+"VIDRL, Australia, elderly, Fluad (egg-based), post-vaccination",VIDRL_elderly-egg_post,20,20,2026-05,2026-05 to 2026-05,71,65 to 78,21,19 to 25,70
+"VIDRL, Australia, children, Fluzone (egg-based), pre-vaccination",VIDRL_child-egg_pre,20,20,2026-05,2026-04 to 2026-07,5,2.1 to 9.8,,,85
+"VIDRL, Australia, children, Fluzone (egg-based), post-vaccination",VIDRL_child-egg_post,20,20,2026-06,2026-05 to 2026-08,5,2.1 to 9.8,34,28 to 42,85
+all sera,,245,325,2026-06,2026-04 to 2026-08,38,0.5 to 82,,,58.8

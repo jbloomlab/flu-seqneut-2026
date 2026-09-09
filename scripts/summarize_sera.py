@@ -71,16 +71,35 @@ def summarize(description, cohort, sera):
     stats = numeric_stats(days) if days.notna().all() and days.any() else {}
     for key in ["median", "range"]:
         row[f"days_post_vaccination_{key}"] = stats.get(key, "")
+    # over just the sera that record it, so a set recording none is left empty rather
+    # than reading as zero percent
+    vaccinated = sera[prior_year_vaccination_column].dropna()
+    row["percent_vaccinated_in_prior_year"] = (
+        fmt(100 * (vaccinated == "Yes").mean()) if len(vaccinated) else ""
+    )
     return row
 
 
 cohort_names = snakemake.params.config["cohort_names"]
 total_name = snakemake.params.config["total_name"]
+prior_year_vaccination_column = snakemake.params.config["prior_year_vaccination_column"]
 
 sera = pd.read_csv(
     snakemake.input.sera_multicohort, dtype={"serum": str, "subject_id": str}
 )
 print(f"Read {len(sera)} rows from {snakemake.input.sera_multicohort}")
+
+if prior_year_vaccination_column not in sera.columns:
+    raise ValueError(
+        "`summarize_sera.prior_year_vaccination_column` names a column not in "
+        f"{snakemake.input.sera_multicohort}: {prior_year_vaccination_column}"
+    )
+invalid = set(sera[prior_year_vaccination_column].dropna()) - {"Yes", "No"}
+if invalid:
+    raise ValueError(
+        f"`{prior_year_vaccination_column}` in {snakemake.input.sera_multicohort} must "
+        f"be `Yes` or `No`, but also has {sorted(invalid)}"
+    )
 
 unknown = [cohort for cohort in cohort_names if cohort not in set(sera["cohort"])]
 if unknown:

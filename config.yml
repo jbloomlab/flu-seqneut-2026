@@ -157,15 +157,18 @@ summarize_sera:
 # `charts` names one entry per subtype and strain set to draw, and need list only the
 # wanted combinations; `reference` and `comparator` are `derived_haplotype`s of strains in
 # that set and give the chart's dropdowns their initial values, and
-# `fold_change_threshold` is where the threshold slider starts. The strains drawn, their
-# coloring, and the tree come from `plot_titer_summaries_params` below.
+# `fold_change_threshold` is where the threshold slider starts, and
+# `drop_sera_at_lower_limit` whether the chart opens having dropped the sera whose titer
+# against either of the two strains is at the assay's lower limit of detection, since a
+# ratio resting on a bound is not a fold change. The strains drawn, their coloring, and
+# the tree come from `plot_titer_summaries_params` below.
 plot_stratified_titers:
   group_colors: {above: "#d95f02", at_or_below: "#1b9e77"}  # orange and green
   charts:
     H3N2:
-      recent: {reference: K, comparator: "K:V223I", fold_change_threshold: 0.5}
+      recent: {reference: K, comparator: "K:V223I", fold_change_threshold: 0.5, drop_sera_at_lower_limit: true}
     H1N1:
-      recent: {reference: D.3.1.1, comparator: "D.3.1.1:G155E", fold_change_threshold: 0.5}
+      recent: {reference: D.3.1.1, comparator: "D.3.1.1:G155E", fold_change_threshold: 0.5, drop_sera_at_lower_limit: true}
 
 # Protein-structure pages built by `prot-struct-viz`. Each key names a directory
 # `data/prot-struct-viz_config/<key>/` holding the `spec.yaml` and the CSVs and

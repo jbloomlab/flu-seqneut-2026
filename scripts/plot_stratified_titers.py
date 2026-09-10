@@ -203,6 +203,45 @@ def threshold_slider(fold_change_threshold):
     )
 
 
+def drop_at_limit_checkbox(drop_sera_at_lower_limit):
+    """Return the checkbox dropping sera censored against either compared strain."""
+    return alt.param(
+        name="drop_sera_at_lower_limit",
+        value=drop_sera_at_lower_limit,
+        bind=alt.binding_checkbox(
+            name="drop sera at the lower limit of detection against either strain "
+        ),
+    )
+
+
+def at_limit_lookup(chart_titers, chart_viruses):
+    """The serum-strain pairs whose titer is at the assay's lower limit of detection.
+
+    `titer_bound == "upper"` means the titer is an upper bound: no neutralization was
+    detected, so it sits at the lower limit. `slice_chart_data` does not carry
+    `titer_bound`, so it is merged back here, and only the censored pairs go to the chart
+    -- a flag on every row would be ten times the bytes.
+
+    """
+    bounds = titers[["serum", "virus", "titer_bound"]].merge(
+        chart_viruses[["virus", "axis_label"]], on="virus", validate="many_to_one"
+    )
+    at_limit = chart_titers[["serum", "axis_label"]].merge(
+        bounds.loc[bounds["titer_bound"] == "upper", ["serum", "axis_label"]],
+        on=["serum", "axis_label"],
+        validate="one_to_one",
+    )
+    at_limit = at_limit.assign(
+        at_limit_key=at_limit["serum"] + "|" + at_limit["axis_label"],
+        at_lower_limit=True,
+    )[["at_limit_key", "at_lower_limit"]]
+    # the join must be 1:1 and lossless, and a collision in the composite key would
+    # silently censor the wrong titer
+    if not at_limit["at_limit_key"].is_unique:
+        raise ValueError("`at_limit_key` is not unique")
+    return at_limit
+
+
 def add_lookups_and_filters(chart, chart_viruses, serum_medians, median_sliders):
     """Look up the serum and virus annotations, then filter to the sera drawn.
 
@@ -279,10 +318,58 @@ def add_group(chart):
     )
 
 
-def with_group(chart, chart_viruses, serum_medians, median_sliders):
+def add_at_lower_limit(chart, at_limit):
+    """Mark whether each serum's reference and comparator titer is at the lower limit.
+
+    Gathered onto every row of a serum the way `add_group` gathers the titers themselves,
+    so the drop can be a filter on a property of the serum. The lookup carries only the
+    censored pairs, so `isValid` is what says a titer is not censored, and the flags are
+    `1`/`0` rather than booleans because `max()` over a `vega` boolean is not meaningful.
+
+    """
+    return (
+        chart.transform_calculate(_at_limit_key="datum.serum + '|' + datum.axis_label")
+        .transform_lookup(
+            lookup="_at_limit_key",
+            from_=alt.LookupData(
+                at_limit, key="at_limit_key", fields=["at_lower_limit"]
+            ),
+        )
+        .transform_calculate(
+            _reference_at_limit=(
+                "datum.axis_label === reference_strain"
+                " ? (isValid(datum.at_lower_limit) ? 1 : 0) : null"
+            ),
+            _comparator_at_limit=(
+                "datum.axis_label === comparator_strain"
+                " ? (isValid(datum.at_lower_limit) ? 1 : 0) : null"
+            ),
+        )
+        .transform_joinaggregate(
+            reference_at_limit="max(_reference_at_limit)",
+            comparator_at_limit="max(_comparator_at_limit)",
+            groupby=["serum"],
+        )
+    )
+
+
+def with_group(chart, chart_viruses, serum_medians, median_sliders, at_limit):
     """The lookups, filters, and group assignment every panel of a chart shares."""
     return add_group(
-        add_lookups_and_filters(chart, chart_viruses, serum_medians, median_sliders)
+        add_at_lower_limit(
+            add_lookups_and_filters(
+                chart, chart_viruses, serum_medians, median_sliders
+            ),
+            at_limit,
+        )
+    ).transform_filter(
+        # a property of the serum, like every filter above, so the serum drops whole. A
+        # serum that cannot be grouped is left alone even when one of the two titers it
+        # does have is censored: it is already undrawn, and dropping it here would take it
+        # out of the count that reports it.
+        "!drop_sera_at_lower_limit"
+        f" || datum.group === '{GROUP_UNMEASURED}'"
+        " || (datum.reference_at_limit !== 1 && datum.comparator_at_limit !== 1)"
     )
 
 
@@ -435,10 +522,14 @@ def threshold_readout():
     """
     return (
         alt.Chart(pd.DataFrame({"row": [0]}))
+        # the only line that survives into a static export of the chart, so it is where
+        # the drop option has to say it is on
         .transform_calculate(
             # 4 significant digits, and `~` to trim the trailing zeros that leaves
             readout="'splitting sera at a ' + format(pow(2, log2_threshold), '.4~r')"
             " + '-fold titer ratio of ' + comparator_strain + ' to ' + reference_strain"
+            " + (drop_sera_at_lower_limit ? ', dropping sera at the lower limit of"
+            " detection against either strain' : '')"
         )
         .mark_text(align="center", fontSize=12)
         .encode(
@@ -496,6 +587,12 @@ for (subtype, strain_set), records in itertools.groupby(
             f"{subtype} {strain_set} `fold_change_threshold` must be > 0, got "
             f"{entry['fold_change_threshold']}"
         )
+    # a quoted `"true"` would be truthy whatever it says, silently checking the box
+    if not isinstance(entry["drop_sera_at_lower_limit"], bool):
+        raise ValueError(
+            f"{subtype} {strain_set} `drop_sera_at_lower_limit` must be true or false, "
+            f"got {entry['drop_sera_at_lower_limit']!r}"
+        )
 
     reference_param, comparator_param = strain_dropdowns(
         strain_order,
@@ -503,11 +600,15 @@ for (subtype, strain_set), records in itertools.groupby(
         haplotype_to_label[entry["comparator"]],
     )
     log2_threshold_param = threshold_slider(entry["fold_change_threshold"])
+    drop_at_limit_param = drop_at_limit_checkbox(entry["drop_sera_at_lower_limit"])
     median_sliders = titer_charts.median_titer_sliders(serum_medians)
+    at_limit = at_limit_lookup(chart_titers, chart_viruses)
     print(
         f"{subtype} {strain_set}: {len(chart_viruses)} strains, {len(chart_titers)} "
-        f"titers, splitting at {entry['fold_change_threshold']}-fold of "
-        f"{entry['comparator']} to {entry['reference']}"
+        f"titers of which {len(at_limit)} at the lower limit of detection, splitting at "
+        f"{entry['fold_change_threshold']}-fold of {entry['comparator']} to "
+        f"{entry['reference']}, opening with the sera at that limit "
+        f"{'dropped' if entry['drop_sera_at_lower_limit'] else 'kept'}"
     )
 
     facet_size = plot_titer_summaries_params["facet_size"]
@@ -524,15 +625,16 @@ for (subtype, strain_set), records in itertools.groupby(
             reference_param,
             comparator_param,
             log2_threshold_param,
+            drop_at_limit_param,
         ],
     )
 
     titer_base = drawn_only(
-        with_group(base, chart_viruses, serum_medians, median_sliders)
+        with_group(base, chart_viruses, serum_medians, median_sliders, at_limit)
     )
     # the same frame object as the titer panel, so `altair` embeds the rows only once
     side_base = with_group(
-        alt.Chart(chart_titers), chart_viruses, serum_medians, median_sliders
+        alt.Chart(chart_titers), chart_viruses, serum_medians, median_sliders, at_limit
     )
     density = age_density(side_base).properties(height=facet_size)
     counts = counts_readout(side_base)

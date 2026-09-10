@@ -276,11 +276,13 @@ def no_change_line(chart_data):
 
     Built from the same frame object as the rest of the layer so `altair` hoists the data
     to the layer, which puts this mark inside each facet alongside the marks it marks the
-    baseline of.
+    baseline of. The aggregate is what makes that one rule per facet rather than one per
+    titer: a `datum` encoding fixes where a mark sits, not how many are drawn.
 
     """
     return (
         alt.Chart(chart_data)
+        .transform_aggregate(_n_rows="count()")
         .encode(y=alt.datum(1))
         .mark_rule(color="#888888", strokeWidth=1, strokeDash=[4, 3])
     )

@@ -521,13 +521,16 @@ def lower_limit_line(chart_data, lower_titer_limit):
     """Dotted gray rule at the lower limit of detection, flooring the titer axis at it.
 
     Built from the same frame object as the rest of the layer so `altair` hoists the data
-    to the layer, which puts the rule inside each facet. `domainMin` goes here rather than
-    on `titer_scale`, which the fold-change charts share, and the layer's shared y scale
-    picks it up; that scale's pixel padding is what leaves the line clear of the axis.
+    to the layer, which puts the rule inside each facet. The aggregate is what makes that
+    one rule per facet rather than one per titer: a `datum` encoding fixes where a mark
+    sits, not how many are drawn. `domainMin` goes here rather than on `titer_scale`,
+    which the fold-change charts share, and the layer's shared y scale picks it up; that
+    scale's pixel padding is what leaves the line clear of the axis.
 
     """
     return (
         alt.Chart(chart_data)
+        .transform_aggregate(_n_rows="count()")
         .encode(
             y=alt.Y(
                 datum=lower_titer_limit,

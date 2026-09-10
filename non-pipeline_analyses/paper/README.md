@@ -1,4 +1,4 @@
-# Text and figures for the paper about this study
+# Text, figures, and tables for the paper about this study
 
 ## Manuscript
 The current manuscript is [in this Google doc](https://docs.google.com/document/d/114EQK8n18Iq5AU1QisaOMNsDnG3JNO41A1PvDwvefDE/edit?tab=t.0).
@@ -24,9 +24,17 @@ over that image as vector text. Those intermediate images land in this directory
 in this repository, so rebuilding such a figure requires having run the main pipeline;
 the figure's own SVG is tracked, so reading the paper's figures does not.
 
-Building the figures needs the `seqneut-pipeline` conda environment used by the main
-pipeline (see the top-level [README.md](../../README.md)). The structure figures
-additionally need a `chromium-browser` on `PATH` and network access, since the pages they
-render load Mol\* from a CDN. Run from this directory:
+## Tables
+Paper tables are in [./tables/](tables), and are built by [Snakefile](Snakefile) from the
+summaries the main pipeline already writes. They are HTML so they can be pasted into the
+manuscript with their formatting intact, and are numbered exactly as the figures are:
+each is written under its descriptive name and as a `Table_N.html` copy, from a mapping
+at the top of [Snakefile](Snakefile).
+
+## Building
+Building the figures and tables needs the `seqneut-pipeline` conda environment used by
+the main pipeline (see the top-level [README.md](../../README.md)). The structure figures
+additionally need a `chromium-browser` on `PATH` and network access, since the pages
+they render load Mol\* from a CDN. Run from this directory:
 
     snakemake -j 1

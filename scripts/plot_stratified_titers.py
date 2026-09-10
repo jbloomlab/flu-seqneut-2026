@@ -32,6 +32,7 @@ subtypes = snakemake.params.subtypes
 stratified_config = snakemake.params.stratified_config
 
 subtype_params = plot_titer_summaries_params["subtype_params"]
+lower_titer_limit = plot_titer_summaries_params["draw_lower_titer_limit_line"]
 
 # the rule lists one tree per subtype, in `subtypes` order
 tree_jsons = dict(zip(subtypes, snakemake.input.trees, strict=True))
@@ -79,6 +80,7 @@ titers, metadata, sera_multicohort, viruses = titer_charts.load_and_validate(
     circulating_strain_type=circulating_strain_type,
     subtypes=subtypes,
     subtype_params=subtype_params,
+    lower_titer_limit=lower_titer_limit,
 )
 
 if "All" not in sera_multicohort["cohort"].values:
@@ -538,6 +540,14 @@ for (subtype, strain_set), records in itertools.groupby(
     for record in records:
         chart_type = CHART_TYPES[record["chart_type"]]
         titer_panel = chart_type["build"](titer_base)
+        subtitle = ""
+        if lower_titer_limit is not None:
+            # layered last so the thin rule draws over the interquartile band, and before
+            # `add_tree`, which hoists the top-level attributes off the chart it nests
+            titer_panel += titer_charts.lower_limit_line(
+                chart_titers, lower_titer_limit
+            )
+            subtitle = titer_charts.LOWER_LIMIT_SUBTITLE.format(lower_titer_limit)
         title = (
             f"{chart_type['title']} for {subtype} {strain_set} strains, "
             "sera split by relative titer to two strains"
@@ -555,7 +565,7 @@ for (subtype, strain_set), records in itertools.groupby(
                 color="independent"
             ),
             title,
-            "",
+            subtitle,
             above=[
                 threshold_readout(),
                 counts,

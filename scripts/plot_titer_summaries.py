@@ -30,6 +30,7 @@ plot_titer_summaries_params = snakemake.params.plot_titer_summaries_params
 subtypes = snakemake.params.subtypes
 
 subtype_params = plot_titer_summaries_params["subtype_params"]
+lower_titer_limit = plot_titer_summaries_params["draw_lower_titer_limit_line"]
 
 # the rule lists one tree per subtype, in `subtypes` order
 tree_jsons = dict(zip(subtypes, snakemake.input.trees, strict=True))
@@ -54,6 +55,7 @@ titers, metadata, sera_multicohort, viruses = titer_charts.load_and_validate(
     circulating_strain_type=circulating_strain_type,
     subtypes=subtypes,
     subtype_params=subtype_params,
+    lower_titer_limit=lower_titer_limit,
 )
 
 if "All" not in sera_multicohort["cohort"].values:
@@ -289,25 +291,29 @@ def reference_line(chart_titers, ref_axis_label, chart_type, value):
     )
 
 
-# each chart type names its title, how it is built from the mark builders, and the value
-# it plots on the titer axis
+# each chart type names its title, how it is built from the mark builders, the value it
+# plots on the titer axis, and whether that axis is a titer: `frac_below_cutoff` plots a
+# linear fraction, so `value` alone does not say, and the fold changes are a ratio
 CHART_TYPES = {
     "individual_sera": {
         "title": "median (points) and per-serum (lines) titers",
         "build": lambda base, value: serum_lines(base, value)
         + median_points(base, value),
         "value": VALUE_TITER,
+        "titer_axis": True,
     },
     "interquartile_range": {
         "title": "median (points) and interquartile range titers",
         "build": lambda base, value: interquartile_range(base, value)
         + median_points(base, value),
         "value": VALUE_TITER,
+        "titer_axis": True,
     },
     "frac_below_cutoff": {
         "title": "fraction sera below titer cutoff",
         "build": lambda base, value: frac_below_cutoff(base),
         "value": VALUE_TITER,
+        "titer_axis": False,
     },
     "individual_sera_fold_change": {
         "title": (
@@ -316,12 +322,14 @@ CHART_TYPES = {
         "build": lambda base, value: serum_lines(base, value)
         + median_points(base, value),
         "value": VALUE_FOLD_CHANGE,
+        "titer_axis": False,
     },
     "interquartile_range_fold_change": {
         "title": "median (points) and interquartile range fold change from the serum's median",
         "build": lambda base, value: interquartile_range(base, value)
         + median_points(base, value),
         "value": VALUE_FOLD_CHANGE,
+        "titer_axis": False,
     },
 }
 
@@ -455,13 +463,19 @@ for (subtype, strain_set), records in itertools.groupby(
         chart_type = CHART_TYPES[record["chart_type"]]
         value = chart_type["value"]
         layer = chart_type["build"](base, value)
-        subtitle = ""
+        subtitles = []
+        if lower_titer_limit is not None and chart_type["titer_axis"]:
+            layer += titer_charts.lower_limit_line(chart_titers, lower_titer_limit)
+            subtitles.append(
+                titer_charts.LOWER_LIMIT_SUBTITLE.format(lower_titer_limit)
+            )
         if ref_axis_label is not None:
             # layered last so the thin line draws over the interquartile band
             layer += reference_line(
                 chart_titers, ref_axis_label, record["chart_type"], value
             )
-            subtitle = f"dashed orange line marks {ref_axis_label}"
+            subtitles.append(f"dashed orange line marks {ref_axis_label}")
+        subtitle = "; ".join(subtitles)
         chart = facet_and_add_lookups(
             layer, chart_viruses, serum_medians, min_median_slider, max_median_slider
         )

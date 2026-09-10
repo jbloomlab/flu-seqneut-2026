@@ -19,12 +19,12 @@ FINAL_TITER_DATA = "../../results/final_titer_data"
 FIGURE_NUMBERS = {
     "flu_circulating_frequencies": "Figure_1",
     "H3N2_median_interquartile_range": "Figure_2",
-    "H3N2_vaccination_median_interquartile_range": "Figure_3",
-    "H3_subclade_K_mutations_structure": "Figure_4",
-    "H1N1_median_interquartile_range": "Figure_5",
-    "H1N1_vaccination_median_interquartile_range": "Figure_6",
-    "H1N1_stratified_median_interquartile_range": "Figure_7",
-    "H1_D_3_1_1_mutations_structure": "Figure_8",
+    "H3_subclade_K_mutations_structure": "Figure_3",
+    "H1N1_median_interquartile_range": "Figure_4",
+    "H1N1_stratified_median_interquartile_range": "Figure_5",
+    "H1_D_3_1_1_mutations_structure": "Figure_6",
+    "H3N2_vaccination_median_interquartile_range": "Figure_7",
+    "H1N1_vaccination_median_interquartile_range": "Figure_8",
 }
 
 FIGURE_NAMES = {number: name for name, number in FIGURE_NUMBERS.items()}

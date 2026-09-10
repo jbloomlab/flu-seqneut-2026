@@ -29,6 +29,7 @@ subtypes = snakemake.params.subtypes
 pre_post_config = snakemake.params.pre_post_config
 
 subtype_params = plot_titer_summaries_params["subtype_params"]
+lower_titer_limit = plot_titer_summaries_params["draw_lower_titer_limit_line"]
 
 # the rule lists one tree per subtype, in `subtypes` order
 tree_jsons = dict(zip(subtypes, snakemake.input.trees, strict=True))
@@ -57,6 +58,7 @@ titers, metadata, sera_multicohort, viruses = titer_charts.load_and_validate(
     circulating_strain_type=circulating_strain_type,
     subtypes=subtypes,
     subtype_params=subtype_params,
+    lower_titer_limit=lower_titer_limit,
 )
 
 # ---- pair the sera being compared -------------------------------------------------
@@ -439,10 +441,15 @@ for (subtype, strain_set), records in itertools.groupby(
         fold_change = chart_type["fold_change"]
         layer = chart_type["build"](bases[fold_change])
         subtitle = pre_post_config["title"]
+        # layered last so the thin rule draws over the interquartile band
         if fold_change:
-            # layered last so the thin rule draws over the interquartile band
             layer += no_change_line(fold_change_data)
             subtitle += "; dashed gray line marks no change in titer"
+        elif lower_titer_limit is not None:
+            layer += titer_charts.lower_limit_line(overlay_data, lower_titer_limit)
+            subtitle += "; " + titer_charts.LOWER_LIMIT_SUBTITLE.format(
+                lower_titer_limit
+            )
         chart = (
             layer.facet(row=alt.Row("comparison_n:N", title=None))
             .transform_lookup(

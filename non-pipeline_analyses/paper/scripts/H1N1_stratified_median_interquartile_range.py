@@ -23,7 +23,13 @@ sys.stdout = sys.stderr = open(snakemake.log[0], "w")
 # the threshold are whichever the chart opens with, and the counts follow from them.
 READOUT_SPLIT = re.compile(
     r"splitting sera at a (?P<threshold>[\d.]+)-fold titer ratio of "
-    r"(?P<comparator>.+) to (?P<reference>.+)"
+    # lazy, so the clause below is what ends the reference rather than being read as
+    # part of its name; a `derived_haplotype` can itself hold commas
+    r"(?P<comparator>.+) to (?P<reference>.+?)"
+    # the chart appends this when it drops the sera censored against either strain. The
+    # key names the ratio, and its counts already come from the chart's own totals, so
+    # the clause has nothing to add to the figure.
+    r"(?:, dropping sera at the lower limit of detection against either strain)?"
 )
 READOUT_COUNTS = re.compile(
     r"n=(?P<above>\d+) above threshold, n=(?P<at_or_below>\d+) at or below, "

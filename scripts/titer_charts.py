@@ -29,6 +29,9 @@ titer_scale = alt.Scale(type="log", nice=False, padding=4)
 # format. A list of strings is an axis title split over that many lines.
 VALUE_TITER = {"field": "titer", "title": "titer", "format": ".1f"}
 
+# what a chart's subtitle says about the line `lower_limit_line` draws
+LOWER_LIMIT_SUBTITLE = "dotted gray line marks the lower limit of detection (titer {})"
+
 # fields carried per strain rather than repeated on every titer row
 virus_tooltips = [
     alt.Tooltip("axis_label:N", title="strain"),
@@ -73,6 +76,7 @@ def load_and_validate(
     circulating_strain_type,
     subtypes,
     subtype_params,
+    lower_titer_limit,
 ):
     """Read the final titer data, validating it and the configuration against it.
 
@@ -88,6 +92,17 @@ def load_and_validate(
     missing_titer_cols = required_titer_cols - set(titers.columns)
     if missing_titer_cols:
         raise ValueError(f"titers_csv missing required columns: {missing_titer_cols}")
+
+    # `lower_limit_line` floors the titer axis at this, which would silently take a lower
+    # titer off the chart
+    if lower_titer_limit is not None:
+        below_limit = titers[titers["titer"] < lower_titer_limit]
+        if len(below_limit) > 0:
+            raise ValueError(
+                f"{len(below_limit)} titers below `draw_lower_titer_limit_line` "
+                f"{lower_titer_limit}, which would fall off the axis:\n"
+                f"{below_limit.head(10).to_string(index=False)}"
+            )
 
     duplicate_pairs = titers.groupby(["serum", "virus"]).size()
     duplicate_pairs = duplicate_pairs[duplicate_pairs > 1]
@@ -499,6 +514,27 @@ def interquartile_range(
             **({} if color is None else {"color": color}),
         )
         .mark_errorband(extent="iqr", opacity=0.5, interpolate="linear")
+    )
+
+
+def lower_limit_line(chart_data, lower_titer_limit):
+    """Dotted gray rule at the lower limit of detection, flooring the titer axis at it.
+
+    Built from the same frame object as the rest of the layer so `altair` hoists the data
+    to the layer, which puts the rule inside each facet. `domainMin` goes here rather than
+    on `titer_scale`, which the fold-change charts share, and the layer's shared y scale
+    picks it up; that scale's pixel padding is what leaves the line clear of the axis.
+
+    """
+    return (
+        alt.Chart(chart_data)
+        .encode(
+            y=alt.Y(
+                datum=lower_titer_limit,
+                scale=alt.Scale(**titer_scale.to_dict(), domainMin=lower_titer_limit),
+            )
+        )
+        .mark_rule(color="#888888", strokeWidth=1, strokeDash=[2, 2])
     )
 
 

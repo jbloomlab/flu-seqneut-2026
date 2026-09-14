@@ -28,8 +28,10 @@ output, so the wording in the LaTeX is the wording in the document. On top of th
 Table 1 is not carried across: the workflow generates it from the pipeline's own summary
 of the sera, and the manuscript inputs that.
 
-`fidelity_check.py` then verified the result, comparing the multiset of words and of
-numbers on each side in both directions. It reports `PASS` for this conversion.
+`fidelity_check.py` compares the two, reducing each to the multiset of its words and of
+its numbers and comparing in both directions. It reports `PASS`. It reads the LaTeX as it
+stands rather than the conversion's output, so it can be re-run at any point to confirm
+the prose still matches the document.
 
 ## Running them
 

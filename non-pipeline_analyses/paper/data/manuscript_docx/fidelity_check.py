@@ -1,18 +1,18 @@
-"""Check that the converted LaTeX says exactly what the Word manuscript says.
+r"""Check that the LaTeX manuscript says exactly what the Word manuscript says.
 
-Run by hand after `docx_to_latex.py`, to verify that the conversion moved the prose
-across without changing it. It reported `PASS` for that conversion, which is what it was
-for. It is **not** a check on the manuscript as it stands: the LaTeX is edited by hand
-from here on and the Word document is frozen, so the two are expected to diverge -- and
-already do, since the figure and table numbers the document spelled out are now generated
-by LaTeX rather than written in the source. Both sides are reduced to the multiset of their words and of
-their numbers and compared in both directions, so a dropped, added, or altered word
-shows up wherever it happens.
+Run by hand. The Word document is frozen at the export the LaTeX was converted from, so
+this confirms that neither the conversion nor the hand editing since has changed the
+prose. Both sides are reduced to the multiset of their words and of their numbers and
+compared in both directions, so a dropped, added, or altered word shows up wherever it
+happens. It says nothing about layout, and nothing about wording the authors change on
+purpose from here on -- a deliberate edit to the LaTeX will fail this check, which is the
+point.
 
-Three things are left out of the comparison because they are deliberately not carried
-across verbatim: the reference list, which LaTeX regenerates from `references.bib`; the
-citations themselves, which became `\\citep` commands; and Table 1, whose cells the
-workflow generates from the pipeline's summary rather than from the document.
+Four things are left out of the comparison because LaTeX generates them rather than
+carrying them across verbatim: the reference list, built from `references.bib`; the
+citations themselves, which became `\citep` commands; Table 1, whose cells the workflow
+generates from the pipeline's summary; and the figure, table and supplementary file
+numbers, which come from `\Cref` against a label instead of being written out.
 """
 
 import argparse
@@ -31,6 +31,12 @@ STOP_AT = "References"
 # Headings that are structure rather than prose: the template prints "Abstract" itself,
 # and the Figures and Tables sections dissolve into the floats placed through the text.
 EXPECTED_ABSENT = {"Abstract", "Figures", "Tables"}
+
+# A reference LaTeX generates from a label, spelled out in the Word document. Any "and"
+# joining a list of them is prose on both sides, so it is kept.
+XREF = re.compile(
+    r"(?:Figures?|Tables?|Supplementary Files?)\s*\d+(?:\s*,\s*\d+)*(?:\s*,?\s*and\s+\d+)?"
+)
 
 # A word for this purpose is a run of letters, digits or the marks that sit inside one.
 WORD = re.compile(r"[^\W_]+(?:['\u2019\u2010-]?[^\W_]+)*", re.UNICODE)
@@ -68,7 +74,8 @@ def docx_text(path):
             if not (node.tag == W + "hyperlink" and node.get(R + "id") in zotero)
         ]
         out.append("".join(runs))  # joined without a space: a run can split a word
-    return "\n".join(out)
+    text = "\n".join(out)
+    return XREF.sub(lambda m: " and " if "and" in m.group(0) else " ", text)
 
 
 def latex_text(paths):
@@ -79,6 +86,10 @@ def latex_text(paths):
     text = re.sub(r"(?m)^\\textsuperscript\{[^}]*\}", "", text)
     text = re.sub(r"\\textsuperscript\{([^}]*)\}", r"\1", text)
     text = re.sub(r"\\citep\{[^}]*\}", "", text)
+    text = re.sub(r"\\[Cc]?ref\{[^}]*\}", "", text)
+    text = re.sub(r"\\fontsize\{[^}]*\}\{[^}]*\}", " ", text)
+    # \supplementaryfile{title}{label}: the title is prose, the label is not
+    text = re.sub(r"(\\supplementaryfile\{[^}]*\})\{[^}]*\}", r"\1", text)
     text = re.sub(
         r"\\(?:input|includegraphics|label|graphicspath)\b\s*(\[[^\]]*\])?\{[^}]*\}",
         "",

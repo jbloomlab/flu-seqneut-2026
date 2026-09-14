@@ -22,69 +22,48 @@ BUILD = "results/manuscript"
 # `manuscript_formatting`; `--use-envmodules` is what loads it. See README.md.
 TEXLIVE = "texlive/20210324-GCC-11.2.0"
 
-# each figure's descriptive name mapped to its number in the manuscript; every figure is
-# built under both names, so renumbering a figure only means editing this mapping
-FIGURE_NUMBERS = {
-    "flu_circulating_frequencies": "Figure_1",
-    "H3N2_median_interquartile_range": "Figure_2",
-    "H3_subclade_K_mutations_structure": "Figure_3",
-    "H1N1_median_interquartile_range": "Figure_4",
-    "H1N1_stratified_median_interquartile_range": "Figure_5",
-    "H1_D_3_1_1_mutations_structure": "Figure_6",
-    "H3N2_vaccination_median_interquartile_range": "Figure_7",
-    "H1N1_vaccination_median_interquartile_range": "Figure_8",
+# the interactive chart each median / interquartile-range figure freezes. The charts
+# drawn over whole cohorts and those comparing titers before and after vaccination are
+# written to different directories by the pipeline.
+MEDIAN_IQR_CHARTS = {
+    "H3N2_median_interquartile_range": f"{TITER_PLOTS}/human_H3N2_recent_interquartile_range_subclade.html",
+    "H1N1_median_interquartile_range": f"{TITER_PLOTS}/human_H1N1_recent_interquartile_range_subclade.html",
+    "H3N2_vaccination_median_interquartile_range": f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H3N2_recent_interquartile_range_subclade.html",
+    "H1N1_vaccination_median_interquartile_range": f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H1N1_recent_interquartile_range_subclade.html",
 }
 
-FIGURE_NAMES = {number: name for name, number in FIGURE_NUMBERS.items()}
-assert len(FIGURE_NAMES) == len(
-    FIGURE_NUMBERS
-), f"duplicate number in {FIGURE_NUMBERS=}"
-
-# the same mapping for the tables, which are numbered and built exactly as the figures
-TABLE_NUMBERS = {
-    "sera_metadata": "Table_1",
+# The `prot-struct-viz` page each structure figure renders, and the coloring CSV of the
+# view it shows. Which view that is, and how its labels are placed, are the figure's own
+# business and live in the scripts.
+STRUCTURE_PAGES = {
+    "H3_subclade_K_mutations_structure": (
+        f"{PROT_STRUCT_VIZ}/H3_prot_struct_viz.html",
+        "../../data/prot-struct-viz_config/H3/subclade-k-with-region-d-mutations.csv",
+    ),
+    "H1_D_3_1_1_mutations_structure": (
+        f"{PROT_STRUCT_VIZ}/H1_prot_struct_viz.html",
+        "../../data/prot-struct-viz_config/H1/d-3-1-1-with-sites-155-157.csv",
+    ),
 }
 
-TABLE_NAMES = {number: name for name, number in TABLE_NUMBERS.items()}
-assert len(TABLE_NAMES) == len(TABLE_NUMBERS), f"duplicate number in {TABLE_NUMBERS=}"
+# Every figure the manuscript includes, under the descriptive name it is built
+# with. No number appears here: a figure's number in the manuscript comes from
+# where its float falls in `manuscript/body.tex`, and LaTeX assigns it.
+FIGURES = [
+    "flu_circulating_frequencies",
+    *MEDIAN_IQR_CHARTS,
+    "H1N1_stratified_median_interquartile_range",
+    *STRUCTURE_PAGES,
+]
+
+TABLES = ["sera_metadata"]
 
 
 rule all:
     input:
-        expand("figures/{name}.svg", name=FIGURE_NUMBERS),
-        expand("figures/{number}.svg", number=FIGURE_NAMES),
-        expand("tables/{name}.{ext}", name=TABLE_NUMBERS, ext=["html", "tex"]),
-        expand("tables/{number}.{ext}", number=TABLE_NAMES, ext=["html", "tex"]),
+        expand("figures/{figure}.svg", figure=FIGURES),
+        expand("tables/{table}.{ext}", table=TABLES, ext=["html", "tex"]),
         f"{BUILD}/preprint.pdf",
-
-
-rule numbered_figure:
-    """Copy a figure to a file named for its number in the manuscript."""
-    input:
-        lambda wc: f"figures/{FIGURE_NAMES[wc.number]}.svg",
-    output:
-        numbered_svg="figures/{number}.svg",
-    log:
-        "logs/{number}.txt",
-    wildcard_constraints:
-        number="|".join(FIGURE_NAMES),
-    shell:
-        "cp {input} {output} &> {log}"
-
-
-rule numbered_table:
-    """Copy a table to a file named for its number in the manuscript."""
-    input:
-        lambda wc: f"tables/{TABLE_NAMES[wc.number]}.{wc.ext}",
-    output:
-        numbered_table="tables/{number}.{ext}",
-    log:
-        "logs/{number}_{ext}.txt",
-    wildcard_constraints:
-        number="|".join(TABLE_NAMES),
-        ext="html|tex",
-    shell:
-        "cp {input} {output} &> {log}"
 
 
 rule sera_metadata:
@@ -111,17 +90,6 @@ rule flu_circulating_frequencies:
         "logs/flu_circulating_frequencies.txt",
     script:
         "scripts/flu_circulating_frequencies.py"
-
-
-# the interactive chart each median / interquartile-range figure freezes. The charts
-# drawn over whole cohorts and those comparing titers before and after vaccination are
-# written to different directories by the pipeline.
-MEDIAN_IQR_CHARTS = {
-    "H3N2_median_interquartile_range": f"{TITER_PLOTS}/human_H3N2_recent_interquartile_range_subclade.html",
-    "H1N1_median_interquartile_range": f"{TITER_PLOTS}/human_H1N1_recent_interquartile_range_subclade.html",
-    "H3N2_vaccination_median_interquartile_range": f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H3N2_recent_interquartile_range_subclade.html",
-    "H1N1_vaccination_median_interquartile_range": f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H1N1_recent_interquartile_range_subclade.html",
-}
 
 
 rule median_interquartile_range:
@@ -152,21 +120,6 @@ rule H1N1_stratified_median_interquartile_range:
         "logs/H1N1_stratified_median_interquartile_range.txt",
     script:
         "scripts/H1N1_stratified_median_interquartile_range.py"
-
-
-# The `prot-struct-viz` page each structure figure renders, and the coloring CSV of the
-# view it shows. Which view that is, and how its labels are placed, are the figure's own
-# business and live in the scripts.
-STRUCTURE_PAGES = {
-    "H3_subclade_K_mutations_structure": (
-        f"{PROT_STRUCT_VIZ}/H3_prot_struct_viz.html",
-        "../../data/prot-struct-viz_config/H3/subclade-k-with-region-d-mutations.csv",
-    ),
-    "H1_D_3_1_1_mutations_structure": (
-        f"{PROT_STRUCT_VIZ}/H1_prot_struct_viz.html",
-        "../../data/prot-struct-viz_config/H1/d-3-1-1-with-sites-155-157.csv",
-    ),
-}
 
 
 rule molstar_render:
@@ -203,15 +156,20 @@ rule labeled_structure:
 
 
 rule figure_pdf:
-    """Convert a numbered figure to the PDF that the manuscript includes."""
+    """Convert a figure to the PDF that the manuscript includes.
+
+    Built under the figure's descriptive name, because that is what the manuscript
+    includes and labels: a figure's number there comes from the order its float
+    appears, so no number is written into the manuscript by hand.
+    """
     input:
-        figure_svg="figures/{number}.svg",
+        figure_svg="figures/{figure}.svg",
     output:
-        figure_pdf=f"{FIGURE_PDFS}/{{number}}.pdf",
+        figure_pdf=f"{FIGURE_PDFS}/{{figure}}.pdf",
     log:
-        "logs/{number}_pdf.txt",
+        "logs/{figure}_pdf.txt",
     wildcard_constraints:
-        number="|".join(FIGURE_NAMES),
+        figure="|".join(FIGURES),
     script:
         "scripts/svg_to_pdf.py"
 
@@ -223,8 +181,8 @@ rule manuscript_pdf:
             f"{MANUSCRIPT}/{{part}}",
             part=["preprint.tex", "frontmatter.tex", "body.tex", "references.bib"],
         ),
-        figures=expand(f"{FIGURE_PDFS}/{{number}}.pdf", number=FIGURE_NAMES),
-        tables=expand("tables/{number}.tex", number=TABLE_NAMES),
+        figures=expand(f"{FIGURE_PDFS}/{{figure}}.pdf", figure=FIGURES),
+        tables=expand("tables/{table}.tex", table=TABLES),
     output:
         pdf=f"{BUILD}/preprint.pdf",
     log:

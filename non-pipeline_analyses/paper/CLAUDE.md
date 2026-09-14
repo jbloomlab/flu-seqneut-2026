@@ -20,11 +20,11 @@ rendering one — go in a module in `scripts/` that the figure scripts import, d
 a rule `input:` so editing it triggers a rerun. Only mechanics: what a given figure
 keeps, drops, or relabels stays in that figure's own script.
 
-A figure's number in the manuscript comes only from the `FIGURE_NUMBERS` mapping at the
-top of `Snakefile`, and the `numbered_figure` rule copies each figure to a `Figure_N.svg`
-alongside it. Never name a rule, a script, or a figure's own output for its number, and
-never write a number anywhere else: renumbering a figure, which happens repeatedly while
-a paper is in flight, must stay a one-line edit to that mapping.
+Nothing here is named or labelled for a figure's number. `manuscript/body.tex` includes
+each figure by its descriptive name and labels it `fig:<that name>`, and LaTeX assigns the
+number from the order the floats fall; the text refers to them with `\Cref`. Renumbering
+is therefore just moving a float, and a number written out by hand anywhere -- in a rule,
+a script, a filename, a label, or the prose -- is a bug.
 
 ## A figure's configuration lives in its script
 
@@ -61,9 +61,10 @@ overwrite the current LaTeX with a stale document.
 Prose is the authors' to write. Change wording only when asked, and never as a side
 effect of fixing layout or making something compile.
 
-A figure's number comes only from `FIGURE_NUMBERS`, which also governs the `Figure_N`
-that `body.tex` includes and the `fig:N` it labels. Renumbering means editing that
-mapping and the references to it in `body.tex`, and nothing else.
+Tables and supplementary files follow the same rule as the figures: referred to with
+`\Cref` against a descriptive label, never by a number written out. Supplementary files
+are not floats, so they use the `\supplementaryfile` command that `preprint.tex` defines,
+which keeps their counter and their label together.
 
 Citations are `\citep` keys into `references.bib`. Add a reference by adding its BibTeX
 entry, not by writing the citation into the prose.

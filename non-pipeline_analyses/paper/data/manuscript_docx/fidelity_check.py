@@ -1,7 +1,11 @@
 """Check that the converted LaTeX says exactly what the Word manuscript says.
 
 Run by hand after `docx_to_latex.py`, to verify that the conversion moved the prose
-across without changing it. Both sides are reduced to the multiset of their words and of
+across without changing it. It reported `PASS` for that conversion, which is what it was
+for. It is **not** a check on the manuscript as it stands: the LaTeX is edited by hand
+from here on and the Word document is frozen, so the two are expected to diverge -- and
+already do, since the figure and table numbers the document spelled out are now generated
+by LaTeX rather than written in the source. Both sides are reduced to the multiset of their words and of
 their numbers and compared in both directions, so a dropped, added, or altered word
 shows up wherever it happens.
 

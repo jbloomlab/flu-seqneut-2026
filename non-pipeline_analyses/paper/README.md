@@ -18,9 +18,9 @@ the plots the main pipeline and the other analyses in [../](..) already produce.
 figure has its own rule and its own script in [scripts/](scripts), named for what the
 figure shows; see [CLAUDE.md](CLAUDE.md) for the conventions those follow.
 
-Every figure is written into [./figures/](figures) twice: under its descriptive name, and
-as a `Figure_N.svg` copy for citing in the manuscript. The mapping between the two is at
-the top of [Snakefile](Snakefile), and is the only place a figure's number appears.
+Figures are written into [./figures/](figures) under their descriptive names only. No
+figure number appears here or in the manuscript source: `manuscript/body.tex` includes and
+labels each figure by name, and LaTeX numbers them from the order their floats fall.
 
 A figure built from one of the pipeline's interactive charts is frozen at a chosen
 selection state and stripped to the panels that belong in print, rendered offline with
@@ -36,9 +36,8 @@ the figure's own SVG is tracked, so reading the paper's figures does not.
 ## Tables
 Paper tables are in [./tables/](tables), and are built by [Snakefile](Snakefile) from the
 summaries the main pipeline already writes. Each is written as LaTeX, which the manuscript inputs, and as HTML, which can be pasted
-somewhere that wants the formatting inline. They are numbered exactly as the figures are:
-each is written under its descriptive name and as a `Table_N` copy, from a mapping at the
-top of [Snakefile](Snakefile).
+somewhere that wants the formatting inline. They are named and numbered exactly as the
+figures are.
 
 ## Building
 Building the figures and tables needs the `seqneut-pipeline` conda environment used by

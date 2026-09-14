@@ -52,6 +52,9 @@
 %  TeX Gyre Heros    = a Helvetica clone (the look helvet gave you).
 %  Both ship with any modern TeX Live, so no extra install is needed.
 \usepackage{fontspec}
+% Loading this and its math font costs roughly 60 of the ~150 seconds this preamble
+% takes on the cluster's network filesystem, which is most of a build. That is the price
+% of having math set properly; drop both if a faster build is ever worth more.
 \usepackage{unicode-math}     % supplies \mathbb etc.; do NOT also load amssymb
 %  Loaded by FILE name (not human name) so fontspec finds them via kpathsea in
 %  the TeX tree even when the .otf files aren't registered with the OS font
@@ -145,12 +148,66 @@
 % ---------------------------------------------------------------------
 % References and citations
 % ---------------------------------------------------------------------
-%  Author-year citations, and an alphabetical reference list. `aysep={}`
-%  drops natbib's comma so \citep sets "(Smith et al. 2004)" -- the form the
-%  manuscript used before it was LaTeX, so converting it changed no text.
-\usepackage[authoryear,round]{natbib}
-\bibliographystyle{plainnat}
-\setcitestyle{aysep={}}
+%  Author-year citations against references.bib, and an alphabetical reference
+%  list. biblatex rather than a natbib .bst because the name style wanted here --
+%  "Bloom JD", family name first with run-together initials and no comma -- is not
+%  something the natbib styles can produce. `natbib=true` keeps \citep working.
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  natbib=true,
+  giveninits=true,
+  terseinits=true,      % "JD", not "J. D."
+  uniquename=false,
+  uniquelist=false,
+  maxbibnames=99,       % reference list gives every author
+  maxcitenames=2,       % in text, "et al." from three authors on
+  mincitenames=1,
+  isbn=false,
+  doi=true,
+  url=true,
+  eprint=false,
+  dashed=false,       % a repeated author is written out, not dashed
+  sorting=nyt,
+]{biblatex}
+
+% Names read "Bloom JD": family name first, initials run together, no comma.
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{default}{family-given}
+\renewcommand*{\revsdnamepunct}{}
+\renewcommand*{\bibinitdelim}{}
+
+% In-text citations read "(Smith et al. 2004)", the form the manuscript has always
+% used, so that moving it to LaTeX changed no text.
+\renewcommand*{\nameyeardelim}{\addspace}
+
+% Suppress what this style would otherwise add and the manuscript never carried:
+% "In:" before the journal, an article's editors, the month beside the year, and
+% the ISSN.
+\renewbibmacro{in:}{}
+\AtEveryBibitem{\clearfield{issn}\clearfield{month}}
+\AtEveryBibitem{\ifentrytype{article}{\clearname{editor}}{}}
+
+% A bare URL with no "URL" label, and only where there is no DOI to give instead;
+% for these references the URL is otherwise just the DOI written out again.
+\DeclareFieldFormat{url}{\url{#1}}
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}
+
+% By default only the year of a citation is a hyperlink. This makes the whole of
+% it one link, so "(Smith et al. 2004)" is blue and clickable throughout. Only the
+% parenthetical form is redefined, since that is the only form the manuscript uses;
+% a \citet would need the matching textcite version.
+\DeclareFieldFormat{citehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}%
+  \bibhyperref{#1}}
+\savebibmacro{cite}
+\renewbibmacro*{cite}{%
+  \printtext[citehyperref]{\restorebibmacro{cite}\usebibmacro{cite}}}
+
+% The reference list is set smaller again than the back matter around it.
+\renewcommand*{\bibfont}{\fontsize{7.5}{9}\selectfont}
+
+\addbibresource{references.bib}
 
 % ---------------------------------------------------------------------
 % Links and cross-references  (load order matters: hyperref late, cleveref last)
@@ -159,9 +216,9 @@
 \usepackage{xcolor}
 \definecolor{linkblue}{RGB}{0,0,180}                    % legible-in-print navy blue
 %  External URLs (\href/\url), internal cross-refs (figure \Cref links), and
-%  and citations are all blue; hyperref has no
+%  and citations (which link to their reference-list entry) are all blue; hyperref has no
 %  per-target-type colour knob, so linkcolor covers every internal link.
-\usepackage[colorlinks=true,linkcolor=linkblue,urlcolor=linkblue,citecolor=black]{hyperref}
+\usepackage[colorlinks=true,linkcolor=linkblue,urlcolor=linkblue,citecolor=linkblue]{hyperref}
 \usepackage[nameinlink,noabbrev]{cleveref}
 
 % ---------------------------------------------------------------------
@@ -191,6 +248,24 @@
 \titlespacing*{\section}{0pt}{1.25em plus 0.2em minus 0.1em}{0.55em}
 \titlespacing*{\subsection}{0pt}{1.0em plus 0.2em minus 0.1em}{0.35em}
 \titlespacing*{\subsubsection}{0pt}{0.8em plus 0.2em minus 0.1em}{0.25em}
+
+% ---------------------------------------------------------------------
+% Supplementary files
+% ---------------------------------------------------------------------
+%  These are numbered alongside the figures and tables but are sections of the
+%  back matter rather than floats, so they carry their own counter. Declaring it
+%  to cleveref lets \Cref{supp:...} name and number one exactly as it does a
+%  figure, so no supplementary file's number is ever written out by hand.
+%  The heading is starred so that it does not also step the subsection counter,
+%  which would capture the \label meant for this one.
+\newcounter{suppfile}
+\newcommand{\supplementaryfile}[2]{%
+  \refstepcounter{suppfile}%
+  \subsection*{Supplementary File \thesuppfile. #1}%
+  \label{#2}%
+}
+\crefname{suppfile}{Supplementary File}{Supplementary Files}
+\Crefname{suppfile}{Supplementary File}{Supplementary Files}
 
 % ---------------------------------------------------------------------
 % Convenience cross-reference macros
@@ -263,6 +338,6 @@
 % ---------------------------------------------------------------------
 % References
 % ---------------------------------------------------------------------
-\bibliography{references}
+\printbibliography
 
 \end{document}

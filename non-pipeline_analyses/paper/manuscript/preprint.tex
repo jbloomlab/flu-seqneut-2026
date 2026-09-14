@@ -1,0 +1,343 @@
+% =====================================================================
+%  preprint.tex  —  compact two-column scientific preprint template
+% =====================================================================
+%  From the lab template at https://github.com/jbloomlab/manuscript_formatting,
+%  with the changes a LaTeX-native manuscript needs: author-year citations
+%  against a real references.bib, and no Zotero citation fix-ups.
+%
+%  This file owns the preamble and the title/abstract block. The prose lives
+%  in body.tex and the title block in frontmatter.tex, both hand-edited.
+%
+%  ENGINE:  XeLaTeX  (NOT pdfLaTeX)
+%  Build:   latexmk -xelatex -interaction=nonstopmode -halt-on-error preprint.tex
+%
+%  Why XeLaTeX/LuaLaTeX and not pdfLaTeX:
+%    A Word manuscript is full of real Unicode — α β µ, ± × −, °C, en/em
+%    dashes, “smart quotes”. pdfLaTeX (inputenc/fontenc) throws a FATAL
+%    "Unicode character not set up" on the first Greek letter, which
+%    tempts an agent to rewrite your text to make it compile. A Unicode
+%    engine renders these glyphs directly, so the text never has to be
+%    touched. To use LuaLaTeX instead, just swap -xelatex for -lualatex;
+%    everything below is identical.
+% =====================================================================
+
+\documentclass[10pt,twocolumn]{article}
+
+% ---------------------------------------------------------------------
+% Page geometry and spacing
+% ---------------------------------------------------------------------
+\usepackage[
+  letterpaper,
+  top=0.72in,
+  bottom=0.78in,
+  left=0.70in,
+  right=0.70in
+]{geometry}
+\setlength{\columnsep}{0.26in}
+\setlength{\parindent}{1.0em}
+\setlength{\parskip}{0pt}
+\linespread{1.03}            % slightly open leading; suits Pagella's x-height
+\raggedbottom
+\emergencystretch=3em        % absorb overflow from long unbreakable URLs/IDs
+
+% Discourage widows/orphans
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% ---------------------------------------------------------------------
+% Fonts  (fontspec + unicode-math — requires XeLaTeX or LuaLaTeX)
+% ---------------------------------------------------------------------
+%  TeX Gyre Pagella  = a Palatino clone (the look mathpazo gave you),
+%  TeX Gyre Heros    = a Helvetica clone (the look helvet gave you).
+%  Both ship with any modern TeX Live, so no extra install is needed.
+\usepackage{fontspec}
+% Loading this and its math font costs roughly 60 of the ~150 seconds this preamble
+% takes on the cluster's network filesystem, which is most of a build. That is the price
+% of having math set properly; drop both if a faster build is ever worth more.
+\usepackage{unicode-math}     % supplies \mathbb etc.; do NOT also load amssymb
+%  Loaded by FILE name (not human name) so fontspec finds them via kpathsea in
+%  the TeX tree even when the .otf files aren't registered with the OS font
+%  manager (the usual case on a stock MacTeX). Requires the tex-gyre package.
+%  (If your system DOES register them, \setmainfont{TeX Gyre Pagella} also works.)
+\setmainfont{texgyrepagella}[
+  Extension={.otf}, UprightFont={*-regular}, BoldFont={*-bold},
+  ItalicFont={*-italic}, BoldItalicFont={*-bolditalic}]
+\setsansfont{texgyreheros}[
+  Extension={.otf}, UprightFont={*-regular}, BoldFont={*-bold},
+  ItalicFont={*-italic}, BoldItalicFont={*-bolditalic}, Scale=0.91]
+\setmonofont{texgyrecursor}[
+  Extension={.otf}, UprightFont={*-regular}, BoldFont={*-bold},
+  ItalicFont={*-italic}, BoldItalicFont={*-bolditalic}, Scale=0.90]
+
+% Math font. Latin Modern Math is always present, so this is the safe
+% default. For a math font that matches Palatino more closely, install
+% the tex-gyre-math package and replace the line below with:
+%   \setmathfont{TeX Gyre Pagella Math}
+\setmathfont{latinmodern-math.otf}   % by filename, for the same kpathsea reason
+
+\usepackage{microtype}        % engine-aware; protrusion works under XeLaTeX
+
+% ---------------------------------------------------------------------
+% pandoc / Google-Docs compatibility (define before \input{body})
+% ---------------------------------------------------------------------
+%  Manuscripts exported from Google Docs/Word often carry inline formatting
+%  that pandoc emits as macros this template would not otherwise define:
+%    \hl{...}  text that was HIGHLIGHTED in the doc
+%    \ul{...}  text that was UNDERLINED (often auto-underlined links)
+%  We pass both through as plain text (highlighting/underlining are cosmetic
+%  Google-Docs artifacts, not manuscript content; underlining long URLs also
+%  defeats xurl line-breaking). The author's words are untouched. If you prefer
+%  to render the highlight, load \usepackage{soul} and drop the \hl line below.
+\providecommand{\hl}[1]{#1}
+\providecommand{\ul}[1]{#1}
+
+% ---------------------------------------------------------------------
+% Math, tables, and symbols
+% ---------------------------------------------------------------------
+\usepackage{amsmath}          % load BEFORE unicode-math (already above)
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% ---------------------------------------------------------------------
+% Figures and captions
+% ---------------------------------------------------------------------
+\usepackage{graphicx}
+% Figures are built by the Snakefile from the tracked SVGs in figures/.
+\graphicspath{{../results/figures/}}
+\usepackage{subcaption}
+\usepackage{float}            % provides the [H] "here, no float" override
+\usepackage{placeins}         % provides \FloatBarrier
+\usepackage{dblfloatfix}      % lets figure* use [b] and fixes wide-float
+                              % ordering (without it, full-width figures can
+                              % appear out of order or pile up at the end)
+
+% Caption style: compact, readable, journal-like
+\usepackage{caption}
+\DeclareCaptionFont{labcaptionfont}{\fontsize{8.5}{10.1}\selectfont}
+\captionsetup{
+  font=labcaptionfont,
+  labelfont={bf,sf},
+  labelsep=period,
+  singlelinecheck=false,
+  justification=raggedright,
+  skip=6pt
+}
+\captionsetup[sub]{
+  font=labcaptionfont,
+  labelfont={bf,sf},
+  justification=raggedright,
+  singlelinecheck=false
+}
+
+% Float behavior tuned for figure-heavy scientific papers
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{7}
+\setcounter{dbltopnumber}{4}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.80}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\dblfloatpagefraction}{0.80}
+
+% ---------------------------------------------------------------------
+% References and citations
+% ---------------------------------------------------------------------
+%  Author-year citations against references.bib, and an alphabetical reference
+%  list. biblatex rather than a natbib .bst because the name style wanted here --
+%  "Bloom JD", family name first with run-together initials and no comma -- is not
+%  something the natbib styles can produce. `natbib=true` keeps \citep working.
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  natbib=true,
+  giveninits=true,
+  terseinits=true,      % "JD", not "J. D."
+  uniquename=false,
+  uniquelist=false,
+  maxbibnames=99,       % reference list gives every author
+  maxcitenames=2,       % in text, "et al." from three authors on
+  mincitenames=1,
+  isbn=false,
+  doi=true,
+  url=true,
+  eprint=false,
+  dashed=false,       % a repeated author is written out, not dashed
+  sorting=nyt,
+]{biblatex}
+
+% Names read "Bloom JD": family name first, initials run together, no comma.
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{default}{family-given}
+\renewcommand*{\revsdnamepunct}{}
+\renewcommand*{\bibinitdelim}{}
+
+% In-text citations read "(Smith et al. 2004)", the form the manuscript has always
+% used, so that moving it to LaTeX changed no text.
+\renewcommand*{\nameyeardelim}{\addspace}
+
+% Suppress what this style would otherwise add and the manuscript never carried:
+% "In:" before the journal, an article's editors, the month beside the year, and
+% the ISSN.
+\renewbibmacro{in:}{}
+\AtEveryBibitem{\clearfield{issn}\clearfield{month}}
+\AtEveryBibitem{\ifentrytype{article}{\clearname{editor}}{}}
+
+% A bare URL with no "URL" label, and only where there is no DOI to give instead;
+% for these references the URL is otherwise just the DOI written out again.
+\DeclareFieldFormat{url}{\url{#1}}
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}
+
+% By default only the year of a citation is a hyperlink. This makes the whole of
+% it one link, so "(Smith et al. 2004)" is blue and clickable throughout. Only the
+% parenthetical form is redefined, since that is the only form the manuscript uses;
+% a \citet would need the matching textcite version.
+\DeclareFieldFormat{citehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}%
+  \bibhyperref{#1}}
+\savebibmacro{cite}
+\renewbibmacro*{cite}{%
+  \printtext[citehyperref]{\restorebibmacro{cite}\usebibmacro{cite}}}
+
+% The reference list is set smaller again than the back matter around it.
+\renewcommand*{\bibfont}{\fontsize{7.5}{9}\selectfont}
+
+\addbibresource{references.bib}
+
+% ---------------------------------------------------------------------
+% Links and cross-references  (load order matters: hyperref late, cleveref last)
+% ---------------------------------------------------------------------
+\usepackage{xurl}                                       % breakable URLs
+\usepackage{xcolor}
+\definecolor{linkblue}{RGB}{0,0,180}                    % legible-in-print navy blue
+%  External URLs (\href/\url), internal cross-refs (figure \Cref links), and
+%  and citations (which link to their reference-list entry) are all blue; hyperref has no
+%  per-target-type colour knob, so linkcolor covers every internal link.
+\usepackage[colorlinks=true,linkcolor=linkblue,urlcolor=linkblue,citecolor=linkblue]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+% ---------------------------------------------------------------------
+% Section headings: unnumbered, sans-serif
+% ---------------------------------------------------------------------
+\usepackage{titlesec}
+\setcounter{secnumdepth}{0}
+% Heading fonts are sized RELATIVE to the current body size (via \relheadfont), so
+% headings inside a reduced-size back-matter block ({\fontsize{8.5}{..}\selectfont})
+% scale down in the same proportion as the body text. In the 10pt main text this
+% reproduces the usual \large (12pt) sections and \normalsize (10pt) subsections.
+\makeatletter
+\newdimen\hf@dim
+\newcommand{\relheadfont}[1]{% #1 = multiple of the current font size
+  \hf@dim=\f@size\p@ \hf@dim=#1\hf@dim
+  \edef\hf@sz{\strip@pt\hf@dim}%
+  \setlength\hf@dim{1.2\hf@dim}%
+  \edef\hf@sk{\strip@pt\hf@dim}%
+  \fontsize{\hf@sz}{\hf@sk}\selectfont}
+\makeatother
+\titleformat{\section}
+  {\relheadfont{1.2}\sffamily\bfseries\raggedright}{}{0pt}{}
+\titleformat{\subsection}
+  {\relheadfont{1.0}\sffamily\bfseries\raggedright}{}{0pt}{}
+\titleformat{\subsubsection}
+  {\relheadfont{1.0}\sffamily\itshape\raggedright}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.25em plus 0.2em minus 0.1em}{0.55em}
+\titlespacing*{\subsection}{0pt}{1.0em plus 0.2em minus 0.1em}{0.35em}
+\titlespacing*{\subsubsection}{0pt}{0.8em plus 0.2em minus 0.1em}{0.25em}
+
+% ---------------------------------------------------------------------
+% Supplementary files
+% ---------------------------------------------------------------------
+%  These are numbered alongside the figures and tables but are sections of the
+%  back matter rather than floats, so they carry their own counter. Declaring it
+%  to cleveref lets \Cref{supp:...} name and number one exactly as it does a
+%  figure, so no supplementary file's number is ever written out by hand.
+%  The heading is starred so that it does not also step the subsection counter,
+%  which would capture the \label meant for this one.
+\newcounter{suppfile}
+\newcommand{\supplementaryfile}[2]{%
+  \refstepcounter{suppfile}%
+  \subsection*{Supplementary File \thesuppfile. #1}%
+  \label{#2}%
+}
+\crefname{suppfile}{Supplementary File}{Supplementary Files}
+\Crefname{suppfile}{Supplementary File}{Supplementary Files}
+
+% ---------------------------------------------------------------------
+% Convenience cross-reference macros
+% ---------------------------------------------------------------------
+\newcommand{\figref}[1]{\Cref{#1}}
+\newcommand{\secref}[1]{\Cref{#1}}
+\newcommand{\tabref}[1]{\Cref{#1}}
+\newcommand{\suppfigref}[1]{\Cref{#1}}
+
+% ---------------------------------------------------------------------
+% Metadata / title block
+% ---------------------------------------------------------------------
+%  Title, authors, affiliations, abstract, and the running-head short forms
+%  are defined in frontmatter.tex. In the turnkey workflow that file is
+%  AUTO-GENERATED from the .docx by build_body.py (so editing the manuscript
+%  and re-running ./build.sh regenerates them); a placeholder ships with the
+%  toolkit so this template also compiles on its own. To override the
+%  running-head short title, \renewcommand\papershorttitle AFTER this \input.
+\input{frontmatter}
+
+% ---------------------------------------------------------------------
+% Running head
+% ---------------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\sffamily\small\thepage}
+\fancyhead[LO]{\sffamily\small\papershorttitle}
+\fancyhead[RE]{\sffamily\small\papershortauthors}
+\renewcommand{\headrulewidth}{0.25pt}
+
+\begin{document}
+
+% ---------------------------------------------------------------------
+% Full-width title / authors / abstract / keywords block
+% ---------------------------------------------------------------------
+\twocolumn[%
+  \begin{@twocolumnfalse}
+  % Title, authors and affiliations are set flush left and ragged right, as the
+  % life-science journals do. Centering strands fragments of the longer affiliations
+  % on lines of their own, and justifying would open ugly word spaces in a 20pt title.
+  {\raggedright
+    {\fontsize{20}{23}\selectfont\sffamily\bfseries\papertitle\par}  % ~15% larger than \LARGE (17.28pt)
+    \vspace{0.75em}
+    {\normalsize\paperauthors\par}
+    \vspace{0.45em}
+    {\fontsize{8}{9.6}\selectfont\paperaffiliations\par}
+    \par}
+  \vspace{0.8em}
+  % Abstract: a narrower (3/4 text width) centered block, heading sized like a
+  % main-text \section (\large sans bold), body slightly larger (10.5pt) than the
+  % 10pt main text to set it apart. Text comes from frontmatter.tex
+  % (\paperabstract), kept as ordinary prose so extraction/fidelity stay simple.
+  \begin{center}
+  \begin{minipage}{0.75\textwidth}
+    {\large\sffamily\bfseries Abstract}\par
+    \vspace{0.25em}
+    {\fontsize{10.5}{13}\selectfont\noindent\paperabstract\par}
+  \end{minipage}
+  \end{center}
+  \vspace{1.4em}
+  \end{@twocolumnfalse}
+]
+
+% ---------------------------------------------------------------------
+% The manuscript prose, including the figure and table floats.
+% ---------------------------------------------------------------------
+\input{body}
+
+% ---------------------------------------------------------------------
+% References
+% ---------------------------------------------------------------------
+\printbibliography
+
+\end{document}

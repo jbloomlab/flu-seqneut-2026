@@ -1,8 +1,9 @@
 """Format the pipeline's summary of the human sera as a table for the manuscript.
 
-The table is written as HTML so it can be pasted straight into the manuscript with its
-formatting intact. Only what the pipeline already summarized is shown, restyled for
-print: months rather than `YYYY-MM` dates, and a range given only where there is one.
+It is written twice from the same cells: as LaTeX, which the manuscript inputs, and as
+HTML, which can be pasted somewhere that wants the formatting inline. Only what the
+pipeline already summarized is shown, restyled for print: months rather than `YYYY-MM`
+dates, and a range given only where there is one.
 """
 
 import csv
@@ -71,6 +72,13 @@ def range_cell(median, span):
     return f"{median} ({low}{EN_DASH}{high})"
 
 
+def latex(text):
+    """A cell escaped for LaTeX; the cohort names carry underscores."""
+    for char in "&%$#_{}":
+        text = text.replace(char, "\\" + char)
+    return text
+
+
 def percent_cell(percent):
     """A percentage, written with its sign."""
     return f"{percent}%" if percent else ""
@@ -92,7 +100,13 @@ HEADERS = [
 ]
 NUMERIC = {2, 3, 7}  # columns right-aligned
 
-body = []
+# Widths for the LaTeX table, which is set across both columns of the page. Only the
+# description flexes; the rest are fixed so that their long headers wrap instead of
+# pushing the table wider than the page.
+RAGGED_LEFT = r">{\raggedleft\arraybackslash}p{%s}"
+COLUMN_WIDTHS = ["l", "X", "0.45in", "0.30in", "0.62in", "0.62in", "0.66in", "0.58in"]
+
+table = []  # (is_total, cells), rendered below as both LaTeX and HTML
 for row in rows:
     # The summary row carries no cohort name; it is set off as a total instead.
     total = not row["cohort"]
@@ -112,6 +126,10 @@ for row in rows:
         # having been vaccinated.
         "" if total else percent_cell(row["percent_vaccinated_in_prior_year"]),
     ]
+    table.append((total, cells))
+
+body = []
+for total, cells in table:
     style = "total" if total else "row"
     tds = []
     for i, cell in enumerate(cells):
@@ -157,4 +175,23 @@ with open(snakemake.output.table_html, "w", encoding="utf-8") as f:
 </html>
 """)
 
-print(f"wrote {len(rows)} rows to {snakemake.output.table_html}")
+spec = "".join(w if w in ("l", "X") else RAGGED_LEFT % w for w in COLUMN_WIDTHS)
+lines = [
+    r"\footnotesize",
+    r"\begin{tabularx}{\textwidth}{@{}" + spec + r"@{}}",
+    r"\toprule",
+    " & ".join(rf"\textbf{{{latex(h)}}}" for h in HEADERS) + r" \\",
+    r"\midrule",
+]
+for total, cells in table:
+    escaped = [latex(cell) for cell in cells]
+    if total:
+        lines.append(r"\midrule")
+        escaped = [rf"\textbf{{{cell}}}" if cell else cell for cell in escaped]
+    lines.append(" & ".join(escaped) + r" \\")
+lines += [r"\bottomrule", r"\end{tabularx}"]
+
+with open(snakemake.output.table_tex, "w", encoding="utf-8") as f:
+    f.write("\n".join(lines) + "\n")
+
+print(f"wrote {len(rows)} rows to {snakemake.output.table_html} and .tex")

@@ -49,3 +49,21 @@ their underlying data: that duplicates their plotting code and lets the figure d
 from the analysis it is supposed to show. Where a figure needs something the analysis
 did not draw, change what a figure keeps, restyles, or overlays; do not rebuild the
 thing itself.
+
+## The manuscript is hand-edited LaTeX
+
+`manuscript/` is source, not output: `body.tex` holds the prose and the figure and table
+floats, `frontmatter.tex` the title block, `preprint.tex` the preamble. Edit them
+directly. `data/manuscript_docx/` records the one-time conversion from the Word version
+of the Google doc the manuscript used to live in; it is history, and re-running it would
+overwrite the current LaTeX with a stale document.
+
+Prose is the authors' to write. Change wording only when asked, and never as a side
+effect of fixing layout or making something compile.
+
+A figure's number comes only from `FIGURE_NUMBERS`, which also governs the `Figure_N`
+that `body.tex` includes and the `fig:N` it labels. Renumbering means editing that
+mapping and the references to it in `body.tex`, and nothing else.
+
+Citations are `\citep` keys into `references.bib`. Add a reference by adding its BibTeX
+entry, not by writing the citation into the prose.

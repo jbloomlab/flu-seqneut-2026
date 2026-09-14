@@ -136,7 +136,7 @@ summarize_sera:
   # the table's final row totals them; a serum in none of them, or in two, is an error.
   cohort_names:
     SCH: residual sera, Seattle Children's Hospital, USA
-    UWMC: residual sera, University of Washington Medical Center, USA
+    UWMC: HBsAb+ residual sera, University of Washington Medical Center, USA
     CTS: blood donors, Creative Testing Solutions, USA
     VIDRL_adult-cell_pre: VIDRL, Australia, adults, Flucelvax (cell-based), pre-vaccination
     VIDRL_adult-cell_post: VIDRL, Australia, adults, Flucelvax (cell-based), post-vaccination

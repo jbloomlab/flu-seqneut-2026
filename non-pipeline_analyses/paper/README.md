@@ -1,7 +1,16 @@
 # Text, figures, and tables for the paper about this study
 
 ## Manuscript
-The current manuscript is [in this Google doc](https://docs.google.com/document/d/114EQK8n18Iq5AU1QisaOMNsDnG3JNO41A1PvDwvefDE/edit?tab=t.0).
+The manuscript source is the LaTeX in [manuscript/](manuscript), which is where edits go.
+[Snakefile](Snakefile) typesets it to `results/manuscript/preprint.pdf`, pulling in the
+figures and table below. Its formatting follows the lab template at
+[jbloomlab/manuscript_formatting](https://github.com/jbloomlab/manuscript_formatting);
+`preprint.tex` holds the preamble and title block, `body.tex` the prose and the figure
+and table floats, and `references.bib` the bibliography.
+
+It was converted once from the Word version of the Google doc it used to live in; see
+[data/manuscript_docx/](data/manuscript_docx), which keeps that document and the
+conversion as a record and is not part of the workflow.
 
 ## Figures
 Paper figures are in [./figures/](figures), and are built by [Snakefile](Snakefile) from
@@ -26,15 +35,19 @@ the figure's own SVG is tracked, so reading the paper's figures does not.
 
 ## Tables
 Paper tables are in [./tables/](tables), and are built by [Snakefile](Snakefile) from the
-summaries the main pipeline already writes. They are HTML so they can be pasted into the
-manuscript with their formatting intact, and are numbered exactly as the figures are:
-each is written under its descriptive name and as a `Table_N.html` copy, from a mapping
-at the top of [Snakefile](Snakefile).
+summaries the main pipeline already writes. Each is written as LaTeX, which the manuscript inputs, and as HTML, which can be pasted
+somewhere that wants the formatting inline. They are numbered exactly as the figures are:
+each is written under its descriptive name and as a `Table_N` copy, from a mapping at the
+top of [Snakefile](Snakefile).
 
 ## Building
 Building the figures and tables needs the `seqneut-pipeline` conda environment used by
 the main pipeline (see the top-level [README.md](../../README.md)). The structure figures
 additionally need a `chromium-browser` on `PATH` and network access, since the pages
-they render load Mol\* from a CDN. Run from this directory:
+they render load Mol\* from a CDN. Converting the figures for the manuscript needs
+`qpdf`, which makes them byte-reproducible. Typesetting the manuscript needs a TeX
+distribution with XeLaTeX; that is a system-level dependency rather than a conda one, and
+the rule declares the cluster's `texlive` module, so the build needs `--use-envmodules` to
+load it. Run from this directory:
 
-    snakemake -j 1
+    snakemake -j 1 --use-envmodules

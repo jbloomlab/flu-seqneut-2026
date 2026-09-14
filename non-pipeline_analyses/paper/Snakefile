@@ -14,6 +14,14 @@ STRATIFIED_TITER_PLOTS = "../../results/stratified_titer_plots"
 PROT_STRUCT_VIZ = "../../results/prot-struct-viz"
 FINAL_TITER_DATA = "../../results/final_titer_data"
 
+MANUSCRIPT = "manuscript"
+FIGURE_PDFS = "results/figures"
+BUILD = "results/manuscript"
+
+# TeX is a system-level dependency rather than a conda one, as for the lab's
+# `manuscript_formatting`; `--use-envmodules` is what loads it. See README.md.
+TEXLIVE = "texlive/20210324-GCC-11.2.0"
+
 # each figure's descriptive name mapped to its number in the manuscript; every figure is
 # built under both names, so renumbering a figure only means editing this mapping
 FIGURE_NUMBERS = {
@@ -45,8 +53,9 @@ rule all:
     input:
         expand("figures/{name}.svg", name=FIGURE_NUMBERS),
         expand("figures/{number}.svg", number=FIGURE_NAMES),
-        expand("tables/{name}.html", name=TABLE_NUMBERS),
-        expand("tables/{number}.html", number=TABLE_NAMES),
+        expand("tables/{name}.{ext}", name=TABLE_NUMBERS, ext=["html", "tex"]),
+        expand("tables/{number}.{ext}", number=TABLE_NAMES, ext=["html", "tex"]),
+        f"{BUILD}/preprint.pdf",
 
 
 rule numbered_figure:
@@ -66,13 +75,14 @@ rule numbered_figure:
 rule numbered_table:
     """Copy a table to a file named for its number in the manuscript."""
     input:
-        lambda wc: f"tables/{TABLE_NAMES[wc.number]}.html",
+        lambda wc: f"tables/{TABLE_NAMES[wc.number]}.{wc.ext}",
     output:
-        numbered_html="tables/{number}.html",
+        numbered_table="tables/{number}.{ext}",
     log:
-        "logs/{number}.txt",
+        "logs/{number}_{ext}.txt",
     wildcard_constraints:
         number="|".join(TABLE_NAMES),
+        ext="html|tex",
     shell:
         "cp {input} {output} &> {log}"
 
@@ -83,6 +93,7 @@ rule sera_metadata:
         summary_csv=f"{FINAL_TITER_DATA}/human_sera_summary.csv",
     output:
         table_html="tables/sera_metadata.html",
+        table_tex="tables/sera_metadata.tex",
     log:
         "logs/sera_metadata.txt",
     script:
@@ -189,3 +200,40 @@ rule labeled_structure:
         figure="|".join(STRUCTURE_PAGES),
     script:
         "scripts/labeled_structure.py"
+
+
+rule figure_pdf:
+    """Convert a numbered figure to the PDF that the manuscript includes."""
+    input:
+        figure_svg="figures/{number}.svg",
+    output:
+        figure_pdf=f"{FIGURE_PDFS}/{{number}}.pdf",
+    log:
+        "logs/{number}_pdf.txt",
+    wildcard_constraints:
+        number="|".join(FIGURE_NAMES),
+    script:
+        "scripts/svg_to_pdf.py"
+
+
+rule manuscript_pdf:
+    """Typeset the manuscript, with the figures and table the workflow builds."""
+    input:
+        tex=expand(
+            f"{MANUSCRIPT}/{{part}}",
+            part=["preprint.tex", "frontmatter.tex", "body.tex", "references.bib"],
+        ),
+        figures=expand(f"{FIGURE_PDFS}/{{number}}.pdf", number=FIGURE_NAMES),
+        tables=expand("tables/{number}.tex", number=TABLE_NAMES),
+    output:
+        pdf=f"{BUILD}/preprint.pdf",
+    log:
+        "logs/manuscript_pdf.txt",
+    envmodules:
+        TEXLIVE,
+    shell:
+        # `SOURCE_DATE_EPOCH` keeps the build time out of the PDF, so that rebuilding an
+        # unchanged manuscript does not show up as a diff.
+        "SOURCE_DATE_EPOCH=0 FORCE_SOURCE_DATE=1 "
+        "latexmk -xelatex -interaction=nonstopmode -halt-on-error "
+        f"-outdir=../{BUILD} -cd {MANUSCRIPT}/preprint.tex &> {{log}}"

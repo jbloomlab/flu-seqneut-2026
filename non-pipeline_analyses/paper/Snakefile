@@ -15,8 +15,6 @@ PROT_STRUCT_VIZ = "../../results/prot-struct-viz"
 FINAL_TITER_DATA = "../../results/final_titer_data"
 
 MANUSCRIPT = "manuscript"
-FIGURE_PDFS = "results/figures"
-BUILD = "results/manuscript"
 
 # TeX is a system-level dependency rather than a conda one, as for the lab's
 # `manuscript_formatting`; `--use-envmodules` is what loads it. See README.md.
@@ -63,7 +61,7 @@ rule all:
     input:
         expand("figures/{figure}.svg", figure=FIGURES),
         expand("tables/{table}.{ext}", table=TABLES, ext=["html", "tex"]),
-        f"{BUILD}/preprint.pdf",
+        f"{MANUSCRIPT}/preprint.pdf",
 
 
 rule sera_metadata:
@@ -161,11 +159,14 @@ rule figure_pdf:
     Built under the figure's descriptive name, because that is what the manuscript
     includes and labels: a figure's number there comes from the order its float
     appears, so no number is written into the manuscript by hand.
+
+    Written beside the SVG it is converted from, and tracked, so that the manuscript
+    can be typeset from a clone without rebuilding the figures.
     """
     input:
         figure_svg="figures/{figure}.svg",
     output:
-        figure_pdf=f"{FIGURE_PDFS}/{{figure}}.pdf",
+        figure_pdf="figures/{figure}.pdf",
     log:
         "logs/{figure}_pdf.txt",
     wildcard_constraints:
@@ -181,10 +182,10 @@ rule manuscript_pdf:
             f"{MANUSCRIPT}/{{part}}",
             part=["preprint.tex", "frontmatter.tex", "body.tex", "references.bib"],
         ),
-        figures=expand(f"{FIGURE_PDFS}/{{figure}}.pdf", figure=FIGURES),
+        figures=expand("figures/{figure}.pdf", figure=FIGURES),
         tables=expand("tables/{table}.tex", table=TABLES),
     output:
-        pdf=f"{BUILD}/preprint.pdf",
+        pdf=f"{MANUSCRIPT}/preprint.pdf",
     log:
         "logs/manuscript_pdf.txt",
     envmodules:
@@ -192,6 +193,12 @@ rule manuscript_pdf:
     shell:
         # `SOURCE_DATE_EPOCH` keeps the build time out of the PDF, so that rebuilding an
         # unchanged manuscript does not show up as a diff.
+        #
+        # latexmk builds in place rather than into a separate directory, so that this is
+        # the same build as typesetting `manuscript/preprint.tex` by hand in an editor.
+        # The aux files it leaves there are gitignored and deliberately kept: latexmk
+        # reads them to work out how many passes a rerun needs, which is one rather than
+        # five after an edit to the prose.
         "SOURCE_DATE_EPOCH=0 FORCE_SOURCE_DATE=1 "
         "latexmk -xelatex -interaction=nonstopmode -halt-on-error "
-        f"-outdir=../{BUILD} -cd {MANUSCRIPT}/preprint.tex &> {{log}}"
+        f"-cd {MANUSCRIPT}/preprint.tex &> {{log}}"

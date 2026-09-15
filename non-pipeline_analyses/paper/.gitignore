@@ -5,3 +5,18 @@ _*
 
 logs/
 results/
+
+# LaTeX build products. They land beside the manuscript source rather than in a build
+# directory, so that the Snakefile's build and typesetting `manuscript/preprint.tex` by
+# hand in an editor are the same build. `*.out` is already covered above.
+manuscript/*.aux
+manuscript/*.bbl
+manuscript/*.bcf
+manuscript/*.blg
+manuscript/*.fdb_latexmk
+manuscript/*.fls
+manuscript/*.log
+manuscript/*.pdf
+manuscript/*.run.xml
+manuscript/*.synctex.gz
+manuscript/*.xdv

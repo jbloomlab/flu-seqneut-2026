@@ -2,7 +2,7 @@
 
 ## Manuscript
 The manuscript source is the LaTeX in [manuscript/](manuscript), which is where edits go.
-[Snakefile](Snakefile) typesets it to `results/manuscript/preprint.pdf`, pulling in the
+[Snakefile](Snakefile) typesets it to `manuscript/preprint.pdf`, pulling in the
 figures and table below. Its formatting follows the lab template at
 [jbloomlab/manuscript_formatting](https://github.com/jbloomlab/manuscript_formatting);
 `preprint.tex` holds the preamble and title block, `body.tex` the prose and the figure
@@ -14,7 +14,8 @@ conversion as a record and is not part of the workflow.
 
 ## Figures
 Paper figures are in [./figures/](figures), and are built by [Snakefile](Snakefile) from
-the plots the main pipeline and the other analyses in [../](..) already produce. Each
+the plots the main pipeline and the other analyses in [../](..) already produce. Each is
+kept both as the composed SVG and as the PDF the manuscript includes. Each
 figure has its own rule and its own script in [scripts/](scripts), named for what the
 figure shows; see [CLAUDE.md](CLAUDE.md) for the conventions those follow.
 
@@ -50,3 +51,9 @@ the rule declares the cluster's `texlive` module, so the build needs `--use-envm
 load it. Run from this directory:
 
     snakemake -j 1 --use-envmodules
+
+The manuscript can also be typeset by hand without Snakemake, since the figures it
+includes are tracked: open [manuscript/preprint.tex](manuscript/preprint.tex), whose magic
+comment selects XeLaTeX through `latexmk`, and the PDF appears beside it. In TeXShop that
+needs the Latexmk engines activated, which ship inactive; the built-in engines are not
+enough, because `biblatex` needs `biber` rather than `bibtex`.

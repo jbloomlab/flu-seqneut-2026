@@ -41,6 +41,17 @@ Never write a date, timestamp, hostname, version string, or any other build meta
 into a generated figure. Unchanged panels must produce a byte-identical figure file
 whenever it is rebuilt, so a rerun does not show up as a diff.
 
+## Generated figures and the typeset PDF live outside `results/`
+
+A figure's composed SVG, the PDF converted from it, and the table LaTeX are tracked in
+`figures/` and `tables/`, and `latexmk` typesets in place to `manuscript/preprint.pdf`
+with its aux files beside it. This is a deliberate exception to the standards' rule that
+code writes only to `results/`: it is what lets the manuscript be typeset by hand in an
+editor from a clone, with no build directory and nothing to rebuild first. Keep the aux
+files out of the rule's `output:` -- `latexmk` reads them to decide how many passes a
+rerun needs -- and keep the typeset PDF gitignored, since it is a large regenerable
+binary. Only the structure renders' intermediates stay in `results/`.
+
 ## Compose panels, do not re-plot them
 
 A figure reads what the other analyses already produce -- an SVG, a chart's embedded

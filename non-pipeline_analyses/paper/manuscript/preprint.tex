@@ -1,3 +1,5 @@
+% !TEX TS-program = xelatexmk
+% !TEX encoding = UTF-8 Unicode
 % =====================================================================
 %  preprint.tex  —  compact two-column scientific preprint template
 % =====================================================================
@@ -10,6 +12,9 @@
 %
 %  ENGINE:  XeLaTeX  (NOT pdfLaTeX)
 %  Build:   latexmk -xelatex -interaction=nonstopmode -halt-on-error preprint.tex
+%           in this directory, which is also what the Snakefile runs. The PDF and the
+%           aux files land here beside the source; the magic comment above selects the
+%           same build in TeXShop.
 %
 %  Why XeLaTeX/LuaLaTeX and not pdfLaTeX:
 %    A Word manuscript is full of real Unicode — α β µ, ± × −, °C, en/em
@@ -52,9 +57,8 @@
 %  TeX Gyre Heros    = a Helvetica clone (the look helvet gave you).
 %  Both ship with any modern TeX Live, so no extra install is needed.
 \usepackage{fontspec}
-% Loading this and its math font costs roughly 60 of the ~150 seconds this preamble
-% takes on the cluster's network filesystem, which is most of a build. That is the price
-% of having math set properly; drop both if a faster build is ever worth more.
+% Loading this and its math font costs about 1.5 seconds of a roughly 18 second
+% from-scratch build. That is a cheap price for having math set properly.
 \usepackage{unicode-math}     % supplies \mathbb etc.; do NOT also load amssymb
 %  Loaded by FILE name (not human name) so fontspec finds them via kpathsea in
 %  the TeX tree even when the .otf files aren't registered with the OS font
@@ -106,8 +110,9 @@
 % Figures and captions
 % ---------------------------------------------------------------------
 \usepackage{graphicx}
-% Figures are built by the Snakefile from the tracked SVGs in figures/.
-\graphicspath{{../results/figures/}}
+% The Snakefile converts each tracked figure SVG to a PDF beside it, and LaTeX reads
+% the PDF; graphicx ignores the SVG, which is not an extension it knows.
+\graphicspath{{../figures/}}
 \usepackage{subcaption}
 \usepackage{float}            % provides the [H] "here, no float" override
 \usepackage{placeins}         % provides \FloatBarrier

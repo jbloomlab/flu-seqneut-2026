@@ -1,0 +1,55 @@
+LOCUS       example_vRNA_eGFP       1021 bp    ss-RNA  linear   SYN 15-SEP-2026
+DEFINITION  Example influenza vRNA segment carrying eGFP in place of the HA
+            ectodomain, presented in mRNA sense. Runs from the 3' NCR (U12)
+            through the 5' NCR (U13), inclusive.
+ACCESSION   .
+VERSION     .
+KEYWORDS    .
+SOURCE      synthetic DNA construct
+  ORGANISM  synthetic DNA construct
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    1..12
+                     /label="U12"
+     misc_feature    1..32
+                     /label="3' NCR"
+     misc_feature    33..89
+                     /label="WSN first 19 aa"
+     misc_feature    91..96
+                     /label="BsmBI seq"
+     misc_feature    99..818
+                     /label="eGFP"
+     misc_feature    825..830
+                     /label="XbaI"
+     misc_feature    complement(830..862)
+                     /label="Illumina Read1"
+     misc_feature    863..870
+                     /label="NotI"
+     misc_feature    872..976
+                     /label="WSN packaging signal"
+     misc_feature    906
+                     /label="stop codon mut"
+     misc_feature    977..1021
+                     /label="5' NCR"
+     misc_feature    1009..1021
+                     /label="U13"
+ORIGIN
+        1 agcaaaagca ggggaaaata aaaacaacca aaatgaaggc aaaactactg gtcctgttat
+       61 atgcatttgt agctacagat gcagacacag gagacgctat ggtgagcaag ggcgaggagc
+      121 tgttcaccgg ggtggtgccc atcctggtcg agctggacgg cgacgtaaac ggccacaagt
+      181 tcagcgtgtc cggcgagggc gagggcgatg ccacctacgg caagctgacc ctgaagttca
+      241 tctgcaccac cggcaagctg cccgtgccct ggcccaccct cgtgaccacc ctgacctacg
+      301 gcgtgcagtg cttcagccgc taccccgacc acatgaagca gcacgacttc ttcaagtccg
+      361 ccatgcccga aggctacgtc caggagcgca ccatcttctt caaggacgac ggcaactaca
+      421 agacccgcgc cgaggtgaag ttcgagggcg acaccctggt gaaccgcatc gagctgaagg
+      481 gcatcgactt caaggaggac ggcaacatcc tggggcacaa gctggagtac aactacaaca
+      541 gccacaacgt ctatatcatg gccgacaagc agaagaacgg catcaaggtg aacttcaaga
+      601 tccgccacaa catcgaggac ggcagcgtgc agctcgccga ccactaccag cagaacaccc
+      661 ccatcggcga cggccccgtg ctgctgcccg acaaccacta cctgagcacc cagtccgccc
+      721 tgagcaaaga ccccaacgag aagcgcgatc acatggtcct gctggagttc gtgaccgccg
+      781 ccgggatcac tctcggcatg gacgagctgt acaagtaacg tctctctaga gatcggaaga
+      841 gcgtcgtgta gggaaagagt gtgcggccgc tatctactca actgtcgcca gttcactggt
+      901 gctttaggtc tccctggggg caatcagttt ctggatgtgt tctaatgggt ctttgcagtg
+      961 cagaatatgc atctgagatt aggatttcag aaatataagg aaaaacaccc ttgtttctac
+     1021 t
+//

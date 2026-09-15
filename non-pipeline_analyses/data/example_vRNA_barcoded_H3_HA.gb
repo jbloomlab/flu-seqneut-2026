@@ -1,0 +1,75 @@
+LOCUS       example_vRNA_bc_H3      1953 bp    ss-RNA  linear   SYN 15-SEP-2026
+DEFINITION  Example barcoded influenza vRNA segment carrying the H3 HA from
+            A/Darwin/1454/2025 with the barcode of TTCCCAGTACTTCTAG, presented
+            in mRNA sense. Runs from the 3' NCR (U12) through the 5' NCR (U13),
+            inclusive. Carries a WSN signal peptide, a consensus H3 endodomain,
+            a recoded WSN C-terminal domain, a 16-nucleotide barcode, an
+            Illumina Read1 sequence, and a duplicated WSN packaging signal.
+ACCESSION   .
+VERSION     .
+KEYWORDS    .
+SOURCE      synthetic DNA construct
+  ORGANISM  synthetic DNA construct
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    1..12
+                     /label="U12"
+     misc_feature    1..32
+                     /label="3' NCR"
+     misc_feature    33..89
+                     /label="WSN first 19 aa"
+     misc_feature    90..1592
+                     /label="HA ectodomain from A/Darwin/1454/2025"
+     misc_feature    1593..1712
+                     /label="consensus H3 endodomain"
+     misc_feature    1713..1745
+                     /label="WSN recoded CT"
+     misc_feature    1746..1761
+                     /label="barcode"
+     misc_feature    1762..1794
+                     /label="Illumina Read1"
+     misc_feature    1795..1802
+                     /label="NotI"
+     misc_feature    1804..1908
+                     /label="WSN packaging signal"
+     misc_feature    1838
+                     /label="stop codon mut"
+     misc_feature    1909..1953
+                     /label="5' NCR"
+     misc_feature    1941..1953
+                     /label="U13"
+ORIGIN
+        1 agcaaaagca ggggaaaata aaaacaacca aaatgaaggc aaaactactg gtcctgttat
+       61 atgcatttgt agctacagat gcagacacac aaaacatacc tggaaatgac aatagcacgg
+      121 caacgctgtg ccttgggcac catgcagtac caaacggaac gatagtgaaa acaatcacaa
+      181 atgaccgaat tgaagttact aatgctactg agttggttca gaattcatca ataggtaaaa
+      241 tatgcaacag tcctcatcag atccttgatg gagggaactg cacactaata gatgctctat
+      301 tgggggaccc tcagtgtgac ggctttcaga ataaggaatg ggaccttttt gttgaacgaa
+      361 gcagagccaa cagcagctgt tacccttatg atgtgccgga ttatgcctcc cttaggtcac
+      421 tagttgcctc atccggaaca ctggagttta aagatgaaag cttcaattgg accggagtca
+      481 aacaaaacgg gaaaagttct gcgtgcaaaa ggggatctaa tagtagtttt tttagtagat
+      541 taaattggtt gaccagctta gacaacaaat atccagcaca gaacgtgact atgccaaaca
+      601 aggaacgatt tgacaaattg tacatttggg gggttcatca tccggacacg gacaggaacc
+      661 aattctccct gtacgctcaa tcatcaggaa gaatcacagt atctaccaaa agaagccaac
+      721 aagctgtaat cccaaatatc ggatctagac ccagagtaag ggatatccct agcagaataa
+      781 gcatctattg gacaatagta aaaccgggag acatactttt gattaacagc acagggaatc
+      841 taattgctcc taggggttac ttcaaaatac gaagtggaaa aagctcaata atgagatcag
+      901 acgcacccat tggcgaatgt aagtcagaat gcatcactcc aaatggaagc attcccaatg
+      961 acaaaccgtt ccaaaatgta aacaggatca catacggggc ctgtcccaga tacgttaagc
+     1021 aaagcaccct gaaattggca acaggaatgc gaaatgtacc tgaaaaacaa gccagaggca
+     1081 tatttggtgc aatagcgggc ttcatagaaa atggatggga gggaatggtg gatggttggt
+     1141 acggtttcag gcatcaaaat tctgagggaa gaggacaagc agcagatctc aaaagcactc
+     1201 aagcagcaat cgatcaaatc aatgggaagc tgaatcgatt gattggaaaa accaatgaga
+     1261 aattccatca gattgaaaaa gaattctcag aagtagaagg aagagttcaa gaccttgaga
+     1321 aatatgttga ggacactaaa atagatctct ggtcatacaa cgcggagctt cttgttgccc
+     1381 tggagaacca acatacgatt gacctaactg actcagaaat gaacaagctg tttgaaaaaa
+     1441 caaaaaaaca actgagggaa aatgctgagg atatgggaaa tggttgtttc aaaatatacc
+     1501 acaaatgtga caatgcctgc ataggatcaa taagaaatga aacttatgac cacaatgtgt
+     1561 acagggatga agcattaaac aaccggttcc aaatcaaggg agttgagctg aagtcaggat
+     1621 acaaagattg gatcctatgg atttcctttg ccatgtcttg cttcctactg tgcgtagcac
+     1681 tactaggctt tattatgtgg gcgtgtcaga aaggctccct acaatgtcgg atttgtattt
+     1741 aatagttccc agtacttcta gagatcggaa gagcgtcgtg tagggaaaga gtgtgcggcc
+     1801 gctatctact caactgtcgc cagttcactg gtgctttagg tctccctggg ggcaatcagt
+     1861 ttctggatgt gttctaatgg gtctttgcag tgcagaatat gcatctgaga ttaggatttc
+     1921 agaaatataa ggaaaaacac ccttgtttct act
+//

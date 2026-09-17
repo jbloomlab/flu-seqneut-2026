@@ -3,6 +3,8 @@
 ## Overview
 This report summarizes the results of a study that uses sequencing-based neutralization assays to measure titers to influenza viruses with HAs from human seasonal H3N2 and H1N1 strains representative of those circulating in mid-2026 against human sera collected in early to mid 2026.
 
+See [Kikawa, Butler, et al (2026)](https://doi.org/10.64898/2026.09.15.751855) for the paper describing this study.
+
 For background about sequencing-based neutralization assays, see:
 
   - [Loes et al (2024), *Journal of Virology*](https://doi.org/10.1128/jvi.00689-24)

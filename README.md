@@ -2,7 +2,9 @@
 
 This study led by Caroline Kikawa, Andrew Butler, John Huddleston, and [Jesse Bloom](https://jbloomlab.org/) uses sequencing-based neutralization assays to measure titers to influenza viruses with HAs from human seasonal H3N2 and H1N1 viruses representative of those circulating in mid-2026 against human sera collected in early to mid 2026.
 
-**[Here is a summary of key results](https://jbloomlab.github.io/flu-seqneut-2026/summary.html)**.
+The paper describing this study is [Kikawa, Butler, et al (2026)](https://doi.org/10.64898/2026.09.15.751855).
+
+**[Here is an interactive summary of key results](https://jbloomlab.github.io/flu-seqneut-2026/summary.html)**.
 
 ## Quick links to key results
 To jump directly to the key results:

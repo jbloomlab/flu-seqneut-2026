@@ -211,6 +211,10 @@ METADATA_LOOKUP_FIELDS = ["serum_collection_date", "age", "age_numeric", "sex"]
 
 SUBJECT_TOOLTIP = alt.Tooltip("subject:N", title=pair_by)
 
+# a comparison's name and its subject count are drawn on separate lines of the facet
+# label, which is rotated and so bounded by the facet height rather than the chart width
+FACET_LABEL_SPLIT = " "
+
 # the serum's own annotations, tooltipped on its line
 SERUM_TOOLTIPS = [
     alt.Tooltip("serum_collection_date:N", title="serum date"),
@@ -515,7 +519,10 @@ for (subtype, strain_set), records in itertools.groupby(
                 n_subjects="distinct(subject)", groupby=["comparison"]
             )
             .transform_calculate(
-                comparison_n="datum.comparison + ' (n=' + datum.n_subjects + ')'"
+                comparison_n=(
+                    f"datum.comparison + '{FACET_LABEL_SPLIT}(n=' + datum.n_subjects "
+                    "+ ')'"
+                )
             )
         )
         title = f"{chart_type['title']} for {subtype} {strain_set} strains"
@@ -527,7 +534,9 @@ for (subtype, strain_set), records in itertools.groupby(
                 record["color_label"],
             )
             title += f", tree colored by {record['color_label']}"
-        chart = titer_charts.finalize(chart, title, subtitle)
+        chart = titer_charts.finalize(
+            chart, title, subtitle, facet_label_split=FACET_LABEL_SPLIT
+        )
 
         print(f"Saving to {record['path']!r}")
         chart.save(record["path"])

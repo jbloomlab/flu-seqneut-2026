@@ -81,7 +81,7 @@ nextstrain-prot-titers-tree_config:
       addtl_export_args:
         title: ?f"Near real-time data on human neutralizing antibody landscape to {subtype} influenza virus as of the summer of 2026"
         build-url: ?repo_url
-        maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom
+        maintainers: Caroline Kikawa, Andrew Butler, John Huddleston, Jesse Bloom <https://doi.org/10.64898/2026.09.15.751855>
 
 # Sera metadata files to aggregate
 sera_metadata:
@@ -442,7 +442,7 @@ description: |
   ?f"""
   # Near real-time data on the human neutralizing antibody landscape to influenza virus as of the summer of 2026 to inform vaccine-strain selection
 
-  Study led by Caroline Kikawa, Andrew Butler, John Huddleston, and Jesse Bloom.
+  See [Kikawa, Butler, et al (2026)](https://doi.org/10.64898/2026.09.15.751855) for the paper describing this study.
 
   See the [summary of key results](summary.html) for an overview of the results.
 

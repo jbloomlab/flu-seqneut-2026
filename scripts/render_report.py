@@ -156,9 +156,16 @@ def table_html(caption, target, tfoot):
         raise ValueError(f"`table:{target}` has too few rows: {len(rows)}")
 
     def cells(row, tag):
-        return (
-            "<tr>" + "".join(f"<{tag}>{html.escape(c)}</{tag}>" for c in row) + "</tr>"
-        )
+        # a column name is one unbroken run to a browser, which breaks at spaces and so
+        # would either overflow its header or, told to break anywhere, split a word; a
+        # `<wbr>` after each underscore offers the break the name itself implies. The
+        # markup goes in after the escape, which is what keeps it markup: escaping emits
+        # no underscore, so only those of the name itself are ever replaced.
+        def cell(c):
+            escaped = html.escape(c)
+            return escaped.replace("_", "_<wbr>") if tag == "th" else escaped
+
+        return "<tr>" + "".join(f"<{tag}>{cell(c)}</{tag}>" for c in row) + "</tr>"
 
     body = rows[1 : len(rows) - tfoot]
     parts = [

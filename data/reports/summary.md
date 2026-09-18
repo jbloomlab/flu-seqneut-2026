@@ -73,6 +73,7 @@ Note that you can also use the *Scatter* option to the left of the tree to strat
 
 ### Pre- and post-vaccination titers
 For the VIDRL cohort, we have pre- and post-vaccination titers for adults who received an egg-based (Fluzone) or cell-based (Flucelvax) vaccine, elderly individuals who received an egg-based (Fluad) vaccine, and children who received an egg-based (Fluzone) vaccine.
+For the adult cohort, all individuals in this dataset who received the cell-based (Flucelvax) vaccine were not vaccinated in the prior year, whereas individuals who received the egg-based (Fluzone) vaccine had mixed vaccination histories and are grouped according to prior-year vaccination status.
 The days after vaccination at which the post-vaccination sera were collected are in the [table above](#human-sera-tested).
 [The table](#human-sera-tested) also shows the fraction vaccinated in the prior year for each group; these fractions differ among groups so **comparisons of absolute vaccine responses among groups who received different vaccines are potentially confounded** since prior-year vaccination can influence current-year vaccine responses (see [Cowling et al (2024)](https://academic.oup.com/cid/article/79/4/901/7718587)).
 

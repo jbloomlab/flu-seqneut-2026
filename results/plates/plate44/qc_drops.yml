@@ -1,0 +1,10 @@
+wells:
+  C12: avg_barcode_counts_per_well
+barcodes: {}
+barcode_wells:
+  A/Ontario/PHL202550193/2025_H3N2 H1: max_frac_infectivity_per_viral_barcode_well
+  A/France/NAQ-HCL026046169102/2025_H1N1 F1: max_frac_infectivity_per_viral_barcode_well
+  A/Navarra/260009/2025_H3N2 F6: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates:
+  A/District_Of_Columbia/27/2023_H3N2 flu-seqneut-2026-VIDRL-049_pre-vax: goodness_of_fit
+serum_replicates: {}

@@ -292,15 +292,17 @@
 \input{frontmatter}
 
 % ---------------------------------------------------------------------
-% Running head
+% Running head (in the footer, so it doesn't collide with bioRxiv's
+% auto-stamped notice across the top of every page)
 % ---------------------------------------------------------------------
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\sffamily\small\thepage}
-\fancyhead[LO]{\sffamily\small\papershorttitle}
-\fancyhead[RE]{\sffamily\small\papershortauthors}
-\renewcommand{\headrulewidth}{0.25pt}
+\fancyfoot[LE,RO]{\sffamily\small\thepage}
+\fancyfoot[LO]{\sffamily\small\papershorttitle}
+\fancyfoot[RE]{\sffamily\small\papershortauthors}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.25pt}
 
 \begin{document}
 

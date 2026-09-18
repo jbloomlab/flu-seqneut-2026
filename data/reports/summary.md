@@ -72,7 +72,8 @@ The sidebar provides numerous options to change the coloring, including coloring
 Note that you can also use the *Scatter* option to the left of the tree to stratify titers against strains with specific mutations, such as [in this view showing the median titers against strains with different amino-acid identities at site 223](https://nextstrain.org/community/jbloomlab/flu-seqneut-2026@main/H3N2?c=gt-HA1_223&d=tree,measurements&l=scatter&m_display=mean&onlyPanels&scatterX=median_titer_All_sera&scatterY=gt&m_groupBy=serum).
 
 ### Pre- and post-vaccination titers
-For the VIDRL cohort, we have pre- and post-vaccination titers for adults who received an egg-based (Fluzone) or cell-based (Flucelvax) vaccine, elderly individuals who received an egg-based (Fluad) vaccine, and children who received an egg-based (Fluzone) vaccine.
+For the VIDRL cohort, we have pre- and post-vaccination titers for adults who received an egg-based (Fluzone) or cell-based (Flucelvax) vaccine, elderly individuals who received an egg-based (Fluad) vaccine, and children who received an egg-based (Fluzone) vaccine. 
+For the adult cohort, all individuals in this dataset who received the cell-based (Flucelvax) vaccine were not vaccinated in the prior year, whereas individuals who received the egg-based (Fluzone) vaccine had mixed vaccination histories and are grouped according to prior-year vaccination status.
 The days after vaccination at which the post-vaccination sera were collected are in the [table above](#human-sera-tested).
 [The table](#human-sera-tested) also shows the fraction vaccinated in the prior year for each group; these fractions differ among groups so **comparisons of absolute vaccine responses among groups who received different vaccines are potentially confounded** since prior-year vaccination can influence current-year vaccine responses (see [Cowling et al (2024)](https://academic.oup.com/cid/article/79/4/901/7718587)).
 

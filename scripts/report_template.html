@@ -43,8 +43,13 @@
   figure.embed { margin: 1.6em 0; max-width: none; }
   iframe.embed { display: block; width: 100%; height: 100vh; border: 1px solid #ddd;
                  border-radius: 4px; background: #fff; }
-  figure.table { margin: 1.6em 0; }
+  /* A wide table spans the whole column rather than being held to the prose measure,
+     as an embed is. A header naming a statistic of a long column name is often wider
+     than the values beneath it, so headers are capped and wrap at the `<wbr>` the
+     renderer puts after each underscore, which keeps each word of the name intact. */
+  figure.table { margin: 1.6em 0; max-width: none; }
   figure.table table { margin: 0; }
+  figure.table th { max-width: 9em; }
   table tfoot td { font-weight: bold; }
   figure.figure { margin: 1.6em 0; }
   figure.figure img { display: block; max-width: 100%; height: auto;

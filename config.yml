@@ -127,8 +127,15 @@ plot_pre_post_titers:
     title: titers before and after vaccination in the VIDRL cohorts
     pair_by: subject_id  # sera metadata column pairing a subject's two sera
     comparisons:
-      adult-Flucelvax: {pre: VIDRL_adult-cell_pre, post: VIDRL_adult-cell_post}
-      adult-Fluzone: {pre: VIDRL_adult-egg_pre, post: VIDRL_adult-egg_post}
+      adult-Flucelvax|no 2025 vax: {pre: VIDRL_adult-cell_pre, post: VIDRL_adult-cell_post}
+      adult-Fluzone|no 2025 vax:
+        pre: VIDRL_adult-egg_pre
+        post: VIDRL_adult-egg_post
+        subset_by: {column: flu_vax_in_2025, value: "No"}
+      adult-Fluzone|2025 vax:
+        pre: VIDRL_adult-egg_pre
+        post: VIDRL_adult-egg_post
+        subset_by: {column: flu_vax_in_2025, value: "Yes"}
       elderly-Fluad: {pre: VIDRL_elderly-egg_pre, post: VIDRL_elderly-egg_post}
       child-Fluzone: {pre: VIDRL_child-egg_pre, post: VIDRL_child-egg_post}
     colors: {pre: "#4d4d4d", post: "#1b5e8a"}  # dark gray and dark blue

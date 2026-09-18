@@ -3,7 +3,7 @@ Processing final titer data for group: human
 ======================================================================
 
 Loading input data...
-  Loaded 47851 titer measurements from results/aggregated_titers/titers_human.csv
+  Loaded 52268 titer measurements from results/aggregated_titers/titers_human.csv
   Loaded 678 sera from results/sera_metadata/all_sera_metadata.csv
   Loaded 301 barcodes from data/viral_libraries/flu-seqneut-2026-barcode-to-strain-actual.csv
 
@@ -14,7 +14,7 @@ Validating input data...
   All viruses found in viral library
 
 Processing titer data...
-  Initial: 47851 rows, 325 sera, 148 viruses
+  Initial: 52268 rows, 355 sera, 148 viruses
 
 Step 1: Dropping explicitly specified sera and viruses...
   No viruses specified in viruses_to_drop
@@ -24,13 +24,13 @@ Step 2: Applying min_frac_viruses=0.9, min_frac_sera=0.8 (action=drop)...
   min_frac filters converged after 1 iterations
 
 Processing complete:
-  Final: 47851 rows, 325 sera, 148 viruses
+  Final: 52268 rows, 355 sera, 148 viruses
   Dropped: 0 rows, 0 sera, 0 viruses
 
 Generating output files...
-  Written: results/final_titer_data/human_titers.csv (47851 rows)
-  Written: results/final_titer_data/human_sera.csv (325 rows)
-  Written: results/final_titer_data/human_sera_multicohort.csv (810 rows)
+  Written: results/final_titer_data/human_titers.csv (52268 rows)
+  Written: results/final_titer_data/human_sera.csv (355 rows)
+  Written: results/final_titer_data/human_sera_multicohort.csv (900 rows)
   Written: results/final_titer_data/human_viruses.csv (148 rows)
   Written: results/final_titer_data/human_titers_summarized_by_virus.csv (1924 rows)
 
@@ -38,20 +38,20 @@ Generating output files...
 FINAL SUMMARY
 ======================================================================
 Group: human
-Sera: 325
+Sera: 355
 Viruses: 148
-Total titers: 47851
+Total titers: 52268
 
 Cohorts in titers_summarized_by_virus.csv:
-  All: 325 sera, 47851 titers
+  All: 355 sera, 52268 titers
   CTS: 38 sera, 5608 titers
   SCH: 40 sera, 5892 titers
   UWMC: 87 sera, 12769 titers
-  VIDRL: 160 sera, 23582 titers
+  VIDRL: 190 sera, 27999 titers
   VIDRL_adult-cell_post: 20 sera, 2957 titers
   VIDRL_adult-cell_pre: 20 sera, 2918 titers
-  VIDRL_adult-egg_post: 20 sera, 2953 titers
-  VIDRL_adult-egg_pre: 20 sera, 2943 titers
+  VIDRL_adult-egg_post: 35 sera, 5172 titers
+  VIDRL_adult-egg_pre: 35 sera, 5141 titers
   VIDRL_child-egg_post: 20 sera, 2958 titers
   VIDRL_child-egg_pre: 20 sera, 2956 titers
   VIDRL_elderly-egg_post: 20 sera, 2956 titers

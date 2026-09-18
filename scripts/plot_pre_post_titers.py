@@ -156,6 +156,26 @@ for comparison, cohorts in comparisons.items():
 
         subjects[condition] = cohort_sera.set_index(pair_by)["serum"]
 
+    if subset_by is not None:
+        # a subject whose two sera disagree on the column subset on would have one serum
+        # selected into this comparison and the other into its counterpart, leaving each
+        # to drop it as unpaired; that is a gap in the sera metadata, and dropping it
+        # would be indistinguishable from a serum lost to the QC
+        arm_sera = sera_multicohort[
+            sera_multicohort["cohort"].isin([cohorts["pre"], cohorts["post"]])
+        ]
+        per_subject = arm_sera.groupby(pair_by)[subset_by["column"]].nunique()
+        inconsistent = per_subject[per_subject > 1]
+        if len(inconsistent):
+            disagreeing = arm_sera[arm_sera[pair_by].isin(inconsistent.index)]
+            raise ValueError(
+                f"comparison {comparison!r} subsets on {subset_by['column']!r}, but "
+                f"these subjects do not record the same value for both of their sera:\n"
+                + disagreeing.set_index(pair_by)[
+                    ["serum", "cohort", subset_by["column"]]
+                ].to_string()
+            )
+
     drawn = subjects["pre"].index.intersection(subjects["post"].index)
     if not len(drawn):
         raise ValueError(

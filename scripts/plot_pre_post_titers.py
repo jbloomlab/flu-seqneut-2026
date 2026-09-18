@@ -7,7 +7,9 @@ the compared vaccination arm, and the recent-strain charts are drawn alongside t
 subtype's tree as the summary charts are.
 
 Only subjects whose pre- and post-vaccination sera both passed QC are drawn, so the
-overlaid titers and the fold changes describe the same people.
+overlaid titers and the fold changes describe the same people. A comparison may restrict
+itself to subjects recording a given metadata value, which draws one vaccination arm as
+several facets.
 
 """
 
@@ -49,6 +51,11 @@ STRAIN_SETS = titer_charts.strain_sets(circulating_strain_type)
 # the second relative to the first
 CONDITIONS = ["pre", "post"]
 
+# the facet label is rotated and so bounded by the facet height rather than the chart
+# width, so a comparison's name may carry this character to say where it breaks onto a
+# second line; the subject count follows the name, on whichever line ends it
+FACET_LABEL_SPLIT = "|"
+
 titers, metadata, sera_multicohort, viruses = titer_charts.load_and_validate(
     snakemake.input.titers_csv,
     snakemake.input.sera_csv,
@@ -82,15 +89,33 @@ available_cohorts = set(sera_multicohort["cohort"])
 # the post-vaccination serum of its subject
 paired_sera = []
 for comparison, cohorts in comparisons.items():
-    if set(cohorts) != set(CONDITIONS):
+    if comparison.count(FACET_LABEL_SPLIT) > 1:
         raise ValueError(
-            f"comparison {comparison!r} must name exactly {CONDITIONS}, "
-            f"got {sorted(cohorts)}"
+            f"comparison {comparison!r} carries more than one {FACET_LABEL_SPLIT!r}, "
+            "which marks the one place its facet label breaks onto a second line"
+        )
+    subset_by = cohorts.get("subset_by")  # optional; absent draws the whole arm
+    if set(cohorts) - {"subset_by"} != set(CONDITIONS):
+        raise ValueError(
+            f"comparison {comparison!r} must name exactly {CONDITIONS}, and may name "
+            f"`subset_by`; got {sorted(cohorts)}"
         )
     if cohorts["pre"] == cohorts["post"]:
         raise ValueError(
             f"comparison {comparison!r} compares cohort {cohorts['pre']!r} with itself"
         )
+    if subset_by is not None:
+        if set(subset_by) != {"column", "value"}:
+            raise ValueError(
+                f"`subset_by` of comparison {comparison!r} must name exactly "
+                f"['column', 'value'], got {sorted(subset_by)}"
+            )
+        if subset_by["column"] not in sera_multicohort.columns:
+            raise ValueError(
+                f"`subset_by` of comparison {comparison!r} names column "
+                f"{subset_by['column']!r}, which is not in the sera metadata; columns "
+                f"are {sorted(sera_multicohort.columns)}"
+            )
 
     subjects = {}
     for condition in CONDITIONS:
@@ -101,6 +126,27 @@ for comparison, cohorts in comparisons.items():
                 f"the sera metadata; cohorts are {sorted(available_cohorts)}"
             )
         cohort_sera = sera_multicohort[sera_multicohort["cohort"] == cohort]
+
+        if subset_by is not None:
+            # a serum not recording the value subset on cannot be placed on either side
+            # of the split, so it is a gap in the metadata rather than a serum to drop
+            unrecorded = cohort_sera.loc[
+                cohort_sera[subset_by["column"]].isnull(), "serum"
+            ].tolist()
+            if unrecorded:
+                raise ValueError(
+                    f"comparison {comparison!r} subsets cohort {cohort!r} on "
+                    f"{subset_by['column']!r}, but these sera do not record it: "
+                    f"{sorted(unrecorded)}"
+                )
+            cohort_sera = cohort_sera[
+                cohort_sera[subset_by["column"]] == subset_by["value"]
+            ]
+            if cohort_sera.empty:
+                raise ValueError(
+                    f"comparison {comparison!r} draws no {cohort!r} serum with "
+                    f"{subset_by['column']} == {subset_by['value']!r}"
+                )
 
         # a serum being compared with no value to pair it by is a gap in the sera
         # metadata, not a serum to quietly leave out
@@ -119,6 +165,26 @@ for comparison, cohorts in comparisons.items():
             )
 
         subjects[condition] = cohort_sera.set_index(pair_by)["serum"]
+
+    if subset_by is not None:
+        # a subject whose two sera disagree on the column subset on would have one serum
+        # selected into this comparison and the other into its counterpart, leaving each
+        # to drop it as unpaired; that is a gap in the sera metadata, and dropping it
+        # would be indistinguishable from a serum lost to the QC
+        arm_sera = sera_multicohort[
+            sera_multicohort["cohort"].isin([cohorts["pre"], cohorts["post"]])
+        ]
+        per_subject = arm_sera.groupby(pair_by)[subset_by["column"]].nunique()
+        inconsistent = per_subject[per_subject > 1]
+        if len(inconsistent):
+            disagreeing = arm_sera[arm_sera[pair_by].isin(inconsistent.index)]
+            raise ValueError(
+                f"comparison {comparison!r} subsets on {subset_by['column']!r}, but "
+                f"these subjects do not record the same value for both of their sera:\n"
+                + disagreeing.set_index(pair_by)[
+                    ["serum", "cohort", subset_by["column"]]
+                ].to_string()
+            )
 
     drawn = subjects["pre"].index.intersection(subjects["post"].index)
     if not len(drawn):
@@ -491,7 +557,9 @@ for (subtype, strain_set), records in itertools.groupby(
                 record["color_label"],
             )
             title += f", tree colored by {record['color_label']}"
-        chart = titer_charts.finalize(chart, title, subtitle)
+        chart = titer_charts.finalize(
+            chart, title, subtitle, facet_label_split=FACET_LABEL_SPLIT
+        )
 
         print(f"Saving to {record['path']!r}")
         chart.save(record["path"])

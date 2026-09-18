@@ -566,11 +566,32 @@ def add_tree(chart, tree_json, params, color_label):
     )
 
 
-def finalize(chart, title, subtitle, *, above=(), below=()):
+def facet_label_split_expr(separator):
+    """Return a `labelExpr` breaking a facet label into two lines at `separator`.
+
+    A row facet label is rotated, so its length is bounded by the facet height rather
+    than the chart width, and a long one runs into the labels above and below. The label
+    is a field value and so is one string per facet, which no literal list can set the
+    way a two-line axis title does; a `labelExpr` returning an array is what Vega splits
+    into lines. A label without the separator is left on one line.
+
+    """
+    at = f"indexof(datum.label, {separator!r})"
+    return (
+        f"{at} >= 0 "
+        f"? [slice(datum.label, 0, {at}), slice(datum.label, {at} + {len(separator)})] "
+        f": [datum.label]"
+    )
+
+
+def finalize(chart, title, subtitle, *, above=(), below=(), facet_label_split=None):
     """Stack `above` and `below` around `chart`, and style it.
 
     Must run after `add_tree`, which hoists the top-level attributes off the chart it is
     given so it can nest it, and so would drop anything set here.
+
+    `facet_label_split` is the separator at which to break each facet label into two
+    lines; labels are left on one line where it is None.
 
     """
     return (
@@ -587,6 +608,11 @@ def finalize(chart, title, subtitle, *, above=(), below=()):
             labelOrient="right",
             labelFontSize=13,
             labelPadding=2,
+            **(
+                {}
+                if facet_label_split is None
+                else {"labelExpr": facet_label_split_expr(facet_label_split)}
+            ),
         )
         .configure_view(stroke="black")
         .configure_facet(spacing=8)

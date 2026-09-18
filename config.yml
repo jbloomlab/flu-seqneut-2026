@@ -114,8 +114,13 @@ process_final_titer_data:
 # Charts comparing the titers of paired pre- and post-vaccination sera, one entry per set
 # of comparisons. Each `comparisons` entry is one facet of the charts, naming the
 # multicohorts (see `multicohorts` above) holding a subject's pre- and post-vaccination
-# serum; a subject is drawn only if both of its sera passed QC. The strains drawn, their
-# coloring, and the tree come from `plot_titer_summaries_params` below.
+# serum; a subject is drawn only if both of its sera passed QC. An entry may also give
+# `subset_by`, a sera metadata column and the value a subject must have to be drawn,
+# which splits one vaccination arm into several facets; two entries over the same
+# cohorts must then subset on values that no subject shares. A `|` in an entry's name
+# says where its facet label breaks onto a second line, which a name long enough to run
+# into the labels above and below needs; the subject count follows the name. The strains
+# drawn, their coloring, and the tree come from `plot_titer_summaries_params` below.
 plot_pre_post_titers:
   VIDRL_vaccination:
     group: human  # must be one of `groups_to_analyze`

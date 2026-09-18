@@ -1,0 +1,6 @@
+wells: {}
+barcodes: {}
+barcode_wells:
+  A/France/NAQ-HCL026046169102/2025_H1N1 H4: max_frac_infectivity_per_viral_barcode_well
+barcode_serum_replicates: {}
+serum_replicates: {}

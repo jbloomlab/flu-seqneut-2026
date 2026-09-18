@@ -1272,7 +1272,77 @@ plates:
     illumina_barcode_parser_params:
       upstream2: GTCTAA # Fwd5
       upstream2_mismatch: 1
-    
+
+  plate44:
+    group: human
+    date: 2026-09-15
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260915_plate44.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: ATCGAT # Fwd2
+      upstream2_mismatch: 1
+
+  plate45:
+    group: human
+    date: 2026-09-15
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260915_plate45.csv
+    manual_drops:
+      wells: [G9]  # unknown experimental issue
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: TGACGC # Fwd3
+      upstream2_mismatch: 1  
+  
+  plate46:
+    group: human
+    date: 2026-09-15
+    viral_library: actual
+    neut_standard_set: loes2023
+    samples_csv: data/plates/20260915_plate46.csv
+    manual_drops: {}
+    qc_thresholds:
+      <<: *default_process_plate_qc_thresholds
+    curvefit_params:
+      <<: *default_process_plate_curvefit_params
+    curvefit_qc:
+      <<: *default_process_plate_curvefit_qc
+    illumina_barcode_parser_params:
+      upstream2: CAGTTG # Fwd4
+      upstream2_mismatch: 1
+
+# Dropped due to high number of QC failures. Likely caused inadequate cell numbers  
+#  plate47:
+#    group: human
+#    date: 2026-09-15
+#    viral_library: actual
+#    neut_standard_set: loes2023
+#    samples_csv: data/plates/20260915_plate47.csv
+#    manual_drops: {}
+#    qc_thresholds:
+#      <<: *default_process_plate_qc_thresholds
+#    curvefit_params:
+#      <<: *default_process_plate_curvefit_params
+#    curvefit_qc:
+#      <<: *default_process_plate_curvefit_qc
+#    illumina_barcode_parser_params:
+#      upstream2: GTCTAA # Fwd5
+#      upstream2_mismatch: 1
+
 miscellaneous_plates:
   20260731_repool:
       date: 2026-07-31

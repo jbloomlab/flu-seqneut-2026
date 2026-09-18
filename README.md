@@ -82,7 +82,7 @@ There is a CSV for sera from each cohort, with the following required columns:
   - *sex*: sex of donor; accepts various formats ("M"/"F", "male"/"female", "Male"/"Female") which are normalized during aggregation
   - *collection_date*: date of serum collection in "YYYY-MM" format (month precision)
 
-A CSV may carry further columns describing its cohort (eg, the vaccination status); `multicohorts` in [config.yml](config.yml) can use these columns to further group sera into additional cohorts, and `subset_by` in a `plot_pre_post_titers` comparison can restrict it to the subjects recording a given value.
+A CSV may carry further columns describing its cohort (eg, the vaccination status); `multicohorts` in [config.yml](config.yml) can use these columns to further group sera into additional cohorts.
 
 These per-cohort CSVs are aggregated and validated into [results/sera_metadata/all_sera_metadata.csv](results/sera_metadata/all_sera_metadata.csv), where *bloom_lab_id* is renamed to *serum* and *sex* and *age* are put in standard forms.
 

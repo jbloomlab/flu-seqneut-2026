@@ -51,6 +51,11 @@ STRAIN_SETS = titer_charts.strain_sets(circulating_strain_type)
 # the second relative to the first
 CONDITIONS = ["pre", "post"]
 
+# the facet label is rotated and so bounded by the facet height rather than the chart
+# width, so a comparison's name may carry this character to say where it breaks onto a
+# second line; the subject count follows the name, on whichever line ends it
+FACET_LABEL_SPLIT = "|"
+
 titers, metadata, sera_multicohort, viruses = titer_charts.load_and_validate(
     snakemake.input.titers_csv,
     snakemake.input.sera_csv,
@@ -84,6 +89,11 @@ available_cohorts = set(sera_multicohort["cohort"])
 # the post-vaccination serum of its subject
 paired_sera = []
 for comparison, cohorts in comparisons.items():
+    if comparison.count(FACET_LABEL_SPLIT) > 1:
+        raise ValueError(
+            f"comparison {comparison!r} carries more than one {FACET_LABEL_SPLIT!r}, "
+            "which marks the one place its facet label breaks onto a second line"
+        )
     subset_by = cohorts.get("subset_by")  # optional; absent draws the whole arm
     if set(cohorts) - {"subset_by"} != set(CONDITIONS):
         raise ValueError(
@@ -230,10 +240,6 @@ condition_color = alt.Color(
 METADATA_LOOKUP_FIELDS = ["serum_collection_date", "age", "age_numeric", "sex"]
 
 SUBJECT_TOOLTIP = alt.Tooltip("subject:N", title=pair_by)
-
-# a comparison's name and its subject count are drawn on separate lines of the facet
-# label, which is rotated and so bounded by the facet height rather than the chart width
-FACET_LABEL_SPLIT = " "
 
 # the serum's own annotations, tooltipped on its line
 SERUM_TOOLTIPS = [
@@ -539,10 +545,7 @@ for (subtype, strain_set), records in itertools.groupby(
                 n_subjects="distinct(subject)", groupby=["comparison"]
             )
             .transform_calculate(
-                comparison_n=(
-                    f"datum.comparison + '{FACET_LABEL_SPLIT}(n=' + datum.n_subjects "
-                    "+ ')'"
-                )
+                comparison_n="datum.comparison + ' (n=' + datum.n_subjects + ')'"
             )
         )
         title = f"{chart_type['title']} for {subtype} {strain_set} strains"

@@ -192,6 +192,18 @@ for _subtype in config["subtypes"]:
                     },
                 )
             )
+    # box plots of the fold changes are not aligned to a tree, so one per subtype
+    pre_post_charts.append(
+        (
+            f"results/pre_post_titer_plots/{{pre_post_name}}_{_subtype}_recent_fold_change_boxplot.html",
+            {
+                "subtype": _subtype,
+                "strain_set": "recent",
+                "color_label": None,
+                "chart_type": "fold_change_boxplot",
+            },
+        )
+    )
 
 
 rule plot_pre_post_titers:

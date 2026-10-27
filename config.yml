@@ -139,6 +139,9 @@ plot_pre_post_titers:
       elderly-Fluad: {pre: VIDRL_elderly-egg_pre, post: VIDRL_elderly-egg_post}
       child-Fluzone: {pre: VIDRL_child-egg_pre, post: VIDRL_child-egg_post}
     colors: {pre: "#4d4d4d", post: "#1b5e8a"}  # dark gray and dark blue
+    # haplotype each subtype's fold-change box plot initially compares against the
+    # `draw_titer_line` strain; the plot's dropdown can select any other haplotype
+    boxplot_comparison_haplotype: {H1N1: "D.3.1.1:G155E", H3N2: "K:R222K"}
 
 # Table summarizing the sera in each sera set, written for each group in
 # `groups_to_analyze`. Set this key to null to make no such table.

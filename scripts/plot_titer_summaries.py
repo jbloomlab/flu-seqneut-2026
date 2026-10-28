@@ -486,6 +486,7 @@ for (subtype, strain_set), records in itertools.groupby(
                 tree_jsons[subtype],
                 subtype_params[subtype],
                 record["color_label"],
+                chart_viruses,
             )
             title += f", tree colored by {record['color_label']}"
         chart = titer_charts.finalize(

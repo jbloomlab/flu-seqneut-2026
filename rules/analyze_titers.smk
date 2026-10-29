@@ -76,6 +76,33 @@ if summarize_sera_config:
             "../scripts/summarize_sera.py"
 
 
+rule lowest_titer_strains:
+    """Table of the circulating strains with the lowest titers, against a reference strain."""
+    input:
+        titers_summarized=rules.process_final_titer_data.output.titers_summarized,
+        viruses=rules.process_final_titer_data.output.viruses,
+    output:
+        csv="results/final_titer_data/{group}_lowest_titer_strains.csv",
+    log:
+        "results/logs/lowest_titer_strains_{group}.txt",
+    wildcard_constraints:
+        group="|".join(groups),
+    conda:
+        "../seqneut-pipeline/environment.yml"
+    params:
+        config=config["lowest_titer_strains"],
+        circulating_strain_type=config["circulating_strain_type"],
+        # the strain the titer charts mark, per subtype
+        reference_haplotypes={
+            subtype: config["plot_titer_summaries_params"]["subtype_params"][subtype][
+                "draw_titer_line"
+            ]
+            for subtype in config["subtypes"]
+        },
+    script:
+        "../scripts/lowest_titer_strains.py"
+
+
 # Strain sets each chart type is made for. The fold-change charts are recent-strain
 # only: they plot each titer relative to the serum's median over the strains the chart
 # draws, which is not a baseline worth plotting against for the few vaccine strains.
@@ -377,6 +404,8 @@ analyze_titers_outputs = [
         summarize_sera_csv,
         group=groups_to_analyze if summarize_sera_config else [],
     ),
+    # table of the circulating strains with the lowest titers
+    *expand(rules.lowest_titer_strains.output.csv, group=groups_to_analyze),
     # titer summary plots
     *expand(
         rules.plot_titer_summaries.output.chart_htmls,

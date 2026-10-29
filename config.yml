@@ -164,6 +164,13 @@ summarize_sera:
   # percent `Yes` among the sera of each set that record it.
   prior_year_vaccination_column: flu_vax_in_2025
 
+# Table of the circulating strains with the lowest median titers, written for each group in
+# `groups_to_analyze`, each also given its median titer relative to the strain marked by
+# `draw_titer_line` for its subtype in `plot_titer_summaries_params` below.
+lowest_titer_strains:
+  n_strains: 10  # strains tabulated per subtype
+  cohort: All  # cohort of `titers_summarized_by_virus.csv` the median titers are taken over
+
 # Titer charts with the sera split into two groups by each serum's titer ratio between a
 # comparator and a reference strain. Set this key to null to make no such charts.
 # `charts` names one entry per subtype and strain set to draw, and need list only the

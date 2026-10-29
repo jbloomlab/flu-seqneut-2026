@@ -17,6 +17,7 @@ To jump directly to the key results:
     * [results/final_titer_data/human_sera_summary.csv](results/final_titer_data/human_sera_summary.csv): table summarizing the sera in each sera set.
     * [results/final_titer_data/human_viruses.csv](results/final_titer_data/human_viruses.csv): detailed information about the viruses for which these titers were measured.
     * [results/final_titer_data/human_titers_summarized_by_virus.csv](results/final_titer_data/human_titers_summarized_by_virus.csv): summary statistics about the titers against each virus.
+    * [results/final_titer_data/human_lowest_titer_strains.csv](results/final_titer_data/human_lowest_titer_strains.csv): the circulating strains of each subtype with the lowest median titers, and those titers relative to the reference vaccine strain.
 
 - The [interactive documentation](https://jbloomlab.github.io/flu-seqneut-2026) holds a detailed set of plots showing all of the fitted curves and per-plate and per-serum analysis and QC as well as plots summarizing the results. See the [report summary](https://jbloomlab.github.io/flu-seqneut-2026/summary.html) for a narrated overview of the summarized results.
 

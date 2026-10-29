@@ -510,6 +510,10 @@ def fold_change_boxplot_chart(fold_change_data, chart_viruses, ref_axis_label, s
     dropdown, with a point per subject over each box. The dropdown starts on the
     subtype's `boxplot_comparison_haplotype`.
 
+    A subject is drawn only where it has a fold change for both of the strains drawn, so
+    the two boxes of a facet describe the same people and the facet's subject count is
+    the count behind each of its boxes.
+
     """
     if ref_axis_label is None:
         raise ValueError(
@@ -602,14 +606,21 @@ def fold_change_boxplot_chart(fold_change_data, chart_viruses, ref_axis_label, s
         )
         .transform_filter(alt.datum["age_numeric"] >= min_age_slider)
         .transform_filter(alt.datum["age_numeric"] <= max_age_slider)
-        # the facet labels count every subject, not only those with a titer for the strains
-        # drawn, so this precedes the strain filter
+        .transform_filter(
+            f"datum.axis_label == {ref} || datum.axis_label == comparison_strain"
+        )
+        # the two boxes compare the strains within a subject, so they are only comparable
+        # where they rest on the same subjects: one with a fold change for just one of the
+        # two strains drawn is dropped from both boxes rather than from only the other
+        .transform_joinaggregate(
+            n_strains_drawn="distinct(axis_label)", groupby=["comparison", "subject"]
+        )
+        .transform_filter("datum.n_strains_drawn == 2")
+        # counted after that filter, so a facet label carries the subject count of each of
+        # its boxes
         .transform_joinaggregate(n_subjects="distinct(subject)", groupby=["comparison"])
         .transform_calculate(
             comparison_n="datum.comparison + ' (n=' + datum.n_subjects + ')'"
-        )
-        .transform_filter(
-            f"datum.axis_label == {ref} || datum.axis_label == comparison_strain"
         )
         .transform_calculate(
             role=f"datum.axis_label == {ref} ? {json.dumps(VACCINE_ROLE)} : "
@@ -666,7 +677,8 @@ for (subtype, strain_set), records in itertools.groupby(
                 ),
                 f"fold change from before to after vaccination for {subtype} recent "
                 f"strains, {ref_axis_label} (recent vaccine strain) vs a selectable strain",
-                f"{pre_post_config['title']}; boxes span the interquartile range and "
+                f"{pre_post_config['title']}; only subjects with a fold change for both "
+                "strains drawn are shown; boxes span the interquartile range and "
                 "whiskers the full range; dashed gray line marks no change in titer",
                 facet_label_split=FACET_LABEL_SPLIT,
             ).configure_headerColumn(labelOrient="top", labelAngle=0, labelPadding=4)

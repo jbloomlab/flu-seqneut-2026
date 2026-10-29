@@ -192,22 +192,24 @@ for _subtype in config["subtypes"]:
                     },
                 )
             )
-    # box plots of the fold changes are not aligned to a tree, so one per subtype, and
-    # with no tree there is no coloring for the record to name
-    _boxplot = {
-        "subtype": _subtype,
-        "strain_set": "recent",
-        "chart_type": "fold_change_boxplot",
-    }
-    _boxplot_stem = "_".join(
-        _boxplot[key] for key in ("subtype", "strain_set", "chart_type")
-    )
-    pre_post_charts.append(
-        (
-            f"results/pre_post_titer_plots/{{pre_post_name}}_{_boxplot_stem}.html",
-            _boxplot,
+    # box plots draw two strains picked in the chart rather than a row per strain, so they
+    # are not aligned to a tree: one per subtype, with no tree coloring for the record to
+    # name
+    for _boxplot_type in ["fold_change_boxplot", "titer_boxplot"]:
+        _boxplot = {
+            "subtype": _subtype,
+            "strain_set": "recent",
+            "chart_type": _boxplot_type,
+        }
+        _boxplot_stem = "_".join(
+            _boxplot[key] for key in ("subtype", "strain_set", "chart_type")
         )
-    )
+        pre_post_charts.append(
+            (
+                f"results/pre_post_titer_plots/{{pre_post_name}}_{_boxplot_stem}.html",
+                _boxplot,
+            )
+        )
 
 
 rule plot_pre_post_titers:

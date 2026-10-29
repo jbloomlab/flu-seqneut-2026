@@ -411,11 +411,17 @@ def label_facets_with_subject_count(chart):
 
 BOXPLOT_BOX_FILL = "#d9d9d9"  # light gray, so the black points read against it
 BOXPLOT_MEDIAN_WIDTH = 3  # px thickness of the median line across a box
-BOXPLOT_FACET_WIDTH = 153  # px
 BOXPLOT_FACET_HEIGHT = 234  # px
-BOXPLOT_BAND = BOXPLOT_FACET_WIDTH / 2  # px of x axis per box, as the bands abut
-BOXPLOT_BOX_WIDTH = 40  # px
-BOXPLOT_POINT_SPREAD = 20  # px each side of a box's center the subject points span
+
+# px geometry of a box plot: the width of one comparison's facet, the width of a box, and
+# how far each side of a box's center its subject points spread. The chart splitting each
+# strain into a pre- and a post-vaccination box fits both into the width the other gives
+# one strain, so its boxes are narrower. `box_gap` holds that pair nearly flush, which is
+# what leaves a wider gap to the next strain's pair and so reads as one strain per pair.
+BOXPLOT_GEOMETRY = {
+    "single": {"facet_width": 153, "box_width": 40, "point_spread": 20},
+    "split": {"facet_width": 153, "box_width": 26, "box_gap": 2, "point_spread": 11},
+}
 
 # the strain labels are set in the axis title's size and turned to read bottom-to-top, as
 # a haplotype is far too long to lay flat under a box. They are not truncated, so the
@@ -434,23 +440,43 @@ BOXPLOT_COHORT_LABEL_PADDING = 1
 JITTER_SEED = 0
 JITTER_SD = 4  # the spread covers this many standard deviations
 
-BOXPLOT_TOOLTIPS = [
+FOLD_CHANGE_BOXPLOT_TOOLTIPS = [
     alt.Tooltip("axis_label:N", title="strain"),
     alt.Tooltip("fold_change:Q", title="fold change", format=".3g"),
     *FOLD_CHANGE_SERUM_TOOLTIPS,
 ]
 
+TITER_BOXPLOT_TOOLTIPS = [
+    alt.Tooltip("axis_label:N", title="strain"),
+    alt.Tooltip("titer:Q", title="titer", format=".1f"),
+    *OVERLAY_SERUM_TOOLTIPS,
+]
 
-def fold_change_boxplot_chart(fold_change_data, chart_viruses, subtype):
-    """Box plots of the fold changes for the two strains picked from the dropdowns.
 
-    Each facet draws one box for the reference strain and one for the comparator, with a
-    point per subject over each box. The dropdowns start on the subtype's
+def _boxplot_chart(
+    frame,
+    chart_viruses,
+    subtype,
+    *,
+    value,
+    tooltips,
+    geometry,
+    baseline_rule,
+    split_by_condition,
+):
+    """Box plots of `value` for the two strains picked from the dropdowns.
+
+    Each facet draws one box for the reference strain and one for the comparator, or a
+    pre- and a post-vaccination box for each of them where `split_by_condition`, with a
+    point per subject over every box. The dropdowns start on the subtype's
     `boxplot_strains`, and offer every recent strain for either side.
 
-    A subject is drawn only where it has a fold change for both of the strains drawn, so
-    the two boxes of a facet describe the same people and the facet's subject count is
-    the count behind each of its boxes.
+    A subject is drawn only where `frame` gives it a value for both of the strains drawn,
+    so the boxes of a facet describe the same people and the facet's subject count is the
+    count behind each of them.
+
+    `baseline_rule` is called on the drawn frame to build the rule marking the value the
+    boxes are read against, or is `None` where there is no such value.
 
     """
     strains = boxplot_strains[subtype]
@@ -470,24 +496,29 @@ def fold_change_boxplot_chart(fold_change_data, chart_viruses, subtype):
     reference_strain, comparator_strain = titer_charts.strain_dropdowns(
         options, strains["reference"], strains["comparator"]
     )
-    # only the columns drawn, with fold changes rounded as the ratio is otherwise 18 digits
-    frame = fold_change_data[
-        [
-            "comparison",
-            "subject",
-            "serum",
-            "axis_label",
-            "pre_titer",
-            "pre_titer_bound",
-            "post_titer",
-            "post_titer_bound",
-            "fold_change",
-        ]
-    ].copy()
-    frame["fold_change"] = frame["fold_change"].round(3)
-    frame["jitter"] = (
-        np.random.default_rng(JITTER_SEED).standard_normal(len(frame)).round(3)
-    )
+
+    # px of x axis per strain, as the strains' bands abut. An offset is measured from the
+    # start of the band, so a box's center is the offset it is drawn at: one box sits
+    # mid-band, and a split pair sits at the centers of the band's two halves.
+    band = geometry["facet_width"] / 2
+    if split_by_condition:
+        # the boxes of a strain are packed around the center of its band, so what is left
+        # over falls at the band's edges, as the gap between one strain's pair and the next
+        step = geometry["box_width"] + geometry["box_gap"]
+        centers = {
+            condition: band / 2 + step * (position - (len(CONDITIONS) - 1) / 2)
+            for position, condition in enumerate(CONDITIONS)
+        }
+        frame["box_offset"] = frame["condition"].map(centers)
+        box_offsets = frame["box_offset"]
+    else:
+        box_offsets = band / 2
+    jitter = np.random.default_rng(JITTER_SEED).standard_normal(len(frame))
+    frame["point_offset"] = (
+        box_offsets + jitter * geometry["point_spread"] / JITTER_SD
+    ).round(3)
+    # the offsets are already in px of the band, so the scale maps them onto themselves
+    offset_scale = alt.Scale(domain=[0, band], range=[0, band])
 
     base = alt.Chart(frame).add_params(
         reference_strain, comparator_strain, min_age_slider, max_age_slider
@@ -505,44 +536,48 @@ def fold_change_boxplot_chart(fold_change_data, chart_viruses, subtype):
             ),
         ),
         "y": alt.Y(
-            "fold_change:Q",
-            title=VALUE_FOLD_CHANGE["title"],
+            f"{value['field']}:Q",
+            title=value["title"],
             scale=titer_charts.titer_scale,
         ),
     }
+    # a split band needs the color to tell its two boxes apart, and the `color` encoding
+    # is what then fills them; a single box per strain is named by its axis label alone,
+    # so it is filled with a flat gray
+    if split_by_condition:
+        box_fill = {}
+        split_encodings = {
+            "color": condition_color,
+            "xOffset": alt.XOffset("box_offset:Q", scale=offset_scale),
+        }
+    else:
+        box_fill = {"fill": BOXPLOT_BOX_FILL}
+        split_encodings = {}
     box = base.mark_boxplot(
         extent="min-max",
-        size=BOXPLOT_BOX_WIDTH,
-        box={"fill": BOXPLOT_BOX_FILL, "stroke": "black", "strokeWidth": 1},
+        size=geometry["box_width"],
+        box={"stroke": "black", "strokeWidth": 1, **box_fill},
         median={"stroke": "black", "strokeWidth": BOXPLOT_MEDIAN_WIDTH},
         rule={"stroke": "black"},
-    ).encode(**encodings)
+    ).encode(**encodings, **split_encodings)
     points = base.mark_circle(size=25, opacity=0.8, color="black").encode(
         **encodings,
-        xOffset=alt.XOffset(
-            "jitter:Q",
-            title=None,
-            scale=alt.Scale(
-                domain=[-JITTER_SD, JITTER_SD],
-                # an offset is measured from the start of the box's band
-                range=[
-                    BOXPLOT_BAND / 2 - BOXPLOT_POINT_SPREAD,
-                    BOXPLOT_BAND / 2 + BOXPLOT_POINT_SPREAD,
-                ],
-            ),
-        ),
-        tooltip=BOXPLOT_TOOLTIPS,
+        xOffset=alt.XOffset("point_offset:Q", title=None, scale=offset_scale),
+        tooltip=tooltips,
     )
-    layer = alt.layer(box, points, no_change_line(frame)).properties(
-        width=BOXPLOT_FACET_WIDTH, height=BOXPLOT_FACET_HEIGHT
+    marks = [box, points]
+    if baseline_rule is not None:
+        marks.append(baseline_rule(frame))
+    layer = alt.layer(*marks).properties(
+        width=geometry["facet_width"], height=BOXPLOT_FACET_HEIGHT
     )
     is_reference = "datum.axis_label == reference_strain"
     drawn = add_subject_metadata(
         layer.facet(column=alt.Column("comparison_n:N", title=None))
     ).transform_filter(f"{is_reference} || datum.axis_label == comparator_strain")
-    # the two boxes compare the strains within a subject, so they are only comparable
-    # where they rest on the same subjects: one with a fold change for just one of the two
-    # strains drawn is dropped from both boxes rather than from only the other
+    # the boxes compare the strains within a subject, so they are only comparable where
+    # they rest on the same subjects: one with a value for just one of the two strains
+    # drawn is dropped from both strains' boxes rather than from only the other's
     paired = drawn.transform_joinaggregate(
         n_strains_drawn="distinct(axis_label)", groupby=["comparison", "subject"]
     ).transform_filter("datum.n_strains_drawn == 2")
@@ -552,11 +587,81 @@ def fold_change_boxplot_chart(fold_change_data, chart_viruses, subtype):
     )
 
 
+def fold_change_boxplot_chart(fold_change_data, chart_viruses, subtype):
+    """Box plots of the fold changes for the two strains picked from the dropdowns."""
+    # only the columns drawn, with fold changes rounded as the ratio is otherwise 18 digits
+    frame = fold_change_data[
+        [
+            "comparison",
+            "subject",
+            "serum",
+            "axis_label",
+            "pre_titer",
+            "pre_titer_bound",
+            "post_titer",
+            "post_titer_bound",
+            "fold_change",
+        ]
+    ].copy()
+    frame["fold_change"] = frame["fold_change"].round(3)
+    return _boxplot_chart(
+        frame,
+        chart_viruses,
+        subtype,
+        value=VALUE_FOLD_CHANGE,
+        tooltips=FOLD_CHANGE_BOXPLOT_TOOLTIPS,
+        geometry=BOXPLOT_GEOMETRY["single"],
+        baseline_rule=no_change_line,
+        split_by_condition=False,
+    )
+
+
+def titer_boxplot_chart(paired_titer_data, chart_viruses, subtype):
+    """Box plots of the pre- and post-vaccination titers of the two picked strains."""
+    frame = paired_titer_data[
+        [
+            "comparison",
+            "subject",
+            "serum",
+            "condition",
+            "axis_label",
+            "titer",
+            "titer_bound",
+        ]
+    ].copy()
+    return _boxplot_chart(
+        frame,
+        chart_viruses,
+        subtype,
+        value=titer_charts.VALUE_TITER,
+        tooltips=TITER_BOXPLOT_TOOLTIPS,
+        geometry=BOXPLOT_GEOMETRY["split"],
+        baseline_rule=(
+            None
+            if lower_titer_limit is None
+            else lambda drawn: titer_charts.lower_limit_line(drawn, lower_titer_limit)
+        ),
+        split_by_condition=True,
+    )
+
+
+# one line of the subtitle each; the lower limit line is only there to describe where the
+# titers have a lower limit
+TITER_BOXPLOT_SUBTITLE = [
+    "the reference and comparator strains are both picked from the dropdowns",
+    "only subjects with a pre- and a post-vaccination titer for both strains are shown",
+    "boxes span the interquartile range and whiskers the full range",
+]
+if lower_titer_limit is not None:
+    TITER_BOXPLOT_SUBTITLE.append(
+        titer_charts.LOWER_LIMIT_SUBTITLE.format(lower_titer_limit)
+    )
+
 # each chart type names its title and how it is drawn. Most build a layer of marks onto a
 # base faceted by vaccination arm and aligned to the tree, and so say whether they draw the
 # fold changes or the titers themselves; a `build_chart` entry returns the whole chart
-# instead, drawing two selected strains rather than a row per strain, and carries the
-# drawing conventions its subtitle has to explain.
+# instead, drawing two selected strains rather than a row per strain, and so names the
+# frame it draws and carries the drawing conventions its subtitle has to explain.
 CHART_TYPES = {
     "individual_sera": {
         "title": (
@@ -595,6 +700,7 @@ CHART_TYPES = {
     "fold_change_boxplot": {
         "title": "box plots of the fold change from before to after vaccination",
         "build_chart": fold_change_boxplot_chart,
+        "data": "fold_change",
         # one line of the subtitle each
         "subtitle": (
             "the reference and comparator strains are both picked from the dropdowns",
@@ -602,6 +708,12 @@ CHART_TYPES = {
             "boxes span the interquartile range and whiskers the full range",
             "dashed gray line marks no change in titer",
         ),
+    },
+    "titer_boxplot": {
+        "title": "box plots of the titers before and after vaccination",
+        "build_chart": titer_boxplot_chart,
+        "data": "paired_titers",
+        "subtitle": TITER_BOXPLOT_SUBTITLE,
     },
 }
 
@@ -623,12 +735,16 @@ min_age_slider, max_age_slider = titer_charts.age_sliders(metadata)
 
 
 def paired_chart_data(chart_titers, chart_viruses):
-    """Return the drawn titers and the fold changes of the sera being compared.
+    """Return the drawn titers, their fold changes, and the titers behind those changes.
 
     The titers arrive sliced to the strains the chart draws but covering every serum, so
     that the strain checks in `slice_chart_data` see all of them; here they are cut to
     the paired sera. `titer_bound` comes along so a tooltip can say that a titer, or a
     fold change resting on one, is a bound rather than a measurement.
+
+    The third frame is the subset of the first holding the subject-strain pairs measured
+    both before and after vaccination, which is what a box plot drawing the two
+    timepoints side by side rests on.
 
     """
     bounds = titers[["serum", "virus", "titer_bound"]].merge(
@@ -682,7 +798,14 @@ def paired_chart_data(chart_titers, chart_viruses):
             f"only before and {unmatched['post']} measured only after vaccination"
         )
 
-    return overlay, fold_change
+    # keyed on the fold changes, which exist only where both timepoints were measured
+    paired_titers = overlay.merge(
+        fold_change[["comparison", "subject", "axis_label"]],
+        on=["comparison", "subject", "axis_label"],
+        validate="many_to_one",
+    )
+
+    return overlay, fold_change, paired_titers
 
 
 # ---- build every chart, slicing the data once per subtype and strain set -----------
@@ -699,12 +822,20 @@ for (subtype, strain_set), records in itertools.groupby(
         STRAIN_SETS[strain_set],
         subtype_params,
     )
-    overlay_data, fold_change_data = paired_chart_data(chart_titers, chart_viruses)
+    overlay_data, fold_change_data, paired_titer_data = paired_chart_data(
+        chart_titers, chart_viruses
+    )
     print(
         f"{subtype} {strain_set}: {len(chart_viruses)} strains, "
         f"{len(overlay_data)} titers of {overlay_data['serum'].nunique()} sera, "
-        f"{len(fold_change_data)} fold changes"
+        f"{len(fold_change_data)} fold changes, "
+        f"{len(paired_titer_data)} titers measured at both timepoints"
     )
+    # the frames a `build_chart` entry can name
+    chart_frames = {
+        "fold_change": fold_change_data,
+        "paired_titers": paired_titer_data,
+    }
 
     bases = {
         fold_change: titer_charts.base_chart(
@@ -727,7 +858,9 @@ for (subtype, strain_set), records in itertools.groupby(
         if "build_chart" in chart_type:
             # the strains drawn are picked in the chart, so its title names no strain set
             chart = titer_charts.finalize(
-                chart_type["build_chart"](fold_change_data, chart_viruses, subtype),
+                chart_type["build_chart"](
+                    chart_frames[chart_type["data"]], chart_viruses, subtype
+                ),
                 f"{chart_type['title']} for {subtype}",
                 [pre_post_config["title"], *chart_type["subtitle"]],
                 facet_label_split=FACET_LABEL_SPLIT,

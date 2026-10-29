@@ -222,6 +222,21 @@ def load_and_validate(
     return titers, metadata, sera_multicohort, viruses
 
 
+def strain_dropdowns(axis_labels, reference, comparator):
+    """Return the dropdowns naming the two strains a chart compares."""
+    return tuple(
+        alt.param(
+            name=name,
+            value=value,
+            bind=alt.binding_select(options=axis_labels, name=label),
+        )
+        for name, value, label in [
+            ("reference_strain", reference, "reference strain"),
+            ("comparator_strain", comparator, "comparator strain"),
+        ]
+    )
+
+
 def age_sliders(metadata):
     """Return the sliders bounding which sera are drawn, by the subject's age."""
     max_age = 5 * int(metadata["age_numeric"].max() // 5) + 5
@@ -584,14 +599,27 @@ def facet_label_split_expr(separator):
     )
 
 
-def finalize(chart, title, subtitle, *, above=(), below=(), facet_label_split=None):
+def finalize(
+    chart,
+    title,
+    subtitle,
+    *,
+    above=(),
+    below=(),
+    facet_label_split=None,
+    title_offset=0,
+):
     """Stack `above` and `below` around `chart`, and style it.
 
     Must run after `add_tree`, which hoists the top-level attributes off the chart it is
     given so it can nest it, and so would drop anything set here.
 
+    `subtitle` is a string, or a list of strings drawn one per line.
+
     `facet_label_split` is the separator at which to break each facet label into two
     lines; labels are left on one line where it is None.
+
+    `title_offset` is the px gap between the title block and what follows it.
 
     """
     return (
@@ -628,7 +656,11 @@ def finalize(chart, title, subtitle, *, above=(), below=(), facet_label_split=No
         )
         .properties(
             title=alt.TitleParams(
-                title, subtitle=subtitle, anchor="middle", fontSize=13
+                title,
+                subtitle=subtitle,
+                anchor="middle",
+                fontSize=13,
+                offset=title_offset,
             ),
             # recompute the layout on every view update, not just at load: toggling a
             # cohort adds a facet, and without this the view keeps its original size and

@@ -15,7 +15,6 @@ several facets.
 """
 
 import itertools
-import json
 import sys
 
 import altair as alt
@@ -223,12 +222,23 @@ if not paired_sera["serum"].is_unique:
         f"{paired_sera.loc[paired_sera['serum'].duplicated(), 'serum'].tolist()}"
     )
 
-boxplot_comparison_haplotypes = pre_post_config["boxplot_comparison_haplotype"]
-if set(boxplot_comparison_haplotypes) != set(subtypes):
+# the `boxplot_strains` key naming each strain of a fold-change box plot, in the order
+# the boxes are drawn; the strains are told apart by their axis labels, not by color, so
+# these name nothing in the chart itself
+BOXPLOT_STRAIN_ROLES = ("reference", "comparator")
+
+boxplot_strains = pre_post_config["boxplot_strains"]
+if set(boxplot_strains) != set(subtypes):
     raise ValueError(
-        f"`boxplot_comparison_haplotype` must name exactly the subtypes {sorted(subtypes)}"
-        f", got {sorted(boxplot_comparison_haplotypes)}"
+        f"`boxplot_strains` must name exactly the subtypes {sorted(subtypes)}, got "
+        f"{sorted(boxplot_strains)}"
     )
+for _subtype, _strains in boxplot_strains.items():
+    if set(_strains) != set(BOXPLOT_STRAIN_ROLES):
+        raise ValueError(
+            f"`boxplot_strains` for {_subtype} must name exactly "
+            f"{sorted(BOXPLOT_STRAIN_ROLES)}, got {sorted(_strains)}"
+        )
 
 # ---- what the charts draw ---------------------------------------------------------
 
@@ -399,14 +409,25 @@ def label_facets_with_subject_count(chart):
     )
 
 
-# the two boxes of a facet, in the order drawn and colored
-VACCINE_ROLE = "recent vaccine strain"
-COMPARISON_ROLE = "comparison strain"
-BOXPLOT_COLORS = ["#1b5e8a", "#d97b29"]  # dark blue and orange
-BOXPLOT_FACET_WIDTH = 170  # px
-BOXPLOT_FACET_HEIGHT = 260  # px
+BOXPLOT_BOX_FILL = "#d9d9d9"  # light gray, so the black points read against it
+BOXPLOT_MEDIAN_WIDTH = 3  # px thickness of the median line across a box
+BOXPLOT_FACET_WIDTH = 153  # px
+BOXPLOT_FACET_HEIGHT = 234  # px
 BOXPLOT_BAND = BOXPLOT_FACET_WIDTH / 2  # px of x axis per box, as the bands abut
-BOXPLOT_POINT_SPREAD = 22  # px each side of a box's center the subject points span
+BOXPLOT_BOX_WIDTH = 40  # px
+BOXPLOT_POINT_SPREAD = 20  # px each side of a box's center the subject points span
+
+# the strain labels are set in the axis title's size and turned to read bottom-to-top, as
+# a haplotype is far too long to lay flat under a box. They are not truncated, so the
+# chart's `autosize` has to grow the view to hold the longest one the dropdowns can pick,
+# which is what keeps them clear of the dropdowns underneath.
+BOXPLOT_STRAIN_LABEL_FONT_SIZE = 12  # px
+BOXPLOT_STRAIN_LABEL_ANGLE = 270  # degrees
+
+# px between the title block and the cohort labels, and between a cohort label and its
+# plot; the cohort label sits nearer the plot it names than the title above it
+BOXPLOT_TITLE_OFFSET = 14
+BOXPLOT_COHORT_LABEL_PADDING = 1
 
 # spreads the subject points across their box; drawn once per point here rather than by a
 # Vega expression, so that redrawing the chart does not move the points around
@@ -420,34 +441,34 @@ BOXPLOT_TOOLTIPS = [
 ]
 
 
-def fold_change_boxplot_chart(fold_change_data, chart_viruses, ref_axis_label, subtype):
-    """Box plots of the fold changes for the reference strain and a selectable strain.
+def fold_change_boxplot_chart(fold_change_data, chart_viruses, subtype):
+    """Box plots of the fold changes for the two strains picked from the dropdowns.
 
-    Each facet draws one box for `ref_axis_label` and one for the strain picked in the
-    dropdown, with a point per subject over each box. The dropdown starts on the
-    subtype's `boxplot_comparison_haplotype`.
+    Each facet draws one box for the reference strain and one for the comparator, with a
+    point per subject over each box. The dropdowns start on the subtype's
+    `boxplot_strains`, and offer every recent strain for either side.
 
     A subject is drawn only where it has a fold change for both of the strains drawn, so
     the two boxes of a facet describe the same people and the facet's subject count is
     the count behind each of its boxes.
 
     """
-    if ref_axis_label is None:
+    strains = boxplot_strains[subtype]
+    options = sorted(set(chart_viruses["axis_label"]))
+    for role in BOXPLOT_STRAIN_ROLES:
+        if strains[role] not in options:
+            raise ValueError(
+                f"`boxplot_strains` {role} {strains[role]!r} for {subtype} is not a "
+                f"recent strain; options are {options}"
+            )
+    if strains["reference"] == strains["comparator"]:
         raise ValueError(
-            f"{subtype} has no `draw_titer_line` strain to compare against"
-        )
-    default = boxplot_comparison_haplotypes[subtype]
-    options = sorted(set(chart_viruses["axis_label"]) - {ref_axis_label})
-    if default not in options:
-        raise ValueError(
-            f"`boxplot_comparison_haplotype` {default!r} for {subtype} is not a recent "
-            f"strain other than the reference {ref_axis_label!r}; options are {options}"
+            f"`boxplot_strains` for {subtype} names {strains['reference']!r} as both "
+            "the reference and the comparator, but they must be different strains"
         )
 
-    comparison_strain = alt.param(
-        name="comparison_strain",
-        value=default,
-        bind=alt.binding_select(options=options, name="comparison strain: "),
+    reference_strain, comparator_strain = titer_charts.strain_dropdowns(
+        options, strains["reference"], strains["comparator"]
     )
     # only the columns drawn, with fold changes rounded as the ratio is otherwise 18 digits
     frame = fold_change_data[
@@ -468,9 +489,8 @@ def fold_change_boxplot_chart(fold_change_data, chart_viruses, ref_axis_label, s
         np.random.default_rng(JITTER_SEED).standard_normal(len(frame)).round(3)
     )
 
-    ref = json.dumps(ref_axis_label)
     base = alt.Chart(frame).add_params(
-        comparison_strain, min_age_slider, max_age_slider
+        reference_strain, comparator_strain, min_age_slider, max_age_slider
     )
     encodings = {
         "x": alt.X(
@@ -478,24 +498,26 @@ def fold_change_boxplot_chart(fold_change_data, chart_viruses, ref_axis_label, s
             sort=alt.EncodingSortField("role_order", op="min"),
             title=None,
             scale=alt.Scale(paddingInner=0, paddingOuter=0),
-            axis=alt.Axis(labelAngle=0, labelLimit=200),
+            axis=alt.Axis(
+                labelAngle=BOXPLOT_STRAIN_LABEL_ANGLE,
+                labelFontSize=BOXPLOT_STRAIN_LABEL_FONT_SIZE,
+                labelLimit=0,  # no truncation; `autosize` grows the view to fit
+            ),
         ),
         "y": alt.Y(
             "fold_change:Q",
             title=VALUE_FOLD_CHANGE["title"],
             scale=titer_charts.titer_scale,
         ),
-        "color": alt.Color(
-            "role:N",
-            title=None,
-            scale=alt.Scale(
-                domain=[VACCINE_ROLE, COMPARISON_ROLE], range=BOXPLOT_COLORS
-            ),
-            legend=alt.Legend(orient="left", columns=1),
-        ),
     }
-    box = base.mark_boxplot(extent="min-max", size=45, opacity=0.5).encode(**encodings)
-    points = base.mark_circle(size=25, opacity=0.8).encode(
+    box = base.mark_boxplot(
+        extent="min-max",
+        size=BOXPLOT_BOX_WIDTH,
+        box={"fill": BOXPLOT_BOX_FILL, "stroke": "black", "strokeWidth": 1},
+        median={"stroke": "black", "strokeWidth": BOXPLOT_MEDIAN_WIDTH},
+        rule={"stroke": "black"},
+    ).encode(**encodings)
+    points = base.mark_circle(size=25, opacity=0.8, color="black").encode(
         **encodings,
         xOffset=alt.XOffset(
             "jitter:Q",
@@ -514,21 +536,19 @@ def fold_change_boxplot_chart(fold_change_data, chart_viruses, ref_axis_label, s
     layer = alt.layer(box, points, no_change_line(frame)).properties(
         width=BOXPLOT_FACET_WIDTH, height=BOXPLOT_FACET_HEIGHT
     )
+    is_reference = "datum.axis_label == reference_strain"
     drawn = add_subject_metadata(
         layer.facet(column=alt.Column("comparison_n:N", title=None))
-    ).transform_filter(
-        f"datum.axis_label == {ref} || datum.axis_label == comparison_strain"
-    )
+    ).transform_filter(f"{is_reference} || datum.axis_label == comparator_strain")
     # the two boxes compare the strains within a subject, so they are only comparable
     # where they rest on the same subjects: one with a fold change for just one of the two
     # strains drawn is dropped from both boxes rather than from only the other
     paired = drawn.transform_joinaggregate(
         n_strains_drawn="distinct(axis_label)", groupby=["comparison", "subject"]
     ).transform_filter("datum.n_strains_drawn == 2")
+    # the reference box is drawn first, which is all the axis sort needs
     return label_facets_with_subject_count(paired).transform_calculate(
-        role=f"datum.axis_label == {ref} ? {json.dumps(VACCINE_ROLE)} : "
-        f"{json.dumps(COMPARISON_ROLE)}",
-        role_order=f"datum.axis_label == {ref} ? 0 : 1",
+        role_order=f"{is_reference} ? 0 : 1"
     )
 
 
@@ -575,11 +595,12 @@ CHART_TYPES = {
     "fold_change_boxplot": {
         "title": "box plots of the fold change from before to after vaccination",
         "build_chart": fold_change_boxplot_chart,
+        # one line of the subtitle each
         "subtitle": (
-            "the recent vaccine strain against a strain picked from the dropdown; only "
-            "subjects with a fold change for both strains drawn are shown; boxes span "
-            "the interquartile range and whiskers the full range; dashed gray line marks "
-            "no change in titer"
+            "the reference and comparator strains are both picked from the dropdowns",
+            "only subjects with a fold change for both strains drawn are shown",
+            "boxes span the interquartile range and whiskers the full range",
+            "dashed gray line marks no change in titer",
         ),
     },
 }
@@ -670,15 +691,13 @@ for (subtype, strain_set), records in itertools.groupby(
     sorted(charts_to_make, key=lambda r: (r["subtype"], r["strain_set"])),
     key=lambda r: (r["subtype"], r["strain_set"]),
 ):
-    chart_titers, chart_viruses, strain_order, ref_axis_label, _ = (
-        titer_charts.slice_chart_data(
-            titers,
-            viruses,
-            subtype,
-            strain_set,
-            STRAIN_SETS[strain_set],
-            subtype_params,
-        )
+    chart_titers, chart_viruses, strain_order, _, _ = titer_charts.slice_chart_data(
+        titers,
+        viruses,
+        subtype,
+        strain_set,
+        STRAIN_SETS[strain_set],
+        subtype_params,
     )
     overlay_data, fold_change_data = paired_chart_data(chart_titers, chart_viruses)
     print(
@@ -704,21 +723,25 @@ for (subtype, strain_set), records in itertools.groupby(
 
     for record in records:
         chart_type = CHART_TYPES[record["chart_type"]]
-        title = f"{chart_type['title']} for {subtype} {strain_set} strains"
 
         if "build_chart" in chart_type:
+            # the strains drawn are picked in the chart, so its title names no strain set
             chart = titer_charts.finalize(
-                chart_type["build_chart"](
-                    fold_change_data, chart_viruses, ref_axis_label, subtype
-                ),
-                title,
-                f"{pre_post_config['title']}; {chart_type['subtitle']}",
+                chart_type["build_chart"](fold_change_data, chart_viruses, subtype),
+                f"{chart_type['title']} for {subtype}",
+                [pre_post_config["title"], *chart_type["subtitle"]],
                 facet_label_split=FACET_LABEL_SPLIT,
-            ).configure_headerColumn(labelOrient="top", labelAngle=0, labelPadding=4)
+                title_offset=BOXPLOT_TITLE_OFFSET,
+            ).configure_headerColumn(
+                labelOrient="top",
+                labelAngle=0,
+                labelPadding=BOXPLOT_COHORT_LABEL_PADDING,
+            )
             print(f"Saving to {record['path']!r}")
             chart.save(record["path"])
             continue
 
+        title = f"{chart_type['title']} for {subtype} {strain_set} strains"
         fold_change = chart_type["fold_change"]
         layer = chart_type["build"](bases[fold_change])
         subtitle = pre_post_config["title"]

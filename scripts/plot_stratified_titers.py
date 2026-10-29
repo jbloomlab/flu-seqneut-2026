@@ -174,21 +174,6 @@ SERUM_TOOLTIPS = [
 GROUP_GROUPBY = [*titer_charts.VIRUS_GROUPBY, "group"]
 
 
-def strain_dropdowns(axis_labels, reference, comparator):
-    """Return the dropdowns naming the strains the titer ratio is taken between."""
-    return tuple(
-        alt.param(
-            name=name,
-            value=value,
-            bind=alt.binding_select(options=axis_labels, name=label),
-        )
-        for name, value, label in [
-            ("reference_strain", reference, "reference strain"),
-            ("comparator_strain", comparator, "comparator strain"),
-        ]
-    )
-
-
 def threshold_slider(fold_change_threshold):
     """Return the slider setting the fold change the sera are split at."""
     return alt.param(
@@ -594,7 +579,7 @@ for (subtype, strain_set), records in itertools.groupby(
             f"got {entry['drop_sera_at_lower_limit']!r}"
         )
 
-    reference_param, comparator_param = strain_dropdowns(
+    reference_param, comparator_param = titer_charts.strain_dropdowns(
         strain_order,
         haplotype_to_label[entry["reference"]],
         haplotype_to_label[entry["comparator"]],

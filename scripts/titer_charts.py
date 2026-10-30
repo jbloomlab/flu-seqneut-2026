@@ -559,58 +559,20 @@ def lower_limit_line(chart_data, lower_titer_limit):
 HIGHLIGHT_COLOR = "#d62728"  # red the highlighted labels are drawn in
 
 
-def _highlight_label_layers(tree, highlight_labels):
-    """Return `tree` with a checkbox that redraws the labels of `highlight_labels`.
+def add_tree(chart, tree_json, params, color_label, chart_viruses):
+    """Return `chart` with its subtype's tree drawn alongside the strain axis.
 
-    `tree_annotated_plot` takes one style for every strain label, and Vega-Lite cannot
-    vary it by datum, so each label layer (the halo and the text) is copied, filtered to
-    `highlight_labels`, and drawn over the regular labels in bold red. The copies are
-    transparent until the checkbox is ticked, and their halo hides the regular glyphs
-    beneath.
+    Tree tips absent from the chart are pruned, since the tree is built from the whole
+    viral library while the titer QC may have dropped a strain. A chart strain absent
+    from the tree is left to raise. A checkbox draws the labels of the recent vaccine
+    strains in `chart_viruses` in bold red.
 
     """
     highlight = alt.param(
         value=False,
         bind=alt.binding_checkbox(name="highlight recent vaccine strains: "),
     )
-    layers = list(tree.layer)
-    label_layers = [
-        layer for layer in layers if getattr(layer.mark, "type", layer.mark) == "text"
-    ]
-    if len(label_layers) != 2:
-        raise ValueError(
-            f"expected the tree to have 2 strain label layers, found {len(label_layers)}"
-        )
-    highlight_layers = []
-    for layer in label_layers:
-        mark = {
-            **layer.mark.to_dict(),
-            "fontWeight": "bold",
-            "opacity": {"expr": f"{highlight.name} ? 1 : 0"},
-        }
-        if mark.get("fill") != "white":  # the visible text, not its halo
-            mark["fill"] = HIGHLIGHT_COLOR
-        highlight_layer = layer.copy(deep=True)
-        highlight_layer.mark = alt.MarkDef(**mark)
-        highlight_layers.append(
-            highlight_layer.transform_filter(
-                alt.FieldOneOfPredicate(field="name", oneOf=sorted(highlight_labels))
-            )
-        )
-    tree.layer = [*layers, *highlight_layers]
-    return tree.add_params(highlight)
-
-
-def add_tree(chart, tree_json, params, color_label, chart_viruses):
-    """Return `chart` with its subtype's tree drawn alongside the strain axis.
-
-    Tree tips absent from the chart are pruned, since the tree is built from the whole
-    viral library while the titer QC may have dropped a strain. A chart strain absent
-    from the tree is left to raise. A checkbox highlights the labels of the recent
-    vaccine strains in `chart_viruses`.
-
-    """
-    result = tree_annotated_plot.plot(
+    return tree_annotated_plot.plot(
         tree_json,
         chart,
         chart_strain_field="axis_label",
@@ -622,16 +584,18 @@ def add_tree(chart, tree_json, params, color_label, chart_viruses):
         prune_chart_to_tree=False,
         connect_leader_to_label=True,
         strain_label_font_size=params["strain_label_font_size"],
+        strain_label_styles=[
+            {
+                "strains": chart_viruses.loc[
+                    chart_viruses["strain_type"] == "recent_vaccine", "axis_label"
+                ],
+                "style": {"fill": HIGHLIGHT_COLOR, "fontWeight": "bold"},
+                "when": highlight,
+            }
+        ],
         shift_tree_loc=params["shift_tree_loc"],
         tree_color_legend_format={"orient": "left", "columns": 1},
     )
-    highlight_labels = set(
-        chart_viruses.loc[
-            chart_viruses["strain_type"] == "recent_vaccine", "axis_label"
-        ]
-    )
-    result.vconcat[1] = _highlight_label_layers(result.vconcat[1], highlight_labels)
-    return result
 
 
 def facet_label_split_expr(separator):

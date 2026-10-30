@@ -556,14 +556,22 @@ def lower_limit_line(chart_data, lower_titer_limit):
     )
 
 
-def add_tree(chart, tree_json, params, color_label):
+HIGHLIGHT_COLOR = "#d62728"  # red the highlighted labels are drawn in
+
+
+def add_tree(chart, tree_json, params, color_label, chart_viruses):
     """Return `chart` with its subtype's tree drawn alongside the strain axis.
 
     Tree tips absent from the chart are pruned, since the tree is built from the whole
     viral library while the titer QC may have dropped a strain. A chart strain absent
-    from the tree is left to raise.
+    from the tree is left to raise. A checkbox draws the labels of the recent vaccine
+    strains in `chart_viruses` in bold red.
 
     """
+    highlight = alt.param(
+        value=False,
+        bind=alt.binding_checkbox(name="highlight recent vaccine strains: "),
+    )
     return tree_annotated_plot.plot(
         tree_json,
         chart,
@@ -576,6 +584,15 @@ def add_tree(chart, tree_json, params, color_label):
         prune_chart_to_tree=False,
         connect_leader_to_label=True,
         strain_label_font_size=params["strain_label_font_size"],
+        strain_label_styles=[
+            {
+                "strains": chart_viruses.loc[
+                    chart_viruses["strain_type"] == "recent_vaccine", "axis_label"
+                ],
+                "style": {"fill": HIGHLIGHT_COLOR, "fontWeight": "bold"},
+                "when": highlight,
+            }
+        ],
         shift_tree_loc=params["shift_tree_loc"],
         tree_color_legend_format={"orient": "left", "columns": 1},
     )

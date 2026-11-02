@@ -51,6 +51,7 @@ FIGURES = [
     "flu_circulating_frequencies",
     *MEDIAN_IQR_CHARTS,
     "H1N1_stratified_median_interquartile_range",
+    "H1N1_vaccination_boxplots",
     *STRUCTURE_PAGES,
 ]
 
@@ -118,6 +119,20 @@ rule H1N1_stratified_median_interquartile_range:
         "logs/H1N1_stratified_median_interquartile_range.txt",
     script:
         "scripts/H1N1_stratified_median_interquartile_range.py"
+
+
+rule H1N1_vaccination_boxplots:
+    """H1N1 titers and fold changes before and after vaccination, as box plots."""
+    input:
+        titer_chart_html=f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H1N1_recent_titer_boxplot.html",
+        fold_change_chart_html=f"{PRE_POST_TITER_PLOTS}/VIDRL_vaccination_H1N1_recent_fold_change_boxplot.html",
+        module="scripts/interactive_charts.py",
+    output:
+        figure_svg="figures/H1N1_vaccination_boxplots.svg",
+    log:
+        "logs/H1N1_vaccination_boxplots.txt",
+    script:
+        "scripts/H1N1_vaccination_boxplots.py"
 
 
 rule molstar_render:

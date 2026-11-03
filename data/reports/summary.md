@@ -149,6 +149,8 @@ The first figure shows the titers themselves and the second the fold change afte
 
 ![Fold change in titer post-vaccination for two strains. Each box spans the interquartile range with a thick line at the median and whiskers to the full range, and each point is one subject. The dashed gray line indicates no change in titer. Use the dropdowns below the plot to choose other strains, and the sliders to subset to individuals of specific ages.](embed:results/pre_post_titer_plots/VIDRL_vaccination_H1N1_recent_fold_change_boxplot.html)
 
+To open these two box plots as separate pages, see [here](docs:results/pre_post_titer_plots/VIDRL_vaccination_H1N1_recent_titer_boxplot.html) and [here](docs:results/pre_post_titer_plots/VIDRL_vaccination_H1N1_recent_fold_change_boxplot.html).
+
 ### Key mutations on HA structure
 The titer data above show an effect of mutations at site 155, and to a lesser extent 157, on the titers.
 The interactive figure below shows those sites on an interactive HA structure in indigo alongside other mutations in subclade D.3.1.1 relative to the 2026-2027 vaccine strain in red.

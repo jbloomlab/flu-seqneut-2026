@@ -20,6 +20,20 @@ MANUSCRIPT = "manuscript"
 # `manuscript_formatting`; `--use-envmodules` is what loads it. See README.md.
 TEXLIVE = "texlive/20210324-GCC-11.2.0"
 
+# The manuscripts that are typeset, and the files each is built from. The tracked-changes
+# one is generated from the manuscript and the frozen original submission, and
+# `latexdiff --flatten` has already folded in what they `\input`.
+MANUSCRIPT_SOURCES = {
+    "preprint": expand(
+        f"{MANUSCRIPT}/{{part}}",
+        part=["preprint.tex", "frontmatter.tex", "body.tex", "references.bib"],
+    ),
+    "preprint_tracked_changes": [
+        f"{MANUSCRIPT}/preprint_tracked_changes.tex",
+        f"{MANUSCRIPT}/references.bib",
+    ],
+}
+
 # the interactive chart each median / interquartile-range figure freezes. The charts
 # drawn over whole cohorts and those comparing titers before and after vaccination are
 # written to different directories by the pipeline.
@@ -62,7 +76,7 @@ rule all:
     input:
         expand("figures/{figure}.svg", figure=FIGURES),
         expand("tables/{table}.{ext}", table=TABLES, ext=["html", "tex"]),
-        f"{MANUSCRIPT}/preprint.pdf",
+        expand(f"{MANUSCRIPT}/{{manuscript}}.pdf", manuscript=MANUSCRIPT_SOURCES),
 
 
 rule sera_metadata:
@@ -190,19 +204,48 @@ rule figure_pdf:
         "scripts/svg_to_pdf.py"
 
 
-rule manuscript_pdf:
-    """Typeset the manuscript, with the figures and table the workflow builds."""
+rule manuscript_tracked_changes_tex:
+    """The manuscript with its changes since the original submission marked up.
+
+    `latexdiff` marks the body text only; the preamble, including the title block that
+    `preprint.tex` inputs there, is taken from the current manuscript unmarked. Figure
+    images are not compared, so a changed figure appears in its current form.
+    """
     input:
-        tex=expand(
-            f"{MANUSCRIPT}/{{part}}",
-            part=["preprint.tex", "frontmatter.tex", "body.tex", "references.bib"],
+        original=f"{MANUSCRIPT}/preprint_original_submission.tex",
+        original_parts=expand(
+            f"{MANUSCRIPT}/{{part}}_original_submission.tex",
+            part=["frontmatter", "body"],
         ),
+        current=f"{MANUSCRIPT}/preprint.tex",
+        current_parts=expand(f"{MANUSCRIPT}/{{part}}.tex", part=["frontmatter", "body"]),
+    output:
+        tex=f"{MANUSCRIPT}/preprint_tracked_changes.tex",
+    log:
+        "logs/manuscript_tracked_changes_tex.txt",
+    envmodules:
+        TEXLIVE,
+    shell:
+        # `latexdiff` marks additions blue, which is the color of the manuscript's
+        # hyperlinks, so they are switched to red. The `grep` fails the rule if
+        # `latexdiff` stops writing the definition the `sed` rewrites.
+        "latexdiff --flatten {input.original} {input.current} 2> {log} "
+        "| sed 's/\\\\color{{blue}}\\\\uwave/\\\\color{{red}}\\\\uwave/' > {output.tex} && "
+        "grep -q 'color{{red}}.uwave' {output.tex}"
+
+
+rule manuscript_pdf:
+    """Typeset a manuscript, with the figures and table the workflow builds."""
+    input:
+        tex=lambda wc: MANUSCRIPT_SOURCES[wc.manuscript],
         figures=expand("figures/{figure}.pdf", figure=FIGURES),
         tables=expand("tables/{table}.tex", table=TABLES),
     output:
-        pdf=f"{MANUSCRIPT}/preprint.pdf",
+        pdf=f"{MANUSCRIPT}/{{manuscript}}.pdf",
     log:
-        "logs/manuscript_pdf.txt",
+        "logs/manuscript_pdf_{manuscript}.txt",
+    wildcard_constraints:
+        manuscript="|".join(MANUSCRIPT_SOURCES),
     envmodules:
         TEXLIVE,
     shell:
@@ -216,4 +259,4 @@ rule manuscript_pdf:
         # five after an edit to the prose.
         "SOURCE_DATE_EPOCH=0 FORCE_SOURCE_DATE=1 "
         "latexmk -xelatex -interaction=nonstopmode -halt-on-error "
-        f"-cd {MANUSCRIPT}/preprint.tex &> {{log}}"
+        f"-cd {MANUSCRIPT}/{{wildcards.manuscript}}.tex &> {{log}}"

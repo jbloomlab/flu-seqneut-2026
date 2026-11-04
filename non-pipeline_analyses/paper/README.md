@@ -8,6 +8,22 @@ figures and table below. Its formatting follows the lab template at
 `preprint.tex` holds the preamble and title block, `body.tex` the prose and the figure
 and table floats, and `references.bib` the bibliography.
 
+### Tracked changes since the original submission
+[manuscript/](manuscript) also holds `preprint_original_submission.tex`,
+`frontmatter_original_submission.tex`, and `body_original_submission.tex`: the manuscript
+exactly as first submitted, kept as a record and never edited. The only difference from
+the files they were copied from is that the first `\input`s the other two by these names.
+They share `references.bib` and the figures with the current manuscript.
+[Snakefile](Snakefile) runs `latexdiff` on the original and current manuscripts and
+typesets the result to `manuscript/preprint_tracked_changes.pdf`, with additions
+underlined in red and deletions struck out in red. This is what `latexdiff` does not mark:
+- Figure images: a changed figure appears in its current form, though changed captions
+  and text are marked.
+- The title block and abstract in `frontmatter.tex`, which `preprint.tex` inputs in the
+  preamble, so an edit there appears in the tracked-changes PDF without being marked.
+
+When a later round is submitted, add its frozen copy under a new suffix beside these.
+
 It was converted once from the Word version of the Google doc it used to live in; see
 [data/manuscript_docx/](data/manuscript_docx), which keeps that document and the
 conversion as a record and is not part of the workflow.
